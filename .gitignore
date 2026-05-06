@@ -3,6 +3,7 @@
 *.test
 *.out
 bin/
+bitrise-gen
 
 # Go workspace
 vendor/
