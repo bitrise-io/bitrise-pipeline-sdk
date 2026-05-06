@@ -1,6 +1,12 @@
 // Package validate checks a BitriseDataModel for structural inconsistencies.
 // It surfaces problems that would cause a build to fail at runtime — missing workflow
 // references, broken dependency chains, etc. — before the config is uploaded.
+//
+// Two validation levels are available:
+//
+//   - Config: fast SDK-level structural checks (missing refs, broken depends_on, etc.)
+//   - Full: Config + upstream bitrise/v2 Normalize + Validate (cycle detection, step format,
+//     DAG validation, deprecated-step warnings, and more)
 package validate
 
 import (
@@ -22,8 +28,22 @@ func (e Error) Error() string {
 	return fmt.Sprintf("%s: %s", e.Location, e.Message)
 }
 
-// Config validates a BitriseDataModel and returns all detected errors.
-// An empty slice means the config is structurally sound.
+// Result holds the combined output of a Full validation run.
+type Result struct {
+	// Errors are problems that will prevent the config from running correctly.
+	// Includes both SDK structural errors and errors from upstream bitrise/v2 validation.
+	Errors []Error
+	// Warnings are non-fatal advisories from upstream bitrise/v2 validation
+	// (e.g. deprecated steps, unused outputs).
+	Warnings []string
+}
+
+// IsValid reports whether the config has no errors (warnings are allowed).
+func (r Result) IsValid() bool { return len(r.Errors) == 0 }
+
+// Config runs SDK-level structural checks and returns any detected errors.
+// It is fast and has no side effects on data.
+// For the most thorough validation, use Full instead.
 func Config(data bitriseModels.BitriseDataModel) []Error {
 	var errs []Error
 
@@ -33,6 +53,36 @@ func Config(data bitriseModels.BitriseDataModel) []Error {
 	errs = append(errs, validateStepBundleRefs(data)...)
 
 	return errs
+}
+
+// Full runs the complete validation pipeline on a copy of data:
+//
+//  1. SDK structural checks (Config)
+//  2. Upstream bitrise/v2/models Normalize (normalizes TriggerMap, containers, step bundles, workflows)
+//  3. Upstream bitrise/v2/models Validate (cycle detection, step format, DAG validation, trigger map, etc.)
+//
+// The returned Result combines SDK errors with upstream errors and warnings.
+// The returned error is non-nil only for unexpected failures during normalization, not for
+// validation failures — check Result.IsValid() to determine whether the config is valid.
+func Full(data bitriseModels.BitriseDataModel) (Result, error) {
+	result := Result{
+		Errors: Config(data),
+	}
+
+	if err := data.Normalize(); err != nil {
+		return result, fmt.Errorf("normalize: %w", err)
+	}
+
+	warnings, err := data.Validate()
+	result.Warnings = warnings
+	if err != nil {
+		result.Errors = append(result.Errors, Error{
+			Location: "config",
+			Message:  err.Error(),
+		})
+	}
+
+	return result, nil
 }
 
 // validateWorkflowRefs checks that every workflow ID referenced in before_run / after_run

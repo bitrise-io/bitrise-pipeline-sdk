@@ -1,5 +1,5 @@
 // This example generates a Bitrise configuration with a graph pipeline and
-// multiple workflows, then prints it as YAML to stdout.
+// multiple workflows, validates it, then prints it as YAML to stdout.
 //
 // Usage:
 //
@@ -68,10 +68,10 @@ func main() {
 		WithTool(bitriseModels.ToolID("golang"), "1.22").
 		AddTrigger(trigger.OnPush("", "ci").WithBranch("main").Build()).
 		AddTrigger(trigger.OnPullRequest("", "ci").WithTargetBranch("main").Build()).
-		AddTrigger(trigger.OnTag("deploy", "").WithTag("v*").Build()).
-		Build()
+		AddTrigger(trigger.OnTag("deploy", "").WithTag("v*").Build())
 
-	if err := serialize.Print(cfg); err != nil {
+	// Validate before serializing — warnings go to stderr, errors abort.
+	if err := serialize.ValidatedPrint(cfg.Build()); err != nil {
 		log.Fatal(err)
 	}
 }

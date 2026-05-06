@@ -24,6 +24,7 @@ import (
 	"github.com/bitrise-io/bitrise-pipeline-sdk/stage"
 	"github.com/bitrise-io/bitrise-pipeline-sdk/stepbundle"
 	"github.com/bitrise-io/bitrise-pipeline-sdk/trigger"
+	"github.com/bitrise-io/bitrise-pipeline-sdk/validate"
 	"github.com/bitrise-io/bitrise-pipeline-sdk/workflow"
 )
 
@@ -143,6 +144,17 @@ func (b *Builder) WithTool(id bitriseModels.ToolID, version string) *Builder {
 func (b *Builder) WithMeta(meta map[string]interface{}) *Builder {
 	b.meta = meta
 	return b
+}
+
+// Validate builds the config and runs the full validation pipeline (SDK structural checks
+// + upstream bitrise/v2 Normalize + Validate). Use this to catch problems before serializing.
+//
+//	result, err := p.Validate()
+//	if err != nil { log.Fatal(err) }
+//	if !result.IsValid() { log.Fatal(result.Errors) }
+//	for _, w := range result.Warnings { log.Println("WARNING:", w) }
+func (b *Builder) Validate() (validate.Result, error) {
+	return validate.Full(b.Build())
 }
 
 // Build assembles and returns the BitriseDataModel.
