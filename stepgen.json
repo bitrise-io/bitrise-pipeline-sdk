@@ -1,0 +1,13 @@
+{
+  "steps": [
+    "cocoapods-install",
+    "export-xcarchive",
+    "firebase-app-distribution",
+    "flutter-build",
+    "flutter-test",
+    "gradle-runner",
+    "npm",
+    "sign-apk",
+    "yarn"
+  ]
+}

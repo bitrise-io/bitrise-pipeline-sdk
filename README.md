@@ -137,8 +137,40 @@ The SDK ships typed builders for the most common steps. Each builder exposes ste
 | `step.CachePull()` | `cache-pull` |
 | `step.CachePush()` | `cache-push` |
 | `step.Slack()` | `slack` |
+| `step.CocoaPodsInstall()` | `cocoapods-install` |
+| `step.ExportXcarchive()` | `export-xcarchive` |
+| `step.FirebaseAppDistribution()` | `firebase-app-distribution` |
+| `step.FlutterBuild()` | `flutter-build` |
+| `step.FlutterTest()` | `flutter-test` |
+| `step.GradleRunner()` | `gradle-runner` |
+| `step.Npm()` | `npm` |
+| `step.SignApk()` | `sign-apk` |
+| `step.Yarn()` | `yarn` |
 
 For any step not listed above use `step.From(id, version)`.
+
+## Adding builders for more steps
+
+`cmd/stepgen` generates typed builders for any step in the [Bitrise steplib](https://github.com/bitrise-io/bitrise-steplib). To add a new step:
+
+1. Add its ID to `stepgen.json`:
+   ```json
+   {
+     "steps": ["your-new-step"]
+   }
+   ```
+
+2. Regenerate:
+   ```sh
+   go generate ./step/
+   ```
+
+   Or run the generator directly:
+   ```sh
+   go run ./cmd/stepgen your-new-step
+   ```
+
+The generator fetches the latest step version from the steplib, parses the step's input definitions, and writes a `step/gen_<step_id>.go` file with a fully typed builder.
 
 ## Examples
 
