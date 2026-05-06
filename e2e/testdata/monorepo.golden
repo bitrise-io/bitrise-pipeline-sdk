@@ -1,0 +1,48 @@
+format_version: "26"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+title: Monorepo CI
+trigger_map:
+- type: push
+  workflow: service-a
+  push_branch: '*'
+- type: pull_request
+  workflow: service-b
+  pull_request_target_branch: main
+- type: tag
+  workflow: deploy
+  tag: release/*
+workflows:
+  deploy:
+    title: Deploy All
+    before_run:
+    - setup
+    steps:
+    - script@1:
+        title: Deploy
+        inputs:
+        - content: make deploy-all
+    - deploy-to-bitrise-io@1: {}
+  service-a:
+    title: Service A Tests
+    before_run:
+    - setup
+    steps:
+    - script@1:
+        title: Test Service A
+        inputs:
+        - content: cd services/a && go test ./...
+  service-b:
+    title: Service B Tests
+    before_run:
+    - setup
+    steps:
+    - script@1:
+        title: Test Service B
+        inputs:
+        - content: cd services/b && go test ./...
+  setup:
+    title: Shared Setup
+    steps:
+    - activate-ssh-key@1: {}
+    - git-clone@1: {}

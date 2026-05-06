@@ -1,0 +1,37 @@
+format_version: "26"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: android
+title: Android CI/CD
+trigger_map:
+- type: push
+  workflow: test
+  push_branch: '*'
+- type: pull_request
+  workflow: test
+  pull_request_target_branch: main
+- type: tag
+  workflow: build
+  tag: v*
+workflows:
+  build:
+    title: Android Build
+    before_run:
+    - test
+    steps:
+    - android-build@1:
+        inputs:
+        - project_location: ./
+        - module: app
+        - variant: Release
+        - build_type: aab
+    - deploy-to-bitrise-io@1: {}
+  test:
+    title: Android Tests
+    steps:
+    - activate-ssh-key@1: {}
+    - git-clone@1: {}
+    - android-unit-test@1:
+        inputs:
+        - project_location: ./
+        - module: app
+        - variant: Debug

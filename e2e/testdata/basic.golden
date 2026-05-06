@@ -1,0 +1,11 @@
+format_version: "26"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+workflows:
+  primary:
+    steps:
+    - activate-ssh-key@1: {}
+    - git-clone@1: {}
+    - script@1:
+        inputs:
+        - content: echo hello

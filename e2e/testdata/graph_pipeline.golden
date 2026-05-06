@@ -1,0 +1,63 @@
+format_version: "26"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: other
+title: Go Service CI
+trigger_map:
+- type: push
+  pipeline: ci
+  push_branch: main
+- type: pull_request
+  pipeline: ci
+  pull_request_target_branch: main
+pipelines:
+  ci:
+    title: CI
+    workflows:
+      deploy:
+        depends_on:
+        - unit-tests
+        - lint
+        abort_on_fail: true
+      lint:
+        depends_on:
+        - setup
+      setup: {}
+      unit-tests:
+        depends_on:
+        - setup
+workflows:
+  deploy:
+    title: Deploy
+    before_run:
+    - setup
+    steps:
+    - script@1:
+        title: Build
+        inputs:
+        - content: go build -o bin/app ./cmd/app
+    - deploy-to-bitrise-io@1: {}
+  lint:
+    title: Lint
+    before_run:
+    - setup
+    steps:
+    - script@1:
+        title: Lint
+        inputs:
+        - content: golangci-lint run
+  setup:
+    title: Setup
+    steps:
+    - activate-ssh-key@1: {}
+    - git-clone@1: {}
+    - cache-pull@1: {}
+  unit-tests:
+    title: Unit Tests
+    before_run:
+    - setup
+    steps:
+    - script@1:
+        title: Run tests
+        inputs:
+        - content: go test ./...
+    - cache-push@1: {}
