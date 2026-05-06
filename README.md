@@ -165,12 +165,47 @@ For any step not listed above use `step.From(id, version)`.
    go generate ./step/
    ```
 
-   Or run the generator directly:
+   Or run the generator directly for a specific step:
    ```sh
    go run ./cmd/stepgen your-new-step
    ```
 
 The generator fetches the latest step version from the steplib, parses the step's input definitions, and writes a `step/gen_<step_id>.go` file with a fully typed builder.
+
+## Updating all step builders at once
+
+To refresh every builder to the latest steplib version in one command, do a sparse clone of the steplib (no full history, only the `steps/` tree) and run the generator against it:
+
+```sh
+# Clone the steplib — only downloads step metadata, not full git history
+git clone --depth 1 --filter=blob:none --sparse \
+  https://github.com/bitrise-io/bitrise-steplib.git /tmp/bitrise-steplib
+cd /tmp/bitrise-steplib && git sparse-checkout set steps
+
+# Regenerate all builders from the local clone
+cd /path/to/bitrise-pipeline-sdk
+go run ./cmd/stepgen --steplib-dir=/tmp/bitrise-steplib --config=stepgen.json --output=step
+```
+
+To also pick up brand-new steps that have been added to the steplib since the last run, update `stepgen.json` first:
+
+```sh
+# List all step IDs in the cloned steplib and write them to stepgen.json
+python3 -c "
+import json, os
+steps = sorted(os.listdir('/tmp/bitrise-steplib/steps'))
+print(json.dumps({'steps': steps}, indent=2))
+" > stepgen.json
+
+# Then regenerate (hand-crafted builders are automatically skipped)
+go run ./cmd/stepgen --steplib-dir=/tmp/bitrise-steplib --config=stepgen.json --output=step
+```
+
+If you already have a clone you want to reuse, pull the latest changes first:
+
+```sh
+cd /tmp/bitrise-steplib && git pull
+```
 
 ## Examples
 
