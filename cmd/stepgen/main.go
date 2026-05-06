@@ -1,12 +1,26 @@
 // stepgen generates typed Go builder files for Bitrise steps sourced from
-// the official Bitrise steplib on GitHub.
+// the official Bitrise steplib.
 //
 // For each step ID it fetches the latest step.yml, extracts the inputs, and
 // writes a typed builder file (gen_<step_id>.go) into the output directory.
 //
+// Two source modes are supported:
+//
+//  1. GitHub API (default) — fetches step metadata on demand; suitable for
+//     a small number of steps but is subject to the 60 req/hour rate limit.
+//
+//  2. Local steplib clone (--steplib-dir) — reads from a local git clone of
+//     the steplib; no network calls, no rate limits. Recommended when
+//     generating builders for many steps at once.
+//     Clone example:
+//       git clone --depth 1 --filter=blob:none --sparse \
+//         https://github.com/bitrise-io/bitrise-steplib.git /tmp/steplib
+//       cd /tmp/steplib && git sparse-checkout set steps
+//
 // Usage (standalone):
 //
 //	go run ./cmd/stepgen [--output=step] [--config=stepgen.json] [step-id...]
+//	go run ./cmd/stepgen --steplib-dir=/tmp/steplib [step-id...]
 //
 // Usage (via go generate from the step/ directory):
 //
@@ -59,7 +73,7 @@ type genConfig struct {
 func loadConfig(path string) (genConfig, error) {
 	data, err := os.ReadFile(path)
 	if os.IsNotExist(err) {
-		return genConfig{}, nil // missing config is fine when IDs come from flags
+		return genConfig{}, nil
 	}
 	if err != nil {
 		return genConfig{}, err
@@ -112,6 +126,7 @@ func (b *{{$.TypeName}}Builder) With{{.MethodName}}(value string) *{{$.TypeName}
 func main() {
 	outputDir := flag.String("output", "step", "directory to write generated files into")
 	configFile := flag.String("config", "stepgen.json", "path to stepgen.json")
+	steplibDir := flag.String("steplib-dir", "", "path to a local clone of bitrise-steplib (skips GitHub API)")
 	flag.Parse()
 
 	stepIDs := flag.Args()
@@ -126,62 +141,119 @@ func main() {
 		fatalf("no step IDs — pass them as arguments or add them to %s", *configFile)
 	}
 
+	var src stepSource
+	if *steplibDir != "" {
+		src = localSource{dir: *steplibDir}
+	} else {
+		src = githubSource{}
+	}
+
 	tmpl := template.Must(template.New("builder").Parse(builderTmpl))
 
+	ok, fail := 0, 0
 	for _, id := range stepIDs {
 		if handcraftedSteps[id] {
-			fmt.Printf("skip %-40s (hand-crafted builder already exists)\n", id)
+			fmt.Printf("skip %-40s (hand-crafted builder exists)\n", id)
 			continue
 		}
-		if err := generateStep(id, *outputDir, tmpl); err != nil {
+		if err := generateStep(id, *outputDir, tmpl, src); err != nil {
 			fmt.Fprintf(os.Stderr, "ERROR %-40s %v\n", id, err)
+			fail++
+		} else {
+			ok++
 		}
 	}
+	fmt.Printf("\ndone: %d generated, %d errors\n", ok, fail)
+}
+
+// ---- step source abstraction -----------------------------------------------
+
+type stepSource interface {
+	listVersions(stepID string) ([]string, error)
+	readStepYML(stepID, version string) ([]byte, error)
+}
+
+// localSource reads from a local clone of the steplib.
+type localSource struct{ dir string }
+
+func (s localSource) listVersions(stepID string) ([]string, error) {
+	entries, err := os.ReadDir(filepath.Join(s.dir, "steps", stepID))
+	if err != nil {
+		return nil, fmt.Errorf("read dir: %w", err)
+	}
+	var versions []string
+	for _, e := range entries {
+		if e.IsDir() {
+			versions = append(versions, e.Name())
+		}
+	}
+	return versions, nil
+}
+
+func (s localSource) readStepYML(stepID, version string) ([]byte, error) {
+	path := filepath.Join(s.dir, "steps", stepID, version, "step.yml")
+	return os.ReadFile(path)
+}
+
+// githubSource fetches from the GitHub API / raw content endpoint.
+type githubSource struct{}
+
+func (githubSource) listVersions(stepID string) ([]string, error) {
+	return fetchVersionsGitHub(stepID)
+}
+
+func (githubSource) readStepYML(stepID, version string) ([]byte, error) {
+	return fetchStepYMLGitHub(stepID, version)
 }
 
 // ---- per-step generation ---------------------------------------------------
 
-func generateStep(stepID, outputDir string, tmpl *template.Template) error {
-	fmt.Printf("fetch %-40s", stepID)
+func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource) error {
+	fmt.Printf("gen  %-40s", stepID)
 
-	versions, err := fetchVersions(stepID)
+	versions, err := src.listVersions(stepID)
 	if err != nil {
 		fmt.Println()
 		return fmt.Errorf("list versions: %w", err)
 	}
 	if len(versions) == 0 {
 		fmt.Println()
-		return fmt.Errorf("no versions found in steplib")
+		return fmt.Errorf("no versions found")
 	}
 
 	latest := latestVersion(versions)
-	fmt.Printf("→ %s\n", latest)
+	fmt.Printf("→ %-10s", latest)
 
-	ymlData, err := fetchStepYML(stepID, latest)
+	ymlData, err := src.readStepYML(stepID, latest)
 	if err != nil {
-		return fmt.Errorf("fetch step.yml: %w", err)
+		fmt.Println()
+		return fmt.Errorf("read step.yml: %w", err)
 	}
 
 	def, err := parseStepYML(stepID, latest, ymlData)
 	if err != nil {
+		fmt.Println()
 		return fmt.Errorf("parse step.yml: %w", err)
 	}
 
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, def); err != nil {
+		fmt.Println()
 		return fmt.Errorf("render template: %w", err)
 	}
 
-	src, err := format.Source(buf.Bytes())
+	out, err := format.Source(buf.Bytes())
 	if err != nil {
-		return fmt.Errorf("gofmt: %w\n--- generated source ---\n%s", err, buf.String())
+		fmt.Println()
+		return fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
 	}
 
 	outPath := filepath.Join(outputDir, "gen_"+normalizeID(stepID)+".go")
-	if err := os.WriteFile(outPath, src, 0644); err != nil {
+	if err := os.WriteFile(outPath, out, 0644); err != nil {
+		fmt.Println()
 		return fmt.Errorf("write %s: %w", outPath, err)
 	}
-	fmt.Printf("      wrote %s\n", outPath)
+	fmt.Printf("wrote %s\n", outPath)
 	return nil
 }
 
@@ -196,6 +268,9 @@ func httpGet(url string) (*http.Response, error) {
 	}
 	req.Header.Set("User-Agent", "bitrise-pipeline-sdk/stepgen")
 	req.Header.Set("Accept", "application/vnd.github.v3+json")
+	if tok := os.Getenv("GITHUB_TOKEN"); tok != "" {
+		req.Header.Set("Authorization", "Bearer "+tok)
+	}
 	return httpClient.Do(req)
 }
 
@@ -204,28 +279,24 @@ type ghDirEntry struct {
 	Type string `json:"type"`
 }
 
-// fetchVersions lists all version directories for a step in the steplib.
-func fetchVersions(stepID string) ([]string, error) {
+func fetchVersionsGitHub(stepID string) ([]string, error) {
 	url := "https://api.github.com/repos/bitrise-io/bitrise-steplib/contents/steps/" + stepID
 	resp, err := httpGet(url)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
-
 	body, _ := io.ReadAll(resp.Body)
 	if resp.StatusCode == 404 {
 		return nil, fmt.Errorf("step %q not found in steplib", stepID)
 	}
 	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("GitHub API returned %d: %s", resp.StatusCode, body)
+		return nil, fmt.Errorf("GitHub API %d: %s", resp.StatusCode, body)
 	}
-
 	var entries []ghDirEntry
 	if err := json.Unmarshal(body, &entries); err != nil {
 		return nil, fmt.Errorf("decode directory listing: %w", err)
 	}
-
 	var versions []string
 	for _, e := range entries {
 		if e.Type == "dir" {
@@ -235,8 +306,7 @@ func fetchVersions(stepID string) ([]string, error) {
 	return versions, nil
 }
 
-// fetchStepYML downloads the step.yml for a specific step version.
-func fetchStepYML(stepID, version string) ([]byte, error) {
+func fetchStepYMLGitHub(stepID, version string) ([]byte, error) {
 	url := fmt.Sprintf(
 		"https://raw.githubusercontent.com/bitrise-io/bitrise-steplib/master/steps/%s/%s/step.yml",
 		stepID, version,
@@ -246,10 +316,9 @@ func fetchStepYML(stepID, version string) ([]byte, error) {
 		return nil, err
 	}
 	defer resp.Body.Close()
-
 	body, _ := io.ReadAll(resp.Body)
 	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("HTTP %d fetching step.yml", resp.StatusCode)
+		return nil, fmt.Errorf("HTTP %d", resp.StatusCode)
 	}
 	return body, nil
 }
@@ -275,10 +344,10 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 		TypeName:     toTypeName(stepID),
 	}
 
+	seen := map[string]bool{}
 	for _, rawInput := range raw.Inputs {
 		var key string
 		var rawOpts interface{}
-
 		for k, v := range rawInput {
 			if k == "opts" {
 				rawOpts = v
@@ -286,7 +355,6 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 				key = k
 			}
 		}
-
 		if key == "" || !isValidIdentifier(key) {
 			continue
 		}
@@ -295,6 +363,12 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 			Key:        key,
 			MethodName: toMethodName(key),
 		}
+		// Skip duplicate method names (can happen when a step.yml has the
+		// same key listed multiple times with different default values).
+		if seen[in.MethodName] {
+			continue
+		}
+		seen[in.MethodName] = true
 
 		if opts, ok := rawOpts.(map[interface{}]interface{}); ok {
 			if title, _ := opts["title"].(string); title != "" {
@@ -304,16 +378,13 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 		if in.Comment == "" {
 			in.Comment = fmt.Sprintf("With%s sets the %s input.", in.MethodName, key)
 		}
-
 		def.Inputs = append(def.Inputs, in)
 	}
-
 	return def, nil
 }
 
 // ---- helpers ---------------------------------------------------------------
 
-// latestVersion picks the highest semver string from the list.
 func latestVersion(versions []string) string {
 	sort.Slice(versions, func(i, j int) bool {
 		return cmpVer(versions[i], versions[j]) < 0
@@ -353,12 +424,10 @@ func majorVersion(v string) string {
 	return v
 }
 
-// normalizeID converts "firebase-app-distribution" → "firebase_app_distribution".
 func normalizeID(id string) string {
 	return strings.ReplaceAll(id, "-", "_")
 }
 
-// toTypeName converts "firebase-app-distribution" → "FirebaseAppDistribution".
 func toTypeName(id string) string {
 	var b strings.Builder
 	for _, part := range strings.Split(id, "-") {
@@ -370,7 +439,6 @@ func toTypeName(id string) string {
 	return b.String()
 }
 
-// toMethodName converts "app_path" → "AppPath".
 func toMethodName(key string) string {
 	var b strings.Builder
 	for _, part := range strings.Split(key, "_") {
@@ -382,8 +450,6 @@ func toMethodName(key string) string {
 	return b.String()
 }
 
-// isValidIdentifier returns true if key is a valid Go identifier base
-// (used as a struct field / method name after title-casing).
 func isValidIdentifier(key string) bool {
 	if key == "" {
 		return false
@@ -393,7 +459,6 @@ func isValidIdentifier(key string) bool {
 			return false
 		}
 	}
-	// Must not start with a digit after title-casing.
 	return !unicode.IsDigit(rune(key[0]))
 }
 
@@ -407,7 +472,6 @@ func lcFirst(s string) string {
 }
 
 func sanitizeComment(s string) string {
-	// Comments must not contain newlines.
 	return strings.ReplaceAll(strings.TrimSpace(s), "\n", " ")
 }
 
