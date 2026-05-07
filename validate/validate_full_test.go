@@ -18,7 +18,7 @@ func TestFull_ValidConfig(t *testing.T) {
 		AddWorkflow("setup", workflow.New().AddStep(step.GitClone())).
 		AddWorkflow("primary", workflow.New().
 			WithBeforeRun("setup").
-			AddStep(step.Script("go test ./..."))).
+			AddStep(step.Script().WithContent("go test ./..."))).
 		Build()
 
 	result, err := validate.Full(data)
@@ -54,8 +54,8 @@ func TestFull_UpstreamCatchesCycles(t *testing.T) {
 
 func TestFull_GraphPipeline_ValidDeps(t *testing.T) {
 	data := pipeline.New("other").
-		AddWorkflow("test", workflow.New().AddStep(step.Script("go test ./..."))).
-		AddWorkflow("deploy", workflow.New().AddStep(step.Script("go build ./..."))).
+		AddWorkflow("test", workflow.New().AddStep(step.Script().WithContent("go test ./..."))).
+		AddWorkflow("deploy", workflow.New().AddStep(step.Script().WithContent("go build ./..."))).
 		AddGraphPipeline("ci", graphpipeline.New().
 			AddWorkflow("test", graphpipeline.NewWorkflow()).
 			AddWorkflow("deploy", graphpipeline.NewWorkflow().WithDependsOn("test"))).
@@ -92,7 +92,7 @@ func TestFull_WarningsAreReturned(t *testing.T) {
 	// A valid config should produce no errors; warnings may or may not be present
 	// depending on upstream heuristics.
 	data := pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 
 	result, err := validate.Full(data)

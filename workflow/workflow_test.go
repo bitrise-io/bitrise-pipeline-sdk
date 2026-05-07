@@ -46,11 +46,11 @@ func TestWorkflow_Envs(t *testing.T) {
 func TestWorkflow_Steps(t *testing.T) {
 	wf := workflow.New().
 		AddStep(step.GitClone()).
-		AddStep(step.Script("echo done")).
+		AddStep(step.Script().WithContent("echo done")).
 		Build()
 
 	require.Len(t, wf.Steps, 2)
-	assert.Contains(t, wf.Steps[0], "git-clone@1")
+	assert.Contains(t, wf.Steps[0], "git-clone@8")
 	assert.Contains(t, wf.Steps[1], "script@1")
 }
 

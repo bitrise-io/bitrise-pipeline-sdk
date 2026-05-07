@@ -50,7 +50,7 @@ import (
 
 func main() {
 	cfg := pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 	if err := serialize.Print(cfg); err != nil {
 		log.Fatal(err)

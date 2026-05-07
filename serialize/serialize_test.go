@@ -18,7 +18,7 @@ func validConfig() func() interface{ Build() interface{} } {
 
 func buildValid() interface{} {
 	return pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 }
 
@@ -30,7 +30,7 @@ func TestToYAML(t *testing.T) {
 	out, err := serialize.ToYAML(data)
 	require.NoError(t, err)
 	assert.Contains(t, string(out), "format_version")
-	assert.Contains(t, string(out), "git-clone@1")
+	assert.Contains(t, string(out), "git-clone@8")
 }
 
 func TestToJSON(t *testing.T) {
@@ -44,7 +44,7 @@ func TestToJSON(t *testing.T) {
 
 func TestNormalize_ReturnsCopy(t *testing.T) {
 	data := pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 
 	normalized, err := serialize.Normalize(data)
@@ -65,7 +65,7 @@ func TestNormalize_DoesNotMutateOriginal(t *testing.T) {
 
 func TestFillMissingDefaults(t *testing.T) {
 	data := pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 
 	filled, err := serialize.FillMissingDefaults(data)
@@ -75,7 +75,7 @@ func TestFillMissingDefaults(t *testing.T) {
 
 func TestValidatedToYAML_ValidConfig(t *testing.T) {
 	data := pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 
 	out, err := serialize.ValidatedToYAML(data)
@@ -97,7 +97,7 @@ func TestValidatedToYAML_InvalidConfig(t *testing.T) {
 
 func TestValidatedToJSON_ValidConfig(t *testing.T) {
 	data := pipeline.New("other").
-		AddWorkflow("primary", workflow.New().AddStep(step.Script("echo hi"))).
+		AddWorkflow("primary", workflow.New().AddStep(step.Script().WithContent("echo hi"))).
 		Build()
 
 	out, err := serialize.ValidatedToJSON(data)

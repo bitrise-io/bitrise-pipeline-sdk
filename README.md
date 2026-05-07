@@ -72,18 +72,18 @@ import (
 
 func main() {
     setup := workflow.New().
-        AddStep(step.ActivateSSHKey()).
+        AddStep(step.ActivateSshKey()).
         AddStep(step.GitClone()).
         AddStep(step.CachePull())
 
     test := workflow.New().
         WithBeforeRun("setup").
-        AddStep(step.Script("go test ./..."))
+        AddStep(step.Script().WithContent("go test ./..."))
 
     deploy := workflow.New().
         WithBeforeRun("setup").
-        AddStep(step.Script("go build -o bin/app ./cmd/app")).
-        AddStep(step.DeployToBitriseIO())
+        AddStep(step.Script().WithContent("go build -o bin/app ./cmd/app")).
+        AddStep(step.DeployToBitriseIo())
 
     ci := graphpipeline.New().
         AddWorkflow("setup", graphpipeline.NewWorkflow()).
@@ -126,18 +126,18 @@ The SDK ships typed builders for the most common steps. Each builder exposes ste
 | Function | Step |
 |---|---|
 | `step.GitClone()` | `git-clone` |
-| `step.ActivateSSHKey()` | `activate-ssh-key` |
-| `step.Script(content)` | `script` |
+| `step.ActivateSshKey()` | `activate-ssh-key` |
+| `step.Script()` | `script` |
 | `step.XcodeTest()` | `xcode-test` |
 | `step.XcodeArchive()` | `xcode-archive` |
 | `step.AndroidBuild()` | `android-build` |
-| `step.AndroidTest()` | `android-unit-test` |
-| `step.DeployToBitriseIO()` | `deploy-to-bitrise-io` |
-| `step.Fastlane(lane)` | `fastlane` |
+| `step.AndroidUnitTest()` | `android-unit-test` |
+| `step.DeployToBitriseIo()` | `deploy-to-bitrise-io` |
+| `step.Fastlane()` | `fastlane` |
 | `step.CachePull()` | `cache-pull` |
 | `step.CachePush()` | `cache-push` |
 | `step.Slack()` | `slack` |
-| `step.CocoaPodsInstall()` | `cocoapods-install` |
+| `step.CocoapodsInstall()` | `cocoapods-install` |
 | `step.ExportXcarchive()` | `export-xcarchive` |
 | `step.FirebaseAppDistribution()` | `firebase-app-distribution` |
 | `step.FlutterBuild()` | `flutter-build` |

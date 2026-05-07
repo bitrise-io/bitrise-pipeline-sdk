@@ -29,8 +29,8 @@ func TestWithServices(t *testing.T) {
 
 func TestAddStep(t *testing.T) {
 	item := withgroup.New("runner").
-		AddStep(step.Script("go test ./...")).
-		AddStep(step.Script("go vet ./...")).
+		AddStep(step.Script().WithContent("go test ./...")).
+		AddStep(step.Script().WithContent("go vet ./...")).
 		Build()
 
 	wm := item[bitriseModels.StepListItemWithKey].(bitriseModels.WithModel)

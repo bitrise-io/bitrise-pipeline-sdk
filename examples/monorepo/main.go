@@ -24,7 +24,7 @@ func main() {
 	// setup — checked out once; subsequent workflows use before_run to depend on it.
 	setup := workflow.New().
 		WithTitle("Shared Setup").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
 		AddStep(step.CachePull())
 
@@ -32,28 +32,28 @@ func main() {
 	serviceA := workflow.New().
 		WithTitle("Service A Tests").
 		WithBeforeRun("setup").
-		AddStep(step.Script("cd services/a && go test ./...").WithTitle("Test Service A")).
+		AddStep(step.Script().WithContent("cd services/a && go test ./...").WithTitle("Test Service A")).
 		AddStep(step.CachePush())
 
 	serviceB := workflow.New().
 		WithTitle("Service B Tests").
 		WithBeforeRun("setup").
-		AddStep(step.Script("cd services/b && go test ./...").WithTitle("Test Service B")).
+		AddStep(step.Script().WithContent("cd services/b && go test ./...").WithTitle("Test Service B")).
 		AddStep(step.CachePush())
 
 	serviceC := workflow.New().
 		WithTitle("Service C Tests").
 		WithBeforeRun("setup").
-		AddStep(step.Script("cd services/c && go test ./...").WithTitle("Test Service C")).
+		AddStep(step.Script().WithContent("cd services/c && go test ./...").WithTitle("Test Service C")).
 		AddStep(step.CachePush())
 
 	// deploy — runs all services after tests pass.
 	deploy := workflow.New().
 		WithTitle("Deploy All Services").
 		WithBeforeRun("setup").
-		AddStep(step.Script("make build-all").WithTitle("Build all services")).
-		AddStep(step.Script("make deploy").WithTitle("Deploy")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.Script().WithContent("make build-all").WithTitle("Build all services")).
+		AddStep(step.Script().WithContent("make deploy").WithTitle("Deploy")).
+		AddStep(step.DeployToBitriseIo())
 
 	// Graph pipeline — service tests run in parallel, deploy waits for all.
 	ci := graphpipeline.New().

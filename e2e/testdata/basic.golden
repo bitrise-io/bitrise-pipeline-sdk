@@ -4,8 +4,8 @@ project_type: other
 workflows:
   primary:
     steps:
-    - activate-ssh-key@1: {}
-    - git-clone@1: {}
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}
     - script@1:
         inputs:
         - content: echo hello

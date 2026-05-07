@@ -16,7 +16,7 @@ func TestBuilder_Validate_Valid(t *testing.T) {
 		AddWorkflow("setup", workflow.New().AddStep(step.GitClone())).
 		AddWorkflow("primary", workflow.New().
 			WithBeforeRun("setup").
-			AddStep(step.Script("go test ./...")))
+			AddStep(step.Script().WithContent("go test ./...")))
 
 	result, err := p.Validate()
 	require.NoError(t, err)

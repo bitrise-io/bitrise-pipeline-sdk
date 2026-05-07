@@ -22,9 +22,9 @@ func main() {
 	// test — runs Android unit tests.
 	test := workflow.New().
 		WithTitle("Android Tests").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
-		AddStep(step.AndroidTest().
+		AddStep(step.AndroidUnitTest().
 			WithProjectLocation("./").
 			WithModule("app").
 			WithVariant("Debug"))
@@ -38,7 +38,7 @@ func main() {
 			WithModule("app").
 			WithVariant("Release").
 			WithBuildType("aab")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.DeployToBitriseIo())
 
 	cfg := pipeline.New("android").
 		WithTitle("Android CI/CD").

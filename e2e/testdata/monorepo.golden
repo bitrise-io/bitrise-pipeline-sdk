@@ -22,7 +22,7 @@ workflows:
         title: Deploy
         inputs:
         - content: make deploy-all
-    - deploy-to-bitrise-io@1: {}
+    - deploy-to-bitrise-io@2: {}
   service-a:
     title: Service A Tests
     before_run:
@@ -44,5 +44,5 @@ workflows:
   setup:
     title: Shared Setup
     steps:
-    - activate-ssh-key@1: {}
-    - git-clone@1: {}
+    - activate-ssh-key@4: {}
+    - git-clone@8: {}

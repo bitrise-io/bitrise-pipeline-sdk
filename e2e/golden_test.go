@@ -23,9 +23,9 @@ func buildYAML(t *testing.T, p *pipeline.Builder) string {
 // TestGolden_Basic covers a minimal single-workflow config.
 func TestGolden_Basic(t *testing.T) {
 	wf := workflow.New().
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
-		AddStep(step.Script("echo hello"))
+		AddStep(step.Script().WithContent("echo hello"))
 
 	cfg := pipeline.New("other").
 		AddWorkflow("primary", wf)
@@ -37,7 +37,7 @@ func TestGolden_Basic(t *testing.T) {
 func TestGolden_iOS(t *testing.T) {
 	test := workflow.New().
 		WithTitle("iOS Tests").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
 		AddStep(step.XcodeTest().
 			WithScheme("MyApp").
@@ -52,7 +52,7 @@ func TestGolden_iOS(t *testing.T) {
 			WithProjectPath("MyApp.xcworkspace").
 			WithDistributionMethod("app-store").
 			WithAutomaticCodeSigning("api-key")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.DeployToBitriseIo())
 
 	cfg := pipeline.New("ios").
 		WithTitle("iOS CI/CD").
@@ -68,9 +68,9 @@ func TestGolden_iOS(t *testing.T) {
 func TestGolden_Android(t *testing.T) {
 	test := workflow.New().
 		WithTitle("Android Tests").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
-		AddStep(step.AndroidTest().
+		AddStep(step.AndroidUnitTest().
 			WithProjectLocation("./").
 			WithModule("app").
 			WithVariant("Debug"))
@@ -83,7 +83,7 @@ func TestGolden_Android(t *testing.T) {
 			WithModule("app").
 			WithVariant("Release").
 			WithBuildType("aab")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.DeployToBitriseIo())
 
 	cfg := pipeline.New("android").
 		WithTitle("Android CI/CD").
@@ -100,26 +100,26 @@ func TestGolden_Android(t *testing.T) {
 func TestGolden_GraphPipeline(t *testing.T) {
 	setup := workflow.New().
 		WithTitle("Setup").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
 		AddStep(step.CachePull())
 
 	unitTests := workflow.New().
 		WithTitle("Unit Tests").
 		WithBeforeRun("setup").
-		AddStep(step.Script("go test ./...").WithTitle("Run tests")).
+		AddStep(step.Script().WithContent("go test ./...").WithTitle("Run tests")).
 		AddStep(step.CachePush())
 
 	lint := workflow.New().
 		WithTitle("Lint").
 		WithBeforeRun("setup").
-		AddStep(step.Script("golangci-lint run").WithTitle("Lint"))
+		AddStep(step.Script().WithContent("golangci-lint run").WithTitle("Lint"))
 
 	deploy := workflow.New().
 		WithTitle("Deploy").
 		WithBeforeRun("setup").
-		AddStep(step.Script("go build -o bin/app ./cmd/app").WithTitle("Build")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.Script().WithContent("go build -o bin/app ./cmd/app").WithTitle("Build")).
+		AddStep(step.DeployToBitriseIo())
 
 	ci := graphpipeline.New().
 		WithTitle("CI").
@@ -145,24 +145,24 @@ func TestGolden_GraphPipeline(t *testing.T) {
 func TestGolden_Monorepo(t *testing.T) {
 	sharedSetup := workflow.New().
 		WithTitle("Shared Setup").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone())
 
 	serviceA := workflow.New().
 		WithTitle("Service A Tests").
 		WithBeforeRun("setup").
-		AddStep(step.Script("cd services/a && go test ./...").WithTitle("Test Service A"))
+		AddStep(step.Script().WithContent("cd services/a && go test ./...").WithTitle("Test Service A"))
 
 	serviceB := workflow.New().
 		WithTitle("Service B Tests").
 		WithBeforeRun("setup").
-		AddStep(step.Script("cd services/b && go test ./...").WithTitle("Test Service B"))
+		AddStep(step.Script().WithContent("cd services/b && go test ./...").WithTitle("Test Service B"))
 
 	deployAll := workflow.New().
 		WithTitle("Deploy All").
 		WithBeforeRun("setup").
-		AddStep(step.Script("make deploy-all").WithTitle("Deploy")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.Script().WithContent("make deploy-all").WithTitle("Deploy")).
+		AddStep(step.DeployToBitriseIo())
 
 	cfg := pipeline.New("other").
 		WithTitle("Monorepo CI").

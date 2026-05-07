@@ -22,7 +22,7 @@ func main() {
 	// test — runs Xcode tests on the simulator.
 	test := workflow.New().
 		WithTitle("iOS Tests").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
 		AddStep(step.XcodeTest().
 			WithScheme("MyApp").
@@ -39,7 +39,7 @@ func main() {
 			WithDistributionMethod("app-store").
 			WithConfiguration("Release").
 			WithAutomaticCodeSigning("api-key")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.DeployToBitriseIo())
 
 	cfg := pipeline.New("ios").
 		WithTitle("iOS CI/CD").

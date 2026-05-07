@@ -41,7 +41,7 @@ func TestBuild_AppEnvs(t *testing.T) {
 func TestBuild_Workflow(t *testing.T) {
 	wf := workflow.New().
 		WithTitle("Primary").
-		AddStep(step.Script("echo hello"))
+		AddStep(step.Script().WithContent("echo hello"))
 
 	data := pipeline.New("other").
 		AddWorkflow("primary", wf).

@@ -25,7 +25,7 @@ func main() {
 	// Shared setup workflow — runs before the main jobs.
 	setup := workflow.New().
 		WithTitle("Setup").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
 		AddStep(step.CachePull())
 
@@ -33,15 +33,15 @@ func main() {
 	test := workflow.New().
 		WithTitle("Test").
 		WithBeforeRun("setup").
-		AddStep(step.Script("go test ./...").WithTitle("Run unit tests")).
+		AddStep(step.Script().WithContent("go test ./...").WithTitle("Run unit tests")).
 		AddStep(step.CachePush())
 
 	// Deploy workflow — builds and uploads artifacts.
 	deploy := workflow.New().
 		WithTitle("Deploy").
 		WithBeforeRun("setup").
-		AddStep(step.Script("go build -o bin/app ./cmd/app").WithTitle("Build binary")).
-		AddStep(step.DeployToBitriseIO())
+		AddStep(step.Script().WithContent("go build -o bin/app ./cmd/app").WithTitle("Build binary")).
+		AddStep(step.DeployToBitriseIo())
 
 	// Graph pipeline — test and deploy run in parallel after setup.
 	ci := graphpipeline.New().

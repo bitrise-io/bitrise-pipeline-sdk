@@ -73,7 +73,7 @@ func TestValidate_WithGroup_ValidContainer(t *testing.T) {
 	data := pipeline.New("other").
 		AddContainer("runner", container.NewExecution("golang:1.22")).
 		AddWorkflow("primary", workflow.New().
-			AddWithGroup(withgroup.New("runner").AddStep(step.Script("go test ./...")))).
+			AddWithGroup(withgroup.New("runner").AddStep(step.Script().WithContent("go test ./...")))).
 		Build()
 
 	assert.Empty(t, validate.Config(data))
@@ -82,7 +82,7 @@ func TestValidate_WithGroup_ValidContainer(t *testing.T) {
 func TestValidate_WithGroup_UnknownContainer(t *testing.T) {
 	data := pipeline.New("other").
 		AddWorkflow("primary", workflow.New().
-			AddWithGroup(withgroup.New("ghost-container").AddStep(step.Script("echo hi")))).
+			AddWithGroup(withgroup.New("ghost-container").AddStep(step.Script().WithContent("echo hi")))).
 		Build()
 
 	errs := validate.Config(data)
@@ -92,7 +92,7 @@ func TestValidate_WithGroup_UnknownContainer(t *testing.T) {
 
 func TestValidate_StepBundle_ValidRef(t *testing.T) {
 	data := pipeline.New("other").
-		AddStepBundle("lint", stepbundle.New().AddStep(step.Script("golangci-lint run"))).
+		AddStepBundle("lint", stepbundle.New().AddStep(step.Script().WithContent("golangci-lint run"))).
 		AddWorkflow("primary", workflow.New().
 			AddStepBundleRef("lint", stepbundle.Ref())).
 		Build()

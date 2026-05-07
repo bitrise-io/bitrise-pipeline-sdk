@@ -58,12 +58,12 @@ func TestBuildForWithGroup(t *testing.T) {
 // --- Typed builders ---
 
 func TestGitClone(t *testing.T) {
-	item := step.GitClone().WithBranch("main").WithCloneDepth(1).Build()
-	require.Contains(t, item, "git-clone@1")
+	item := step.GitClone().WithBranch("main").WithCloneDepth("1").Build()
+	require.Contains(t, item, "git-clone@8")
 }
 
 func TestScript(t *testing.T) {
-	item := step.Script("echo hello").WithWorkingDir("/tmp").Build()
+	item := step.Script().WithContent("echo hello").WithWorkingDir("/tmp").Build()
 	require.Contains(t, item, "script@1")
 }
 
@@ -73,7 +73,7 @@ func TestXcodeTest(t *testing.T) {
 		WithProjectPath("MyApp.xcworkspace").
 		WithDestination("platform=iOS Simulator,name=iPhone 15").
 		Build()
-	require.Contains(t, item, "xcode-test@1")
+	require.Contains(t, item, "xcode-test@6")
 }
 
 func TestXcodeArchive(t *testing.T) {
@@ -81,7 +81,7 @@ func TestXcodeArchive(t *testing.T) {
 		WithScheme("MyApp").
 		WithDistributionMethod("app-store").
 		Build()
-	require.Contains(t, item, "xcode-archive@1")
+	require.Contains(t, item, "xcode-archive@6")
 }
 
 func TestAndroidBuild(t *testing.T) {
@@ -93,19 +93,19 @@ func TestAndroidBuild(t *testing.T) {
 	require.Contains(t, item, "android-build@1")
 }
 
-func TestAndroidTest(t *testing.T) {
-	item := step.AndroidTest().WithModule("app").WithVariant("Debug").Build()
+func TestAndroidUnitTest(t *testing.T) {
+	item := step.AndroidUnitTest().WithModule("app").WithVariant("Debug").Build()
 	require.Contains(t, item, "android-unit-test@1")
 }
 
-func TestDeployToBitriseIO(t *testing.T) {
-	item := step.DeployToBitriseIO().WithPublicInstallPage(false).Build()
-	require.Contains(t, item, "deploy-to-bitrise-io@1")
+func TestDeployToBitriseIo(t *testing.T) {
+	item := step.DeployToBitriseIo().WithIsEnablePublicPage("false").Build()
+	require.Contains(t, item, "deploy-to-bitrise-io@2")
 }
 
 func TestFastlane(t *testing.T) {
 	item := step.Fastlane().WithLane("ios beta").Build()
-	require.Contains(t, item, "fastlane@1")
+	require.Contains(t, item, "fastlane@3")
 }
 
 func TestTypedBuilder_GenericMethodChain(t *testing.T) {
@@ -113,8 +113,8 @@ func TestTypedBuilder_GenericMethodChain(t *testing.T) {
 	// via embedding promotion, and the step still builds correctly.
 	item := step.XcodeTest().
 		WithScheme("MyApp").
-		WithTitle("Run Tests").   // promoted *Builder method
-		WithIsSkippable(true).    // promoted *Builder method
+		WithTitle("Run Tests").  // promoted *Builder method
+		WithIsSkippable(true).   // promoted *Builder method
 		Build()
-	assert.Contains(t, item, "xcode-test@1")
+	assert.Contains(t, item, "xcode-test@6")
 }

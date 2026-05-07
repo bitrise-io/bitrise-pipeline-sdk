@@ -49,20 +49,7 @@ import (
 
 // handcraftedSteps are step IDs that already have hand-written builders in
 // the step package. The generator skips these to avoid duplicate declarations.
-var handcraftedSteps = map[string]bool{
-	"activate-ssh-key":     true,
-	"cache-pull":           true,
-	"cache-push":           true,
-	"slack":                true,
-	"git-clone":            true,
-	"script":               true,
-	"xcode-test":           true,
-	"xcode-archive":        true,
-	"android-build":        true,
-	"android-unit-test":    true,
-	"deploy-to-bitrise-io": true,
-	"fastlane":             true,
-}
+var handcraftedSteps = map[string]bool{}
 
 // ---- config ----------------------------------------------------------------
 
@@ -248,7 +235,15 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 		return fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
 	}
 
-	outPath := filepath.Join(outputDir, "gen_"+normalizeID(stepID)+".go")
+	// Files ending in "_test.go" are treated as test files by the Go build
+	// system and excluded from normal builds. Append "_builder" to the base
+	// name to sidestep this for steps whose IDs end in "-test" (e.g. xcode-test
+	// → gen_xcode_test_builder.go, android-unit-test → gen_android_unit_test_builder.go).
+	base := "gen_" + normalizeID(stepID)
+	if strings.HasSuffix(base, "_test") {
+		base += "_builder"
+	}
+	outPath := filepath.Join(outputDir, base+".go")
 	if err := os.WriteFile(outPath, out, 0644); err != nil {
 		fmt.Println()
 		return fmt.Errorf("write %s: %w", outPath, err)

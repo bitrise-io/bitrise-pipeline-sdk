@@ -24,8 +24,8 @@ func TestNew_Metadata(t *testing.T) {
 
 func TestNew_AddStep(t *testing.T) {
 	sb := stepbundle.New().
-		AddStep(step.Script("golangci-lint run ./...")).
-		AddStep(step.Script("go vet ./...")).
+		AddStep(step.Script().WithContent("golangci-lint run ./...")).
+		AddStep(step.Script().WithContent("go vet ./...")).
 		Build()
 
 	assert.Len(t, sb.Steps, 2)

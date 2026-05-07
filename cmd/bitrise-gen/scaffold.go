@@ -39,9 +39,9 @@ import (
 func main() {
 	primary := workflow.New().
 		WithTitle("Primary").
-		AddStep(step.ActivateSSHKey()).
+		AddStep(step.ActivateSshKey()).
 		AddStep(step.GitClone()).
-		AddStep(step.Script("echo \"add your build steps here\""))
+		AddStep(step.Script().WithContent("echo \"add your build steps here\""))
 
 	ci := graphpipeline.New().
 		WithTitle("CI").
