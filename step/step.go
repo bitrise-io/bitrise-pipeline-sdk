@@ -36,6 +36,13 @@ func From(id, version string) *Builder {
 	return &Builder{id: id, version: version}
 }
 
+// WithVersion overrides the step version set at construction time.
+// Version may be a full semver ("1.2.3"), a major version ("1"), or "latest".
+func (b *Builder) WithVersion(version string) *Builder {
+	b.version = version
+	return b
+}
+
 // WithInput adds or overwrites a step input.
 func (b *Builder) WithInput(key, value string) *Builder {
 	b.model.Inputs = append(b.model.Inputs, envmanModels.EnvironmentItemModel{key: value})
