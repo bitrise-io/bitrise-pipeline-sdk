@@ -18,3 +18,15 @@ func AppdomeBuild2secureIos(version ...string) *AppdomeBuild2secureIosV3Builder 
 // published by appdome-build-2secure-ios at the latest major version (v3).
 // For outputs of a specific major version use AppdomeBuild2secureIosV{N}Outputs directly.
 var AppdomeBuild2secureIosOutputs = AppdomeBuild2secureIosV3Outputs
+
+// AppdomeBuild2secureIosSignMethod is a type alias for AppdomeBuild2secureIosV3SignMethod,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureIosSignMethod = AppdomeBuild2secureIosV3SignMethod
+
+// AppdomeBuild2secureIosBuildLogs is a type alias for AppdomeBuild2secureIosV3BuildLogs,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureIosBuildLogs = AppdomeBuild2secureIosV3BuildLogs
+
+// AppdomeBuild2secureIosBuildToTest is a type alias for AppdomeBuild2secureIosV3BuildToTest,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureIosBuildToTest = AppdomeBuild2secureIosV3BuildToTest

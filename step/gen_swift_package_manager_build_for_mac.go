@@ -3,6 +3,30 @@
 
 package step
 
+// SwiftPackageManagerBuildForMacConfiguration enumerates the valid values for the configuration input.
+type SwiftPackageManagerBuildForMacConfiguration string
+
+const (
+	SwiftPackageManagerBuildForMacConfigurationDebug   SwiftPackageManagerBuildForMacConfiguration = "debug"
+	SwiftPackageManagerBuildForMacConfigurationRelease SwiftPackageManagerBuildForMacConfiguration = "release"
+)
+
+// SwiftPackageManagerBuildForMacBuildTests enumerates the valid values for the build_tests input.
+type SwiftPackageManagerBuildForMacBuildTests string
+
+const (
+	SwiftPackageManagerBuildForMacBuildTestsYes SwiftPackageManagerBuildForMacBuildTests = "yes"
+	SwiftPackageManagerBuildForMacBuildTestsNo  SwiftPackageManagerBuildForMacBuildTests = "no"
+)
+
+// SwiftPackageManagerBuildForMacDisableSandbox enumerates the valid values for the disable_sandbox input.
+type SwiftPackageManagerBuildForMacDisableSandbox string
+
+const (
+	SwiftPackageManagerBuildForMacDisableSandboxYes SwiftPackageManagerBuildForMacDisableSandbox = "yes"
+	SwiftPackageManagerBuildForMacDisableSandboxNo  SwiftPackageManagerBuildForMacDisableSandbox = "no"
+)
+
 // SwiftPackageManagerBuildForMacBuilder builds a swift-package-manager-build-for-mac step with typed input methods.
 type SwiftPackageManagerBuildForMacBuilder struct{ *Builder }
 
@@ -26,20 +50,20 @@ func (b *SwiftPackageManagerBuildForMacBuilder) WithBuildPath(value string) *Swi
 }
 
 // WithConfiguration sets configuration.
-func (b *SwiftPackageManagerBuildForMacBuilder) WithConfiguration(value string) *SwiftPackageManagerBuildForMacBuilder {
-	b.Builder.WithInput("configuration", value)
+func (b *SwiftPackageManagerBuildForMacBuilder) WithConfiguration(value SwiftPackageManagerBuildForMacConfiguration) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithBuildTests sets build tests.
-func (b *SwiftPackageManagerBuildForMacBuilder) WithBuildTests(value string) *SwiftPackageManagerBuildForMacBuilder {
-	b.Builder.WithInput("build_tests", value)
+func (b *SwiftPackageManagerBuildForMacBuilder) WithBuildTests(value SwiftPackageManagerBuildForMacBuildTests) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithInput("build_tests", string(value))
 	return b
 }
 
 // WithDisableSandbox sets disable sandbox.
-func (b *SwiftPackageManagerBuildForMacBuilder) WithDisableSandbox(value string) *SwiftPackageManagerBuildForMacBuilder {
-	b.Builder.WithInput("disable_sandbox", value)
+func (b *SwiftPackageManagerBuildForMacBuilder) WithDisableSandbox(value SwiftPackageManagerBuildForMacDisableSandbox) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithInput("disable_sandbox", string(value))
 	return b
 }
 

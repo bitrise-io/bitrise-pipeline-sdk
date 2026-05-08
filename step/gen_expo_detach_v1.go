@@ -3,6 +3,14 @@
 
 package step
 
+// ExpoDetachV1RunPublish enumerates the valid values for the run_publish input.
+type ExpoDetachV1RunPublish string
+
+const (
+	ExpoDetachV1RunPublishYes ExpoDetachV1RunPublish = "yes"
+	ExpoDetachV1RunPublishNo  ExpoDetachV1RunPublish = "no"
+)
+
 // ExpoDetachV1Builder builds a expo-detach step with typed input methods.
 type ExpoDetachV1Builder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *ExpoDetachV1Builder) WithPassword(value string) *ExpoDetachV1Builder {
 }
 
 // WithRunPublish sets run expo publish after eject?.
-func (b *ExpoDetachV1Builder) WithRunPublish(value string) *ExpoDetachV1Builder {
-	b.Builder.WithInput("run_publish", value)
+func (b *ExpoDetachV1Builder) WithRunPublish(value ExpoDetachV1RunPublish) *ExpoDetachV1Builder {
+	b.Builder.WithInput("run_publish", string(value))
 	return b
 }
 

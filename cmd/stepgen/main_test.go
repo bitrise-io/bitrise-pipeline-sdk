@@ -748,6 +748,244 @@ func TestGenerateStep_SingleMajor_CleansUpStaleMajorFiles(t *testing.T) {
 	assert.NoFileExists(t, staleV1, "stale versioned file should be cleaned up")
 }
 
+// ---- toEnumConstSuffix / buildValueOptions ----------------------------------
+
+func TestToEnumConstSuffix(t *testing.T) {
+	tests := []struct {
+		value string
+		want  string
+	}{
+		{"development", "Development"},
+		{"app-store", "AppStore"},
+		{"ad-hoc", "AdHoc"},
+		{"iOS", "IOS"},
+		{"watchOS", "WatchOS"},
+		{"up_until_maximum_repetitions", "UpUntilMaximumRepetitions"},
+		{"yes", "Yes"},
+		{"no", "No"},
+		{"off", "Off"},
+		{"api-key", "ApiKey"},
+		{"xcbeautify", "Xcbeautify"},
+		{"1", "1"},
+		{"0.05", "005"},
+	}
+	for _, tt := range tests {
+		assert.Equal(t, tt.want, toEnumConstSuffix(tt.value), "value=%q", tt.value)
+	}
+}
+
+func TestToEnumConstSuffix_Empty(t *testing.T) {
+	assert.Equal(t, "", toEnumConstSuffix(""))
+	assert.Equal(t, "", toEnumConstSuffix("-"))
+	assert.Equal(t, "", toEnumConstSuffix("'-'"))
+}
+
+func TestBuildValueOptions_Valid(t *testing.T) {
+	raw := []interface{}{"development", "app-store", "ad-hoc", "enterprise"}
+	opts := buildValueOptions("XcodeArchiveV6DistributionMethod", raw)
+	require.NotNil(t, opts)
+	require.Len(t, opts, 4)
+	assert.Equal(t, "development", opts[0].Value)
+	assert.Equal(t, "XcodeArchiveV6DistributionMethodDevelopment", opts[0].ConstName)
+	assert.Equal(t, "app-store", opts[1].Value)
+	assert.Equal(t, "XcodeArchiveV6DistributionMethodAppStore", opts[1].ConstName)
+}
+
+func TestBuildValueOptions_EmptySuffix(t *testing.T) {
+	// "'-'" produces an empty suffix → the whole input should be skipped.
+	raw := []interface{}{"yes", "'-'"}
+	opts := buildValueOptions("SomeType", raw)
+	assert.Nil(t, opts, "a value that produces empty suffix should return nil")
+}
+
+func TestBuildValueOptions_Collision(t *testing.T) {
+	// "app-store" and "app_store" both produce "AppStore" → collision.
+	raw := []interface{}{"app-store", "app_store"}
+	opts := buildValueOptions("SomeType", raw)
+	assert.Nil(t, opts, "duplicate const names should return nil")
+}
+
+func TestBuildValueOptions_SingleValue(t *testing.T) {
+	// A single value_option is not useful as an enum — caller requires >= 2.
+	// buildValueOptions itself doesn't enforce this but caller in parseStepYML does.
+	raw := []interface{}{"only"}
+	opts := buildValueOptions("SomeType", raw)
+	require.NotNil(t, opts)
+	assert.Len(t, opts, 1)
+}
+
+// ---- parseStepYML value_options ---------------------------------------------
+
+func TestParseStepYML_ValueOptions(t *testing.T) {
+	yml := []byte(`
+title: My Step
+inputs:
+  - distribution_method: development
+    opts:
+      title: Distribution method
+      value_options:
+      - development
+      - app-store
+      - ad-hoc
+      - enterprise
+  - platform: detect
+    opts:
+      title: Platform
+      value_options:
+      - detect
+      - iOS
+      - watchOS
+`)
+	def, err := parseStepYML("my-step", "1.0.0", yml)
+	require.NoError(t, err)
+	require.Len(t, def.Inputs, 2)
+
+	dist := def.Inputs[0]
+	assert.Equal(t, "distribution_method", dist.Key)
+	assert.Equal(t, "MyStepDistributionMethod", dist.EnumTypeName)
+	require.Len(t, dist.Options, 4)
+	assert.Equal(t, "development", dist.Options[0].Value)
+	assert.Equal(t, "MyStepDistributionMethodDevelopment", dist.Options[0].ConstName)
+	assert.Equal(t, "app-store", dist.Options[1].Value)
+	assert.Equal(t, "MyStepDistributionMethodAppStore", dist.Options[1].ConstName)
+
+	platform := def.Inputs[1]
+	assert.Equal(t, "platform", platform.Key)
+	assert.Equal(t, "MyStepPlatform", platform.EnumTypeName)
+	require.Len(t, platform.Options, 3)
+	assert.Equal(t, "iOS", platform.Options[1].Value)
+	assert.Equal(t, "MyStepPlatformIOS", platform.Options[1].ConstName)
+}
+
+func TestParseStepYML_ValueOptions_Messy_Skipped(t *testing.T) {
+	// A value_options list containing an entry that produces an empty suffix
+	// should not generate an enum type for that input.
+	yml := []byte(`
+title: My Step
+inputs:
+  - mode: auto
+    opts:
+      title: Mode
+      value_options:
+      - auto
+      - "'-'"
+`)
+	def, err := parseStepYML("my-step", "1.0.0", yml)
+	require.NoError(t, err)
+	require.Len(t, def.Inputs, 1)
+	assert.Empty(t, def.Inputs[0].EnumTypeName, "messy value_options should not generate enum")
+	assert.Empty(t, def.Inputs[0].Options)
+}
+
+func TestParseStepYML_ValueOptions_SingleValue_Skipped(t *testing.T) {
+	yml := []byte(`
+title: My Step
+inputs:
+  - mode: auto
+    opts:
+      title: Mode
+      value_options:
+      - auto
+`)
+	def, err := parseStepYML("my-step", "1.0.0", yml)
+	require.NoError(t, err)
+	require.Len(t, def.Inputs, 1)
+	assert.Empty(t, def.Inputs[0].EnumTypeName, "single value_option should not generate enum")
+}
+
+// ---- generateStep enum code generation -------------------------------------
+
+func TestGenerateStep_WritesEnumType(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"my-step": {"1.0.0"}},
+		stepYML: map[string][]byte{"my-step/1.0.0": []byte(`
+title: My Step
+inputs:
+  - distribution_method: development
+    opts:
+      title: Distribution method
+      value_options:
+      - development
+      - app-store
+      - ad-hoc
+`)},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step.go"))
+	content := string(data)
+	assert.Contains(t, content, "type MyStepDistributionMethod string")
+	// gofmt aligns const values with tabs, so check name and value separately.
+	assert.Contains(t, content, "MyStepDistributionMethodDevelopment")
+	assert.Contains(t, content, `MyStepDistributionMethod = "development"`)
+	assert.Contains(t, content, "MyStepDistributionMethodAppStore")
+	assert.Contains(t, content, `MyStepDistributionMethod = "app-store"`)
+	assert.Contains(t, content, "MyStepDistributionMethodAdHoc")
+	assert.Contains(t, content, `MyStepDistributionMethod = "ad-hoc"`)
+	// Method should accept the enum type, not plain string.
+	assert.Contains(t, content, "WithDistributionMethod(value MyStepDistributionMethod)")
+	assert.Contains(t, content, `b.Builder.WithInput("distribution_method", string(value))`)
+}
+
+func TestGenerateStep_NoEnumForMessyOptions(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"my-step": {"1.0.0"}},
+		stepYML: map[string][]byte{"my-step/1.0.0": []byte(`
+title: My Step
+inputs:
+  - mode: auto
+    opts:
+      title: Mode
+      value_options:
+      - auto
+      - "'-'"
+`)},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step.go"))
+	content := string(data)
+	assert.NotContains(t, content, "type MyStepMode string", "messy options must not produce enum type")
+	assert.Contains(t, content, "WithMode(value string)", "plain string method must remain")
+}
+
+func TestGenerateStep_MultiMajor_WritesEnumAliases(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"my-step": {"1.0.0", "2.0.0"}},
+		stepYML: map[string][]byte{
+			"my-step/1.0.0": []byte("title: My Step\n"),
+			"my-step/2.0.0": []byte(`
+title: My Step
+inputs:
+  - method: development
+    opts:
+      title: Method
+      value_options:
+      - development
+      - app-store
+`),
+		},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	// v2 file has the enum type.
+	v2Data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_v2.go"))
+	assert.Contains(t, string(v2Data), "type MyStepV2Method string")
+
+	// Alias file exposes the unversioned type alias.
+	aliasData, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_alias.go"))
+	assert.Contains(t, string(aliasData), "type MyStepMethod = MyStepV2Method")
+}
+
 // ---- deleteDeprecatedFiles --------------------------------------------------
 
 func TestDeleteDeprecatedFiles(t *testing.T) {

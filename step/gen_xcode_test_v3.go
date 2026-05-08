@@ -3,6 +3,129 @@
 
 package step
 
+// XcodeTestV3SimulatorPlatform enumerates the valid values for the simulator_platform input.
+type XcodeTestV3SimulatorPlatform string
+
+const (
+	XcodeTestV3SimulatorPlatformIOSSimulator  XcodeTestV3SimulatorPlatform = "iOS Simulator"
+	XcodeTestV3SimulatorPlatformTvOSSimulator XcodeTestV3SimulatorPlatform = "tvOS Simulator"
+)
+
+// XcodeTestV3ExportUitestArtifacts enumerates the valid values for the export_uitest_artifacts input.
+type XcodeTestV3ExportUitestArtifacts string
+
+const (
+	XcodeTestV3ExportUitestArtifactsTrue  XcodeTestV3ExportUitestArtifacts = "true"
+	XcodeTestV3ExportUitestArtifactsFalse XcodeTestV3ExportUitestArtifacts = "false"
+)
+
+// XcodeTestV3GenerateCodeCoverageFiles enumerates the valid values for the generate_code_coverage_files input.
+type XcodeTestV3GenerateCodeCoverageFiles string
+
+const (
+	XcodeTestV3GenerateCodeCoverageFilesYes XcodeTestV3GenerateCodeCoverageFiles = "yes"
+	XcodeTestV3GenerateCodeCoverageFilesNo  XcodeTestV3GenerateCodeCoverageFiles = "no"
+)
+
+// XcodeTestV3DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeTestV3DisableIndexWhileBuilding string
+
+const (
+	XcodeTestV3DisableIndexWhileBuildingYes XcodeTestV3DisableIndexWhileBuilding = "yes"
+	XcodeTestV3DisableIndexWhileBuildingNo  XcodeTestV3DisableIndexWhileBuilding = "no"
+)
+
+// XcodeTestV3TestRepetitionMode enumerates the valid values for the test_repetition_mode input.
+type XcodeTestV3TestRepetitionMode string
+
+const (
+	XcodeTestV3TestRepetitionModeNone                      XcodeTestV3TestRepetitionMode = "none"
+	XcodeTestV3TestRepetitionModeUntilFailure              XcodeTestV3TestRepetitionMode = "until_failure"
+	XcodeTestV3TestRepetitionModeRetryOnFailure            XcodeTestV3TestRepetitionMode = "retry_on_failure"
+	XcodeTestV3TestRepetitionModeUpUntilMaximumRepetitions XcodeTestV3TestRepetitionMode = "up_until_maximum_repetitions"
+)
+
+// XcodeTestV3RelaunchTestsForEachRepetition enumerates the valid values for the relaunch_tests_for_each_repetition input.
+type XcodeTestV3RelaunchTestsForEachRepetition string
+
+const (
+	XcodeTestV3RelaunchTestsForEachRepetitionYes XcodeTestV3RelaunchTestsForEachRepetition = "yes"
+	XcodeTestV3RelaunchTestsForEachRepetitionNo  XcodeTestV3RelaunchTestsForEachRepetition = "no"
+)
+
+// XcodeTestV3Verbose enumerates the valid values for the verbose input.
+type XcodeTestV3Verbose string
+
+const (
+	XcodeTestV3VerboseYes XcodeTestV3Verbose = "yes"
+	XcodeTestV3VerboseNo  XcodeTestV3Verbose = "no"
+)
+
+// XcodeTestV3HeadlessMode enumerates the valid values for the headless_mode input.
+type XcodeTestV3HeadlessMode string
+
+const (
+	XcodeTestV3HeadlessModeYes XcodeTestV3HeadlessMode = "yes"
+	XcodeTestV3HeadlessModeNo  XcodeTestV3HeadlessMode = "no"
+)
+
+// XcodeTestV3IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeTestV3IsCleanBuild string
+
+const (
+	XcodeTestV3IsCleanBuildYes XcodeTestV3IsCleanBuild = "yes"
+	XcodeTestV3IsCleanBuildNo  XcodeTestV3IsCleanBuild = "no"
+)
+
+// XcodeTestV3OutputTool enumerates the valid values for the output_tool input.
+type XcodeTestV3OutputTool string
+
+const (
+	XcodeTestV3OutputToolXcpretty   XcodeTestV3OutputTool = "xcpretty"
+	XcodeTestV3OutputToolXcodebuild XcodeTestV3OutputTool = "xcodebuild"
+)
+
+// XcodeTestV3SingleBuild enumerates the valid values for the single_build input.
+type XcodeTestV3SingleBuild string
+
+const (
+	XcodeTestV3SingleBuildTrue  XcodeTestV3SingleBuild = "true"
+	XcodeTestV3SingleBuildFalse XcodeTestV3SingleBuild = "false"
+)
+
+// XcodeTestV3ShouldBuildBeforeTest enumerates the valid values for the should_build_before_test input.
+type XcodeTestV3ShouldBuildBeforeTest string
+
+const (
+	XcodeTestV3ShouldBuildBeforeTestYes XcodeTestV3ShouldBuildBeforeTest = "yes"
+	XcodeTestV3ShouldBuildBeforeTestNo  XcodeTestV3ShouldBuildBeforeTest = "no"
+)
+
+// XcodeTestV3ShouldRetryTestOnFail enumerates the valid values for the should_retry_test_on_fail input.
+type XcodeTestV3ShouldRetryTestOnFail string
+
+const (
+	XcodeTestV3ShouldRetryTestOnFailYes XcodeTestV3ShouldRetryTestOnFail = "yes"
+	XcodeTestV3ShouldRetryTestOnFailNo  XcodeTestV3ShouldRetryTestOnFail = "no"
+)
+
+// XcodeTestV3CacheLevel enumerates the valid values for the cache_level input.
+type XcodeTestV3CacheLevel string
+
+const (
+	XcodeTestV3CacheLevelNone          XcodeTestV3CacheLevel = "none"
+	XcodeTestV3CacheLevelSwiftPackages XcodeTestV3CacheLevel = "swift_packages"
+)
+
+// XcodeTestV3CollectSimulatorDiagnostics enumerates the valid values for the collect_simulator_diagnostics input.
+type XcodeTestV3CollectSimulatorDiagnostics string
+
+const (
+	XcodeTestV3CollectSimulatorDiagnosticsAlways    XcodeTestV3CollectSimulatorDiagnostics = "always"
+	XcodeTestV3CollectSimulatorDiagnosticsOnFailure XcodeTestV3CollectSimulatorDiagnostics = "on_failure"
+	XcodeTestV3CollectSimulatorDiagnosticsNever     XcodeTestV3CollectSimulatorDiagnostics = "never"
+)
+
 // XcodeTestV3Builder builds a xcode-test step with typed input methods.
 type XcodeTestV3Builder struct{ *Builder }
 
@@ -50,32 +173,32 @@ func (b *XcodeTestV3Builder) WithSimulatorOsVersion(value string) *XcodeTestV3Bu
 }
 
 // WithSimulatorPlatform sets platform.
-func (b *XcodeTestV3Builder) WithSimulatorPlatform(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("simulator_platform", value)
+func (b *XcodeTestV3Builder) WithSimulatorPlatform(value XcodeTestV3SimulatorPlatform) *XcodeTestV3Builder {
+	b.Builder.WithInput("simulator_platform", string(value))
 	return b
 }
 
 // WithExportUitestArtifacts sets export UITest Artifacts.
-func (b *XcodeTestV3Builder) WithExportUitestArtifacts(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("export_uitest_artifacts", value)
+func (b *XcodeTestV3Builder) WithExportUitestArtifacts(value XcodeTestV3ExportUitestArtifacts) *XcodeTestV3Builder {
+	b.Builder.WithInput("export_uitest_artifacts", string(value))
 	return b
 }
 
 // WithGenerateCodeCoverageFiles sets generate code coverage files?.
-func (b *XcodeTestV3Builder) WithGenerateCodeCoverageFiles(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("generate_code_coverage_files", value)
+func (b *XcodeTestV3Builder) WithGenerateCodeCoverageFiles(value XcodeTestV3GenerateCodeCoverageFiles) *XcodeTestV3Builder {
+	b.Builder.WithInput("generate_code_coverage_files", string(value))
 	return b
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeTestV3Builder) WithDisableIndexWhileBuilding(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeTestV3Builder) WithDisableIndexWhileBuilding(value XcodeTestV3DisableIndexWhileBuilding) *XcodeTestV3Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
 // WithTestRepetitionMode sets test Repetition Mode (Available in Xcode 13+).
-func (b *XcodeTestV3Builder) WithTestRepetitionMode(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("test_repetition_mode", value)
+func (b *XcodeTestV3Builder) WithTestRepetitionMode(value XcodeTestV3TestRepetitionMode) *XcodeTestV3Builder {
+	b.Builder.WithInput("test_repetition_mode", string(value))
 	return b
 }
 
@@ -86,32 +209,32 @@ func (b *XcodeTestV3Builder) WithMaximumTestRepetitions(value string) *XcodeTest
 }
 
 // WithRelaunchTestsForEachRepetition sets relaunch Tests for Each Repetition (Available in Xcode 13+).
-func (b *XcodeTestV3Builder) WithRelaunchTestsForEachRepetition(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("relaunch_tests_for_each_repetition", value)
+func (b *XcodeTestV3Builder) WithRelaunchTestsForEachRepetition(value XcodeTestV3RelaunchTestsForEachRepetition) *XcodeTestV3Builder {
+	b.Builder.WithInput("relaunch_tests_for_each_repetition", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *XcodeTestV3Builder) WithVerbose(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *XcodeTestV3Builder) WithVerbose(value XcodeTestV3Verbose) *XcodeTestV3Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithHeadlessMode sets run the test in headless mode?.
-func (b *XcodeTestV3Builder) WithHeadlessMode(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("headless_mode", value)
+func (b *XcodeTestV3Builder) WithHeadlessMode(value XcodeTestV3HeadlessMode) *XcodeTestV3Builder {
+	b.Builder.WithInput("headless_mode", string(value))
 	return b
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before testing?.
-func (b *XcodeTestV3Builder) WithIsCleanBuild(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeTestV3Builder) WithIsCleanBuild(value XcodeTestV3IsCleanBuild) *XcodeTestV3Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeTestV3Builder) WithOutputTool(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeTestV3Builder) WithOutputTool(value XcodeTestV3OutputTool) *XcodeTestV3Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -122,20 +245,20 @@ func (b *XcodeTestV3Builder) WithXcodebuildTestOptions(value string) *XcodeTestV
 }
 
 // WithSingleBuild sets run xcodebuild test only.
-func (b *XcodeTestV3Builder) WithSingleBuild(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("single_build", value)
+func (b *XcodeTestV3Builder) WithSingleBuild(value XcodeTestV3SingleBuild) *XcodeTestV3Builder {
+	b.Builder.WithInput("single_build", string(value))
 	return b
 }
 
 // WithShouldBuildBeforeTest sets should run a build before testing?.
-func (b *XcodeTestV3Builder) WithShouldBuildBeforeTest(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("should_build_before_test", value)
+func (b *XcodeTestV3Builder) WithShouldBuildBeforeTest(value XcodeTestV3ShouldBuildBeforeTest) *XcodeTestV3Builder {
+	b.Builder.WithInput("should_build_before_test", string(value))
 	return b
 }
 
 // WithShouldRetryTestOnFail sets should retry tests on failure? (Not available in Xcode 13+).
-func (b *XcodeTestV3Builder) WithShouldRetryTestOnFail(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("should_retry_test_on_fail", value)
+func (b *XcodeTestV3Builder) WithShouldRetryTestOnFail(value XcodeTestV3ShouldRetryTestOnFail) *XcodeTestV3Builder {
+	b.Builder.WithInput("should_retry_test_on_fail", string(value))
 	return b
 }
 
@@ -146,14 +269,14 @@ func (b *XcodeTestV3Builder) WithXcprettyTestOptions(value string) *XcodeTestV3B
 }
 
 // WithCacheLevel sets enable caching of Swift Package Manager packages.
-func (b *XcodeTestV3Builder) WithCacheLevel(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeTestV3Builder) WithCacheLevel(value XcodeTestV3CacheLevel) *XcodeTestV3Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithCollectSimulatorDiagnostics sets collect Simulator diagnostics.
-func (b *XcodeTestV3Builder) WithCollectSimulatorDiagnostics(value string) *XcodeTestV3Builder {
-	b.Builder.WithInput("collect_simulator_diagnostics", value)
+func (b *XcodeTestV3Builder) WithCollectSimulatorDiagnostics(value XcodeTestV3CollectSimulatorDiagnostics) *XcodeTestV3Builder {
+	b.Builder.WithInput("collect_simulator_diagnostics", string(value))
 	return b
 }
 

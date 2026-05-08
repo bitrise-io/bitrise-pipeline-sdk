@@ -22,3 +22,15 @@ func XctestHtmlReport(version ...string) *XctestHtmlReportV1Builder {
 // published by xctest-html-report at the latest major version (v1).
 // For outputs of a specific major version use XctestHtmlReportV{N}Outputs directly.
 var XctestHtmlReportOutputs = XctestHtmlReportV1Outputs
+
+// XctestHtmlReportGenerateJunit is a type alias for XctestHtmlReportV1GenerateJunit,
+// pointing to the latest supported major version of the step's enum type.
+type XctestHtmlReportGenerateJunit = XctestHtmlReportV1GenerateJunit
+
+// XctestHtmlReportVersion is a type alias for XctestHtmlReportV1Version,
+// pointing to the latest supported major version of the step's enum type.
+type XctestHtmlReportVersion = XctestHtmlReportV1Version
+
+// XctestHtmlReportVerbose is a type alias for XctestHtmlReportV1Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type XctestHtmlReportVerbose = XctestHtmlReportV1Verbose

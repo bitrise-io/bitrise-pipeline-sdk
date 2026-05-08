@@ -18,3 +18,11 @@ func NunitRunner(version ...string) *NunitRunnerV1Builder {
 // published by nunit-runner at the latest major version (v1).
 // For outputs of a specific major version use NunitRunnerV{N}Outputs directly.
 var NunitRunnerOutputs = NunitRunnerV1Outputs
+
+// NunitRunnerBuildBeforeTest is a type alias for NunitRunnerV1BuildBeforeTest,
+// pointing to the latest supported major version of the step's enum type.
+type NunitRunnerBuildBeforeTest = NunitRunnerV1BuildBeforeTest
+
+// NunitRunnerBuildTool is a type alias for NunitRunnerV1BuildTool,
+// pointing to the latest supported major version of the step's enum type.
+type NunitRunnerBuildTool = NunitRunnerV1BuildTool

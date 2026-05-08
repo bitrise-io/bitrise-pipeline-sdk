@@ -3,6 +3,14 @@
 
 package step
 
+// XcuitestbrowserstackV2BrowserstackLocal enumerates the valid values for the browserstack_local input.
+type XcuitestbrowserstackV2BrowserstackLocal string
+
+const (
+	XcuitestbrowserstackV2BrowserstackLocalTrue  XcuitestbrowserstackV2BrowserstackLocal = "true"
+	XcuitestbrowserstackV2BrowserstackLocalFalse XcuitestbrowserstackV2BrowserstackLocal = "false"
+)
+
 // XcuitestbrowserstackV2Builder builds a xcuitestbrowserstack step with typed input methods.
 type XcuitestbrowserstackV2Builder struct{ *Builder }
 
@@ -50,8 +58,8 @@ func (b *XcuitestbrowserstackV2Builder) WithBrowserstackPassword(value string) *
 }
 
 // WithBrowserstackLocal sets enable local testing feature of Browserstack.
-func (b *XcuitestbrowserstackV2Builder) WithBrowserstackLocal(value string) *XcuitestbrowserstackV2Builder {
-	b.Builder.WithInput("browserstack_local", value)
+func (b *XcuitestbrowserstackV2Builder) WithBrowserstackLocal(value XcuitestbrowserstackV2BrowserstackLocal) *XcuitestbrowserstackV2Builder {
+	b.Builder.WithInput("browserstack_local", string(value))
 	return b
 }
 

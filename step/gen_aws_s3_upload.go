@@ -3,6 +3,22 @@
 
 package step
 
+// AwsS3UploadAclControl enumerates the valid values for the acl_control input.
+type AwsS3UploadAclControl string
+
+const (
+	AwsS3UploadAclControlPrivate    AwsS3UploadAclControl = "private"
+	AwsS3UploadAclControlPublicRead AwsS3UploadAclControl = "public-read"
+)
+
+// AwsS3UploadVerbose enumerates the valid values for the verbose input.
+type AwsS3UploadVerbose string
+
+const (
+	AwsS3UploadVerboseTrue  AwsS3UploadVerbose = "true"
+	AwsS3UploadVerboseFalse AwsS3UploadVerbose = "false"
+)
+
 // AwsS3UploadBuilder builds a aws-s3-upload step with typed input methods.
 type AwsS3UploadBuilder struct{ *Builder }
 
@@ -38,8 +54,8 @@ func (b *AwsS3UploadBuilder) WithBucketPrefix(value string) *AwsS3UploadBuilder 
 }
 
 // WithAclControl sets access Control.
-func (b *AwsS3UploadBuilder) WithAclControl(value string) *AwsS3UploadBuilder {
-	b.Builder.WithInput("acl_control", value)
+func (b *AwsS3UploadBuilder) WithAclControl(value AwsS3UploadAclControl) *AwsS3UploadBuilder {
+	b.Builder.WithInput("acl_control", string(value))
 	return b
 }
 
@@ -68,7 +84,7 @@ func (b *AwsS3UploadBuilder) WithSessionToken(value string) *AwsS3UploadBuilder 
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *AwsS3UploadBuilder) WithVerbose(value string) *AwsS3UploadBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *AwsS3UploadBuilder) WithVerbose(value AwsS3UploadVerbose) *AwsS3UploadBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

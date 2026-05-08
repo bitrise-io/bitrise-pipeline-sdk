@@ -3,6 +3,22 @@
 
 package step
 
+// CreateNewAppStoreReleaseAutomaticTestflightUpload enumerates the valid values for the automatic_testflight_upload input.
+type CreateNewAppStoreReleaseAutomaticTestflightUpload string
+
+const (
+	CreateNewAppStoreReleaseAutomaticTestflightUploadTrue  CreateNewAppStoreReleaseAutomaticTestflightUpload = "true"
+	CreateNewAppStoreReleaseAutomaticTestflightUploadFalse CreateNewAppStoreReleaseAutomaticTestflightUpload = "false"
+)
+
+// CreateNewAppStoreReleaseVerbose enumerates the valid values for the verbose input.
+type CreateNewAppStoreReleaseVerbose string
+
+const (
+	CreateNewAppStoreReleaseVerboseTrue  CreateNewAppStoreReleaseVerbose = "true"
+	CreateNewAppStoreReleaseVerboseFalse CreateNewAppStoreReleaseVerbose = "false"
+)
+
 // CreateNewAppStoreReleaseBuilder builds a create-new-app-store-release step with typed input methods.
 //
 // Deprecated: This step is no longer supported. You can get similar results with one of our new features: create release bash script in Release Management API recipes. It can be used from a terminal or copied into a script step in Bitrise CI. [More info](https://github.com/bitrise-io/release-management-recipes)
@@ -36,8 +52,8 @@ func (b *CreateNewAppStoreReleaseBuilder) WithReleaseVersionNumber(value string)
 }
 
 // WithAutomaticTestflightUpload sets automatic Testflight upload.
-func (b *CreateNewAppStoreReleaseBuilder) WithAutomaticTestflightUpload(value string) *CreateNewAppStoreReleaseBuilder {
-	b.Builder.WithInput("automatic_testflight_upload", value)
+func (b *CreateNewAppStoreReleaseBuilder) WithAutomaticTestflightUpload(value CreateNewAppStoreReleaseAutomaticTestflightUpload) *CreateNewAppStoreReleaseBuilder {
+	b.Builder.WithInput("automatic_testflight_upload", string(value))
 	return b
 }
 
@@ -90,8 +106,8 @@ func (b *CreateNewAppStoreReleaseBuilder) WithAppSlug(value string) *CreateNewAp
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *CreateNewAppStoreReleaseBuilder) WithVerbose(value string) *CreateNewAppStoreReleaseBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *CreateNewAppStoreReleaseBuilder) WithVerbose(value CreateNewAppStoreReleaseVerbose) *CreateNewAppStoreReleaseBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

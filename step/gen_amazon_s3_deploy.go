@@ -3,6 +3,14 @@
 
 package step
 
+// AmazonS3DeployFileAccessLevel enumerates the valid values for the file_access_level input.
+type AmazonS3DeployFileAccessLevel string
+
+const (
+	AmazonS3DeployFileAccessLevelPrivate    AmazonS3DeployFileAccessLevel = "private"
+	AmazonS3DeployFileAccessLevelPublicRead AmazonS3DeployFileAccessLevel = "public_read"
+)
+
 // AmazonS3DeployBuilder builds a amazon-s3-deploy step with typed input methods.
 //
 // Deprecated: This step is deprecated. Please use the build distribution feature: https://docs.bitrise.io/en/release-management/build-distribution/distributing-builds-to-testers.html
@@ -78,8 +86,8 @@ func (b *AmazonS3DeployBuilder) WithPathInBucket(value string) *AmazonS3DeployBu
 }
 
 // WithFileAccessLevel sets amazon S3 file access level.
-func (b *AmazonS3DeployBuilder) WithFileAccessLevel(value string) *AmazonS3DeployBuilder {
-	b.Builder.WithInput("file_access_level", value)
+func (b *AmazonS3DeployBuilder) WithFileAccessLevel(value AmazonS3DeployFileAccessLevel) *AmazonS3DeployBuilder {
+	b.Builder.WithInput("file_access_level", string(value))
 	return b
 }
 

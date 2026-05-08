@@ -3,6 +3,30 @@
 
 package step
 
+// XcodeAnalyzeV1IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeAnalyzeV1IsCleanBuild string
+
+const (
+	XcodeAnalyzeV1IsCleanBuildYes XcodeAnalyzeV1IsCleanBuild = "yes"
+	XcodeAnalyzeV1IsCleanBuildNo  XcodeAnalyzeV1IsCleanBuild = "no"
+)
+
+// XcodeAnalyzeV1DisableCodesign enumerates the valid values for the disable_codesign input.
+type XcodeAnalyzeV1DisableCodesign string
+
+const (
+	XcodeAnalyzeV1DisableCodesignYes XcodeAnalyzeV1DisableCodesign = "yes"
+	XcodeAnalyzeV1DisableCodesignNo  XcodeAnalyzeV1DisableCodesign = "no"
+)
+
+// XcodeAnalyzeV1OutputTool enumerates the valid values for the output_tool input.
+type XcodeAnalyzeV1OutputTool string
+
+const (
+	XcodeAnalyzeV1OutputToolXcpretty   XcodeAnalyzeV1OutputTool = "xcpretty"
+	XcodeAnalyzeV1OutputToolXcodebuild XcodeAnalyzeV1OutputTool = "xcodebuild"
+)
+
 // XcodeAnalyzeV1Builder builds a xcode-analyze step with typed input methods.
 type XcodeAnalyzeV1Builder struct{ *Builder }
 
@@ -38,8 +62,8 @@ func (b *XcodeAnalyzeV1Builder) WithScheme(value string) *XcodeAnalyzeV1Builder 
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before testing?.
-func (b *XcodeAnalyzeV1Builder) WithIsCleanBuild(value string) *XcodeAnalyzeV1Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeAnalyzeV1Builder) WithIsCleanBuild(value XcodeAnalyzeV1IsCleanBuild) *XcodeAnalyzeV1Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
@@ -56,13 +80,13 @@ func (b *XcodeAnalyzeV1Builder) WithForceProvisioningProfile(value string) *Xcod
 }
 
 // WithDisableCodesign sets disable Code Signing.
-func (b *XcodeAnalyzeV1Builder) WithDisableCodesign(value string) *XcodeAnalyzeV1Builder {
-	b.Builder.WithInput("disable_codesign", value)
+func (b *XcodeAnalyzeV1Builder) WithDisableCodesign(value XcodeAnalyzeV1DisableCodesign) *XcodeAnalyzeV1Builder {
+	b.Builder.WithInput("disable_codesign", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeAnalyzeV1Builder) WithOutputTool(value string) *XcodeAnalyzeV1Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeAnalyzeV1Builder) WithOutputTool(value XcodeAnalyzeV1OutputTool) *XcodeAnalyzeV1Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }

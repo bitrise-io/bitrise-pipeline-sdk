@@ -3,6 +3,51 @@
 
 package step
 
+// CarthageV2CarthageCommand enumerates the valid values for the carthage_command input.
+type CarthageV2CarthageCommand string
+
+const (
+	CarthageV2CarthageCommandBootstrap CarthageV2CarthageCommand = "bootstrap"
+	CarthageV2CarthageCommandUpdate    CarthageV2CarthageCommand = "update"
+	CarthageV2CarthageCommandBuild     CarthageV2CarthageCommand = "build"
+	CarthageV2CarthageCommandCheckout  CarthageV2CarthageCommand = "checkout"
+)
+
+// CarthageV2NoUseBinaries enumerates the valid values for the no_use_binaries input.
+type CarthageV2NoUseBinaries string
+
+const (
+	CarthageV2NoUseBinariesTrue  CarthageV2NoUseBinaries = "true"
+	CarthageV2NoUseBinariesFalse CarthageV2NoUseBinaries = "false"
+)
+
+// CarthageV2VerboseOutput enumerates the valid values for the verbose_output input.
+type CarthageV2VerboseOutput string
+
+const (
+	CarthageV2VerboseOutputTrue  CarthageV2VerboseOutput = "true"
+	CarthageV2VerboseOutputFalse CarthageV2VerboseOutput = "false"
+)
+
+// CarthageV2SshOutput enumerates the valid values for the ssh_output input.
+type CarthageV2SshOutput string
+
+const (
+	CarthageV2SshOutputTrue  CarthageV2SshOutput = "true"
+	CarthageV2SshOutputFalse CarthageV2SshOutput = "false"
+)
+
+// CarthageV2Platform enumerates the valid values for the platform input.
+type CarthageV2Platform string
+
+const (
+	CarthageV2PlatformIOS    CarthageV2Platform = "iOS"
+	CarthageV2PlatformMac    CarthageV2Platform = "Mac"
+	CarthageV2PlatformIOSMac CarthageV2Platform = "iOS,Mac"
+	CarthageV2PlatformTvOS   CarthageV2Platform = "tvOS"
+	CarthageV2PlatformAll    CarthageV2Platform = "all"
+)
+
 // CarthageV2Builder builds a carthage step with typed input methods.
 type CarthageV2Builder struct{ *Builder }
 
@@ -26,26 +71,26 @@ func (b *CarthageV2Builder) WithGithubAccessToken(value string) *CarthageV2Build
 }
 
 // WithCarthageCommand sets carthage command to run.
-func (b *CarthageV2Builder) WithCarthageCommand(value string) *CarthageV2Builder {
-	b.Builder.WithInput("carthage_command", value)
+func (b *CarthageV2Builder) WithCarthageCommand(value CarthageV2CarthageCommand) *CarthageV2Builder {
+	b.Builder.WithInput("carthage_command", string(value))
 	return b
 }
 
 // WithNoUseBinaries sets set no use binaries flag.
-func (b *CarthageV2Builder) WithNoUseBinaries(value string) *CarthageV2Builder {
-	b.Builder.WithInput("no_use_binaries", value)
+func (b *CarthageV2Builder) WithNoUseBinaries(value CarthageV2NoUseBinaries) *CarthageV2Builder {
+	b.Builder.WithInput("no_use_binaries", string(value))
 	return b
 }
 
 // WithVerboseOutput sets set verbose output flag.
-func (b *CarthageV2Builder) WithVerboseOutput(value string) *CarthageV2Builder {
-	b.Builder.WithInput("verbose_output", value)
+func (b *CarthageV2Builder) WithVerboseOutput(value CarthageV2VerboseOutput) *CarthageV2Builder {
+	b.Builder.WithInput("verbose_output", string(value))
 	return b
 }
 
 // WithSshOutput sets set ssh flag.
-func (b *CarthageV2Builder) WithSshOutput(value string) *CarthageV2Builder {
-	b.Builder.WithInput("ssh_output", value)
+func (b *CarthageV2Builder) WithSshOutput(value CarthageV2SshOutput) *CarthageV2Builder {
+	b.Builder.WithInput("ssh_output", string(value))
 	return b
 }
 
@@ -56,8 +101,8 @@ func (b *CarthageV2Builder) WithWorkingDir(value string) *CarthageV2Builder {
 }
 
 // WithPlatform sets platform.
-func (b *CarthageV2Builder) WithPlatform(value string) *CarthageV2Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CarthageV2Builder) WithPlatform(value CarthageV2Platform) *CarthageV2Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 

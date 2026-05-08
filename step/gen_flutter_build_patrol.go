@@ -3,6 +3,31 @@
 
 package step
 
+// FlutterBuildPatrolPlatform enumerates the valid values for the platform input.
+type FlutterBuildPatrolPlatform string
+
+const (
+	FlutterBuildPatrolPlatformBoth    FlutterBuildPatrolPlatform = "both"
+	FlutterBuildPatrolPlatformIos     FlutterBuildPatrolPlatform = "ios"
+	FlutterBuildPatrolPlatformAndroid FlutterBuildPatrolPlatform = "android"
+)
+
+// FlutterBuildPatrolTestBuildType enumerates the valid values for the test_build_type input.
+type FlutterBuildPatrolTestBuildType string
+
+const (
+	FlutterBuildPatrolTestBuildTypeRelease FlutterBuildPatrolTestBuildType = "release"
+	FlutterBuildPatrolTestBuildTypeDebug   FlutterBuildPatrolTestBuildType = "debug"
+)
+
+// FlutterBuildPatrolIsVerboseMode enumerates the valid values for the is_verbose_mode input.
+type FlutterBuildPatrolIsVerboseMode string
+
+const (
+	FlutterBuildPatrolIsVerboseModeTrue  FlutterBuildPatrolIsVerboseMode = "true"
+	FlutterBuildPatrolIsVerboseModeFalse FlutterBuildPatrolIsVerboseMode = "false"
+)
+
 // FlutterBuildPatrolBuilder builds a flutter-build-patrol step with typed input methods.
 type FlutterBuildPatrolBuilder struct{ *Builder }
 
@@ -32,14 +57,14 @@ func (b *FlutterBuildPatrolBuilder) WithTestTargetDirectory(value string) *Flutt
 }
 
 // WithPlatform sets platform.
-func (b *FlutterBuildPatrolBuilder) WithPlatform(value string) *FlutterBuildPatrolBuilder {
-	b.Builder.WithInput("platform", value)
+func (b *FlutterBuildPatrolBuilder) WithPlatform(value FlutterBuildPatrolPlatform) *FlutterBuildPatrolBuilder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithTestBuildType sets build Type.
-func (b *FlutterBuildPatrolBuilder) WithTestBuildType(value string) *FlutterBuildPatrolBuilder {
-	b.Builder.WithInput("test_build_type", value)
+func (b *FlutterBuildPatrolBuilder) WithTestBuildType(value FlutterBuildPatrolTestBuildType) *FlutterBuildPatrolBuilder {
+	b.Builder.WithInput("test_build_type", string(value))
 	return b
 }
 
@@ -56,8 +81,8 @@ func (b *FlutterBuildPatrolBuilder) WithExcludedTags(value string) *FlutterBuild
 }
 
 // WithIsVerboseMode sets print Verbose Output?.
-func (b *FlutterBuildPatrolBuilder) WithIsVerboseMode(value string) *FlutterBuildPatrolBuilder {
-	b.Builder.WithInput("is_verbose_mode", value)
+func (b *FlutterBuildPatrolBuilder) WithIsVerboseMode(value FlutterBuildPatrolIsVerboseMode) *FlutterBuildPatrolBuilder {
+	b.Builder.WithInput("is_verbose_mode", string(value))
 	return b
 }
 

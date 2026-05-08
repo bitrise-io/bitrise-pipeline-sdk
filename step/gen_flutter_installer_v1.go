@@ -3,6 +3,14 @@
 
 package step
 
+// FlutterInstallerV1IsDebug enumerates the valid values for the is_debug input.
+type FlutterInstallerV1IsDebug string
+
+const (
+	FlutterInstallerV1IsDebugFalse FlutterInstallerV1IsDebug = "false"
+	FlutterInstallerV1IsDebugTrue  FlutterInstallerV1IsDebug = "true"
+)
+
 // FlutterInstallerV1Builder builds a flutter-installer step with typed input methods.
 type FlutterInstallerV1Builder struct{ *Builder }
 
@@ -26,7 +34,7 @@ func (b *FlutterInstallerV1Builder) WithVersion(value string) *FlutterInstallerV
 }
 
 // WithIsDebug sets print debug information.
-func (b *FlutterInstallerV1Builder) WithIsDebug(value string) *FlutterInstallerV1Builder {
-	b.Builder.WithInput("is_debug", value)
+func (b *FlutterInstallerV1Builder) WithIsDebug(value FlutterInstallerV1IsDebug) *FlutterInstallerV1Builder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

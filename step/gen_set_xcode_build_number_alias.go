@@ -18,3 +18,7 @@ func SetXcodeBuildNumber(version ...string) *SetXcodeBuildNumberV2Builder {
 // published by set-xcode-build-number at the latest major version (v2).
 // For outputs of a specific major version use SetXcodeBuildNumberV{N}Outputs directly.
 var SetXcodeBuildNumberOutputs = SetXcodeBuildNumberV2Outputs
+
+// SetXcodeBuildNumberVerbose is a type alias for SetXcodeBuildNumberV2Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type SetXcodeBuildNumberVerbose = SetXcodeBuildNumberV2Verbose

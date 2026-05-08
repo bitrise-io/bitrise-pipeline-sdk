@@ -3,6 +3,22 @@
 
 package step
 
+// CocoapodsInstallV3Command enumerates the valid values for the command input.
+type CocoapodsInstallV3Command string
+
+const (
+	CocoapodsInstallV3CommandInstall CocoapodsInstallV3Command = "install"
+	CocoapodsInstallV3CommandUpdate  CocoapodsInstallV3Command = "update"
+)
+
+// CocoapodsInstallV3Verbose enumerates the valid values for the verbose input.
+type CocoapodsInstallV3Verbose string
+
+const (
+	CocoapodsInstallV3VerboseTrue  CocoapodsInstallV3Verbose = "true"
+	CocoapodsInstallV3VerboseFalse CocoapodsInstallV3Verbose = "false"
+)
+
 // CocoapodsInstallV3Builder builds a cocoapods-install step with typed input methods.
 type CocoapodsInstallV3Builder struct{ *Builder }
 
@@ -20,8 +36,8 @@ func CocoapodsInstallV3(version ...string) *CocoapodsInstallV3Builder {
 }
 
 // WithCommand sets cocoaPods command.
-func (b *CocoapodsInstallV3Builder) WithCommand(value string) *CocoapodsInstallV3Builder {
-	b.Builder.WithInput("command", value)
+func (b *CocoapodsInstallV3Builder) WithCommand(value CocoapodsInstallV3Command) *CocoapodsInstallV3Builder {
+	b.Builder.WithInput("command", string(value))
 	return b
 }
 
@@ -38,7 +54,7 @@ func (b *CocoapodsInstallV3Builder) WithPodfilePath(value string) *CocoapodsInst
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *CocoapodsInstallV3Builder) WithVerbose(value string) *CocoapodsInstallV3Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *CocoapodsInstallV3Builder) WithVerbose(value CocoapodsInstallV3Verbose) *CocoapodsInstallV3Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

@@ -22,3 +22,19 @@ func AppcenterDeployIos(version ...string) *AppcenterDeployIosV2Builder {
 // published by appcenter-deploy-ios at the latest major version (v2).
 // For outputs of a specific major version use AppcenterDeployIosV{N}Outputs directly.
 var AppcenterDeployIosOutputs = AppcenterDeployIosV2Outputs
+
+// AppcenterDeployIosNotifyTesters is a type alias for AppcenterDeployIosV2NotifyTesters,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployIosNotifyTesters = AppcenterDeployIosV2NotifyTesters
+
+// AppcenterDeployIosMandatory is a type alias for AppcenterDeployIosV2Mandatory,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployIosMandatory = AppcenterDeployIosV2Mandatory
+
+// AppcenterDeployIosDebug is a type alias for AppcenterDeployIosV2Debug,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployIosDebug = AppcenterDeployIosV2Debug
+
+// AppcenterDeployIosAllDistributionGroups is a type alias for AppcenterDeployIosV2AllDistributionGroups,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployIosAllDistributionGroups = AppcenterDeployIosV2AllDistributionGroups

@@ -3,6 +3,15 @@
 
 package step
 
+// GradleUnitTestV1CacheLevel enumerates the valid values for the cache_level input.
+type GradleUnitTestV1CacheLevel string
+
+const (
+	GradleUnitTestV1CacheLevelAll      GradleUnitTestV1CacheLevel = "all"
+	GradleUnitTestV1CacheLevelOnlyDeps GradleUnitTestV1CacheLevel = "only deps"
+	GradleUnitTestV1CacheLevelNone     GradleUnitTestV1CacheLevel = "none"
+)
+
 // GradleUnitTestV1Builder builds a gradle-unit-test step with typed input methods.
 type GradleUnitTestV1Builder struct{ *Builder }
 
@@ -44,8 +53,8 @@ func (b *GradleUnitTestV1Builder) WithUnitTestFlags(value string) *GradleUnitTes
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *GradleUnitTestV1Builder) WithCacheLevel(value string) *GradleUnitTestV1Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *GradleUnitTestV1Builder) WithCacheLevel(value GradleUnitTestV1CacheLevel) *GradleUnitTestV1Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 

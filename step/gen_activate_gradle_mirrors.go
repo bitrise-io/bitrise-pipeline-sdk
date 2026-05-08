@@ -3,6 +3,14 @@
 
 package step
 
+// ActivateGradleMirrorsVerbose enumerates the valid values for the verbose input.
+type ActivateGradleMirrorsVerbose string
+
+const (
+	ActivateGradleMirrorsVerboseTrue  ActivateGradleMirrorsVerbose = "true"
+	ActivateGradleMirrorsVerboseFalse ActivateGradleMirrorsVerbose = "false"
+)
+
 // ActivateGradleMirrorsBuilder builds a activate-gradle-mirrors step with typed input methods.
 type ActivateGradleMirrorsBuilder struct{ *Builder }
 
@@ -20,7 +28,7 @@ func ActivateGradleMirrors(version ...string) *ActivateGradleMirrorsBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *ActivateGradleMirrorsBuilder) WithVerbose(value string) *ActivateGradleMirrorsBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *ActivateGradleMirrorsBuilder) WithVerbose(value ActivateGradleMirrorsVerbose) *ActivateGradleMirrorsBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

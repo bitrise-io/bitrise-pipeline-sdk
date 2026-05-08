@@ -3,6 +3,34 @@
 
 package step
 
+// CreateAppleDocumentationLanguage enumerates the valid values for the language input.
+type CreateAppleDocumentationLanguage string
+
+const (
+	CreateAppleDocumentationLanguageObjc  CreateAppleDocumentationLanguage = "objc"
+	CreateAppleDocumentationLanguageSwift CreateAppleDocumentationLanguage = "swift"
+)
+
+// CreateAppleDocumentationSdk enumerates the valid values for the sdk input.
+type CreateAppleDocumentationSdk string
+
+const (
+	CreateAppleDocumentationSdkIphone CreateAppleDocumentationSdk = "iphone"
+	CreateAppleDocumentationSdkMac    CreateAppleDocumentationSdk = "mac"
+	CreateAppleDocumentationSdkTv     CreateAppleDocumentationSdk = "tv"
+	CreateAppleDocumentationSdkNone   CreateAppleDocumentationSdk = "none"
+)
+
+// CreateAppleDocumentationAcl enumerates the valid values for the acl input.
+type CreateAppleDocumentationAcl string
+
+const (
+	CreateAppleDocumentationAclOpen     CreateAppleDocumentationAcl = "open"
+	CreateAppleDocumentationAclPublic   CreateAppleDocumentationAcl = "public"
+	CreateAppleDocumentationAclInternal CreateAppleDocumentationAcl = "internal"
+	CreateAppleDocumentationAclPrivate  CreateAppleDocumentationAcl = "private"
+)
+
 // CreateAppleDocumentationBuilder builds a create-apple-documentation step with typed input methods.
 type CreateAppleDocumentationBuilder struct{ *Builder }
 
@@ -32,8 +60,8 @@ func (b *CreateAppleDocumentationBuilder) WithProjectPath(value string) *CreateA
 }
 
 // WithLanguage sets language.
-func (b *CreateAppleDocumentationBuilder) WithLanguage(value string) *CreateAppleDocumentationBuilder {
-	b.Builder.WithInput("language", value)
+func (b *CreateAppleDocumentationBuilder) WithLanguage(value CreateAppleDocumentationLanguage) *CreateAppleDocumentationBuilder {
+	b.Builder.WithInput("language", string(value))
 	return b
 }
 
@@ -44,8 +72,8 @@ func (b *CreateAppleDocumentationBuilder) WithAuthor(value string) *CreateAppleD
 }
 
 // WithSdk sets sDK.
-func (b *CreateAppleDocumentationBuilder) WithSdk(value string) *CreateAppleDocumentationBuilder {
-	b.Builder.WithInput("sdk", value)
+func (b *CreateAppleDocumentationBuilder) WithSdk(value CreateAppleDocumentationSdk) *CreateAppleDocumentationBuilder {
+	b.Builder.WithInput("sdk", string(value))
 	return b
 }
 
@@ -74,8 +102,8 @@ func (b *CreateAppleDocumentationBuilder) WithScheme(value string) *CreateAppleD
 }
 
 // WithAcl sets the minimun ACL used to list the included classes on the doc set.
-func (b *CreateAppleDocumentationBuilder) WithAcl(value string) *CreateAppleDocumentationBuilder {
-	b.Builder.WithInput("acl", value)
+func (b *CreateAppleDocumentationBuilder) WithAcl(value CreateAppleDocumentationAcl) *CreateAppleDocumentationBuilder {
+	b.Builder.WithInput("acl", string(value))
 	return b
 }
 

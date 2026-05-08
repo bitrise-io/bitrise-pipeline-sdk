@@ -3,6 +3,109 @@
 
 package step
 
+// XcodeArchiveV6Platform enumerates the valid values for the platform input.
+type XcodeArchiveV6Platform string
+
+const (
+	XcodeArchiveV6PlatformDetect   XcodeArchiveV6Platform = "detect"
+	XcodeArchiveV6PlatformIOS      XcodeArchiveV6Platform = "iOS"
+	XcodeArchiveV6PlatformWatchOS  XcodeArchiveV6Platform = "watchOS"
+	XcodeArchiveV6PlatformTvOS     XcodeArchiveV6Platform = "tvOS"
+	XcodeArchiveV6PlatformVisionOS XcodeArchiveV6Platform = "visionOS"
+)
+
+// XcodeArchiveV6DistributionMethod enumerates the valid values for the distribution_method input.
+type XcodeArchiveV6DistributionMethod string
+
+const (
+	XcodeArchiveV6DistributionMethodDevelopment XcodeArchiveV6DistributionMethod = "development"
+	XcodeArchiveV6DistributionMethodAppStore    XcodeArchiveV6DistributionMethod = "app-store"
+	XcodeArchiveV6DistributionMethodAdHoc       XcodeArchiveV6DistributionMethod = "ad-hoc"
+	XcodeArchiveV6DistributionMethodEnterprise  XcodeArchiveV6DistributionMethod = "enterprise"
+)
+
+// XcodeArchiveV6PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeArchiveV6PerformCleanAction string
+
+const (
+	XcodeArchiveV6PerformCleanActionYes XcodeArchiveV6PerformCleanAction = "yes"
+	XcodeArchiveV6PerformCleanActionNo  XcodeArchiveV6PerformCleanAction = "no"
+)
+
+// XcodeArchiveV6LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeArchiveV6LogFormatter string
+
+const (
+	XcodeArchiveV6LogFormatterXcbeautify XcodeArchiveV6LogFormatter = "xcbeautify"
+	XcodeArchiveV6LogFormatterXcodebuild XcodeArchiveV6LogFormatter = "xcodebuild"
+	XcodeArchiveV6LogFormatterXcpretty   XcodeArchiveV6LogFormatter = "xcpretty"
+)
+
+// XcodeArchiveV6AutomaticCodeSigning enumerates the valid values for the automatic_code_signing input.
+type XcodeArchiveV6AutomaticCodeSigning string
+
+const (
+	XcodeArchiveV6AutomaticCodeSigningOff     XcodeArchiveV6AutomaticCodeSigning = "off"
+	XcodeArchiveV6AutomaticCodeSigningApiKey  XcodeArchiveV6AutomaticCodeSigning = "api-key"
+	XcodeArchiveV6AutomaticCodeSigningAppleId XcodeArchiveV6AutomaticCodeSigning = "apple-id"
+)
+
+// XcodeArchiveV6RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type XcodeArchiveV6RegisterTestDevices string
+
+const (
+	XcodeArchiveV6RegisterTestDevicesYes XcodeArchiveV6RegisterTestDevices = "yes"
+	XcodeArchiveV6RegisterTestDevicesNo  XcodeArchiveV6RegisterTestDevices = "no"
+)
+
+// XcodeArchiveV6CompileBitcode enumerates the valid values for the compile_bitcode input.
+type XcodeArchiveV6CompileBitcode string
+
+const (
+	XcodeArchiveV6CompileBitcodeYes XcodeArchiveV6CompileBitcode = "yes"
+	XcodeArchiveV6CompileBitcodeNo  XcodeArchiveV6CompileBitcode = "no"
+)
+
+// XcodeArchiveV6UploadBitcode enumerates the valid values for the upload_bitcode input.
+type XcodeArchiveV6UploadBitcode string
+
+const (
+	XcodeArchiveV6UploadBitcodeYes XcodeArchiveV6UploadBitcode = "yes"
+	XcodeArchiveV6UploadBitcodeNo  XcodeArchiveV6UploadBitcode = "no"
+)
+
+// XcodeArchiveV6TestflightInternalTestingOnly enumerates the valid values for the testflight_internal_testing_only input.
+type XcodeArchiveV6TestflightInternalTestingOnly string
+
+const (
+	XcodeArchiveV6TestflightInternalTestingOnlyYes XcodeArchiveV6TestflightInternalTestingOnly = "yes"
+	XcodeArchiveV6TestflightInternalTestingOnlyNo  XcodeArchiveV6TestflightInternalTestingOnly = "no"
+)
+
+// XcodeArchiveV6ExportAllDsyms enumerates the valid values for the export_all_dsyms input.
+type XcodeArchiveV6ExportAllDsyms string
+
+const (
+	XcodeArchiveV6ExportAllDsymsYes XcodeArchiveV6ExportAllDsyms = "yes"
+	XcodeArchiveV6ExportAllDsymsNo  XcodeArchiveV6ExportAllDsyms = "no"
+)
+
+// XcodeArchiveV6ApiKeyEnterpriseAccount enumerates the valid values for the api_key_enterprise_account input.
+type XcodeArchiveV6ApiKeyEnterpriseAccount string
+
+const (
+	XcodeArchiveV6ApiKeyEnterpriseAccountYes XcodeArchiveV6ApiKeyEnterpriseAccount = "yes"
+	XcodeArchiveV6ApiKeyEnterpriseAccountNo  XcodeArchiveV6ApiKeyEnterpriseAccount = "no"
+)
+
+// XcodeArchiveV6VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeArchiveV6VerboseLog string
+
+const (
+	XcodeArchiveV6VerboseLogYes XcodeArchiveV6VerboseLog = "yes"
+	XcodeArchiveV6VerboseLogNo  XcodeArchiveV6VerboseLog = "no"
+)
+
 // XcodeArchiveV6Builder builds a xcode-archive step with typed input methods.
 type XcodeArchiveV6Builder struct{ *Builder }
 
@@ -32,14 +135,14 @@ func (b *XcodeArchiveV6Builder) WithScheme(value string) *XcodeArchiveV6Builder 
 }
 
 // WithPlatform sets platform.
-func (b *XcodeArchiveV6Builder) WithPlatform(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("platform", value)
+func (b *XcodeArchiveV6Builder) WithPlatform(value XcodeArchiveV6Platform) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithDistributionMethod sets distribution method.
-func (b *XcodeArchiveV6Builder) WithDistributionMethod(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("distribution_method", value)
+func (b *XcodeArchiveV6Builder) WithDistributionMethod(value XcodeArchiveV6DistributionMethod) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("distribution_method", string(value))
 	return b
 }
 
@@ -56,8 +159,8 @@ func (b *XcodeArchiveV6Builder) WithXcconfigContent(value string) *XcodeArchiveV
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeArchiveV6Builder) WithPerformCleanAction(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeArchiveV6Builder) WithPerformCleanAction(value XcodeArchiveV6PerformCleanAction) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -68,20 +171,20 @@ func (b *XcodeArchiveV6Builder) WithXcodebuildOptions(value string) *XcodeArchiv
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeArchiveV6Builder) WithLogFormatter(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeArchiveV6Builder) WithLogFormatter(value XcodeArchiveV6LogFormatter) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
 // WithAutomaticCodeSigning sets automatic code signing method.
-func (b *XcodeArchiveV6Builder) WithAutomaticCodeSigning(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("automatic_code_signing", value)
+func (b *XcodeArchiveV6Builder) WithAutomaticCodeSigning(value XcodeArchiveV6AutomaticCodeSigning) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("automatic_code_signing", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *XcodeArchiveV6Builder) WithRegisterTestDevices(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *XcodeArchiveV6Builder) WithRegisterTestDevices(value XcodeArchiveV6RegisterTestDevices) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -134,14 +237,14 @@ func (b *XcodeArchiveV6Builder) WithExportDevelopmentTeam(value string) *XcodeAr
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *XcodeArchiveV6Builder) WithCompileBitcode(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *XcodeArchiveV6Builder) WithCompileBitcode(value XcodeArchiveV6CompileBitcode) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *XcodeArchiveV6Builder) WithUploadBitcode(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *XcodeArchiveV6Builder) WithUploadBitcode(value XcodeArchiveV6UploadBitcode) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
@@ -152,8 +255,8 @@ func (b *XcodeArchiveV6Builder) WithIcloudContainerEnvironment(value string) *Xc
 }
 
 // WithTestflightInternalTestingOnly sets testflight Internal Testing Only.
-func (b *XcodeArchiveV6Builder) WithTestflightInternalTestingOnly(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("testflight_internal_testing_only", value)
+func (b *XcodeArchiveV6Builder) WithTestflightInternalTestingOnly(value XcodeArchiveV6TestflightInternalTestingOnly) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("testflight_internal_testing_only", string(value))
 	return b
 }
 
@@ -170,8 +273,8 @@ func (b *XcodeArchiveV6Builder) WithOutputDir(value string) *XcodeArchiveV6Build
 }
 
 // WithExportAllDsyms sets export all dSYMs.
-func (b *XcodeArchiveV6Builder) WithExportAllDsyms(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("export_all_dsyms", value)
+func (b *XcodeArchiveV6Builder) WithExportAllDsyms(value XcodeArchiveV6ExportAllDsyms) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("export_all_dsyms", string(value))
 	return b
 }
 
@@ -200,14 +303,14 @@ func (b *XcodeArchiveV6Builder) WithApiKeyIssuerId(value string) *XcodeArchiveV6
 }
 
 // WithApiKeyEnterpriseAccount sets app Store Connect API enterprise account.
-func (b *XcodeArchiveV6Builder) WithApiKeyEnterpriseAccount(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("api_key_enterprise_account", value)
+func (b *XcodeArchiveV6Builder) WithApiKeyEnterpriseAccount(value XcodeArchiveV6ApiKeyEnterpriseAccount) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("api_key_enterprise_account", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeArchiveV6Builder) WithVerboseLog(value string) *XcodeArchiveV6Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeArchiveV6Builder) WithVerboseLog(value XcodeArchiveV6VerboseLog) *XcodeArchiveV6Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

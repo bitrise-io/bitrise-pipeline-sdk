@@ -3,6 +3,15 @@
 
 package step
 
+// FlutterAnalyzeFailSeverity enumerates the valid values for the fail_severity input.
+type FlutterAnalyzeFailSeverity string
+
+const (
+	FlutterAnalyzeFailSeverityError   FlutterAnalyzeFailSeverity = "error"
+	FlutterAnalyzeFailSeverityWarning FlutterAnalyzeFailSeverity = "warning"
+	FlutterAnalyzeFailSeverityInfo    FlutterAnalyzeFailSeverity = "info"
+)
+
 // FlutterAnalyzeBuilder builds a flutter-analyze step with typed input methods.
 type FlutterAnalyzeBuilder struct{ *Builder }
 
@@ -26,8 +35,8 @@ func (b *FlutterAnalyzeBuilder) WithProjectLocation(value string) *FlutterAnalyz
 }
 
 // WithFailSeverity sets fail Severity.
-func (b *FlutterAnalyzeBuilder) WithFailSeverity(value string) *FlutterAnalyzeBuilder {
-	b.Builder.WithInput("fail_severity", value)
+func (b *FlutterAnalyzeBuilder) WithFailSeverity(value FlutterAnalyzeFailSeverity) *FlutterAnalyzeBuilder {
+	b.Builder.WithInput("fail_severity", string(value))
 	return b
 }
 

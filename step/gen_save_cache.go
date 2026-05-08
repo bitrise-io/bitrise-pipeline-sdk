@@ -3,6 +3,22 @@
 
 package step
 
+// SaveCacheVerbose enumerates the valid values for the verbose input.
+type SaveCacheVerbose string
+
+const (
+	SaveCacheVerboseTrue  SaveCacheVerbose = "true"
+	SaveCacheVerboseFalse SaveCacheVerbose = "false"
+)
+
+// SaveCacheIsKeyUnique enumerates the valid values for the is_key_unique input.
+type SaveCacheIsKeyUnique string
+
+const (
+	SaveCacheIsKeyUniqueTrue  SaveCacheIsKeyUnique = "true"
+	SaveCacheIsKeyUniqueFalse SaveCacheIsKeyUnique = "false"
+)
+
 // SaveCacheBuilder builds a save-cache step with typed input methods.
 type SaveCacheBuilder struct{ *Builder }
 
@@ -32,8 +48,8 @@ func (b *SaveCacheBuilder) WithPaths(value string) *SaveCacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveCacheBuilder) WithVerbose(value string) *SaveCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveCacheBuilder) WithVerbose(value SaveCacheVerbose) *SaveCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
@@ -50,7 +66,7 @@ func (b *SaveCacheBuilder) WithCustomTarArgs(value string) *SaveCacheBuilder {
 }
 
 // WithIsKeyUnique sets unique cache key.
-func (b *SaveCacheBuilder) WithIsKeyUnique(value string) *SaveCacheBuilder {
-	b.Builder.WithInput("is_key_unique", value)
+func (b *SaveCacheBuilder) WithIsKeyUnique(value SaveCacheIsKeyUnique) *SaveCacheBuilder {
+	b.Builder.WithInput("is_key_unique", string(value))
 	return b
 }

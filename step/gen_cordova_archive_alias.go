@@ -18,3 +18,31 @@ func CordovaArchive(version ...string) *CordovaArchiveV3Builder {
 // published by cordova-archive at the latest major version (v3).
 // For outputs of a specific major version use CordovaArchiveV{N}Outputs directly.
 var CordovaArchiveOutputs = CordovaArchiveV3Outputs
+
+// CordovaArchivePlatform is a type alias for CordovaArchiveV3Platform,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchivePlatform = CordovaArchiveV3Platform
+
+// CordovaArchiveConfiguration is a type alias for CordovaArchiveV3Configuration,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchiveConfiguration = CordovaArchiveV3Configuration
+
+// CordovaArchiveTarget is a type alias for CordovaArchiveV3Target,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchiveTarget = CordovaArchiveV3Target
+
+// CordovaArchiveRunCordovaPrepare is a type alias for CordovaArchiveV3RunCordovaPrepare,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchiveRunCordovaPrepare = CordovaArchiveV3RunCordovaPrepare
+
+// CordovaArchiveBuildSystem is a type alias for CordovaArchiveV3BuildSystem,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchiveBuildSystem = CordovaArchiveV3BuildSystem
+
+// CordovaArchiveCacheLocalDeps is a type alias for CordovaArchiveV3CacheLocalDeps,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchiveCacheLocalDeps = CordovaArchiveV3CacheLocalDeps
+
+// CordovaArchiveAndroidAppType is a type alias for CordovaArchiveV3AndroidAppType,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaArchiveAndroidAppType = CordovaArchiveV3AndroidAppType

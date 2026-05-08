@@ -13,3 +13,7 @@ type CustomTestResultsExportBuilder = CustomTestResultsExportV1Builder
 func CustomTestResultsExport(version ...string) *CustomTestResultsExportV1Builder {
 	return CustomTestResultsExportV1(version...)
 }
+
+// CustomTestResultsExportVerboseLog is a type alias for CustomTestResultsExportV1VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type CustomTestResultsExportVerboseLog = CustomTestResultsExportV1VerboseLog

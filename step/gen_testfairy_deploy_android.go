@@ -3,6 +3,39 @@
 
 package step
 
+// TestfairyDeployAndroidNotify enumerates the valid values for the notify input.
+type TestfairyDeployAndroidNotify string
+
+const (
+	TestfairyDeployAndroidNotifyOn  TestfairyDeployAndroidNotify = "on"
+	TestfairyDeployAndroidNotifyOff TestfairyDeployAndroidNotify = "off"
+)
+
+// TestfairyDeployAndroidAutoUpdate enumerates the valid values for the auto_update input.
+type TestfairyDeployAndroidAutoUpdate string
+
+const (
+	TestfairyDeployAndroidAutoUpdateOn  TestfairyDeployAndroidAutoUpdate = "on"
+	TestfairyDeployAndroidAutoUpdateOff TestfairyDeployAndroidAutoUpdate = "off"
+)
+
+// TestfairyDeployAndroidVideoRecording enumerates the valid values for the video_recording input.
+type TestfairyDeployAndroidVideoRecording string
+
+const (
+	TestfairyDeployAndroidVideoRecordingOn   TestfairyDeployAndroidVideoRecording = "on"
+	TestfairyDeployAndroidVideoRecordingWifi TestfairyDeployAndroidVideoRecording = "wifi"
+	TestfairyDeployAndroidVideoRecordingOff  TestfairyDeployAndroidVideoRecording = "off"
+)
+
+// TestfairyDeployAndroidIconWatermark enumerates the valid values for the icon_watermark input.
+type TestfairyDeployAndroidIconWatermark string
+
+const (
+	TestfairyDeployAndroidIconWatermarkOn  TestfairyDeployAndroidIconWatermark = "on"
+	TestfairyDeployAndroidIconWatermarkOff TestfairyDeployAndroidIconWatermark = "off"
+)
+
 // TestfairyDeployAndroidBuilder builds a testfairy-deploy-android step with typed input methods.
 type TestfairyDeployAndroidBuilder struct{ *Builder }
 
@@ -38,14 +71,14 @@ func (b *TestfairyDeployAndroidBuilder) WithTesterGroups(value string) *Testfair
 }
 
 // WithNotify sets email notification.
-func (b *TestfairyDeployAndroidBuilder) WithNotify(value string) *TestfairyDeployAndroidBuilder {
-	b.Builder.WithInput("notify", value)
+func (b *TestfairyDeployAndroidBuilder) WithNotify(value TestfairyDeployAndroidNotify) *TestfairyDeployAndroidBuilder {
+	b.Builder.WithInput("notify", string(value))
 	return b
 }
 
 // WithAutoUpdate sets auto update.
-func (b *TestfairyDeployAndroidBuilder) WithAutoUpdate(value string) *TestfairyDeployAndroidBuilder {
-	b.Builder.WithInput("auto_update", value)
+func (b *TestfairyDeployAndroidBuilder) WithAutoUpdate(value TestfairyDeployAndroidAutoUpdate) *TestfairyDeployAndroidBuilder {
+	b.Builder.WithInput("auto_update", string(value))
 	return b
 }
 
@@ -56,14 +89,14 @@ func (b *TestfairyDeployAndroidBuilder) WithMaxTestDuration(value string) *Testf
 }
 
 // WithVideoRecording sets video recording.
-func (b *TestfairyDeployAndroidBuilder) WithVideoRecording(value string) *TestfairyDeployAndroidBuilder {
-	b.Builder.WithInput("video_recording", value)
+func (b *TestfairyDeployAndroidBuilder) WithVideoRecording(value TestfairyDeployAndroidVideoRecording) *TestfairyDeployAndroidBuilder {
+	b.Builder.WithInput("video_recording", string(value))
 	return b
 }
 
 // WithIconWatermark sets icon Watermark.
-func (b *TestfairyDeployAndroidBuilder) WithIconWatermark(value string) *TestfairyDeployAndroidBuilder {
-	b.Builder.WithInput("icon_watermark", value)
+func (b *TestfairyDeployAndroidBuilder) WithIconWatermark(value TestfairyDeployAndroidIconWatermark) *TestfairyDeployAndroidBuilder {
+	b.Builder.WithInput("icon_watermark", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreNpmCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreNpmCacheV2Verbose string
+
+const (
+	RestoreNpmCacheV2VerboseTrue  RestoreNpmCacheV2Verbose = "true"
+	RestoreNpmCacheV2VerboseFalse RestoreNpmCacheV2Verbose = "false"
+)
+
 // RestoreNpmCacheV2Builder builds a restore-npm-cache step with typed input methods.
 type RestoreNpmCacheV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func RestoreNpmCacheV2(version ...string) *RestoreNpmCacheV2Builder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreNpmCacheV2Builder) WithVerbose(value string) *RestoreNpmCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreNpmCacheV2Builder) WithVerbose(value RestoreNpmCacheV2Verbose) *RestoreNpmCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

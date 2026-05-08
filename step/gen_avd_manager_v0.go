@@ -3,6 +3,93 @@
 
 package step
 
+// AvdManagerV0Profile enumerates the valid values for the profile input.
+type AvdManagerV0Profile string
+
+const (
+	AvdManagerV0ProfileTv1080p              AvdManagerV0Profile = "tv_1080p"
+	AvdManagerV0ProfileTv720p               AvdManagerV0Profile = "tv_720p"
+	AvdManagerV0ProfileWearRound            AvdManagerV0Profile = "wear_round"
+	AvdManagerV0ProfileWearRoundChin320290  AvdManagerV0Profile = "wear_round_chin_320_290"
+	AvdManagerV0ProfileWearSquare           AvdManagerV0Profile = "wear_square"
+	AvdManagerV0ProfileGalaxyNexus          AvdManagerV0Profile = "Galaxy Nexus"
+	AvdManagerV0ProfileNexus10              AvdManagerV0Profile = "Nexus 10"
+	AvdManagerV0ProfileNexus4               AvdManagerV0Profile = "Nexus 4"
+	AvdManagerV0ProfileNexus5               AvdManagerV0Profile = "Nexus 5"
+	AvdManagerV0ProfileNexus5X              AvdManagerV0Profile = "Nexus 5X"
+	AvdManagerV0ProfileNexus6               AvdManagerV0Profile = "Nexus 6"
+	AvdManagerV0ProfileNexus6P              AvdManagerV0Profile = "Nexus 6P"
+	AvdManagerV0ProfileNexus72013           AvdManagerV0Profile = "Nexus 7 2013"
+	AvdManagerV0ProfileNexus7               AvdManagerV0Profile = "Nexus 7"
+	AvdManagerV0ProfileNexus9               AvdManagerV0Profile = "Nexus 9"
+	AvdManagerV0ProfileNexusOne             AvdManagerV0Profile = "Nexus One"
+	AvdManagerV0ProfileNexusS               AvdManagerV0Profile = "Nexus S"
+	AvdManagerV0ProfilePixel                AvdManagerV0Profile = "pixel"
+	AvdManagerV0ProfilePixelC               AvdManagerV0Profile = "pixel_c"
+	AvdManagerV0ProfilePixelXl              AvdManagerV0Profile = "pixel_xl"
+	AvdManagerV0Profile27inQVGA             AvdManagerV0Profile = "2.7in QVGA"
+	AvdManagerV0Profile27inQVGASlider       AvdManagerV0Profile = "2.7in QVGA slider"
+	AvdManagerV0Profile32inHVGASliderADP1   AvdManagerV0Profile = "3.2in HVGA slider (ADP1)"
+	AvdManagerV0Profile32inQVGAADP2         AvdManagerV0Profile = "3.2in QVGA (ADP2)"
+	AvdManagerV0Profile33inWQVGA            AvdManagerV0Profile = "3.3in WQVGA"
+	AvdManagerV0Profile34inWQVGA            AvdManagerV0Profile = "3.4in WQVGA"
+	AvdManagerV0Profile37FWVGASlider        AvdManagerV0Profile = "3.7 FWVGA slider"
+	AvdManagerV0Profile37inWVGANexusOne     AvdManagerV0Profile = "3.7in WVGA (Nexus One)"
+	AvdManagerV0Profile4inWVGANexusS        AvdManagerV0Profile = "4in WVGA (Nexus S)"
+	AvdManagerV0Profile465in720pGalaxyNexus AvdManagerV0Profile = "4.65in 720p (Galaxy Nexus)"
+	AvdManagerV0Profile47inWXGA             AvdManagerV0Profile = "4.7in WXGA"
+	AvdManagerV0Profile51inWVGA             AvdManagerV0Profile = "5.1in WVGA"
+	AvdManagerV0Profile54inFWVGA            AvdManagerV0Profile = "5.4in FWVGA"
+	AvdManagerV0Profile7inWSVGATablet       AvdManagerV0Profile = "7in WSVGA (Tablet)"
+	AvdManagerV0Profile101inWXGATablet      AvdManagerV0Profile = "10.1in WXGA (Tablet)"
+)
+
+// AvdManagerV0Tag enumerates the valid values for the tag input.
+type AvdManagerV0Tag string
+
+const (
+	AvdManagerV0TagGoogleApis          AvdManagerV0Tag = "google_apis"
+	AvdManagerV0TagGoogleApisPlaystore AvdManagerV0Tag = "google_apis_playstore"
+	AvdManagerV0TagAndroidWear         AvdManagerV0Tag = "android-wear"
+	AvdManagerV0TagAndroidTv           AvdManagerV0Tag = "android-tv"
+	AvdManagerV0TagDefault             AvdManagerV0Tag = "default"
+)
+
+// AvdManagerV0VerboseMode enumerates the valid values for the verbose_mode input.
+type AvdManagerV0VerboseMode string
+
+const (
+	AvdManagerV0VerboseModeTrue  AvdManagerV0VerboseMode = "true"
+	AvdManagerV0VerboseModeFalse AvdManagerV0VerboseMode = "false"
+)
+
+// AvdManagerV0Orientation enumerates the valid values for the orientation input.
+type AvdManagerV0Orientation string
+
+const (
+	AvdManagerV0OrientationPortrait  AvdManagerV0Orientation = "portrait"
+	AvdManagerV0OrientationLandscape AvdManagerV0Orientation = "landscape"
+)
+
+// AvdManagerV0Overwrite enumerates the valid values for the overwrite input.
+type AvdManagerV0Overwrite string
+
+const (
+	AvdManagerV0OverwriteTrue  AvdManagerV0Overwrite = "true"
+	AvdManagerV0OverwriteFalse AvdManagerV0Overwrite = "false"
+)
+
+// AvdManagerV0EmulatorAbi enumerates the valid values for the emulator_abi input.
+type AvdManagerV0EmulatorAbi string
+
+const (
+	AvdManagerV0EmulatorAbiX86        AvdManagerV0EmulatorAbi = "x86"
+	AvdManagerV0EmulatorAbiArmeabiV7a AvdManagerV0EmulatorAbi = "armeabi-v7a"
+	AvdManagerV0EmulatorAbiArm64V8a   AvdManagerV0EmulatorAbi = "arm64-v8a"
+	AvdManagerV0EmulatorAbiX8664      AvdManagerV0EmulatorAbi = "x86_64"
+	AvdManagerV0EmulatorAbiMips       AvdManagerV0EmulatorAbi = "mips"
+)
+
 // AvdManagerV0Builder builds a avd-manager step with typed input methods.
 type AvdManagerV0Builder struct{ *Builder }
 
@@ -20,8 +107,8 @@ func AvdManagerV0(version ...string) *AvdManagerV0Builder {
 }
 
 // WithProfile sets device Profile.
-func (b *AvdManagerV0Builder) WithProfile(value string) *AvdManagerV0Builder {
-	b.Builder.WithInput("profile", value)
+func (b *AvdManagerV0Builder) WithProfile(value AvdManagerV0Profile) *AvdManagerV0Builder {
+	b.Builder.WithInput("profile", string(value))
 	return b
 }
 
@@ -32,20 +119,20 @@ func (b *AvdManagerV0Builder) WithVersion(value string) *AvdManagerV0Builder {
 }
 
 // WithTag sets oS Tag.
-func (b *AvdManagerV0Builder) WithTag(value string) *AvdManagerV0Builder {
-	b.Builder.WithInput("tag", value)
+func (b *AvdManagerV0Builder) WithTag(value AvdManagerV0Tag) *AvdManagerV0Builder {
+	b.Builder.WithInput("tag", string(value))
 	return b
 }
 
 // WithVerboseMode sets verbose Mode.
-func (b *AvdManagerV0Builder) WithVerboseMode(value string) *AvdManagerV0Builder {
-	b.Builder.WithInput("verbose_mode", value)
+func (b *AvdManagerV0Builder) WithVerboseMode(value AvdManagerV0VerboseMode) *AvdManagerV0Builder {
+	b.Builder.WithInput("verbose_mode", string(value))
 	return b
 }
 
 // WithOrientation sets orientation.
-func (b *AvdManagerV0Builder) WithOrientation(value string) *AvdManagerV0Builder {
-	b.Builder.WithInput("orientation", value)
+func (b *AvdManagerV0Builder) WithOrientation(value AvdManagerV0Orientation) *AvdManagerV0Builder {
+	b.Builder.WithInput("orientation", string(value))
 	return b
 }
 
@@ -74,8 +161,8 @@ func (b *AvdManagerV0Builder) WithCustomHwConfig(value string) *AvdManagerV0Buil
 }
 
 // WithOverwrite sets overwrite.
-func (b *AvdManagerV0Builder) WithOverwrite(value string) *AvdManagerV0Builder {
-	b.Builder.WithInput("overwrite", value)
+func (b *AvdManagerV0Builder) WithOverwrite(value AvdManagerV0Overwrite) *AvdManagerV0Builder {
+	b.Builder.WithInput("overwrite", string(value))
 	return b
 }
 
@@ -86,8 +173,8 @@ func (b *AvdManagerV0Builder) WithCustomCommandFlags(value string) *AvdManagerV0
 }
 
 // WithEmulatorAbi sets emulator ABI.
-func (b *AvdManagerV0Builder) WithEmulatorAbi(value string) *AvdManagerV0Builder {
-	b.Builder.WithInput("emulator_abi", value)
+func (b *AvdManagerV0Builder) WithEmulatorAbi(value AvdManagerV0EmulatorAbi) *AvdManagerV0Builder {
+	b.Builder.WithInput("emulator_abi", string(value))
 	return b
 }
 

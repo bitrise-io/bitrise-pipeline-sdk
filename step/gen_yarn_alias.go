@@ -13,3 +13,7 @@ type YarnBuilder = YarnV2Builder
 func Yarn(version ...string) *YarnV2Builder {
 	return YarnV2(version...)
 }
+
+// YarnVerboseLog is a type alias for YarnV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type YarnVerboseLog = YarnV2VerboseLog

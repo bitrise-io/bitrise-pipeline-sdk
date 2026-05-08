@@ -3,6 +3,16 @@
 
 package step
 
+// SetJavaVersionSetJavaVersion enumerates the valid values for the set_java_version input.
+type SetJavaVersionSetJavaVersion string
+
+const (
+	SetJavaVersionSetJavaVersion21 SetJavaVersionSetJavaVersion = "21"
+	SetJavaVersionSetJavaVersion17 SetJavaVersionSetJavaVersion = "17"
+	SetJavaVersionSetJavaVersion11 SetJavaVersionSetJavaVersion = "11"
+	SetJavaVersionSetJavaVersion8  SetJavaVersionSetJavaVersion = "8"
+)
+
 // SetJavaVersionBuilder builds a set-java-version step with typed input methods.
 type SetJavaVersionBuilder struct{ *Builder }
 
@@ -20,8 +30,8 @@ func SetJavaVersion(version ...string) *SetJavaVersionBuilder {
 }
 
 // WithSetJavaVersion sets java version.
-func (b *SetJavaVersionBuilder) WithSetJavaVersion(value string) *SetJavaVersionBuilder {
-	b.Builder.WithInput("set_java_version", value)
+func (b *SetJavaVersionBuilder) WithSetJavaVersion(value SetJavaVersionSetJavaVersion) *SetJavaVersionBuilder {
+	b.Builder.WithInput("set_java_version", string(value))
 	return b
 }
 

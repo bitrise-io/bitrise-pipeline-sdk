@@ -3,6 +3,15 @@
 
 package step
 
+// AndroidBuildForUiTestingCacheLevel enumerates the valid values for the cache_level input.
+type AndroidBuildForUiTestingCacheLevel string
+
+const (
+	AndroidBuildForUiTestingCacheLevelAll      AndroidBuildForUiTestingCacheLevel = "all"
+	AndroidBuildForUiTestingCacheLevelOnlyDeps AndroidBuildForUiTestingCacheLevel = "only_deps"
+	AndroidBuildForUiTestingCacheLevelNone     AndroidBuildForUiTestingCacheLevel = "none"
+)
+
 // AndroidBuildForUiTestingBuilder builds a android-build-for-ui-testing step with typed input methods.
 type AndroidBuildForUiTestingBuilder struct{ *Builder }
 
@@ -44,8 +53,8 @@ func (b *AndroidBuildForUiTestingBuilder) WithApkPathPattern(value string) *Andr
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *AndroidBuildForUiTestingBuilder) WithCacheLevel(value string) *AndroidBuildForUiTestingBuilder {
-	b.Builder.WithInput("cache_level", value)
+func (b *AndroidBuildForUiTestingBuilder) WithCacheLevel(value AndroidBuildForUiTestingCacheLevel) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 

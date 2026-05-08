@@ -3,6 +3,14 @@
 
 package step
 
+// SaveCarthageCacheVerbose enumerates the valid values for the verbose input.
+type SaveCarthageCacheVerbose string
+
+const (
+	SaveCarthageCacheVerboseTrue  SaveCarthageCacheVerbose = "true"
+	SaveCarthageCacheVerboseFalse SaveCarthageCacheVerbose = "false"
+)
+
 // SaveCarthageCacheBuilder builds a save-carthage-cache step with typed input methods.
 type SaveCarthageCacheBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func SaveCarthageCache(version ...string) *SaveCarthageCacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveCarthageCacheBuilder) WithVerbose(value string) *SaveCarthageCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveCarthageCacheBuilder) WithVerbose(value SaveCarthageCacheVerbose) *SaveCarthageCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

@@ -3,6 +3,30 @@
 
 package step
 
+// XctestHtmlReportV1GenerateJunit enumerates the valid values for the generate_junit input.
+type XctestHtmlReportV1GenerateJunit string
+
+const (
+	XctestHtmlReportV1GenerateJunitYes XctestHtmlReportV1GenerateJunit = "yes"
+	XctestHtmlReportV1GenerateJunitNo  XctestHtmlReportV1GenerateJunit = "no"
+)
+
+// XctestHtmlReportV1Version enumerates the valid values for the version input.
+type XctestHtmlReportV1Version string
+
+const (
+	XctestHtmlReportV1VersionDevelop XctestHtmlReportV1Version = "develop"
+	XctestHtmlReportV1VersionMaster  XctestHtmlReportV1Version = "master"
+)
+
+// XctestHtmlReportV1Verbose enumerates the valid values for the verbose input.
+type XctestHtmlReportV1Verbose string
+
+const (
+	XctestHtmlReportV1VerboseYes XctestHtmlReportV1Verbose = "yes"
+	XctestHtmlReportV1VerboseNo  XctestHtmlReportV1Verbose = "no"
+)
+
 // XctestHtmlReportV1Builder builds a xctest-html-report step with typed input methods.
 //
 // Deprecated: This step is no longer maintained. To generate HTML reports from xcresult files use the new official Bitrise step: "Generate Xcode test report html" (https://devcenter.bitrise.io/en/testing/testing-ios-apps/viewing-xcode-test-results-in-rich-html-format.html).
@@ -36,8 +60,8 @@ func (b *XctestHtmlReportV1Builder) WithTestResultPath(value string) *XctestHtml
 }
 
 // WithGenerateJunit sets generate JUnit report?.
-func (b *XctestHtmlReportV1Builder) WithGenerateJunit(value string) *XctestHtmlReportV1Builder {
-	b.Builder.WithInput("generate_junit", value)
+func (b *XctestHtmlReportV1Builder) WithGenerateJunit(value XctestHtmlReportV1GenerateJunit) *XctestHtmlReportV1Builder {
+	b.Builder.WithInput("generate_junit", string(value))
 	return b
 }
 
@@ -48,14 +72,14 @@ func (b *XctestHtmlReportV1Builder) WithOutputDir(value string) *XctestHtmlRepor
 }
 
 // WithVersion sets version of the XCTestHTMLReport.
-func (b *XctestHtmlReportV1Builder) WithVersion(value string) *XctestHtmlReportV1Builder {
-	b.Builder.WithInput("version", value)
+func (b *XctestHtmlReportV1Builder) WithVersion(value XctestHtmlReportV1Version) *XctestHtmlReportV1Builder {
+	b.Builder.WithInput("version", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *XctestHtmlReportV1Builder) WithVerbose(value string) *XctestHtmlReportV1Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *XctestHtmlReportV1Builder) WithVerbose(value XctestHtmlReportV1Verbose) *XctestHtmlReportV1Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

@@ -18,3 +18,11 @@ func AppliveryAndroid(version ...string) *AppliveryAndroidV1Builder {
 // published by applivery-android at the latest major version (v1).
 // For outputs of a specific major version use AppliveryAndroidV{N}Outputs directly.
 var AppliveryAndroidOutputs = AppliveryAndroidV1Outputs
+
+// AppliveryAndroidNotifyCollaborators is a type alias for AppliveryAndroidV1NotifyCollaborators,
+// pointing to the latest supported major version of the step's enum type.
+type AppliveryAndroidNotifyCollaborators = AppliveryAndroidV1NotifyCollaborators
+
+// AppliveryAndroidNotifyEmployees is a type alias for AppliveryAndroidV1NotifyEmployees,
+// pointing to the latest supported major version of the step's enum type.
+type AppliveryAndroidNotifyEmployees = AppliveryAndroidV1NotifyEmployees

@@ -18,3 +18,31 @@ func XcodeArchiveMac(version ...string) *XcodeArchiveMacV1Builder {
 // published by xcode-archive-mac at the latest major version (v1).
 // For outputs of a specific major version use XcodeArchiveMacV{N}Outputs directly.
 var XcodeArchiveMacOutputs = XcodeArchiveMacV1Outputs
+
+// XcodeArchiveMacExportMethod is a type alias for XcodeArchiveMacV1ExportMethod,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacExportMethod = XcodeArchiveMacV1ExportMethod
+
+// XcodeArchiveMacIsCleanBuild is a type alias for XcodeArchiveMacV1IsCleanBuild,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacIsCleanBuild = XcodeArchiveMacV1IsCleanBuild
+
+// XcodeArchiveMacDisableIndexWhileBuilding is a type alias for XcodeArchiveMacV1DisableIndexWhileBuilding,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacDisableIndexWhileBuilding = XcodeArchiveMacV1DisableIndexWhileBuilding
+
+// XcodeArchiveMacOutputTool is a type alias for XcodeArchiveMacV1OutputTool,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacOutputTool = XcodeArchiveMacV1OutputTool
+
+// XcodeArchiveMacIsExportXcarchiveZip is a type alias for XcodeArchiveMacV1IsExportXcarchiveZip,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacIsExportXcarchiveZip = XcodeArchiveMacV1IsExportXcarchiveZip
+
+// XcodeArchiveMacIsExportAllDsyms is a type alias for XcodeArchiveMacV1IsExportAllDsyms,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacIsExportAllDsyms = XcodeArchiveMacV1IsExportAllDsyms
+
+// XcodeArchiveMacVerboseLog is a type alias for XcodeArchiveMacV1VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveMacVerboseLog = XcodeArchiveMacV1VerboseLog

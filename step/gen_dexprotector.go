@@ -3,6 +3,23 @@
 
 package step
 
+// DexprotectorAppPlatform enumerates the valid values for the app_platform input.
+type DexprotectorAppPlatform string
+
+const (
+	DexprotectorAppPlatformAuto    DexprotectorAppPlatform = "auto"
+	DexprotectorAppPlatformAndroid DexprotectorAppPlatform = "Android"
+	DexprotectorAppPlatformIOS     DexprotectorAppPlatform = "iOS"
+)
+
+// DexprotectorVerbose enumerates the valid values for the verbose input.
+type DexprotectorVerbose string
+
+const (
+	DexprotectorVerboseYes DexprotectorVerbose = "yes"
+	DexprotectorVerboseNo  DexprotectorVerbose = "no"
+)
+
 // DexprotectorBuilder builds a dexprotector step with typed input methods.
 type DexprotectorBuilder struct{ *Builder }
 
@@ -44,8 +61,8 @@ func (b *DexprotectorBuilder) WithLicenseBase64(value string) *DexprotectorBuild
 }
 
 // WithAppPlatform sets your app platform.
-func (b *DexprotectorBuilder) WithAppPlatform(value string) *DexprotectorBuilder {
-	b.Builder.WithInput("app_platform", value)
+func (b *DexprotectorBuilder) WithAppPlatform(value DexprotectorAppPlatform) *DexprotectorBuilder {
+	b.Builder.WithInput("app_platform", string(value))
 	return b
 }
 
@@ -98,8 +115,8 @@ func (b *DexprotectorBuilder) WithProguardMapFile(value string) *DexprotectorBui
 }
 
 // WithVerbose sets print the verbose protection build log to stdout. This option can also be specified in the configuration file..
-func (b *DexprotectorBuilder) WithVerbose(value string) *DexprotectorBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *DexprotectorBuilder) WithVerbose(value DexprotectorVerbose) *DexprotectorBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

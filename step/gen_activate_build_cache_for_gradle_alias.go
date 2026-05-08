@@ -13,3 +13,19 @@ type ActivateBuildCacheForGradleBuilder = ActivateBuildCacheForGradleV2Builder
 func ActivateBuildCacheForGradle(version ...string) *ActivateBuildCacheForGradleV2Builder {
 	return ActivateBuildCacheForGradleV2(version...)
 }
+
+// ActivateBuildCacheForGradlePush is a type alias for ActivateBuildCacheForGradleV2Push,
+// pointing to the latest supported major version of the step's enum type.
+type ActivateBuildCacheForGradlePush = ActivateBuildCacheForGradleV2Push
+
+// ActivateBuildCacheForGradleValidationLevel is a type alias for ActivateBuildCacheForGradleV2ValidationLevel,
+// pointing to the latest supported major version of the step's enum type.
+type ActivateBuildCacheForGradleValidationLevel = ActivateBuildCacheForGradleV2ValidationLevel
+
+// ActivateBuildCacheForGradleCollectMetrics is a type alias for ActivateBuildCacheForGradleV2CollectMetrics,
+// pointing to the latest supported major version of the step's enum type.
+type ActivateBuildCacheForGradleCollectMetrics = ActivateBuildCacheForGradleV2CollectMetrics
+
+// ActivateBuildCacheForGradleVerbose is a type alias for ActivateBuildCacheForGradleV2Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type ActivateBuildCacheForGradleVerbose = ActivateBuildCacheForGradleV2Verbose

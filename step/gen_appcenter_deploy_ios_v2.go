@@ -3,6 +3,38 @@
 
 package step
 
+// AppcenterDeployIosV2NotifyTesters enumerates the valid values for the notify_testers input.
+type AppcenterDeployIosV2NotifyTesters string
+
+const (
+	AppcenterDeployIosV2NotifyTestersYes AppcenterDeployIosV2NotifyTesters = "yes"
+	AppcenterDeployIosV2NotifyTestersNo  AppcenterDeployIosV2NotifyTesters = "no"
+)
+
+// AppcenterDeployIosV2Mandatory enumerates the valid values for the mandatory input.
+type AppcenterDeployIosV2Mandatory string
+
+const (
+	AppcenterDeployIosV2MandatoryNo  AppcenterDeployIosV2Mandatory = "no"
+	AppcenterDeployIosV2MandatoryYes AppcenterDeployIosV2Mandatory = "yes"
+)
+
+// AppcenterDeployIosV2Debug enumerates the valid values for the debug input.
+type AppcenterDeployIosV2Debug string
+
+const (
+	AppcenterDeployIosV2DebugNo  AppcenterDeployIosV2Debug = "no"
+	AppcenterDeployIosV2DebugYes AppcenterDeployIosV2Debug = "yes"
+)
+
+// AppcenterDeployIosV2AllDistributionGroups enumerates the valid values for the all_distribution_groups input.
+type AppcenterDeployIosV2AllDistributionGroups string
+
+const (
+	AppcenterDeployIosV2AllDistributionGroupsNo  AppcenterDeployIosV2AllDistributionGroups = "no"
+	AppcenterDeployIosV2AllDistributionGroupsYes AppcenterDeployIosV2AllDistributionGroups = "yes"
+)
+
 // AppcenterDeployIosV2Builder builds a appcenter-deploy-ios step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -78,26 +110,26 @@ func (b *AppcenterDeployIosV2Builder) WithReleaseNotes(value string) *AppcenterD
 }
 
 // WithNotifyTesters sets notify Testers.
-func (b *AppcenterDeployIosV2Builder) WithNotifyTesters(value string) *AppcenterDeployIosV2Builder {
-	b.Builder.WithInput("notify_testers", value)
+func (b *AppcenterDeployIosV2Builder) WithNotifyTesters(value AppcenterDeployIosV2NotifyTesters) *AppcenterDeployIosV2Builder {
+	b.Builder.WithInput("notify_testers", string(value))
 	return b
 }
 
 // WithMandatory sets mandatory update.
-func (b *AppcenterDeployIosV2Builder) WithMandatory(value string) *AppcenterDeployIosV2Builder {
-	b.Builder.WithInput("mandatory", value)
+func (b *AppcenterDeployIosV2Builder) WithMandatory(value AppcenterDeployIosV2Mandatory) *AppcenterDeployIosV2Builder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 
 // WithDebug sets debug.
-func (b *AppcenterDeployIosV2Builder) WithDebug(value string) *AppcenterDeployIosV2Builder {
-	b.Builder.WithInput("debug", value)
+func (b *AppcenterDeployIosV2Builder) WithDebug(value AppcenterDeployIosV2Debug) *AppcenterDeployIosV2Builder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 
 // WithAllDistributionGroups sets all distribution groups.
-func (b *AppcenterDeployIosV2Builder) WithAllDistributionGroups(value string) *AppcenterDeployIosV2Builder {
-	b.Builder.WithInput("all_distribution_groups", value)
+func (b *AppcenterDeployIosV2Builder) WithAllDistributionGroups(value AppcenterDeployIosV2AllDistributionGroups) *AppcenterDeployIosV2Builder {
+	b.Builder.WithInput("all_distribution_groups", string(value))
 	return b
 }
 

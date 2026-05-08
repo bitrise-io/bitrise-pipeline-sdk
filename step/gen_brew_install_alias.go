@@ -13,3 +13,19 @@ type BrewInstallBuilder = BrewInstallV1Builder
 func BrewInstall(version ...string) *BrewInstallV1Builder {
 	return BrewInstallV1(version...)
 }
+
+// BrewInstallUpgrade is a type alias for BrewInstallV1Upgrade,
+// pointing to the latest supported major version of the step's enum type.
+type BrewInstallUpgrade = BrewInstallV1Upgrade
+
+// BrewInstallUpgradeDependents is a type alias for BrewInstallV1UpgradeDependents,
+// pointing to the latest supported major version of the step's enum type.
+type BrewInstallUpgradeDependents = BrewInstallV1UpgradeDependents
+
+// BrewInstallUseBrewfile is a type alias for BrewInstallV1UseBrewfile,
+// pointing to the latest supported major version of the step's enum type.
+type BrewInstallUseBrewfile = BrewInstallV1UseBrewfile
+
+// BrewInstallVerboseLog is a type alias for BrewInstallV1VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type BrewInstallVerboseLog = BrewInstallV1VerboseLog

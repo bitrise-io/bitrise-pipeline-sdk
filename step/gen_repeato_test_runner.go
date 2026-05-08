@@ -3,6 +3,15 @@
 
 package step
 
+// RepeatoTestRunnerLogLevel enumerates the valid values for the log_level input.
+type RepeatoTestRunnerLogLevel string
+
+const (
+	RepeatoTestRunnerLogLevelWARN  RepeatoTestRunnerLogLevel = "WARN"
+	RepeatoTestRunnerLogLevelINFO  RepeatoTestRunnerLogLevel = "INFO"
+	RepeatoTestRunnerLogLevelDEBUG RepeatoTestRunnerLogLevel = "DEBUG"
+)
+
 // RepeatoTestRunnerBuilder builds a repeato-test-runner step with typed input methods.
 type RepeatoTestRunnerBuilder struct{ *Builder }
 
@@ -44,8 +53,8 @@ func (b *RepeatoTestRunnerBuilder) WithLicenseKey(value string) *RepeatoTestRunn
 }
 
 // WithLogLevel sets log Level.
-func (b *RepeatoTestRunnerBuilder) WithLogLevel(value string) *RepeatoTestRunnerBuilder {
-	b.Builder.WithInput("log_level", value)
+func (b *RepeatoTestRunnerBuilder) WithLogLevel(value RepeatoTestRunnerLogLevel) *RepeatoTestRunnerBuilder {
+	b.Builder.WithInput("log_level", string(value))
 	return b
 }
 

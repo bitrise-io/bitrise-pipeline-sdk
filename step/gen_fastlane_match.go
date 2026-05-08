@@ -3,6 +3,16 @@
 
 package step
 
+// FastlaneMatchType enumerates the valid values for the type input.
+type FastlaneMatchType string
+
+const (
+	FastlaneMatchTypeAdhoc       FastlaneMatchType = "adhoc"
+	FastlaneMatchTypeAppstore    FastlaneMatchType = "appstore"
+	FastlaneMatchTypeDevelopment FastlaneMatchType = "development"
+	FastlaneMatchTypeEnterprise  FastlaneMatchType = "enterprise"
+)
+
 // FastlaneMatchBuilder builds a fastlane-match step with typed input methods.
 type FastlaneMatchBuilder struct{ *Builder }
 
@@ -44,8 +54,8 @@ func (b *FastlaneMatchBuilder) WithDecryptPassword(value string) *FastlaneMatchB
 }
 
 // WithType sets platform.
-func (b *FastlaneMatchBuilder) WithType(value string) *FastlaneMatchBuilder {
-	b.Builder.WithInput("type", value)
+func (b *FastlaneMatchBuilder) WithType(value FastlaneMatchType) *FastlaneMatchBuilder {
+	b.Builder.WithInput("type", string(value))
 	return b
 }
 

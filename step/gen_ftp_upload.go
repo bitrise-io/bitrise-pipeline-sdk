@@ -3,6 +3,14 @@
 
 package step
 
+// FtpUploadDebugMode enumerates the valid values for the debug_mode input.
+type FtpUploadDebugMode string
+
+const (
+	FtpUploadDebugModeTrue  FtpUploadDebugMode = "true"
+	FtpUploadDebugModeFalse FtpUploadDebugMode = "false"
+)
+
 // FtpUploadBuilder builds a ftp-upload step with typed input methods.
 type FtpUploadBuilder struct{ *Builder }
 
@@ -50,7 +58,7 @@ func (b *FtpUploadBuilder) WithUploadTargetPath(value string) *FtpUploadBuilder 
 }
 
 // WithDebugMode sets debug mode.
-func (b *FtpUploadBuilder) WithDebugMode(value string) *FtpUploadBuilder {
-	b.Builder.WithInput("debug_mode", value)
+func (b *FtpUploadBuilder) WithDebugMode(value FtpUploadDebugMode) *FtpUploadBuilder {
+	b.Builder.WithInput("debug_mode", string(value))
 	return b
 }

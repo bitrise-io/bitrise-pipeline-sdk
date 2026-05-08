@@ -13,3 +13,11 @@ type CocoapodsInstallBuilder = CocoapodsInstallV3Builder
 func CocoapodsInstall(version ...string) *CocoapodsInstallV3Builder {
 	return CocoapodsInstallV3(version...)
 }
+
+// CocoapodsInstallCommand is a type alias for CocoapodsInstallV3Command,
+// pointing to the latest supported major version of the step's enum type.
+type CocoapodsInstallCommand = CocoapodsInstallV3Command
+
+// CocoapodsInstallVerbose is a type alias for CocoapodsInstallV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type CocoapodsInstallVerbose = CocoapodsInstallV3Verbose

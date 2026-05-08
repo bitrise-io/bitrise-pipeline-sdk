@@ -3,6 +3,14 @@
 
 package step
 
+// FlutterTestV1GenerateCodeCoverageFiles enumerates the valid values for the generate_code_coverage_files input.
+type FlutterTestV1GenerateCodeCoverageFiles string
+
+const (
+	FlutterTestV1GenerateCodeCoverageFilesYes FlutterTestV1GenerateCodeCoverageFiles = "yes"
+	FlutterTestV1GenerateCodeCoverageFilesNo  FlutterTestV1GenerateCodeCoverageFiles = "no"
+)
+
 // FlutterTestV1Builder builds a flutter-test step with typed input methods.
 type FlutterTestV1Builder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *FlutterTestV1Builder) WithBitriseTestResultDir(value string) *FlutterTe
 }
 
 // WithGenerateCodeCoverageFiles sets generate code coverage files?.
-func (b *FlutterTestV1Builder) WithGenerateCodeCoverageFiles(value string) *FlutterTestV1Builder {
-	b.Builder.WithInput("generate_code_coverage_files", value)
+func (b *FlutterTestV1Builder) WithGenerateCodeCoverageFiles(value FlutterTestV1GenerateCodeCoverageFiles) *FlutterTestV1Builder {
+	b.Builder.WithInput("generate_code_coverage_files", string(value))
 	return b
 }
 

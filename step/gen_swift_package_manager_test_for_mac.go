@@ -3,6 +3,22 @@
 
 package step
 
+// SwiftPackageManagerTestForMacIsSkipBuild enumerates the valid values for the is_skip_build input.
+type SwiftPackageManagerTestForMacIsSkipBuild string
+
+const (
+	SwiftPackageManagerTestForMacIsSkipBuildYes SwiftPackageManagerTestForMacIsSkipBuild = "yes"
+	SwiftPackageManagerTestForMacIsSkipBuildNo  SwiftPackageManagerTestForMacIsSkipBuild = "no"
+)
+
+// SwiftPackageManagerTestForMacIsParallel enumerates the valid values for the is_parallel input.
+type SwiftPackageManagerTestForMacIsParallel string
+
+const (
+	SwiftPackageManagerTestForMacIsParallelYes SwiftPackageManagerTestForMacIsParallel = "yes"
+	SwiftPackageManagerTestForMacIsParallelNo  SwiftPackageManagerTestForMacIsParallel = "no"
+)
+
 // SwiftPackageManagerTestForMacBuilder builds a swift-package-manager-test-for-mac step with typed input methods.
 type SwiftPackageManagerTestForMacBuilder struct{ *Builder }
 
@@ -26,13 +42,13 @@ func (b *SwiftPackageManagerTestForMacBuilder) WithBuildPath(value string) *Swif
 }
 
 // WithIsSkipBuild sets skip build.
-func (b *SwiftPackageManagerTestForMacBuilder) WithIsSkipBuild(value string) *SwiftPackageManagerTestForMacBuilder {
-	b.Builder.WithInput("is_skip_build", value)
+func (b *SwiftPackageManagerTestForMacBuilder) WithIsSkipBuild(value SwiftPackageManagerTestForMacIsSkipBuild) *SwiftPackageManagerTestForMacBuilder {
+	b.Builder.WithInput("is_skip_build", string(value))
 	return b
 }
 
 // WithIsParallel sets parallel test.
-func (b *SwiftPackageManagerTestForMacBuilder) WithIsParallel(value string) *SwiftPackageManagerTestForMacBuilder {
-	b.Builder.WithInput("is_parallel", value)
+func (b *SwiftPackageManagerTestForMacBuilder) WithIsParallel(value SwiftPackageManagerTestForMacIsParallel) *SwiftPackageManagerTestForMacBuilder {
+	b.Builder.WithInput("is_parallel", string(value))
 	return b
 }

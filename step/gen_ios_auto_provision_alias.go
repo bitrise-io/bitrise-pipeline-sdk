@@ -22,3 +22,19 @@ func IosAutoProvision(version ...string) *IosAutoProvisionV2Builder {
 // published by ios-auto-provision at the latest major version (v2).
 // For outputs of a specific major version use IosAutoProvisionV{N}Outputs directly.
 var IosAutoProvisionOutputs = IosAutoProvisionV2Outputs
+
+// IosAutoProvisionDistributionType is a type alias for IosAutoProvisionV2DistributionType,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionDistributionType = IosAutoProvisionV2DistributionType
+
+// IosAutoProvisionGenerateProfiles is a type alias for IosAutoProvisionV2GenerateProfiles,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionGenerateProfiles = IosAutoProvisionV2GenerateProfiles
+
+// IosAutoProvisionRegisterTestDevices is a type alias for IosAutoProvisionV2RegisterTestDevices,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionRegisterTestDevices = IosAutoProvisionV2RegisterTestDevices
+
+// IosAutoProvisionVerboseLog is a type alias for IosAutoProvisionV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionVerboseLog = IosAutoProvisionV2VerboseLog

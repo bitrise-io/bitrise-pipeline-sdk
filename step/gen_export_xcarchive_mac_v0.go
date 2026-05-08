@@ -3,6 +3,49 @@
 
 package step
 
+// ExportXcarchiveMacV0ExportMethod enumerates the valid values for the export_method input.
+type ExportXcarchiveMacV0ExportMethod string
+
+const (
+	ExportXcarchiveMacV0ExportMethodAppStore    ExportXcarchiveMacV0ExportMethod = "app-store"
+	ExportXcarchiveMacV0ExportMethodAdHoc       ExportXcarchiveMacV0ExportMethod = "ad-hoc"
+	ExportXcarchiveMacV0ExportMethodEnterprise  ExportXcarchiveMacV0ExportMethod = "enterprise"
+	ExportXcarchiveMacV0ExportMethodDevelopment ExportXcarchiveMacV0ExportMethod = "development"
+	ExportXcarchiveMacV0ExportMethodDeveloperId ExportXcarchiveMacV0ExportMethod = "developer-id"
+)
+
+// ExportXcarchiveMacV0UploadBitcode enumerates the valid values for the upload_bitcode input.
+type ExportXcarchiveMacV0UploadBitcode string
+
+const (
+	ExportXcarchiveMacV0UploadBitcodeYes ExportXcarchiveMacV0UploadBitcode = "yes"
+	ExportXcarchiveMacV0UploadBitcodeNo  ExportXcarchiveMacV0UploadBitcode = "no"
+)
+
+// ExportXcarchiveMacV0CompileBitcode enumerates the valid values for the compile_bitcode input.
+type ExportXcarchiveMacV0CompileBitcode string
+
+const (
+	ExportXcarchiveMacV0CompileBitcodeYes ExportXcarchiveMacV0CompileBitcode = "yes"
+	ExportXcarchiveMacV0CompileBitcodeNo  ExportXcarchiveMacV0CompileBitcode = "no"
+)
+
+// ExportXcarchiveMacV0UseLegacyExport enumerates the valid values for the use_legacy_export input.
+type ExportXcarchiveMacV0UseLegacyExport string
+
+const (
+	ExportXcarchiveMacV0UseLegacyExportYes ExportXcarchiveMacV0UseLegacyExport = "yes"
+	ExportXcarchiveMacV0UseLegacyExportNo  ExportXcarchiveMacV0UseLegacyExport = "no"
+)
+
+// ExportXcarchiveMacV0LegacyExportOutputFormat enumerates the valid values for the legacy_export_output_format input.
+type ExportXcarchiveMacV0LegacyExportOutputFormat string
+
+const (
+	ExportXcarchiveMacV0LegacyExportOutputFormatApp ExportXcarchiveMacV0LegacyExportOutputFormat = "app"
+	ExportXcarchiveMacV0LegacyExportOutputFormatPkg ExportXcarchiveMacV0LegacyExportOutputFormat = "pkg"
+)
+
 // ExportXcarchiveMacV0Builder builds a export-xcarchive-mac step with typed input methods.
 type ExportXcarchiveMacV0Builder struct{ *Builder }
 
@@ -26,20 +69,20 @@ func (b *ExportXcarchiveMacV0Builder) WithArchivePath(value string) *ExportXcarc
 }
 
 // WithExportMethod sets select method for export.
-func (b *ExportXcarchiveMacV0Builder) WithExportMethod(value string) *ExportXcarchiveMacV0Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *ExportXcarchiveMacV0Builder) WithExportMethod(value ExportXcarchiveMacV0ExportMethod) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *ExportXcarchiveMacV0Builder) WithUploadBitcode(value string) *ExportXcarchiveMacV0Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *ExportXcarchiveMacV0Builder) WithUploadBitcode(value ExportXcarchiveMacV0UploadBitcode) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *ExportXcarchiveMacV0Builder) WithCompileBitcode(value string) *ExportXcarchiveMacV0Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *ExportXcarchiveMacV0Builder) WithCompileBitcode(value ExportXcarchiveMacV0CompileBitcode) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
@@ -56,8 +99,8 @@ func (b *ExportXcarchiveMacV0Builder) WithCustomExportOptionsPlistContent(value 
 }
 
 // WithUseLegacyExport sets use legacy export method?.
-func (b *ExportXcarchiveMacV0Builder) WithUseLegacyExport(value string) *ExportXcarchiveMacV0Builder {
-	b.Builder.WithInput("use_legacy_export", value)
+func (b *ExportXcarchiveMacV0Builder) WithUseLegacyExport(value ExportXcarchiveMacV0UseLegacyExport) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithInput("use_legacy_export", string(value))
 	return b
 }
 
@@ -68,8 +111,8 @@ func (b *ExportXcarchiveMacV0Builder) WithLegacyExportProvisioningProfileName(va
 }
 
 // WithLegacyExportOutputFormat sets specify export format.
-func (b *ExportXcarchiveMacV0Builder) WithLegacyExportOutputFormat(value string) *ExportXcarchiveMacV0Builder {
-	b.Builder.WithInput("legacy_export_output_format", value)
+func (b *ExportXcarchiveMacV0Builder) WithLegacyExportOutputFormat(value ExportXcarchiveMacV0LegacyExportOutputFormat) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithInput("legacy_export_output_format", string(value))
 	return b
 }
 

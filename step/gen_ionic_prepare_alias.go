@@ -13,3 +13,11 @@ type IonicPrepareBuilder = IonicPrepareV1Builder
 func IonicPrepare(version ...string) *IonicPrepareV1Builder {
 	return IonicPrepareV1(version...)
 }
+
+// IonicPreparePlatform is a type alias for IonicPrepareV1Platform,
+// pointing to the latest supported major version of the step's enum type.
+type IonicPreparePlatform = IonicPrepareV1Platform
+
+// IonicPrepareCacheLocalDeps is a type alias for IonicPrepareV1CacheLocalDeps,
+// pointing to the latest supported major version of the step's enum type.
+type IonicPrepareCacheLocalDeps = IonicPrepareV1CacheLocalDeps

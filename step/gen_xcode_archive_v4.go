@@ -3,6 +3,89 @@
 
 package step
 
+// XcodeArchiveV4DistributionMethod enumerates the valid values for the distribution_method input.
+type XcodeArchiveV4DistributionMethod string
+
+const (
+	XcodeArchiveV4DistributionMethodDevelopment XcodeArchiveV4DistributionMethod = "development"
+	XcodeArchiveV4DistributionMethodAppStore    XcodeArchiveV4DistributionMethod = "app-store"
+	XcodeArchiveV4DistributionMethodAdHoc       XcodeArchiveV4DistributionMethod = "ad-hoc"
+	XcodeArchiveV4DistributionMethodEnterprise  XcodeArchiveV4DistributionMethod = "enterprise"
+)
+
+// XcodeArchiveV4PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeArchiveV4PerformCleanAction string
+
+const (
+	XcodeArchiveV4PerformCleanActionYes XcodeArchiveV4PerformCleanAction = "yes"
+	XcodeArchiveV4PerformCleanActionNo  XcodeArchiveV4PerformCleanAction = "no"
+)
+
+// XcodeArchiveV4LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeArchiveV4LogFormatter string
+
+const (
+	XcodeArchiveV4LogFormatterXcpretty   XcodeArchiveV4LogFormatter = "xcpretty"
+	XcodeArchiveV4LogFormatterXcodebuild XcodeArchiveV4LogFormatter = "xcodebuild"
+)
+
+// XcodeArchiveV4AutomaticCodeSigning enumerates the valid values for the automatic_code_signing input.
+type XcodeArchiveV4AutomaticCodeSigning string
+
+const (
+	XcodeArchiveV4AutomaticCodeSigningOff     XcodeArchiveV4AutomaticCodeSigning = "off"
+	XcodeArchiveV4AutomaticCodeSigningApiKey  XcodeArchiveV4AutomaticCodeSigning = "api-key"
+	XcodeArchiveV4AutomaticCodeSigningAppleId XcodeArchiveV4AutomaticCodeSigning = "apple-id"
+)
+
+// XcodeArchiveV4RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type XcodeArchiveV4RegisterTestDevices string
+
+const (
+	XcodeArchiveV4RegisterTestDevicesYes XcodeArchiveV4RegisterTestDevices = "yes"
+	XcodeArchiveV4RegisterTestDevicesNo  XcodeArchiveV4RegisterTestDevices = "no"
+)
+
+// XcodeArchiveV4CompileBitcode enumerates the valid values for the compile_bitcode input.
+type XcodeArchiveV4CompileBitcode string
+
+const (
+	XcodeArchiveV4CompileBitcodeYes XcodeArchiveV4CompileBitcode = "yes"
+	XcodeArchiveV4CompileBitcodeNo  XcodeArchiveV4CompileBitcode = "no"
+)
+
+// XcodeArchiveV4UploadBitcode enumerates the valid values for the upload_bitcode input.
+type XcodeArchiveV4UploadBitcode string
+
+const (
+	XcodeArchiveV4UploadBitcodeYes XcodeArchiveV4UploadBitcode = "yes"
+	XcodeArchiveV4UploadBitcodeNo  XcodeArchiveV4UploadBitcode = "no"
+)
+
+// XcodeArchiveV4ExportAllDsyms enumerates the valid values for the export_all_dsyms input.
+type XcodeArchiveV4ExportAllDsyms string
+
+const (
+	XcodeArchiveV4ExportAllDsymsYes XcodeArchiveV4ExportAllDsyms = "yes"
+	XcodeArchiveV4ExportAllDsymsNo  XcodeArchiveV4ExportAllDsyms = "no"
+)
+
+// XcodeArchiveV4CacheLevel enumerates the valid values for the cache_level input.
+type XcodeArchiveV4CacheLevel string
+
+const (
+	XcodeArchiveV4CacheLevelNone          XcodeArchiveV4CacheLevel = "none"
+	XcodeArchiveV4CacheLevelSwiftPackages XcodeArchiveV4CacheLevel = "swift_packages"
+)
+
+// XcodeArchiveV4VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeArchiveV4VerboseLog string
+
+const (
+	XcodeArchiveV4VerboseLogYes XcodeArchiveV4VerboseLog = "yes"
+	XcodeArchiveV4VerboseLogNo  XcodeArchiveV4VerboseLog = "no"
+)
+
 // XcodeArchiveV4Builder builds a xcode-archive step with typed input methods.
 type XcodeArchiveV4Builder struct{ *Builder }
 
@@ -32,8 +115,8 @@ func (b *XcodeArchiveV4Builder) WithScheme(value string) *XcodeArchiveV4Builder 
 }
 
 // WithDistributionMethod sets distribution method.
-func (b *XcodeArchiveV4Builder) WithDistributionMethod(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("distribution_method", value)
+func (b *XcodeArchiveV4Builder) WithDistributionMethod(value XcodeArchiveV4DistributionMethod) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("distribution_method", string(value))
 	return b
 }
 
@@ -50,8 +133,8 @@ func (b *XcodeArchiveV4Builder) WithXcconfigContent(value string) *XcodeArchiveV
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeArchiveV4Builder) WithPerformCleanAction(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeArchiveV4Builder) WithPerformCleanAction(value XcodeArchiveV4PerformCleanAction) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -62,20 +145,20 @@ func (b *XcodeArchiveV4Builder) WithXcodebuildOptions(value string) *XcodeArchiv
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeArchiveV4Builder) WithLogFormatter(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeArchiveV4Builder) WithLogFormatter(value XcodeArchiveV4LogFormatter) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
 // WithAutomaticCodeSigning sets automatic code signing method.
-func (b *XcodeArchiveV4Builder) WithAutomaticCodeSigning(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("automatic_code_signing", value)
+func (b *XcodeArchiveV4Builder) WithAutomaticCodeSigning(value XcodeArchiveV4AutomaticCodeSigning) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("automatic_code_signing", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *XcodeArchiveV4Builder) WithRegisterTestDevices(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *XcodeArchiveV4Builder) WithRegisterTestDevices(value XcodeArchiveV4RegisterTestDevices) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -128,14 +211,14 @@ func (b *XcodeArchiveV4Builder) WithExportDevelopmentTeam(value string) *XcodeAr
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *XcodeArchiveV4Builder) WithCompileBitcode(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *XcodeArchiveV4Builder) WithCompileBitcode(value XcodeArchiveV4CompileBitcode) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *XcodeArchiveV4Builder) WithUploadBitcode(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *XcodeArchiveV4Builder) WithUploadBitcode(value XcodeArchiveV4UploadBitcode) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
@@ -158,8 +241,8 @@ func (b *XcodeArchiveV4Builder) WithOutputDir(value string) *XcodeArchiveV4Build
 }
 
 // WithExportAllDsyms sets export all dSYMs.
-func (b *XcodeArchiveV4Builder) WithExportAllDsyms(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("export_all_dsyms", value)
+func (b *XcodeArchiveV4Builder) WithExportAllDsyms(value XcodeArchiveV4ExportAllDsyms) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("export_all_dsyms", string(value))
 	return b
 }
 
@@ -170,8 +253,8 @@ func (b *XcodeArchiveV4Builder) WithArtifactName(value string) *XcodeArchiveV4Bu
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeArchiveV4Builder) WithCacheLevel(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeArchiveV4Builder) WithCacheLevel(value XcodeArchiveV4CacheLevel) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -194,8 +277,8 @@ func (b *XcodeArchiveV4Builder) WithApiKeyIssuerId(value string) *XcodeArchiveV4
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeArchiveV4Builder) WithVerboseLog(value string) *XcodeArchiveV4Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeArchiveV4Builder) WithVerboseLog(value XcodeArchiveV4VerboseLog) *XcodeArchiveV4Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

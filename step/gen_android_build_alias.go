@@ -18,3 +18,7 @@ func AndroidBuild(version ...string) *AndroidBuildV1Builder {
 // published by android-build at the latest major version (v1).
 // For outputs of a specific major version use AndroidBuildV{N}Outputs directly.
 var AndroidBuildOutputs = AndroidBuildV1Outputs
+
+// AndroidBuildBuildType is a type alias for AndroidBuildV1BuildType,
+// pointing to the latest supported major version of the step's enum type.
+type AndroidBuildBuildType = AndroidBuildV1BuildType

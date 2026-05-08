@@ -3,6 +3,30 @@
 
 package step
 
+// XcodeArchiveMacV0IsForceCodeSign enumerates the valid values for the is_force_code_sign input.
+type XcodeArchiveMacV0IsForceCodeSign string
+
+const (
+	XcodeArchiveMacV0IsForceCodeSignYes XcodeArchiveMacV0IsForceCodeSign = "yes"
+	XcodeArchiveMacV0IsForceCodeSignNo  XcodeArchiveMacV0IsForceCodeSign = "no"
+)
+
+// XcodeArchiveMacV0IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeArchiveMacV0IsCleanBuild string
+
+const (
+	XcodeArchiveMacV0IsCleanBuildYes XcodeArchiveMacV0IsCleanBuild = "yes"
+	XcodeArchiveMacV0IsCleanBuildNo  XcodeArchiveMacV0IsCleanBuild = "no"
+)
+
+// XcodeArchiveMacV0OutputTool enumerates the valid values for the output_tool input.
+type XcodeArchiveMacV0OutputTool string
+
+const (
+	XcodeArchiveMacV0OutputToolXcpretty   XcodeArchiveMacV0OutputTool = "xcpretty"
+	XcodeArchiveMacV0OutputToolXcodebuild XcodeArchiveMacV0OutputTool = "xcodebuild"
+)
+
 // XcodeArchiveMacV0Builder builds a xcode-archive-mac step with typed input methods.
 type XcodeArchiveMacV0Builder struct{ *Builder }
 
@@ -50,20 +74,20 @@ func (b *XcodeArchiveMacV0Builder) WithOutputDir(value string) *XcodeArchiveMacV
 }
 
 // WithIsForceCodeSign sets use force code signing attributes?.
-func (b *XcodeArchiveMacV0Builder) WithIsForceCodeSign(value string) *XcodeArchiveMacV0Builder {
-	b.Builder.WithInput("is_force_code_sign", value)
+func (b *XcodeArchiveMacV0Builder) WithIsForceCodeSign(value XcodeArchiveMacV0IsForceCodeSign) *XcodeArchiveMacV0Builder {
+	b.Builder.WithInput("is_force_code_sign", string(value))
 	return b
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before the archive?.
-func (b *XcodeArchiveMacV0Builder) WithIsCleanBuild(value string) *XcodeArchiveMacV0Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeArchiveMacV0Builder) WithIsCleanBuild(value XcodeArchiveMacV0IsCleanBuild) *XcodeArchiveMacV0Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeArchiveMacV0Builder) WithOutputTool(value string) *XcodeArchiveMacV0Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeArchiveMacV0Builder) WithOutputTool(value XcodeArchiveMacV0OutputTool) *XcodeArchiveMacV0Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 

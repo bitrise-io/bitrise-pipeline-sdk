@@ -3,6 +3,40 @@
 
 package step
 
+// AppdomeBuild2secureIosV3SignMethod enumerates the valid values for the sign_method input.
+type AppdomeBuild2secureIosV3SignMethod string
+
+const (
+	AppdomeBuild2secureIosV3SignMethodOnAppdome      AppdomeBuild2secureIosV3SignMethod = "On-Appdome"
+	AppdomeBuild2secureIosV3SignMethodPrivateSigning AppdomeBuild2secureIosV3SignMethod = "Private-Signing"
+	AppdomeBuild2secureIosV3SignMethodAutoDevSigning AppdomeBuild2secureIosV3SignMethod = "Auto-Dev-Signing"
+)
+
+// AppdomeBuild2secureIosV3BuildLogs enumerates the valid values for the build_logs input.
+type AppdomeBuild2secureIosV3BuildLogs string
+
+const (
+	AppdomeBuild2secureIosV3BuildLogsTrue  AppdomeBuild2secureIosV3BuildLogs = "true"
+	AppdomeBuild2secureIosV3BuildLogsFalse AppdomeBuild2secureIosV3BuildLogs = "false"
+)
+
+// AppdomeBuild2secureIosV3BuildToTest enumerates the valid values for the build_to_test input.
+type AppdomeBuild2secureIosV3BuildToTest string
+
+const (
+	AppdomeBuild2secureIosV3BuildToTestNone          AppdomeBuild2secureIosV3BuildToTest = "None"
+	AppdomeBuild2secureIosV3BuildToTestAWSDeviceFarm AppdomeBuild2secureIosV3BuildToTest = "AWS_device_farm"
+	AppdomeBuild2secureIosV3BuildToTestBitbar        AppdomeBuild2secureIosV3BuildToTest = "Bitbar"
+	AppdomeBuild2secureIosV3BuildToTestBrowserstack  AppdomeBuild2secureIosV3BuildToTest = "Browserstack"
+	AppdomeBuild2secureIosV3BuildToTestFirebase      AppdomeBuild2secureIosV3BuildToTest = "Firebase"
+	AppdomeBuild2secureIosV3BuildToTestKatalon       AppdomeBuild2secureIosV3BuildToTest = "Katalon"
+	AppdomeBuild2secureIosV3BuildToTestKobiton       AppdomeBuild2secureIosV3BuildToTest = "Kobiton"
+	AppdomeBuild2secureIosV3BuildToTestLambdatest    AppdomeBuild2secureIosV3BuildToTest = "Lambdatest"
+	AppdomeBuild2secureIosV3BuildToTestPerfecto      AppdomeBuild2secureIosV3BuildToTest = "Perfecto"
+	AppdomeBuild2secureIosV3BuildToTestTosca         AppdomeBuild2secureIosV3BuildToTest = "Tosca"
+	AppdomeBuild2secureIosV3BuildToTestSaucelabs     AppdomeBuild2secureIosV3BuildToTest = "Saucelabs"
+)
+
 // AppdomeBuild2secureIosV3Builder builds a appdome-build-2secure-ios step with typed input methods.
 type AppdomeBuild2secureIosV3Builder struct{ *Builder }
 
@@ -44,8 +78,8 @@ func (b *AppdomeBuild2secureIosV3Builder) WithTeamId(value string) *AppdomeBuild
 }
 
 // WithSignMethod sets signing Method.
-func (b *AppdomeBuild2secureIosV3Builder) WithSignMethod(value string) *AppdomeBuild2secureIosV3Builder {
-	b.Builder.WithInput("sign_method", value)
+func (b *AppdomeBuild2secureIosV3Builder) WithSignMethod(value AppdomeBuild2secureIosV3SignMethod) *AppdomeBuild2secureIosV3Builder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 
@@ -68,14 +102,14 @@ func (b *AppdomeBuild2secureIosV3Builder) WithEntitlements(value string) *Appdom
 }
 
 // WithBuildLogs sets build With Diagnostic Logs.
-func (b *AppdomeBuild2secureIosV3Builder) WithBuildLogs(value string) *AppdomeBuild2secureIosV3Builder {
-	b.Builder.WithInput("build_logs", value)
+func (b *AppdomeBuild2secureIosV3Builder) WithBuildLogs(value AppdomeBuild2secureIosV3BuildLogs) *AppdomeBuild2secureIosV3Builder {
+	b.Builder.WithInput("build_logs", string(value))
 	return b
 }
 
 // WithBuildToTest sets build to test Vendor.
-func (b *AppdomeBuild2secureIosV3Builder) WithBuildToTest(value string) *AppdomeBuild2secureIosV3Builder {
-	b.Builder.WithInput("build_to_test", value)
+func (b *AppdomeBuild2secureIosV3Builder) WithBuildToTest(value AppdomeBuild2secureIosV3BuildToTest) *AppdomeBuild2secureIosV3Builder {
+	b.Builder.WithInput("build_to_test", string(value))
 	return b
 }
 

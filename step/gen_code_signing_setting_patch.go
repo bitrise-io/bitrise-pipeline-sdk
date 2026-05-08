@@ -3,6 +3,22 @@
 
 package step
 
+// CodeSigningSettingPatchCodeSignStyle enumerates the valid values for the code_sign_style input.
+type CodeSigningSettingPatchCodeSignStyle string
+
+const (
+	CodeSigningSettingPatchCodeSignStyleAutomatic CodeSigningSettingPatchCodeSignStyle = "Automatic"
+	CodeSigningSettingPatchCodeSignStyleManual    CodeSigningSettingPatchCodeSignStyle = "Manual"
+)
+
+// CodeSigningSettingPatchDryRun enumerates the valid values for the dry_run input.
+type CodeSigningSettingPatchDryRun string
+
+const (
+	CodeSigningSettingPatchDryRunNo  CodeSigningSettingPatchDryRun = "no"
+	CodeSigningSettingPatchDryRunYes CodeSigningSettingPatchDryRun = "yes"
+)
+
 // CodeSigningSettingPatchBuilder builds a code-signing-setting-patch step with typed input methods.
 type CodeSigningSettingPatchBuilder struct{ *Builder }
 
@@ -32,8 +48,8 @@ func (b *CodeSigningSettingPatchBuilder) WithProjectTarget(value string) *CodeSi
 }
 
 // WithCodeSignStyle sets code Sign Style.
-func (b *CodeSigningSettingPatchBuilder) WithCodeSignStyle(value string) *CodeSigningSettingPatchBuilder {
-	b.Builder.WithInput("code_sign_style", value)
+func (b *CodeSigningSettingPatchBuilder) WithCodeSignStyle(value CodeSigningSettingPatchCodeSignStyle) *CodeSigningSettingPatchBuilder {
+	b.Builder.WithInput("code_sign_style", string(value))
 	return b
 }
 
@@ -86,7 +102,7 @@ func (b *CodeSigningSettingPatchBuilder) WithReleaseProvisioningProfileSpecifier
 }
 
 // WithDryRun sets dry-run preview (settings preview).
-func (b *CodeSigningSettingPatchBuilder) WithDryRun(value string) *CodeSigningSettingPatchBuilder {
-	b.Builder.WithInput("dry_run", value)
+func (b *CodeSigningSettingPatchBuilder) WithDryRun(value CodeSigningSettingPatchDryRun) *CodeSigningSettingPatchBuilder {
+	b.Builder.WithInput("dry_run", string(value))
 	return b
 }

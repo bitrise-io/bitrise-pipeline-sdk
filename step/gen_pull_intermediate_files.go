@@ -3,6 +3,14 @@
 
 package step
 
+// PullIntermediateFilesVerbose enumerates the valid values for the verbose input.
+type PullIntermediateFilesVerbose string
+
+const (
+	PullIntermediateFilesVerboseTrue  PullIntermediateFilesVerbose = "true"
+	PullIntermediateFilesVerboseFalse PullIntermediateFilesVerbose = "false"
+)
+
 // PullIntermediateFilesBuilder builds a pull-intermediate-files step with typed input methods.
 type PullIntermediateFilesBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *PullIntermediateFilesBuilder) WithArtifactSources(value string) *PullIn
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *PullIntermediateFilesBuilder) WithVerbose(value string) *PullIntermediateFilesBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *PullIntermediateFilesBuilder) WithVerbose(value PullIntermediateFilesVerbose) *PullIntermediateFilesBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

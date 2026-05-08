@@ -3,6 +3,111 @@
 
 package step
 
+// XcodeTestV2SimulatorPlatform enumerates the valid values for the simulator_platform input.
+type XcodeTestV2SimulatorPlatform string
+
+const (
+	XcodeTestV2SimulatorPlatformIOSSimulator  XcodeTestV2SimulatorPlatform = "iOS Simulator"
+	XcodeTestV2SimulatorPlatformTvOSSimulator XcodeTestV2SimulatorPlatform = "tvOS Simulator"
+)
+
+// XcodeTestV2ExportUitestArtifacts enumerates the valid values for the export_uitest_artifacts input.
+type XcodeTestV2ExportUitestArtifacts string
+
+const (
+	XcodeTestV2ExportUitestArtifactsTrue  XcodeTestV2ExportUitestArtifacts = "true"
+	XcodeTestV2ExportUitestArtifactsFalse XcodeTestV2ExportUitestArtifacts = "false"
+)
+
+// XcodeTestV2GenerateCodeCoverageFiles enumerates the valid values for the generate_code_coverage_files input.
+type XcodeTestV2GenerateCodeCoverageFiles string
+
+const (
+	XcodeTestV2GenerateCodeCoverageFilesYes XcodeTestV2GenerateCodeCoverageFiles = "yes"
+	XcodeTestV2GenerateCodeCoverageFilesNo  XcodeTestV2GenerateCodeCoverageFiles = "no"
+)
+
+// XcodeTestV2DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeTestV2DisableIndexWhileBuilding string
+
+const (
+	XcodeTestV2DisableIndexWhileBuildingYes XcodeTestV2DisableIndexWhileBuilding = "yes"
+	XcodeTestV2DisableIndexWhileBuildingNo  XcodeTestV2DisableIndexWhileBuilding = "no"
+)
+
+// XcodeTestV2Verbose enumerates the valid values for the verbose input.
+type XcodeTestV2Verbose string
+
+const (
+	XcodeTestV2VerboseYes XcodeTestV2Verbose = "yes"
+	XcodeTestV2VerboseNo  XcodeTestV2Verbose = "no"
+)
+
+// XcodeTestV2HeadlessMode enumerates the valid values for the headless_mode input.
+type XcodeTestV2HeadlessMode string
+
+const (
+	XcodeTestV2HeadlessModeYes XcodeTestV2HeadlessMode = "yes"
+	XcodeTestV2HeadlessModeNo  XcodeTestV2HeadlessMode = "no"
+)
+
+// XcodeTestV2IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeTestV2IsCleanBuild string
+
+const (
+	XcodeTestV2IsCleanBuildYes XcodeTestV2IsCleanBuild = "yes"
+	XcodeTestV2IsCleanBuildNo  XcodeTestV2IsCleanBuild = "no"
+)
+
+// XcodeTestV2OutputTool enumerates the valid values for the output_tool input.
+type XcodeTestV2OutputTool string
+
+const (
+	XcodeTestV2OutputToolXcpretty   XcodeTestV2OutputTool = "xcpretty"
+	XcodeTestV2OutputToolXcodebuild XcodeTestV2OutputTool = "xcodebuild"
+)
+
+// XcodeTestV2SingleBuild enumerates the valid values for the single_build input.
+type XcodeTestV2SingleBuild string
+
+const (
+	XcodeTestV2SingleBuildTrue  XcodeTestV2SingleBuild = "true"
+	XcodeTestV2SingleBuildFalse XcodeTestV2SingleBuild = "false"
+)
+
+// XcodeTestV2ShouldBuildBeforeTest enumerates the valid values for the should_build_before_test input.
+type XcodeTestV2ShouldBuildBeforeTest string
+
+const (
+	XcodeTestV2ShouldBuildBeforeTestYes XcodeTestV2ShouldBuildBeforeTest = "yes"
+	XcodeTestV2ShouldBuildBeforeTestNo  XcodeTestV2ShouldBuildBeforeTest = "no"
+)
+
+// XcodeTestV2ShouldRetryTestOnFail enumerates the valid values for the should_retry_test_on_fail input.
+type XcodeTestV2ShouldRetryTestOnFail string
+
+const (
+	XcodeTestV2ShouldRetryTestOnFailYes XcodeTestV2ShouldRetryTestOnFail = "yes"
+	XcodeTestV2ShouldRetryTestOnFailNo  XcodeTestV2ShouldRetryTestOnFail = "no"
+)
+
+// XcodeTestV2CacheLevel enumerates the valid values for the cache_level input.
+type XcodeTestV2CacheLevel string
+
+const (
+	XcodeTestV2CacheLevelNone          XcodeTestV2CacheLevel = "none"
+	XcodeTestV2CacheLevelSwiftPackages XcodeTestV2CacheLevel = "swift_packages"
+)
+
+// XcodeTestV2CollectSimulatorDiagnostics enumerates the valid values for the collect_simulator_diagnostics input.
+type XcodeTestV2CollectSimulatorDiagnostics string
+
+const (
+	XcodeTestV2CollectSimulatorDiagnosticsAlways    XcodeTestV2CollectSimulatorDiagnostics = "always"
+	XcodeTestV2CollectSimulatorDiagnosticsOnFailure XcodeTestV2CollectSimulatorDiagnostics = "on_failure"
+	XcodeTestV2CollectSimulatorDiagnosticsNever     XcodeTestV2CollectSimulatorDiagnostics = "never"
+)
+
 // XcodeTestV2Builder builds a xcode-test step with typed input methods.
 type XcodeTestV2Builder struct{ *Builder }
 
@@ -50,50 +155,50 @@ func (b *XcodeTestV2Builder) WithSimulatorOsVersion(value string) *XcodeTestV2Bu
 }
 
 // WithSimulatorPlatform sets platform.
-func (b *XcodeTestV2Builder) WithSimulatorPlatform(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("simulator_platform", value)
+func (b *XcodeTestV2Builder) WithSimulatorPlatform(value XcodeTestV2SimulatorPlatform) *XcodeTestV2Builder {
+	b.Builder.WithInput("simulator_platform", string(value))
 	return b
 }
 
 // WithExportUitestArtifacts sets export UITest Artifacts.
-func (b *XcodeTestV2Builder) WithExportUitestArtifacts(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("export_uitest_artifacts", value)
+func (b *XcodeTestV2Builder) WithExportUitestArtifacts(value XcodeTestV2ExportUitestArtifacts) *XcodeTestV2Builder {
+	b.Builder.WithInput("export_uitest_artifacts", string(value))
 	return b
 }
 
 // WithGenerateCodeCoverageFiles sets generate code coverage files?.
-func (b *XcodeTestV2Builder) WithGenerateCodeCoverageFiles(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("generate_code_coverage_files", value)
+func (b *XcodeTestV2Builder) WithGenerateCodeCoverageFiles(value XcodeTestV2GenerateCodeCoverageFiles) *XcodeTestV2Builder {
+	b.Builder.WithInput("generate_code_coverage_files", string(value))
 	return b
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeTestV2Builder) WithDisableIndexWhileBuilding(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeTestV2Builder) WithDisableIndexWhileBuilding(value XcodeTestV2DisableIndexWhileBuilding) *XcodeTestV2Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *XcodeTestV2Builder) WithVerbose(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *XcodeTestV2Builder) WithVerbose(value XcodeTestV2Verbose) *XcodeTestV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithHeadlessMode sets run the test in headless mode?.
-func (b *XcodeTestV2Builder) WithHeadlessMode(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("headless_mode", value)
+func (b *XcodeTestV2Builder) WithHeadlessMode(value XcodeTestV2HeadlessMode) *XcodeTestV2Builder {
+	b.Builder.WithInput("headless_mode", string(value))
 	return b
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before testing?.
-func (b *XcodeTestV2Builder) WithIsCleanBuild(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeTestV2Builder) WithIsCleanBuild(value XcodeTestV2IsCleanBuild) *XcodeTestV2Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeTestV2Builder) WithOutputTool(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeTestV2Builder) WithOutputTool(value XcodeTestV2OutputTool) *XcodeTestV2Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -104,20 +209,20 @@ func (b *XcodeTestV2Builder) WithXcodebuildTestOptions(value string) *XcodeTestV
 }
 
 // WithSingleBuild sets run xcodebuild test only.
-func (b *XcodeTestV2Builder) WithSingleBuild(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("single_build", value)
+func (b *XcodeTestV2Builder) WithSingleBuild(value XcodeTestV2SingleBuild) *XcodeTestV2Builder {
+	b.Builder.WithInput("single_build", string(value))
 	return b
 }
 
 // WithShouldBuildBeforeTest sets should run a build before testing?.
-func (b *XcodeTestV2Builder) WithShouldBuildBeforeTest(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("should_build_before_test", value)
+func (b *XcodeTestV2Builder) WithShouldBuildBeforeTest(value XcodeTestV2ShouldBuildBeforeTest) *XcodeTestV2Builder {
+	b.Builder.WithInput("should_build_before_test", string(value))
 	return b
 }
 
 // WithShouldRetryTestOnFail sets should retry test on failure?.
-func (b *XcodeTestV2Builder) WithShouldRetryTestOnFail(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("should_retry_test_on_fail", value)
+func (b *XcodeTestV2Builder) WithShouldRetryTestOnFail(value XcodeTestV2ShouldRetryTestOnFail) *XcodeTestV2Builder {
+	b.Builder.WithInput("should_retry_test_on_fail", string(value))
 	return b
 }
 
@@ -128,14 +233,14 @@ func (b *XcodeTestV2Builder) WithXcprettyTestOptions(value string) *XcodeTestV2B
 }
 
 // WithCacheLevel sets enable caching of Swift Package Manager packages.
-func (b *XcodeTestV2Builder) WithCacheLevel(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeTestV2Builder) WithCacheLevel(value XcodeTestV2CacheLevel) *XcodeTestV2Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithCollectSimulatorDiagnostics sets collect Simulator diagnostics.
-func (b *XcodeTestV2Builder) WithCollectSimulatorDiagnostics(value string) *XcodeTestV2Builder {
-	b.Builder.WithInput("collect_simulator_diagnostics", value)
+func (b *XcodeTestV2Builder) WithCollectSimulatorDiagnostics(value XcodeTestV2CollectSimulatorDiagnostics) *XcodeTestV2Builder {
+	b.Builder.WithInput("collect_simulator_diagnostics", string(value))
 	return b
 }
 

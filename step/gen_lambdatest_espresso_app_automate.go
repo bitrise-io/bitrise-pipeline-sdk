@@ -3,6 +3,38 @@
 
 package step
 
+// LambdatestEspressoAppAutomateLambdatestTunnel enumerates the valid values for the lambdatest_tunnel input.
+type LambdatestEspressoAppAutomateLambdatestTunnel string
+
+const (
+	LambdatestEspressoAppAutomateLambdatestTunnelTrue  LambdatestEspressoAppAutomateLambdatestTunnel = "true"
+	LambdatestEspressoAppAutomateLambdatestTunnelFalse LambdatestEspressoAppAutomateLambdatestTunnel = "false"
+)
+
+// LambdatestEspressoAppAutomateLambdatestDeviceLogs enumerates the valid values for the lambdatest_device_logs input.
+type LambdatestEspressoAppAutomateLambdatestDeviceLogs string
+
+const (
+	LambdatestEspressoAppAutomateLambdatestDeviceLogsTrue  LambdatestEspressoAppAutomateLambdatestDeviceLogs = "true"
+	LambdatestEspressoAppAutomateLambdatestDeviceLogsFalse LambdatestEspressoAppAutomateLambdatestDeviceLogs = "false"
+)
+
+// LambdatestEspressoAppAutomateLambdatestNetworkLogs enumerates the valid values for the lambdatest_network_logs input.
+type LambdatestEspressoAppAutomateLambdatestNetworkLogs string
+
+const (
+	LambdatestEspressoAppAutomateLambdatestNetworkLogsTrue  LambdatestEspressoAppAutomateLambdatestNetworkLogs = "true"
+	LambdatestEspressoAppAutomateLambdatestNetworkLogsFalse LambdatestEspressoAppAutomateLambdatestNetworkLogs = "false"
+)
+
+// LambdatestEspressoAppAutomateLambdatestVideo enumerates the valid values for the lambdatest_video input.
+type LambdatestEspressoAppAutomateLambdatestVideo string
+
+const (
+	LambdatestEspressoAppAutomateLambdatestVideoTrue  LambdatestEspressoAppAutomateLambdatestVideo = "true"
+	LambdatestEspressoAppAutomateLambdatestVideoFalse LambdatestEspressoAppAutomateLambdatestVideo = "false"
+)
+
 // LambdatestEspressoAppAutomateBuilder builds a lambdatest-espresso-app-automate step with typed input methods.
 type LambdatestEspressoAppAutomateBuilder struct{ *Builder }
 
@@ -68,8 +100,8 @@ func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestIdleTimeout(value s
 }
 
 // WithLambdatestTunnel sets tunnel.
-func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestTunnel(value string) *LambdatestEspressoAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_tunnel", value)
+func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestTunnel(value LambdatestEspressoAppAutomateLambdatestTunnel) *LambdatestEspressoAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_tunnel", string(value))
 	return b
 }
 
@@ -80,20 +112,20 @@ func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestTunnelName(value st
 }
 
 // WithLambdatestDeviceLogs sets device Logs.
-func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestDeviceLogs(value string) *LambdatestEspressoAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_device_logs", value)
+func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestDeviceLogs(value LambdatestEspressoAppAutomateLambdatestDeviceLogs) *LambdatestEspressoAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_device_logs", string(value))
 	return b
 }
 
 // WithLambdatestNetworkLogs sets network Logs.
-func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestNetworkLogs(value string) *LambdatestEspressoAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_network_logs", value)
+func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestNetworkLogs(value LambdatestEspressoAppAutomateLambdatestNetworkLogs) *LambdatestEspressoAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_network_logs", string(value))
 	return b
 }
 
 // WithLambdatestVideo sets video.
-func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestVideo(value string) *LambdatestEspressoAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_video", value)
+func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestVideo(value LambdatestEspressoAppAutomateLambdatestVideo) *LambdatestEspressoAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_video", string(value))
 	return b
 }
 

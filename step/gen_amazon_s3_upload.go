@@ -3,6 +3,22 @@
 
 package step
 
+// AmazonS3UploadAclControl enumerates the valid values for the acl_control input.
+type AmazonS3UploadAclControl string
+
+const (
+	AmazonS3UploadAclControlPublicRead AmazonS3UploadAclControl = "public-read"
+	AmazonS3UploadAclControlPrivate    AmazonS3UploadAclControl = "private"
+)
+
+// AmazonS3UploadSetAclOnlyOnChangedObjets enumerates the valid values for the set_acl_only_on_changed_objets input.
+type AmazonS3UploadSetAclOnlyOnChangedObjets string
+
+const (
+	AmazonS3UploadSetAclOnlyOnChangedObjetsTrue  AmazonS3UploadSetAclOnlyOnChangedObjets = "true"
+	AmazonS3UploadSetAclOnlyOnChangedObjetsFalse AmazonS3UploadSetAclOnlyOnChangedObjets = "false"
+)
+
 // AmazonS3UploadBuilder builds a amazon-s3-upload step with typed input methods.
 //
 // Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
@@ -48,14 +64,14 @@ func (b *AmazonS3UploadBuilder) WithUploadLocalPath(value string) *AmazonS3Uploa
 }
 
 // WithAclControl sets access Control.
-func (b *AmazonS3UploadBuilder) WithAclControl(value string) *AmazonS3UploadBuilder {
-	b.Builder.WithInput("acl_control", value)
+func (b *AmazonS3UploadBuilder) WithAclControl(value AmazonS3UploadAclControl) *AmazonS3UploadBuilder {
+	b.Builder.WithInput("acl_control", string(value))
 	return b
 }
 
 // WithSetAclOnlyOnChangedObjets sets set ACL only on changed objects?.
-func (b *AmazonS3UploadBuilder) WithSetAclOnlyOnChangedObjets(value string) *AmazonS3UploadBuilder {
-	b.Builder.WithInput("set_acl_only_on_changed_objets", value)
+func (b *AmazonS3UploadBuilder) WithSetAclOnlyOnChangedObjets(value AmazonS3UploadSetAclOnlyOnChangedObjets) *AmazonS3UploadBuilder {
+	b.Builder.WithInput("set_acl_only_on_changed_objets", string(value))
 	return b
 }
 

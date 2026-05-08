@@ -3,6 +3,14 @@
 
 package step
 
+// HerokuDeployForcePush enumerates the valid values for the force_push input.
+type HerokuDeployForcePush string
+
+const (
+	HerokuDeployForcePushTrue  HerokuDeployForcePush = "true"
+	HerokuDeployForcePushFalse HerokuDeployForcePush = "false"
+)
+
 // HerokuDeployBuilder builds a heroku-deploy step with typed input methods.
 type HerokuDeployBuilder struct{ *Builder }
 
@@ -32,7 +40,7 @@ func (b *HerokuDeployBuilder) WithHerokuAppId(value string) *HerokuDeployBuilder
 }
 
 // WithForcePush sets force push to Heroku repository?.
-func (b *HerokuDeployBuilder) WithForcePush(value string) *HerokuDeployBuilder {
-	b.Builder.WithInput("force_push", value)
+func (b *HerokuDeployBuilder) WithForcePush(value HerokuDeployForcePush) *HerokuDeployBuilder {
+	b.Builder.WithInput("force_push", string(value))
 	return b
 }

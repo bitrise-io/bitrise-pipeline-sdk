@@ -3,6 +3,22 @@
 
 package step
 
+// UpdateGitopsRepositoryV3PullRequest enumerates the valid values for the pull_request input.
+type UpdateGitopsRepositoryV3PullRequest string
+
+const (
+	UpdateGitopsRepositoryV3PullRequestTrue  UpdateGitopsRepositoryV3PullRequest = "true"
+	UpdateGitopsRepositoryV3PullRequestFalse UpdateGitopsRepositoryV3PullRequest = "false"
+)
+
+// UpdateGitopsRepositoryV3ReplacerMode enumerates the valid values for the replacer_mode input.
+type UpdateGitopsRepositoryV3ReplacerMode string
+
+const (
+	UpdateGitopsRepositoryV3ReplacerModeTrue  UpdateGitopsRepositoryV3ReplacerMode = "true"
+	UpdateGitopsRepositoryV3ReplacerModeFalse UpdateGitopsRepositoryV3ReplacerMode = "false"
+)
+
 // UpdateGitopsRepositoryV3Builder builds a update-gitops-repository step with typed input methods.
 type UpdateGitopsRepositoryV3Builder struct{ *Builder }
 
@@ -62,8 +78,8 @@ func (b *UpdateGitopsRepositoryV3Builder) WithTemplatesFolderPath(value string) 
 }
 
 // WithPullRequest sets open a pull request.
-func (b *UpdateGitopsRepositoryV3Builder) WithPullRequest(value string) *UpdateGitopsRepositoryV3Builder {
-	b.Builder.WithInput("pull_request", value)
+func (b *UpdateGitopsRepositoryV3Builder) WithPullRequest(value UpdateGitopsRepositoryV3PullRequest) *UpdateGitopsRepositoryV3Builder {
+	b.Builder.WithInput("pull_request", string(value))
 	return b
 }
 
@@ -80,8 +96,8 @@ func (b *UpdateGitopsRepositoryV3Builder) WithPullRequestBody(value string) *Upd
 }
 
 // WithReplacerMode sets key-value matching mode.
-func (b *UpdateGitopsRepositoryV3Builder) WithReplacerMode(value string) *UpdateGitopsRepositoryV3Builder {
-	b.Builder.WithInput("replacer_mode", value)
+func (b *UpdateGitopsRepositoryV3Builder) WithReplacerMode(value UpdateGitopsRepositoryV3ReplacerMode) *UpdateGitopsRepositoryV3Builder {
+	b.Builder.WithInput("replacer_mode", string(value))
 	return b
 }
 

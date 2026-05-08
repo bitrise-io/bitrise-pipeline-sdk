@@ -18,3 +18,7 @@ func RestoreCache(version ...string) *RestoreCacheV3Builder {
 // published by restore-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreCacheV{N}Outputs directly.
 var RestoreCacheOutputs = RestoreCacheV3Outputs
+
+// RestoreCacheVerbose is a type alias for RestoreCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreCacheVerbose = RestoreCacheV3Verbose

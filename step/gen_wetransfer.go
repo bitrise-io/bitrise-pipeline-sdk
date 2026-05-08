@@ -3,6 +3,22 @@
 
 package step
 
+// WetransferWtuLanguage enumerates the valid values for the wtu_language input.
+type WetransferWtuLanguage string
+
+const (
+	WetransferWtuLanguageFr WetransferWtuLanguage = "fr"
+	WetransferWtuLanguageEn WetransferWtuLanguage = "en"
+)
+
+// WetransferWtuDebugMode enumerates the valid values for the wtu_debug_mode input.
+type WetransferWtuDebugMode string
+
+const (
+	WetransferWtuDebugModeYes WetransferWtuDebugMode = "yes"
+	WetransferWtuDebugModeNo  WetransferWtuDebugMode = "no"
+)
+
 // WetransferBuilder builds a wetransfer step with typed input methods.
 //
 // Deprecated: This step is deprecated. The wetransfer API does not work anymore.
@@ -48,13 +64,13 @@ func (b *WetransferBuilder) WithWtuMessage(value string) *WetransferBuilder {
 }
 
 // WithWtuLanguage sets the language of the wetransfer receiver.
-func (b *WetransferBuilder) WithWtuLanguage(value string) *WetransferBuilder {
-	b.Builder.WithInput("wtu_language", value)
+func (b *WetransferBuilder) WithWtuLanguage(value WetransferWtuLanguage) *WetransferBuilder {
+	b.Builder.WithInput("wtu_language", string(value))
 	return b
 }
 
 // WithWtuDebugMode sets debug mode ?.
-func (b *WetransferBuilder) WithWtuDebugMode(value string) *WetransferBuilder {
-	b.Builder.WithInput("wtu_debug_mode", value)
+func (b *WetransferBuilder) WithWtuDebugMode(value WetransferWtuDebugMode) *WetransferBuilder {
+	b.Builder.WithInput("wtu_debug_mode", string(value))
 	return b
 }

@@ -3,6 +3,22 @@
 
 package step
 
+// BuildRouterWaitAbortOnFail enumerates the valid values for the abort_on_fail input.
+type BuildRouterWaitAbortOnFail string
+
+const (
+	BuildRouterWaitAbortOnFailYes BuildRouterWaitAbortOnFail = "yes"
+	BuildRouterWaitAbortOnFailNo  BuildRouterWaitAbortOnFail = "no"
+)
+
+// BuildRouterWaitVerbose enumerates the valid values for the verbose input.
+type BuildRouterWaitVerbose string
+
+const (
+	BuildRouterWaitVerboseYes BuildRouterWaitVerbose = "yes"
+	BuildRouterWaitVerboseNo  BuildRouterWaitVerbose = "no"
+)
+
 // BuildRouterWaitBuilder builds a build-router-wait step with typed input methods.
 type BuildRouterWaitBuilder struct{ *Builder }
 
@@ -38,13 +54,13 @@ func (b *BuildRouterWaitBuilder) WithBuildArtifactsSavePath(value string) *Build
 }
 
 // WithAbortOnFail sets abort all builds if one fails.
-func (b *BuildRouterWaitBuilder) WithAbortOnFail(value string) *BuildRouterWaitBuilder {
-	b.Builder.WithInput("abort_on_fail", value)
+func (b *BuildRouterWaitBuilder) WithAbortOnFail(value BuildRouterWaitAbortOnFail) *BuildRouterWaitBuilder {
+	b.Builder.WithInput("abort_on_fail", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *BuildRouterWaitBuilder) WithVerbose(value string) *BuildRouterWaitBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *BuildRouterWaitBuilder) WithVerbose(value BuildRouterWaitVerbose) *BuildRouterWaitBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

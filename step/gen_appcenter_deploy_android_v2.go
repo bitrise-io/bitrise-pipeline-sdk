@@ -3,6 +3,38 @@
 
 package step
 
+// AppcenterDeployAndroidV2NotifyTesters enumerates the valid values for the notify_testers input.
+type AppcenterDeployAndroidV2NotifyTesters string
+
+const (
+	AppcenterDeployAndroidV2NotifyTestersYes AppcenterDeployAndroidV2NotifyTesters = "yes"
+	AppcenterDeployAndroidV2NotifyTestersNo  AppcenterDeployAndroidV2NotifyTesters = "no"
+)
+
+// AppcenterDeployAndroidV2Mandatory enumerates the valid values for the mandatory input.
+type AppcenterDeployAndroidV2Mandatory string
+
+const (
+	AppcenterDeployAndroidV2MandatoryNo  AppcenterDeployAndroidV2Mandatory = "no"
+	AppcenterDeployAndroidV2MandatoryYes AppcenterDeployAndroidV2Mandatory = "yes"
+)
+
+// AppcenterDeployAndroidV2Debug enumerates the valid values for the debug input.
+type AppcenterDeployAndroidV2Debug string
+
+const (
+	AppcenterDeployAndroidV2DebugNo  AppcenterDeployAndroidV2Debug = "no"
+	AppcenterDeployAndroidV2DebugYes AppcenterDeployAndroidV2Debug = "yes"
+)
+
+// AppcenterDeployAndroidV2AllDistributionGroups enumerates the valid values for the all_distribution_groups input.
+type AppcenterDeployAndroidV2AllDistributionGroups string
+
+const (
+	AppcenterDeployAndroidV2AllDistributionGroupsNo  AppcenterDeployAndroidV2AllDistributionGroups = "no"
+	AppcenterDeployAndroidV2AllDistributionGroupsYes AppcenterDeployAndroidV2AllDistributionGroups = "yes"
+)
+
 // AppcenterDeployAndroidV2Builder builds a appcenter-deploy-android step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -78,26 +110,26 @@ func (b *AppcenterDeployAndroidV2Builder) WithReleaseNotes(value string) *Appcen
 }
 
 // WithNotifyTesters sets notify Testers.
-func (b *AppcenterDeployAndroidV2Builder) WithNotifyTesters(value string) *AppcenterDeployAndroidV2Builder {
-	b.Builder.WithInput("notify_testers", value)
+func (b *AppcenterDeployAndroidV2Builder) WithNotifyTesters(value AppcenterDeployAndroidV2NotifyTesters) *AppcenterDeployAndroidV2Builder {
+	b.Builder.WithInput("notify_testers", string(value))
 	return b
 }
 
 // WithMandatory sets mandatory.
-func (b *AppcenterDeployAndroidV2Builder) WithMandatory(value string) *AppcenterDeployAndroidV2Builder {
-	b.Builder.WithInput("mandatory", value)
+func (b *AppcenterDeployAndroidV2Builder) WithMandatory(value AppcenterDeployAndroidV2Mandatory) *AppcenterDeployAndroidV2Builder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 
 // WithDebug sets debug.
-func (b *AppcenterDeployAndroidV2Builder) WithDebug(value string) *AppcenterDeployAndroidV2Builder {
-	b.Builder.WithInput("debug", value)
+func (b *AppcenterDeployAndroidV2Builder) WithDebug(value AppcenterDeployAndroidV2Debug) *AppcenterDeployAndroidV2Builder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 
 // WithAllDistributionGroups sets all distribution groups.
-func (b *AppcenterDeployAndroidV2Builder) WithAllDistributionGroups(value string) *AppcenterDeployAndroidV2Builder {
-	b.Builder.WithInput("all_distribution_groups", value)
+func (b *AppcenterDeployAndroidV2Builder) WithAllDistributionGroups(value AppcenterDeployAndroidV2AllDistributionGroups) *AppcenterDeployAndroidV2Builder {
+	b.Builder.WithInput("all_distribution_groups", string(value))
 	return b
 }
 

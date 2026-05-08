@@ -3,6 +3,14 @@
 
 package step
 
+// AppetizeDeployVerbose enumerates the valid values for the verbose input.
+type AppetizeDeployVerbose string
+
+const (
+	AppetizeDeployVerboseTrue  AppetizeDeployVerbose = "true"
+	AppetizeDeployVerboseFalse AppetizeDeployVerbose = "false"
+)
+
 // AppetizeDeployBuilder builds a appetize-deploy step with typed input methods.
 type AppetizeDeployBuilder struct{ *Builder }
 
@@ -50,8 +58,8 @@ func (b *AppetizeDeployBuilder) WithAppetizeHost(value string) *AppetizeDeployBu
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *AppetizeDeployBuilder) WithVerbose(value string) *AppetizeDeployBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *AppetizeDeployBuilder) WithVerbose(value AppetizeDeployVerbose) *AppetizeDeployBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

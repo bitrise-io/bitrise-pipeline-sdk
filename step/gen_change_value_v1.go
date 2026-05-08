@@ -3,6 +3,22 @@
 
 package step
 
+// ChangeValueV1ShowFile enumerates the valid values for the show_file input.
+type ChangeValueV1ShowFile string
+
+const (
+	ChangeValueV1ShowFileTrue  ChangeValueV1ShowFile = "true"
+	ChangeValueV1ShowFileFalse ChangeValueV1ShowFile = "false"
+)
+
+// ChangeValueV1NotfoundExit enumerates the valid values for the notfound_exit input.
+type ChangeValueV1NotfoundExit string
+
+const (
+	ChangeValueV1NotfoundExitTrue  ChangeValueV1NotfoundExit = "true"
+	ChangeValueV1NotfoundExitFalse ChangeValueV1NotfoundExit = "false"
+)
+
 // ChangeValueV1Builder builds a change-value step with typed input methods.
 type ChangeValueV1Builder struct{ *Builder }
 
@@ -38,13 +54,13 @@ func (b *ChangeValueV1Builder) WithNewValue(value string) *ChangeValueV1Builder 
 }
 
 // WithShowFile sets show old and new file content.
-func (b *ChangeValueV1Builder) WithShowFile(value string) *ChangeValueV1Builder {
-	b.Builder.WithInput("show_file", value)
+func (b *ChangeValueV1Builder) WithShowFile(value ChangeValueV1ShowFile) *ChangeValueV1Builder {
+	b.Builder.WithInput("show_file", string(value))
 	return b
 }
 
 // WithNotfoundExit sets mark as "Failed" if value isn't found..
-func (b *ChangeValueV1Builder) WithNotfoundExit(value string) *ChangeValueV1Builder {
-	b.Builder.WithInput("notfound_exit", value)
+func (b *ChangeValueV1Builder) WithNotfoundExit(value ChangeValueV1NotfoundExit) *ChangeValueV1Builder {
+	b.Builder.WithInput("notfound_exit", string(value))
 	return b
 }

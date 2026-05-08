@@ -3,6 +3,14 @@
 
 package step
 
+// YarnV2VerboseLog enumerates the valid values for the verbose_log input.
+type YarnV2VerboseLog string
+
+const (
+	YarnV2VerboseLogYes YarnV2VerboseLog = "yes"
+	YarnV2VerboseLogNo  YarnV2VerboseLog = "no"
+)
+
 // YarnV2Builder builds a yarn step with typed input methods.
 type YarnV2Builder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *YarnV2Builder) WithArgs(value string) *YarnV2Builder {
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *YarnV2Builder) WithVerboseLog(value string) *YarnV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *YarnV2Builder) WithVerboseLog(value YarnV2VerboseLog) *YarnV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }

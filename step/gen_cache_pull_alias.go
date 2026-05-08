@@ -17,3 +17,19 @@ type CachePullBuilder = CachePullV2Builder
 func CachePull(version ...string) *CachePullV2Builder {
 	return CachePullV2(version...)
 }
+
+// CachePullIsDebugMode is a type alias for CachePullV2IsDebugMode,
+// pointing to the latest supported major version of the step's enum type.
+type CachePullIsDebugMode = CachePullV2IsDebugMode
+
+// CachePullExtractToRelativePath is a type alias for CachePullV2ExtractToRelativePath,
+// pointing to the latest supported major version of the step's enum type.
+type CachePullExtractToRelativePath = CachePullV2ExtractToRelativePath
+
+// CachePullAllowFallback is a type alias for CachePullV2AllowFallback,
+// pointing to the latest supported major version of the step's enum type.
+type CachePullAllowFallback = CachePullV2AllowFallback
+
+// CachePullIgnoreStackDifference is a type alias for CachePullV2IgnoreStackDifference,
+// pointing to the latest supported major version of the step's enum type.
+type CachePullIgnoreStackDifference = CachePullV2IgnoreStackDifference

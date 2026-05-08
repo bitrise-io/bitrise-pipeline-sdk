@@ -3,6 +3,46 @@
 
 package step
 
+// GitCloneV6UpdateSubmodules enumerates the valid values for the update_submodules input.
+type GitCloneV6UpdateSubmodules string
+
+const (
+	GitCloneV6UpdateSubmodulesYes GitCloneV6UpdateSubmodules = "yes"
+	GitCloneV6UpdateSubmodulesNo  GitCloneV6UpdateSubmodules = "no"
+)
+
+// GitCloneV6MergePr enumerates the valid values for the merge_pr input.
+type GitCloneV6MergePr string
+
+const (
+	GitCloneV6MergePrYes GitCloneV6MergePr = "yes"
+	GitCloneV6MergePrNo  GitCloneV6MergePr = "no"
+)
+
+// GitCloneV6ResetRepository enumerates the valid values for the reset_repository input.
+type GitCloneV6ResetRepository string
+
+const (
+	GitCloneV6ResetRepositoryNo  GitCloneV6ResetRepository = "No"
+	GitCloneV6ResetRepositoryYes GitCloneV6ResetRepository = "Yes"
+)
+
+// GitCloneV6ManualMerge enumerates the valid values for the manual_merge input.
+type GitCloneV6ManualMerge string
+
+const (
+	GitCloneV6ManualMergeYes GitCloneV6ManualMerge = "yes"
+	GitCloneV6ManualMergeNo  GitCloneV6ManualMerge = "no"
+)
+
+// GitCloneV6FetchTags enumerates the valid values for the fetch_tags input.
+type GitCloneV6FetchTags string
+
+const (
+	GitCloneV6FetchTagsYes GitCloneV6FetchTags = "yes"
+	GitCloneV6FetchTagsNo  GitCloneV6FetchTags = "no"
+)
+
 // GitCloneV6Builder builds a git-clone step with typed input methods.
 type GitCloneV6Builder struct{ *Builder }
 
@@ -80,8 +120,8 @@ func (b *GitCloneV6Builder) WithPullRequestHeadBranch(value string) *GitCloneV6B
 }
 
 // WithUpdateSubmodules sets update the registered submodules?.
-func (b *GitCloneV6Builder) WithUpdateSubmodules(value string) *GitCloneV6Builder {
-	b.Builder.WithInput("update_submodules", value)
+func (b *GitCloneV6Builder) WithUpdateSubmodules(value GitCloneV6UpdateSubmodules) *GitCloneV6Builder {
+	b.Builder.WithInput("update_submodules", string(value))
 	return b
 }
 
@@ -98,8 +138,8 @@ func (b *GitCloneV6Builder) WithSubmoduleUpdateDepth(value string) *GitCloneV6Bu
 }
 
 // WithMergePr sets merge the Pull Request source branch into destination.
-func (b *GitCloneV6Builder) WithMergePr(value string) *GitCloneV6Builder {
-	b.Builder.WithInput("merge_pr", value)
+func (b *GitCloneV6Builder) WithMergePr(value GitCloneV6MergePr) *GitCloneV6Builder {
+	b.Builder.WithInput("merge_pr", string(value))
 	return b
 }
 
@@ -110,20 +150,20 @@ func (b *GitCloneV6Builder) WithSparseDirectories(value string) *GitCloneV6Build
 }
 
 // WithResetRepository sets reset repository.
-func (b *GitCloneV6Builder) WithResetRepository(value string) *GitCloneV6Builder {
-	b.Builder.WithInput("reset_repository", value)
+func (b *GitCloneV6Builder) WithResetRepository(value GitCloneV6ResetRepository) *GitCloneV6Builder {
+	b.Builder.WithInput("reset_repository", string(value))
 	return b
 }
 
 // WithManualMerge sets manual merge.
-func (b *GitCloneV6Builder) WithManualMerge(value string) *GitCloneV6Builder {
-	b.Builder.WithInput("manual_merge", value)
+func (b *GitCloneV6Builder) WithManualMerge(value GitCloneV6ManualMerge) *GitCloneV6Builder {
+	b.Builder.WithInput("manual_merge", string(value))
 	return b
 }
 
 // WithFetchTags sets fetch tags.
-func (b *GitCloneV6Builder) WithFetchTags(value string) *GitCloneV6Builder {
-	b.Builder.WithInput("fetch_tags", value)
+func (b *GitCloneV6Builder) WithFetchTags(value GitCloneV6FetchTags) *GitCloneV6Builder {
+	b.Builder.WithInput("fetch_tags", string(value))
 	return b
 }
 

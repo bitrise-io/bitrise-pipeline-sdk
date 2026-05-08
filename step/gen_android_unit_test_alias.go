@@ -18,3 +18,7 @@ func AndroidUnitTest(version ...string) *AndroidUnitTestV1Builder {
 // published by android-unit-test at the latest major version (v1).
 // For outputs of a specific major version use AndroidUnitTestV{N}Outputs directly.
 var AndroidUnitTestOutputs = AndroidUnitTestV1Outputs
+
+// AndroidUnitTestIsDebug is a type alias for AndroidUnitTestV1IsDebug,
+// pointing to the latest supported major version of the step's enum type.
+type AndroidUnitTestIsDebug = AndroidUnitTestV1IsDebug

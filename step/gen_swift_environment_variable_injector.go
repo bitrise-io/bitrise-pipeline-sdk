@@ -3,6 +3,14 @@
 
 package step
 
+// SwiftEnvironmentVariableInjectorVerbose enumerates the valid values for the verbose input.
+type SwiftEnvironmentVariableInjectorVerbose string
+
+const (
+	SwiftEnvironmentVariableInjectorVerboseTrue  SwiftEnvironmentVariableInjectorVerbose = "true"
+	SwiftEnvironmentVariableInjectorVerboseFalse SwiftEnvironmentVariableInjectorVerbose = "false"
+)
+
 // SwiftEnvironmentVariableInjectorBuilder builds a swift-environment-variable-injector step with typed input methods.
 type SwiftEnvironmentVariableInjectorBuilder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *SwiftEnvironmentVariableInjectorBuilder) WithVarsToIgnore(value string)
 }
 
 // WithVerbose sets verbose mode.
-func (b *SwiftEnvironmentVariableInjectorBuilder) WithVerbose(value string) *SwiftEnvironmentVariableInjectorBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SwiftEnvironmentVariableInjectorBuilder) WithVerbose(value SwiftEnvironmentVariableInjectorVerbose) *SwiftEnvironmentVariableInjectorBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

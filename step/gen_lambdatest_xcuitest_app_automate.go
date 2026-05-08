@@ -3,6 +3,38 @@
 
 package step
 
+// LambdatestXcuitestAppAutomateLambdatestTunnel enumerates the valid values for the lambdatest_tunnel input.
+type LambdatestXcuitestAppAutomateLambdatestTunnel string
+
+const (
+	LambdatestXcuitestAppAutomateLambdatestTunnelTrue  LambdatestXcuitestAppAutomateLambdatestTunnel = "true"
+	LambdatestXcuitestAppAutomateLambdatestTunnelFalse LambdatestXcuitestAppAutomateLambdatestTunnel = "false"
+)
+
+// LambdatestXcuitestAppAutomateLambdatestDeviceLogs enumerates the valid values for the lambdatest_device_logs input.
+type LambdatestXcuitestAppAutomateLambdatestDeviceLogs string
+
+const (
+	LambdatestXcuitestAppAutomateLambdatestDeviceLogsTrue  LambdatestXcuitestAppAutomateLambdatestDeviceLogs = "true"
+	LambdatestXcuitestAppAutomateLambdatestDeviceLogsFalse LambdatestXcuitestAppAutomateLambdatestDeviceLogs = "false"
+)
+
+// LambdatestXcuitestAppAutomateLambdatestNetworkLogs enumerates the valid values for the lambdatest_network_logs input.
+type LambdatestXcuitestAppAutomateLambdatestNetworkLogs string
+
+const (
+	LambdatestXcuitestAppAutomateLambdatestNetworkLogsTrue  LambdatestXcuitestAppAutomateLambdatestNetworkLogs = "true"
+	LambdatestXcuitestAppAutomateLambdatestNetworkLogsFalse LambdatestXcuitestAppAutomateLambdatestNetworkLogs = "false"
+)
+
+// LambdatestXcuitestAppAutomateLambdatestVideo enumerates the valid values for the lambdatest_video input.
+type LambdatestXcuitestAppAutomateLambdatestVideo string
+
+const (
+	LambdatestXcuitestAppAutomateLambdatestVideoTrue  LambdatestXcuitestAppAutomateLambdatestVideo = "true"
+	LambdatestXcuitestAppAutomateLambdatestVideoFalse LambdatestXcuitestAppAutomateLambdatestVideo = "false"
+)
+
 // LambdatestXcuitestAppAutomateBuilder builds a lambdatest-xcuitest-app-automate step with typed input methods.
 type LambdatestXcuitestAppAutomateBuilder struct{ *Builder }
 
@@ -68,8 +100,8 @@ func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestIdleTimeout(value s
 }
 
 // WithLambdatestTunnel sets tunnel.
-func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestTunnel(value string) *LambdatestXcuitestAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_tunnel", value)
+func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestTunnel(value LambdatestXcuitestAppAutomateLambdatestTunnel) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_tunnel", string(value))
 	return b
 }
 
@@ -80,20 +112,20 @@ func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestTunnelName(value st
 }
 
 // WithLambdatestDeviceLogs sets device Logs.
-func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestDeviceLogs(value string) *LambdatestXcuitestAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_device_logs", value)
+func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestDeviceLogs(value LambdatestXcuitestAppAutomateLambdatestDeviceLogs) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_device_logs", string(value))
 	return b
 }
 
 // WithLambdatestNetworkLogs sets network Logs.
-func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestNetworkLogs(value string) *LambdatestXcuitestAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_network_logs", value)
+func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestNetworkLogs(value LambdatestXcuitestAppAutomateLambdatestNetworkLogs) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_network_logs", string(value))
 	return b
 }
 
 // WithLambdatestVideo sets video.
-func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestVideo(value string) *LambdatestXcuitestAppAutomateBuilder {
-	b.Builder.WithInput("lambdatest_video", value)
+func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestVideo(value LambdatestXcuitestAppAutomateLambdatestVideo) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithInput("lambdatest_video", string(value))
 	return b
 }
 

@@ -18,3 +18,19 @@ func HockeyappDeployAndroid(version ...string) *HockeyappDeployAndroidV1Builder 
 // published by hockeyapp-deploy-android at the latest major version (v1).
 // For outputs of a specific major version use HockeyappDeployAndroidV{N}Outputs directly.
 var HockeyappDeployAndroidOutputs = HockeyappDeployAndroidV1Outputs
+
+// HockeyappDeployAndroidNotesType is a type alias for HockeyappDeployAndroidV1NotesType,
+// pointing to the latest supported major version of the step's enum type.
+type HockeyappDeployAndroidNotesType = HockeyappDeployAndroidV1NotesType
+
+// HockeyappDeployAndroidNotify is a type alias for HockeyappDeployAndroidV1Notify,
+// pointing to the latest supported major version of the step's enum type.
+type HockeyappDeployAndroidNotify = HockeyappDeployAndroidV1Notify
+
+// HockeyappDeployAndroidStatus is a type alias for HockeyappDeployAndroidV1Status,
+// pointing to the latest supported major version of the step's enum type.
+type HockeyappDeployAndroidStatus = HockeyappDeployAndroidV1Status
+
+// HockeyappDeployAndroidMandatory is a type alias for HockeyappDeployAndroidV1Mandatory,
+// pointing to the latest supported major version of the step's enum type.
+type HockeyappDeployAndroidMandatory = HockeyappDeployAndroidV1Mandatory

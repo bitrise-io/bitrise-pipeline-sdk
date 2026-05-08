@@ -3,6 +3,82 @@
 
 package step
 
+// XcodeTestV5TestRepetitionMode enumerates the valid values for the test_repetition_mode input.
+type XcodeTestV5TestRepetitionMode string
+
+const (
+	XcodeTestV5TestRepetitionModeNone                      XcodeTestV5TestRepetitionMode = "none"
+	XcodeTestV5TestRepetitionModeUntilFailure              XcodeTestV5TestRepetitionMode = "until_failure"
+	XcodeTestV5TestRepetitionModeRetryOnFailure            XcodeTestV5TestRepetitionMode = "retry_on_failure"
+	XcodeTestV5TestRepetitionModeUpUntilMaximumRepetitions XcodeTestV5TestRepetitionMode = "up_until_maximum_repetitions"
+)
+
+// XcodeTestV5RelaunchTestsForEachRepetition enumerates the valid values for the relaunch_tests_for_each_repetition input.
+type XcodeTestV5RelaunchTestsForEachRepetition string
+
+const (
+	XcodeTestV5RelaunchTestsForEachRepetitionYes XcodeTestV5RelaunchTestsForEachRepetition = "yes"
+	XcodeTestV5RelaunchTestsForEachRepetitionNo  XcodeTestV5RelaunchTestsForEachRepetition = "no"
+)
+
+// XcodeTestV5ShouldRetryTestOnFail enumerates the valid values for the should_retry_test_on_fail input.
+type XcodeTestV5ShouldRetryTestOnFail string
+
+const (
+	XcodeTestV5ShouldRetryTestOnFailYes XcodeTestV5ShouldRetryTestOnFail = "yes"
+	XcodeTestV5ShouldRetryTestOnFailNo  XcodeTestV5ShouldRetryTestOnFail = "no"
+)
+
+// XcodeTestV5PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeTestV5PerformCleanAction string
+
+const (
+	XcodeTestV5PerformCleanActionYes XcodeTestV5PerformCleanAction = "yes"
+	XcodeTestV5PerformCleanActionNo  XcodeTestV5PerformCleanAction = "no"
+)
+
+// XcodeTestV5LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeTestV5LogFormatter string
+
+const (
+	XcodeTestV5LogFormatterXcbeautify XcodeTestV5LogFormatter = "xcbeautify"
+	XcodeTestV5LogFormatterXcodebuild XcodeTestV5LogFormatter = "xcodebuild"
+	XcodeTestV5LogFormatterXcpretty   XcodeTestV5LogFormatter = "xcpretty"
+)
+
+// XcodeTestV5CacheLevel enumerates the valid values for the cache_level input.
+type XcodeTestV5CacheLevel string
+
+const (
+	XcodeTestV5CacheLevelNone          XcodeTestV5CacheLevel = "none"
+	XcodeTestV5CacheLevelSwiftPackages XcodeTestV5CacheLevel = "swift_packages"
+)
+
+// XcodeTestV5VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeTestV5VerboseLog string
+
+const (
+	XcodeTestV5VerboseLogYes XcodeTestV5VerboseLog = "yes"
+	XcodeTestV5VerboseLogNo  XcodeTestV5VerboseLog = "no"
+)
+
+// XcodeTestV5CollectSimulatorDiagnostics enumerates the valid values for the collect_simulator_diagnostics input.
+type XcodeTestV5CollectSimulatorDiagnostics string
+
+const (
+	XcodeTestV5CollectSimulatorDiagnosticsAlways    XcodeTestV5CollectSimulatorDiagnostics = "always"
+	XcodeTestV5CollectSimulatorDiagnosticsOnFailure XcodeTestV5CollectSimulatorDiagnostics = "on_failure"
+	XcodeTestV5CollectSimulatorDiagnosticsNever     XcodeTestV5CollectSimulatorDiagnostics = "never"
+)
+
+// XcodeTestV5HeadlessMode enumerates the valid values for the headless_mode input.
+type XcodeTestV5HeadlessMode string
+
+const (
+	XcodeTestV5HeadlessModeYes XcodeTestV5HeadlessMode = "yes"
+	XcodeTestV5HeadlessModeNo  XcodeTestV5HeadlessMode = "no"
+)
+
 // XcodeTestV5Builder builds a xcode-test step with typed input methods.
 type XcodeTestV5Builder struct{ *Builder }
 
@@ -44,8 +120,8 @@ func (b *XcodeTestV5Builder) WithTestPlan(value string) *XcodeTestV5Builder {
 }
 
 // WithTestRepetitionMode sets test Repetition Mode (Available in Xcode 13+).
-func (b *XcodeTestV5Builder) WithTestRepetitionMode(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("test_repetition_mode", value)
+func (b *XcodeTestV5Builder) WithTestRepetitionMode(value XcodeTestV5TestRepetitionMode) *XcodeTestV5Builder {
+	b.Builder.WithInput("test_repetition_mode", string(value))
 	return b
 }
 
@@ -56,14 +132,14 @@ func (b *XcodeTestV5Builder) WithMaximumTestRepetitions(value string) *XcodeTest
 }
 
 // WithRelaunchTestsForEachRepetition sets relaunch Tests for Each Repetition (Available in Xcode 13+).
-func (b *XcodeTestV5Builder) WithRelaunchTestsForEachRepetition(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("relaunch_tests_for_each_repetition", value)
+func (b *XcodeTestV5Builder) WithRelaunchTestsForEachRepetition(value XcodeTestV5RelaunchTestsForEachRepetition) *XcodeTestV5Builder {
+	b.Builder.WithInput("relaunch_tests_for_each_repetition", string(value))
 	return b
 }
 
 // WithShouldRetryTestOnFail sets should retry tests on failure? (Not available in Xcode 13+).
-func (b *XcodeTestV5Builder) WithShouldRetryTestOnFail(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("should_retry_test_on_fail", value)
+func (b *XcodeTestV5Builder) WithShouldRetryTestOnFail(value XcodeTestV5ShouldRetryTestOnFail) *XcodeTestV5Builder {
+	b.Builder.WithInput("should_retry_test_on_fail", string(value))
 	return b
 }
 
@@ -74,8 +150,8 @@ func (b *XcodeTestV5Builder) WithXcconfigContent(value string) *XcodeTestV5Build
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeTestV5Builder) WithPerformCleanAction(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeTestV5Builder) WithPerformCleanAction(value XcodeTestV5PerformCleanAction) *XcodeTestV5Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -86,8 +162,8 @@ func (b *XcodeTestV5Builder) WithXcodebuildOptions(value string) *XcodeTestV5Bui
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeTestV5Builder) WithLogFormatter(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeTestV5Builder) WithLogFormatter(value XcodeTestV5LogFormatter) *XcodeTestV5Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
@@ -104,26 +180,26 @@ func (b *XcodeTestV5Builder) WithXcprettyOptions(value string) *XcodeTestV5Build
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeTestV5Builder) WithCacheLevel(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeTestV5Builder) WithCacheLevel(value XcodeTestV5CacheLevel) *XcodeTestV5Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeTestV5Builder) WithVerboseLog(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeTestV5Builder) WithVerboseLog(value XcodeTestV5VerboseLog) *XcodeTestV5Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithCollectSimulatorDiagnostics sets collect Simulator diagnostics.
-func (b *XcodeTestV5Builder) WithCollectSimulatorDiagnostics(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("collect_simulator_diagnostics", value)
+func (b *XcodeTestV5Builder) WithCollectSimulatorDiagnostics(value XcodeTestV5CollectSimulatorDiagnostics) *XcodeTestV5Builder {
+	b.Builder.WithInput("collect_simulator_diagnostics", string(value))
 	return b
 }
 
 // WithHeadlessMode sets run the simulator in headless mode.
-func (b *XcodeTestV5Builder) WithHeadlessMode(value string) *XcodeTestV5Builder {
-	b.Builder.WithInput("headless_mode", value)
+func (b *XcodeTestV5Builder) WithHeadlessMode(value XcodeTestV5HeadlessMode) *XcodeTestV5Builder {
+	b.Builder.WithInput("headless_mode", string(value))
 	return b
 }
 

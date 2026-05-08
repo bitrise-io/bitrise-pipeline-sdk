@@ -18,3 +18,51 @@ func XcodeArchive(version ...string) *XcodeArchiveV6Builder {
 // published by xcode-archive at the latest major version (v6).
 // For outputs of a specific major version use XcodeArchiveV{N}Outputs directly.
 var XcodeArchiveOutputs = XcodeArchiveV6Outputs
+
+// XcodeArchivePlatform is a type alias for XcodeArchiveV6Platform,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchivePlatform = XcodeArchiveV6Platform
+
+// XcodeArchiveDistributionMethod is a type alias for XcodeArchiveV6DistributionMethod,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveDistributionMethod = XcodeArchiveV6DistributionMethod
+
+// XcodeArchivePerformCleanAction is a type alias for XcodeArchiveV6PerformCleanAction,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchivePerformCleanAction = XcodeArchiveV6PerformCleanAction
+
+// XcodeArchiveLogFormatter is a type alias for XcodeArchiveV6LogFormatter,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveLogFormatter = XcodeArchiveV6LogFormatter
+
+// XcodeArchiveAutomaticCodeSigning is a type alias for XcodeArchiveV6AutomaticCodeSigning,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveAutomaticCodeSigning = XcodeArchiveV6AutomaticCodeSigning
+
+// XcodeArchiveRegisterTestDevices is a type alias for XcodeArchiveV6RegisterTestDevices,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveRegisterTestDevices = XcodeArchiveV6RegisterTestDevices
+
+// XcodeArchiveCompileBitcode is a type alias for XcodeArchiveV6CompileBitcode,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveCompileBitcode = XcodeArchiveV6CompileBitcode
+
+// XcodeArchiveUploadBitcode is a type alias for XcodeArchiveV6UploadBitcode,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveUploadBitcode = XcodeArchiveV6UploadBitcode
+
+// XcodeArchiveTestflightInternalTestingOnly is a type alias for XcodeArchiveV6TestflightInternalTestingOnly,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveTestflightInternalTestingOnly = XcodeArchiveV6TestflightInternalTestingOnly
+
+// XcodeArchiveExportAllDsyms is a type alias for XcodeArchiveV6ExportAllDsyms,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveExportAllDsyms = XcodeArchiveV6ExportAllDsyms
+
+// XcodeArchiveApiKeyEnterpriseAccount is a type alias for XcodeArchiveV6ApiKeyEnterpriseAccount,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveApiKeyEnterpriseAccount = XcodeArchiveV6ApiKeyEnterpriseAccount
+
+// XcodeArchiveVerboseLog is a type alias for XcodeArchiveV6VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeArchiveVerboseLog = XcodeArchiveV6VerboseLog

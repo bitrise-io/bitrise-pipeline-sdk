@@ -18,3 +18,23 @@ func KobitonExecuteTest(version ...string) *KobitonExecuteTestV2Builder {
 // published by kobiton-execute-test at the latest major version (v2).
 // For outputs of a specific major version use KobitonExecuteTestV{N}Outputs directly.
 var KobitonExecuteTestOutputs = KobitonExecuteTestV2Outputs
+
+// KobitonExecuteTestUseCustomDeviceInput is a type alias for KobitonExecuteTestV2UseCustomDeviceInput,
+// pointing to the latest supported major version of the step's enum type.
+type KobitonExecuteTestUseCustomDeviceInput = KobitonExecuteTestV2UseCustomDeviceInput
+
+// KobitonExecuteTestDevicePlatformInput is a type alias for KobitonExecuteTestV2DevicePlatformInput,
+// pointing to the latest supported major version of the step's enum type.
+type KobitonExecuteTestDevicePlatformInput = KobitonExecuteTestV2DevicePlatformInput
+
+// KobitonExecuteTestScriptlessAutomation is a type alias for KobitonExecuteTestV2ScriptlessAutomation,
+// pointing to the latest supported major version of the step's enum type.
+type KobitonExecuteTestScriptlessAutomation = KobitonExecuteTestV2ScriptlessAutomation
+
+// KobitonExecuteTestWaitForExecutionInput is a type alias for KobitonExecuteTestV2WaitForExecutionInput,
+// pointing to the latest supported major version of the step's enum type.
+type KobitonExecuteTestWaitForExecutionInput = KobitonExecuteTestV2WaitForExecutionInput
+
+// KobitonExecuteTestLogTypeInput is a type alias for KobitonExecuteTestV2LogTypeInput,
+// pointing to the latest supported major version of the step's enum type.
+type KobitonExecuteTestLogTypeInput = KobitonExecuteTestV2LogTypeInput

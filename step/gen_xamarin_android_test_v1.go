@@ -3,6 +3,14 @@
 
 package step
 
+// XamarinAndroidTestV1BuildTool enumerates the valid values for the build_tool input.
+type XamarinAndroidTestV1BuildTool string
+
+const (
+	XamarinAndroidTestV1BuildToolMsbuild XamarinAndroidTestV1BuildTool = "msbuild"
+	XamarinAndroidTestV1BuildToolXbuild  XamarinAndroidTestV1BuildTool = "xbuild"
+)
+
 // XamarinAndroidTestV1Builder builds a xamarin-android-test step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -54,8 +62,8 @@ func (b *XamarinAndroidTestV1Builder) WithXamarinPlatform(value string) *Xamarin
 }
 
 // WithBuildTool sets which tool to use for building?.
-func (b *XamarinAndroidTestV1Builder) WithBuildTool(value string) *XamarinAndroidTestV1Builder {
-	b.Builder.WithInput("build_tool", value)
+func (b *XamarinAndroidTestV1Builder) WithBuildTool(value XamarinAndroidTestV1BuildTool) *XamarinAndroidTestV1Builder {
+	b.Builder.WithInput("build_tool", string(value))
 	return b
 }
 

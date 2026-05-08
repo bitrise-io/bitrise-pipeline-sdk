@@ -3,6 +3,14 @@
 
 package step
 
+// XcodeCreateDevicePairDeleteBlockingPairs enumerates the valid values for the delete_blocking_pairs input.
+type XcodeCreateDevicePairDeleteBlockingPairs string
+
+const (
+	XcodeCreateDevicePairDeleteBlockingPairsTrue  XcodeCreateDevicePairDeleteBlockingPairs = "true"
+	XcodeCreateDevicePairDeleteBlockingPairsFalse XcodeCreateDevicePairDeleteBlockingPairs = "false"
+)
+
 // XcodeCreateDevicePairBuilder builds a xcode-create-device-pair step with typed input methods.
 type XcodeCreateDevicePairBuilder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *XcodeCreateDevicePairBuilder) WithWatchosVersion(value string) *XcodeCr
 }
 
 // WithDeleteBlockingPairs sets delete blocking pairs on capacity error.
-func (b *XcodeCreateDevicePairBuilder) WithDeleteBlockingPairs(value string) *XcodeCreateDevicePairBuilder {
-	b.Builder.WithInput("delete_blocking_pairs", value)
+func (b *XcodeCreateDevicePairBuilder) WithDeleteBlockingPairs(value XcodeCreateDevicePairDeleteBlockingPairs) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithInput("delete_blocking_pairs", string(value))
 	return b
 }
 

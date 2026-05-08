@@ -3,6 +3,16 @@
 
 package step
 
+// BitbucketServerPostBuildStatusPresetStatus enumerates the valid values for the preset_status input.
+type BitbucketServerPostBuildStatusPresetStatus string
+
+const (
+	BitbucketServerPostBuildStatusPresetStatusAUTO       BitbucketServerPostBuildStatusPresetStatus = "AUTO"
+	BitbucketServerPostBuildStatusPresetStatusINPROGRESS BitbucketServerPostBuildStatusPresetStatus = "INPROGRESS"
+	BitbucketServerPostBuildStatusPresetStatusSUCCESSFUL BitbucketServerPostBuildStatusPresetStatus = "SUCCESSFUL"
+	BitbucketServerPostBuildStatusPresetStatusFAILED     BitbucketServerPostBuildStatusPresetStatus = "FAILED"
+)
+
 // BitbucketServerPostBuildStatusBuilder builds a bitbucket-server-post-build-status step with typed input methods.
 type BitbucketServerPostBuildStatusBuilder struct{ *Builder }
 
@@ -38,8 +48,8 @@ func (b *BitbucketServerPostBuildStatusBuilder) WithPassword(value string) *Bitb
 }
 
 // WithPresetStatus sets set Specific Status.
-func (b *BitbucketServerPostBuildStatusBuilder) WithPresetStatus(value string) *BitbucketServerPostBuildStatusBuilder {
-	b.Builder.WithInput("preset_status", value)
+func (b *BitbucketServerPostBuildStatusBuilder) WithPresetStatus(value BitbucketServerPostBuildStatusPresetStatus) *BitbucketServerPostBuildStatusBuilder {
+	b.Builder.WithInput("preset_status", string(value))
 	return b
 }
 

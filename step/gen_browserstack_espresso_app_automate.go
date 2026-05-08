@@ -3,6 +3,30 @@
 
 package step
 
+// BrowserstackEspressoAppAutomateBrowserstackDeviceLogs enumerates the valid values for the browserstack_device_logs input.
+type BrowserstackEspressoAppAutomateBrowserstackDeviceLogs string
+
+const (
+	BrowserstackEspressoAppAutomateBrowserstackDeviceLogsTrue  BrowserstackEspressoAppAutomateBrowserstackDeviceLogs = "true"
+	BrowserstackEspressoAppAutomateBrowserstackDeviceLogsFalse BrowserstackEspressoAppAutomateBrowserstackDeviceLogs = "false"
+)
+
+// BrowserstackEspressoAppAutomateBrowserstackVideo enumerates the valid values for the browserstack_video input.
+type BrowserstackEspressoAppAutomateBrowserstackVideo string
+
+const (
+	BrowserstackEspressoAppAutomateBrowserstackVideoTrue  BrowserstackEspressoAppAutomateBrowserstackVideo = "true"
+	BrowserstackEspressoAppAutomateBrowserstackVideoFalse BrowserstackEspressoAppAutomateBrowserstackVideo = "false"
+)
+
+// BrowserstackEspressoAppAutomateBrowserstackLocal enumerates the valid values for the browserstack_local input.
+type BrowserstackEspressoAppAutomateBrowserstackLocal string
+
+const (
+	BrowserstackEspressoAppAutomateBrowserstackLocalTrue  BrowserstackEspressoAppAutomateBrowserstackLocal = "true"
+	BrowserstackEspressoAppAutomateBrowserstackLocalFalse BrowserstackEspressoAppAutomateBrowserstackLocal = "false"
+)
+
 // BrowserstackEspressoAppAutomateBuilder builds a browserstack-espresso-app-automate step with typed input methods.
 type BrowserstackEspressoAppAutomateBuilder struct{ *Builder }
 
@@ -74,20 +98,20 @@ func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackSize(value stri
 }
 
 // WithBrowserstackDeviceLogs sets device Logs.
-func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackDeviceLogs(value string) *BrowserstackEspressoAppAutomateBuilder {
-	b.Builder.WithInput("browserstack_device_logs", value)
+func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackDeviceLogs(value BrowserstackEspressoAppAutomateBrowserstackDeviceLogs) *BrowserstackEspressoAppAutomateBuilder {
+	b.Builder.WithInput("browserstack_device_logs", string(value))
 	return b
 }
 
 // WithBrowserstackVideo sets video.
-func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackVideo(value string) *BrowserstackEspressoAppAutomateBuilder {
-	b.Builder.WithInput("browserstack_video", value)
+func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackVideo(value BrowserstackEspressoAppAutomateBrowserstackVideo) *BrowserstackEspressoAppAutomateBuilder {
+	b.Builder.WithInput("browserstack_video", string(value))
 	return b
 }
 
 // WithBrowserstackLocal sets local.
-func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackLocal(value string) *BrowserstackEspressoAppAutomateBuilder {
-	b.Builder.WithInput("browserstack_local", value)
+func (b *BrowserstackEspressoAppAutomateBuilder) WithBrowserstackLocal(value BrowserstackEspressoAppAutomateBrowserstackLocal) *BrowserstackEspressoAppAutomateBuilder {
+	b.Builder.WithInput("browserstack_local", string(value))
 	return b
 }
 

@@ -3,6 +3,47 @@
 
 package step
 
+// IonicArchiveV2Platform enumerates the valid values for the platform input.
+type IonicArchiveV2Platform string
+
+const (
+	IonicArchiveV2PlatformIosAndroid IonicArchiveV2Platform = "ios,android"
+	IonicArchiveV2PlatformIos        IonicArchiveV2Platform = "ios"
+	IonicArchiveV2PlatformAndroid    IonicArchiveV2Platform = "android"
+)
+
+// IonicArchiveV2Configuration enumerates the valid values for the configuration input.
+type IonicArchiveV2Configuration string
+
+const (
+	IonicArchiveV2ConfigurationRelease IonicArchiveV2Configuration = "release"
+	IonicArchiveV2ConfigurationDebug   IonicArchiveV2Configuration = "debug"
+)
+
+// IonicArchiveV2Target enumerates the valid values for the target input.
+type IonicArchiveV2Target string
+
+const (
+	IonicArchiveV2TargetDevice   IonicArchiveV2Target = "device"
+	IonicArchiveV2TargetEmulator IonicArchiveV2Target = "emulator"
+)
+
+// IonicArchiveV2AndroidAppType enumerates the valid values for the android_app_type input.
+type IonicArchiveV2AndroidAppType string
+
+const (
+	IonicArchiveV2AndroidAppTypeApk IonicArchiveV2AndroidAppType = "apk"
+	IonicArchiveV2AndroidAppTypeAab IonicArchiveV2AndroidAppType = "aab"
+)
+
+// IonicArchiveV2CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type IonicArchiveV2CacheLocalDeps string
+
+const (
+	IonicArchiveV2CacheLocalDepsTrue  IonicArchiveV2CacheLocalDeps = "true"
+	IonicArchiveV2CacheLocalDepsFalse IonicArchiveV2CacheLocalDeps = "false"
+)
+
 // IonicArchiveV2Builder builds a ionic-archive step with typed input methods.
 type IonicArchiveV2Builder struct{ *Builder }
 
@@ -20,20 +61,20 @@ func IonicArchiveV2(version ...string) *IonicArchiveV2Builder {
 }
 
 // WithPlatform sets platform to use in ionic-cli commands.
-func (b *IonicArchiveV2Builder) WithPlatform(value string) *IonicArchiveV2Builder {
-	b.Builder.WithInput("platform", value)
+func (b *IonicArchiveV2Builder) WithPlatform(value IonicArchiveV2Platform) *IonicArchiveV2Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *IonicArchiveV2Builder) WithConfiguration(value string) *IonicArchiveV2Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *IonicArchiveV2Builder) WithConfiguration(value IonicArchiveV2Configuration) *IonicArchiveV2Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *IonicArchiveV2Builder) WithTarget(value string) *IonicArchiveV2Builder {
-	b.Builder.WithInput("target", value)
+func (b *IonicArchiveV2Builder) WithTarget(value IonicArchiveV2Target) *IonicArchiveV2Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 
@@ -86,14 +127,14 @@ func (b *IonicArchiveV2Builder) WithWorkdir(value string) *IonicArchiveV2Builder
 }
 
 // WithAndroidAppType sets android app type.
-func (b *IonicArchiveV2Builder) WithAndroidAppType(value string) *IonicArchiveV2Builder {
-	b.Builder.WithInput("android_app_type", value)
+func (b *IonicArchiveV2Builder) WithAndroidAppType(value IonicArchiveV2AndroidAppType) *IonicArchiveV2Builder {
+	b.Builder.WithInput("android_app_type", string(value))
 	return b
 }
 
 // WithCacheLocalDeps sets cache node_modules.
-func (b *IonicArchiveV2Builder) WithCacheLocalDeps(value string) *IonicArchiveV2Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *IonicArchiveV2Builder) WithCacheLocalDeps(value IonicArchiveV2CacheLocalDeps) *IonicArchiveV2Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }
 

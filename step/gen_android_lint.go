@@ -3,6 +3,15 @@
 
 package step
 
+// AndroidLintCacheLevel enumerates the valid values for the cache_level input.
+type AndroidLintCacheLevel string
+
+const (
+	AndroidLintCacheLevelAll      AndroidLintCacheLevel = "all"
+	AndroidLintCacheLevelOnlyDeps AndroidLintCacheLevel = "only_deps"
+	AndroidLintCacheLevelNone     AndroidLintCacheLevel = "none"
+)
+
 // AndroidLintBuilder builds a android-lint step with typed input methods.
 type AndroidLintBuilder struct{ *Builder }
 
@@ -44,8 +53,8 @@ func (b *AndroidLintBuilder) WithReportPathPattern(value string) *AndroidLintBui
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *AndroidLintBuilder) WithCacheLevel(value string) *AndroidLintBuilder {
-	b.Builder.WithInput("cache_level", value)
+func (b *AndroidLintBuilder) WithCacheLevel(value AndroidLintCacheLevel) *AndroidLintBuilder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 

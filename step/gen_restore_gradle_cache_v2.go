@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreGradleCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreGradleCacheV2Verbose string
+
+const (
+	RestoreGradleCacheV2VerboseTrue  RestoreGradleCacheV2Verbose = "true"
+	RestoreGradleCacheV2VerboseFalse RestoreGradleCacheV2Verbose = "false"
+)
+
 // RestoreGradleCacheV2Builder builds a restore-gradle-cache step with typed input methods.
 type RestoreGradleCacheV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func RestoreGradleCacheV2(version ...string) *RestoreGradleCacheV2Builder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreGradleCacheV2Builder) WithVerbose(value string) *RestoreGradleCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreGradleCacheV2Builder) WithVerbose(value RestoreGradleCacheV2Verbose) *RestoreGradleCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

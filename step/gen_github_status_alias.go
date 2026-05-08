@@ -13,3 +13,11 @@ type GithubStatusBuilder = GithubStatusV3Builder
 func GithubStatus(version ...string) *GithubStatusV3Builder {
 	return GithubStatusV3(version...)
 }
+
+// GithubStatusSetSpecificStatus is a type alias for GithubStatusV3SetSpecificStatus,
+// pointing to the latest supported major version of the step's enum type.
+type GithubStatusSetSpecificStatus = GithubStatusV3SetSpecificStatus
+
+// GithubStatusVerbose is a type alias for GithubStatusV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type GithubStatusVerbose = GithubStatusV3Verbose

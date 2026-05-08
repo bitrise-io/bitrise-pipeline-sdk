@@ -3,6 +3,24 @@
 
 package step
 
+// AndroidSdkUpdateTools enumerates the valid values for the tools input.
+type AndroidSdkUpdateTools string
+
+const (
+	AndroidSdkUpdateToolsOn  AndroidSdkUpdateTools = "on"
+	AndroidSdkUpdateToolsOff AndroidSdkUpdateTools = "off"
+)
+
+// AndroidSdkUpdatePlatformTools enumerates the valid values for the platform_tools input.
+type AndroidSdkUpdatePlatformTools string
+
+const (
+	AndroidSdkUpdatePlatformToolsStable  AndroidSdkUpdatePlatformTools = "stable"
+	AndroidSdkUpdatePlatformToolsPreview AndroidSdkUpdatePlatformTools = "preview"
+	AndroidSdkUpdatePlatformToolsBoth    AndroidSdkUpdatePlatformTools = "both"
+	AndroidSdkUpdatePlatformToolsNone    AndroidSdkUpdatePlatformTools = "none"
+)
+
 // AndroidSdkUpdateBuilder builds a android-sdk-update step with typed input methods.
 type AndroidSdkUpdateBuilder struct{ *Builder }
 
@@ -20,14 +38,14 @@ func AndroidSdkUpdate(version ...string) *AndroidSdkUpdateBuilder {
 }
 
 // WithTools sets update Android SDK Tools.
-func (b *AndroidSdkUpdateBuilder) WithTools(value string) *AndroidSdkUpdateBuilder {
-	b.Builder.WithInput("tools", value)
+func (b *AndroidSdkUpdateBuilder) WithTools(value AndroidSdkUpdateTools) *AndroidSdkUpdateBuilder {
+	b.Builder.WithInput("tools", string(value))
 	return b
 }
 
 // WithPlatformTools sets android SDK Platform-tools version.
-func (b *AndroidSdkUpdateBuilder) WithPlatformTools(value string) *AndroidSdkUpdateBuilder {
-	b.Builder.WithInput("platform_tools", value)
+func (b *AndroidSdkUpdateBuilder) WithPlatformTools(value AndroidSdkUpdatePlatformTools) *AndroidSdkUpdateBuilder {
+	b.Builder.WithInput("platform_tools", string(value))
 	return b
 }
 

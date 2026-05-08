@@ -3,6 +3,38 @@
 
 package step
 
+// MicrosoftTeamsAdaptiveCardIsDebugMode enumerates the valid values for the is_debug_mode input.
+type MicrosoftTeamsAdaptiveCardIsDebugMode string
+
+const (
+	MicrosoftTeamsAdaptiveCardIsDebugModeYes MicrosoftTeamsAdaptiveCardIsDebugMode = "yes"
+	MicrosoftTeamsAdaptiveCardIsDebugModeNo  MicrosoftTeamsAdaptiveCardIsDebugMode = "no"
+)
+
+// MicrosoftTeamsAdaptiveCardCardStyle enumerates the valid values for the card_style input.
+type MicrosoftTeamsAdaptiveCardCardStyle string
+
+const (
+	MicrosoftTeamsAdaptiveCardCardStyleDefault   MicrosoftTeamsAdaptiveCardCardStyle = "default"
+	MicrosoftTeamsAdaptiveCardCardStyleGood      MicrosoftTeamsAdaptiveCardCardStyle = "good"
+	MicrosoftTeamsAdaptiveCardCardStyleAttention MicrosoftTeamsAdaptiveCardCardStyle = "attention"
+	MicrosoftTeamsAdaptiveCardCardStyleWarning   MicrosoftTeamsAdaptiveCardCardStyle = "warning"
+	MicrosoftTeamsAdaptiveCardCardStyleAccent    MicrosoftTeamsAdaptiveCardCardStyle = "accent"
+	MicrosoftTeamsAdaptiveCardCardStyleEmphasis  MicrosoftTeamsAdaptiveCardCardStyle = "emphasis"
+)
+
+// MicrosoftTeamsAdaptiveCardCardStyleOnError enumerates the valid values for the card_style_on_error input.
+type MicrosoftTeamsAdaptiveCardCardStyleOnError string
+
+const (
+	MicrosoftTeamsAdaptiveCardCardStyleOnErrorDefault   MicrosoftTeamsAdaptiveCardCardStyleOnError = "default"
+	MicrosoftTeamsAdaptiveCardCardStyleOnErrorGood      MicrosoftTeamsAdaptiveCardCardStyleOnError = "good"
+	MicrosoftTeamsAdaptiveCardCardStyleOnErrorAttention MicrosoftTeamsAdaptiveCardCardStyleOnError = "attention"
+	MicrosoftTeamsAdaptiveCardCardStyleOnErrorWarning   MicrosoftTeamsAdaptiveCardCardStyleOnError = "warning"
+	MicrosoftTeamsAdaptiveCardCardStyleOnErrorAccent    MicrosoftTeamsAdaptiveCardCardStyleOnError = "accent"
+	MicrosoftTeamsAdaptiveCardCardStyleOnErrorEmphasis  MicrosoftTeamsAdaptiveCardCardStyleOnError = "emphasis"
+)
+
 // MicrosoftTeamsAdaptiveCardBuilder builds a microsoft-teams-adaptive-card step with typed input methods.
 type MicrosoftTeamsAdaptiveCardBuilder struct{ *Builder }
 
@@ -20,8 +52,8 @@ func MicrosoftTeamsAdaptiveCard(version ...string) *MicrosoftTeamsAdaptiveCardBu
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *MicrosoftTeamsAdaptiveCardBuilder) WithIsDebugMode(value string) *MicrosoftTeamsAdaptiveCardBuilder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *MicrosoftTeamsAdaptiveCardBuilder) WithIsDebugMode(value MicrosoftTeamsAdaptiveCardIsDebugMode) *MicrosoftTeamsAdaptiveCardBuilder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 
@@ -44,14 +76,14 @@ func (b *MicrosoftTeamsAdaptiveCardBuilder) WithCardHeadlineOnError(value string
 }
 
 // WithCardStyle sets adaptive Card Style.
-func (b *MicrosoftTeamsAdaptiveCardBuilder) WithCardStyle(value string) *MicrosoftTeamsAdaptiveCardBuilder {
-	b.Builder.WithInput("card_style", value)
+func (b *MicrosoftTeamsAdaptiveCardBuilder) WithCardStyle(value MicrosoftTeamsAdaptiveCardCardStyle) *MicrosoftTeamsAdaptiveCardBuilder {
+	b.Builder.WithInput("card_style", string(value))
 	return b
 }
 
 // WithCardStyleOnError sets message card theme color if the build failed.
-func (b *MicrosoftTeamsAdaptiveCardBuilder) WithCardStyleOnError(value string) *MicrosoftTeamsAdaptiveCardBuilder {
-	b.Builder.WithInput("card_style_on_error", value)
+func (b *MicrosoftTeamsAdaptiveCardBuilder) WithCardStyleOnError(value MicrosoftTeamsAdaptiveCardCardStyleOnError) *MicrosoftTeamsAdaptiveCardBuilder {
+	b.Builder.WithInput("card_style_on_error", string(value))
 	return b
 }
 

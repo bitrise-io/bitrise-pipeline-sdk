@@ -3,6 +3,22 @@
 
 package step
 
+// MonitoringAppsPermissionsCheckAndroid enumerates the valid values for the check_android input.
+type MonitoringAppsPermissionsCheckAndroid string
+
+const (
+	MonitoringAppsPermissionsCheckAndroidYes MonitoringAppsPermissionsCheckAndroid = "yes"
+	MonitoringAppsPermissionsCheckAndroidNo  MonitoringAppsPermissionsCheckAndroid = "no"
+)
+
+// MonitoringAppsPermissionsCheckIos enumerates the valid values for the check_ios input.
+type MonitoringAppsPermissionsCheckIos string
+
+const (
+	MonitoringAppsPermissionsCheckIosYes MonitoringAppsPermissionsCheckIos = "yes"
+	MonitoringAppsPermissionsCheckIosNo  MonitoringAppsPermissionsCheckIos = "no"
+)
+
 // MonitoringAppsPermissionsBuilder builds a monitoring-apps-permissions step with typed input methods.
 type MonitoringAppsPermissionsBuilder struct{ *Builder }
 
@@ -20,14 +36,14 @@ func MonitoringAppsPermissions(version ...string) *MonitoringAppsPermissionsBuil
 }
 
 // WithCheckAndroid sets check Android.
-func (b *MonitoringAppsPermissionsBuilder) WithCheckAndroid(value string) *MonitoringAppsPermissionsBuilder {
-	b.Builder.WithInput("check_android", value)
+func (b *MonitoringAppsPermissionsBuilder) WithCheckAndroid(value MonitoringAppsPermissionsCheckAndroid) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithInput("check_android", string(value))
 	return b
 }
 
 // WithCheckIos sets check iOS.
-func (b *MonitoringAppsPermissionsBuilder) WithCheckIos(value string) *MonitoringAppsPermissionsBuilder {
-	b.Builder.WithInput("check_ios", value)
+func (b *MonitoringAppsPermissionsBuilder) WithCheckIos(value MonitoringAppsPermissionsCheckIos) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithInput("check_ios", string(value))
 	return b
 }
 

@@ -3,6 +3,28 @@
 
 package step
 
+// CreateAndroidEmulatorV1Abi enumerates the valid values for the abi input.
+type CreateAndroidEmulatorV1Abi string
+
+const (
+	CreateAndroidEmulatorV1AbiArmeabiV7a CreateAndroidEmulatorV1Abi = "armeabi-v7a"
+	CreateAndroidEmulatorV1AbiArm64V8a   CreateAndroidEmulatorV1Abi = "arm64-v8a"
+	CreateAndroidEmulatorV1AbiX86        CreateAndroidEmulatorV1Abi = "x86"
+	CreateAndroidEmulatorV1AbiX8664      CreateAndroidEmulatorV1Abi = "x86_64"
+	CreateAndroidEmulatorV1AbiMips       CreateAndroidEmulatorV1Abi = "mips"
+)
+
+// CreateAndroidEmulatorV1Tag enumerates the valid values for the tag input.
+type CreateAndroidEmulatorV1Tag string
+
+const (
+	CreateAndroidEmulatorV1TagDefault             CreateAndroidEmulatorV1Tag = "default"
+	CreateAndroidEmulatorV1TagGoogleApis          CreateAndroidEmulatorV1Tag = "google_apis"
+	CreateAndroidEmulatorV1TagAndroidTv           CreateAndroidEmulatorV1Tag = "android-tv"
+	CreateAndroidEmulatorV1TagAndroidWear         CreateAndroidEmulatorV1Tag = "android-wear"
+	CreateAndroidEmulatorV1TagGoogleApisPlaystore CreateAndroidEmulatorV1Tag = "google_apis_playstore"
+)
+
 // CreateAndroidEmulatorV1Builder builds a create-android-emulator step with typed input methods.
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
@@ -36,14 +58,14 @@ func (b *CreateAndroidEmulatorV1Builder) WithPlatform(value string) *CreateAndro
 }
 
 // WithAbi sets the ABI to use for the AVD.
-func (b *CreateAndroidEmulatorV1Builder) WithAbi(value string) *CreateAndroidEmulatorV1Builder {
-	b.Builder.WithInput("abi", value)
+func (b *CreateAndroidEmulatorV1Builder) WithAbi(value CreateAndroidEmulatorV1Abi) *CreateAndroidEmulatorV1Builder {
+	b.Builder.WithInput("abi", string(value))
 	return b
 }
 
 // WithTag sets the sys-img tag to use for the AVD.
-func (b *CreateAndroidEmulatorV1Builder) WithTag(value string) *CreateAndroidEmulatorV1Builder {
-	b.Builder.WithInput("tag", value)
+func (b *CreateAndroidEmulatorV1Builder) WithTag(value CreateAndroidEmulatorV1Tag) *CreateAndroidEmulatorV1Builder {
+	b.Builder.WithInput("tag", string(value))
 	return b
 }
 

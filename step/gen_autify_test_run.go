@@ -3,6 +3,14 @@
 
 package step
 
+// AutifyTestRunWait enumerates the valid values for the wait input.
+type AutifyTestRunWait string
+
+const (
+	AutifyTestRunWaitTrue  AutifyTestRunWait = "true"
+	AutifyTestRunWaitFalse AutifyTestRunWait = "false"
+)
+
 // AutifyTestRunBuilder builds a autify-test-run step with typed input methods.
 type AutifyTestRunBuilder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *AutifyTestRunBuilder) WithBuildPath(value string) *AutifyTestRunBuilder
 }
 
 // WithWait sets wait for the finish of test.
-func (b *AutifyTestRunBuilder) WithWait(value string) *AutifyTestRunBuilder {
-	b.Builder.WithInput("wait", value)
+func (b *AutifyTestRunBuilder) WithWait(value AutifyTestRunWait) *AutifyTestRunBuilder {
+	b.Builder.WithInput("wait", string(value))
 	return b
 }
 

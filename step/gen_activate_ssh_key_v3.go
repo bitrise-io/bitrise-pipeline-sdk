@@ -3,6 +3,14 @@
 
 package step
 
+// ActivateSshKeyV3IsRemoveOtherIdentities enumerates the valid values for the is_remove_other_identities input.
+type ActivateSshKeyV3IsRemoveOtherIdentities string
+
+const (
+	ActivateSshKeyV3IsRemoveOtherIdentitiesTrue  ActivateSshKeyV3IsRemoveOtherIdentities = "true"
+	ActivateSshKeyV3IsRemoveOtherIdentitiesFalse ActivateSshKeyV3IsRemoveOtherIdentities = "false"
+)
+
 // ActivateSshKeyV3Builder builds a activate-ssh-key step with typed input methods.
 type ActivateSshKeyV3Builder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *ActivateSshKeyV3Builder) WithSshKeySavePath(value string) *ActivateSshK
 }
 
 // WithIsRemoveOtherIdentities sets remove other identities?.
-func (b *ActivateSshKeyV3Builder) WithIsRemoveOtherIdentities(value string) *ActivateSshKeyV3Builder {
-	b.Builder.WithInput("is_remove_other_identities", value)
+func (b *ActivateSshKeyV3Builder) WithIsRemoveOtherIdentities(value ActivateSshKeyV3IsRemoveOtherIdentities) *ActivateSshKeyV3Builder {
+	b.Builder.WithInput("is_remove_other_identities", string(value))
 	return b
 }
 

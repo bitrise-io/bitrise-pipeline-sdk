@@ -3,6 +3,14 @@
 
 package step
 
+// SonarqubeMsbuildScannerIsDebug enumerates the valid values for the is_debug input.
+type SonarqubeMsbuildScannerIsDebug string
+
+const (
+	SonarqubeMsbuildScannerIsDebugTrue  SonarqubeMsbuildScannerIsDebug = "true"
+	SonarqubeMsbuildScannerIsDebugFalse SonarqubeMsbuildScannerIsDebug = "false"
+)
+
 // SonarqubeMsbuildScannerBuilder builds a sonarqube-msbuild-scanner step with typed input methods.
 type SonarqubeMsbuildScannerBuilder struct{ *Builder }
 
@@ -62,7 +70,7 @@ func (b *SonarqubeMsbuildScannerBuilder) WithScannerEndProperties(value string) 
 }
 
 // WithIsDebug sets print all executed shell commands to a build log?.
-func (b *SonarqubeMsbuildScannerBuilder) WithIsDebug(value string) *SonarqubeMsbuildScannerBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *SonarqubeMsbuildScannerBuilder) WithIsDebug(value SonarqubeMsbuildScannerIsDebug) *SonarqubeMsbuildScannerBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

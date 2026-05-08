@@ -3,6 +3,73 @@
 
 package step
 
+// XcodeArchiveV1ExportMethod enumerates the valid values for the export_method input.
+type XcodeArchiveV1ExportMethod string
+
+const (
+	XcodeArchiveV1ExportMethodAutoDetect  XcodeArchiveV1ExportMethod = "auto-detect"
+	XcodeArchiveV1ExportMethodAppStore    XcodeArchiveV1ExportMethod = "app-store"
+	XcodeArchiveV1ExportMethodAdHoc       XcodeArchiveV1ExportMethod = "ad-hoc"
+	XcodeArchiveV1ExportMethodEnterprise  XcodeArchiveV1ExportMethod = "enterprise"
+	XcodeArchiveV1ExportMethodDevelopment XcodeArchiveV1ExportMethod = "development"
+)
+
+// XcodeArchiveV1UploadBitcode enumerates the valid values for the upload_bitcode input.
+type XcodeArchiveV1UploadBitcode string
+
+const (
+	XcodeArchiveV1UploadBitcodeYes XcodeArchiveV1UploadBitcode = "yes"
+	XcodeArchiveV1UploadBitcodeNo  XcodeArchiveV1UploadBitcode = "no"
+)
+
+// XcodeArchiveV1CompileBitcode enumerates the valid values for the compile_bitcode input.
+type XcodeArchiveV1CompileBitcode string
+
+const (
+	XcodeArchiveV1CompileBitcodeYes XcodeArchiveV1CompileBitcode = "yes"
+	XcodeArchiveV1CompileBitcodeNo  XcodeArchiveV1CompileBitcode = "no"
+)
+
+// XcodeArchiveV1IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeArchiveV1IsCleanBuild string
+
+const (
+	XcodeArchiveV1IsCleanBuildYes XcodeArchiveV1IsCleanBuild = "yes"
+	XcodeArchiveV1IsCleanBuildNo  XcodeArchiveV1IsCleanBuild = "no"
+)
+
+// XcodeArchiveV1OutputTool enumerates the valid values for the output_tool input.
+type XcodeArchiveV1OutputTool string
+
+const (
+	XcodeArchiveV1OutputToolXcpretty   XcodeArchiveV1OutputTool = "xcpretty"
+	XcodeArchiveV1OutputToolXcodebuild XcodeArchiveV1OutputTool = "xcodebuild"
+)
+
+// XcodeArchiveV1IsExportXcarchiveZip enumerates the valid values for the is_export_xcarchive_zip input.
+type XcodeArchiveV1IsExportXcarchiveZip string
+
+const (
+	XcodeArchiveV1IsExportXcarchiveZipYes XcodeArchiveV1IsExportXcarchiveZip = "yes"
+	XcodeArchiveV1IsExportXcarchiveZipNo  XcodeArchiveV1IsExportXcarchiveZip = "no"
+)
+
+// XcodeArchiveV1UseDeprecatedExport enumerates the valid values for the use_deprecated_export input.
+type XcodeArchiveV1UseDeprecatedExport string
+
+const (
+	XcodeArchiveV1UseDeprecatedExportYes XcodeArchiveV1UseDeprecatedExport = "yes"
+	XcodeArchiveV1UseDeprecatedExportNo  XcodeArchiveV1UseDeprecatedExport = "no"
+)
+
+// XcodeArchiveV1ExportAllDsyms enumerates the valid values for the export_all_dsyms input.
+type XcodeArchiveV1ExportAllDsyms string
+
+const (
+	XcodeArchiveV1ExportAllDsymsYes XcodeArchiveV1ExportAllDsyms = "yes"
+	XcodeArchiveV1ExportAllDsymsNo  XcodeArchiveV1ExportAllDsyms = "no"
+)
+
 // XcodeArchiveV1Builder builds a xcode-archive step with typed input methods.
 type XcodeArchiveV1Builder struct{ *Builder }
 
@@ -20,20 +87,20 @@ func XcodeArchiveV1(version ...string) *XcodeArchiveV1Builder {
 }
 
 // WithExportMethod sets select method for export.
-func (b *XcodeArchiveV1Builder) WithExportMethod(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *XcodeArchiveV1Builder) WithExportMethod(value XcodeArchiveV1ExportMethod) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *XcodeArchiveV1Builder) WithUploadBitcode(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *XcodeArchiveV1Builder) WithUploadBitcode(value XcodeArchiveV1UploadBitcode) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *XcodeArchiveV1Builder) WithCompileBitcode(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *XcodeArchiveV1Builder) WithCompileBitcode(value XcodeArchiveV1CompileBitcode) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
@@ -98,14 +165,14 @@ func (b *XcodeArchiveV1Builder) WithForceProvisioningProfile(value string) *Xcod
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before the archive?.
-func (b *XcodeArchiveV1Builder) WithIsCleanBuild(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeArchiveV1Builder) WithIsCleanBuild(value XcodeArchiveV1IsCleanBuild) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeArchiveV1Builder) WithOutputTool(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeArchiveV1Builder) WithOutputTool(value XcodeArchiveV1OutputTool) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -116,20 +183,20 @@ func (b *XcodeArchiveV1Builder) WithXcodebuildOptions(value string) *XcodeArchiv
 }
 
 // WithIsExportXcarchiveZip sets export the generated archive?.
-func (b *XcodeArchiveV1Builder) WithIsExportXcarchiveZip(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("is_export_xcarchive_zip", value)
+func (b *XcodeArchiveV1Builder) WithIsExportXcarchiveZip(value XcodeArchiveV1IsExportXcarchiveZip) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("is_export_xcarchive_zip", string(value))
 	return b
 }
 
 // WithUseDeprecatedExport sets use deprecated ipa export method?.
-func (b *XcodeArchiveV1Builder) WithUseDeprecatedExport(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("use_deprecated_export", value)
+func (b *XcodeArchiveV1Builder) WithUseDeprecatedExport(value XcodeArchiveV1UseDeprecatedExport) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("use_deprecated_export", string(value))
 	return b
 }
 
 // WithExportAllDsyms sets export all dsyms.
-func (b *XcodeArchiveV1Builder) WithExportAllDsyms(value string) *XcodeArchiveV1Builder {
-	b.Builder.WithInput("export_all_dsyms", value)
+func (b *XcodeArchiveV1Builder) WithExportAllDsyms(value XcodeArchiveV1ExportAllDsyms) *XcodeArchiveV1Builder {
+	b.Builder.WithInput("export_all_dsyms", string(value))
 	return b
 }
 

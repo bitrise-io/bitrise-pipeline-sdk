@@ -3,6 +3,22 @@
 
 package step
 
+// GitTagProjectVersionAndBuildNumberUseLightweightTag enumerates the valid values for the use_lightweight_tag input.
+type GitTagProjectVersionAndBuildNumberUseLightweightTag string
+
+const (
+	GitTagProjectVersionAndBuildNumberUseLightweightTagNo  GitTagProjectVersionAndBuildNumberUseLightweightTag = "no"
+	GitTagProjectVersionAndBuildNumberUseLightweightTagYes GitTagProjectVersionAndBuildNumberUseLightweightTag = "yes"
+)
+
+// GitTagProjectVersionAndBuildNumberUpdateTag enumerates the valid values for the update_tag input.
+type GitTagProjectVersionAndBuildNumberUpdateTag string
+
+const (
+	GitTagProjectVersionAndBuildNumberUpdateTagNo  GitTagProjectVersionAndBuildNumberUpdateTag = "no"
+	GitTagProjectVersionAndBuildNumberUpdateTagYes GitTagProjectVersionAndBuildNumberUpdateTag = "yes"
+)
+
 // GitTagProjectVersionAndBuildNumberBuilder builds a git-tag-project-version-and-build-number step with typed input methods.
 type GitTagProjectVersionAndBuildNumberBuilder struct{ *Builder }
 
@@ -38,14 +54,14 @@ func (b *GitTagProjectVersionAndBuildNumberBuilder) WithBitriseTagFormat(value s
 }
 
 // WithUseLightweightTag sets use lightweight tag?.
-func (b *GitTagProjectVersionAndBuildNumberBuilder) WithUseLightweightTag(value string) *GitTagProjectVersionAndBuildNumberBuilder {
-	b.Builder.WithInput("use_lightweight_tag", value)
+func (b *GitTagProjectVersionAndBuildNumberBuilder) WithUseLightweightTag(value GitTagProjectVersionAndBuildNumberUseLightweightTag) *GitTagProjectVersionAndBuildNumberBuilder {
+	b.Builder.WithInput("use_lightweight_tag", string(value))
 	return b
 }
 
 // WithUpdateTag sets update tag if already exists?.
-func (b *GitTagProjectVersionAndBuildNumberBuilder) WithUpdateTag(value string) *GitTagProjectVersionAndBuildNumberBuilder {
-	b.Builder.WithInput("update_tag", value)
+func (b *GitTagProjectVersionAndBuildNumberBuilder) WithUpdateTag(value GitTagProjectVersionAndBuildNumberUpdateTag) *GitTagProjectVersionAndBuildNumberBuilder {
+	b.Builder.WithInput("update_tag", string(value))
 	return b
 }
 

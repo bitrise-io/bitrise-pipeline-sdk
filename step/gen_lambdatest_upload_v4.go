@@ -3,6 +3,14 @@
 
 package step
 
+// LambdatestUploadV4ShowDebugLogs enumerates the valid values for the show_debug_logs input.
+type LambdatestUploadV4ShowDebugLogs string
+
+const (
+	LambdatestUploadV4ShowDebugLogsFalse LambdatestUploadV4ShowDebugLogs = "false"
+	LambdatestUploadV4ShowDebugLogsTrue  LambdatestUploadV4ShowDebugLogs = "true"
+)
+
 // LambdatestUploadV4Builder builds a lambdatest-upload step with typed input methods.
 type LambdatestUploadV4Builder struct{ *Builder }
 
@@ -56,8 +64,8 @@ func (b *LambdatestUploadV4Builder) WithAppVisibility(value string) *LambdatestU
 }
 
 // WithShowDebugLogs sets show debug logs.
-func (b *LambdatestUploadV4Builder) WithShowDebugLogs(value string) *LambdatestUploadV4Builder {
-	b.Builder.WithInput("show_debug_logs", value)
+func (b *LambdatestUploadV4Builder) WithShowDebugLogs(value LambdatestUploadV4ShowDebugLogs) *LambdatestUploadV4Builder {
+	b.Builder.WithInput("show_debug_logs", string(value))
 	return b
 }
 

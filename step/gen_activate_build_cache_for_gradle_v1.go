@@ -3,6 +3,39 @@
 
 package step
 
+// ActivateBuildCacheForGradleV1Push enumerates the valid values for the push input.
+type ActivateBuildCacheForGradleV1Push string
+
+const (
+	ActivateBuildCacheForGradleV1PushTrue  ActivateBuildCacheForGradleV1Push = "true"
+	ActivateBuildCacheForGradleV1PushFalse ActivateBuildCacheForGradleV1Push = "false"
+)
+
+// ActivateBuildCacheForGradleV1ValidationLevel enumerates the valid values for the validation_level input.
+type ActivateBuildCacheForGradleV1ValidationLevel string
+
+const (
+	ActivateBuildCacheForGradleV1ValidationLevelNone    ActivateBuildCacheForGradleV1ValidationLevel = "none"
+	ActivateBuildCacheForGradleV1ValidationLevelWarning ActivateBuildCacheForGradleV1ValidationLevel = "warning"
+	ActivateBuildCacheForGradleV1ValidationLevelError   ActivateBuildCacheForGradleV1ValidationLevel = "error"
+)
+
+// ActivateBuildCacheForGradleV1CollectMetrics enumerates the valid values for the collect_metrics input.
+type ActivateBuildCacheForGradleV1CollectMetrics string
+
+const (
+	ActivateBuildCacheForGradleV1CollectMetricsTrue  ActivateBuildCacheForGradleV1CollectMetrics = "true"
+	ActivateBuildCacheForGradleV1CollectMetricsFalse ActivateBuildCacheForGradleV1CollectMetrics = "false"
+)
+
+// ActivateBuildCacheForGradleV1Verbose enumerates the valid values for the verbose input.
+type ActivateBuildCacheForGradleV1Verbose string
+
+const (
+	ActivateBuildCacheForGradleV1VerboseTrue  ActivateBuildCacheForGradleV1Verbose = "true"
+	ActivateBuildCacheForGradleV1VerboseFalse ActivateBuildCacheForGradleV1Verbose = "false"
+)
+
 // ActivateBuildCacheForGradleV1Builder builds a activate-build-cache-for-gradle step with typed input methods.
 type ActivateBuildCacheForGradleV1Builder struct{ *Builder }
 
@@ -20,25 +53,25 @@ func ActivateBuildCacheForGradleV1(version ...string) *ActivateBuildCacheForGrad
 }
 
 // WithPush sets push new cache entries.
-func (b *ActivateBuildCacheForGradleV1Builder) WithPush(value string) *ActivateBuildCacheForGradleV1Builder {
-	b.Builder.WithInput("push", value)
+func (b *ActivateBuildCacheForGradleV1Builder) WithPush(value ActivateBuildCacheForGradleV1Push) *ActivateBuildCacheForGradleV1Builder {
+	b.Builder.WithInput("push", string(value))
 	return b
 }
 
 // WithValidationLevel sets validation level.
-func (b *ActivateBuildCacheForGradleV1Builder) WithValidationLevel(value string) *ActivateBuildCacheForGradleV1Builder {
-	b.Builder.WithInput("validation_level", value)
+func (b *ActivateBuildCacheForGradleV1Builder) WithValidationLevel(value ActivateBuildCacheForGradleV1ValidationLevel) *ActivateBuildCacheForGradleV1Builder {
+	b.Builder.WithInput("validation_level", string(value))
 	return b
 }
 
 // WithCollectMetrics sets collect Gradle build metrics.
-func (b *ActivateBuildCacheForGradleV1Builder) WithCollectMetrics(value string) *ActivateBuildCacheForGradleV1Builder {
-	b.Builder.WithInput("collect_metrics", value)
+func (b *ActivateBuildCacheForGradleV1Builder) WithCollectMetrics(value ActivateBuildCacheForGradleV1CollectMetrics) *ActivateBuildCacheForGradleV1Builder {
+	b.Builder.WithInput("collect_metrics", string(value))
 	return b
 }
 
 // WithVerbose sets verbose logging.
-func (b *ActivateBuildCacheForGradleV1Builder) WithVerbose(value string) *ActivateBuildCacheForGradleV1Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *ActivateBuildCacheForGradleV1Builder) WithVerbose(value ActivateBuildCacheForGradleV1Verbose) *ActivateBuildCacheForGradleV1Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

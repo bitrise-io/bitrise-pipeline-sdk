@@ -3,6 +3,14 @@
 
 package step
 
+// NpmV1CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type NpmV1CacheLocalDeps string
+
+const (
+	NpmV1CacheLocalDepsTrue  NpmV1CacheLocalDeps = "true"
+	NpmV1CacheLocalDepsFalse NpmV1CacheLocalDeps = "false"
+)
+
 // NpmV1Builder builds a npm step with typed input methods.
 type NpmV1Builder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *NpmV1Builder) WithNpmVersion(value string) *NpmV1Builder {
 }
 
 // WithCacheLocalDeps sets cache node_modules.
-func (b *NpmV1Builder) WithCacheLocalDeps(value string) *NpmV1Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *NpmV1Builder) WithCacheLocalDeps(value NpmV1CacheLocalDeps) *NpmV1Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }

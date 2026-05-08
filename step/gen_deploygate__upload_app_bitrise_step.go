@@ -3,6 +3,14 @@
 
 package step
 
+// DeploygateUploadAppBitriseStepDisableNotify enumerates the valid values for the disable_notify input.
+type DeploygateUploadAppBitriseStepDisableNotify string
+
+const (
+	DeploygateUploadAppBitriseStepDisableNotifyTrue  DeploygateUploadAppBitriseStepDisableNotify = "true"
+	DeploygateUploadAppBitriseStepDisableNotifyFalse DeploygateUploadAppBitriseStepDisableNotify = "false"
+)
+
 // DeploygateUploadAppBitriseStepBuilder builds a deploygate--upload-app-bitrise-step step with typed input methods.
 type DeploygateUploadAppBitriseStepBuilder struct{ *Builder }
 
@@ -62,8 +70,8 @@ func (b *DeploygateUploadAppBitriseStepBuilder) WithReleaseNote(value string) *D
 }
 
 // WithDisableNotify sets deployGate: Disable Notify.
-func (b *DeploygateUploadAppBitriseStepBuilder) WithDisableNotify(value string) *DeploygateUploadAppBitriseStepBuilder {
-	b.Builder.WithInput("disable_notify", value)
+func (b *DeploygateUploadAppBitriseStepBuilder) WithDisableNotify(value DeploygateUploadAppBitriseStepDisableNotify) *DeploygateUploadAppBitriseStepBuilder {
+	b.Builder.WithInput("disable_notify", string(value))
 	return b
 }
 

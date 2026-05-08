@@ -3,6 +3,14 @@
 
 package step
 
+// GooglePlayDeployV2UntrackBlockingVersions enumerates the valid values for the untrack_blocking_versions input.
+type GooglePlayDeployV2UntrackBlockingVersions string
+
+const (
+	GooglePlayDeployV2UntrackBlockingVersionsTrue  GooglePlayDeployV2UntrackBlockingVersions = "true"
+	GooglePlayDeployV2UntrackBlockingVersionsFalse GooglePlayDeployV2UntrackBlockingVersions = "false"
+)
+
 // GooglePlayDeployV2Builder builds a google-play-deploy step with typed input methods.
 type GooglePlayDeployV2Builder struct{ *Builder }
 
@@ -68,8 +76,8 @@ func (b *GooglePlayDeployV2Builder) WithMappingFile(value string) *GooglePlayDep
 }
 
 // WithUntrackBlockingVersions sets untrack blocking versions?.
-func (b *GooglePlayDeployV2Builder) WithUntrackBlockingVersions(value string) *GooglePlayDeployV2Builder {
-	b.Builder.WithInput("untrack_blocking_versions", value)
+func (b *GooglePlayDeployV2Builder) WithUntrackBlockingVersions(value GooglePlayDeployV2UntrackBlockingVersions) *GooglePlayDeployV2Builder {
+	b.Builder.WithInput("untrack_blocking_versions", string(value))
 	return b
 }
 

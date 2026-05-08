@@ -3,6 +3,33 @@
 
 package step
 
+// GenerateCordovaBuildConfigurationConfiguration enumerates the valid values for the configuration input.
+type GenerateCordovaBuildConfigurationConfiguration string
+
+const (
+	GenerateCordovaBuildConfigurationConfigurationRelease GenerateCordovaBuildConfigurationConfiguration = "release"
+	GenerateCordovaBuildConfigurationConfigurationDebug   GenerateCordovaBuildConfigurationConfiguration = "debug"
+)
+
+// GenerateCordovaBuildConfigurationAutomaticProvisioning enumerates the valid values for the automatic_provisioning input.
+type GenerateCordovaBuildConfigurationAutomaticProvisioning string
+
+const (
+	GenerateCordovaBuildConfigurationAutomaticProvisioningNo  GenerateCordovaBuildConfigurationAutomaticProvisioning = "no"
+	GenerateCordovaBuildConfigurationAutomaticProvisioningYes GenerateCordovaBuildConfigurationAutomaticProvisioning = "yes"
+)
+
+// GenerateCordovaBuildConfigurationPackageType enumerates the valid values for the package_type input.
+type GenerateCordovaBuildConfigurationPackageType string
+
+const (
+	GenerateCordovaBuildConfigurationPackageTypeNone        GenerateCordovaBuildConfigurationPackageType = "none"
+	GenerateCordovaBuildConfigurationPackageTypeDevelopment GenerateCordovaBuildConfigurationPackageType = "development"
+	GenerateCordovaBuildConfigurationPackageTypeEnterprise  GenerateCordovaBuildConfigurationPackageType = "enterprise"
+	GenerateCordovaBuildConfigurationPackageTypeAdHoc       GenerateCordovaBuildConfigurationPackageType = "ad-hoc"
+	GenerateCordovaBuildConfigurationPackageTypeAppStore    GenerateCordovaBuildConfigurationPackageType = "app-store"
+)
+
 // GenerateCordovaBuildConfigurationBuilder builds a generate-cordova-build-configuration step with typed input methods.
 type GenerateCordovaBuildConfigurationBuilder struct{ *Builder }
 
@@ -20,8 +47,8 @@ func GenerateCordovaBuildConfiguration(version ...string) *GenerateCordovaBuildC
 }
 
 // WithConfiguration sets build configuration.
-func (b *GenerateCordovaBuildConfigurationBuilder) WithConfiguration(value string) *GenerateCordovaBuildConfigurationBuilder {
-	b.Builder.WithInput("configuration", value)
+func (b *GenerateCordovaBuildConfigurationBuilder) WithConfiguration(value GenerateCordovaBuildConfigurationConfiguration) *GenerateCordovaBuildConfigurationBuilder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
@@ -38,8 +65,8 @@ func (b *GenerateCordovaBuildConfigurationBuilder) WithCodeSignIdentity(value st
 }
 
 // WithAutomaticProvisioning sets enable to allow Xcode to automatically manage provisioning profiles.
-func (b *GenerateCordovaBuildConfigurationBuilder) WithAutomaticProvisioning(value string) *GenerateCordovaBuildConfigurationBuilder {
-	b.Builder.WithInput("automatic_provisioning", value)
+func (b *GenerateCordovaBuildConfigurationBuilder) WithAutomaticProvisioning(value GenerateCordovaBuildConfigurationAutomaticProvisioning) *GenerateCordovaBuildConfigurationBuilder {
+	b.Builder.WithInput("automatic_provisioning", string(value))
 	return b
 }
 
@@ -50,8 +77,8 @@ func (b *GenerateCordovaBuildConfigurationBuilder) WithProvisioningProfile(value
 }
 
 // WithPackageType sets packaging Type.
-func (b *GenerateCordovaBuildConfigurationBuilder) WithPackageType(value string) *GenerateCordovaBuildConfigurationBuilder {
-	b.Builder.WithInput("package_type", value)
+func (b *GenerateCordovaBuildConfigurationBuilder) WithPackageType(value GenerateCordovaBuildConfigurationPackageType) *GenerateCordovaBuildConfigurationBuilder {
+	b.Builder.WithInput("package_type", string(value))
 	return b
 }
 

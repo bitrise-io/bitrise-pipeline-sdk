@@ -3,6 +3,15 @@
 
 package step
 
+// MagicPodV0DeleteAppAfterTest enumerates the valid values for the delete_app_after_test input.
+type MagicPodV0DeleteAppAfterTest string
+
+const (
+	MagicPodV0DeleteAppAfterTestNotDelete                    MagicPodV0DeleteAppAfterTest = "Not delete"
+	MagicPodV0DeleteAppAfterTestAlwaysDelete                 MagicPodV0DeleteAppAfterTest = "Always delete"
+	MagicPodV0DeleteAppAfterTestDeleteOnlyWhenTestsSucceeded MagicPodV0DeleteAppAfterTest = "Delete only when tests succeeded"
+)
+
 // MagicPodV0Builder builds a magic-pod step with typed input methods.
 type MagicPodV0Builder struct{ *Builder }
 
@@ -68,8 +77,8 @@ func (b *MagicPodV0Builder) WithWaitLimit(value string) *MagicPodV0Builder {
 }
 
 // WithDeleteAppAfterTest sets delete app after test.
-func (b *MagicPodV0Builder) WithDeleteAppAfterTest(value string) *MagicPodV0Builder {
-	b.Builder.WithInput("delete_app_after_test", value)
+func (b *MagicPodV0Builder) WithDeleteAppAfterTest(value MagicPodV0DeleteAppAfterTest) *MagicPodV0Builder {
+	b.Builder.WithInput("delete_app_after_test", string(value))
 	return b
 }
 

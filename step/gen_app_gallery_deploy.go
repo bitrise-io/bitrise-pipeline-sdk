@@ -3,6 +3,14 @@
 
 package step
 
+// AppGalleryDeployShowDebugLogs enumerates the valid values for the show_debug_logs input.
+type AppGalleryDeployShowDebugLogs string
+
+const (
+	AppGalleryDeployShowDebugLogsNo  AppGalleryDeployShowDebugLogs = "no"
+	AppGalleryDeployShowDebugLogsYes AppGalleryDeployShowDebugLogs = "yes"
+)
+
 // AppGalleryDeployBuilder builds a app-gallery-deploy step with typed input methods.
 type AppGalleryDeployBuilder struct{ *Builder }
 
@@ -56,7 +64,7 @@ func (b *AppGalleryDeployBuilder) WithLang(value string) *AppGalleryDeployBuilde
 }
 
 // WithShowDebugLogs sets show debug logs?.
-func (b *AppGalleryDeployBuilder) WithShowDebugLogs(value string) *AppGalleryDeployBuilder {
-	b.Builder.WithInput("show_debug_logs", value)
+func (b *AppGalleryDeployBuilder) WithShowDebugLogs(value AppGalleryDeployShowDebugLogs) *AppGalleryDeployBuilder {
+	b.Builder.WithInput("show_debug_logs", string(value))
 	return b
 }

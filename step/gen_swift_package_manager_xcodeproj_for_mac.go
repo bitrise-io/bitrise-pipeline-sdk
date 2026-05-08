@@ -3,6 +3,14 @@
 
 package step
 
+// SwiftPackageManagerXcodeprojForMacEnableCodeCoverage enumerates the valid values for the enable_code_coverage input.
+type SwiftPackageManagerXcodeprojForMacEnableCodeCoverage string
+
+const (
+	SwiftPackageManagerXcodeprojForMacEnableCodeCoverageYes SwiftPackageManagerXcodeprojForMacEnableCodeCoverage = "yes"
+	SwiftPackageManagerXcodeprojForMacEnableCodeCoverageNo  SwiftPackageManagerXcodeprojForMacEnableCodeCoverage = "no"
+)
+
 // SwiftPackageManagerXcodeprojForMacBuilder builds a swift-package-manager-xcodeproj-for-mac step with typed input methods.
 type SwiftPackageManagerXcodeprojForMacBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithOutput(value string) *Sw
 }
 
 // WithEnableCodeCoverage sets enable code coverage.
-func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithEnableCodeCoverage(value string) *SwiftPackageManagerXcodeprojForMacBuilder {
-	b.Builder.WithInput("enable_code_coverage", value)
+func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithEnableCodeCoverage(value SwiftPackageManagerXcodeprojForMacEnableCodeCoverage) *SwiftPackageManagerXcodeprojForMacBuilder {
+	b.Builder.WithInput("enable_code_coverage", string(value))
 	return b
 }
 

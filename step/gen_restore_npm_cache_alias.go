@@ -18,3 +18,7 @@ func RestoreNpmCache(version ...string) *RestoreNpmCacheV3Builder {
 // published by restore-npm-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreNpmCacheV{N}Outputs directly.
 var RestoreNpmCacheOutputs = RestoreNpmCacheV3Outputs
+
+// RestoreNpmCacheVerbose is a type alias for RestoreNpmCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreNpmCacheVerbose = RestoreNpmCacheV3Verbose

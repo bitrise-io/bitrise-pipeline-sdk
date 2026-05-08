@@ -3,6 +3,14 @@
 
 package step
 
+// XamarinTestCloudForCalabashIosV0TestCloudIsAsync enumerates the valid values for the test_cloud_is_async input.
+type XamarinTestCloudForCalabashIosV0TestCloudIsAsync string
+
+const (
+	XamarinTestCloudForCalabashIosV0TestCloudIsAsyncYes XamarinTestCloudForCalabashIosV0TestCloudIsAsync = "yes"
+	XamarinTestCloudForCalabashIosV0TestCloudIsAsyncNo  XamarinTestCloudForCalabashIosV0TestCloudIsAsync = "no"
+)
+
 // XamarinTestCloudForCalabashIosV0Builder builds a xamarin-test-cloud-for-calabash-ios step with typed input methods.
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
@@ -54,8 +62,8 @@ func (b *XamarinTestCloudForCalabashIosV0Builder) WithTestCloudDevices(value str
 }
 
 // WithTestCloudIsAsync sets don't wait for cloud test run to complete.
-func (b *XamarinTestCloudForCalabashIosV0Builder) WithTestCloudIsAsync(value string) *XamarinTestCloudForCalabashIosV0Builder {
-	b.Builder.WithInput("test_cloud_is_async", value)
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithTestCloudIsAsync(value XamarinTestCloudForCalabashIosV0TestCloudIsAsync) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithInput("test_cloud_is_async", string(value))
 	return b
 }
 

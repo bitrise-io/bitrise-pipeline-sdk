@@ -3,6 +3,64 @@
 
 package step
 
+// AppdomeBuild2secureAndroidV3SignMethod enumerates the valid values for the sign_method input.
+type AppdomeBuild2secureAndroidV3SignMethod string
+
+const (
+	AppdomeBuild2secureAndroidV3SignMethodOnAppdome      AppdomeBuild2secureAndroidV3SignMethod = "On-Appdome"
+	AppdomeBuild2secureAndroidV3SignMethodPrivateSigning AppdomeBuild2secureAndroidV3SignMethod = "Private-Signing"
+	AppdomeBuild2secureAndroidV3SignMethodAutoDevSigning AppdomeBuild2secureAndroidV3SignMethod = "Auto-Dev-Signing"
+)
+
+// AppdomeBuild2secureAndroidV3GpSigning enumerates the valid values for the gp_signing input.
+type AppdomeBuild2secureAndroidV3GpSigning string
+
+const (
+	AppdomeBuild2secureAndroidV3GpSigningTrue  AppdomeBuild2secureAndroidV3GpSigning = "true"
+	AppdomeBuild2secureAndroidV3GpSigningFalse AppdomeBuild2secureAndroidV3GpSigning = "false"
+)
+
+// AppdomeBuild2secureAndroidV3DownloadDeobfuscation enumerates the valid values for the download_deobfuscation input.
+type AppdomeBuild2secureAndroidV3DownloadDeobfuscation string
+
+const (
+	AppdomeBuild2secureAndroidV3DownloadDeobfuscationTrue  AppdomeBuild2secureAndroidV3DownloadDeobfuscation = "true"
+	AppdomeBuild2secureAndroidV3DownloadDeobfuscationFalse AppdomeBuild2secureAndroidV3DownloadDeobfuscation = "false"
+)
+
+// AppdomeBuild2secureAndroidV3SecondaryOutput enumerates the valid values for the secondary_output input.
+type AppdomeBuild2secureAndroidV3SecondaryOutput string
+
+const (
+	AppdomeBuild2secureAndroidV3SecondaryOutputTrue  AppdomeBuild2secureAndroidV3SecondaryOutput = "true"
+	AppdomeBuild2secureAndroidV3SecondaryOutputFalse AppdomeBuild2secureAndroidV3SecondaryOutput = "false"
+)
+
+// AppdomeBuild2secureAndroidV3BuildLogs enumerates the valid values for the build_logs input.
+type AppdomeBuild2secureAndroidV3BuildLogs string
+
+const (
+	AppdomeBuild2secureAndroidV3BuildLogsTrue  AppdomeBuild2secureAndroidV3BuildLogs = "true"
+	AppdomeBuild2secureAndroidV3BuildLogsFalse AppdomeBuild2secureAndroidV3BuildLogs = "false"
+)
+
+// AppdomeBuild2secureAndroidV3BuildToTest enumerates the valid values for the build_to_test input.
+type AppdomeBuild2secureAndroidV3BuildToTest string
+
+const (
+	AppdomeBuild2secureAndroidV3BuildToTestNone          AppdomeBuild2secureAndroidV3BuildToTest = "None"
+	AppdomeBuild2secureAndroidV3BuildToTestAWSDeviceFarm AppdomeBuild2secureAndroidV3BuildToTest = "AWS_device_farm"
+	AppdomeBuild2secureAndroidV3BuildToTestBitbar        AppdomeBuild2secureAndroidV3BuildToTest = "Bitbar"
+	AppdomeBuild2secureAndroidV3BuildToTestBrowserstack  AppdomeBuild2secureAndroidV3BuildToTest = "Browserstack"
+	AppdomeBuild2secureAndroidV3BuildToTestFirebase      AppdomeBuild2secureAndroidV3BuildToTest = "Firebase"
+	AppdomeBuild2secureAndroidV3BuildToTestKatalon       AppdomeBuild2secureAndroidV3BuildToTest = "Katalon"
+	AppdomeBuild2secureAndroidV3BuildToTestKobiton       AppdomeBuild2secureAndroidV3BuildToTest = "Kobiton"
+	AppdomeBuild2secureAndroidV3BuildToTestLambdatest    AppdomeBuild2secureAndroidV3BuildToTest = "Lambdatest"
+	AppdomeBuild2secureAndroidV3BuildToTestPerfecto      AppdomeBuild2secureAndroidV3BuildToTest = "Perfecto"
+	AppdomeBuild2secureAndroidV3BuildToTestTosca         AppdomeBuild2secureAndroidV3BuildToTest = "Tosca"
+	AppdomeBuild2secureAndroidV3BuildToTestSaucelabs     AppdomeBuild2secureAndroidV3BuildToTest = "Saucelabs"
+)
+
 // AppdomeBuild2secureAndroidV3Builder builds a appdome-build-2secure-android step with typed input methods.
 type AppdomeBuild2secureAndroidV3Builder struct{ *Builder }
 
@@ -44,8 +102,8 @@ func (b *AppdomeBuild2secureAndroidV3Builder) WithTeamId(value string) *AppdomeB
 }
 
 // WithSignMethod sets signing Method.
-func (b *AppdomeBuild2secureAndroidV3Builder) WithSignMethod(value string) *AppdomeBuild2secureAndroidV3Builder {
-	b.Builder.WithInput("sign_method", value)
+func (b *AppdomeBuild2secureAndroidV3Builder) WithSignMethod(value AppdomeBuild2secureAndroidV3SignMethod) *AppdomeBuild2secureAndroidV3Builder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 
@@ -62,8 +120,8 @@ func (b *AppdomeBuild2secureAndroidV3Builder) WithMultipleTrustedSigningCertsPat
 }
 
 // WithGpSigning sets google Play Signing.
-func (b *AppdomeBuild2secureAndroidV3Builder) WithGpSigning(value string) *AppdomeBuild2secureAndroidV3Builder {
-	b.Builder.WithInput("gp_signing", value)
+func (b *AppdomeBuild2secureAndroidV3Builder) WithGpSigning(value AppdomeBuild2secureAndroidV3GpSigning) *AppdomeBuild2secureAndroidV3Builder {
+	b.Builder.WithInput("gp_signing", string(value))
 	return b
 }
 
@@ -80,8 +138,8 @@ func (b *AppdomeBuild2secureAndroidV3Builder) WithFingerprint(value string) *App
 }
 
 // WithDownloadDeobfuscation sets download deobfuscation mapping file?.
-func (b *AppdomeBuild2secureAndroidV3Builder) WithDownloadDeobfuscation(value string) *AppdomeBuild2secureAndroidV3Builder {
-	b.Builder.WithInput("download_deobfuscation", value)
+func (b *AppdomeBuild2secureAndroidV3Builder) WithDownloadDeobfuscation(value AppdomeBuild2secureAndroidV3DownloadDeobfuscation) *AppdomeBuild2secureAndroidV3Builder {
+	b.Builder.WithInput("download_deobfuscation", string(value))
 	return b
 }
 
@@ -98,20 +156,20 @@ func (b *AppdomeBuild2secureAndroidV3Builder) WithDatadogApiKey(value string) *A
 }
 
 // WithSecondaryOutput sets secondary Output.
-func (b *AppdomeBuild2secureAndroidV3Builder) WithSecondaryOutput(value string) *AppdomeBuild2secureAndroidV3Builder {
-	b.Builder.WithInput("secondary_output", value)
+func (b *AppdomeBuild2secureAndroidV3Builder) WithSecondaryOutput(value AppdomeBuild2secureAndroidV3SecondaryOutput) *AppdomeBuild2secureAndroidV3Builder {
+	b.Builder.WithInput("secondary_output", string(value))
 	return b
 }
 
 // WithBuildLogs sets build With Diagnostic Logs.
-func (b *AppdomeBuild2secureAndroidV3Builder) WithBuildLogs(value string) *AppdomeBuild2secureAndroidV3Builder {
-	b.Builder.WithInput("build_logs", value)
+func (b *AppdomeBuild2secureAndroidV3Builder) WithBuildLogs(value AppdomeBuild2secureAndroidV3BuildLogs) *AppdomeBuild2secureAndroidV3Builder {
+	b.Builder.WithInput("build_logs", string(value))
 	return b
 }
 
 // WithBuildToTest sets build to test Vendor.
-func (b *AppdomeBuild2secureAndroidV3Builder) WithBuildToTest(value string) *AppdomeBuild2secureAndroidV3Builder {
-	b.Builder.WithInput("build_to_test", value)
+func (b *AppdomeBuild2secureAndroidV3Builder) WithBuildToTest(value AppdomeBuild2secureAndroidV3BuildToTest) *AppdomeBuild2secureAndroidV3Builder {
+	b.Builder.WithInput("build_to_test", string(value))
 	return b
 }
 

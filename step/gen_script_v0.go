@@ -3,6 +3,14 @@
 
 package step
 
+// ScriptV0IsDebug enumerates the valid values for the is_debug input.
+type ScriptV0IsDebug string
+
+const (
+	ScriptV0IsDebugNo  ScriptV0IsDebug = "no"
+	ScriptV0IsDebugYes ScriptV0IsDebug = "yes"
+)
+
 // ScriptV0Builder builds a script step with typed input methods.
 type ScriptV0Builder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *ScriptV0Builder) WithRunnerBin(value string) *ScriptV0Builder {
 }
 
 // WithIsDebug sets debug?.
-func (b *ScriptV0Builder) WithIsDebug(value string) *ScriptV0Builder {
-	b.Builder.WithInput("is_debug", value)
+func (b *ScriptV0Builder) WithIsDebug(value ScriptV0IsDebug) *ScriptV0Builder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
 

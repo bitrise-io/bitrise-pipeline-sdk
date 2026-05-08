@@ -3,6 +3,14 @@
 
 package step
 
+// InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServices enumerates the valid values for the update_support_library_and_play_services input.
+type InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServices string
+
+const (
+	InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServicesTrue  InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServices = "true"
+	InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServicesFalse InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServices = "false"
+)
+
 // InstallMissingAndroidToolsV1Builder builds a install-missing-android-tools step with typed input methods.
 type InstallMissingAndroidToolsV1Builder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *InstallMissingAndroidToolsV1Builder) WithGradlewPath(value string) *Ins
 }
 
 // WithUpdateSupportLibraryAndPlayServices sets should the step update `Support Library` and `Google Play Services`.
-func (b *InstallMissingAndroidToolsV1Builder) WithUpdateSupportLibraryAndPlayServices(value string) *InstallMissingAndroidToolsV1Builder {
-	b.Builder.WithInput("update_support_library_and_play_services", value)
+func (b *InstallMissingAndroidToolsV1Builder) WithUpdateSupportLibraryAndPlayServices(value InstallMissingAndroidToolsV1UpdateSupportLibraryAndPlayServices) *InstallMissingAndroidToolsV1Builder {
+	b.Builder.WithInput("update_support_library_and_play_services", string(value))
 	return b
 }
 

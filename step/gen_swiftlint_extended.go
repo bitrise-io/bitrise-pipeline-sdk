@@ -3,6 +3,30 @@
 
 package step
 
+// SwiftlintExtendedReporter enumerates the valid values for the reporter input.
+type SwiftlintExtendedReporter string
+
+const (
+	SwiftlintExtendedReporterCheckstyle           SwiftlintExtendedReporter = "checkstyle"
+	SwiftlintExtendedReporterCsv                  SwiftlintExtendedReporter = "csv"
+	SwiftlintExtendedReporterEmoji                SwiftlintExtendedReporter = "emoji"
+	SwiftlintExtendedReporterGithubActionsLogging SwiftlintExtendedReporter = "github-actions-logging"
+	SwiftlintExtendedReporterHtml                 SwiftlintExtendedReporter = "html"
+	SwiftlintExtendedReporterJson                 SwiftlintExtendedReporter = "json"
+	SwiftlintExtendedReporterJunit                SwiftlintExtendedReporter = "junit"
+	SwiftlintExtendedReporterMarkdown             SwiftlintExtendedReporter = "markdown"
+	SwiftlintExtendedReporterSonarqube            SwiftlintExtendedReporter = "sonarqube"
+	SwiftlintExtendedReporterXcode                SwiftlintExtendedReporter = "xcode"
+)
+
+// SwiftlintExtendedStrict enumerates the valid values for the strict input.
+type SwiftlintExtendedStrict string
+
+const (
+	SwiftlintExtendedStrictYes SwiftlintExtendedStrict = "yes"
+	SwiftlintExtendedStrictNo  SwiftlintExtendedStrict = "no"
+)
+
 // SwiftlintExtendedBuilder builds a swiftlint-extended step with typed input methods.
 type SwiftlintExtendedBuilder struct{ *Builder }
 
@@ -32,14 +56,14 @@ func (b *SwiftlintExtendedBuilder) WithLintConfigFile(value string) *SwiftlintEx
 }
 
 // WithReporter sets select the reporter type.
-func (b *SwiftlintExtendedBuilder) WithReporter(value string) *SwiftlintExtendedBuilder {
-	b.Builder.WithInput("reporter", value)
+func (b *SwiftlintExtendedBuilder) WithReporter(value SwiftlintExtendedReporter) *SwiftlintExtendedBuilder {
+	b.Builder.WithInput("reporter", string(value))
 	return b
 }
 
 // WithStrict sets select yest if you want to use the strict mode.
-func (b *SwiftlintExtendedBuilder) WithStrict(value string) *SwiftlintExtendedBuilder {
-	b.Builder.WithInput("strict", value)
+func (b *SwiftlintExtendedBuilder) WithStrict(value SwiftlintExtendedStrict) *SwiftlintExtendedBuilder {
+	b.Builder.WithInput("strict", string(value))
 	return b
 }
 

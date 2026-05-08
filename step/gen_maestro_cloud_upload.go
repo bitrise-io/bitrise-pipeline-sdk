@@ -3,6 +3,14 @@
 
 package step
 
+// MaestroCloudUploadExportTestReport enumerates the valid values for the export_test_report input.
+type MaestroCloudUploadExportTestReport string
+
+const (
+	MaestroCloudUploadExportTestReportTrue  MaestroCloudUploadExportTestReport = "true"
+	MaestroCloudUploadExportTestReportFalse MaestroCloudUploadExportTestReport = "false"
+)
+
 // MaestroCloudUploadBuilder builds a maestro-cloud-upload step with typed input methods.
 type MaestroCloudUploadBuilder struct{ *Builder }
 
@@ -104,8 +112,8 @@ func (b *MaestroCloudUploadBuilder) WithExcludeTags(value string) *MaestroCloudU
 }
 
 // WithExportTestReport sets export test report (JUnit).
-func (b *MaestroCloudUploadBuilder) WithExportTestReport(value string) *MaestroCloudUploadBuilder {
-	b.Builder.WithInput("export_test_report", value)
+func (b *MaestroCloudUploadBuilder) WithExportTestReport(value MaestroCloudUploadExportTestReport) *MaestroCloudUploadBuilder {
+	b.Builder.WithInput("export_test_report", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// JandiMessageIsDebugMode enumerates the valid values for the is_debug_mode input.
+type JandiMessageIsDebugMode string
+
+const (
+	JandiMessageIsDebugModeYes JandiMessageIsDebugMode = "yes"
+	JandiMessageIsDebugModeNo  JandiMessageIsDebugMode = "no"
+)
+
 // JandiMessageBuilder builds a jandi-message step with typed input methods.
 type JandiMessageBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func JandiMessage(version ...string) *JandiMessageBuilder {
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *JandiMessageBuilder) WithIsDebugMode(value string) *JandiMessageBuilder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *JandiMessageBuilder) WithIsDebugMode(value JandiMessageIsDebugMode) *JandiMessageBuilder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 

@@ -3,6 +3,47 @@
 
 package step
 
+// VirtualDeviceTestingForAndroidV1TestType enumerates the valid values for the test_type input.
+type VirtualDeviceTestingForAndroidV1TestType string
+
+const (
+	VirtualDeviceTestingForAndroidV1TestTypeInstrumentation VirtualDeviceTestingForAndroidV1TestType = "instrumentation"
+	VirtualDeviceTestingForAndroidV1TestTypeRobo            VirtualDeviceTestingForAndroidV1TestType = "robo"
+	VirtualDeviceTestingForAndroidV1TestTypeGameloop        VirtualDeviceTestingForAndroidV1TestType = "gameloop"
+)
+
+// VirtualDeviceTestingForAndroidV1InstUseOrchestrator enumerates the valid values for the inst_use_orchestrator input.
+type VirtualDeviceTestingForAndroidV1InstUseOrchestrator string
+
+const (
+	VirtualDeviceTestingForAndroidV1InstUseOrchestratorFalse VirtualDeviceTestingForAndroidV1InstUseOrchestrator = "false"
+	VirtualDeviceTestingForAndroidV1InstUseOrchestratorTrue  VirtualDeviceTestingForAndroidV1InstUseOrchestrator = "true"
+)
+
+// VirtualDeviceTestingForAndroidV1AutoGoogleLogin enumerates the valid values for the auto_google_login input.
+type VirtualDeviceTestingForAndroidV1AutoGoogleLogin string
+
+const (
+	VirtualDeviceTestingForAndroidV1AutoGoogleLoginFalse VirtualDeviceTestingForAndroidV1AutoGoogleLogin = "false"
+	VirtualDeviceTestingForAndroidV1AutoGoogleLoginTrue  VirtualDeviceTestingForAndroidV1AutoGoogleLogin = "true"
+)
+
+// VirtualDeviceTestingForAndroidV1DownloadTestResults enumerates the valid values for the download_test_results input.
+type VirtualDeviceTestingForAndroidV1DownloadTestResults string
+
+const (
+	VirtualDeviceTestingForAndroidV1DownloadTestResultsFalse VirtualDeviceTestingForAndroidV1DownloadTestResults = "false"
+	VirtualDeviceTestingForAndroidV1DownloadTestResultsTrue  VirtualDeviceTestingForAndroidV1DownloadTestResults = "true"
+)
+
+// VirtualDeviceTestingForAndroidV1UseVerboseLog enumerates the valid values for the use_verbose_log input.
+type VirtualDeviceTestingForAndroidV1UseVerboseLog string
+
+const (
+	VirtualDeviceTestingForAndroidV1UseVerboseLogFalse VirtualDeviceTestingForAndroidV1UseVerboseLog = "false"
+	VirtualDeviceTestingForAndroidV1UseVerboseLogTrue  VirtualDeviceTestingForAndroidV1UseVerboseLog = "true"
+)
+
 // VirtualDeviceTestingForAndroidV1Builder builds a virtual-device-testing-for-android step with typed input methods.
 type VirtualDeviceTestingForAndroidV1Builder struct{ *Builder }
 
@@ -26,8 +67,8 @@ func (b *VirtualDeviceTestingForAndroidV1Builder) WithAppPath(value string) *Vir
 }
 
 // WithTestType sets test type.
-func (b *VirtualDeviceTestingForAndroidV1Builder) WithTestType(value string) *VirtualDeviceTestingForAndroidV1Builder {
-	b.Builder.WithInput("test_type", value)
+func (b *VirtualDeviceTestingForAndroidV1Builder) WithTestType(value VirtualDeviceTestingForAndroidV1TestType) *VirtualDeviceTestingForAndroidV1Builder {
+	b.Builder.WithInput("test_type", string(value))
 	return b
 }
 
@@ -62,8 +103,8 @@ func (b *VirtualDeviceTestingForAndroidV1Builder) WithInstTestTargets(value stri
 }
 
 // WithInstUseOrchestrator sets use Orchestrator.
-func (b *VirtualDeviceTestingForAndroidV1Builder) WithInstUseOrchestrator(value string) *VirtualDeviceTestingForAndroidV1Builder {
-	b.Builder.WithInput("inst_use_orchestrator", value)
+func (b *VirtualDeviceTestingForAndroidV1Builder) WithInstUseOrchestrator(value VirtualDeviceTestingForAndroidV1InstUseOrchestrator) *VirtualDeviceTestingForAndroidV1Builder {
+	b.Builder.WithInput("inst_use_orchestrator", string(value))
 	return b
 }
 
@@ -122,8 +163,8 @@ func (b *VirtualDeviceTestingForAndroidV1Builder) WithObbFilesList(value string)
 }
 
 // WithAutoGoogleLogin sets add preconfigured Google account.
-func (b *VirtualDeviceTestingForAndroidV1Builder) WithAutoGoogleLogin(value string) *VirtualDeviceTestingForAndroidV1Builder {
-	b.Builder.WithInput("auto_google_login", value)
+func (b *VirtualDeviceTestingForAndroidV1Builder) WithAutoGoogleLogin(value VirtualDeviceTestingForAndroidV1AutoGoogleLogin) *VirtualDeviceTestingForAndroidV1Builder {
+	b.Builder.WithInput("auto_google_login", string(value))
 	return b
 }
 
@@ -140,14 +181,14 @@ func (b *VirtualDeviceTestingForAndroidV1Builder) WithDirectoriesToPull(value st
 }
 
 // WithDownloadTestResults sets download files.
-func (b *VirtualDeviceTestingForAndroidV1Builder) WithDownloadTestResults(value string) *VirtualDeviceTestingForAndroidV1Builder {
-	b.Builder.WithInput("download_test_results", value)
+func (b *VirtualDeviceTestingForAndroidV1Builder) WithDownloadTestResults(value VirtualDeviceTestingForAndroidV1DownloadTestResults) *VirtualDeviceTestingForAndroidV1Builder {
+	b.Builder.WithInput("download_test_results", string(value))
 	return b
 }
 
 // WithUseVerboseLog sets verbose log.
-func (b *VirtualDeviceTestingForAndroidV1Builder) WithUseVerboseLog(value string) *VirtualDeviceTestingForAndroidV1Builder {
-	b.Builder.WithInput("use_verbose_log", value)
+func (b *VirtualDeviceTestingForAndroidV1Builder) WithUseVerboseLog(value VirtualDeviceTestingForAndroidV1UseVerboseLog) *VirtualDeviceTestingForAndroidV1Builder {
+	b.Builder.WithInput("use_verbose_log", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// XamarinArchiveV0ForceMdtool enumerates the valid values for the force_mdtool input.
+type XamarinArchiveV0ForceMdtool string
+
+const (
+	XamarinArchiveV0ForceMdtoolYes XamarinArchiveV0ForceMdtool = "yes"
+	XamarinArchiveV0ForceMdtoolNo  XamarinArchiveV0ForceMdtool = "no"
+)
+
 // XamarinArchiveV0Builder builds a xamarin-archive step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -72,8 +80,8 @@ func (b *XamarinArchiveV0Builder) WithMacosBuildCommandCustomOptions(value strin
 }
 
 // WithForceMdtool sets (Experimental) Force use mdtool for builds?.
-func (b *XamarinArchiveV0Builder) WithForceMdtool(value string) *XamarinArchiveV0Builder {
-	b.Builder.WithInput("force_mdtool", value)
+func (b *XamarinArchiveV0Builder) WithForceMdtool(value XamarinArchiveV0ForceMdtool) *XamarinArchiveV0Builder {
+	b.Builder.WithInput("force_mdtool", string(value))
 	return b
 }
 

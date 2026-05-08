@@ -18,3 +18,7 @@ func RestoreSpmCache(version ...string) *RestoreSpmCacheV3Builder {
 // published by restore-spm-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreSpmCacheV{N}Outputs directly.
 var RestoreSpmCacheOutputs = RestoreSpmCacheV3Outputs
+
+// RestoreSpmCacheVerbose is a type alias for RestoreSpmCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreSpmCacheVerbose = RestoreSpmCacheV3Verbose

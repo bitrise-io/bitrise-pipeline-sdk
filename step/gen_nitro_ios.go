@@ -3,6 +3,56 @@
 
 package step
 
+// NitroIosDisableVersionNameFromPackageJson enumerates the valid values for the disable_version_name_from_package_json input.
+type NitroIosDisableVersionNameFromPackageJson string
+
+const (
+	NitroIosDisableVersionNameFromPackageJsonYes NitroIosDisableVersionNameFromPackageJson = "yes"
+	NitroIosDisableVersionNameFromPackageJsonNo  NitroIosDisableVersionNameFromPackageJson = "no"
+)
+
+// NitroIosDisableVersionCodeAutoGeneration enumerates the valid values for the disable_version_code_auto_generation input.
+type NitroIosDisableVersionCodeAutoGeneration string
+
+const (
+	NitroIosDisableVersionCodeAutoGenerationYes NitroIosDisableVersionCodeAutoGeneration = "yes"
+	NitroIosDisableVersionCodeAutoGenerationNo  NitroIosDisableVersionCodeAutoGeneration = "no"
+)
+
+// NitroIosExportMethod enumerates the valid values for the export_method input.
+type NitroIosExportMethod string
+
+const (
+	NitroIosExportMethodAdHoc       NitroIosExportMethod = "ad-hoc"
+	NitroIosExportMethodAppStore    NitroIosExportMethod = "app-store"
+	NitroIosExportMethodDevelopment NitroIosExportMethod = "development"
+	NitroIosExportMethodEnterprise  NitroIosExportMethod = "enterprise"
+)
+
+// NitroIosCacheProvider enumerates the valid values for the cache_provider input.
+type NitroIosCacheProvider string
+
+const (
+	NitroIosCacheProviderFs NitroIosCacheProvider = "fs"
+	NitroIosCacheProviderS3 NitroIosCacheProvider = "s3"
+)
+
+// NitroIosVerbose enumerates the valid values for the verbose input.
+type NitroIosVerbose string
+
+const (
+	NitroIosVerboseYes NitroIosVerbose = "yes"
+	NitroIosVerboseNo  NitroIosVerbose = "no"
+)
+
+// NitroIosDebug enumerates the valid values for the debug input.
+type NitroIosDebug string
+
+const (
+	NitroIosDebugYes NitroIosDebug = "yes"
+	NitroIosDebugNo  NitroIosDebug = "no"
+)
+
 // NitroIosBuilder builds a nitro-ios step with typed input methods.
 type NitroIosBuilder struct{ *Builder }
 
@@ -62,14 +112,14 @@ func (b *NitroIosBuilder) WithVersionCode(value string) *NitroIosBuilder {
 }
 
 // WithDisableVersionNameFromPackageJson sets disable automatic version name configuration.
-func (b *NitroIosBuilder) WithDisableVersionNameFromPackageJson(value string) *NitroIosBuilder {
-	b.Builder.WithInput("disable_version_name_from_package_json", value)
+func (b *NitroIosBuilder) WithDisableVersionNameFromPackageJson(value NitroIosDisableVersionNameFromPackageJson) *NitroIosBuilder {
+	b.Builder.WithInput("disable_version_name_from_package_json", string(value))
 	return b
 }
 
 // WithDisableVersionCodeAutoGeneration sets disable automatic version code generation.
-func (b *NitroIosBuilder) WithDisableVersionCodeAutoGeneration(value string) *NitroIosBuilder {
-	b.Builder.WithInput("disable_version_code_auto_generation", value)
+func (b *NitroIosBuilder) WithDisableVersionCodeAutoGeneration(value NitroIosDisableVersionCodeAutoGeneration) *NitroIosBuilder {
+	b.Builder.WithInput("disable_version_code_auto_generation", string(value))
 	return b
 }
 
@@ -110,14 +160,14 @@ func (b *NitroIosBuilder) WithTeamId(value string) *NitroIosBuilder {
 }
 
 // WithExportMethod sets export Method.
-func (b *NitroIosBuilder) WithExportMethod(value string) *NitroIosBuilder {
-	b.Builder.WithInput("export_method", value)
+func (b *NitroIosBuilder) WithExportMethod(value NitroIosExportMethod) *NitroIosBuilder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithCacheProvider sets cache provider.
-func (b *NitroIosBuilder) WithCacheProvider(value string) *NitroIosBuilder {
-	b.Builder.WithInput("cache_provider", value)
+func (b *NitroIosBuilder) WithCacheProvider(value NitroIosCacheProvider) *NitroIosBuilder {
+	b.Builder.WithInput("cache_provider", string(value))
 	return b
 }
 
@@ -206,14 +256,14 @@ func (b *NitroIosBuilder) WithEntryFile(value string) *NitroIosBuilder {
 }
 
 // WithVerbose sets verbose logs.
-func (b *NitroIosBuilder) WithVerbose(value string) *NitroIosBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *NitroIosBuilder) WithVerbose(value NitroIosVerbose) *NitroIosBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithDebug sets debug step.
-func (b *NitroIosBuilder) WithDebug(value string) *NitroIosBuilder {
-	b.Builder.WithInput("debug", value)
+func (b *NitroIosBuilder) WithDebug(value NitroIosDebug) *NitroIosBuilder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 

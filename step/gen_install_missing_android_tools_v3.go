@@ -3,6 +3,14 @@
 
 package step
 
+// InstallMissingAndroidToolsV3EnableRepoMirror enumerates the valid values for the enable_repo_mirror input.
+type InstallMissingAndroidToolsV3EnableRepoMirror string
+
+const (
+	InstallMissingAndroidToolsV3EnableRepoMirrorTrue  InstallMissingAndroidToolsV3EnableRepoMirror = "true"
+	InstallMissingAndroidToolsV3EnableRepoMirrorFalse InstallMissingAndroidToolsV3EnableRepoMirror = "false"
+)
+
 // InstallMissingAndroidToolsV3Builder builds a install-missing-android-tools step with typed input methods.
 type InstallMissingAndroidToolsV3Builder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *InstallMissingAndroidToolsV3Builder) WithGradlewDependenciesOptions(val
 }
 
 // WithEnableRepoMirror sets use Bitrise repo mirror for dependencies.
-func (b *InstallMissingAndroidToolsV3Builder) WithEnableRepoMirror(value string) *InstallMissingAndroidToolsV3Builder {
-	b.Builder.WithInput("enable_repo_mirror", value)
+func (b *InstallMissingAndroidToolsV3Builder) WithEnableRepoMirror(value InstallMissingAndroidToolsV3EnableRepoMirror) *InstallMissingAndroidToolsV3Builder {
+	b.Builder.WithInput("enable_repo_mirror", string(value))
 	return b
 }

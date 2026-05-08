@@ -22,3 +22,19 @@ func AppcenterDeployAndroid(version ...string) *AppcenterDeployAndroidV2Builder 
 // published by appcenter-deploy-android at the latest major version (v2).
 // For outputs of a specific major version use AppcenterDeployAndroidV{N}Outputs directly.
 var AppcenterDeployAndroidOutputs = AppcenterDeployAndroidV2Outputs
+
+// AppcenterDeployAndroidNotifyTesters is a type alias for AppcenterDeployAndroidV2NotifyTesters,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployAndroidNotifyTesters = AppcenterDeployAndroidV2NotifyTesters
+
+// AppcenterDeployAndroidMandatory is a type alias for AppcenterDeployAndroidV2Mandatory,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployAndroidMandatory = AppcenterDeployAndroidV2Mandatory
+
+// AppcenterDeployAndroidDebug is a type alias for AppcenterDeployAndroidV2Debug,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployAndroidDebug = AppcenterDeployAndroidV2Debug
+
+// AppcenterDeployAndroidAllDistributionGroups is a type alias for AppcenterDeployAndroidV2AllDistributionGroups,
+// pointing to the latest supported major version of the step's enum type.
+type AppcenterDeployAndroidAllDistributionGroups = AppcenterDeployAndroidV2AllDistributionGroups

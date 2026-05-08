@@ -3,6 +3,14 @@
 
 package step
 
+// DisableIphonesimulatorConnectHardwareKeyboardVerbose enumerates the valid values for the verbose input.
+type DisableIphonesimulatorConnectHardwareKeyboardVerbose string
+
+const (
+	DisableIphonesimulatorConnectHardwareKeyboardVerboseYes DisableIphonesimulatorConnectHardwareKeyboardVerbose = "yes"
+	DisableIphonesimulatorConnectHardwareKeyboardVerboseNo  DisableIphonesimulatorConnectHardwareKeyboardVerbose = "no"
+)
+
 // DisableIphonesimulatorConnectHardwareKeyboardBuilder builds a disable-iphonesimulator-connect-hardware-keyboard step with typed input methods.
 type DisableIphonesimulatorConnectHardwareKeyboardBuilder struct{ *Builder }
 
@@ -26,7 +34,7 @@ func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithIphonesimulat
 }
 
 // WithVerbose sets verbose.
-func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithVerbose(value string) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithVerbose(value DisableIphonesimulatorConnectHardwareKeyboardVerbose) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

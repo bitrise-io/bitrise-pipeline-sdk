@@ -3,6 +3,22 @@
 
 package step
 
+// NunitRunnerV1BuildBeforeTest enumerates the valid values for the build_before_test input.
+type NunitRunnerV1BuildBeforeTest string
+
+const (
+	NunitRunnerV1BuildBeforeTestTrue  NunitRunnerV1BuildBeforeTest = "true"
+	NunitRunnerV1BuildBeforeTestFalse NunitRunnerV1BuildBeforeTest = "false"
+)
+
+// NunitRunnerV1BuildTool enumerates the valid values for the build_tool input.
+type NunitRunnerV1BuildTool string
+
+const (
+	NunitRunnerV1BuildToolMsbuild NunitRunnerV1BuildTool = "msbuild"
+	NunitRunnerV1BuildToolXbuild  NunitRunnerV1BuildTool = "xbuild"
+)
+
 // NunitRunnerV1Builder builds a nunit-runner step with typed input methods.
 type NunitRunnerV1Builder struct{ *Builder }
 
@@ -38,8 +54,8 @@ func (b *NunitRunnerV1Builder) WithXamarinPlatform(value string) *NunitRunnerV1B
 }
 
 // WithBuildBeforeTest sets build before test.
-func (b *NunitRunnerV1Builder) WithBuildBeforeTest(value string) *NunitRunnerV1Builder {
-	b.Builder.WithInput("build_before_test", value)
+func (b *NunitRunnerV1Builder) WithBuildBeforeTest(value NunitRunnerV1BuildBeforeTest) *NunitRunnerV1Builder {
+	b.Builder.WithInput("build_before_test", string(value))
 	return b
 }
 
@@ -50,8 +66,8 @@ func (b *NunitRunnerV1Builder) WithNunitOptions(value string) *NunitRunnerV1Buil
 }
 
 // WithBuildTool sets which tool to use for building?.
-func (b *NunitRunnerV1Builder) WithBuildTool(value string) *NunitRunnerV1Builder {
-	b.Builder.WithInput("build_tool", value)
+func (b *NunitRunnerV1Builder) WithBuildTool(value NunitRunnerV1BuildTool) *NunitRunnerV1Builder {
+	b.Builder.WithInput("build_tool", string(value))
 	return b
 }
 

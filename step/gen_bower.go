@@ -3,6 +3,14 @@
 
 package step
 
+// BowerIsDebug enumerates the valid values for the is_debug input.
+type BowerIsDebug string
+
+const (
+	BowerIsDebugNo  BowerIsDebug = "no"
+	BowerIsDebugYes BowerIsDebug = "yes"
+)
+
 // BowerBuilder builds a bower step with typed input methods.
 type BowerBuilder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *BowerBuilder) WithArgs(value string) *BowerBuilder {
 }
 
 // WithIsDebug sets debug?.
-func (b *BowerBuilder) WithIsDebug(value string) *BowerBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *BowerBuilder) WithIsDebug(value BowerIsDebug) *BowerBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

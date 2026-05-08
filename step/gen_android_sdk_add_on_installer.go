@@ -3,6 +3,22 @@
 
 package step
 
+// AndroidSdkAddOnInstallerVerboseLog enumerates the valid values for the verbose_log input.
+type AndroidSdkAddOnInstallerVerboseLog string
+
+const (
+	AndroidSdkAddOnInstallerVerboseLogYes AndroidSdkAddOnInstallerVerboseLog = "yes"
+	AndroidSdkAddOnInstallerVerboseLogNo  AndroidSdkAddOnInstallerVerboseLog = "no"
+)
+
+// AndroidSdkAddOnInstallerValidateChecksum enumerates the valid values for the validate_checksum input.
+type AndroidSdkAddOnInstallerValidateChecksum string
+
+const (
+	AndroidSdkAddOnInstallerValidateChecksumYes AndroidSdkAddOnInstallerValidateChecksum = "yes"
+	AndroidSdkAddOnInstallerValidateChecksumNo  AndroidSdkAddOnInstallerValidateChecksum = "no"
+)
+
 // AndroidSdkAddOnInstallerBuilder builds a android-sdk-add-on-installer step with typed input methods.
 type AndroidSdkAddOnInstallerBuilder struct{ *Builder }
 
@@ -32,14 +48,14 @@ func (b *AndroidSdkAddOnInstallerBuilder) WithAddOnUrl(value string) *AndroidSdk
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *AndroidSdkAddOnInstallerBuilder) WithVerboseLog(value string) *AndroidSdkAddOnInstallerBuilder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *AndroidSdkAddOnInstallerBuilder) WithVerboseLog(value AndroidSdkAddOnInstallerVerboseLog) *AndroidSdkAddOnInstallerBuilder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithValidateChecksum sets validate downloaded file checksum?.
-func (b *AndroidSdkAddOnInstallerBuilder) WithValidateChecksum(value string) *AndroidSdkAddOnInstallerBuilder {
-	b.Builder.WithInput("validate_checksum", value)
+func (b *AndroidSdkAddOnInstallerBuilder) WithValidateChecksum(value AndroidSdkAddOnInstallerValidateChecksum) *AndroidSdkAddOnInstallerBuilder {
+	b.Builder.WithInput("validate_checksum", string(value))
 	return b
 }
 

@@ -18,3 +18,15 @@ func AppliveryIos(version ...string) *AppliveryIosV1Builder {
 // published by applivery-ios at the latest major version (v1).
 // For outputs of a specific major version use AppliveryIosV{N}Outputs directly.
 var AppliveryIosOutputs = AppliveryIosV1Outputs
+
+// AppliveryIosNotifyCollaborators is a type alias for AppliveryIosV1NotifyCollaborators,
+// pointing to the latest supported major version of the step's enum type.
+type AppliveryIosNotifyCollaborators = AppliveryIosV1NotifyCollaborators
+
+// AppliveryIosNotifyEmployees is a type alias for AppliveryIosV1NotifyEmployees,
+// pointing to the latest supported major version of the step's enum type.
+type AppliveryIosNotifyEmployees = AppliveryIosV1NotifyEmployees
+
+// AppliveryIosUploadCodeSigning is a type alias for AppliveryIosV1UploadCodeSigning,
+// pointing to the latest supported major version of the step's enum type.
+type AppliveryIosUploadCodeSigning = AppliveryIosV1UploadCodeSigning

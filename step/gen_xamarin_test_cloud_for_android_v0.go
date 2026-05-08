@@ -3,6 +3,22 @@
 
 package step
 
+// XamarinTestCloudForAndroidV0TestCloudIsAsync enumerates the valid values for the test_cloud_is_async input.
+type XamarinTestCloudForAndroidV0TestCloudIsAsync string
+
+const (
+	XamarinTestCloudForAndroidV0TestCloudIsAsyncTrue  XamarinTestCloudForAndroidV0TestCloudIsAsync = "true"
+	XamarinTestCloudForAndroidV0TestCloudIsAsyncFalse XamarinTestCloudForAndroidV0TestCloudIsAsync = "false"
+)
+
+// XamarinTestCloudForAndroidV0TestCloudParallelization enumerates the valid values for the test_cloud_parallelization input.
+type XamarinTestCloudForAndroidV0TestCloudParallelization string
+
+const (
+	XamarinTestCloudForAndroidV0TestCloudParallelizationByTestFixture XamarinTestCloudForAndroidV0TestCloudParallelization = "by_test_fixture"
+	XamarinTestCloudForAndroidV0TestCloudParallelizationByTestChunk   XamarinTestCloudForAndroidV0TestCloudParallelization = "by_test_chunk"
+)
+
 // XamarinTestCloudForAndroidV0Builder builds a xamarin-test-cloud-for-android step with typed input methods.
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
@@ -60,8 +76,8 @@ func (b *XamarinTestCloudForAndroidV0Builder) WithTestCloudDevices(value string)
 }
 
 // WithTestCloudIsAsync sets don't wait for cloud test run to complete.
-func (b *XamarinTestCloudForAndroidV0Builder) WithTestCloudIsAsync(value string) *XamarinTestCloudForAndroidV0Builder {
-	b.Builder.WithInput("test_cloud_is_async", value)
+func (b *XamarinTestCloudForAndroidV0Builder) WithTestCloudIsAsync(value XamarinTestCloudForAndroidV0TestCloudIsAsync) *XamarinTestCloudForAndroidV0Builder {
+	b.Builder.WithInput("test_cloud_is_async", string(value))
 	return b
 }
 
@@ -72,8 +88,8 @@ func (b *XamarinTestCloudForAndroidV0Builder) WithTestCloudSeries(value string) 
 }
 
 // WithTestCloudParallelization sets run tests in parallel by method/fixture.
-func (b *XamarinTestCloudForAndroidV0Builder) WithTestCloudParallelization(value string) *XamarinTestCloudForAndroidV0Builder {
-	b.Builder.WithInput("test_cloud_parallelization", value)
+func (b *XamarinTestCloudForAndroidV0Builder) WithTestCloudParallelization(value XamarinTestCloudForAndroidV0TestCloudParallelization) *XamarinTestCloudForAndroidV0Builder {
+	b.Builder.WithInput("test_cloud_parallelization", string(value))
 	return b
 }
 

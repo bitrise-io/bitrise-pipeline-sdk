@@ -3,6 +3,23 @@
 
 package step
 
+// AndroidUnitTestV0CacheLevel enumerates the valid values for the cache_level input.
+type AndroidUnitTestV0CacheLevel string
+
+const (
+	AndroidUnitTestV0CacheLevelAll      AndroidUnitTestV0CacheLevel = "all"
+	AndroidUnitTestV0CacheLevelOnlyDeps AndroidUnitTestV0CacheLevel = "only_deps"
+	AndroidUnitTestV0CacheLevelNone     AndroidUnitTestV0CacheLevel = "none"
+)
+
+// AndroidUnitTestV0IsDebug enumerates the valid values for the is_debug input.
+type AndroidUnitTestV0IsDebug string
+
+const (
+	AndroidUnitTestV0IsDebugFalse AndroidUnitTestV0IsDebug = "false"
+	AndroidUnitTestV0IsDebugTrue  AndroidUnitTestV0IsDebug = "true"
+)
+
 // AndroidUnitTestV0Builder builds a android-unit-test step with typed input methods.
 type AndroidUnitTestV0Builder struct{ *Builder }
 
@@ -56,13 +73,13 @@ func (b *AndroidUnitTestV0Builder) WithResultPathPattern(value string) *AndroidU
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *AndroidUnitTestV0Builder) WithCacheLevel(value string) *AndroidUnitTestV0Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *AndroidUnitTestV0Builder) WithCacheLevel(value AndroidUnitTestV0CacheLevel) *AndroidUnitTestV0Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithIsDebug sets enable Debug Mode.
-func (b *AndroidUnitTestV0Builder) WithIsDebug(value string) *AndroidUnitTestV0Builder {
-	b.Builder.WithInput("is_debug", value)
+func (b *AndroidUnitTestV0Builder) WithIsDebug(value AndroidUnitTestV0IsDebug) *AndroidUnitTestV0Builder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

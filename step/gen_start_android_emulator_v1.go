@@ -3,6 +3,14 @@
 
 package step
 
+// StartAndroidEmulatorV1WaitForBoot enumerates the valid values for the wait_for_boot input.
+type StartAndroidEmulatorV1WaitForBoot string
+
+const (
+	StartAndroidEmulatorV1WaitForBootTrue  StartAndroidEmulatorV1WaitForBoot = "true"
+	StartAndroidEmulatorV1WaitForBootFalse StartAndroidEmulatorV1WaitForBoot = "false"
+)
+
 // StartAndroidEmulatorV1Builder builds a start-android-emulator step with typed input methods.
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
@@ -48,8 +56,8 @@ func (b *StartAndroidEmulatorV1Builder) WithAndroidHome(value string) *StartAndr
 }
 
 // WithWaitForBoot sets wait for emulator boot.
-func (b *StartAndroidEmulatorV1Builder) WithWaitForBoot(value string) *StartAndroidEmulatorV1Builder {
-	b.Builder.WithInput("wait_for_boot", value)
+func (b *StartAndroidEmulatorV1Builder) WithWaitForBoot(value StartAndroidEmulatorV1WaitForBoot) *StartAndroidEmulatorV1Builder {
+	b.Builder.WithInput("wait_for_boot", string(value))
 	return b
 }
 

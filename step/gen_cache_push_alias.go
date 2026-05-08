@@ -17,3 +17,15 @@ type CachePushBuilder = CachePushV2Builder
 func CachePush(version ...string) *CachePushV2Builder {
 	return CachePushV2(version...)
 }
+
+// CachePushFingerprintMethod is a type alias for CachePushV2FingerprintMethod,
+// pointing to the latest supported major version of the step's enum type.
+type CachePushFingerprintMethod = CachePushV2FingerprintMethod
+
+// CachePushIsDebugMode is a type alias for CachePushV2IsDebugMode,
+// pointing to the latest supported major version of the step's enum type.
+type CachePushIsDebugMode = CachePushV2IsDebugMode
+
+// CachePushCompressArchive is a type alias for CachePushV2CompressArchive,
+// pointing to the latest supported major version of the step's enum type.
+type CachePushCompressArchive = CachePushV2CompressArchive

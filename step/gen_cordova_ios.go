@@ -3,6 +3,22 @@
 
 package step
 
+// CordovaIosCordovaCommand enumerates the valid values for the cordova_command input.
+type CordovaIosCordovaCommand string
+
+const (
+	CordovaIosCordovaCommandBuild       CordovaIosCordovaCommand = "build"
+	CordovaIosCordovaCommandPlatformAdd CordovaIosCordovaCommand = "platform add"
+)
+
+// CordovaIosIsDebug enumerates the valid values for the is_debug input.
+type CordovaIosIsDebug string
+
+const (
+	CordovaIosIsDebugNo  CordovaIosIsDebug = "no"
+	CordovaIosIsDebugYes CordovaIosIsDebug = "yes"
+)
+
 // CordovaIosBuilder builds a cordova-ios step with typed input methods.
 type CordovaIosBuilder struct{ *Builder }
 
@@ -26,8 +42,8 @@ func (b *CordovaIosBuilder) WithCordovaDir(value string) *CordovaIosBuilder {
 }
 
 // WithCordovaCommand sets cordova command to run..
-func (b *CordovaIosBuilder) WithCordovaCommand(value string) *CordovaIosBuilder {
-	b.Builder.WithInput("cordova_command", value)
+func (b *CordovaIosBuilder) WithCordovaCommand(value CordovaIosCordovaCommand) *CordovaIosBuilder {
+	b.Builder.WithInput("cordova_command", string(value))
 	return b
 }
 
@@ -44,7 +60,7 @@ func (b *CordovaIosBuilder) WithBuildOptions(value string) *CordovaIosBuilder {
 }
 
 // WithIsDebug sets debug?.
-func (b *CordovaIosBuilder) WithIsDebug(value string) *CordovaIosBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *CordovaIosBuilder) WithIsDebug(value CordovaIosIsDebug) *CordovaIosBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

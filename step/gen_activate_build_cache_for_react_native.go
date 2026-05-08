@@ -3,6 +3,30 @@
 
 package step
 
+// ActivateBuildCacheForReactNativeXcodeCacheEnabled enumerates the valid values for the xcode_cache_enabled input.
+type ActivateBuildCacheForReactNativeXcodeCacheEnabled string
+
+const (
+	ActivateBuildCacheForReactNativeXcodeCacheEnabledTrue  ActivateBuildCacheForReactNativeXcodeCacheEnabled = "true"
+	ActivateBuildCacheForReactNativeXcodeCacheEnabledFalse ActivateBuildCacheForReactNativeXcodeCacheEnabled = "false"
+)
+
+// ActivateBuildCacheForReactNativeGradleCacheEnabled enumerates the valid values for the gradle_cache_enabled input.
+type ActivateBuildCacheForReactNativeGradleCacheEnabled string
+
+const (
+	ActivateBuildCacheForReactNativeGradleCacheEnabledTrue  ActivateBuildCacheForReactNativeGradleCacheEnabled = "true"
+	ActivateBuildCacheForReactNativeGradleCacheEnabledFalse ActivateBuildCacheForReactNativeGradleCacheEnabled = "false"
+)
+
+// ActivateBuildCacheForReactNativeVerbose enumerates the valid values for the verbose input.
+type ActivateBuildCacheForReactNativeVerbose string
+
+const (
+	ActivateBuildCacheForReactNativeVerboseTrue  ActivateBuildCacheForReactNativeVerbose = "true"
+	ActivateBuildCacheForReactNativeVerboseFalse ActivateBuildCacheForReactNativeVerbose = "false"
+)
+
 // ActivateBuildCacheForReactNativeBuilder builds a activate-build-cache-for-react-native step with typed input methods.
 type ActivateBuildCacheForReactNativeBuilder struct{ *Builder }
 
@@ -20,19 +44,19 @@ func ActivateBuildCacheForReactNative(version ...string) *ActivateBuildCacheForR
 }
 
 // WithXcodeCacheEnabled sets enable Xcode cache.
-func (b *ActivateBuildCacheForReactNativeBuilder) WithXcodeCacheEnabled(value string) *ActivateBuildCacheForReactNativeBuilder {
-	b.Builder.WithInput("xcode_cache_enabled", value)
+func (b *ActivateBuildCacheForReactNativeBuilder) WithXcodeCacheEnabled(value ActivateBuildCacheForReactNativeXcodeCacheEnabled) *ActivateBuildCacheForReactNativeBuilder {
+	b.Builder.WithInput("xcode_cache_enabled", string(value))
 	return b
 }
 
 // WithGradleCacheEnabled sets enable Gradle cache.
-func (b *ActivateBuildCacheForReactNativeBuilder) WithGradleCacheEnabled(value string) *ActivateBuildCacheForReactNativeBuilder {
-	b.Builder.WithInput("gradle_cache_enabled", value)
+func (b *ActivateBuildCacheForReactNativeBuilder) WithGradleCacheEnabled(value ActivateBuildCacheForReactNativeGradleCacheEnabled) *ActivateBuildCacheForReactNativeBuilder {
+	b.Builder.WithInput("gradle_cache_enabled", string(value))
 	return b
 }
 
 // WithVerbose sets verbose logging.
-func (b *ActivateBuildCacheForReactNativeBuilder) WithVerbose(value string) *ActivateBuildCacheForReactNativeBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *ActivateBuildCacheForReactNativeBuilder) WithVerbose(value ActivateBuildCacheForReactNativeVerbose) *ActivateBuildCacheForReactNativeBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

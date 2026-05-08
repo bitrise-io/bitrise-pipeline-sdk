@@ -3,6 +3,14 @@
 
 package step
 
+// GitTagPush enumerates the valid values for the push input.
+type GitTagPush string
+
+const (
+	GitTagPushTrue  GitTagPush = "true"
+	GitTagPushFalse GitTagPush = "false"
+)
+
 // GitTagBuilder builds a git-tag step with typed input methods.
 type GitTagBuilder struct{ *Builder }
 
@@ -32,7 +40,7 @@ func (b *GitTagBuilder) WithTagMessage(value string) *GitTagBuilder {
 }
 
 // WithPush sets determine if your want to push the tag to your remote repository or not.
-func (b *GitTagBuilder) WithPush(value string) *GitTagBuilder {
-	b.Builder.WithInput("push", value)
+func (b *GitTagBuilder) WithPush(value GitTagPush) *GitTagBuilder {
+	b.Builder.WithInput("push", string(value))
 	return b
 }

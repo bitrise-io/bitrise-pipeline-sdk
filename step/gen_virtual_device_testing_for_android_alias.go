@@ -18,3 +18,23 @@ func VirtualDeviceTestingForAndroid(version ...string) *VirtualDeviceTestingForA
 // published by virtual-device-testing-for-android at the latest major version (v1).
 // For outputs of a specific major version use VirtualDeviceTestingForAndroidV{N}Outputs directly.
 var VirtualDeviceTestingForAndroidOutputs = VirtualDeviceTestingForAndroidV1Outputs
+
+// VirtualDeviceTestingForAndroidTestType is a type alias for VirtualDeviceTestingForAndroidV1TestType,
+// pointing to the latest supported major version of the step's enum type.
+type VirtualDeviceTestingForAndroidTestType = VirtualDeviceTestingForAndroidV1TestType
+
+// VirtualDeviceTestingForAndroidInstUseOrchestrator is a type alias for VirtualDeviceTestingForAndroidV1InstUseOrchestrator,
+// pointing to the latest supported major version of the step's enum type.
+type VirtualDeviceTestingForAndroidInstUseOrchestrator = VirtualDeviceTestingForAndroidV1InstUseOrchestrator
+
+// VirtualDeviceTestingForAndroidAutoGoogleLogin is a type alias for VirtualDeviceTestingForAndroidV1AutoGoogleLogin,
+// pointing to the latest supported major version of the step's enum type.
+type VirtualDeviceTestingForAndroidAutoGoogleLogin = VirtualDeviceTestingForAndroidV1AutoGoogleLogin
+
+// VirtualDeviceTestingForAndroidDownloadTestResults is a type alias for VirtualDeviceTestingForAndroidV1DownloadTestResults,
+// pointing to the latest supported major version of the step's enum type.
+type VirtualDeviceTestingForAndroidDownloadTestResults = VirtualDeviceTestingForAndroidV1DownloadTestResults
+
+// VirtualDeviceTestingForAndroidUseVerboseLog is a type alias for VirtualDeviceTestingForAndroidV1UseVerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type VirtualDeviceTestingForAndroidUseVerboseLog = VirtualDeviceTestingForAndroidV1UseVerboseLog

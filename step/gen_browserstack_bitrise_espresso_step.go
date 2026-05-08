@@ -3,6 +3,86 @@
 
 package step
 
+// BrowserstackBitriseEspressoStepInstrumentationLogs enumerates the valid values for the instrumentation_logs input.
+type BrowserstackBitriseEspressoStepInstrumentationLogs string
+
+const (
+	BrowserstackBitriseEspressoStepInstrumentationLogsTrue  BrowserstackBitriseEspressoStepInstrumentationLogs = "true"
+	BrowserstackBitriseEspressoStepInstrumentationLogsFalse BrowserstackBitriseEspressoStepInstrumentationLogs = "false"
+)
+
+// BrowserstackBitriseEspressoStepNetworkLogs enumerates the valid values for the network_logs input.
+type BrowserstackBitriseEspressoStepNetworkLogs string
+
+const (
+	BrowserstackBitriseEspressoStepNetworkLogsTrue  BrowserstackBitriseEspressoStepNetworkLogs = "true"
+	BrowserstackBitriseEspressoStepNetworkLogsFalse BrowserstackBitriseEspressoStepNetworkLogs = "false"
+)
+
+// BrowserstackBitriseEspressoStepDeviceLogs enumerates the valid values for the device_logs input.
+type BrowserstackBitriseEspressoStepDeviceLogs string
+
+const (
+	BrowserstackBitriseEspressoStepDeviceLogsTrue  BrowserstackBitriseEspressoStepDeviceLogs = "true"
+	BrowserstackBitriseEspressoStepDeviceLogsFalse BrowserstackBitriseEspressoStepDeviceLogs = "false"
+)
+
+// BrowserstackBitriseEspressoStepDebugScreenshots enumerates the valid values for the debug_screenshots input.
+type BrowserstackBitriseEspressoStepDebugScreenshots string
+
+const (
+	BrowserstackBitriseEspressoStepDebugScreenshotsTrue  BrowserstackBitriseEspressoStepDebugScreenshots = "true"
+	BrowserstackBitriseEspressoStepDebugScreenshotsFalse BrowserstackBitriseEspressoStepDebugScreenshots = "false"
+)
+
+// BrowserstackBitriseEspressoStepVideoRecording enumerates the valid values for the video_recording input.
+type BrowserstackBitriseEspressoStepVideoRecording string
+
+const (
+	BrowserstackBitriseEspressoStepVideoRecordingTrue  BrowserstackBitriseEspressoStepVideoRecording = "true"
+	BrowserstackBitriseEspressoStepVideoRecordingFalse BrowserstackBitriseEspressoStepVideoRecording = "false"
+)
+
+// BrowserstackBitriseEspressoStepClearAppData enumerates the valid values for the clear_app_data input.
+type BrowserstackBitriseEspressoStepClearAppData string
+
+const (
+	BrowserstackBitriseEspressoStepClearAppDataTrue  BrowserstackBitriseEspressoStepClearAppData = "true"
+	BrowserstackBitriseEspressoStepClearAppDataFalse BrowserstackBitriseEspressoStepClearAppData = "false"
+)
+
+// BrowserstackBitriseEspressoStepUseSingleRunnerInvocation enumerates the valid values for the use_single_runner_invocation input.
+type BrowserstackBitriseEspressoStepUseSingleRunnerInvocation string
+
+const (
+	BrowserstackBitriseEspressoStepUseSingleRunnerInvocationTrue  BrowserstackBitriseEspressoStepUseSingleRunnerInvocation = "true"
+	BrowserstackBitriseEspressoStepUseSingleRunnerInvocationFalse BrowserstackBitriseEspressoStepUseSingleRunnerInvocation = "false"
+)
+
+// BrowserstackBitriseEspressoStepUseLocal enumerates the valid values for the use_local input.
+type BrowserstackBitriseEspressoStepUseLocal string
+
+const (
+	BrowserstackBitriseEspressoStepUseLocalTrue  BrowserstackBitriseEspressoStepUseLocal = "true"
+	BrowserstackBitriseEspressoStepUseLocalFalse BrowserstackBitriseEspressoStepUseLocal = "false"
+)
+
+// BrowserstackBitriseEspressoStepUseMockServer enumerates the valid values for the use_mock_server input.
+type BrowserstackBitriseEspressoStepUseMockServer string
+
+const (
+	BrowserstackBitriseEspressoStepUseMockServerTrue  BrowserstackBitriseEspressoStepUseMockServer = "true"
+	BrowserstackBitriseEspressoStepUseMockServerFalse BrowserstackBitriseEspressoStepUseMockServer = "false"
+)
+
+// BrowserstackBitriseEspressoStepCheckBuildStatus enumerates the valid values for the check_build_status input.
+type BrowserstackBitriseEspressoStepCheckBuildStatus string
+
+const (
+	BrowserstackBitriseEspressoStepCheckBuildStatusTrue  BrowserstackBitriseEspressoStepCheckBuildStatus = "true"
+	BrowserstackBitriseEspressoStepCheckBuildStatusFalse BrowserstackBitriseEspressoStepCheckBuildStatus = "false"
+)
+
 // BrowserstackBitriseEspressoStepBuilder builds a browserstack-bitrise-espresso-step step with typed input methods.
 type BrowserstackBitriseEspressoStepBuilder struct{ *Builder }
 
@@ -50,32 +130,32 @@ func (b *BrowserstackBitriseEspressoStepBuilder) WithDevicesList(value string) *
 }
 
 // WithInstrumentationLogs sets instrumentation logs.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithInstrumentationLogs(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("instrumentation_logs", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithInstrumentationLogs(value BrowserstackBitriseEspressoStepInstrumentationLogs) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("instrumentation_logs", string(value))
 	return b
 }
 
 // WithNetworkLogs sets network Logs.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithNetworkLogs(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("network_logs", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithNetworkLogs(value BrowserstackBitriseEspressoStepNetworkLogs) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("network_logs", string(value))
 	return b
 }
 
 // WithDeviceLogs sets android logcat logs.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithDeviceLogs(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("device_logs", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithDeviceLogs(value BrowserstackBitriseEspressoStepDeviceLogs) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("device_logs", string(value))
 	return b
 }
 
 // WithDebugScreenshots sets capture Screenshots.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithDebugScreenshots(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("debug_screenshots", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithDebugScreenshots(value BrowserstackBitriseEspressoStepDebugScreenshots) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("debug_screenshots", string(value))
 	return b
 }
 
 // WithVideoRecording sets video recording.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithVideoRecording(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("video_recording", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithVideoRecording(value BrowserstackBitriseEspressoStepVideoRecording) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("video_recording", string(value))
 	return b
 }
 
@@ -98,14 +178,14 @@ func (b *BrowserstackBitriseEspressoStepBuilder) WithUseTestSharding(value strin
 }
 
 // WithClearAppData sets clear app data.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithClearAppData(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("clear_app_data", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithClearAppData(value BrowserstackBitriseEspressoStepClearAppData) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("clear_app_data", string(value))
 	return b
 }
 
 // WithUseSingleRunnerInvocation sets single runner invocation.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithUseSingleRunnerInvocation(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("use_single_runner_invocation", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithUseSingleRunnerInvocation(value BrowserstackBitriseEspressoStepUseSingleRunnerInvocation) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("use_single_runner_invocation", string(value))
 	return b
 }
 
@@ -116,14 +196,14 @@ func (b *BrowserstackBitriseEspressoStepBuilder) WithProjectNotifyUrl(value stri
 }
 
 // WithUseLocal sets local testing.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithUseLocal(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("use_local", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithUseLocal(value BrowserstackBitriseEspressoStepUseLocal) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("use_local", string(value))
 	return b
 }
 
 // WithUseMockServer sets mock server.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithUseMockServer(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("use_mock_server", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithUseMockServer(value BrowserstackBitriseEspressoStepUseMockServer) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("use_mock_server", string(value))
 	return b
 }
 
@@ -134,8 +214,8 @@ func (b *BrowserstackBitriseEspressoStepBuilder) WithApiParams(value string) *Br
 }
 
 // WithCheckBuildStatus sets build Status.
-func (b *BrowserstackBitriseEspressoStepBuilder) WithCheckBuildStatus(value string) *BrowserstackBitriseEspressoStepBuilder {
-	b.Builder.WithInput("check_build_status", value)
+func (b *BrowserstackBitriseEspressoStepBuilder) WithCheckBuildStatus(value BrowserstackBitriseEspressoStepCheckBuildStatus) *BrowserstackBitriseEspressoStepBuilder {
+	b.Builder.WithInput("check_build_status", string(value))
 	return b
 }
 

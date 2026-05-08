@@ -3,6 +3,31 @@
 
 package step
 
+// XamarinTestCloudForIosV2TestCloudIsAsync enumerates the valid values for the test_cloud_is_async input.
+type XamarinTestCloudForIosV2TestCloudIsAsync string
+
+const (
+	XamarinTestCloudForIosV2TestCloudIsAsyncYes XamarinTestCloudForIosV2TestCloudIsAsync = "yes"
+	XamarinTestCloudForIosV2TestCloudIsAsyncNo  XamarinTestCloudForIosV2TestCloudIsAsync = "no"
+)
+
+// XamarinTestCloudForIosV2TestCloudParallelization enumerates the valid values for the test_cloud_parallelization input.
+type XamarinTestCloudForIosV2TestCloudParallelization string
+
+const (
+	XamarinTestCloudForIosV2TestCloudParallelizationNone          XamarinTestCloudForIosV2TestCloudParallelization = "none"
+	XamarinTestCloudForIosV2TestCloudParallelizationByTestFixture XamarinTestCloudForIosV2TestCloudParallelization = "by_test_fixture"
+	XamarinTestCloudForIosV2TestCloudParallelizationByTestChunk   XamarinTestCloudForIosV2TestCloudParallelization = "by_test_chunk"
+)
+
+// XamarinTestCloudForIosV2BuildTool enumerates the valid values for the build_tool input.
+type XamarinTestCloudForIosV2BuildTool string
+
+const (
+	XamarinTestCloudForIosV2BuildToolMsbuild XamarinTestCloudForIosV2BuildTool = "msbuild"
+	XamarinTestCloudForIosV2BuildToolXbuild  XamarinTestCloudForIosV2BuildTool = "xbuild"
+)
+
 // XamarinTestCloudForIosV2Builder builds a xamarin-test-cloud-for-ios step with typed input methods.
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
@@ -66,14 +91,14 @@ func (b *XamarinTestCloudForIosV2Builder) WithXamarinPlatform(value string) *Xam
 }
 
 // WithTestCloudIsAsync sets don't wait for cloud test run to complete.
-func (b *XamarinTestCloudForIosV2Builder) WithTestCloudIsAsync(value string) *XamarinTestCloudForIosV2Builder {
-	b.Builder.WithInput("test_cloud_is_async", value)
+func (b *XamarinTestCloudForIosV2Builder) WithTestCloudIsAsync(value XamarinTestCloudForIosV2TestCloudIsAsync) *XamarinTestCloudForIosV2Builder {
+	b.Builder.WithInput("test_cloud_is_async", string(value))
 	return b
 }
 
 // WithTestCloudParallelization sets run tests in parallel by method/fixture.
-func (b *XamarinTestCloudForIosV2Builder) WithTestCloudParallelization(value string) *XamarinTestCloudForIosV2Builder {
-	b.Builder.WithInput("test_cloud_parallelization", value)
+func (b *XamarinTestCloudForIosV2Builder) WithTestCloudParallelization(value XamarinTestCloudForIosV2TestCloudParallelization) *XamarinTestCloudForIosV2Builder {
+	b.Builder.WithInput("test_cloud_parallelization", string(value))
 	return b
 }
 
@@ -84,8 +109,8 @@ func (b *XamarinTestCloudForIosV2Builder) WithOtherParameters(value string) *Xam
 }
 
 // WithBuildTool sets (Experimental) Which tool to use for building?.
-func (b *XamarinTestCloudForIosV2Builder) WithBuildTool(value string) *XamarinTestCloudForIosV2Builder {
-	b.Builder.WithInput("build_tool", value)
+func (b *XamarinTestCloudForIosV2Builder) WithBuildTool(value XamarinTestCloudForIosV2BuildTool) *XamarinTestCloudForIosV2Builder {
+	b.Builder.WithInput("build_tool", string(value))
 	return b
 }
 

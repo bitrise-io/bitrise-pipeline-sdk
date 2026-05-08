@@ -3,6 +3,14 @@
 
 package step
 
+// SaveDartCacheVerbose enumerates the valid values for the verbose input.
+type SaveDartCacheVerbose string
+
+const (
+	SaveDartCacheVerboseTrue  SaveDartCacheVerbose = "true"
+	SaveDartCacheVerboseFalse SaveDartCacheVerbose = "false"
+)
+
 // SaveDartCacheBuilder builds a save-dart-cache step with typed input methods.
 type SaveDartCacheBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func SaveDartCache(version ...string) *SaveDartCacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveDartCacheBuilder) WithVerbose(value string) *SaveDartCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveDartCacheBuilder) WithVerbose(value SaveDartCacheVerbose) *SaveDartCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// VirtualDeviceTestingForIosV1DownloadTestResults enumerates the valid values for the download_test_results input.
+type VirtualDeviceTestingForIosV1DownloadTestResults string
+
+const (
+	VirtualDeviceTestingForIosV1DownloadTestResultsFalse VirtualDeviceTestingForIosV1DownloadTestResults = "false"
+	VirtualDeviceTestingForIosV1DownloadTestResultsTrue  VirtualDeviceTestingForIosV1DownloadTestResults = "true"
+)
+
 // VirtualDeviceTestingForIosV1Builder builds a virtual-device-testing-for-ios step with typed input methods.
 type VirtualDeviceTestingForIosV1Builder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *VirtualDeviceTestingForIosV1Builder) WithTestTimeout(value string) *Vir
 }
 
 // WithDownloadTestResults sets download files.
-func (b *VirtualDeviceTestingForIosV1Builder) WithDownloadTestResults(value string) *VirtualDeviceTestingForIosV1Builder {
-	b.Builder.WithInput("download_test_results", value)
+func (b *VirtualDeviceTestingForIosV1Builder) WithDownloadTestResults(value VirtualDeviceTestingForIosV1DownloadTestResults) *VirtualDeviceTestingForIosV1Builder {
+	b.Builder.WithInput("download_test_results", string(value))
 	return b
 }
 

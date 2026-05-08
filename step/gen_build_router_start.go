@@ -3,6 +3,30 @@
 
 package step
 
+// BuildRouterStartWaitForBuilds enumerates the valid values for the wait_for_builds input.
+type BuildRouterStartWaitForBuilds string
+
+const (
+	BuildRouterStartWaitForBuildsFalse BuildRouterStartWaitForBuilds = "false"
+	BuildRouterStartWaitForBuildsTrue  BuildRouterStartWaitForBuilds = "true"
+)
+
+// BuildRouterStartAbortOnFail enumerates the valid values for the abort_on_fail input.
+type BuildRouterStartAbortOnFail string
+
+const (
+	BuildRouterStartAbortOnFailYes BuildRouterStartAbortOnFail = "yes"
+	BuildRouterStartAbortOnFailNo  BuildRouterStartAbortOnFail = "no"
+)
+
+// BuildRouterStartVerbose enumerates the valid values for the verbose input.
+type BuildRouterStartVerbose string
+
+const (
+	BuildRouterStartVerboseYes BuildRouterStartVerbose = "yes"
+	BuildRouterStartVerboseNo  BuildRouterStartVerbose = "no"
+)
+
 // BuildRouterStartBuilder builds a build-router-start step with typed input methods.
 type BuildRouterStartBuilder struct{ *Builder }
 
@@ -38,8 +62,8 @@ func (b *BuildRouterStartBuilder) WithEnvironmentKeyList(value string) *BuildRou
 }
 
 // WithWaitForBuilds sets wait for builds.
-func (b *BuildRouterStartBuilder) WithWaitForBuilds(value string) *BuildRouterStartBuilder {
-	b.Builder.WithInput("wait_for_builds", value)
+func (b *BuildRouterStartBuilder) WithWaitForBuilds(value BuildRouterStartWaitForBuilds) *BuildRouterStartBuilder {
+	b.Builder.WithInput("wait_for_builds", string(value))
 	return b
 }
 
@@ -50,14 +74,14 @@ func (b *BuildRouterStartBuilder) WithBuildArtifactsSavePath(value string) *Buil
 }
 
 // WithAbortOnFail sets abort all builds if any of them.
-func (b *BuildRouterStartBuilder) WithAbortOnFail(value string) *BuildRouterStartBuilder {
-	b.Builder.WithInput("abort_on_fail", value)
+func (b *BuildRouterStartBuilder) WithAbortOnFail(value BuildRouterStartAbortOnFail) *BuildRouterStartBuilder {
+	b.Builder.WithInput("abort_on_fail", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *BuildRouterStartBuilder) WithVerbose(value string) *BuildRouterStartBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *BuildRouterStartBuilder) WithVerbose(value BuildRouterStartVerbose) *BuildRouterStartBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

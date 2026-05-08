@@ -3,6 +3,38 @@
 
 package step
 
+// RunTestsUsingMarathonCloudV1Platform enumerates the valid values for the platform input.
+type RunTestsUsingMarathonCloudV1Platform string
+
+const (
+	RunTestsUsingMarathonCloudV1PlatformAndroid RunTestsUsingMarathonCloudV1Platform = "Android"
+	RunTestsUsingMarathonCloudV1PlatformIOS     RunTestsUsingMarathonCloudV1Platform = "iOS"
+)
+
+// RunTestsUsingMarathonCloudV1SystemImage enumerates the valid values for the system_image input.
+type RunTestsUsingMarathonCloudV1SystemImage string
+
+const (
+	RunTestsUsingMarathonCloudV1SystemImageDefault    RunTestsUsingMarathonCloudV1SystemImage = "default"
+	RunTestsUsingMarathonCloudV1SystemImageGoogleApis RunTestsUsingMarathonCloudV1SystemImage = "google_apis"
+)
+
+// RunTestsUsingMarathonCloudV1Isolated enumerates the valid values for the isolated input.
+type RunTestsUsingMarathonCloudV1Isolated string
+
+const (
+	RunTestsUsingMarathonCloudV1IsolatedTrue  RunTestsUsingMarathonCloudV1Isolated = "true"
+	RunTestsUsingMarathonCloudV1IsolatedFalse RunTestsUsingMarathonCloudV1Isolated = "false"
+)
+
+// RunTestsUsingMarathonCloudV1IgnoreTestFailures enumerates the valid values for the ignore_test_failures input.
+type RunTestsUsingMarathonCloudV1IgnoreTestFailures string
+
+const (
+	RunTestsUsingMarathonCloudV1IgnoreTestFailuresTrue  RunTestsUsingMarathonCloudV1IgnoreTestFailures = "true"
+	RunTestsUsingMarathonCloudV1IgnoreTestFailuresFalse RunTestsUsingMarathonCloudV1IgnoreTestFailures = "false"
+)
+
 // RunTestsUsingMarathonCloudV1Builder builds a run-tests-using-marathon-cloud step with typed input methods.
 type RunTestsUsingMarathonCloudV1Builder struct{ *Builder }
 
@@ -32,8 +64,8 @@ func (b *RunTestsUsingMarathonCloudV1Builder) WithTestApplication(value string) 
 }
 
 // WithPlatform sets testing platform.
-func (b *RunTestsUsingMarathonCloudV1Builder) WithPlatform(value string) *RunTestsUsingMarathonCloudV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *RunTestsUsingMarathonCloudV1Builder) WithPlatform(value RunTestsUsingMarathonCloudV1Platform) *RunTestsUsingMarathonCloudV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -68,20 +100,20 @@ func (b *RunTestsUsingMarathonCloudV1Builder) WithLink(value string) *RunTestsUs
 }
 
 // WithSystemImage sets runtime system image. Only for Android.
-func (b *RunTestsUsingMarathonCloudV1Builder) WithSystemImage(value string) *RunTestsUsingMarathonCloudV1Builder {
-	b.Builder.WithInput("system_image", value)
+func (b *RunTestsUsingMarathonCloudV1Builder) WithSystemImage(value RunTestsUsingMarathonCloudV1SystemImage) *RunTestsUsingMarathonCloudV1Builder {
+	b.Builder.WithInput("system_image", string(value))
 	return b
 }
 
 // WithIsolated sets run each test using isolated execution.
-func (b *RunTestsUsingMarathonCloudV1Builder) WithIsolated(value string) *RunTestsUsingMarathonCloudV1Builder {
-	b.Builder.WithInput("isolated", value)
+func (b *RunTestsUsingMarathonCloudV1Builder) WithIsolated(value RunTestsUsingMarathonCloudV1Isolated) *RunTestsUsingMarathonCloudV1Builder {
+	b.Builder.WithInput("isolated", string(value))
 	return b
 }
 
 // WithIgnoreTestFailures sets ignore test failures.
-func (b *RunTestsUsingMarathonCloudV1Builder) WithIgnoreTestFailures(value string) *RunTestsUsingMarathonCloudV1Builder {
-	b.Builder.WithInput("ignore_test_failures", value)
+func (b *RunTestsUsingMarathonCloudV1Builder) WithIgnoreTestFailures(value RunTestsUsingMarathonCloudV1IgnoreTestFailures) *RunTestsUsingMarathonCloudV1Builder {
+	b.Builder.WithInput("ignore_test_failures", string(value))
 	return b
 }
 

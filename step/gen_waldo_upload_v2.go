@@ -3,6 +3,14 @@
 
 package step
 
+// WaldoUploadV2IsDebugMode enumerates the valid values for the is_debug_mode input.
+type WaldoUploadV2IsDebugMode string
+
+const (
+	WaldoUploadV2IsDebugModeYes WaldoUploadV2IsDebugMode = "yes"
+	WaldoUploadV2IsDebugModeNo  WaldoUploadV2IsDebugMode = "no"
+)
+
 // WaldoUploadV2Builder builds a waldo-upload step with typed input methods.
 type WaldoUploadV2Builder struct{ *Builder }
 
@@ -50,8 +58,8 @@ func (b *WaldoUploadV2Builder) WithGitBranch(value string) *WaldoUploadV2Builder
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *WaldoUploadV2Builder) WithIsDebugMode(value string) *WaldoUploadV2Builder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *WaldoUploadV2Builder) WithIsDebugMode(value WaldoUploadV2IsDebugMode) *WaldoUploadV2Builder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// ConfigcatFeatureFlagSyncVerbose enumerates the valid values for the verbose input.
+type ConfigcatFeatureFlagSyncVerbose string
+
+const (
+	ConfigcatFeatureFlagSyncVerboseFalse ConfigcatFeatureFlagSyncVerbose = "false"
+	ConfigcatFeatureFlagSyncVerboseTrue  ConfigcatFeatureFlagSyncVerbose = "true"
+)
+
 // ConfigcatFeatureFlagSyncBuilder builds a configcat-feature-flag-sync step with typed input methods.
 type ConfigcatFeatureFlagSyncBuilder struct{ *Builder }
 
@@ -62,7 +70,7 @@ func (b *ConfigcatFeatureFlagSyncBuilder) WithSubFolder(value string) *Configcat
 }
 
 // WithVerbose sets detailed logging.
-func (b *ConfigcatFeatureFlagSyncBuilder) WithVerbose(value string) *ConfigcatFeatureFlagSyncBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *ConfigcatFeatureFlagSyncBuilder) WithVerbose(value ConfigcatFeatureFlagSyncVerbose) *ConfigcatFeatureFlagSyncBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

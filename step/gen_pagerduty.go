@@ -3,6 +3,24 @@
 
 package step
 
+// PagerdutyApiVersion enumerates the valid values for the api_version input.
+type PagerdutyApiVersion string
+
+const (
+	PagerdutyApiVersionV1 PagerdutyApiVersion = "v1"
+	PagerdutyApiVersionV2 PagerdutyApiVersion = "v2"
+)
+
+// PagerdutySeverity enumerates the valid values for the severity input.
+type PagerdutySeverity string
+
+const (
+	PagerdutySeverityCritical PagerdutySeverity = "critical"
+	PagerdutySeverityError    PagerdutySeverity = "error"
+	PagerdutySeverityWarning  PagerdutySeverity = "warning"
+	PagerdutySeverityInfo     PagerdutySeverity = "info"
+)
+
 // PagerdutyBuilder builds a pagerduty step with typed input methods.
 type PagerdutyBuilder struct{ *Builder }
 
@@ -20,8 +38,8 @@ func Pagerduty(version ...string) *PagerdutyBuilder {
 }
 
 // WithApiVersion sets aPI version.
-func (b *PagerdutyBuilder) WithApiVersion(value string) *PagerdutyBuilder {
-	b.Builder.WithInput("api_version", value)
+func (b *PagerdutyBuilder) WithApiVersion(value PagerdutyApiVersion) *PagerdutyBuilder {
+	b.Builder.WithInput("api_version", string(value))
 	return b
 }
 
@@ -38,8 +56,8 @@ func (b *PagerdutyBuilder) WithEventDescription(value string) *PagerdutyBuilder 
 }
 
 // WithSeverity sets event severity (API v2 only).
-func (b *PagerdutyBuilder) WithSeverity(value string) *PagerdutyBuilder {
-	b.Builder.WithInput("severity", value)
+func (b *PagerdutyBuilder) WithSeverity(value PagerdutySeverity) *PagerdutyBuilder {
+	b.Builder.WithInput("severity", string(value))
 	return b
 }
 

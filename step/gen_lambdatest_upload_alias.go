@@ -18,3 +18,7 @@ func LambdatestUpload(version ...string) *LambdatestUploadV4Builder {
 // published by lambdatest-upload at the latest major version (v4).
 // For outputs of a specific major version use LambdatestUploadV{N}Outputs directly.
 var LambdatestUploadOutputs = LambdatestUploadV4Outputs
+
+// LambdatestUploadShowDebugLogs is a type alias for LambdatestUploadV4ShowDebugLogs,
+// pointing to the latest supported major version of the step's enum type.
+type LambdatestUploadShowDebugLogs = LambdatestUploadV4ShowDebugLogs

@@ -3,6 +3,47 @@
 
 package step
 
+// FlutterBuildPlatform enumerates the valid values for the platform input.
+type FlutterBuildPlatform string
+
+const (
+	FlutterBuildPlatformBoth    FlutterBuildPlatform = "both"
+	FlutterBuildPlatformIos     FlutterBuildPlatform = "ios"
+	FlutterBuildPlatformAndroid FlutterBuildPlatform = "android"
+)
+
+// FlutterBuildIsDebugMode enumerates the valid values for the is_debug_mode input.
+type FlutterBuildIsDebugMode string
+
+const (
+	FlutterBuildIsDebugModeTrue  FlutterBuildIsDebugMode = "true"
+	FlutterBuildIsDebugModeFalse FlutterBuildIsDebugMode = "false"
+)
+
+// FlutterBuildCacheLevel enumerates the valid values for the cache_level input.
+type FlutterBuildCacheLevel string
+
+const (
+	FlutterBuildCacheLevelAll  FlutterBuildCacheLevel = "all"
+	FlutterBuildCacheLevelNone FlutterBuildCacheLevel = "none"
+)
+
+// FlutterBuildIosOutputType enumerates the valid values for the ios_output_type input.
+type FlutterBuildIosOutputType string
+
+const (
+	FlutterBuildIosOutputTypeApp     FlutterBuildIosOutputType = "app"
+	FlutterBuildIosOutputTypeArchive FlutterBuildIosOutputType = "archive"
+)
+
+// FlutterBuildAndroidOutputType enumerates the valid values for the android_output_type input.
+type FlutterBuildAndroidOutputType string
+
+const (
+	FlutterBuildAndroidOutputTypeApk       FlutterBuildAndroidOutputType = "apk"
+	FlutterBuildAndroidOutputTypeAppbundle FlutterBuildAndroidOutputType = "appbundle"
+)
+
 // FlutterBuildBuilder builds a flutter-build step with typed input methods.
 type FlutterBuildBuilder struct{ *Builder }
 
@@ -26,8 +67,8 @@ func (b *FlutterBuildBuilder) WithProjectLocation(value string) *FlutterBuildBui
 }
 
 // WithPlatform sets platform.
-func (b *FlutterBuildBuilder) WithPlatform(value string) *FlutterBuildBuilder {
-	b.Builder.WithInput("platform", value)
+func (b *FlutterBuildBuilder) WithPlatform(value FlutterBuildPlatform) *FlutterBuildBuilder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -38,20 +79,20 @@ func (b *FlutterBuildBuilder) WithAdditionalBuildParams(value string) *FlutterBu
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *FlutterBuildBuilder) WithIsDebugMode(value string) *FlutterBuildBuilder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *FlutterBuildBuilder) WithIsDebugMode(value FlutterBuildIsDebugMode) *FlutterBuildBuilder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 
 // WithCacheLevel sets build cache.
-func (b *FlutterBuildBuilder) WithCacheLevel(value string) *FlutterBuildBuilder {
-	b.Builder.WithInput("cache_level", value)
+func (b *FlutterBuildBuilder) WithCacheLevel(value FlutterBuildCacheLevel) *FlutterBuildBuilder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithIosOutputType sets iOS output artifact type.
-func (b *FlutterBuildBuilder) WithIosOutputType(value string) *FlutterBuildBuilder {
-	b.Builder.WithInput("ios_output_type", value)
+func (b *FlutterBuildBuilder) WithIosOutputType(value FlutterBuildIosOutputType) *FlutterBuildBuilder {
+	b.Builder.WithInput("ios_output_type", string(value))
 	return b
 }
 
@@ -74,8 +115,8 @@ func (b *FlutterBuildBuilder) WithIosOutputPattern(value string) *FlutterBuildBu
 }
 
 // WithAndroidOutputType sets android output artifact type.
-func (b *FlutterBuildBuilder) WithAndroidOutputType(value string) *FlutterBuildBuilder {
-	b.Builder.WithInput("android_output_type", value)
+func (b *FlutterBuildBuilder) WithAndroidOutputType(value FlutterBuildAndroidOutputType) *FlutterBuildBuilder {
+	b.Builder.WithInput("android_output_type", string(value))
 	return b
 }
 

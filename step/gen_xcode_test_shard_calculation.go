@@ -3,6 +3,14 @@
 
 package step
 
+// XcodeTestShardCalculationVerbose enumerates the valid values for the verbose input.
+type XcodeTestShardCalculationVerbose string
+
+const (
+	XcodeTestShardCalculationVerboseTrue  XcodeTestShardCalculationVerbose = "true"
+	XcodeTestShardCalculationVerboseFalse XcodeTestShardCalculationVerbose = "false"
+)
+
 // XcodeTestShardCalculationBuilder builds a xcode-test-shard-calculation step with typed input methods.
 type XcodeTestShardCalculationBuilder struct{ *Builder }
 
@@ -50,8 +58,8 @@ func (b *XcodeTestShardCalculationBuilder) WithDestination(value string) *XcodeT
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *XcodeTestShardCalculationBuilder) WithVerbose(value string) *XcodeTestShardCalculationBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *XcodeTestShardCalculationBuilder) WithVerbose(value XcodeTestShardCalculationVerbose) *XcodeTestShardCalculationBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

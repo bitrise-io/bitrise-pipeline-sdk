@@ -18,3 +18,27 @@ func AppdomeBuild2secureAndroid(version ...string) *AppdomeBuild2secureAndroidV3
 // published by appdome-build-2secure-android at the latest major version (v3).
 // For outputs of a specific major version use AppdomeBuild2secureAndroidV{N}Outputs directly.
 var AppdomeBuild2secureAndroidOutputs = AppdomeBuild2secureAndroidV3Outputs
+
+// AppdomeBuild2secureAndroidSignMethod is a type alias for AppdomeBuild2secureAndroidV3SignMethod,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureAndroidSignMethod = AppdomeBuild2secureAndroidV3SignMethod
+
+// AppdomeBuild2secureAndroidGpSigning is a type alias for AppdomeBuild2secureAndroidV3GpSigning,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureAndroidGpSigning = AppdomeBuild2secureAndroidV3GpSigning
+
+// AppdomeBuild2secureAndroidDownloadDeobfuscation is a type alias for AppdomeBuild2secureAndroidV3DownloadDeobfuscation,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureAndroidDownloadDeobfuscation = AppdomeBuild2secureAndroidV3DownloadDeobfuscation
+
+// AppdomeBuild2secureAndroidSecondaryOutput is a type alias for AppdomeBuild2secureAndroidV3SecondaryOutput,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureAndroidSecondaryOutput = AppdomeBuild2secureAndroidV3SecondaryOutput
+
+// AppdomeBuild2secureAndroidBuildLogs is a type alias for AppdomeBuild2secureAndroidV3BuildLogs,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureAndroidBuildLogs = AppdomeBuild2secureAndroidV3BuildLogs
+
+// AppdomeBuild2secureAndroidBuildToTest is a type alias for AppdomeBuild2secureAndroidV3BuildToTest,
+// pointing to the latest supported major version of the step's enum type.
+type AppdomeBuild2secureAndroidBuildToTest = AppdomeBuild2secureAndroidV3BuildToTest

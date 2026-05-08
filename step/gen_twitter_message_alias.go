@@ -13,3 +13,7 @@ type TwitterMessageBuilder = TwitterMessageV1Builder
 func TwitterMessage(version ...string) *TwitterMessageV1Builder {
 	return TwitterMessageV1(version...)
 }
+
+// TwitterMessageTwDebugMode is a type alias for TwitterMessageV1TwDebugMode,
+// pointing to the latest supported major version of the step's enum type.
+type TwitterMessageTwDebugMode = TwitterMessageV1TwDebugMode

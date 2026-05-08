@@ -3,6 +3,16 @@
 
 package step
 
+// GooglePlayDeployV0Track enumerates the valid values for the track input.
+type GooglePlayDeployV0Track string
+
+const (
+	GooglePlayDeployV0TrackAlpha      GooglePlayDeployV0Track = "alpha"
+	GooglePlayDeployV0TrackBeta       GooglePlayDeployV0Track = "beta"
+	GooglePlayDeployV0TrackProduction GooglePlayDeployV0Track = "production"
+	GooglePlayDeployV0TrackRollout    GooglePlayDeployV0Track = "rollout"
+)
+
 // GooglePlayDeployV0Builder builds a google-play-deploy step with typed input methods.
 type GooglePlayDeployV0Builder struct{ *Builder }
 
@@ -44,7 +54,7 @@ func (b *GooglePlayDeployV0Builder) WithKeyFilePath(value string) *GooglePlayDep
 }
 
 // WithTrack sets track.
-func (b *GooglePlayDeployV0Builder) WithTrack(value string) *GooglePlayDeployV0Builder {
-	b.Builder.WithInput("track", value)
+func (b *GooglePlayDeployV0Builder) WithTrack(value GooglePlayDeployV0Track) *GooglePlayDeployV0Builder {
+	b.Builder.WithInput("track", string(value))
 	return b
 }

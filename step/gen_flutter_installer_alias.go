@@ -13,3 +13,7 @@ type FlutterInstallerBuilder = FlutterInstallerV1Builder
 func FlutterInstaller(version ...string) *FlutterInstallerV1Builder {
 	return FlutterInstallerV1(version...)
 }
+
+// FlutterInstallerIsDebug is a type alias for FlutterInstallerV1IsDebug,
+// pointing to the latest supported major version of the step's enum type.
+type FlutterInstallerIsDebug = FlutterInstallerV1IsDebug

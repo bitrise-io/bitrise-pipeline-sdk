@@ -3,6 +3,38 @@
 
 package step
 
+// BrewInstallV0Upgrade enumerates the valid values for the upgrade input.
+type BrewInstallV0Upgrade string
+
+const (
+	BrewInstallV0UpgradeYes BrewInstallV0Upgrade = "yes"
+	BrewInstallV0UpgradeNo  BrewInstallV0Upgrade = "no"
+)
+
+// BrewInstallV0UseBrewfile enumerates the valid values for the use_brewfile input.
+type BrewInstallV0UseBrewfile string
+
+const (
+	BrewInstallV0UseBrewfileYes BrewInstallV0UseBrewfile = "yes"
+	BrewInstallV0UseBrewfileNo  BrewInstallV0UseBrewfile = "no"
+)
+
+// BrewInstallV0CacheEnabled enumerates the valid values for the cache_enabled input.
+type BrewInstallV0CacheEnabled string
+
+const (
+	BrewInstallV0CacheEnabledYes BrewInstallV0CacheEnabled = "yes"
+	BrewInstallV0CacheEnabledNo  BrewInstallV0CacheEnabled = "no"
+)
+
+// BrewInstallV0VerboseLog enumerates the valid values for the verbose_log input.
+type BrewInstallV0VerboseLog string
+
+const (
+	BrewInstallV0VerboseLogYes BrewInstallV0VerboseLog = "yes"
+	BrewInstallV0VerboseLogNo  BrewInstallV0VerboseLog = "no"
+)
+
 // BrewInstallV0Builder builds a brew-install step with typed input methods.
 type BrewInstallV0Builder struct{ *Builder }
 
@@ -26,14 +58,14 @@ func (b *BrewInstallV0Builder) WithPackages(value string) *BrewInstallV0Builder 
 }
 
 // WithUpgrade sets upgrade formula?.
-func (b *BrewInstallV0Builder) WithUpgrade(value string) *BrewInstallV0Builder {
-	b.Builder.WithInput("upgrade", value)
+func (b *BrewInstallV0Builder) WithUpgrade(value BrewInstallV0Upgrade) *BrewInstallV0Builder {
+	b.Builder.WithInput("upgrade", string(value))
 	return b
 }
 
 // WithUseBrewfile sets use a Brewfile to install packages?.
-func (b *BrewInstallV0Builder) WithUseBrewfile(value string) *BrewInstallV0Builder {
-	b.Builder.WithInput("use_brewfile", value)
+func (b *BrewInstallV0Builder) WithUseBrewfile(value BrewInstallV0UseBrewfile) *BrewInstallV0Builder {
+	b.Builder.WithInput("use_brewfile", string(value))
 	return b
 }
 
@@ -50,13 +82,13 @@ func (b *BrewInstallV0Builder) WithOptions(value string) *BrewInstallV0Builder {
 }
 
 // WithCacheEnabled sets enable cache?.
-func (b *BrewInstallV0Builder) WithCacheEnabled(value string) *BrewInstallV0Builder {
-	b.Builder.WithInput("cache_enabled", value)
+func (b *BrewInstallV0Builder) WithCacheEnabled(value BrewInstallV0CacheEnabled) *BrewInstallV0Builder {
+	b.Builder.WithInput("cache_enabled", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *BrewInstallV0Builder) WithVerboseLog(value string) *BrewInstallV0Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *BrewInstallV0Builder) WithVerboseLog(value BrewInstallV0VerboseLog) *BrewInstallV0Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }

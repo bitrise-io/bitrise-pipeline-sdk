@@ -3,6 +3,22 @@
 
 package step
 
+// KobitonAppUploadKobitonAppType enumerates the valid values for the kobiton_app_type input.
+type KobitonAppUploadKobitonAppType string
+
+const (
+	KobitonAppUploadKobitonAppTypeApk KobitonAppUploadKobitonAppType = "apk"
+	KobitonAppUploadKobitonAppTypeIpa KobitonAppUploadKobitonAppType = "ipa"
+)
+
+// KobitonAppUploadKobitonAppAccess enumerates the valid values for the kobiton_app_access input.
+type KobitonAppUploadKobitonAppAccess string
+
+const (
+	KobitonAppUploadKobitonAppAccessPublic  KobitonAppUploadKobitonAppAccess = "public"
+	KobitonAppUploadKobitonAppAccessPrivate KobitonAppUploadKobitonAppAccess = "private"
+)
+
 // KobitonAppUploadBuilder builds a kobiton-app-upload step with typed input methods.
 type KobitonAppUploadBuilder struct{ *Builder }
 
@@ -38,14 +54,14 @@ func (b *KobitonAppUploadBuilder) WithKobitonAppId(value string) *KobitonAppUplo
 }
 
 // WithKobitonAppType sets app Type.
-func (b *KobitonAppUploadBuilder) WithKobitonAppType(value string) *KobitonAppUploadBuilder {
-	b.Builder.WithInput("kobiton_app_type", value)
+func (b *KobitonAppUploadBuilder) WithKobitonAppType(value KobitonAppUploadKobitonAppType) *KobitonAppUploadBuilder {
+	b.Builder.WithInput("kobiton_app_type", string(value))
 	return b
 }
 
 // WithKobitonAppAccess sets app Privacy.
-func (b *KobitonAppUploadBuilder) WithKobitonAppAccess(value string) *KobitonAppUploadBuilder {
-	b.Builder.WithInput("kobiton_app_access", value)
+func (b *KobitonAppUploadBuilder) WithKobitonAppAccess(value KobitonAppUploadKobitonAppAccess) *KobitonAppUploadBuilder {
+	b.Builder.WithInput("kobiton_app_access", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// UpdateJiraReleaseStatusReleaseStatus enumerates the valid values for the release_status input.
+type UpdateJiraReleaseStatusReleaseStatus string
+
+const (
+	UpdateJiraReleaseStatusReleaseStatusTrue  UpdateJiraReleaseStatusReleaseStatus = "true"
+	UpdateJiraReleaseStatusReleaseStatusFalse UpdateJiraReleaseStatusReleaseStatus = "false"
+)
+
 // UpdateJiraReleaseStatusBuilder builds a update-jira-release-status step with typed input methods.
 type UpdateJiraReleaseStatusBuilder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *UpdateJiraReleaseStatusBuilder) WithJiraReleaseId(value string) *Update
 }
 
 // WithReleaseStatus sets mark Release as Completed.
-func (b *UpdateJiraReleaseStatusBuilder) WithReleaseStatus(value string) *UpdateJiraReleaseStatusBuilder {
-	b.Builder.WithInput("release_status", value)
+func (b *UpdateJiraReleaseStatusBuilder) WithReleaseStatus(value UpdateJiraReleaseStatusReleaseStatus) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithInput("release_status", string(value))
 	return b
 }
 

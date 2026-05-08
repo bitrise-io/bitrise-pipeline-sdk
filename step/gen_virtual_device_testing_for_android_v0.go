@@ -3,6 +3,31 @@
 
 package step
 
+// VirtualDeviceTestingForAndroidV0TestType enumerates the valid values for the test_type input.
+type VirtualDeviceTestingForAndroidV0TestType string
+
+const (
+	VirtualDeviceTestingForAndroidV0TestTypeInstrumentation VirtualDeviceTestingForAndroidV0TestType = "instrumentation"
+	VirtualDeviceTestingForAndroidV0TestTypeRobo            VirtualDeviceTestingForAndroidV0TestType = "robo"
+	VirtualDeviceTestingForAndroidV0TestTypeGameloop        VirtualDeviceTestingForAndroidV0TestType = "gameloop"
+)
+
+// VirtualDeviceTestingForAndroidV0InstUseOrchestrator enumerates the valid values for the inst_use_orchestrator input.
+type VirtualDeviceTestingForAndroidV0InstUseOrchestrator string
+
+const (
+	VirtualDeviceTestingForAndroidV0InstUseOrchestratorFalse VirtualDeviceTestingForAndroidV0InstUseOrchestrator = "false"
+	VirtualDeviceTestingForAndroidV0InstUseOrchestratorTrue  VirtualDeviceTestingForAndroidV0InstUseOrchestrator = "true"
+)
+
+// VirtualDeviceTestingForAndroidV0DownloadTestResults enumerates the valid values for the download_test_results input.
+type VirtualDeviceTestingForAndroidV0DownloadTestResults string
+
+const (
+	VirtualDeviceTestingForAndroidV0DownloadTestResultsFalse VirtualDeviceTestingForAndroidV0DownloadTestResults = "false"
+	VirtualDeviceTestingForAndroidV0DownloadTestResultsTrue  VirtualDeviceTestingForAndroidV0DownloadTestResults = "true"
+)
+
 // VirtualDeviceTestingForAndroidV0Builder builds a virtual-device-testing-for-android step with typed input methods.
 type VirtualDeviceTestingForAndroidV0Builder struct{ *Builder }
 
@@ -32,8 +57,8 @@ func (b *VirtualDeviceTestingForAndroidV0Builder) WithTestDevices(value string) 
 }
 
 // WithTestType sets test type.
-func (b *VirtualDeviceTestingForAndroidV0Builder) WithTestType(value string) *VirtualDeviceTestingForAndroidV0Builder {
-	b.Builder.WithInput("test_type", value)
+func (b *VirtualDeviceTestingForAndroidV0Builder) WithTestType(value VirtualDeviceTestingForAndroidV0TestType) *VirtualDeviceTestingForAndroidV0Builder {
+	b.Builder.WithInput("test_type", string(value))
 	return b
 }
 
@@ -68,8 +93,8 @@ func (b *VirtualDeviceTestingForAndroidV0Builder) WithInstTestTargets(value stri
 }
 
 // WithInstUseOrchestrator sets use Orchestrator.
-func (b *VirtualDeviceTestingForAndroidV0Builder) WithInstUseOrchestrator(value string) *VirtualDeviceTestingForAndroidV0Builder {
-	b.Builder.WithInput("inst_use_orchestrator", value)
+func (b *VirtualDeviceTestingForAndroidV0Builder) WithInstUseOrchestrator(value VirtualDeviceTestingForAndroidV0InstUseOrchestrator) *VirtualDeviceTestingForAndroidV0Builder {
+	b.Builder.WithInput("inst_use_orchestrator", string(value))
 	return b
 }
 
@@ -128,8 +153,8 @@ func (b *VirtualDeviceTestingForAndroidV0Builder) WithEnvironmentVariables(value
 }
 
 // WithDownloadTestResults sets download files.
-func (b *VirtualDeviceTestingForAndroidV0Builder) WithDownloadTestResults(value string) *VirtualDeviceTestingForAndroidV0Builder {
-	b.Builder.WithInput("download_test_results", value)
+func (b *VirtualDeviceTestingForAndroidV0Builder) WithDownloadTestResults(value VirtualDeviceTestingForAndroidV0DownloadTestResults) *VirtualDeviceTestingForAndroidV0Builder {
+	b.Builder.WithInput("download_test_results", string(value))
 	return b
 }
 

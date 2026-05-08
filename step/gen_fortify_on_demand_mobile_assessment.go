@@ -3,6 +3,33 @@
 
 package step
 
+// FortifyOnDemandMobileAssessmentDatacenter enumerates the valid values for the datacenter input.
+type FortifyOnDemandMobileAssessmentDatacenter string
+
+const (
+	FortifyOnDemandMobileAssessmentDatacenterAMS  FortifyOnDemandMobileAssessmentDatacenter = "AMS"
+	FortifyOnDemandMobileAssessmentDatacenterAPAC FortifyOnDemandMobileAssessmentDatacenter = "APAC"
+	FortifyOnDemandMobileAssessmentDatacenterEMEA FortifyOnDemandMobileAssessmentDatacenter = "EMEA"
+	FortifyOnDemandMobileAssessmentDatacenterFED  FortifyOnDemandMobileAssessmentDatacenter = "FED"
+)
+
+// FortifyOnDemandMobileAssessmentFrameworkType enumerates the valid values for the framework_type input.
+type FortifyOnDemandMobileAssessmentFrameworkType string
+
+const (
+	FortifyOnDemandMobileAssessmentFrameworkTypeAndroid FortifyOnDemandMobileAssessmentFrameworkType = "Android"
+	FortifyOnDemandMobileAssessmentFrameworkTypeIOS     FortifyOnDemandMobileAssessmentFrameworkType = "iOS"
+)
+
+// FortifyOnDemandMobileAssessmentPlatformType enumerates the valid values for the platform_type input.
+type FortifyOnDemandMobileAssessmentPlatformType string
+
+const (
+	FortifyOnDemandMobileAssessmentPlatformTypePhone  FortifyOnDemandMobileAssessmentPlatformType = "Phone"
+	FortifyOnDemandMobileAssessmentPlatformTypeTablet FortifyOnDemandMobileAssessmentPlatformType = "Tablet"
+	FortifyOnDemandMobileAssessmentPlatformTypeBoth   FortifyOnDemandMobileAssessmentPlatformType = "Both"
+)
+
 // FortifyOnDemandMobileAssessmentBuilder builds a fortify-on-demand-mobile-assessment step with typed input methods.
 type FortifyOnDemandMobileAssessmentBuilder struct{ *Builder }
 
@@ -32,8 +59,8 @@ func (b *FortifyOnDemandMobileAssessmentBuilder) WithClientSecret(value string) 
 }
 
 // WithDatacenter sets datacenter.
-func (b *FortifyOnDemandMobileAssessmentBuilder) WithDatacenter(value string) *FortifyOnDemandMobileAssessmentBuilder {
-	b.Builder.WithInput("datacenter", value)
+func (b *FortifyOnDemandMobileAssessmentBuilder) WithDatacenter(value FortifyOnDemandMobileAssessmentDatacenter) *FortifyOnDemandMobileAssessmentBuilder {
+	b.Builder.WithInput("datacenter", string(value))
 	return b
 }
 
@@ -56,14 +83,14 @@ func (b *FortifyOnDemandMobileAssessmentBuilder) WithAssessmentType(value string
 }
 
 // WithFrameworkType sets framework Type.
-func (b *FortifyOnDemandMobileAssessmentBuilder) WithFrameworkType(value string) *FortifyOnDemandMobileAssessmentBuilder {
-	b.Builder.WithInput("framework_type", value)
+func (b *FortifyOnDemandMobileAssessmentBuilder) WithFrameworkType(value FortifyOnDemandMobileAssessmentFrameworkType) *FortifyOnDemandMobileAssessmentBuilder {
+	b.Builder.WithInput("framework_type", string(value))
 	return b
 }
 
 // WithPlatformType sets platform Type.
-func (b *FortifyOnDemandMobileAssessmentBuilder) WithPlatformType(value string) *FortifyOnDemandMobileAssessmentBuilder {
-	b.Builder.WithInput("platform_type", value)
+func (b *FortifyOnDemandMobileAssessmentBuilder) WithPlatformType(value FortifyOnDemandMobileAssessmentPlatformType) *FortifyOnDemandMobileAssessmentBuilder {
+	b.Builder.WithInput("platform_type", string(value))
 	return b
 }
 

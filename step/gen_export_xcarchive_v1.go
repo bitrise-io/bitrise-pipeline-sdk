@@ -3,6 +3,49 @@
 
 package step
 
+// ExportXcarchiveV1ExportMethod enumerates the valid values for the export_method input.
+type ExportXcarchiveV1ExportMethod string
+
+const (
+	ExportXcarchiveV1ExportMethodAutoDetect  ExportXcarchiveV1ExportMethod = "auto-detect"
+	ExportXcarchiveV1ExportMethodAppStore    ExportXcarchiveV1ExportMethod = "app-store"
+	ExportXcarchiveV1ExportMethodAdHoc       ExportXcarchiveV1ExportMethod = "ad-hoc"
+	ExportXcarchiveV1ExportMethodEnterprise  ExportXcarchiveV1ExportMethod = "enterprise"
+	ExportXcarchiveV1ExportMethodDevelopment ExportXcarchiveV1ExportMethod = "development"
+)
+
+// ExportXcarchiveV1UploadBitcode enumerates the valid values for the upload_bitcode input.
+type ExportXcarchiveV1UploadBitcode string
+
+const (
+	ExportXcarchiveV1UploadBitcodeYes ExportXcarchiveV1UploadBitcode = "yes"
+	ExportXcarchiveV1UploadBitcodeNo  ExportXcarchiveV1UploadBitcode = "no"
+)
+
+// ExportXcarchiveV1CompileBitcode enumerates the valid values for the compile_bitcode input.
+type ExportXcarchiveV1CompileBitcode string
+
+const (
+	ExportXcarchiveV1CompileBitcodeYes ExportXcarchiveV1CompileBitcode = "yes"
+	ExportXcarchiveV1CompileBitcodeNo  ExportXcarchiveV1CompileBitcode = "no"
+)
+
+// ExportXcarchiveV1UseLegacyExport enumerates the valid values for the use_legacy_export input.
+type ExportXcarchiveV1UseLegacyExport string
+
+const (
+	ExportXcarchiveV1UseLegacyExportYes ExportXcarchiveV1UseLegacyExport = "yes"
+	ExportXcarchiveV1UseLegacyExportNo  ExportXcarchiveV1UseLegacyExport = "no"
+)
+
+// ExportXcarchiveV1VerboseLog enumerates the valid values for the verbose_log input.
+type ExportXcarchiveV1VerboseLog string
+
+const (
+	ExportXcarchiveV1VerboseLogYes ExportXcarchiveV1VerboseLog = "yes"
+	ExportXcarchiveV1VerboseLogNo  ExportXcarchiveV1VerboseLog = "no"
+)
+
 // ExportXcarchiveV1Builder builds a export-xcarchive step with typed input methods.
 type ExportXcarchiveV1Builder struct{ *Builder }
 
@@ -26,20 +69,20 @@ func (b *ExportXcarchiveV1Builder) WithArchivePath(value string) *ExportXcarchiv
 }
 
 // WithExportMethod sets select method for export.
-func (b *ExportXcarchiveV1Builder) WithExportMethod(value string) *ExportXcarchiveV1Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *ExportXcarchiveV1Builder) WithExportMethod(value ExportXcarchiveV1ExportMethod) *ExportXcarchiveV1Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *ExportXcarchiveV1Builder) WithUploadBitcode(value string) *ExportXcarchiveV1Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *ExportXcarchiveV1Builder) WithUploadBitcode(value ExportXcarchiveV1UploadBitcode) *ExportXcarchiveV1Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *ExportXcarchiveV1Builder) WithCompileBitcode(value string) *ExportXcarchiveV1Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *ExportXcarchiveV1Builder) WithCompileBitcode(value ExportXcarchiveV1CompileBitcode) *ExportXcarchiveV1Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
@@ -56,8 +99,8 @@ func (b *ExportXcarchiveV1Builder) WithCustomExportOptionsPlistContent(value str
 }
 
 // WithUseLegacyExport sets use legacy ipa export method?.
-func (b *ExportXcarchiveV1Builder) WithUseLegacyExport(value string) *ExportXcarchiveV1Builder {
-	b.Builder.WithInput("use_legacy_export", value)
+func (b *ExportXcarchiveV1Builder) WithUseLegacyExport(value ExportXcarchiveV1UseLegacyExport) *ExportXcarchiveV1Builder {
+	b.Builder.WithInput("use_legacy_export", string(value))
 	return b
 }
 
@@ -68,8 +111,8 @@ func (b *ExportXcarchiveV1Builder) WithLegacyExportProvisioningProfileName(value
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *ExportXcarchiveV1Builder) WithVerboseLog(value string) *ExportXcarchiveV1Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *ExportXcarchiveV1Builder) WithVerboseLog(value ExportXcarchiveV1VerboseLog) *ExportXcarchiveV1Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

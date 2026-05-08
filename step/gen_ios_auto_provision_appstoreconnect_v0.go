@@ -3,6 +3,24 @@
 
 package step
 
+// IosAutoProvisionAppstoreconnectV0DistributionType enumerates the valid values for the distribution_type input.
+type IosAutoProvisionAppstoreconnectV0DistributionType string
+
+const (
+	IosAutoProvisionAppstoreconnectV0DistributionTypeDevelopment IosAutoProvisionAppstoreconnectV0DistributionType = "development"
+	IosAutoProvisionAppstoreconnectV0DistributionTypeAppStore    IosAutoProvisionAppstoreconnectV0DistributionType = "app-store"
+	IosAutoProvisionAppstoreconnectV0DistributionTypeAdHoc       IosAutoProvisionAppstoreconnectV0DistributionType = "ad-hoc"
+	IosAutoProvisionAppstoreconnectV0DistributionTypeEnterprise  IosAutoProvisionAppstoreconnectV0DistributionType = "enterprise"
+)
+
+// IosAutoProvisionAppstoreconnectV0VerboseLog enumerates the valid values for the verbose_log input.
+type IosAutoProvisionAppstoreconnectV0VerboseLog string
+
+const (
+	IosAutoProvisionAppstoreconnectV0VerboseLogYes IosAutoProvisionAppstoreconnectV0VerboseLog = "yes"
+	IosAutoProvisionAppstoreconnectV0VerboseLogNo  IosAutoProvisionAppstoreconnectV0VerboseLog = "no"
+)
+
 // IosAutoProvisionAppstoreconnectV0Builder builds a ios-auto-provision-appstoreconnect step with typed input methods.
 //
 // Deprecated: This Step has been deprecated in favour of the new automatic code signing options on Bitrise.  Option A) The latest versions of the [Xcode Archive & Export for iOS](https://github.com/bitrise-steplib/steps-xcode-archive), [Xcode Build for testing for iOS](https://github.com/bitrise-steplib/steps-xcode-build-for-test), and the [Export iOS and tvOS Xcode archive](https://github.com/bitrise-steplib/steps-export-xcarchive) Steps have built-in automatic code signing. We recommend removing this Step from your Workflow and using the automatic code signing feature in the Steps mentioned above.  Option B) If you are not using any of the mentioned Xcode steps, then you can replace this iOS Auto Provision Step with the [Manage iOS Code signing](https://www.bitrise.io/integrations/steps/manage-ios-code-signing) Step.  You can [read more](https://blog.bitrise.io/post/simplifying-automatic-code-signing-on-bitrise) about these changes in our blog post.
@@ -36,8 +54,8 @@ func (b *IosAutoProvisionAppstoreconnectV0Builder) WithBuildUrl(value string) *I
 }
 
 // WithDistributionType sets distribution type.
-func (b *IosAutoProvisionAppstoreconnectV0Builder) WithDistributionType(value string) *IosAutoProvisionAppstoreconnectV0Builder {
-	b.Builder.WithInput("distribution_type", value)
+func (b *IosAutoProvisionAppstoreconnectV0Builder) WithDistributionType(value IosAutoProvisionAppstoreconnectV0DistributionType) *IosAutoProvisionAppstoreconnectV0Builder {
+	b.Builder.WithInput("distribution_type", string(value))
 	return b
 }
 
@@ -66,8 +84,8 @@ func (b *IosAutoProvisionAppstoreconnectV0Builder) WithMinProfileDaysValid(value
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *IosAutoProvisionAppstoreconnectV0Builder) WithVerboseLog(value string) *IosAutoProvisionAppstoreconnectV0Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *IosAutoProvisionAppstoreconnectV0Builder) WithVerboseLog(value IosAutoProvisionAppstoreconnectV0VerboseLog) *IosAutoProvisionAppstoreconnectV0Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

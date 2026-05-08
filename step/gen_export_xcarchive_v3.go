@@ -3,6 +3,49 @@
 
 package step
 
+// ExportXcarchiveV3ExportMethod enumerates the valid values for the export_method input.
+type ExportXcarchiveV3ExportMethod string
+
+const (
+	ExportXcarchiveV3ExportMethodAutoDetect  ExportXcarchiveV3ExportMethod = "auto-detect"
+	ExportXcarchiveV3ExportMethodAppStore    ExportXcarchiveV3ExportMethod = "app-store"
+	ExportXcarchiveV3ExportMethodAdHoc       ExportXcarchiveV3ExportMethod = "ad-hoc"
+	ExportXcarchiveV3ExportMethodEnterprise  ExportXcarchiveV3ExportMethod = "enterprise"
+	ExportXcarchiveV3ExportMethodDevelopment ExportXcarchiveV3ExportMethod = "development"
+)
+
+// ExportXcarchiveV3UploadBitcode enumerates the valid values for the upload_bitcode input.
+type ExportXcarchiveV3UploadBitcode string
+
+const (
+	ExportXcarchiveV3UploadBitcodeYes ExportXcarchiveV3UploadBitcode = "yes"
+	ExportXcarchiveV3UploadBitcodeNo  ExportXcarchiveV3UploadBitcode = "no"
+)
+
+// ExportXcarchiveV3CompileBitcode enumerates the valid values for the compile_bitcode input.
+type ExportXcarchiveV3CompileBitcode string
+
+const (
+	ExportXcarchiveV3CompileBitcodeYes ExportXcarchiveV3CompileBitcode = "yes"
+	ExportXcarchiveV3CompileBitcodeNo  ExportXcarchiveV3CompileBitcode = "no"
+)
+
+// ExportXcarchiveV3Product enumerates the valid values for the product input.
+type ExportXcarchiveV3Product string
+
+const (
+	ExportXcarchiveV3ProductApp     ExportXcarchiveV3Product = "app"
+	ExportXcarchiveV3ProductAppClip ExportXcarchiveV3Product = "app-clip"
+)
+
+// ExportXcarchiveV3VerboseLog enumerates the valid values for the verbose_log input.
+type ExportXcarchiveV3VerboseLog string
+
+const (
+	ExportXcarchiveV3VerboseLogYes ExportXcarchiveV3VerboseLog = "yes"
+	ExportXcarchiveV3VerboseLogNo  ExportXcarchiveV3VerboseLog = "no"
+)
+
 // ExportXcarchiveV3Builder builds a export-xcarchive step with typed input methods.
 type ExportXcarchiveV3Builder struct{ *Builder }
 
@@ -26,20 +69,20 @@ func (b *ExportXcarchiveV3Builder) WithArchivePath(value string) *ExportXcarchiv
 }
 
 // WithExportMethod sets select method for export.
-func (b *ExportXcarchiveV3Builder) WithExportMethod(value string) *ExportXcarchiveV3Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *ExportXcarchiveV3Builder) WithExportMethod(value ExportXcarchiveV3ExportMethod) *ExportXcarchiveV3Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *ExportXcarchiveV3Builder) WithUploadBitcode(value string) *ExportXcarchiveV3Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *ExportXcarchiveV3Builder) WithUploadBitcode(value ExportXcarchiveV3UploadBitcode) *ExportXcarchiveV3Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *ExportXcarchiveV3Builder) WithCompileBitcode(value string) *ExportXcarchiveV3Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *ExportXcarchiveV3Builder) WithCompileBitcode(value ExportXcarchiveV3CompileBitcode) *ExportXcarchiveV3Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
@@ -50,8 +93,8 @@ func (b *ExportXcarchiveV3Builder) WithTeamId(value string) *ExportXcarchiveV3Bu
 }
 
 // WithProduct sets select a product to distribute.
-func (b *ExportXcarchiveV3Builder) WithProduct(value string) *ExportXcarchiveV3Builder {
-	b.Builder.WithInput("product", value)
+func (b *ExportXcarchiveV3Builder) WithProduct(value ExportXcarchiveV3Product) *ExportXcarchiveV3Builder {
+	b.Builder.WithInput("product", string(value))
 	return b
 }
 
@@ -62,8 +105,8 @@ func (b *ExportXcarchiveV3Builder) WithCustomExportOptionsPlistContent(value str
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *ExportXcarchiveV3Builder) WithVerboseLog(value string) *ExportXcarchiveV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *ExportXcarchiveV3Builder) WithVerboseLog(value ExportXcarchiveV3VerboseLog) *ExportXcarchiveV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

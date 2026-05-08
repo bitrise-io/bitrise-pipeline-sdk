@@ -174,3 +174,34 @@ func TestOutputs_VersionedVsAlias(t *testing.T) {
 	// The unversioned alias and the latest versioned var hold the same values.
 	assert.Equal(t, step.XcodeArchiveV6Outputs.BitriseIpaPath, step.XcodeArchiveOutputs.BitriseIpaPath)
 }
+
+// --- Typed enum constants ---------------------------------------------------
+
+func TestEnumConstants_XcodeArchive_DistributionMethod(t *testing.T) {
+	// Typed constants hold the correct string values.
+	assert.Equal(t, step.XcodeArchiveV6DistributionMethod("development"), step.XcodeArchiveV6DistributionMethodDevelopment)
+	assert.Equal(t, step.XcodeArchiveV6DistributionMethod("app-store"), step.XcodeArchiveV6DistributionMethodAppStore)
+	assert.Equal(t, step.XcodeArchiveV6DistributionMethod("ad-hoc"), step.XcodeArchiveV6DistributionMethodAdHoc)
+	assert.Equal(t, step.XcodeArchiveV6DistributionMethod("enterprise"), step.XcodeArchiveV6DistributionMethodEnterprise)
+}
+
+func TestEnumConstants_Alias(t *testing.T) {
+	// The unversioned alias type is interchangeable with the versioned type.
+	var _ step.XcodeArchiveDistributionMethod = step.XcodeArchiveV6DistributionMethodAppStore
+}
+
+func TestEnumConstants_BuilderAcceptsTypedValue(t *testing.T) {
+	// Typed constant can be passed directly to the With* method.
+	item := step.XcodeArchive().
+		WithDistributionMethod(step.XcodeArchiveV6DistributionMethodAppStore).
+		Build()
+	require.Contains(t, item, "xcode-archive@6")
+}
+
+func TestEnumConstants_BuilderAcceptsStringLiteral(t *testing.T) {
+	// Untyped string literals are still accepted (backward compatible).
+	item := step.XcodeArchive().
+		WithDistributionMethod("app-store").
+		Build()
+	require.Contains(t, item, "xcode-archive@6")
+}

@@ -3,6 +3,39 @@
 
 package step
 
+// XcodeBuildForSimulatorV3Destination enumerates the valid values for the destination input.
+type XcodeBuildForSimulatorV3Destination string
+
+const (
+	XcodeBuildForSimulatorV3DestinationGenericPlatformIOSSimulator     XcodeBuildForSimulatorV3Destination = "generic/platform=iOS Simulator"
+	XcodeBuildForSimulatorV3DestinationGenericPlatformWatchOSSimulator XcodeBuildForSimulatorV3Destination = "generic/platform=watchOS Simulator"
+	XcodeBuildForSimulatorV3DestinationGenericPlatformTvOSSimulator    XcodeBuildForSimulatorV3Destination = "generic/platform=tvOS Simulator"
+)
+
+// XcodeBuildForSimulatorV3PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeBuildForSimulatorV3PerformCleanAction string
+
+const (
+	XcodeBuildForSimulatorV3PerformCleanActionYes XcodeBuildForSimulatorV3PerformCleanAction = "yes"
+	XcodeBuildForSimulatorV3PerformCleanActionNo  XcodeBuildForSimulatorV3PerformCleanAction = "no"
+)
+
+// XcodeBuildForSimulatorV3LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeBuildForSimulatorV3LogFormatter string
+
+const (
+	XcodeBuildForSimulatorV3LogFormatterXcpretty   XcodeBuildForSimulatorV3LogFormatter = "xcpretty"
+	XcodeBuildForSimulatorV3LogFormatterXcodebuild XcodeBuildForSimulatorV3LogFormatter = "xcodebuild"
+)
+
+// XcodeBuildForSimulatorV3VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeBuildForSimulatorV3VerboseLog string
+
+const (
+	XcodeBuildForSimulatorV3VerboseLogYes XcodeBuildForSimulatorV3VerboseLog = "yes"
+	XcodeBuildForSimulatorV3VerboseLogNo  XcodeBuildForSimulatorV3VerboseLog = "no"
+)
+
 // XcodeBuildForSimulatorV3Builder builds a xcode-build-for-simulator step with typed input methods.
 type XcodeBuildForSimulatorV3Builder struct{ *Builder }
 
@@ -32,8 +65,8 @@ func (b *XcodeBuildForSimulatorV3Builder) WithScheme(value string) *XcodeBuildFo
 }
 
 // WithDestination sets device destination specifier.
-func (b *XcodeBuildForSimulatorV3Builder) WithDestination(value string) *XcodeBuildForSimulatorV3Builder {
-	b.Builder.WithInput("destination", value)
+func (b *XcodeBuildForSimulatorV3Builder) WithDestination(value XcodeBuildForSimulatorV3Destination) *XcodeBuildForSimulatorV3Builder {
+	b.Builder.WithInput("destination", string(value))
 	return b
 }
 
@@ -50,8 +83,8 @@ func (b *XcodeBuildForSimulatorV3Builder) WithConfiguration(value string) *Xcode
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeBuildForSimulatorV3Builder) WithPerformCleanAction(value string) *XcodeBuildForSimulatorV3Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeBuildForSimulatorV3Builder) WithPerformCleanAction(value XcodeBuildForSimulatorV3PerformCleanAction) *XcodeBuildForSimulatorV3Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -62,8 +95,8 @@ func (b *XcodeBuildForSimulatorV3Builder) WithXcodebuildOptions(value string) *X
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeBuildForSimulatorV3Builder) WithLogFormatter(value string) *XcodeBuildForSimulatorV3Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeBuildForSimulatorV3Builder) WithLogFormatter(value XcodeBuildForSimulatorV3LogFormatter) *XcodeBuildForSimulatorV3Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
@@ -74,8 +107,8 @@ func (b *XcodeBuildForSimulatorV3Builder) WithOutputDir(value string) *XcodeBuil
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeBuildForSimulatorV3Builder) WithVerboseLog(value string) *XcodeBuildForSimulatorV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeBuildForSimulatorV3Builder) WithVerboseLog(value XcodeBuildForSimulatorV3VerboseLog) *XcodeBuildForSimulatorV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

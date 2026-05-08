@@ -3,6 +3,15 @@
 
 package step
 
+// RunEasBuildPlatform enumerates the valid values for the platform input.
+type RunEasBuildPlatform string
+
+const (
+	RunEasBuildPlatformAll     RunEasBuildPlatform = "all"
+	RunEasBuildPlatformAndroid RunEasBuildPlatform = "android"
+	RunEasBuildPlatformIos     RunEasBuildPlatform = "ios"
+)
+
 // RunEasBuildBuilder builds a run-eas-build step with typed input methods.
 type RunEasBuildBuilder struct{ *Builder }
 
@@ -26,8 +35,8 @@ func (b *RunEasBuildBuilder) WithAccessToken(value string) *RunEasBuildBuilder {
 }
 
 // WithPlatform sets platform.
-func (b *RunEasBuildBuilder) WithPlatform(value string) *RunEasBuildBuilder {
-	b.Builder.WithInput("platform", value)
+func (b *RunEasBuildBuilder) WithPlatform(value RunEasBuildPlatform) *RunEasBuildBuilder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 

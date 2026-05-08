@@ -3,6 +3,31 @@
 
 package step
 
+// CordovaArchiveV0Platform enumerates the valid values for the platform input.
+type CordovaArchiveV0Platform string
+
+const (
+	CordovaArchiveV0PlatformIosAndroid CordovaArchiveV0Platform = "ios,android"
+	CordovaArchiveV0PlatformIos        CordovaArchiveV0Platform = "ios"
+	CordovaArchiveV0PlatformAndroid    CordovaArchiveV0Platform = "android"
+)
+
+// CordovaArchiveV0Configuration enumerates the valid values for the configuration input.
+type CordovaArchiveV0Configuration string
+
+const (
+	CordovaArchiveV0ConfigurationRelease CordovaArchiveV0Configuration = "release"
+	CordovaArchiveV0ConfigurationDebug   CordovaArchiveV0Configuration = "debug"
+)
+
+// CordovaArchiveV0Target enumerates the valid values for the target input.
+type CordovaArchiveV0Target string
+
+const (
+	CordovaArchiveV0TargetDevice   CordovaArchiveV0Target = "device"
+	CordovaArchiveV0TargetEmulator CordovaArchiveV0Target = "emulator"
+)
+
 // CordovaArchiveV0Builder builds a cordova-archive step with typed input methods.
 type CordovaArchiveV0Builder struct{ *Builder }
 
@@ -26,20 +51,20 @@ func (b *CordovaArchiveV0Builder) WithWorkdir(value string) *CordovaArchiveV0Bui
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.
-func (b *CordovaArchiveV0Builder) WithPlatform(value string) *CordovaArchiveV0Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CordovaArchiveV0Builder) WithPlatform(value CordovaArchiveV0Platform) *CordovaArchiveV0Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *CordovaArchiveV0Builder) WithConfiguration(value string) *CordovaArchiveV0Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *CordovaArchiveV0Builder) WithConfiguration(value CordovaArchiveV0Configuration) *CordovaArchiveV0Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *CordovaArchiveV0Builder) WithTarget(value string) *CordovaArchiveV0Builder {
-	b.Builder.WithInput("target", value)
+func (b *CordovaArchiveV0Builder) WithTarget(value CordovaArchiveV0Target) *CordovaArchiveV0Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 

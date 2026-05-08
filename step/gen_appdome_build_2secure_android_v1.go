@@ -3,6 +3,31 @@
 
 package step
 
+// AppdomeBuild2secureAndroidV1SignMethod enumerates the valid values for the sign_method input.
+type AppdomeBuild2secureAndroidV1SignMethod string
+
+const (
+	AppdomeBuild2secureAndroidV1SignMethodOnAppdome      AppdomeBuild2secureAndroidV1SignMethod = "On-Appdome"
+	AppdomeBuild2secureAndroidV1SignMethodPrivateSigning AppdomeBuild2secureAndroidV1SignMethod = "Private-Signing"
+	AppdomeBuild2secureAndroidV1SignMethodAutoDevSigning AppdomeBuild2secureAndroidV1SignMethod = "Auto-Dev-Signing"
+)
+
+// AppdomeBuild2secureAndroidV1GpSigning enumerates the valid values for the gp_signing input.
+type AppdomeBuild2secureAndroidV1GpSigning string
+
+const (
+	AppdomeBuild2secureAndroidV1GpSigningTrue  AppdomeBuild2secureAndroidV1GpSigning = "true"
+	AppdomeBuild2secureAndroidV1GpSigningFalse AppdomeBuild2secureAndroidV1GpSigning = "false"
+)
+
+// AppdomeBuild2secureAndroidV1BuildLogs enumerates the valid values for the build_logs input.
+type AppdomeBuild2secureAndroidV1BuildLogs string
+
+const (
+	AppdomeBuild2secureAndroidV1BuildLogsTrue  AppdomeBuild2secureAndroidV1BuildLogs = "true"
+	AppdomeBuild2secureAndroidV1BuildLogsFalse AppdomeBuild2secureAndroidV1BuildLogs = "false"
+)
+
 // AppdomeBuild2secureAndroidV1Builder builds a appdome-build-2secure-android step with typed input methods.
 type AppdomeBuild2secureAndroidV1Builder struct{ *Builder }
 
@@ -38,20 +63,20 @@ func (b *AppdomeBuild2secureAndroidV1Builder) WithTeamId(value string) *AppdomeB
 }
 
 // WithSignMethod sets signing Method.
-func (b *AppdomeBuild2secureAndroidV1Builder) WithSignMethod(value string) *AppdomeBuild2secureAndroidV1Builder {
-	b.Builder.WithInput("sign_method", value)
+func (b *AppdomeBuild2secureAndroidV1Builder) WithSignMethod(value AppdomeBuild2secureAndroidV1SignMethod) *AppdomeBuild2secureAndroidV1Builder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 
 // WithGpSigning sets google Play Signing?.
-func (b *AppdomeBuild2secureAndroidV1Builder) WithGpSigning(value string) *AppdomeBuild2secureAndroidV1Builder {
-	b.Builder.WithInput("gp_signing", value)
+func (b *AppdomeBuild2secureAndroidV1Builder) WithGpSigning(value AppdomeBuild2secureAndroidV1GpSigning) *AppdomeBuild2secureAndroidV1Builder {
+	b.Builder.WithInput("gp_signing", string(value))
 	return b
 }
 
 // WithBuildLogs sets build With Diagnostic Logs.
-func (b *AppdomeBuild2secureAndroidV1Builder) WithBuildLogs(value string) *AppdomeBuild2secureAndroidV1Builder {
-	b.Builder.WithInput("build_logs", value)
+func (b *AppdomeBuild2secureAndroidV1Builder) WithBuildLogs(value AppdomeBuild2secureAndroidV1BuildLogs) *AppdomeBuild2secureAndroidV1Builder {
+	b.Builder.WithInput("build_logs", string(value))
 	return b
 }
 

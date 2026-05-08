@@ -3,6 +3,65 @@
 
 package step
 
+// DeployToItunesconnectDeliverConnection enumerates the valid values for the connection input.
+type DeployToItunesconnectDeliverConnection string
+
+const (
+	DeployToItunesconnectDeliverConnectionAutomatic DeployToItunesconnectDeliverConnection = "automatic"
+	DeployToItunesconnectDeliverConnectionApiKey    DeployToItunesconnectDeliverConnection = "api_key"
+	DeployToItunesconnectDeliverConnectionAppleId   DeployToItunesconnectDeliverConnection = "apple_id"
+	DeployToItunesconnectDeliverConnectionOff       DeployToItunesconnectDeliverConnection = "off"
+)
+
+// DeployToItunesconnectDeliverPlatform enumerates the valid values for the platform input.
+type DeployToItunesconnectDeliverPlatform string
+
+const (
+	DeployToItunesconnectDeliverPlatformIos       DeployToItunesconnectDeliverPlatform = "ios"
+	DeployToItunesconnectDeliverPlatformOsx       DeployToItunesconnectDeliverPlatform = "osx"
+	DeployToItunesconnectDeliverPlatformAppletvos DeployToItunesconnectDeliverPlatform = "appletvos"
+)
+
+// DeployToItunesconnectDeliverSubmitForReview enumerates the valid values for the submit_for_review input.
+type DeployToItunesconnectDeliverSubmitForReview string
+
+const (
+	DeployToItunesconnectDeliverSubmitForReviewYes DeployToItunesconnectDeliverSubmitForReview = "yes"
+	DeployToItunesconnectDeliverSubmitForReviewNo  DeployToItunesconnectDeliverSubmitForReview = "no"
+)
+
+// DeployToItunesconnectDeliverSkipMetadata enumerates the valid values for the skip_metadata input.
+type DeployToItunesconnectDeliverSkipMetadata string
+
+const (
+	DeployToItunesconnectDeliverSkipMetadataYes DeployToItunesconnectDeliverSkipMetadata = "yes"
+	DeployToItunesconnectDeliverSkipMetadataNo  DeployToItunesconnectDeliverSkipMetadata = "no"
+)
+
+// DeployToItunesconnectDeliverSkipScreenshots enumerates the valid values for the skip_screenshots input.
+type DeployToItunesconnectDeliverSkipScreenshots string
+
+const (
+	DeployToItunesconnectDeliverSkipScreenshotsYes DeployToItunesconnectDeliverSkipScreenshots = "yes"
+	DeployToItunesconnectDeliverSkipScreenshotsNo  DeployToItunesconnectDeliverSkipScreenshots = "no"
+)
+
+// DeployToItunesconnectDeliverSkipAppVersionUpdate enumerates the valid values for the skip_app_version_update input.
+type DeployToItunesconnectDeliverSkipAppVersionUpdate string
+
+const (
+	DeployToItunesconnectDeliverSkipAppVersionUpdateYes DeployToItunesconnectDeliverSkipAppVersionUpdate = "yes"
+	DeployToItunesconnectDeliverSkipAppVersionUpdateNo  DeployToItunesconnectDeliverSkipAppVersionUpdate = "no"
+)
+
+// DeployToItunesconnectDeliverVerboseLog enumerates the valid values for the verbose_log input.
+type DeployToItunesconnectDeliverVerboseLog string
+
+const (
+	DeployToItunesconnectDeliverVerboseLogYes DeployToItunesconnectDeliverVerboseLog = "yes"
+	DeployToItunesconnectDeliverVerboseLogNo  DeployToItunesconnectDeliverVerboseLog = "no"
+)
+
 // DeployToItunesconnectDeliverBuilder builds a deploy-to-itunesconnect-deliver step with typed input methods.
 type DeployToItunesconnectDeliverBuilder struct{ *Builder }
 
@@ -20,8 +79,8 @@ func DeployToItunesconnectDeliver(version ...string) *DeployToItunesconnectDeliv
 }
 
 // WithConnection sets bitrise Apple Developer Connection.
-func (b *DeployToItunesconnectDeliverBuilder) WithConnection(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("connection", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithConnection(value DeployToItunesconnectDeliverConnection) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("connection", string(value))
 	return b
 }
 
@@ -80,8 +139,8 @@ func (b *DeployToItunesconnectDeliverBuilder) WithPkgPath(value string) *DeployT
 }
 
 // WithPlatform sets platform.
-func (b *DeployToItunesconnectDeliverBuilder) WithPlatform(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("platform", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithPlatform(value DeployToItunesconnectDeliverPlatform) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -98,26 +157,26 @@ func (b *DeployToItunesconnectDeliverBuilder) WithBundleId(value string) *Deploy
 }
 
 // WithSubmitForReview sets submit for Review?.
-func (b *DeployToItunesconnectDeliverBuilder) WithSubmitForReview(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("submit_for_review", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithSubmitForReview(value DeployToItunesconnectDeliverSubmitForReview) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("submit_for_review", string(value))
 	return b
 }
 
 // WithSkipMetadata sets skip metadata?.
-func (b *DeployToItunesconnectDeliverBuilder) WithSkipMetadata(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("skip_metadata", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithSkipMetadata(value DeployToItunesconnectDeliverSkipMetadata) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("skip_metadata", string(value))
 	return b
 }
 
 // WithSkipScreenshots sets skip screenshots?.
-func (b *DeployToItunesconnectDeliverBuilder) WithSkipScreenshots(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("skip_screenshots", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithSkipScreenshots(value DeployToItunesconnectDeliverSkipScreenshots) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("skip_screenshots", string(value))
 	return b
 }
 
 // WithSkipAppVersionUpdate sets skip app Version update?.
-func (b *DeployToItunesconnectDeliverBuilder) WithSkipAppVersionUpdate(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("skip_app_version_update", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithSkipAppVersionUpdate(value DeployToItunesconnectDeliverSkipAppVersionUpdate) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("skip_app_version_update", string(value))
 	return b
 }
 
@@ -152,7 +211,7 @@ func (b *DeployToItunesconnectDeliverBuilder) WithItmsUploadParameters(value str
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *DeployToItunesconnectDeliverBuilder) WithVerboseLog(value string) *DeployToItunesconnectDeliverBuilder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *DeployToItunesconnectDeliverBuilder) WithVerboseLog(value DeployToItunesconnectDeliverVerboseLog) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }

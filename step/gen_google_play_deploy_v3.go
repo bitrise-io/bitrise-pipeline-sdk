@@ -3,6 +3,38 @@
 
 package step
 
+// GooglePlayDeployV3RetryWithoutSendingToReview enumerates the valid values for the retry_without_sending_to_review input.
+type GooglePlayDeployV3RetryWithoutSendingToReview string
+
+const (
+	GooglePlayDeployV3RetryWithoutSendingToReviewTrue  GooglePlayDeployV3RetryWithoutSendingToReview = "true"
+	GooglePlayDeployV3RetryWithoutSendingToReviewFalse GooglePlayDeployV3RetryWithoutSendingToReview = "false"
+)
+
+// GooglePlayDeployV3AckBundleInstallationWarning enumerates the valid values for the ack_bundle_installation_warning input.
+type GooglePlayDeployV3AckBundleInstallationWarning string
+
+const (
+	GooglePlayDeployV3AckBundleInstallationWarningTrue  GooglePlayDeployV3AckBundleInstallationWarning = "true"
+	GooglePlayDeployV3AckBundleInstallationWarningFalse GooglePlayDeployV3AckBundleInstallationWarning = "false"
+)
+
+// GooglePlayDeployV3DryRun enumerates the valid values for the dry_run input.
+type GooglePlayDeployV3DryRun string
+
+const (
+	GooglePlayDeployV3DryRunTrue  GooglePlayDeployV3DryRun = "true"
+	GooglePlayDeployV3DryRunFalse GooglePlayDeployV3DryRun = "false"
+)
+
+// GooglePlayDeployV3VerboseLog enumerates the valid values for the verbose_log input.
+type GooglePlayDeployV3VerboseLog string
+
+const (
+	GooglePlayDeployV3VerboseLogTrue  GooglePlayDeployV3VerboseLog = "true"
+	GooglePlayDeployV3VerboseLogFalse GooglePlayDeployV3VerboseLog = "false"
+)
+
 // GooglePlayDeployV3Builder builds a google-play-deploy step with typed input methods.
 type GooglePlayDeployV3Builder struct{ *Builder }
 
@@ -86,26 +118,26 @@ func (b *GooglePlayDeployV3Builder) WithMappingFile(value string) *GooglePlayDep
 }
 
 // WithRetryWithoutSendingToReview sets retry changes without sending to review.
-func (b *GooglePlayDeployV3Builder) WithRetryWithoutSendingToReview(value string) *GooglePlayDeployV3Builder {
-	b.Builder.WithInput("retry_without_sending_to_review", value)
+func (b *GooglePlayDeployV3Builder) WithRetryWithoutSendingToReview(value GooglePlayDeployV3RetryWithoutSendingToReview) *GooglePlayDeployV3Builder {
+	b.Builder.WithInput("retry_without_sending_to_review", string(value))
 	return b
 }
 
 // WithAckBundleInstallationWarning sets acknowledge Bundle Installation Warning.
-func (b *GooglePlayDeployV3Builder) WithAckBundleInstallationWarning(value string) *GooglePlayDeployV3Builder {
-	b.Builder.WithInput("ack_bundle_installation_warning", value)
+func (b *GooglePlayDeployV3Builder) WithAckBundleInstallationWarning(value GooglePlayDeployV3AckBundleInstallationWarning) *GooglePlayDeployV3Builder {
+	b.Builder.WithInput("ack_bundle_installation_warning", string(value))
 	return b
 }
 
 // WithDryRun sets dry Run.
-func (b *GooglePlayDeployV3Builder) WithDryRun(value string) *GooglePlayDeployV3Builder {
-	b.Builder.WithInput("dry_run", value)
+func (b *GooglePlayDeployV3Builder) WithDryRun(value GooglePlayDeployV3DryRun) *GooglePlayDeployV3Builder {
+	b.Builder.WithInput("dry_run", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *GooglePlayDeployV3Builder) WithVerboseLog(value string) *GooglePlayDeployV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *GooglePlayDeployV3Builder) WithVerboseLog(value GooglePlayDeployV3VerboseLog) *GooglePlayDeployV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

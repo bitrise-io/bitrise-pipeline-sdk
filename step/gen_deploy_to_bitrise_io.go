@@ -3,6 +3,38 @@
 
 package step
 
+// DeployToBitriseIoIsCompress enumerates the valid values for the is_compress input.
+type DeployToBitriseIoIsCompress string
+
+const (
+	DeployToBitriseIoIsCompressTrue  DeployToBitriseIoIsCompress = "true"
+	DeployToBitriseIoIsCompressFalse DeployToBitriseIoIsCompress = "false"
+)
+
+// DeployToBitriseIoIsEnablePublicPage enumerates the valid values for the is_enable_public_page input.
+type DeployToBitriseIoIsEnablePublicPage string
+
+const (
+	DeployToBitriseIoIsEnablePublicPageTrue  DeployToBitriseIoIsEnablePublicPage = "true"
+	DeployToBitriseIoIsEnablePublicPageFalse DeployToBitriseIoIsEnablePublicPage = "false"
+)
+
+// DeployToBitriseIoDebugMode enumerates the valid values for the debug_mode input.
+type DeployToBitriseIoDebugMode string
+
+const (
+	DeployToBitriseIoDebugModeFalse DeployToBitriseIoDebugMode = "false"
+	DeployToBitriseIoDebugModeTrue  DeployToBitriseIoDebugMode = "true"
+)
+
+// DeployToBitriseIoUseLegacyXcresultExtractionMethod enumerates the valid values for the use_legacy_xcresult_extraction_method input.
+type DeployToBitriseIoUseLegacyXcresultExtractionMethod string
+
+const (
+	DeployToBitriseIoUseLegacyXcresultExtractionMethodFalse DeployToBitriseIoUseLegacyXcresultExtractionMethod = "false"
+	DeployToBitriseIoUseLegacyXcresultExtractionMethodTrue  DeployToBitriseIoUseLegacyXcresultExtractionMethod = "true"
+)
+
 // DeployToBitriseIoBuilder builds a deploy-to-bitrise-io step with typed input methods.
 type DeployToBitriseIoBuilder struct{ *Builder }
 
@@ -26,8 +58,8 @@ func (b *DeployToBitriseIoBuilder) WithDeployPath(value string) *DeployToBitrise
 }
 
 // WithIsCompress sets compress the artifacts into one file?.
-func (b *DeployToBitriseIoBuilder) WithIsCompress(value string) *DeployToBitriseIoBuilder {
-	b.Builder.WithInput("is_compress", value)
+func (b *DeployToBitriseIoBuilder) WithIsCompress(value DeployToBitriseIoIsCompress) *DeployToBitriseIoBuilder {
+	b.Builder.WithInput("is_compress", string(value))
 	return b
 }
 
@@ -56,8 +88,8 @@ func (b *DeployToBitriseIoBuilder) WithNotifyEmailList(value string) *DeployToBi
 }
 
 // WithIsEnablePublicPage sets enable public page for the App?.
-func (b *DeployToBitriseIoBuilder) WithIsEnablePublicPage(value string) *DeployToBitriseIoBuilder {
-	b.Builder.WithInput("is_enable_public_page", value)
+func (b *DeployToBitriseIoBuilder) WithIsEnablePublicPage(value DeployToBitriseIoIsEnablePublicPage) *DeployToBitriseIoBuilder {
+	b.Builder.WithInput("is_enable_public_page", string(value))
 	return b
 }
 
@@ -122,14 +154,14 @@ func (b *DeployToBitriseIoBuilder) WithFilesToRedact(value string) *DeployToBitr
 }
 
 // WithDebugMode sets enable Debug Mode.
-func (b *DeployToBitriseIoBuilder) WithDebugMode(value string) *DeployToBitriseIoBuilder {
-	b.Builder.WithInput("debug_mode", value)
+func (b *DeployToBitriseIoBuilder) WithDebugMode(value DeployToBitriseIoDebugMode) *DeployToBitriseIoBuilder {
+	b.Builder.WithInput("debug_mode", string(value))
 	return b
 }
 
 // WithUseLegacyXcresultExtractionMethod sets legacy extraction method for Xcode test results.
-func (b *DeployToBitriseIoBuilder) WithUseLegacyXcresultExtractionMethod(value string) *DeployToBitriseIoBuilder {
-	b.Builder.WithInput("use_legacy_xcresult_extraction_method", value)
+func (b *DeployToBitriseIoBuilder) WithUseLegacyXcresultExtractionMethod(value DeployToBitriseIoUseLegacyXcresultExtractionMethod) *DeployToBitriseIoBuilder {
+	b.Builder.WithInput("use_legacy_xcresult_extraction_method", string(value))
 	return b
 }
 

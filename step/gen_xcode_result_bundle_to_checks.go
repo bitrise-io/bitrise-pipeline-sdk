@@ -3,6 +3,22 @@
 
 package step
 
+// XcodeResultBundleToChecksShowPassedTests enumerates the valid values for the show_passed_tests input.
+type XcodeResultBundleToChecksShowPassedTests string
+
+const (
+	XcodeResultBundleToChecksShowPassedTestsFalse XcodeResultBundleToChecksShowPassedTests = "false"
+	XcodeResultBundleToChecksShowPassedTestsTrue  XcodeResultBundleToChecksShowPassedTests = "true"
+)
+
+// XcodeResultBundleToChecksShowCodeCoverage enumerates the valid values for the show_code_coverage input.
+type XcodeResultBundleToChecksShowCodeCoverage string
+
+const (
+	XcodeResultBundleToChecksShowCodeCoverageFalse XcodeResultBundleToChecksShowCodeCoverage = "false"
+	XcodeResultBundleToChecksShowCodeCoverageTrue  XcodeResultBundleToChecksShowCodeCoverage = "true"
+)
+
 // XcodeResultBundleToChecksBuilder builds a xcode-result-bundle-to-checks step with typed input methods.
 type XcodeResultBundleToChecksBuilder struct{ *Builder }
 
@@ -32,14 +48,14 @@ func (b *XcodeResultBundleToChecksBuilder) WithTitle(value string) *XcodeResultB
 }
 
 // WithShowPassedTests sets show passed tests.
-func (b *XcodeResultBundleToChecksBuilder) WithShowPassedTests(value string) *XcodeResultBundleToChecksBuilder {
-	b.Builder.WithInput("show_passed_tests", value)
+func (b *XcodeResultBundleToChecksBuilder) WithShowPassedTests(value XcodeResultBundleToChecksShowPassedTests) *XcodeResultBundleToChecksBuilder {
+	b.Builder.WithInput("show_passed_tests", string(value))
 	return b
 }
 
 // WithShowCodeCoverage sets show code coverage.
-func (b *XcodeResultBundleToChecksBuilder) WithShowCodeCoverage(value string) *XcodeResultBundleToChecksBuilder {
-	b.Builder.WithInput("show_code_coverage", value)
+func (b *XcodeResultBundleToChecksBuilder) WithShowCodeCoverage(value XcodeResultBundleToChecksShowCodeCoverage) *XcodeResultBundleToChecksBuilder {
+	b.Builder.WithInput("show_code_coverage", string(value))
 	return b
 }
 

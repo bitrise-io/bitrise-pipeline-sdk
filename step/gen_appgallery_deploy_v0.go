@@ -3,6 +3,14 @@
 
 package step
 
+// AppgalleryDeployV0ShowDebugLogs enumerates the valid values for the show_debug_logs input.
+type AppgalleryDeployV0ShowDebugLogs string
+
+const (
+	AppgalleryDeployV0ShowDebugLogsNo  AppgalleryDeployV0ShowDebugLogs = "no"
+	AppgalleryDeployV0ShowDebugLogsYes AppgalleryDeployV0ShowDebugLogs = "yes"
+)
+
 // AppgalleryDeployV0Builder builds a appgallery-deploy step with typed input methods.
 type AppgalleryDeployV0Builder struct{ *Builder }
 
@@ -62,7 +70,7 @@ func (b *AppgalleryDeployV0Builder) WithReleaseType(value string) *AppgalleryDep
 }
 
 // WithShowDebugLogs sets show debug logs?.
-func (b *AppgalleryDeployV0Builder) WithShowDebugLogs(value string) *AppgalleryDeployV0Builder {
-	b.Builder.WithInput("show_debug_logs", value)
+func (b *AppgalleryDeployV0Builder) WithShowDebugLogs(value AppgalleryDeployV0ShowDebugLogs) *AppgalleryDeployV0Builder {
+	b.Builder.WithInput("show_debug_logs", string(value))
 	return b
 }

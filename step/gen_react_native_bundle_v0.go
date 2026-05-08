@@ -3,6 +3,22 @@
 
 package step
 
+// ReactNativeBundleV0Platform enumerates the valid values for the platform input.
+type ReactNativeBundleV0Platform string
+
+const (
+	ReactNativeBundleV0PlatformIos     ReactNativeBundleV0Platform = "ios"
+	ReactNativeBundleV0PlatformAndroid ReactNativeBundleV0Platform = "android"
+)
+
+// ReactNativeBundleV0Dev enumerates the valid values for the dev input.
+type ReactNativeBundleV0Dev string
+
+const (
+	ReactNativeBundleV0DevTrue  ReactNativeBundleV0Dev = "true"
+	ReactNativeBundleV0DevFalse ReactNativeBundleV0Dev = "false"
+)
+
 // ReactNativeBundleV0Builder builds a react-native-bundle step with typed input methods.
 type ReactNativeBundleV0Builder struct{ *Builder }
 
@@ -20,14 +36,14 @@ func ReactNativeBundleV0(version ...string) *ReactNativeBundleV0Builder {
 }
 
 // WithPlatform sets bundle platform.
-func (b *ReactNativeBundleV0Builder) WithPlatform(value string) *ReactNativeBundleV0Builder {
-	b.Builder.WithInput("platform", value)
+func (b *ReactNativeBundleV0Builder) WithPlatform(value ReactNativeBundleV0Platform) *ReactNativeBundleV0Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithDev sets dEV flag.
-func (b *ReactNativeBundleV0Builder) WithDev(value string) *ReactNativeBundleV0Builder {
-	b.Builder.WithInput("dev", value)
+func (b *ReactNativeBundleV0Builder) WithDev(value ReactNativeBundleV0Dev) *ReactNativeBundleV0Builder {
+	b.Builder.WithInput("dev", string(value))
 	return b
 }
 

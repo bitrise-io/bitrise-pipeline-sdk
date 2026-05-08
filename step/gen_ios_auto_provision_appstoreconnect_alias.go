@@ -22,3 +22,23 @@ func IosAutoProvisionAppstoreconnect(version ...string) *IosAutoProvisionAppstor
 // published by ios-auto-provision-appstoreconnect at the latest major version (v2).
 // For outputs of a specific major version use IosAutoProvisionAppstoreconnectV{N}Outputs directly.
 var IosAutoProvisionAppstoreconnectOutputs = IosAutoProvisionAppstoreconnectV2Outputs
+
+// IosAutoProvisionAppstoreconnectConnection is a type alias for IosAutoProvisionAppstoreconnectV2Connection,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionAppstoreconnectConnection = IosAutoProvisionAppstoreconnectV2Connection
+
+// IosAutoProvisionAppstoreconnectDistributionType is a type alias for IosAutoProvisionAppstoreconnectV2DistributionType,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionAppstoreconnectDistributionType = IosAutoProvisionAppstoreconnectV2DistributionType
+
+// IosAutoProvisionAppstoreconnectSignUitestTargets is a type alias for IosAutoProvisionAppstoreconnectV2SignUitestTargets,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionAppstoreconnectSignUitestTargets = IosAutoProvisionAppstoreconnectV2SignUitestTargets
+
+// IosAutoProvisionAppstoreconnectRegisterTestDevices is a type alias for IosAutoProvisionAppstoreconnectV2RegisterTestDevices,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionAppstoreconnectRegisterTestDevices = IosAutoProvisionAppstoreconnectV2RegisterTestDevices
+
+// IosAutoProvisionAppstoreconnectVerboseLog is a type alias for IosAutoProvisionAppstoreconnectV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type IosAutoProvisionAppstoreconnectVerboseLog = IosAutoProvisionAppstoreconnectV2VerboseLog

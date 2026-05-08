@@ -3,6 +3,14 @@
 
 package step
 
+// GenerateXcodeHtmlReportVerbose enumerates the valid values for the verbose input.
+type GenerateXcodeHtmlReportVerbose string
+
+const (
+	GenerateXcodeHtmlReportVerboseTrue  GenerateXcodeHtmlReportVerbose = "true"
+	GenerateXcodeHtmlReportVerboseFalse GenerateXcodeHtmlReportVerbose = "false"
+)
+
 // GenerateXcodeHtmlReportBuilder builds a generate-xcode-html-report step with typed input methods.
 type GenerateXcodeHtmlReportBuilder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *GenerateXcodeHtmlReportBuilder) WithTestResultDir(value string) *Genera
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *GenerateXcodeHtmlReportBuilder) WithVerbose(value string) *GenerateXcodeHtmlReportBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *GenerateXcodeHtmlReportBuilder) WithVerbose(value GenerateXcodeHtmlReportVerbose) *GenerateXcodeHtmlReportBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

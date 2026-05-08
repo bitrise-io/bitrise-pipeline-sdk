@@ -13,3 +13,15 @@ type DeployToItunesconnectApplicationLoaderBuilder = DeployToItunesconnectApplic
 func DeployToItunesconnectApplicationLoader(version ...string) *DeployToItunesconnectApplicationLoaderV2Builder {
 	return DeployToItunesconnectApplicationLoaderV2(version...)
 }
+
+// DeployToItunesconnectApplicationLoaderConnection is a type alias for DeployToItunesconnectApplicationLoaderV2Connection,
+// pointing to the latest supported major version of the step's enum type.
+type DeployToItunesconnectApplicationLoaderConnection = DeployToItunesconnectApplicationLoaderV2Connection
+
+// DeployToItunesconnectApplicationLoaderPlatform is a type alias for DeployToItunesconnectApplicationLoaderV2Platform,
+// pointing to the latest supported major version of the step's enum type.
+type DeployToItunesconnectApplicationLoaderPlatform = DeployToItunesconnectApplicationLoaderV2Platform
+
+// DeployToItunesconnectApplicationLoaderVerboseLog is a type alias for DeployToItunesconnectApplicationLoaderV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type DeployToItunesconnectApplicationLoaderVerboseLog = DeployToItunesconnectApplicationLoaderV2VerboseLog

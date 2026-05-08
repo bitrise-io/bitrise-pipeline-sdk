@@ -3,6 +3,38 @@
 
 package step
 
+// DockerBuildPushPush enumerates the valid values for the push input.
+type DockerBuildPushPush string
+
+const (
+	DockerBuildPushPushTrue  DockerBuildPushPush = "true"
+	DockerBuildPushPushFalse DockerBuildPushPush = "false"
+)
+
+// DockerBuildPushUseBitriseCache enumerates the valid values for the use_bitrise_cache input.
+type DockerBuildPushUseBitriseCache string
+
+const (
+	DockerBuildPushUseBitriseCacheTrue  DockerBuildPushUseBitriseCache = "true"
+	DockerBuildPushUseBitriseCacheFalse DockerBuildPushUseBitriseCache = "false"
+)
+
+// DockerBuildPushBuildxHostNetwork enumerates the valid values for the buildx_host_network input.
+type DockerBuildPushBuildxHostNetwork string
+
+const (
+	DockerBuildPushBuildxHostNetworkTrue  DockerBuildPushBuildxHostNetwork = "true"
+	DockerBuildPushBuildxHostNetworkFalse DockerBuildPushBuildxHostNetwork = "false"
+)
+
+// DockerBuildPushVerbose enumerates the valid values for the verbose input.
+type DockerBuildPushVerbose string
+
+const (
+	DockerBuildPushVerboseTrue  DockerBuildPushVerbose = "true"
+	DockerBuildPushVerboseFalse DockerBuildPushVerbose = "false"
+)
+
 // DockerBuildPushBuilder builds a docker-build-push step with typed input methods.
 type DockerBuildPushBuilder struct{ *Builder }
 
@@ -38,14 +70,14 @@ func (b *DockerBuildPushBuilder) WithFile(value string) *DockerBuildPushBuilder 
 }
 
 // WithPush sets push docker image.
-func (b *DockerBuildPushBuilder) WithPush(value string) *DockerBuildPushBuilder {
-	b.Builder.WithInput("push", value)
+func (b *DockerBuildPushBuilder) WithPush(value DockerBuildPushPush) *DockerBuildPushBuilder {
+	b.Builder.WithInput("push", string(value))
 	return b
 }
 
 // WithUseBitriseCache sets use Bitrise key-value cache.
-func (b *DockerBuildPushBuilder) WithUseBitriseCache(value string) *DockerBuildPushBuilder {
-	b.Builder.WithInput("use_bitrise_cache", value)
+func (b *DockerBuildPushBuilder) WithUseBitriseCache(value DockerBuildPushUseBitriseCache) *DockerBuildPushBuilder {
+	b.Builder.WithInput("use_bitrise_cache", string(value))
 	return b
 }
 
@@ -74,13 +106,13 @@ func (b *DockerBuildPushBuilder) WithExtraOptions(value string) *DockerBuildPush
 }
 
 // WithBuildxHostNetwork sets enables to use the host network with the buildkit build container.
-func (b *DockerBuildPushBuilder) WithBuildxHostNetwork(value string) *DockerBuildPushBuilder {
-	b.Builder.WithInput("buildx_host_network", value)
+func (b *DockerBuildPushBuilder) WithBuildxHostNetwork(value DockerBuildPushBuildxHostNetwork) *DockerBuildPushBuilder {
+	b.Builder.WithInput("buildx_host_network", string(value))
 	return b
 }
 
 // WithVerbose sets verbose logging.
-func (b *DockerBuildPushBuilder) WithVerbose(value string) *DockerBuildPushBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *DockerBuildPushBuilder) WithVerbose(value DockerBuildPushVerbose) *DockerBuildPushBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

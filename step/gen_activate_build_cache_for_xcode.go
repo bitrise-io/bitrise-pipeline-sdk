@@ -3,6 +3,54 @@
 
 package step
 
+// ActivateBuildCacheForXcodeVerbose enumerates the valid values for the verbose input.
+type ActivateBuildCacheForXcodeVerbose string
+
+const (
+	ActivateBuildCacheForXcodeVerboseTrue  ActivateBuildCacheForXcodeVerbose = "true"
+	ActivateBuildCacheForXcodeVerboseFalse ActivateBuildCacheForXcodeVerbose = "false"
+)
+
+// ActivateBuildCacheForXcodeCache enumerates the valid values for the cache input.
+type ActivateBuildCacheForXcodeCache string
+
+const (
+	ActivateBuildCacheForXcodeCacheTrue  ActivateBuildCacheForXcodeCache = "true"
+	ActivateBuildCacheForXcodeCacheFalse ActivateBuildCacheForXcodeCache = "false"
+)
+
+// ActivateBuildCacheForXcodePush enumerates the valid values for the push input.
+type ActivateBuildCacheForXcodePush string
+
+const (
+	ActivateBuildCacheForXcodePushTrue  ActivateBuildCacheForXcodePush = "true"
+	ActivateBuildCacheForXcodePushFalse ActivateBuildCacheForXcodePush = "false"
+)
+
+// ActivateBuildCacheForXcodeSilent enumerates the valid values for the silent input.
+type ActivateBuildCacheForXcodeSilent string
+
+const (
+	ActivateBuildCacheForXcodeSilentTrue  ActivateBuildCacheForXcodeSilent = "true"
+	ActivateBuildCacheForXcodeSilentFalse ActivateBuildCacheForXcodeSilent = "false"
+)
+
+// ActivateBuildCacheForXcodeTimestamps enumerates the valid values for the timestamps input.
+type ActivateBuildCacheForXcodeTimestamps string
+
+const (
+	ActivateBuildCacheForXcodeTimestampsTrue  ActivateBuildCacheForXcodeTimestamps = "true"
+	ActivateBuildCacheForXcodeTimestampsFalse ActivateBuildCacheForXcodeTimestamps = "false"
+)
+
+// ActivateBuildCacheForXcodeCacheSkipFlags enumerates the valid values for the cache_skip_flags input.
+type ActivateBuildCacheForXcodeCacheSkipFlags string
+
+const (
+	ActivateBuildCacheForXcodeCacheSkipFlagsTrue  ActivateBuildCacheForXcodeCacheSkipFlags = "true"
+	ActivateBuildCacheForXcodeCacheSkipFlagsFalse ActivateBuildCacheForXcodeCacheSkipFlags = "false"
+)
+
 // ActivateBuildCacheForXcodeBuilder builds a activate-build-cache-for-xcode step with typed input methods.
 type ActivateBuildCacheForXcodeBuilder struct{ *Builder }
 
@@ -20,37 +68,37 @@ func ActivateBuildCacheForXcode(version ...string) *ActivateBuildCacheForXcodeBu
 }
 
 // WithVerbose sets verbose logging.
-func (b *ActivateBuildCacheForXcodeBuilder) WithVerbose(value string) *ActivateBuildCacheForXcodeBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *ActivateBuildCacheForXcodeBuilder) WithVerbose(value ActivateBuildCacheForXcodeVerbose) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithCache sets use cache.
-func (b *ActivateBuildCacheForXcodeBuilder) WithCache(value string) *ActivateBuildCacheForXcodeBuilder {
-	b.Builder.WithInput("cache", value)
+func (b *ActivateBuildCacheForXcodeBuilder) WithCache(value ActivateBuildCacheForXcodeCache) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithInput("cache", string(value))
 	return b
 }
 
 // WithPush sets push new cache entries.
-func (b *ActivateBuildCacheForXcodeBuilder) WithPush(value string) *ActivateBuildCacheForXcodeBuilder {
-	b.Builder.WithInput("push", value)
+func (b *ActivateBuildCacheForXcodeBuilder) WithPush(value ActivateBuildCacheForXcodePush) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithInput("push", string(value))
 	return b
 }
 
 // WithSilent sets silence all extra Bitrise logging.
-func (b *ActivateBuildCacheForXcodeBuilder) WithSilent(value string) *ActivateBuildCacheForXcodeBuilder {
-	b.Builder.WithInput("silent", value)
+func (b *ActivateBuildCacheForXcodeBuilder) WithSilent(value ActivateBuildCacheForXcodeSilent) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithInput("silent", string(value))
 	return b
 }
 
 // WithTimestamps sets add timestamps to xcodebuild messages.
-func (b *ActivateBuildCacheForXcodeBuilder) WithTimestamps(value string) *ActivateBuildCacheForXcodeBuilder {
-	b.Builder.WithInput("timestamps", value)
+func (b *ActivateBuildCacheForXcodeBuilder) WithTimestamps(value ActivateBuildCacheForXcodeTimestamps) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithInput("timestamps", string(value))
 	return b
 }
 
 // WithCacheSkipFlags sets skip passing cache flags to xcodebuild.
-func (b *ActivateBuildCacheForXcodeBuilder) WithCacheSkipFlags(value string) *ActivateBuildCacheForXcodeBuilder {
-	b.Builder.WithInput("cache_skip_flags", value)
+func (b *ActivateBuildCacheForXcodeBuilder) WithCacheSkipFlags(value ActivateBuildCacheForXcodeCacheSkipFlags) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithInput("cache_skip_flags", string(value))
 	return b
 }

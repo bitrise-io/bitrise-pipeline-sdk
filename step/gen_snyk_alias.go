@@ -13,3 +13,19 @@ type SnykBuilder = SnykV1Builder
 func Snyk(version ...string) *SnykV1Builder {
 	return SnykV1(version...)
 }
+
+// SnykSeverityThreshold is a type alias for SnykV1SeverityThreshold,
+// pointing to the latest supported major version of the step's enum type.
+type SnykSeverityThreshold = SnykV1SeverityThreshold
+
+// SnykFailOnIssues is a type alias for SnykV1FailOnIssues,
+// pointing to the latest supported major version of the step's enum type.
+type SnykFailOnIssues = SnykV1FailOnIssues
+
+// SnykCreateReport is a type alias for SnykV1CreateReport,
+// pointing to the latest supported major version of the step's enum type.
+type SnykCreateReport = SnykV1CreateReport
+
+// SnykMonitor is a type alias for SnykV1Monitor,
+// pointing to the latest supported major version of the step's enum type.
+type SnykMonitor = SnykV1Monitor

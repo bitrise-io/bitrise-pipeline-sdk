@@ -3,6 +3,22 @@
 
 package step
 
+// UpdateXcodeProjectProvisioningCodeSignStyle enumerates the valid values for the code_sign_style input.
+type UpdateXcodeProjectProvisioningCodeSignStyle string
+
+const (
+	UpdateXcodeProjectProvisioningCodeSignStyleAutomatic UpdateXcodeProjectProvisioningCodeSignStyle = "Automatic"
+	UpdateXcodeProjectProvisioningCodeSignStyleManual    UpdateXcodeProjectProvisioningCodeSignStyle = "Manual"
+)
+
+// UpdateXcodeProjectProvisioningDryRun enumerates the valid values for the dry_run input.
+type UpdateXcodeProjectProvisioningDryRun string
+
+const (
+	UpdateXcodeProjectProvisioningDryRunNo  UpdateXcodeProjectProvisioningDryRun = "no"
+	UpdateXcodeProjectProvisioningDryRunYes UpdateXcodeProjectProvisioningDryRun = "yes"
+)
+
 // UpdateXcodeProjectProvisioningBuilder builds a update-xcode-project-provisioning step with typed input methods.
 type UpdateXcodeProjectProvisioningBuilder struct{ *Builder }
 
@@ -32,8 +48,8 @@ func (b *UpdateXcodeProjectProvisioningBuilder) WithProjectTarget(value string) 
 }
 
 // WithCodeSignStyle sets code Sign Style.
-func (b *UpdateXcodeProjectProvisioningBuilder) WithCodeSignStyle(value string) *UpdateXcodeProjectProvisioningBuilder {
-	b.Builder.WithInput("code_sign_style", value)
+func (b *UpdateXcodeProjectProvisioningBuilder) WithCodeSignStyle(value UpdateXcodeProjectProvisioningCodeSignStyle) *UpdateXcodeProjectProvisioningBuilder {
+	b.Builder.WithInput("code_sign_style", string(value))
 	return b
 }
 
@@ -56,7 +72,7 @@ func (b *UpdateXcodeProjectProvisioningBuilder) WithProvisioningProfileSpecifier
 }
 
 // WithDryRun sets dry-run preview (settings preview).
-func (b *UpdateXcodeProjectProvisioningBuilder) WithDryRun(value string) *UpdateXcodeProjectProvisioningBuilder {
-	b.Builder.WithInput("dry_run", value)
+func (b *UpdateXcodeProjectProvisioningBuilder) WithDryRun(value UpdateXcodeProjectProvisioningDryRun) *UpdateXcodeProjectProvisioningBuilder {
+	b.Builder.WithInput("dry_run", string(value))
 	return b
 }

@@ -3,6 +3,14 @@
 
 package step
 
+// GetIdentityTokenVerbose enumerates the valid values for the verbose input.
+type GetIdentityTokenVerbose string
+
+const (
+	GetIdentityTokenVerboseTrue  GetIdentityTokenVerbose = "true"
+	GetIdentityTokenVerboseFalse GetIdentityTokenVerbose = "false"
+)
+
 // GetIdentityTokenBuilder builds a get-identity-token step with typed input methods.
 type GetIdentityTokenBuilder struct{ *Builder }
 
@@ -38,8 +46,8 @@ func (b *GetIdentityTokenBuilder) WithBuildApiToken(value string) *GetIdentityTo
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *GetIdentityTokenBuilder) WithVerbose(value string) *GetIdentityTokenBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *GetIdentityTokenBuilder) WithVerbose(value GetIdentityTokenVerbose) *GetIdentityTokenBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

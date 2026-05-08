@@ -3,6 +3,14 @@
 
 package step
 
+// ZipDirectoryAndExportItsPathIncludeDirectory enumerates the valid values for the include_directory input.
+type ZipDirectoryAndExportItsPathIncludeDirectory string
+
+const (
+	ZipDirectoryAndExportItsPathIncludeDirectoryTrue  ZipDirectoryAndExportItsPathIncludeDirectory = "true"
+	ZipDirectoryAndExportItsPathIncludeDirectoryFalse ZipDirectoryAndExportItsPathIncludeDirectory = "false"
+)
+
 // ZipDirectoryAndExportItsPathBuilder builds a zip-directory-and-export-its-path step with typed input methods.
 type ZipDirectoryAndExportItsPathBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *ZipDirectoryAndExportItsPathBuilder) WithDirectoryToZip(value string) *
 }
 
 // WithIncludeDirectory sets include the directory in the zip.
-func (b *ZipDirectoryAndExportItsPathBuilder) WithIncludeDirectory(value string) *ZipDirectoryAndExportItsPathBuilder {
-	b.Builder.WithInput("include_directory", value)
+func (b *ZipDirectoryAndExportItsPathBuilder) WithIncludeDirectory(value ZipDirectoryAndExportItsPathIncludeDirectory) *ZipDirectoryAndExportItsPathBuilder {
+	b.Builder.WithInput("include_directory", string(value))
 	return b
 }
 

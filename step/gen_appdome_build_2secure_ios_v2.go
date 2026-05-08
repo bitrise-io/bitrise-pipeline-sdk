@@ -3,6 +3,34 @@
 
 package step
 
+// AppdomeBuild2secureIosV2SignMethod enumerates the valid values for the sign_method input.
+type AppdomeBuild2secureIosV2SignMethod string
+
+const (
+	AppdomeBuild2secureIosV2SignMethodOnAppdome      AppdomeBuild2secureIosV2SignMethod = "On-Appdome"
+	AppdomeBuild2secureIosV2SignMethodPrivateSigning AppdomeBuild2secureIosV2SignMethod = "Private-Signing"
+	AppdomeBuild2secureIosV2SignMethodAutoDevSigning AppdomeBuild2secureIosV2SignMethod = "Auto-Dev-Signing"
+)
+
+// AppdomeBuild2secureIosV2BuildLogs enumerates the valid values for the build_logs input.
+type AppdomeBuild2secureIosV2BuildLogs string
+
+const (
+	AppdomeBuild2secureIosV2BuildLogsTrue  AppdomeBuild2secureIosV2BuildLogs = "true"
+	AppdomeBuild2secureIosV2BuildLogsFalse AppdomeBuild2secureIosV2BuildLogs = "false"
+)
+
+// AppdomeBuild2secureIosV2BuildToTest enumerates the valid values for the build_to_test input.
+type AppdomeBuild2secureIosV2BuildToTest string
+
+const (
+	AppdomeBuild2secureIosV2BuildToTestNone         AppdomeBuild2secureIosV2BuildToTest = "None"
+	AppdomeBuild2secureIosV2BuildToTestBitbar       AppdomeBuild2secureIosV2BuildToTest = "Bitbar"
+	AppdomeBuild2secureIosV2BuildToTestBrowserstack AppdomeBuild2secureIosV2BuildToTest = "Browserstack"
+	AppdomeBuild2secureIosV2BuildToTestSaucelabs    AppdomeBuild2secureIosV2BuildToTest = "Saucelabs"
+	AppdomeBuild2secureIosV2BuildToTestLambdatest   AppdomeBuild2secureIosV2BuildToTest = "Lambdatest"
+)
+
 // AppdomeBuild2secureIosV2Builder builds a appdome-build-2secure-ios step with typed input methods.
 type AppdomeBuild2secureIosV2Builder struct{ *Builder }
 
@@ -38,8 +66,8 @@ func (b *AppdomeBuild2secureIosV2Builder) WithTeamId(value string) *AppdomeBuild
 }
 
 // WithSignMethod sets signing Method.
-func (b *AppdomeBuild2secureIosV2Builder) WithSignMethod(value string) *AppdomeBuild2secureIosV2Builder {
-	b.Builder.WithInput("sign_method", value)
+func (b *AppdomeBuild2secureIosV2Builder) WithSignMethod(value AppdomeBuild2secureIosV2SignMethod) *AppdomeBuild2secureIosV2Builder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 
@@ -62,14 +90,14 @@ func (b *AppdomeBuild2secureIosV2Builder) WithEntitlements(value string) *Appdom
 }
 
 // WithBuildLogs sets build With Diagnostic Logs.
-func (b *AppdomeBuild2secureIosV2Builder) WithBuildLogs(value string) *AppdomeBuild2secureIosV2Builder {
-	b.Builder.WithInput("build_logs", value)
+func (b *AppdomeBuild2secureIosV2Builder) WithBuildLogs(value AppdomeBuild2secureIosV2BuildLogs) *AppdomeBuild2secureIosV2Builder {
+	b.Builder.WithInput("build_logs", string(value))
 	return b
 }
 
 // WithBuildToTest sets build to test Vendor.
-func (b *AppdomeBuild2secureIosV2Builder) WithBuildToTest(value string) *AppdomeBuild2secureIosV2Builder {
-	b.Builder.WithInput("build_to_test", value)
+func (b *AppdomeBuild2secureIosV2Builder) WithBuildToTest(value AppdomeBuild2secureIosV2BuildToTest) *AppdomeBuild2secureIosV2Builder {
+	b.Builder.WithInput("build_to_test", string(value))
 	return b
 }
 

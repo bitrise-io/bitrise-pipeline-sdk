@@ -3,6 +3,22 @@
 
 package step
 
+// FirebaseAppDistributionUpgradeFirebaseTools enumerates the valid values for the upgrade_firebase_tools input.
+type FirebaseAppDistributionUpgradeFirebaseTools string
+
+const (
+	FirebaseAppDistributionUpgradeFirebaseToolsFalse FirebaseAppDistributionUpgradeFirebaseTools = "false"
+	FirebaseAppDistributionUpgradeFirebaseToolsTrue  FirebaseAppDistributionUpgradeFirebaseTools = "true"
+)
+
+// FirebaseAppDistributionIsDebug enumerates the valid values for the is_debug input.
+type FirebaseAppDistributionIsDebug string
+
+const (
+	FirebaseAppDistributionIsDebugFalse FirebaseAppDistributionIsDebug = "false"
+	FirebaseAppDistributionIsDebugTrue  FirebaseAppDistributionIsDebug = "true"
+)
+
 // FirebaseAppDistributionBuilder builds a firebase-app-distribution step with typed input methods.
 type FirebaseAppDistributionBuilder struct{ *Builder }
 
@@ -80,14 +96,14 @@ func (b *FirebaseAppDistributionBuilder) WithFlags(value string) *FirebaseAppDis
 }
 
 // WithUpgradeFirebaseTools sets enable Firebase Tools Upgrade.
-func (b *FirebaseAppDistributionBuilder) WithUpgradeFirebaseTools(value string) *FirebaseAppDistributionBuilder {
-	b.Builder.WithInput("upgrade_firebase_tools", value)
+func (b *FirebaseAppDistributionBuilder) WithUpgradeFirebaseTools(value FirebaseAppDistributionUpgradeFirebaseTools) *FirebaseAppDistributionBuilder {
+	b.Builder.WithInput("upgrade_firebase_tools", string(value))
 	return b
 }
 
 // WithIsDebug sets enable Debug Mode.
-func (b *FirebaseAppDistributionBuilder) WithIsDebug(value string) *FirebaseAppDistributionBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *FirebaseAppDistributionBuilder) WithIsDebug(value FirebaseAppDistributionIsDebug) *FirebaseAppDistributionBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
 

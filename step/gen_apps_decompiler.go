@@ -3,6 +3,22 @@
 
 package step
 
+// AppsDecompilerDecompileAndroid enumerates the valid values for the decompile_android input.
+type AppsDecompilerDecompileAndroid string
+
+const (
+	AppsDecompilerDecompileAndroidYes AppsDecompilerDecompileAndroid = "yes"
+	AppsDecompilerDecompileAndroidNo  AppsDecompilerDecompileAndroid = "no"
+)
+
+// AppsDecompilerDecompileIos enumerates the valid values for the decompile_ios input.
+type AppsDecompilerDecompileIos string
+
+const (
+	AppsDecompilerDecompileIosYes AppsDecompilerDecompileIos = "yes"
+	AppsDecompilerDecompileIosNo  AppsDecompilerDecompileIos = "no"
+)
+
 // AppsDecompilerBuilder builds a apps-decompiler step with typed input methods.
 type AppsDecompilerBuilder struct{ *Builder }
 
@@ -20,14 +36,14 @@ func AppsDecompiler(version ...string) *AppsDecompilerBuilder {
 }
 
 // WithDecompileAndroid sets decompile Android APK.
-func (b *AppsDecompilerBuilder) WithDecompileAndroid(value string) *AppsDecompilerBuilder {
-	b.Builder.WithInput("decompile_android", value)
+func (b *AppsDecompilerBuilder) WithDecompileAndroid(value AppsDecompilerDecompileAndroid) *AppsDecompilerBuilder {
+	b.Builder.WithInput("decompile_android", string(value))
 	return b
 }
 
 // WithDecompileIos sets decompile iOS IPA.
-func (b *AppsDecompilerBuilder) WithDecompileIos(value string) *AppsDecompilerBuilder {
-	b.Builder.WithInput("decompile_ios", value)
+func (b *AppsDecompilerBuilder) WithDecompileIos(value AppsDecompilerDecompileIos) *AppsDecompilerBuilder {
+	b.Builder.WithInput("decompile_ios", string(value))
 	return b
 }
 

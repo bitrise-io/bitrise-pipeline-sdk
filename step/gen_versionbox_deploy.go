@@ -3,6 +3,30 @@
 
 package step
 
+// VersionboxDeployVbMarkLive enumerates the valid values for the vb_mark_live input.
+type VersionboxDeployVbMarkLive string
+
+const (
+	VersionboxDeployVbMarkLiveYes VersionboxDeployVbMarkLive = "yes"
+	VersionboxDeployVbMarkLiveNo  VersionboxDeployVbMarkLive = "no"
+)
+
+// VersionboxDeployVbAutoPublish enumerates the valid values for the vb_auto_publish input.
+type VersionboxDeployVbAutoPublish string
+
+const (
+	VersionboxDeployVbAutoPublishNo  VersionboxDeployVbAutoPublish = "no"
+	VersionboxDeployVbAutoPublishYes VersionboxDeployVbAutoPublish = "yes"
+)
+
+// VersionboxDeployVbDescriptionFromCommit enumerates the valid values for the vb_description_from_commit input.
+type VersionboxDeployVbDescriptionFromCommit string
+
+const (
+	VersionboxDeployVbDescriptionFromCommitYes VersionboxDeployVbDescriptionFromCommit = "yes"
+	VersionboxDeployVbDescriptionFromCommitNo  VersionboxDeployVbDescriptionFromCommit = "no"
+)
+
 // VersionboxDeployBuilder builds a versionbox-deploy step with typed input methods.
 type VersionboxDeployBuilder struct{ *Builder }
 
@@ -38,14 +62,14 @@ func (b *VersionboxDeployBuilder) WithVbFilePath(value string) *VersionboxDeploy
 }
 
 // WithVbMarkLive sets mark as Live.
-func (b *VersionboxDeployBuilder) WithVbMarkLive(value string) *VersionboxDeployBuilder {
-	b.Builder.WithInput("vb_mark_live", value)
+func (b *VersionboxDeployBuilder) WithVbMarkLive(value VersionboxDeployVbMarkLive) *VersionboxDeployBuilder {
+	b.Builder.WithInput("vb_mark_live", string(value))
 	return b
 }
 
 // WithVbAutoPublish sets publish the Version.
-func (b *VersionboxDeployBuilder) WithVbAutoPublish(value string) *VersionboxDeployBuilder {
-	b.Builder.WithInput("vb_auto_publish", value)
+func (b *VersionboxDeployBuilder) WithVbAutoPublish(value VersionboxDeployVbAutoPublish) *VersionboxDeployBuilder {
+	b.Builder.WithInput("vb_auto_publish", string(value))
 	return b
 }
 
@@ -56,8 +80,8 @@ func (b *VersionboxDeployBuilder) WithVbVersionDescription(value string) *Versio
 }
 
 // WithVbDescriptionFromCommit sets copy Description From Tag Commits.
-func (b *VersionboxDeployBuilder) WithVbDescriptionFromCommit(value string) *VersionboxDeployBuilder {
-	b.Builder.WithInput("vb_description_from_commit", value)
+func (b *VersionboxDeployBuilder) WithVbDescriptionFromCommit(value VersionboxDeployVbDescriptionFromCommit) *VersionboxDeployBuilder {
+	b.Builder.WithInput("vb_description_from_commit", string(value))
 	return b
 }
 

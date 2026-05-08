@@ -3,6 +3,14 @@
 
 package step
 
+// FabricCrashlyticsBetaDeployNotification enumerates the valid values for the notification input.
+type FabricCrashlyticsBetaDeployNotification string
+
+const (
+	FabricCrashlyticsBetaDeployNotificationYes FabricCrashlyticsBetaDeployNotification = "Yes"
+	FabricCrashlyticsBetaDeployNotificationNo  FabricCrashlyticsBetaDeployNotification = "No"
+)
+
 // FabricCrashlyticsBetaDeployBuilder builds a fabric-crashlytics-beta-deploy step with typed input methods.
 type FabricCrashlyticsBetaDeployBuilder struct{ *Builder }
 
@@ -62,8 +70,8 @@ func (b *FabricCrashlyticsBetaDeployBuilder) WithGroupAliasesList(value string) 
 }
 
 // WithNotification sets notify testers?.
-func (b *FabricCrashlyticsBetaDeployBuilder) WithNotification(value string) *FabricCrashlyticsBetaDeployBuilder {
-	b.Builder.WithInput("notification", value)
+func (b *FabricCrashlyticsBetaDeployBuilder) WithNotification(value FabricCrashlyticsBetaDeployNotification) *FabricCrashlyticsBetaDeployBuilder {
+	b.Builder.WithInput("notification", string(value))
 	return b
 }
 

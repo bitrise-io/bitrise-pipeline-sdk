@@ -3,6 +3,63 @@
 
 package step
 
+// CordovaArchiveV3Platform enumerates the valid values for the platform input.
+type CordovaArchiveV3Platform string
+
+const (
+	CordovaArchiveV3PlatformIosAndroid CordovaArchiveV3Platform = "ios,android"
+	CordovaArchiveV3PlatformIos        CordovaArchiveV3Platform = "ios"
+	CordovaArchiveV3PlatformAndroid    CordovaArchiveV3Platform = "android"
+)
+
+// CordovaArchiveV3Configuration enumerates the valid values for the configuration input.
+type CordovaArchiveV3Configuration string
+
+const (
+	CordovaArchiveV3ConfigurationRelease CordovaArchiveV3Configuration = "release"
+	CordovaArchiveV3ConfigurationDebug   CordovaArchiveV3Configuration = "debug"
+)
+
+// CordovaArchiveV3Target enumerates the valid values for the target input.
+type CordovaArchiveV3Target string
+
+const (
+	CordovaArchiveV3TargetDevice   CordovaArchiveV3Target = "device"
+	CordovaArchiveV3TargetEmulator CordovaArchiveV3Target = "emulator"
+)
+
+// CordovaArchiveV3RunCordovaPrepare enumerates the valid values for the run_cordova_prepare input.
+type CordovaArchiveV3RunCordovaPrepare string
+
+const (
+	CordovaArchiveV3RunCordovaPrepareTrue  CordovaArchiveV3RunCordovaPrepare = "true"
+	CordovaArchiveV3RunCordovaPrepareFalse CordovaArchiveV3RunCordovaPrepare = "false"
+)
+
+// CordovaArchiveV3BuildSystem enumerates the valid values for the build_system input.
+type CordovaArchiveV3BuildSystem string
+
+const (
+	CordovaArchiveV3BuildSystemLegacy CordovaArchiveV3BuildSystem = "legacy"
+	CordovaArchiveV3BuildSystemModern CordovaArchiveV3BuildSystem = "modern"
+)
+
+// CordovaArchiveV3CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type CordovaArchiveV3CacheLocalDeps string
+
+const (
+	CordovaArchiveV3CacheLocalDepsTrue  CordovaArchiveV3CacheLocalDeps = "true"
+	CordovaArchiveV3CacheLocalDepsFalse CordovaArchiveV3CacheLocalDeps = "false"
+)
+
+// CordovaArchiveV3AndroidAppType enumerates the valid values for the android_app_type input.
+type CordovaArchiveV3AndroidAppType string
+
+const (
+	CordovaArchiveV3AndroidAppTypeApk CordovaArchiveV3AndroidAppType = "apk"
+	CordovaArchiveV3AndroidAppTypeAab CordovaArchiveV3AndroidAppType = "aab"
+)
+
 // CordovaArchiveV3Builder builds a cordova-archive step with typed input methods.
 type CordovaArchiveV3Builder struct{ *Builder }
 
@@ -20,20 +77,20 @@ func CordovaArchiveV3(version ...string) *CordovaArchiveV3Builder {
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.
-func (b *CordovaArchiveV3Builder) WithPlatform(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CordovaArchiveV3Builder) WithPlatform(value CordovaArchiveV3Platform) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *CordovaArchiveV3Builder) WithConfiguration(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *CordovaArchiveV3Builder) WithConfiguration(value CordovaArchiveV3Configuration) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *CordovaArchiveV3Builder) WithTarget(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("target", value)
+func (b *CordovaArchiveV3Builder) WithTarget(value CordovaArchiveV3Target) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 
@@ -44,8 +101,8 @@ func (b *CordovaArchiveV3Builder) WithBuildConfig(value string) *CordovaArchiveV
 }
 
 // WithRunCordovaPrepare sets should `cordova prepare` be executed before `cordova compile`?.
-func (b *CordovaArchiveV3Builder) WithRunCordovaPrepare(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("run_cordova_prepare", value)
+func (b *CordovaArchiveV3Builder) WithRunCordovaPrepare(value CordovaArchiveV3RunCordovaPrepare) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("run_cordova_prepare", string(value))
 	return b
 }
 
@@ -68,20 +125,20 @@ func (b *CordovaArchiveV3Builder) WithOptions(value string) *CordovaArchiveV3Bui
 }
 
 // WithBuildSystem sets xcode build system.
-func (b *CordovaArchiveV3Builder) WithBuildSystem(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("build_system", value)
+func (b *CordovaArchiveV3Builder) WithBuildSystem(value CordovaArchiveV3BuildSystem) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("build_system", string(value))
 	return b
 }
 
 // WithCacheLocalDeps sets cache node_modules.
-func (b *CordovaArchiveV3Builder) WithCacheLocalDeps(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *CordovaArchiveV3Builder) WithCacheLocalDeps(value CordovaArchiveV3CacheLocalDeps) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }
 
 // WithAndroidAppType sets android app type.
-func (b *CordovaArchiveV3Builder) WithAndroidAppType(value string) *CordovaArchiveV3Builder {
-	b.Builder.WithInput("android_app_type", value)
+func (b *CordovaArchiveV3Builder) WithAndroidAppType(value CordovaArchiveV3AndroidAppType) *CordovaArchiveV3Builder {
+	b.Builder.WithInput("android_app_type", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// CustomTestResultsExportV0VerboseLog enumerates the valid values for the verbose_log input.
+type CustomTestResultsExportV0VerboseLog string
+
+const (
+	CustomTestResultsExportV0VerboseLogYes CustomTestResultsExportV0VerboseLog = "yes"
+	CustomTestResultsExportV0VerboseLogNo  CustomTestResultsExportV0VerboseLog = "no"
+)
+
 // CustomTestResultsExportV0Builder builds a custom-test-results-export step with typed input methods.
 type CustomTestResultsExportV0Builder struct{ *Builder }
 
@@ -44,7 +52,7 @@ func (b *CustomTestResultsExportV0Builder) WithBitriseTestResultDir(value string
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *CustomTestResultsExportV0Builder) WithVerboseLog(value string) *CustomTestResultsExportV0Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *CustomTestResultsExportV0Builder) WithVerboseLog(value CustomTestResultsExportV0VerboseLog) *CustomTestResultsExportV0Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }

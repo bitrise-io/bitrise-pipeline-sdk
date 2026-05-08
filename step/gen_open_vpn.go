@@ -3,6 +3,14 @@
 
 package step
 
+// OpenVpnProto enumerates the valid values for the proto input.
+type OpenVpnProto string
+
+const (
+	OpenVpnProtoUdp OpenVpnProto = "udp"
+	OpenVpnProtoTcp OpenVpnProto = "tcp"
+)
+
 // OpenVpnBuilder builds a open-vpn step with typed input methods.
 type OpenVpnBuilder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *OpenVpnBuilder) WithPort(value string) *OpenVpnBuilder {
 }
 
 // WithProto sets protocol.
-func (b *OpenVpnBuilder) WithProto(value string) *OpenVpnBuilder {
-	b.Builder.WithInput("proto", value)
+func (b *OpenVpnBuilder) WithProto(value OpenVpnProto) *OpenVpnBuilder {
+	b.Builder.WithInput("proto", string(value))
 	return b
 }
 

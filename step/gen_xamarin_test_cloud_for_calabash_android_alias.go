@@ -22,3 +22,7 @@ func XamarinTestCloudForCalabashAndroid(version ...string) *XamarinTestCloudForC
 // published by xamarin-test-cloud-for-calabash-android at the latest major version (v1).
 // For outputs of a specific major version use XamarinTestCloudForCalabashAndroidV{N}Outputs directly.
 var XamarinTestCloudForCalabashAndroidOutputs = XamarinTestCloudForCalabashAndroidV1Outputs
+
+// XamarinTestCloudForCalabashAndroidTestCloudIsAsync is a type alias for XamarinTestCloudForCalabashAndroidV1TestCloudIsAsync,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinTestCloudForCalabashAndroidTestCloudIsAsync = XamarinTestCloudForCalabashAndroidV1TestCloudIsAsync

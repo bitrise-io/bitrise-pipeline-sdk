@@ -3,6 +3,47 @@
 
 package step
 
+// BluepillBuildTestForIosBluepillVersion enumerates the valid values for the bluepill_version input.
+type BluepillBuildTestForIosBluepillVersion string
+
+const (
+	BluepillBuildTestForIosBluepillVersionBluepill511Xcode112 BluepillBuildTestForIosBluepillVersion = "bluepill_5_1_1__xcode_11_2"
+	BluepillBuildTestForIosBluepillVersionBluepill500Xcode110 BluepillBuildTestForIosBluepillVersion = "bluepill_5_0_0__xcode_11_0"
+	BluepillBuildTestForIosBluepillVersionBluepill411Xcode102 BluepillBuildTestForIosBluepillVersion = "bluepill_4_1_1__xcode_10_2"
+	BluepillBuildTestForIosBluepillVersionBluepill311Xcode101 BluepillBuildTestForIosBluepillVersion = "bluepill_3_1_1__xcode_10_1"
+	BluepillBuildTestForIosBluepillVersionBluepill310Xcode100 BluepillBuildTestForIosBluepillVersion = "bluepill_3_1_0__xcode_10_0"
+	BluepillBuildTestForIosBluepillVersionBluepill240Xcode94  BluepillBuildTestForIosBluepillVersion = "bluepill_2_4_0__xcode_9_4"
+	BluepillBuildTestForIosBluepillVersionBluepill231Xcode93  BluepillBuildTestForIosBluepillVersion = "bluepill_2_3_1__xcode_9_3"
+	BluepillBuildTestForIosBluepillVersionBluepill220Xcode92  BluepillBuildTestForIosBluepillVersion = "bluepill_2_2_0__xcode_9_2"
+	BluepillBuildTestForIosBluepillVersionBluepill210Xcode91  BluepillBuildTestForIosBluepillVersion = "bluepill_2_1_0__xcode_9_1"
+	BluepillBuildTestForIosBluepillVersionBluepill202Xcode90  BluepillBuildTestForIosBluepillVersion = "bluepill_2_0_2__xcode_9_0"
+	BluepillBuildTestForIosBluepillVersionBluepill112Xcode83  BluepillBuildTestForIosBluepillVersion = "bluepill_1_1_2__xcode_8_3"
+)
+
+// BluepillBuildTestForIosGenerateCoverage enumerates the valid values for the generate_coverage input.
+type BluepillBuildTestForIosGenerateCoverage string
+
+const (
+	BluepillBuildTestForIosGenerateCoverageTrue  BluepillBuildTestForIosGenerateCoverage = "true"
+	BluepillBuildTestForIosGenerateCoverageFalse BluepillBuildTestForIosGenerateCoverage = "false"
+)
+
+// BluepillBuildTestForIosRetryOnlyFailedTests enumerates the valid values for the retry_only_failed_tests input.
+type BluepillBuildTestForIosRetryOnlyFailedTests string
+
+const (
+	BluepillBuildTestForIosRetryOnlyFailedTestsTrue  BluepillBuildTestForIosRetryOnlyFailedTests = "true"
+	BluepillBuildTestForIosRetryOnlyFailedTestsFalse BluepillBuildTestForIosRetryOnlyFailedTests = "false"
+)
+
+// BluepillBuildTestForIosFailBuildIfCoverageFails enumerates the valid values for the fail_build_if_coverage_fails input.
+type BluepillBuildTestForIosFailBuildIfCoverageFails string
+
+const (
+	BluepillBuildTestForIosFailBuildIfCoverageFailsFalse BluepillBuildTestForIosFailBuildIfCoverageFails = "false"
+	BluepillBuildTestForIosFailBuildIfCoverageFailsTrue  BluepillBuildTestForIosFailBuildIfCoverageFails = "true"
+)
+
 // BluepillBuildTestForIosBuilder builds a bluepill-build-test-for-ios step with typed input methods.
 type BluepillBuildTestForIosBuilder struct{ *Builder }
 
@@ -20,8 +61,8 @@ func BluepillBuildTestForIos(version ...string) *BluepillBuildTestForIosBuilder 
 }
 
 // WithBluepillVersion sets bluepill Version.
-func (b *BluepillBuildTestForIosBuilder) WithBluepillVersion(value string) *BluepillBuildTestForIosBuilder {
-	b.Builder.WithInput("bluepill_version", value)
+func (b *BluepillBuildTestForIosBuilder) WithBluepillVersion(value BluepillBuildTestForIosBluepillVersion) *BluepillBuildTestForIosBuilder {
+	b.Builder.WithInput("bluepill_version", string(value))
 	return b
 }
 
@@ -62,8 +103,8 @@ func (b *BluepillBuildTestForIosBuilder) WithDerivedDataPath(value string) *Blue
 }
 
 // WithGenerateCoverage sets generate Coverage.
-func (b *BluepillBuildTestForIosBuilder) WithGenerateCoverage(value string) *BluepillBuildTestForIosBuilder {
-	b.Builder.WithInput("generate_coverage", value)
+func (b *BluepillBuildTestForIosBuilder) WithGenerateCoverage(value BluepillBuildTestForIosGenerateCoverage) *BluepillBuildTestForIosBuilder {
+	b.Builder.WithInput("generate_coverage", string(value))
 	return b
 }
 
@@ -86,8 +127,8 @@ func (b *BluepillBuildTestForIosBuilder) WithFailureTolerance(value string) *Blu
 }
 
 // WithRetryOnlyFailedTests sets only Retry Failed Tests? (-F).
-func (b *BluepillBuildTestForIosBuilder) WithRetryOnlyFailedTests(value string) *BluepillBuildTestForIosBuilder {
-	b.Builder.WithInput("retry_only_failed_tests", value)
+func (b *BluepillBuildTestForIosBuilder) WithRetryOnlyFailedTests(value BluepillBuildTestForIosRetryOnlyFailedTests) *BluepillBuildTestForIosBuilder {
+	b.Builder.WithInput("retry_only_failed_tests", string(value))
 	return b
 }
 
@@ -104,8 +145,8 @@ func (b *BluepillBuildTestForIosBuilder) WithAdditionalBluepillArgs(value string
 }
 
 // WithFailBuildIfCoverageFails sets fail Build on Invalid Coverage Data.
-func (b *BluepillBuildTestForIosBuilder) WithFailBuildIfCoverageFails(value string) *BluepillBuildTestForIosBuilder {
-	b.Builder.WithInput("fail_build_if_coverage_fails", value)
+func (b *BluepillBuildTestForIosBuilder) WithFailBuildIfCoverageFails(value BluepillBuildTestForIosFailBuildIfCoverageFails) *BluepillBuildTestForIosBuilder {
+	b.Builder.WithInput("fail_build_if_coverage_fails", string(value))
 	return b
 }
 

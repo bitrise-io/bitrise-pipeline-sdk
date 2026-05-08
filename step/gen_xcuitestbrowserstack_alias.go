@@ -13,3 +13,7 @@ type XcuitestbrowserstackBuilder = XcuitestbrowserstackV2Builder
 func Xcuitestbrowserstack(version ...string) *XcuitestbrowserstackV2Builder {
 	return XcuitestbrowserstackV2(version...)
 }
+
+// XcuitestbrowserstackBrowserstackLocal is a type alias for XcuitestbrowserstackV2BrowserstackLocal,
+// pointing to the latest supported major version of the step's enum type.
+type XcuitestbrowserstackBrowserstackLocal = XcuitestbrowserstackV2BrowserstackLocal

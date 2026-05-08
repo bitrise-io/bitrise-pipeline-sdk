@@ -3,6 +3,15 @@
 
 package step
 
+// AndroidDetektCacheLevel enumerates the valid values for the cache_level input.
+type AndroidDetektCacheLevel string
+
+const (
+	AndroidDetektCacheLevelAll      AndroidDetektCacheLevel = "all"
+	AndroidDetektCacheLevelOnlyDeps AndroidDetektCacheLevel = "only_deps"
+	AndroidDetektCacheLevelNone     AndroidDetektCacheLevel = "none"
+)
+
 // AndroidDetektBuilder builds a android-detekt step with typed input methods.
 type AndroidDetektBuilder struct{ *Builder }
 
@@ -38,8 +47,8 @@ func (b *AndroidDetektBuilder) WithReportPathPattern(value string) *AndroidDetek
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *AndroidDetektBuilder) WithCacheLevel(value string) *AndroidDetektBuilder {
-	b.Builder.WithInput("cache_level", value)
+func (b *AndroidDetektBuilder) WithCacheLevel(value AndroidDetektCacheLevel) *AndroidDetektBuilder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 

@@ -3,6 +3,51 @@
 
 package step
 
+// StepsAppGalleryReportsDownloadInstallationExportType enumerates the valid values for the download_installation_export_type input.
+type StepsAppGalleryReportsDownloadInstallationExportType string
+
+const (
+	StepsAppGalleryReportsDownloadInstallationExportTypeCSV   StepsAppGalleryReportsDownloadInstallationExportType = "CSV"
+	StepsAppGalleryReportsDownloadInstallationExportTypeEXCEL StepsAppGalleryReportsDownloadInstallationExportType = "EXCEL"
+)
+
+// StepsAppGalleryReportsInAppPaymentExportType enumerates the valid values for the in_app_payment_export_type input.
+type StepsAppGalleryReportsInAppPaymentExportType string
+
+const (
+	StepsAppGalleryReportsInAppPaymentExportTypeCSV   StepsAppGalleryReportsInAppPaymentExportType = "CSV"
+	StepsAppGalleryReportsInAppPaymentExportTypeEXCEL StepsAppGalleryReportsInAppPaymentExportType = "EXCEL"
+)
+
+// StepsAppGalleryReportsInAppPaymentCurrency enumerates the valid values for the in_app_payment_currency input.
+type StepsAppGalleryReportsInAppPaymentCurrency string
+
+const (
+	StepsAppGalleryReportsInAppPaymentCurrencyCNY StepsAppGalleryReportsInAppPaymentCurrency = "CNY"
+	StepsAppGalleryReportsInAppPaymentCurrencyEUR StepsAppGalleryReportsInAppPaymentCurrency = "EUR"
+	StepsAppGalleryReportsInAppPaymentCurrencyUSD StepsAppGalleryReportsInAppPaymentCurrency = "USD"
+	StepsAppGalleryReportsInAppPaymentCurrencyGBP StepsAppGalleryReportsInAppPaymentCurrency = "GBP"
+	StepsAppGalleryReportsInAppPaymentCurrencyJPY StepsAppGalleryReportsInAppPaymentCurrency = "JPY"
+)
+
+// StepsAppGalleryReportsPaidDownloadDomain enumerates the valid values for the paid_download_domain input.
+type StepsAppGalleryReportsPaidDownloadDomain string
+
+const (
+	StepsAppGalleryReportsPaidDownloadDomainChina       StepsAppGalleryReportsPaidDownloadDomain = "China"
+	StepsAppGalleryReportsPaidDownloadDomainEurope      StepsAppGalleryReportsPaidDownloadDomain = "Europe"
+	StepsAppGalleryReportsPaidDownloadDomainAsiaPacific StepsAppGalleryReportsPaidDownloadDomain = "Asia Pacific"
+	StepsAppGalleryReportsPaidDownloadDomainRussia      StepsAppGalleryReportsPaidDownloadDomain = "Russia"
+)
+
+// StepsAppGalleryReportsShowDebugLogs enumerates the valid values for the show_debug_logs input.
+type StepsAppGalleryReportsShowDebugLogs string
+
+const (
+	StepsAppGalleryReportsShowDebugLogsNo  StepsAppGalleryReportsShowDebugLogs = "no"
+	StepsAppGalleryReportsShowDebugLogsYes StepsAppGalleryReportsShowDebugLogs = "yes"
+)
+
 // StepsAppGalleryReportsBuilder builds a steps-app-gallery-reports step with typed input methods.
 type StepsAppGalleryReportsBuilder struct{ *Builder }
 
@@ -56,8 +101,8 @@ func (b *StepsAppGalleryReportsBuilder) WithDownloadInstallationEndTime(value st
 }
 
 // WithDownloadInstallationExportType sets export Type.
-func (b *StepsAppGalleryReportsBuilder) WithDownloadInstallationExportType(value string) *StepsAppGalleryReportsBuilder {
-	b.Builder.WithInput("download_installation_export_type", value)
+func (b *StepsAppGalleryReportsBuilder) WithDownloadInstallationExportType(value StepsAppGalleryReportsDownloadInstallationExportType) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithInput("download_installation_export_type", string(value))
 	return b
 }
 
@@ -80,20 +125,20 @@ func (b *StepsAppGalleryReportsBuilder) WithInAppPaymentEndTime(value string) *S
 }
 
 // WithInAppPaymentExportType sets export Type.
-func (b *StepsAppGalleryReportsBuilder) WithInAppPaymentExportType(value string) *StepsAppGalleryReportsBuilder {
-	b.Builder.WithInput("in_app_payment_export_type", value)
+func (b *StepsAppGalleryReportsBuilder) WithInAppPaymentExportType(value StepsAppGalleryReportsInAppPaymentExportType) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithInput("in_app_payment_export_type", string(value))
 	return b
 }
 
 // WithInAppPaymentCurrency sets currency.
-func (b *StepsAppGalleryReportsBuilder) WithInAppPaymentCurrency(value string) *StepsAppGalleryReportsBuilder {
-	b.Builder.WithInput("in_app_payment_currency", value)
+func (b *StepsAppGalleryReportsBuilder) WithInAppPaymentCurrency(value StepsAppGalleryReportsInAppPaymentCurrency) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithInput("in_app_payment_currency", string(value))
 	return b
 }
 
 // WithPaidDownloadDomain sets domain.
-func (b *StepsAppGalleryReportsBuilder) WithPaidDownloadDomain(value string) *StepsAppGalleryReportsBuilder {
-	b.Builder.WithInput("paid_download_domain", value)
+func (b *StepsAppGalleryReportsBuilder) WithPaidDownloadDomain(value StepsAppGalleryReportsPaidDownloadDomain) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithInput("paid_download_domain", string(value))
 	return b
 }
 
@@ -140,8 +185,8 @@ func (b *StepsAppGalleryReportsBuilder) WithInstallationFailureDataEndTime(value
 }
 
 // WithShowDebugLogs sets show debug logs?.
-func (b *StepsAppGalleryReportsBuilder) WithShowDebugLogs(value string) *StepsAppGalleryReportsBuilder {
-	b.Builder.WithInput("show_debug_logs", value)
+func (b *StepsAppGalleryReportsBuilder) WithShowDebugLogs(value StepsAppGalleryReportsShowDebugLogs) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithInput("show_debug_logs", string(value))
 	return b
 }
 

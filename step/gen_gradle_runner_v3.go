@@ -3,6 +3,15 @@
 
 package step
 
+// GradleRunnerV3CacheLevel enumerates the valid values for the cache_level input.
+type GradleRunnerV3CacheLevel string
+
+const (
+	GradleRunnerV3CacheLevelAll      GradleRunnerV3CacheLevel = "all"
+	GradleRunnerV3CacheLevelOnlyDeps GradleRunnerV3CacheLevel = "only_deps"
+	GradleRunnerV3CacheLevelNone     GradleRunnerV3CacheLevel = "none"
+)
+
 // GradleRunnerV3Builder builds a gradle-runner step with typed input methods.
 type GradleRunnerV3Builder struct{ *Builder }
 
@@ -74,8 +83,8 @@ func (b *GradleRunnerV3Builder) WithMappingFileExcludeFilter(value string) *Grad
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *GradleRunnerV3Builder) WithCacheLevel(value string) *GradleRunnerV3Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *GradleRunnerV3Builder) WithCacheLevel(value GradleRunnerV3CacheLevel) *GradleRunnerV3Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 

@@ -3,6 +3,38 @@
 
 package step
 
+// CachePullV2IsDebugMode enumerates the valid values for the is_debug_mode input.
+type CachePullV2IsDebugMode string
+
+const (
+	CachePullV2IsDebugModeTrue  CachePullV2IsDebugMode = "true"
+	CachePullV2IsDebugModeFalse CachePullV2IsDebugMode = "false"
+)
+
+// CachePullV2ExtractToRelativePath enumerates the valid values for the extract_to_relative_path input.
+type CachePullV2ExtractToRelativePath string
+
+const (
+	CachePullV2ExtractToRelativePathTrue  CachePullV2ExtractToRelativePath = "true"
+	CachePullV2ExtractToRelativePathFalse CachePullV2ExtractToRelativePath = "false"
+)
+
+// CachePullV2AllowFallback enumerates the valid values for the allow_fallback input.
+type CachePullV2AllowFallback string
+
+const (
+	CachePullV2AllowFallbackTrue  CachePullV2AllowFallback = "true"
+	CachePullV2AllowFallbackFalse CachePullV2AllowFallback = "false"
+)
+
+// CachePullV2IgnoreStackDifference enumerates the valid values for the ignore_stack_difference input.
+type CachePullV2IgnoreStackDifference string
+
+const (
+	CachePullV2IgnoreStackDifferenceTrue  CachePullV2IgnoreStackDifference = "true"
+	CachePullV2IgnoreStackDifferenceFalse CachePullV2IgnoreStackDifference = "false"
+)
+
 // CachePullV2Builder builds a cache-pull step with typed input methods.
 //
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
@@ -36,25 +68,25 @@ func (b *CachePullV2Builder) WithCacheApiUrl(value string) *CachePullV2Builder {
 }
 
 // WithIsDebugMode sets enable verbose logging.
-func (b *CachePullV2Builder) WithIsDebugMode(value string) *CachePullV2Builder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *CachePullV2Builder) WithIsDebugMode(value CachePullV2IsDebugMode) *CachePullV2Builder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 
 // WithExtractToRelativePath sets extract to relative path?.
-func (b *CachePullV2Builder) WithExtractToRelativePath(value string) *CachePullV2Builder {
-	b.Builder.WithInput("extract_to_relative_path", value)
+func (b *CachePullV2Builder) WithExtractToRelativePath(value CachePullV2ExtractToRelativePath) *CachePullV2Builder {
+	b.Builder.WithInput("extract_to_relative_path", string(value))
 	return b
 }
 
 // WithAllowFallback sets allow fallback cache extraction?.
-func (b *CachePullV2Builder) WithAllowFallback(value string) *CachePullV2Builder {
-	b.Builder.WithInput("allow_fallback", value)
+func (b *CachePullV2Builder) WithAllowFallback(value CachePullV2AllowFallback) *CachePullV2Builder {
+	b.Builder.WithInput("allow_fallback", string(value))
 	return b
 }
 
 // WithIgnoreStackDifference sets ignore stack difference.
-func (b *CachePullV2Builder) WithIgnoreStackDifference(value string) *CachePullV2Builder {
-	b.Builder.WithInput("ignore_stack_difference", value)
+func (b *CachePullV2Builder) WithIgnoreStackDifference(value CachePullV2IgnoreStackDifference) *CachePullV2Builder {
+	b.Builder.WithInput("ignore_stack_difference", string(value))
 	return b
 }

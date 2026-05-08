@@ -3,6 +3,30 @@
 
 package step
 
+// RustupInstallAutoUpdateToolchain enumerates the valid values for the auto_update_toolchain input.
+type RustupInstallAutoUpdateToolchain string
+
+const (
+	RustupInstallAutoUpdateToolchainTrue  RustupInstallAutoUpdateToolchain = "true"
+	RustupInstallAutoUpdateToolchainFalse RustupInstallAutoUpdateToolchain = "false"
+)
+
+// RustupInstallCacheLevel enumerates the valid values for the cache_level input.
+type RustupInstallCacheLevel string
+
+const (
+	RustupInstallCacheLevelAll  RustupInstallCacheLevel = "all"
+	RustupInstallCacheLevelNone RustupInstallCacheLevel = "none"
+)
+
+// RustupInstallShowExportedEnvs enumerates the valid values for the show_exported_envs input.
+type RustupInstallShowExportedEnvs string
+
+const (
+	RustupInstallShowExportedEnvsTrue  RustupInstallShowExportedEnvs = "true"
+	RustupInstallShowExportedEnvsFalse RustupInstallShowExportedEnvs = "false"
+)
+
 // RustupInstallBuilder builds a rustup-install step with typed input methods.
 type RustupInstallBuilder struct{ *Builder }
 
@@ -26,20 +50,20 @@ func (b *RustupInstallBuilder) WithRustVersion(value string) *RustupInstallBuild
 }
 
 // WithAutoUpdateToolchain sets update the Rust Toolchain.
-func (b *RustupInstallBuilder) WithAutoUpdateToolchain(value string) *RustupInstallBuilder {
-	b.Builder.WithInput("auto_update_toolchain", value)
+func (b *RustupInstallBuilder) WithAutoUpdateToolchain(value RustupInstallAutoUpdateToolchain) *RustupInstallBuilder {
+	b.Builder.WithInput("auto_update_toolchain", string(value))
 	return b
 }
 
 // WithCacheLevel sets set cache level.
-func (b *RustupInstallBuilder) WithCacheLevel(value string) *RustupInstallBuilder {
-	b.Builder.WithInput("cache_level", value)
+func (b *RustupInstallBuilder) WithCacheLevel(value RustupInstallCacheLevel) *RustupInstallBuilder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithShowExportedEnvs sets show Toolchain versions.
-func (b *RustupInstallBuilder) WithShowExportedEnvs(value string) *RustupInstallBuilder {
-	b.Builder.WithInput("show_exported_envs", value)
+func (b *RustupInstallBuilder) WithShowExportedEnvs(value RustupInstallShowExportedEnvs) *RustupInstallBuilder {
+	b.Builder.WithInput("show_exported_envs", string(value))
 	return b
 }
 

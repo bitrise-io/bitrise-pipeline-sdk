@@ -3,6 +3,86 @@
 
 package step
 
+// XcodeTestV1SimulatorPlatform enumerates the valid values for the simulator_platform input.
+type XcodeTestV1SimulatorPlatform string
+
+const (
+	XcodeTestV1SimulatorPlatformIOSSimulator  XcodeTestV1SimulatorPlatform = "iOS Simulator"
+	XcodeTestV1SimulatorPlatformTvOSSimulator XcodeTestV1SimulatorPlatform = "tvOS Simulator"
+)
+
+// XcodeTestV1ExportUitestArtifacts enumerates the valid values for the export_uitest_artifacts input.
+type XcodeTestV1ExportUitestArtifacts string
+
+const (
+	XcodeTestV1ExportUitestArtifactsTrue  XcodeTestV1ExportUitestArtifacts = "true"
+	XcodeTestV1ExportUitestArtifactsFalse XcodeTestV1ExportUitestArtifacts = "false"
+)
+
+// XcodeTestV1GenerateCodeCoverageFiles enumerates the valid values for the generate_code_coverage_files input.
+type XcodeTestV1GenerateCodeCoverageFiles string
+
+const (
+	XcodeTestV1GenerateCodeCoverageFilesYes XcodeTestV1GenerateCodeCoverageFiles = "yes"
+	XcodeTestV1GenerateCodeCoverageFilesNo  XcodeTestV1GenerateCodeCoverageFiles = "no"
+)
+
+// XcodeTestV1Verbose enumerates the valid values for the verbose input.
+type XcodeTestV1Verbose string
+
+const (
+	XcodeTestV1VerboseYes XcodeTestV1Verbose = "yes"
+	XcodeTestV1VerboseNo  XcodeTestV1Verbose = "no"
+)
+
+// XcodeTestV1WaitForSimulatorBoot enumerates the valid values for the wait_for_simulator_boot input.
+type XcodeTestV1WaitForSimulatorBoot string
+
+const (
+	XcodeTestV1WaitForSimulatorBootYes XcodeTestV1WaitForSimulatorBoot = "yes"
+	XcodeTestV1WaitForSimulatorBootNo  XcodeTestV1WaitForSimulatorBoot = "no"
+)
+
+// XcodeTestV1IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeTestV1IsCleanBuild string
+
+const (
+	XcodeTestV1IsCleanBuildYes XcodeTestV1IsCleanBuild = "yes"
+	XcodeTestV1IsCleanBuildNo  XcodeTestV1IsCleanBuild = "no"
+)
+
+// XcodeTestV1OutputTool enumerates the valid values for the output_tool input.
+type XcodeTestV1OutputTool string
+
+const (
+	XcodeTestV1OutputToolXcpretty   XcodeTestV1OutputTool = "xcpretty"
+	XcodeTestV1OutputToolXcodebuild XcodeTestV1OutputTool = "xcodebuild"
+)
+
+// XcodeTestV1SingleBuild enumerates the valid values for the single_build input.
+type XcodeTestV1SingleBuild string
+
+const (
+	XcodeTestV1SingleBuildTrue  XcodeTestV1SingleBuild = "true"
+	XcodeTestV1SingleBuildFalse XcodeTestV1SingleBuild = "false"
+)
+
+// XcodeTestV1ShouldBuildBeforeTest enumerates the valid values for the should_build_before_test input.
+type XcodeTestV1ShouldBuildBeforeTest string
+
+const (
+	XcodeTestV1ShouldBuildBeforeTestYes XcodeTestV1ShouldBuildBeforeTest = "yes"
+	XcodeTestV1ShouldBuildBeforeTestNo  XcodeTestV1ShouldBuildBeforeTest = "no"
+)
+
+// XcodeTestV1ShouldRetryTestOnFail enumerates the valid values for the should_retry_test_on_fail input.
+type XcodeTestV1ShouldRetryTestOnFail string
+
+const (
+	XcodeTestV1ShouldRetryTestOnFailYes XcodeTestV1ShouldRetryTestOnFail = "yes"
+	XcodeTestV1ShouldRetryTestOnFailNo  XcodeTestV1ShouldRetryTestOnFail = "no"
+)
+
 // XcodeTestV1Builder builds a xcode-test step with typed input methods.
 type XcodeTestV1Builder struct{ *Builder }
 
@@ -44,32 +124,32 @@ func (b *XcodeTestV1Builder) WithSimulatorOsVersion(value string) *XcodeTestV1Bu
 }
 
 // WithSimulatorPlatform sets platform.
-func (b *XcodeTestV1Builder) WithSimulatorPlatform(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("simulator_platform", value)
+func (b *XcodeTestV1Builder) WithSimulatorPlatform(value XcodeTestV1SimulatorPlatform) *XcodeTestV1Builder {
+	b.Builder.WithInput("simulator_platform", string(value))
 	return b
 }
 
 // WithExportUitestArtifacts sets export UITest Artifacts.
-func (b *XcodeTestV1Builder) WithExportUitestArtifacts(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("export_uitest_artifacts", value)
+func (b *XcodeTestV1Builder) WithExportUitestArtifacts(value XcodeTestV1ExportUitestArtifacts) *XcodeTestV1Builder {
+	b.Builder.WithInput("export_uitest_artifacts", string(value))
 	return b
 }
 
 // WithGenerateCodeCoverageFiles sets generate code coverage files?.
-func (b *XcodeTestV1Builder) WithGenerateCodeCoverageFiles(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("generate_code_coverage_files", value)
+func (b *XcodeTestV1Builder) WithGenerateCodeCoverageFiles(value XcodeTestV1GenerateCodeCoverageFiles) *XcodeTestV1Builder {
+	b.Builder.WithInput("generate_code_coverage_files", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *XcodeTestV1Builder) WithVerbose(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *XcodeTestV1Builder) WithVerbose(value XcodeTestV1Verbose) *XcodeTestV1Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithWaitForSimulatorBoot sets (Experimental) Wait to simulator boot?.
-func (b *XcodeTestV1Builder) WithWaitForSimulatorBoot(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("wait_for_simulator_boot", value)
+func (b *XcodeTestV1Builder) WithWaitForSimulatorBoot(value XcodeTestV1WaitForSimulatorBoot) *XcodeTestV1Builder {
+	b.Builder.WithInput("wait_for_simulator_boot", string(value))
 	return b
 }
 
@@ -80,14 +160,14 @@ func (b *XcodeTestV1Builder) WithWorkdir(value string) *XcodeTestV1Builder {
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before testing?.
-func (b *XcodeTestV1Builder) WithIsCleanBuild(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeTestV1Builder) WithIsCleanBuild(value XcodeTestV1IsCleanBuild) *XcodeTestV1Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeTestV1Builder) WithOutputTool(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeTestV1Builder) WithOutputTool(value XcodeTestV1OutputTool) *XcodeTestV1Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -98,20 +178,20 @@ func (b *XcodeTestV1Builder) WithXcodebuildTestOptions(value string) *XcodeTestV
 }
 
 // WithSingleBuild sets run xcodebuild test only.
-func (b *XcodeTestV1Builder) WithSingleBuild(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("single_build", value)
+func (b *XcodeTestV1Builder) WithSingleBuild(value XcodeTestV1SingleBuild) *XcodeTestV1Builder {
+	b.Builder.WithInput("single_build", string(value))
 	return b
 }
 
 // WithShouldBuildBeforeTest sets (Experimental) Explicitly perform a build before testing?.
-func (b *XcodeTestV1Builder) WithShouldBuildBeforeTest(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("should_build_before_test", value)
+func (b *XcodeTestV1Builder) WithShouldBuildBeforeTest(value XcodeTestV1ShouldBuildBeforeTest) *XcodeTestV1Builder {
+	b.Builder.WithInput("should_build_before_test", string(value))
 	return b
 }
 
 // WithShouldRetryTestOnFail sets (Experimental) Rerun test, when it fails?.
-func (b *XcodeTestV1Builder) WithShouldRetryTestOnFail(value string) *XcodeTestV1Builder {
-	b.Builder.WithInput("should_retry_test_on_fail", value)
+func (b *XcodeTestV1Builder) WithShouldRetryTestOnFail(value XcodeTestV1ShouldRetryTestOnFail) *XcodeTestV1Builder {
+	b.Builder.WithInput("should_retry_test_on_fail", string(value))
 	return b
 }
 

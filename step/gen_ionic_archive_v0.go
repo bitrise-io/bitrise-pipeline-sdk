@@ -3,6 +3,31 @@
 
 package step
 
+// IonicArchiveV0Platform enumerates the valid values for the platform input.
+type IonicArchiveV0Platform string
+
+const (
+	IonicArchiveV0PlatformIosAndroid IonicArchiveV0Platform = "ios,android"
+	IonicArchiveV0PlatformIos        IonicArchiveV0Platform = "ios"
+	IonicArchiveV0PlatformAndroid    IonicArchiveV0Platform = "android"
+)
+
+// IonicArchiveV0Configuration enumerates the valid values for the configuration input.
+type IonicArchiveV0Configuration string
+
+const (
+	IonicArchiveV0ConfigurationRelease IonicArchiveV0Configuration = "release"
+	IonicArchiveV0ConfigurationDebug   IonicArchiveV0Configuration = "debug"
+)
+
+// IonicArchiveV0Target enumerates the valid values for the target input.
+type IonicArchiveV0Target string
+
+const (
+	IonicArchiveV0TargetDevice   IonicArchiveV0Target = "device"
+	IonicArchiveV0TargetEmulator IonicArchiveV0Target = "emulator"
+)
+
 // IonicArchiveV0Builder builds a ionic-archive step with typed input methods.
 type IonicArchiveV0Builder struct{ *Builder }
 
@@ -20,20 +45,20 @@ func IonicArchiveV0(version ...string) *IonicArchiveV0Builder {
 }
 
 // WithPlatform sets platform to use in ionic-cli commands.
-func (b *IonicArchiveV0Builder) WithPlatform(value string) *IonicArchiveV0Builder {
-	b.Builder.WithInput("platform", value)
+func (b *IonicArchiveV0Builder) WithPlatform(value IonicArchiveV0Platform) *IonicArchiveV0Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *IonicArchiveV0Builder) WithConfiguration(value string) *IonicArchiveV0Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *IonicArchiveV0Builder) WithConfiguration(value IonicArchiveV0Configuration) *IonicArchiveV0Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *IonicArchiveV0Builder) WithTarget(value string) *IonicArchiveV0Builder {
-	b.Builder.WithInput("target", value)
+func (b *IonicArchiveV0Builder) WithTarget(value IonicArchiveV0Target) *IonicArchiveV0Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 

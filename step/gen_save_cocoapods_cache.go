@@ -3,6 +3,14 @@
 
 package step
 
+// SaveCocoapodsCacheVerbose enumerates the valid values for the verbose input.
+type SaveCocoapodsCacheVerbose string
+
+const (
+	SaveCocoapodsCacheVerboseTrue  SaveCocoapodsCacheVerbose = "true"
+	SaveCocoapodsCacheVerboseFalse SaveCocoapodsCacheVerbose = "false"
+)
+
 // SaveCocoapodsCacheBuilder builds a save-cocoapods-cache step with typed input methods.
 type SaveCocoapodsCacheBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func SaveCocoapodsCache(version ...string) *SaveCocoapodsCacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveCocoapodsCacheBuilder) WithVerbose(value string) *SaveCocoapodsCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveCocoapodsCacheBuilder) WithVerbose(value SaveCocoapodsCacheVerbose) *SaveCocoapodsCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

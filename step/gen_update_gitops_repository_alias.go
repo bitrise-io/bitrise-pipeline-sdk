@@ -18,3 +18,11 @@ func UpdateGitopsRepository(version ...string) *UpdateGitopsRepositoryV3Builder 
 // published by update-gitops-repository at the latest major version (v3).
 // For outputs of a specific major version use UpdateGitopsRepositoryV{N}Outputs directly.
 var UpdateGitopsRepositoryOutputs = UpdateGitopsRepositoryV3Outputs
+
+// UpdateGitopsRepositoryPullRequest is a type alias for UpdateGitopsRepositoryV3PullRequest,
+// pointing to the latest supported major version of the step's enum type.
+type UpdateGitopsRepositoryPullRequest = UpdateGitopsRepositoryV3PullRequest
+
+// UpdateGitopsRepositoryReplacerMode is a type alias for UpdateGitopsRepositoryV3ReplacerMode,
+// pointing to the latest supported major version of the step's enum type.
+type UpdateGitopsRepositoryReplacerMode = UpdateGitopsRepositoryV3ReplacerMode

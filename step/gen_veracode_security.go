@@ -3,6 +3,14 @@
 
 package step
 
+// VeracodeSecurityAutoScan enumerates the valid values for the auto_scan input.
+type VeracodeSecurityAutoScan string
+
+const (
+	VeracodeSecurityAutoScanFalse VeracodeSecurityAutoScan = "false"
+	VeracodeSecurityAutoScanTrue  VeracodeSecurityAutoScan = "true"
+)
+
 // VeracodeSecurityBuilder builds a veracode-security step with typed input methods.
 type VeracodeSecurityBuilder struct{ *Builder }
 
@@ -44,7 +52,7 @@ func (b *VeracodeSecurityBuilder) WithFileUploadPath(value string) *VeracodeSecu
 }
 
 // WithAutoScan sets auto Scan.
-func (b *VeracodeSecurityBuilder) WithAutoScan(value string) *VeracodeSecurityBuilder {
-	b.Builder.WithInput("auto_scan", value)
+func (b *VeracodeSecurityBuilder) WithAutoScan(value VeracodeSecurityAutoScan) *VeracodeSecurityBuilder {
+	b.Builder.WithInput("auto_scan", string(value))
 	return b
 }

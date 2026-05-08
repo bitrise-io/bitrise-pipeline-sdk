@@ -3,6 +3,47 @@
 
 package step
 
+// CordovaArchiveV1Platform enumerates the valid values for the platform input.
+type CordovaArchiveV1Platform string
+
+const (
+	CordovaArchiveV1PlatformIosAndroid CordovaArchiveV1Platform = "ios,android"
+	CordovaArchiveV1PlatformIos        CordovaArchiveV1Platform = "ios"
+	CordovaArchiveV1PlatformAndroid    CordovaArchiveV1Platform = "android"
+)
+
+// CordovaArchiveV1Configuration enumerates the valid values for the configuration input.
+type CordovaArchiveV1Configuration string
+
+const (
+	CordovaArchiveV1ConfigurationRelease CordovaArchiveV1Configuration = "release"
+	CordovaArchiveV1ConfigurationDebug   CordovaArchiveV1Configuration = "debug"
+)
+
+// CordovaArchiveV1Target enumerates the valid values for the target input.
+type CordovaArchiveV1Target string
+
+const (
+	CordovaArchiveV1TargetDevice   CordovaArchiveV1Target = "device"
+	CordovaArchiveV1TargetEmulator CordovaArchiveV1Target = "emulator"
+)
+
+// CordovaArchiveV1AddPlatform enumerates the valid values for the add_platform input.
+type CordovaArchiveV1AddPlatform string
+
+const (
+	CordovaArchiveV1AddPlatformTrue  CordovaArchiveV1AddPlatform = "true"
+	CordovaArchiveV1AddPlatformFalse CordovaArchiveV1AddPlatform = "false"
+)
+
+// CordovaArchiveV1ReaddPlatform enumerates the valid values for the readd_platform input.
+type CordovaArchiveV1ReaddPlatform string
+
+const (
+	CordovaArchiveV1ReaddPlatformTrue  CordovaArchiveV1ReaddPlatform = "true"
+	CordovaArchiveV1ReaddPlatformFalse CordovaArchiveV1ReaddPlatform = "false"
+)
+
 // CordovaArchiveV1Builder builds a cordova-archive step with typed input methods.
 type CordovaArchiveV1Builder struct{ *Builder }
 
@@ -20,20 +61,20 @@ func CordovaArchiveV1(version ...string) *CordovaArchiveV1Builder {
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.
-func (b *CordovaArchiveV1Builder) WithPlatform(value string) *CordovaArchiveV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CordovaArchiveV1Builder) WithPlatform(value CordovaArchiveV1Platform) *CordovaArchiveV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *CordovaArchiveV1Builder) WithConfiguration(value string) *CordovaArchiveV1Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *CordovaArchiveV1Builder) WithConfiguration(value CordovaArchiveV1Configuration) *CordovaArchiveV1Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *CordovaArchiveV1Builder) WithTarget(value string) *CordovaArchiveV1Builder {
-	b.Builder.WithInput("target", value)
+func (b *CordovaArchiveV1Builder) WithTarget(value CordovaArchiveV1Target) *CordovaArchiveV1Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 
@@ -44,14 +85,14 @@ func (b *CordovaArchiveV1Builder) WithBuildConfig(value string) *CordovaArchiveV
 }
 
 // WithAddPlatform sets should add platforms as part of the prepare step?.
-func (b *CordovaArchiveV1Builder) WithAddPlatform(value string) *CordovaArchiveV1Builder {
-	b.Builder.WithInput("add_platform", value)
+func (b *CordovaArchiveV1Builder) WithAddPlatform(value CordovaArchiveV1AddPlatform) *CordovaArchiveV1Builder {
+	b.Builder.WithInput("add_platform", string(value))
 	return b
 }
 
 // WithReaddPlatform sets should remove platforms as part of the prepare step?.
-func (b *CordovaArchiveV1Builder) WithReaddPlatform(value string) *CordovaArchiveV1Builder {
-	b.Builder.WithInput("readd_platform", value)
+func (b *CordovaArchiveV1Builder) WithReaddPlatform(value CordovaArchiveV1ReaddPlatform) *CordovaArchiveV1Builder {
+	b.Builder.WithInput("readd_platform", string(value))
 	return b
 }
 

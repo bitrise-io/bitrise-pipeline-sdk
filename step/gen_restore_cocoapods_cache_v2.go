@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreCocoapodsCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreCocoapodsCacheV2Verbose string
+
+const (
+	RestoreCocoapodsCacheV2VerboseTrue  RestoreCocoapodsCacheV2Verbose = "true"
+	RestoreCocoapodsCacheV2VerboseFalse RestoreCocoapodsCacheV2Verbose = "false"
+)
+
 // RestoreCocoapodsCacheV2Builder builds a restore-cocoapods-cache step with typed input methods.
 type RestoreCocoapodsCacheV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func RestoreCocoapodsCacheV2(version ...string) *RestoreCocoapodsCacheV2Builder 
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreCocoapodsCacheV2Builder) WithVerbose(value string) *RestoreCocoapodsCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreCocoapodsCacheV2Builder) WithVerbose(value RestoreCocoapodsCacheV2Verbose) *RestoreCocoapodsCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

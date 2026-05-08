@@ -3,6 +3,14 @@
 
 package step
 
+// MobitruUploadShareWithTeam enumerates the valid values for the share_with_team input.
+type MobitruUploadShareWithTeam string
+
+const (
+	MobitruUploadShareWithTeamYes MobitruUploadShareWithTeam = "yes"
+	MobitruUploadShareWithTeamNo  MobitruUploadShareWithTeam = "no"
+)
+
 // MobitruUploadBuilder builds a mobitru-upload step with typed input methods.
 type MobitruUploadBuilder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *MobitruUploadBuilder) WithMobitruAddress(value string) *MobitruUploadBu
 }
 
 // WithShareWithTeam sets share with the team.
-func (b *MobitruUploadBuilder) WithShareWithTeam(value string) *MobitruUploadBuilder {
-	b.Builder.WithInput("share_with_team", value)
+func (b *MobitruUploadBuilder) WithShareWithTeam(value MobitruUploadShareWithTeam) *MobitruUploadBuilder {
+	b.Builder.WithInput("share_with_team", string(value))
 	return b
 }
 

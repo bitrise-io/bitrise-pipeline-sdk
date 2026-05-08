@@ -3,6 +3,50 @@
 
 package step
 
+// AppdomeBuild2secureAndroidV2SignMethod enumerates the valid values for the sign_method input.
+type AppdomeBuild2secureAndroidV2SignMethod string
+
+const (
+	AppdomeBuild2secureAndroidV2SignMethodOnAppdome      AppdomeBuild2secureAndroidV2SignMethod = "On-Appdome"
+	AppdomeBuild2secureAndroidV2SignMethodPrivateSigning AppdomeBuild2secureAndroidV2SignMethod = "Private-Signing"
+	AppdomeBuild2secureAndroidV2SignMethodAutoDevSigning AppdomeBuild2secureAndroidV2SignMethod = "Auto-Dev-Signing"
+)
+
+// AppdomeBuild2secureAndroidV2GpSigning enumerates the valid values for the gp_signing input.
+type AppdomeBuild2secureAndroidV2GpSigning string
+
+const (
+	AppdomeBuild2secureAndroidV2GpSigningTrue  AppdomeBuild2secureAndroidV2GpSigning = "true"
+	AppdomeBuild2secureAndroidV2GpSigningFalse AppdomeBuild2secureAndroidV2GpSigning = "false"
+)
+
+// AppdomeBuild2secureAndroidV2SecondaryOutput enumerates the valid values for the secondary_output input.
+type AppdomeBuild2secureAndroidV2SecondaryOutput string
+
+const (
+	AppdomeBuild2secureAndroidV2SecondaryOutputTrue  AppdomeBuild2secureAndroidV2SecondaryOutput = "true"
+	AppdomeBuild2secureAndroidV2SecondaryOutputFalse AppdomeBuild2secureAndroidV2SecondaryOutput = "false"
+)
+
+// AppdomeBuild2secureAndroidV2BuildLogs enumerates the valid values for the build_logs input.
+type AppdomeBuild2secureAndroidV2BuildLogs string
+
+const (
+	AppdomeBuild2secureAndroidV2BuildLogsTrue  AppdomeBuild2secureAndroidV2BuildLogs = "true"
+	AppdomeBuild2secureAndroidV2BuildLogsFalse AppdomeBuild2secureAndroidV2BuildLogs = "false"
+)
+
+// AppdomeBuild2secureAndroidV2BuildToTest enumerates the valid values for the build_to_test input.
+type AppdomeBuild2secureAndroidV2BuildToTest string
+
+const (
+	AppdomeBuild2secureAndroidV2BuildToTestNone         AppdomeBuild2secureAndroidV2BuildToTest = "None"
+	AppdomeBuild2secureAndroidV2BuildToTestBitbar       AppdomeBuild2secureAndroidV2BuildToTest = "Bitbar"
+	AppdomeBuild2secureAndroidV2BuildToTestBrowserstack AppdomeBuild2secureAndroidV2BuildToTest = "Browserstack"
+	AppdomeBuild2secureAndroidV2BuildToTestSaucelabs    AppdomeBuild2secureAndroidV2BuildToTest = "Saucelabs"
+	AppdomeBuild2secureAndroidV2BuildToTestLambdatest   AppdomeBuild2secureAndroidV2BuildToTest = "Lambdatest"
+)
+
 // AppdomeBuild2secureAndroidV2Builder builds a appdome-build-2secure-android step with typed input methods.
 type AppdomeBuild2secureAndroidV2Builder struct{ *Builder }
 
@@ -38,14 +82,14 @@ func (b *AppdomeBuild2secureAndroidV2Builder) WithTeamId(value string) *AppdomeB
 }
 
 // WithSignMethod sets signing Method.
-func (b *AppdomeBuild2secureAndroidV2Builder) WithSignMethod(value string) *AppdomeBuild2secureAndroidV2Builder {
-	b.Builder.WithInput("sign_method", value)
+func (b *AppdomeBuild2secureAndroidV2Builder) WithSignMethod(value AppdomeBuild2secureAndroidV2SignMethod) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 
 // WithGpSigning sets google Play Signing.
-func (b *AppdomeBuild2secureAndroidV2Builder) WithGpSigning(value string) *AppdomeBuild2secureAndroidV2Builder {
-	b.Builder.WithInput("gp_signing", value)
+func (b *AppdomeBuild2secureAndroidV2Builder) WithGpSigning(value AppdomeBuild2secureAndroidV2GpSigning) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithInput("gp_signing", string(value))
 	return b
 }
 
@@ -62,20 +106,20 @@ func (b *AppdomeBuild2secureAndroidV2Builder) WithFingerprint(value string) *App
 }
 
 // WithSecondaryOutput sets secondary Output.
-func (b *AppdomeBuild2secureAndroidV2Builder) WithSecondaryOutput(value string) *AppdomeBuild2secureAndroidV2Builder {
-	b.Builder.WithInput("secondary_output", value)
+func (b *AppdomeBuild2secureAndroidV2Builder) WithSecondaryOutput(value AppdomeBuild2secureAndroidV2SecondaryOutput) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithInput("secondary_output", string(value))
 	return b
 }
 
 // WithBuildLogs sets build With Diagnostic Logs.
-func (b *AppdomeBuild2secureAndroidV2Builder) WithBuildLogs(value string) *AppdomeBuild2secureAndroidV2Builder {
-	b.Builder.WithInput("build_logs", value)
+func (b *AppdomeBuild2secureAndroidV2Builder) WithBuildLogs(value AppdomeBuild2secureAndroidV2BuildLogs) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithInput("build_logs", string(value))
 	return b
 }
 
 // WithBuildToTest sets build to test Vendor.
-func (b *AppdomeBuild2secureAndroidV2Builder) WithBuildToTest(value string) *AppdomeBuild2secureAndroidV2Builder {
-	b.Builder.WithInput("build_to_test", value)
+func (b *AppdomeBuild2secureAndroidV2Builder) WithBuildToTest(value AppdomeBuild2secureAndroidV2BuildToTest) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithInput("build_to_test", string(value))
 	return b
 }
 

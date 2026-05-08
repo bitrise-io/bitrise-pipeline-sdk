@@ -3,6 +3,22 @@
 
 package step
 
+// XcodeStartSimulatorVerboseLog enumerates the valid values for the verbose_log input.
+type XcodeStartSimulatorVerboseLog string
+
+const (
+	XcodeStartSimulatorVerboseLogYes XcodeStartSimulatorVerboseLog = "yes"
+	XcodeStartSimulatorVerboseLogNo  XcodeStartSimulatorVerboseLog = "no"
+)
+
+// XcodeStartSimulatorReset enumerates the valid values for the reset input.
+type XcodeStartSimulatorReset string
+
+const (
+	XcodeStartSimulatorResetYes XcodeStartSimulatorReset = "yes"
+	XcodeStartSimulatorResetNo  XcodeStartSimulatorReset = "no"
+)
+
 // XcodeStartSimulatorBuilder builds a xcode-start-simulator step with typed input methods.
 type XcodeStartSimulatorBuilder struct{ *Builder }
 
@@ -32,14 +48,14 @@ func (b *XcodeStartSimulatorBuilder) WithWaitForBootTimeout(value string) *Xcode
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeStartSimulatorBuilder) WithVerboseLog(value string) *XcodeStartSimulatorBuilder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeStartSimulatorBuilder) WithVerboseLog(value XcodeStartSimulatorVerboseLog) *XcodeStartSimulatorBuilder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithReset sets shutdown and erase simulator before use.
-func (b *XcodeStartSimulatorBuilder) WithReset(value string) *XcodeStartSimulatorBuilder {
-	b.Builder.WithInput("reset", value)
+func (b *XcodeStartSimulatorBuilder) WithReset(value XcodeStartSimulatorReset) *XcodeStartSimulatorBuilder {
+	b.Builder.WithInput("reset", string(value))
 	return b
 }
 

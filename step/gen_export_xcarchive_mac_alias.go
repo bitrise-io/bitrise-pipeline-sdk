@@ -18,3 +18,27 @@ func ExportXcarchiveMac(version ...string) *ExportXcarchiveMacV1Builder {
 // published by export-xcarchive-mac at the latest major version (v1).
 // For outputs of a specific major version use ExportXcarchiveMacV{N}Outputs directly.
 var ExportXcarchiveMacOutputs = ExportXcarchiveMacV1Outputs
+
+// ExportXcarchiveMacExportMethod is a type alias for ExportXcarchiveMacV1ExportMethod,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveMacExportMethod = ExportXcarchiveMacV1ExportMethod
+
+// ExportXcarchiveMacUploadBitcode is a type alias for ExportXcarchiveMacV1UploadBitcode,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveMacUploadBitcode = ExportXcarchiveMacV1UploadBitcode
+
+// ExportXcarchiveMacCompileBitcode is a type alias for ExportXcarchiveMacV1CompileBitcode,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveMacCompileBitcode = ExportXcarchiveMacV1CompileBitcode
+
+// ExportXcarchiveMacUseLegacyExport is a type alias for ExportXcarchiveMacV1UseLegacyExport,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveMacUseLegacyExport = ExportXcarchiveMacV1UseLegacyExport
+
+// ExportXcarchiveMacLegacyExportOutputFormat is a type alias for ExportXcarchiveMacV1LegacyExportOutputFormat,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveMacLegacyExportOutputFormat = ExportXcarchiveMacV1LegacyExportOutputFormat
+
+// ExportXcarchiveMacVerboseLog is a type alias for ExportXcarchiveMacV1VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveMacVerboseLog = ExportXcarchiveMacV1VerboseLog

@@ -3,6 +3,50 @@
 
 package step
 
+// CarthageV1CarthageCommand enumerates the valid values for the carthage_command input.
+type CarthageV1CarthageCommand string
+
+const (
+	CarthageV1CarthageCommandBootstrap CarthageV1CarthageCommand = "bootstrap"
+	CarthageV1CarthageCommandUpdate    CarthageV1CarthageCommand = "update"
+	CarthageV1CarthageCommandBuild     CarthageV1CarthageCommand = "build"
+)
+
+// CarthageV1NoUseBinaries enumerates the valid values for the no_use_binaries input.
+type CarthageV1NoUseBinaries string
+
+const (
+	CarthageV1NoUseBinariesTrue  CarthageV1NoUseBinaries = "true"
+	CarthageV1NoUseBinariesFalse CarthageV1NoUseBinaries = "false"
+)
+
+// CarthageV1VerboseOutput enumerates the valid values for the verbose_output input.
+type CarthageV1VerboseOutput string
+
+const (
+	CarthageV1VerboseOutputTrue  CarthageV1VerboseOutput = "true"
+	CarthageV1VerboseOutputFalse CarthageV1VerboseOutput = "false"
+)
+
+// CarthageV1SshOutput enumerates the valid values for the ssh_output input.
+type CarthageV1SshOutput string
+
+const (
+	CarthageV1SshOutputTrue  CarthageV1SshOutput = "true"
+	CarthageV1SshOutputFalse CarthageV1SshOutput = "false"
+)
+
+// CarthageV1Platform enumerates the valid values for the platform input.
+type CarthageV1Platform string
+
+const (
+	CarthageV1PlatformIOS    CarthageV1Platform = "iOS"
+	CarthageV1PlatformMac    CarthageV1Platform = "Mac"
+	CarthageV1PlatformIOSMac CarthageV1Platform = "iOS,Mac"
+	CarthageV1PlatformTvOS   CarthageV1Platform = "tvOS"
+	CarthageV1PlatformAll    CarthageV1Platform = "all"
+)
+
 // CarthageV1Builder builds a carthage step with typed input methods.
 type CarthageV1Builder struct{ *Builder }
 
@@ -20,26 +64,26 @@ func CarthageV1(version ...string) *CarthageV1Builder {
 }
 
 // WithCarthageCommand sets carthage command to run.
-func (b *CarthageV1Builder) WithCarthageCommand(value string) *CarthageV1Builder {
-	b.Builder.WithInput("carthage_command", value)
+func (b *CarthageV1Builder) WithCarthageCommand(value CarthageV1CarthageCommand) *CarthageV1Builder {
+	b.Builder.WithInput("carthage_command", string(value))
 	return b
 }
 
 // WithNoUseBinaries sets set no use binaries flag.
-func (b *CarthageV1Builder) WithNoUseBinaries(value string) *CarthageV1Builder {
-	b.Builder.WithInput("no_use_binaries", value)
+func (b *CarthageV1Builder) WithNoUseBinaries(value CarthageV1NoUseBinaries) *CarthageV1Builder {
+	b.Builder.WithInput("no_use_binaries", string(value))
 	return b
 }
 
 // WithVerboseOutput sets set verbose output flag.
-func (b *CarthageV1Builder) WithVerboseOutput(value string) *CarthageV1Builder {
-	b.Builder.WithInput("verbose_output", value)
+func (b *CarthageV1Builder) WithVerboseOutput(value CarthageV1VerboseOutput) *CarthageV1Builder {
+	b.Builder.WithInput("verbose_output", string(value))
 	return b
 }
 
 // WithSshOutput sets set ssh flag.
-func (b *CarthageV1Builder) WithSshOutput(value string) *CarthageV1Builder {
-	b.Builder.WithInput("ssh_output", value)
+func (b *CarthageV1Builder) WithSshOutput(value CarthageV1SshOutput) *CarthageV1Builder {
+	b.Builder.WithInput("ssh_output", string(value))
 	return b
 }
 
@@ -50,8 +94,8 @@ func (b *CarthageV1Builder) WithWorkingDir(value string) *CarthageV1Builder {
 }
 
 // WithPlatform sets platform.
-func (b *CarthageV1Builder) WithPlatform(value string) *CarthageV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CarthageV1Builder) WithPlatform(value CarthageV1Platform) *CarthageV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 

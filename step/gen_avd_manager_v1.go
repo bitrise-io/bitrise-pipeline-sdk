@@ -3,6 +3,49 @@
 
 package step
 
+// AvdManagerV1Tag enumerates the valid values for the tag input.
+type AvdManagerV1Tag string
+
+const (
+	AvdManagerV1TagGoogleApis          AvdManagerV1Tag = "google_apis"
+	AvdManagerV1TagGoogleApisPlaystore AvdManagerV1Tag = "google_apis_playstore"
+	AvdManagerV1TagGoogleAtd           AvdManagerV1Tag = "google_atd"
+	AvdManagerV1TagAospAtd             AvdManagerV1Tag = "aosp_atd"
+	AvdManagerV1TagAndroidWear         AvdManagerV1Tag = "android-wear"
+	AvdManagerV1TagAndroidTv           AvdManagerV1Tag = "android-tv"
+	AvdManagerV1TagDefault             AvdManagerV1Tag = "default"
+)
+
+// AvdManagerV1Abi enumerates the valid values for the abi input.
+type AvdManagerV1Abi string
+
+const (
+	AvdManagerV1AbiX86        AvdManagerV1Abi = "x86"
+	AvdManagerV1AbiX8664      AvdManagerV1Abi = "x86_64"
+	AvdManagerV1AbiArmeabiV7a AvdManagerV1Abi = "armeabi-v7a"
+	AvdManagerV1AbiArm64V8a   AvdManagerV1Abi = "arm64-v8a"
+	AvdManagerV1AbiMips       AvdManagerV1Abi = "mips"
+)
+
+// AvdManagerV1EmulatorChannel enumerates the valid values for the emulator_channel input.
+type AvdManagerV1EmulatorChannel string
+
+const (
+	AvdManagerV1EmulatorChannelNoUpdate AvdManagerV1EmulatorChannel = "no update"
+	AvdManagerV1EmulatorChannel0        AvdManagerV1EmulatorChannel = "0"
+	AvdManagerV1EmulatorChannel1        AvdManagerV1EmulatorChannel = "1"
+	AvdManagerV1EmulatorChannel2        AvdManagerV1EmulatorChannel = "2"
+	AvdManagerV1EmulatorChannel3        AvdManagerV1EmulatorChannel = "3"
+)
+
+// AvdManagerV1HeadlessMode enumerates the valid values for the headless_mode input.
+type AvdManagerV1HeadlessMode string
+
+const (
+	AvdManagerV1HeadlessModeYes AvdManagerV1HeadlessMode = "yes"
+	AvdManagerV1HeadlessModeNo  AvdManagerV1HeadlessMode = "no"
+)
+
 // AvdManagerV1Builder builds a avd-manager step with typed input methods.
 type AvdManagerV1Builder struct{ *Builder }
 
@@ -32,14 +75,14 @@ func (b *AvdManagerV1Builder) WithApiLevel(value string) *AvdManagerV1Builder {
 }
 
 // WithTag sets oS Tag.
-func (b *AvdManagerV1Builder) WithTag(value string) *AvdManagerV1Builder {
-	b.Builder.WithInput("tag", value)
+func (b *AvdManagerV1Builder) WithTag(value AvdManagerV1Tag) *AvdManagerV1Builder {
+	b.Builder.WithInput("tag", string(value))
 	return b
 }
 
 // WithAbi sets aBI.
-func (b *AvdManagerV1Builder) WithAbi(value string) *AvdManagerV1Builder {
-	b.Builder.WithInput("abi", value)
+func (b *AvdManagerV1Builder) WithAbi(value AvdManagerV1Abi) *AvdManagerV1Builder {
+	b.Builder.WithInput("abi", string(value))
 	return b
 }
 
@@ -68,14 +111,14 @@ func (b *AvdManagerV1Builder) WithEmulatorBuildNumber(value string) *AvdManagerV
 }
 
 // WithEmulatorChannel sets emulator channel.
-func (b *AvdManagerV1Builder) WithEmulatorChannel(value string) *AvdManagerV1Builder {
-	b.Builder.WithInput("emulator_channel", value)
+func (b *AvdManagerV1Builder) WithEmulatorChannel(value AvdManagerV1EmulatorChannel) *AvdManagerV1Builder {
+	b.Builder.WithInput("emulator_channel", string(value))
 	return b
 }
 
 // WithHeadlessMode sets run the emulator in headless mode.
-func (b *AvdManagerV1Builder) WithHeadlessMode(value string) *AvdManagerV1Builder {
-	b.Builder.WithInput("headless_mode", value)
+func (b *AvdManagerV1Builder) WithHeadlessMode(value AvdManagerV1HeadlessMode) *AvdManagerV1Builder {
+	b.Builder.WithInput("headless_mode", string(value))
 	return b
 }
 

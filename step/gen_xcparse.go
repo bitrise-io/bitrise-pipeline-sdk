@@ -3,6 +3,150 @@
 
 package step
 
+// XcparseExtractAttachments enumerates the valid values for the extract_attachments input.
+type XcparseExtractAttachments string
+
+const (
+	XcparseExtractAttachmentsYes XcparseExtractAttachments = "yes"
+	XcparseExtractAttachmentsNo  XcparseExtractAttachments = "no"
+)
+
+// XcparseExtractCodeCoverage enumerates the valid values for the extract_code_coverage input.
+type XcparseExtractCodeCoverage string
+
+const (
+	XcparseExtractCodeCoverageYes XcparseExtractCodeCoverage = "yes"
+	XcparseExtractCodeCoverageNo  XcparseExtractCodeCoverage = "no"
+)
+
+// XcparseExtractLogs enumerates the valid values for the extract_logs input.
+type XcparseExtractLogs string
+
+const (
+	XcparseExtractLogsYes XcparseExtractLogs = "yes"
+	XcparseExtractLogsNo  XcparseExtractLogs = "no"
+)
+
+// XcparseExtractScreenshots enumerates the valid values for the extract_screenshots input.
+type XcparseExtractScreenshots string
+
+const (
+	XcparseExtractScreenshotsYes XcparseExtractScreenshots = "yes"
+	XcparseExtractScreenshotsNo  XcparseExtractScreenshots = "no"
+)
+
+// XcparseExportToDeploy enumerates the valid values for the export_to_deploy input.
+type XcparseExportToDeploy string
+
+const (
+	XcparseExportToDeployYes XcparseExportToDeploy = "yes"
+	XcparseExportToDeployNo  XcparseExportToDeploy = "no"
+)
+
+// XcparseAttachmentsDivideByModel enumerates the valid values for the attachments_divide_by_model input.
+type XcparseAttachmentsDivideByModel string
+
+const (
+	XcparseAttachmentsDivideByModelYes XcparseAttachmentsDivideByModel = "yes"
+	XcparseAttachmentsDivideByModelNo  XcparseAttachmentsDivideByModel = "no"
+)
+
+// XcparseAttachmentsDivideByOs enumerates the valid values for the attachments_divide_by_os input.
+type XcparseAttachmentsDivideByOs string
+
+const (
+	XcparseAttachmentsDivideByOsYes XcparseAttachmentsDivideByOs = "yes"
+	XcparseAttachmentsDivideByOsNo  XcparseAttachmentsDivideByOs = "no"
+)
+
+// XcparseAttachmentsDivideByLanguage enumerates the valid values for the attachments_divide_by_language input.
+type XcparseAttachmentsDivideByLanguage string
+
+const (
+	XcparseAttachmentsDivideByLanguageYes XcparseAttachmentsDivideByLanguage = "yes"
+	XcparseAttachmentsDivideByLanguageNo  XcparseAttachmentsDivideByLanguage = "no"
+)
+
+// XcparseAttachmentsDivideByRegion enumerates the valid values for the attachments_divide_by_region input.
+type XcparseAttachmentsDivideByRegion string
+
+const (
+	XcparseAttachmentsDivideByRegionYes XcparseAttachmentsDivideByRegion = "yes"
+	XcparseAttachmentsDivideByRegionNo  XcparseAttachmentsDivideByRegion = "no"
+)
+
+// XcparseAttachmentsDivideByTestPlanConfig enumerates the valid values for the attachments_divide_by_test_plan_config input.
+type XcparseAttachmentsDivideByTestPlanConfig string
+
+const (
+	XcparseAttachmentsDivideByTestPlanConfigYes XcparseAttachmentsDivideByTestPlanConfig = "yes"
+	XcparseAttachmentsDivideByTestPlanConfigNo  XcparseAttachmentsDivideByTestPlanConfig = "no"
+)
+
+// XcparseAttachmentsDivideByTest enumerates the valid values for the attachments_divide_by_test input.
+type XcparseAttachmentsDivideByTest string
+
+const (
+	XcparseAttachmentsDivideByTestYes XcparseAttachmentsDivideByTest = "yes"
+	XcparseAttachmentsDivideByTestNo  XcparseAttachmentsDivideByTest = "no"
+)
+
+// XcparseScreenshotsDivideByModel enumerates the valid values for the screenshots_divide_by_model input.
+type XcparseScreenshotsDivideByModel string
+
+const (
+	XcparseScreenshotsDivideByModelYes XcparseScreenshotsDivideByModel = "yes"
+	XcparseScreenshotsDivideByModelNo  XcparseScreenshotsDivideByModel = "no"
+)
+
+// XcparseScreenshotsDivideByOs enumerates the valid values for the screenshots_divide_by_os input.
+type XcparseScreenshotsDivideByOs string
+
+const (
+	XcparseScreenshotsDivideByOsYes XcparseScreenshotsDivideByOs = "yes"
+	XcparseScreenshotsDivideByOsNo  XcparseScreenshotsDivideByOs = "no"
+)
+
+// XcparseScreenshotsDivideByLanguage enumerates the valid values for the screenshots_divide_by_language input.
+type XcparseScreenshotsDivideByLanguage string
+
+const (
+	XcparseScreenshotsDivideByLanguageYes XcparseScreenshotsDivideByLanguage = "yes"
+	XcparseScreenshotsDivideByLanguageNo  XcparseScreenshotsDivideByLanguage = "no"
+)
+
+// XcparseScreenshotsDivideByRegion enumerates the valid values for the screenshots_divide_by_region input.
+type XcparseScreenshotsDivideByRegion string
+
+const (
+	XcparseScreenshotsDivideByRegionYes XcparseScreenshotsDivideByRegion = "yes"
+	XcparseScreenshotsDivideByRegionNo  XcparseScreenshotsDivideByRegion = "no"
+)
+
+// XcparseScreenshotsDivideByTestPlanConfig enumerates the valid values for the screenshots_divide_by_test_plan_config input.
+type XcparseScreenshotsDivideByTestPlanConfig string
+
+const (
+	XcparseScreenshotsDivideByTestPlanConfigYes XcparseScreenshotsDivideByTestPlanConfig = "yes"
+	XcparseScreenshotsDivideByTestPlanConfigNo  XcparseScreenshotsDivideByTestPlanConfig = "no"
+)
+
+// XcparseScreenshotsDivideByTest enumerates the valid values for the screenshots_divide_by_test input.
+type XcparseScreenshotsDivideByTest string
+
+const (
+	XcparseScreenshotsDivideByTestYes XcparseScreenshotsDivideByTest = "yes"
+	XcparseScreenshotsDivideByTestNo  XcparseScreenshotsDivideByTest = "no"
+)
+
+// XcparseVerbose enumerates the valid values for the verbose input.
+type XcparseVerbose string
+
+const (
+	XcparseVerboseYes XcparseVerbose = "yes"
+	XcparseVerboseNo  XcparseVerbose = "no"
+)
+
 // XcparseBuilder builds a xcparse step with typed input methods.
 type XcparseBuilder struct{ *Builder }
 
@@ -26,68 +170,68 @@ func (b *XcparseBuilder) WithXcresultPath(value string) *XcparseBuilder {
 }
 
 // WithExtractAttachments sets extract Attachments.
-func (b *XcparseBuilder) WithExtractAttachments(value string) *XcparseBuilder {
-	b.Builder.WithInput("extract_attachments", value)
+func (b *XcparseBuilder) WithExtractAttachments(value XcparseExtractAttachments) *XcparseBuilder {
+	b.Builder.WithInput("extract_attachments", string(value))
 	return b
 }
 
 // WithExtractCodeCoverage sets extract Code Coverage.
-func (b *XcparseBuilder) WithExtractCodeCoverage(value string) *XcparseBuilder {
-	b.Builder.WithInput("extract_code_coverage", value)
+func (b *XcparseBuilder) WithExtractCodeCoverage(value XcparseExtractCodeCoverage) *XcparseBuilder {
+	b.Builder.WithInput("extract_code_coverage", string(value))
 	return b
 }
 
 // WithExtractLogs sets extract Logs.
-func (b *XcparseBuilder) WithExtractLogs(value string) *XcparseBuilder {
-	b.Builder.WithInput("extract_logs", value)
+func (b *XcparseBuilder) WithExtractLogs(value XcparseExtractLogs) *XcparseBuilder {
+	b.Builder.WithInput("extract_logs", string(value))
 	return b
 }
 
 // WithExtractScreenshots sets extract Screenshots.
-func (b *XcparseBuilder) WithExtractScreenshots(value string) *XcparseBuilder {
-	b.Builder.WithInput("extract_screenshots", value)
+func (b *XcparseBuilder) WithExtractScreenshots(value XcparseExtractScreenshots) *XcparseBuilder {
+	b.Builder.WithInput("extract_screenshots", string(value))
 	return b
 }
 
 // WithExportToDeploy sets export to BITRISE_DEPLOY_DIR.
-func (b *XcparseBuilder) WithExportToDeploy(value string) *XcparseBuilder {
-	b.Builder.WithInput("export_to_deploy", value)
+func (b *XcparseBuilder) WithExportToDeploy(value XcparseExportToDeploy) *XcparseBuilder {
+	b.Builder.WithInput("export_to_deploy", string(value))
 	return b
 }
 
 // WithAttachmentsDivideByModel sets divide By Model?.
-func (b *XcparseBuilder) WithAttachmentsDivideByModel(value string) *XcparseBuilder {
-	b.Builder.WithInput("attachments_divide_by_model", value)
+func (b *XcparseBuilder) WithAttachmentsDivideByModel(value XcparseAttachmentsDivideByModel) *XcparseBuilder {
+	b.Builder.WithInput("attachments_divide_by_model", string(value))
 	return b
 }
 
 // WithAttachmentsDivideByOs sets divide By OS?.
-func (b *XcparseBuilder) WithAttachmentsDivideByOs(value string) *XcparseBuilder {
-	b.Builder.WithInput("attachments_divide_by_os", value)
+func (b *XcparseBuilder) WithAttachmentsDivideByOs(value XcparseAttachmentsDivideByOs) *XcparseBuilder {
+	b.Builder.WithInput("attachments_divide_by_os", string(value))
 	return b
 }
 
 // WithAttachmentsDivideByLanguage sets divide By Language?.
-func (b *XcparseBuilder) WithAttachmentsDivideByLanguage(value string) *XcparseBuilder {
-	b.Builder.WithInput("attachments_divide_by_language", value)
+func (b *XcparseBuilder) WithAttachmentsDivideByLanguage(value XcparseAttachmentsDivideByLanguage) *XcparseBuilder {
+	b.Builder.WithInput("attachments_divide_by_language", string(value))
 	return b
 }
 
 // WithAttachmentsDivideByRegion sets divide By Region?.
-func (b *XcparseBuilder) WithAttachmentsDivideByRegion(value string) *XcparseBuilder {
-	b.Builder.WithInput("attachments_divide_by_region", value)
+func (b *XcparseBuilder) WithAttachmentsDivideByRegion(value XcparseAttachmentsDivideByRegion) *XcparseBuilder {
+	b.Builder.WithInput("attachments_divide_by_region", string(value))
 	return b
 }
 
 // WithAttachmentsDivideByTestPlanConfig sets divide By Test Plan Configuration?.
-func (b *XcparseBuilder) WithAttachmentsDivideByTestPlanConfig(value string) *XcparseBuilder {
-	b.Builder.WithInput("attachments_divide_by_test_plan_config", value)
+func (b *XcparseBuilder) WithAttachmentsDivideByTestPlanConfig(value XcparseAttachmentsDivideByTestPlanConfig) *XcparseBuilder {
+	b.Builder.WithInput("attachments_divide_by_test_plan_config", string(value))
 	return b
 }
 
 // WithAttachmentsDivideByTest sets divide By Test?.
-func (b *XcparseBuilder) WithAttachmentsDivideByTest(value string) *XcparseBuilder {
-	b.Builder.WithInput("attachments_divide_by_test", value)
+func (b *XcparseBuilder) WithAttachmentsDivideByTest(value XcparseAttachmentsDivideByTest) *XcparseBuilder {
+	b.Builder.WithInput("attachments_divide_by_test", string(value))
 	return b
 }
 
@@ -110,38 +254,38 @@ func (b *XcparseBuilder) WithAttachmentsWhitelistUti(value string) *XcparseBuild
 }
 
 // WithScreenshotsDivideByModel sets divide By Model?.
-func (b *XcparseBuilder) WithScreenshotsDivideByModel(value string) *XcparseBuilder {
-	b.Builder.WithInput("screenshots_divide_by_model", value)
+func (b *XcparseBuilder) WithScreenshotsDivideByModel(value XcparseScreenshotsDivideByModel) *XcparseBuilder {
+	b.Builder.WithInput("screenshots_divide_by_model", string(value))
 	return b
 }
 
 // WithScreenshotsDivideByOs sets divide By OS?.
-func (b *XcparseBuilder) WithScreenshotsDivideByOs(value string) *XcparseBuilder {
-	b.Builder.WithInput("screenshots_divide_by_os", value)
+func (b *XcparseBuilder) WithScreenshotsDivideByOs(value XcparseScreenshotsDivideByOs) *XcparseBuilder {
+	b.Builder.WithInput("screenshots_divide_by_os", string(value))
 	return b
 }
 
 // WithScreenshotsDivideByLanguage sets divide By Language?.
-func (b *XcparseBuilder) WithScreenshotsDivideByLanguage(value string) *XcparseBuilder {
-	b.Builder.WithInput("screenshots_divide_by_language", value)
+func (b *XcparseBuilder) WithScreenshotsDivideByLanguage(value XcparseScreenshotsDivideByLanguage) *XcparseBuilder {
+	b.Builder.WithInput("screenshots_divide_by_language", string(value))
 	return b
 }
 
 // WithScreenshotsDivideByRegion sets divide By Region?.
-func (b *XcparseBuilder) WithScreenshotsDivideByRegion(value string) *XcparseBuilder {
-	b.Builder.WithInput("screenshots_divide_by_region", value)
+func (b *XcparseBuilder) WithScreenshotsDivideByRegion(value XcparseScreenshotsDivideByRegion) *XcparseBuilder {
+	b.Builder.WithInput("screenshots_divide_by_region", string(value))
 	return b
 }
 
 // WithScreenshotsDivideByTestPlanConfig sets divide By Test Plan Configuration?.
-func (b *XcparseBuilder) WithScreenshotsDivideByTestPlanConfig(value string) *XcparseBuilder {
-	b.Builder.WithInput("screenshots_divide_by_test_plan_config", value)
+func (b *XcparseBuilder) WithScreenshotsDivideByTestPlanConfig(value XcparseScreenshotsDivideByTestPlanConfig) *XcparseBuilder {
+	b.Builder.WithInput("screenshots_divide_by_test_plan_config", string(value))
 	return b
 }
 
 // WithScreenshotsDivideByTest sets divide By Test?.
-func (b *XcparseBuilder) WithScreenshotsDivideByTest(value string) *XcparseBuilder {
-	b.Builder.WithInput("screenshots_divide_by_test", value)
+func (b *XcparseBuilder) WithScreenshotsDivideByTest(value XcparseScreenshotsDivideByTest) *XcparseBuilder {
+	b.Builder.WithInput("screenshots_divide_by_test", string(value))
 	return b
 }
 
@@ -158,8 +302,8 @@ func (b *XcparseBuilder) WithScreenshotsWhitelistTestStatus(value string) *Xcpar
 }
 
 // WithVerbose sets enable verbose logging?.
-func (b *XcparseBuilder) WithVerbose(value string) *XcparseBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *XcparseBuilder) WithVerbose(value XcparseVerbose) *XcparseBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

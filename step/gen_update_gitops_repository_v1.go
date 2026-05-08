@@ -3,6 +3,14 @@
 
 package step
 
+// UpdateGitopsRepositoryV1PullRequest enumerates the valid values for the pull_request input.
+type UpdateGitopsRepositoryV1PullRequest string
+
+const (
+	UpdateGitopsRepositoryV1PullRequestTrue  UpdateGitopsRepositoryV1PullRequest = "true"
+	UpdateGitopsRepositoryV1PullRequestFalse UpdateGitopsRepositoryV1PullRequest = "false"
+)
+
 // UpdateGitopsRepositoryV1Builder builds a update-gitops-repository step with typed input methods.
 type UpdateGitopsRepositoryV1Builder struct{ *Builder }
 
@@ -68,8 +76,8 @@ func (b *UpdateGitopsRepositoryV1Builder) WithValues(value string) *UpdateGitops
 }
 
 // WithPullRequest sets open a pull request.
-func (b *UpdateGitopsRepositoryV1Builder) WithPullRequest(value string) *UpdateGitopsRepositoryV1Builder {
-	b.Builder.WithInput("pull_request", value)
+func (b *UpdateGitopsRepositoryV1Builder) WithPullRequest(value UpdateGitopsRepositoryV1PullRequest) *UpdateGitopsRepositoryV1Builder {
+	b.Builder.WithInput("pull_request", string(value))
 	return b
 }
 

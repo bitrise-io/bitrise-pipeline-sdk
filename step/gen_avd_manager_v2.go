@@ -3,6 +3,59 @@
 
 package step
 
+// AvdManagerV2Tag enumerates the valid values for the tag input.
+type AvdManagerV2Tag string
+
+const (
+	AvdManagerV2TagGoogleApis               AvdManagerV2Tag = "google_apis"
+	AvdManagerV2TagGoogleApisPs16k          AvdManagerV2Tag = "google_apis_ps16k"
+	AvdManagerV2TagGoogleApisPlaystore      AvdManagerV2Tag = "google_apis_playstore"
+	AvdManagerV2TagGoogleApisPlaystorePs16k AvdManagerV2Tag = "google_apis_playstore_ps16k"
+	AvdManagerV2TagGoogleAtd                AvdManagerV2Tag = "google_atd"
+	AvdManagerV2TagAospAtd                  AvdManagerV2Tag = "aosp_atd"
+	AvdManagerV2TagAndroidWear              AvdManagerV2Tag = "android-wear"
+	AvdManagerV2TagAndroidTv                AvdManagerV2Tag = "android-tv"
+	AvdManagerV2TagDefault                  AvdManagerV2Tag = "default"
+)
+
+// AvdManagerV2Abi enumerates the valid values for the abi input.
+type AvdManagerV2Abi string
+
+const (
+	AvdManagerV2AbiX86        AvdManagerV2Abi = "x86"
+	AvdManagerV2AbiX8664      AvdManagerV2Abi = "x86_64"
+	AvdManagerV2AbiArmeabiV7a AvdManagerV2Abi = "armeabi-v7a"
+	AvdManagerV2AbiArm64V8a   AvdManagerV2Abi = "arm64-v8a"
+	AvdManagerV2AbiMips       AvdManagerV2Abi = "mips"
+)
+
+// AvdManagerV2DisableAnimations enumerates the valid values for the disable_animations input.
+type AvdManagerV2DisableAnimations string
+
+const (
+	AvdManagerV2DisableAnimationsYes AvdManagerV2DisableAnimations = "yes"
+	AvdManagerV2DisableAnimationsNo  AvdManagerV2DisableAnimations = "no"
+)
+
+// AvdManagerV2EmulatorChannel enumerates the valid values for the emulator_channel input.
+type AvdManagerV2EmulatorChannel string
+
+const (
+	AvdManagerV2EmulatorChannelNoUpdate AvdManagerV2EmulatorChannel = "no update"
+	AvdManagerV2EmulatorChannel0        AvdManagerV2EmulatorChannel = "0"
+	AvdManagerV2EmulatorChannel1        AvdManagerV2EmulatorChannel = "1"
+	AvdManagerV2EmulatorChannel2        AvdManagerV2EmulatorChannel = "2"
+	AvdManagerV2EmulatorChannel3        AvdManagerV2EmulatorChannel = "3"
+)
+
+// AvdManagerV2HeadlessMode enumerates the valid values for the headless_mode input.
+type AvdManagerV2HeadlessMode string
+
+const (
+	AvdManagerV2HeadlessModeYes AvdManagerV2HeadlessMode = "yes"
+	AvdManagerV2HeadlessModeNo  AvdManagerV2HeadlessMode = "no"
+)
+
 // AvdManagerV2Builder builds a avd-manager step with typed input methods.
 type AvdManagerV2Builder struct{ *Builder }
 
@@ -32,20 +85,20 @@ func (b *AvdManagerV2Builder) WithApiLevel(value string) *AvdManagerV2Builder {
 }
 
 // WithTag sets oS Tag.
-func (b *AvdManagerV2Builder) WithTag(value string) *AvdManagerV2Builder {
-	b.Builder.WithInput("tag", value)
+func (b *AvdManagerV2Builder) WithTag(value AvdManagerV2Tag) *AvdManagerV2Builder {
+	b.Builder.WithInput("tag", string(value))
 	return b
 }
 
 // WithAbi sets aBI.
-func (b *AvdManagerV2Builder) WithAbi(value string) *AvdManagerV2Builder {
-	b.Builder.WithInput("abi", value)
+func (b *AvdManagerV2Builder) WithAbi(value AvdManagerV2Abi) *AvdManagerV2Builder {
+	b.Builder.WithInput("abi", string(value))
 	return b
 }
 
 // WithDisableAnimations sets disable animations.
-func (b *AvdManagerV2Builder) WithDisableAnimations(value string) *AvdManagerV2Builder {
-	b.Builder.WithInput("disable_animations", value)
+func (b *AvdManagerV2Builder) WithDisableAnimations(value AvdManagerV2DisableAnimations) *AvdManagerV2Builder {
+	b.Builder.WithInput("disable_animations", string(value))
 	return b
 }
 
@@ -74,14 +127,14 @@ func (b *AvdManagerV2Builder) WithEmulatorBuildNumber(value string) *AvdManagerV
 }
 
 // WithEmulatorChannel sets emulator channel.
-func (b *AvdManagerV2Builder) WithEmulatorChannel(value string) *AvdManagerV2Builder {
-	b.Builder.WithInput("emulator_channel", value)
+func (b *AvdManagerV2Builder) WithEmulatorChannel(value AvdManagerV2EmulatorChannel) *AvdManagerV2Builder {
+	b.Builder.WithInput("emulator_channel", string(value))
 	return b
 }
 
 // WithHeadlessMode sets run the emulator in headless mode.
-func (b *AvdManagerV2Builder) WithHeadlessMode(value string) *AvdManagerV2Builder {
-	b.Builder.WithInput("headless_mode", value)
+func (b *AvdManagerV2Builder) WithHeadlessMode(value AvdManagerV2HeadlessMode) *AvdManagerV2Builder {
+	b.Builder.WithInput("headless_mode", string(value))
 	return b
 }
 

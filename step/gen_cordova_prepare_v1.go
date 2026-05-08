@@ -3,6 +3,23 @@
 
 package step
 
+// CordovaPrepareV1Platform enumerates the valid values for the platform input.
+type CordovaPrepareV1Platform string
+
+const (
+	CordovaPrepareV1PlatformIosAndroid CordovaPrepareV1Platform = "ios,android"
+	CordovaPrepareV1PlatformIos        CordovaPrepareV1Platform = "ios"
+	CordovaPrepareV1PlatformAndroid    CordovaPrepareV1Platform = "android"
+)
+
+// CordovaPrepareV1CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type CordovaPrepareV1CacheLocalDeps string
+
+const (
+	CordovaPrepareV1CacheLocalDepsTrue  CordovaPrepareV1CacheLocalDeps = "true"
+	CordovaPrepareV1CacheLocalDepsFalse CordovaPrepareV1CacheLocalDeps = "false"
+)
+
 // CordovaPrepareV1Builder builds a cordova-prepare step with typed input methods.
 type CordovaPrepareV1Builder struct{ *Builder }
 
@@ -20,8 +37,8 @@ func CordovaPrepareV1(version ...string) *CordovaPrepareV1Builder {
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.
-func (b *CordovaPrepareV1Builder) WithPlatform(value string) *CordovaPrepareV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CordovaPrepareV1Builder) WithPlatform(value CordovaPrepareV1Platform) *CordovaPrepareV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -38,7 +55,7 @@ func (b *CordovaPrepareV1Builder) WithWorkdir(value string) *CordovaPrepareV1Bui
 }
 
 // WithCacheLocalDeps sets cache node_modules.
-func (b *CordovaPrepareV1Builder) WithCacheLocalDeps(value string) *CordovaPrepareV1Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *CordovaPrepareV1Builder) WithCacheLocalDeps(value CordovaPrepareV1CacheLocalDeps) *CordovaPrepareV1Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }

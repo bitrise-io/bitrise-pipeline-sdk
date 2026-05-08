@@ -3,6 +3,14 @@
 
 package step
 
+// DropboxDropboxDebugMode enumerates the valid values for the dropbox_debug_mode input.
+type DropboxDropboxDebugMode string
+
+const (
+	DropboxDropboxDebugModeYes DropboxDropboxDebugMode = "yes"
+	DropboxDropboxDebugModeNo  DropboxDropboxDebugMode = "no"
+)
+
 // DropboxBuilder builds a dropbox step with typed input methods.
 type DropboxBuilder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *DropboxBuilder) WithDropboxRemotePath(value string) *DropboxBuilder {
 }
 
 // WithDropboxDebugMode sets debug mode ?.
-func (b *DropboxBuilder) WithDropboxDebugMode(value string) *DropboxBuilder {
-	b.Builder.WithInput("dropbox_debug_mode", value)
+func (b *DropboxBuilder) WithDropboxDebugMode(value DropboxDropboxDebugMode) *DropboxBuilder {
+	b.Builder.WithInput("dropbox_debug_mode", string(value))
 	return b
 }

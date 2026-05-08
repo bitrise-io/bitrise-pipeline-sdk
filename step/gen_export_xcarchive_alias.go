@@ -18,3 +18,39 @@ func ExportXcarchive(version ...string) *ExportXcarchiveV4Builder {
 // published by export-xcarchive at the latest major version (v4).
 // For outputs of a specific major version use ExportXcarchiveV{N}Outputs directly.
 var ExportXcarchiveOutputs = ExportXcarchiveV4Outputs
+
+// ExportXcarchiveProduct is a type alias for ExportXcarchiveV4Product,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveProduct = ExportXcarchiveV4Product
+
+// ExportXcarchiveDistributionMethod is a type alias for ExportXcarchiveV4DistributionMethod,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveDistributionMethod = ExportXcarchiveV4DistributionMethod
+
+// ExportXcarchiveAutomaticCodeSigning is a type alias for ExportXcarchiveV4AutomaticCodeSigning,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveAutomaticCodeSigning = ExportXcarchiveV4AutomaticCodeSigning
+
+// ExportXcarchiveRegisterTestDevices is a type alias for ExportXcarchiveV4RegisterTestDevices,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveRegisterTestDevices = ExportXcarchiveV4RegisterTestDevices
+
+// ExportXcarchiveCompileBitcode is a type alias for ExportXcarchiveV4CompileBitcode,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveCompileBitcode = ExportXcarchiveV4CompileBitcode
+
+// ExportXcarchiveUploadBitcode is a type alias for ExportXcarchiveV4UploadBitcode,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveUploadBitcode = ExportXcarchiveV4UploadBitcode
+
+// ExportXcarchiveManageVersionAndBuildNumber is a type alias for ExportXcarchiveV4ManageVersionAndBuildNumber,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveManageVersionAndBuildNumber = ExportXcarchiveV4ManageVersionAndBuildNumber
+
+// ExportXcarchiveApiKeyEnterpriseAccount is a type alias for ExportXcarchiveV4ApiKeyEnterpriseAccount,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveApiKeyEnterpriseAccount = ExportXcarchiveV4ApiKeyEnterpriseAccount
+
+// ExportXcarchiveVerboseLog is a type alias for ExportXcarchiveV4VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type ExportXcarchiveVerboseLog = ExportXcarchiveV4VerboseLog

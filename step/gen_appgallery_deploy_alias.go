@@ -13,3 +13,15 @@ type AppgalleryDeployBuilder = AppgalleryDeployV1Builder
 func AppgalleryDeploy(version ...string) *AppgalleryDeployV1Builder {
 	return AppgalleryDeployV1(version...)
 }
+
+// AppgalleryDeployReleaseType is a type alias for AppgalleryDeployV1ReleaseType,
+// pointing to the latest supported major version of the step's enum type.
+type AppgalleryDeployReleaseType = AppgalleryDeployV1ReleaseType
+
+// AppgalleryDeploySubmitForReview is a type alias for AppgalleryDeployV1SubmitForReview,
+// pointing to the latest supported major version of the step's enum type.
+type AppgalleryDeploySubmitForReview = AppgalleryDeployV1SubmitForReview
+
+// AppgalleryDeployShowDebugLogs is a type alias for AppgalleryDeployV1ShowDebugLogs,
+// pointing to the latest supported major version of the step's enum type.
+type AppgalleryDeployShowDebugLogs = AppgalleryDeployV1ShowDebugLogs

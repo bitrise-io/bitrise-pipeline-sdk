@@ -3,6 +3,30 @@
 
 package step
 
+// XamarinUserManagementV0XamarinAction enumerates the valid values for the xamarin_action input.
+type XamarinUserManagementV0XamarinAction string
+
+const (
+	XamarinUserManagementV0XamarinActionLogin  XamarinUserManagementV0XamarinAction = "login"
+	XamarinUserManagementV0XamarinActionLogout XamarinUserManagementV0XamarinAction = "logout"
+)
+
+// XamarinUserManagementV0XamarinIosLicense enumerates the valid values for the xamarin_ios_license input.
+type XamarinUserManagementV0XamarinIosLicense string
+
+const (
+	XamarinUserManagementV0XamarinIosLicenseYes XamarinUserManagementV0XamarinIosLicense = "yes"
+	XamarinUserManagementV0XamarinIosLicenseNo  XamarinUserManagementV0XamarinIosLicense = "no"
+)
+
+// XamarinUserManagementV0XamarinAndroidLicense enumerates the valid values for the xamarin_android_license input.
+type XamarinUserManagementV0XamarinAndroidLicense string
+
+const (
+	XamarinUserManagementV0XamarinAndroidLicenseYes XamarinUserManagementV0XamarinAndroidLicense = "yes"
+	XamarinUserManagementV0XamarinAndroidLicenseNo  XamarinUserManagementV0XamarinAndroidLicense = "no"
+)
+
 // XamarinUserManagementV0Builder builds a xamarin-user-management step with typed input methods.
 //
 // Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
@@ -24,8 +48,8 @@ func XamarinUserManagementV0(version ...string) *XamarinUserManagementV0Builder 
 }
 
 // WithXamarinAction sets xamarin action to run.
-func (b *XamarinUserManagementV0Builder) WithXamarinAction(value string) *XamarinUserManagementV0Builder {
-	b.Builder.WithInput("xamarin_action", value)
+func (b *XamarinUserManagementV0Builder) WithXamarinAction(value XamarinUserManagementV0XamarinAction) *XamarinUserManagementV0Builder {
+	b.Builder.WithInput("xamarin_action", string(value))
 	return b
 }
 
@@ -36,13 +60,13 @@ func (b *XamarinUserManagementV0Builder) WithBitriseRepository(value string) *Xa
 }
 
 // WithXamarinIosLicense sets xamarin.iOS License.
-func (b *XamarinUserManagementV0Builder) WithXamarinIosLicense(value string) *XamarinUserManagementV0Builder {
-	b.Builder.WithInput("xamarin_ios_license", value)
+func (b *XamarinUserManagementV0Builder) WithXamarinIosLicense(value XamarinUserManagementV0XamarinIosLicense) *XamarinUserManagementV0Builder {
+	b.Builder.WithInput("xamarin_ios_license", string(value))
 	return b
 }
 
 // WithXamarinAndroidLicense sets xamarin.Android License.
-func (b *XamarinUserManagementV0Builder) WithXamarinAndroidLicense(value string) *XamarinUserManagementV0Builder {
-	b.Builder.WithInput("xamarin_android_license", value)
+func (b *XamarinUserManagementV0Builder) WithXamarinAndroidLicense(value XamarinUserManagementV0XamarinAndroidLicense) *XamarinUserManagementV0Builder {
+	b.Builder.WithInput("xamarin_android_license", string(value))
 	return b
 }

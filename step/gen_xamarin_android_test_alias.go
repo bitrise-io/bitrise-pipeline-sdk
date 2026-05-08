@@ -22,3 +22,7 @@ func XamarinAndroidTest(version ...string) *XamarinAndroidTestV1Builder {
 // published by xamarin-android-test at the latest major version (v1).
 // For outputs of a specific major version use XamarinAndroidTestV{N}Outputs directly.
 var XamarinAndroidTestOutputs = XamarinAndroidTestV1Outputs
+
+// XamarinAndroidTestBuildTool is a type alias for XamarinAndroidTestV1BuildTool,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinAndroidTestBuildTool = XamarinAndroidTestV1BuildTool

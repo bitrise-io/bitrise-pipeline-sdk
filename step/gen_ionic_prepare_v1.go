@@ -3,6 +3,23 @@
 
 package step
 
+// IonicPrepareV1Platform enumerates the valid values for the platform input.
+type IonicPrepareV1Platform string
+
+const (
+	IonicPrepareV1PlatformIosAndroid IonicPrepareV1Platform = "ios,android"
+	IonicPrepareV1PlatformIos        IonicPrepareV1Platform = "ios"
+	IonicPrepareV1PlatformAndroid    IonicPrepareV1Platform = "android"
+)
+
+// IonicPrepareV1CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type IonicPrepareV1CacheLocalDeps string
+
+const (
+	IonicPrepareV1CacheLocalDepsTrue  IonicPrepareV1CacheLocalDeps = "true"
+	IonicPrepareV1CacheLocalDepsFalse IonicPrepareV1CacheLocalDeps = "false"
+)
+
 // IonicPrepareV1Builder builds a ionic-prepare step with typed input methods.
 type IonicPrepareV1Builder struct{ *Builder }
 
@@ -20,8 +37,8 @@ func IonicPrepareV1(version ...string) *IonicPrepareV1Builder {
 }
 
 // WithPlatform sets platform.
-func (b *IonicPrepareV1Builder) WithPlatform(value string) *IonicPrepareV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *IonicPrepareV1Builder) WithPlatform(value IonicPrepareV1Platform) *IonicPrepareV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -56,7 +73,7 @@ func (b *IonicPrepareV1Builder) WithIonicPassword(value string) *IonicPrepareV1B
 }
 
 // WithCacheLocalDeps sets cache enabled.
-func (b *IonicPrepareV1Builder) WithCacheLocalDeps(value string) *IonicPrepareV1Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *IonicPrepareV1Builder) WithCacheLocalDeps(value IonicPrepareV1CacheLocalDeps) *IonicPrepareV1Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }

@@ -3,6 +3,30 @@
 
 package step
 
+// ActivateBuildCacheForBazelEnableRbe enumerates the valid values for the enable_rbe input.
+type ActivateBuildCacheForBazelEnableRbe string
+
+const (
+	ActivateBuildCacheForBazelEnableRbeTrue  ActivateBuildCacheForBazelEnableRbe = "true"
+	ActivateBuildCacheForBazelEnableRbeFalse ActivateBuildCacheForBazelEnableRbe = "false"
+)
+
+// ActivateBuildCacheForBazelTimestamps enumerates the valid values for the timestamps input.
+type ActivateBuildCacheForBazelTimestamps string
+
+const (
+	ActivateBuildCacheForBazelTimestampsTrue  ActivateBuildCacheForBazelTimestamps = "true"
+	ActivateBuildCacheForBazelTimestampsFalse ActivateBuildCacheForBazelTimestamps = "false"
+)
+
+// ActivateBuildCacheForBazelVerbose enumerates the valid values for the verbose input.
+type ActivateBuildCacheForBazelVerbose string
+
+const (
+	ActivateBuildCacheForBazelVerboseTrue  ActivateBuildCacheForBazelVerbose = "true"
+	ActivateBuildCacheForBazelVerboseFalse ActivateBuildCacheForBazelVerbose = "false"
+)
+
 // ActivateBuildCacheForBazelBuilder builds a activate-build-cache-for-bazel step with typed input methods.
 type ActivateBuildCacheForBazelBuilder struct{ *Builder }
 
@@ -20,19 +44,19 @@ func ActivateBuildCacheForBazel(version ...string) *ActivateBuildCacheForBazelBu
 }
 
 // WithEnableRbe sets enable Bazel RBE.
-func (b *ActivateBuildCacheForBazelBuilder) WithEnableRbe(value string) *ActivateBuildCacheForBazelBuilder {
-	b.Builder.WithInput("enable_rbe", value)
+func (b *ActivateBuildCacheForBazelBuilder) WithEnableRbe(value ActivateBuildCacheForBazelEnableRbe) *ActivateBuildCacheForBazelBuilder {
+	b.Builder.WithInput("enable_rbe", string(value))
 	return b
 }
 
 // WithTimestamps sets add timestamps to build messages.
-func (b *ActivateBuildCacheForBazelBuilder) WithTimestamps(value string) *ActivateBuildCacheForBazelBuilder {
-	b.Builder.WithInput("timestamps", value)
+func (b *ActivateBuildCacheForBazelBuilder) WithTimestamps(value ActivateBuildCacheForBazelTimestamps) *ActivateBuildCacheForBazelBuilder {
+	b.Builder.WithInput("timestamps", string(value))
 	return b
 }
 
 // WithVerbose sets verbose logging.
-func (b *ActivateBuildCacheForBazelBuilder) WithVerbose(value string) *ActivateBuildCacheForBazelBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *ActivateBuildCacheForBazelBuilder) WithVerbose(value ActivateBuildCacheForBazelVerbose) *ActivateBuildCacheForBazelBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

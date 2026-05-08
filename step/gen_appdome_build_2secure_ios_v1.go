@@ -3,6 +3,23 @@
 
 package step
 
+// AppdomeBuild2secureIosV1SignMethod enumerates the valid values for the sign_method input.
+type AppdomeBuild2secureIosV1SignMethod string
+
+const (
+	AppdomeBuild2secureIosV1SignMethodOnAppdome      AppdomeBuild2secureIosV1SignMethod = "On-Appdome"
+	AppdomeBuild2secureIosV1SignMethodPrivateSigning AppdomeBuild2secureIosV1SignMethod = "Private-Signing"
+	AppdomeBuild2secureIosV1SignMethodAutoDevSigning AppdomeBuild2secureIosV1SignMethod = "Auto-Dev-Signing"
+)
+
+// AppdomeBuild2secureIosV1BuildLogs enumerates the valid values for the build_logs input.
+type AppdomeBuild2secureIosV1BuildLogs string
+
+const (
+	AppdomeBuild2secureIosV1BuildLogsTrue  AppdomeBuild2secureIosV1BuildLogs = "true"
+	AppdomeBuild2secureIosV1BuildLogsFalse AppdomeBuild2secureIosV1BuildLogs = "false"
+)
+
 // AppdomeBuild2secureIosV1Builder builds a appdome-build-2secure-ios step with typed input methods.
 type AppdomeBuild2secureIosV1Builder struct{ *Builder }
 
@@ -38,8 +55,8 @@ func (b *AppdomeBuild2secureIosV1Builder) WithTeamId(value string) *AppdomeBuild
 }
 
 // WithSignMethod sets signing Method.
-func (b *AppdomeBuild2secureIosV1Builder) WithSignMethod(value string) *AppdomeBuild2secureIosV1Builder {
-	b.Builder.WithInput("sign_method", value)
+func (b *AppdomeBuild2secureIosV1Builder) WithSignMethod(value AppdomeBuild2secureIosV1SignMethod) *AppdomeBuild2secureIosV1Builder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 
@@ -50,8 +67,8 @@ func (b *AppdomeBuild2secureIosV1Builder) WithEntitlements(value string) *Appdom
 }
 
 // WithBuildLogs sets build With Diagnostic Logs.
-func (b *AppdomeBuild2secureIosV1Builder) WithBuildLogs(value string) *AppdomeBuild2secureIosV1Builder {
-	b.Builder.WithInput("build_logs", value)
+func (b *AppdomeBuild2secureIosV1Builder) WithBuildLogs(value AppdomeBuild2secureIosV1BuildLogs) *AppdomeBuild2secureIosV1Builder {
+	b.Builder.WithInput("build_logs", string(value))
 	return b
 }
 

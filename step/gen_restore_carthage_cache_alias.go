@@ -18,3 +18,7 @@ func RestoreCarthageCache(version ...string) *RestoreCarthageCacheV3Builder {
 // published by restore-carthage-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreCarthageCacheV{N}Outputs directly.
 var RestoreCarthageCacheOutputs = RestoreCarthageCacheV3Outputs
+
+// RestoreCarthageCacheVerbose is a type alias for RestoreCarthageCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreCarthageCacheVerbose = RestoreCarthageCacheV3Verbose

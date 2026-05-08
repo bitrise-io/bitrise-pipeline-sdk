@@ -13,3 +13,11 @@ type ReactNativeBundleBuilder = ReactNativeBundleV1Builder
 func ReactNativeBundle(version ...string) *ReactNativeBundleV1Builder {
 	return ReactNativeBundleV1(version...)
 }
+
+// ReactNativeBundlePlatform is a type alias for ReactNativeBundleV1Platform,
+// pointing to the latest supported major version of the step's enum type.
+type ReactNativeBundlePlatform = ReactNativeBundleV1Platform
+
+// ReactNativeBundleDev is a type alias for ReactNativeBundleV1Dev,
+// pointing to the latest supported major version of the step's enum type.
+type ReactNativeBundleDev = ReactNativeBundleV1Dev

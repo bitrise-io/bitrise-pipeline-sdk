@@ -3,6 +3,24 @@
 
 package step
 
+// FauxpasappFauxpasLicenseType enumerates the valid values for the fauxpas_license_type input.
+type FauxpasappFauxpasLicenseType string
+
+const (
+	FauxpasappFauxpasLicenseTypePersonal         FauxpasappFauxpasLicenseType = "personal"
+	FauxpasappFauxpasLicenseTypeOrganizationSeat FauxpasappFauxpasLicenseType = "organization-seat"
+	FauxpasappFauxpasLicenseTypeSite             FauxpasappFauxpasLicenseType = "site"
+	FauxpasappFauxpasLicenseTypeEnterprise       FauxpasappFauxpasLicenseType = "enterprise"
+)
+
+// FauxpasappFauxpasDebugMode enumerates the valid values for the fauxpas_debug_mode input.
+type FauxpasappFauxpasDebugMode string
+
+const (
+	FauxpasappFauxpasDebugModeTrue  FauxpasappFauxpasDebugMode = "true"
+	FauxpasappFauxpasDebugModeFalse FauxpasappFauxpasDebugMode = "false"
+)
+
 // FauxpasappBuilder builds a fauxpasapp step with typed input methods.
 type FauxpasappBuilder struct{ *Builder }
 
@@ -20,8 +38,8 @@ func Fauxpasapp(version ...string) *FauxpasappBuilder {
 }
 
 // WithFauxpasLicenseType sets license type.
-func (b *FauxpasappBuilder) WithFauxpasLicenseType(value string) *FauxpasappBuilder {
-	b.Builder.WithInput("fauxpas_license_type", value)
+func (b *FauxpasappBuilder) WithFauxpasLicenseType(value FauxpasappFauxpasLicenseType) *FauxpasappBuilder {
+	b.Builder.WithInput("fauxpas_license_type", string(value))
 	return b
 }
 
@@ -68,8 +86,8 @@ func (b *FauxpasappBuilder) WithFauxpasPartialCustomConfig(value string) *Fauxpa
 }
 
 // WithFauxpasDebugMode sets faux Pas Debug.
-func (b *FauxpasappBuilder) WithFauxpasDebugMode(value string) *FauxpasappBuilder {
-	b.Builder.WithInput("fauxpas_debug_mode", value)
+func (b *FauxpasappBuilder) WithFauxpasDebugMode(value FauxpasappFauxpasDebugMode) *FauxpasappBuilder {
+	b.Builder.WithInput("fauxpas_debug_mode", string(value))
 	return b
 }
 

@@ -13,3 +13,11 @@ type ProjectScannerBuilder = ProjectScannerV4Builder
 func ProjectScanner(version ...string) *ProjectScannerV4Builder {
 	return ProjectScannerV4(version...)
 }
+
+// ProjectScannerVerboseLog is a type alias for ProjectScannerV4VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type ProjectScannerVerboseLog = ProjectScannerV4VerboseLog
+
+// ProjectScannerEnableRepoClone is a type alias for ProjectScannerV4EnableRepoClone,
+// pointing to the latest supported major version of the step's enum type.
+type ProjectScannerEnableRepoClone = ProjectScannerV4EnableRepoClone

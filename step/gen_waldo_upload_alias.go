@@ -18,3 +18,7 @@ func WaldoUpload(version ...string) *WaldoUploadV2Builder {
 // published by waldo-upload at the latest major version (v2).
 // For outputs of a specific major version use WaldoUploadV{N}Outputs directly.
 var WaldoUploadOutputs = WaldoUploadV2Outputs
+
+// WaldoUploadIsDebugMode is a type alias for WaldoUploadV2IsDebugMode,
+// pointing to the latest supported major version of the step's enum type.
+type WaldoUploadIsDebugMode = WaldoUploadV2IsDebugMode

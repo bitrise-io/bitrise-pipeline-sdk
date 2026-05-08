@@ -3,6 +3,16 @@
 
 package step
 
+// NugetRestoreV1CacheLevel enumerates the valid values for the cache_level input.
+type NugetRestoreV1CacheLevel string
+
+const (
+	NugetRestoreV1CacheLevelLocal  NugetRestoreV1CacheLevel = "local"
+	NugetRestoreV1CacheLevelGlobal NugetRestoreV1CacheLevel = "global"
+	NugetRestoreV1CacheLevelAll    NugetRestoreV1CacheLevel = "all"
+	NugetRestoreV1CacheLevelNone   NugetRestoreV1CacheLevel = "none"
+)
+
 // NugetRestoreV1Builder builds a nuget-restore step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -36,7 +46,7 @@ func (b *NugetRestoreV1Builder) WithNugetVersion(value string) *NugetRestoreV1Bu
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *NugetRestoreV1Builder) WithCacheLevel(value string) *NugetRestoreV1Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *NugetRestoreV1Builder) WithCacheLevel(value NugetRestoreV1CacheLevel) *NugetRestoreV1Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }

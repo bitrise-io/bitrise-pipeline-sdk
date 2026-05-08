@@ -3,6 +3,22 @@
 
 package step
 
+// AppliveryAndroidV0NotifyCollaborators enumerates the valid values for the notifyCollaborators input.
+type AppliveryAndroidV0NotifyCollaborators string
+
+const (
+	AppliveryAndroidV0NotifyCollaboratorsTrue  AppliveryAndroidV0NotifyCollaborators = "true"
+	AppliveryAndroidV0NotifyCollaboratorsFalse AppliveryAndroidV0NotifyCollaborators = "false"
+)
+
+// AppliveryAndroidV0NotifyEmployees enumerates the valid values for the notifyEmployees input.
+type AppliveryAndroidV0NotifyEmployees string
+
+const (
+	AppliveryAndroidV0NotifyEmployeesTrue  AppliveryAndroidV0NotifyEmployees = "true"
+	AppliveryAndroidV0NotifyEmployeesFalse AppliveryAndroidV0NotifyEmployees = "false"
+)
+
 // AppliveryAndroidV0Builder builds a applivery-android step with typed input methods.
 type AppliveryAndroidV0Builder struct{ *Builder }
 
@@ -44,14 +60,14 @@ func (b *AppliveryAndroidV0Builder) WithChangelog(value string) *AppliveryAndroi
 }
 
 // WithNotifyCollaborators sets notify Collaborators?.
-func (b *AppliveryAndroidV0Builder) WithNotifyCollaborators(value string) *AppliveryAndroidV0Builder {
-	b.Builder.WithInput("notifyCollaborators", value)
+func (b *AppliveryAndroidV0Builder) WithNotifyCollaborators(value AppliveryAndroidV0NotifyCollaborators) *AppliveryAndroidV0Builder {
+	b.Builder.WithInput("notifyCollaborators", string(value))
 	return b
 }
 
 // WithNotifyEmployees sets notify Employees?.
-func (b *AppliveryAndroidV0Builder) WithNotifyEmployees(value string) *AppliveryAndroidV0Builder {
-	b.Builder.WithInput("notifyEmployees", value)
+func (b *AppliveryAndroidV0Builder) WithNotifyEmployees(value AppliveryAndroidV0NotifyEmployees) *AppliveryAndroidV0Builder {
+	b.Builder.WithInput("notifyEmployees", string(value))
 	return b
 }
 

@@ -3,6 +3,54 @@
 
 package step
 
+// GitCloneV8MergePr enumerates the valid values for the merge_pr input.
+type GitCloneV8MergePr string
+
+const (
+	GitCloneV8MergePrYes GitCloneV8MergePr = "yes"
+	GitCloneV8MergePrNo  GitCloneV8MergePr = "no"
+)
+
+// GitCloneV8UpdateSubmodules enumerates the valid values for the update_submodules input.
+type GitCloneV8UpdateSubmodules string
+
+const (
+	GitCloneV8UpdateSubmodulesYes GitCloneV8UpdateSubmodules = "yes"
+	GitCloneV8UpdateSubmodulesNo  GitCloneV8UpdateSubmodules = "no"
+)
+
+// GitCloneV8FetchTags enumerates the valid values for the fetch_tags input.
+type GitCloneV8FetchTags string
+
+const (
+	GitCloneV8FetchTagsYes GitCloneV8FetchTags = "yes"
+	GitCloneV8FetchTagsNo  GitCloneV8FetchTags = "no"
+)
+
+// GitCloneV8IgnoreBranchForCommitFetch enumerates the valid values for the ignore_branch_for_commit_fetch input.
+type GitCloneV8IgnoreBranchForCommitFetch string
+
+const (
+	GitCloneV8IgnoreBranchForCommitFetchYes GitCloneV8IgnoreBranchForCommitFetch = "yes"
+	GitCloneV8IgnoreBranchForCommitFetchNo  GitCloneV8IgnoreBranchForCommitFetch = "no"
+)
+
+// GitCloneV8ResetRepository enumerates the valid values for the reset_repository input.
+type GitCloneV8ResetRepository string
+
+const (
+	GitCloneV8ResetRepositoryNo  GitCloneV8ResetRepository = "No"
+	GitCloneV8ResetRepositoryYes GitCloneV8ResetRepository = "Yes"
+)
+
+// GitCloneV8PerformanceMonitoring enumerates the valid values for the performance_monitoring input.
+type GitCloneV8PerformanceMonitoring string
+
+const (
+	GitCloneV8PerformanceMonitoringNo  GitCloneV8PerformanceMonitoring = "no"
+	GitCloneV8PerformanceMonitoringYes GitCloneV8PerformanceMonitoring = "yes"
+)
+
 // GitCloneV8Builder builds a git-clone step with typed input methods.
 type GitCloneV8Builder struct{ *Builder }
 
@@ -20,8 +68,8 @@ func GitCloneV8(version ...string) *GitCloneV8Builder {
 }
 
 // WithMergePr sets checkout merged PR state.
-func (b *GitCloneV8Builder) WithMergePr(value string) *GitCloneV8Builder {
-	b.Builder.WithInput("merge_pr", value)
+func (b *GitCloneV8Builder) WithMergePr(value GitCloneV8MergePr) *GitCloneV8Builder {
+	b.Builder.WithInput("merge_pr", string(value))
 	return b
 }
 
@@ -50,8 +98,8 @@ func (b *GitCloneV8Builder) WithCloneDepth(value string) *GitCloneV8Builder {
 }
 
 // WithUpdateSubmodules sets update submodules.
-func (b *GitCloneV8Builder) WithUpdateSubmodules(value string) *GitCloneV8Builder {
-	b.Builder.WithInput("update_submodules", value)
+func (b *GitCloneV8Builder) WithUpdateSubmodules(value GitCloneV8UpdateSubmodules) *GitCloneV8Builder {
+	b.Builder.WithInput("update_submodules", string(value))
 	return b
 }
 
@@ -62,8 +110,8 @@ func (b *GitCloneV8Builder) WithSubmoduleUpdateDepth(value string) *GitCloneV8Bu
 }
 
 // WithFetchTags sets fetch tags.
-func (b *GitCloneV8Builder) WithFetchTags(value string) *GitCloneV8Builder {
-	b.Builder.WithInput("fetch_tags", value)
+func (b *GitCloneV8Builder) WithFetchTags(value GitCloneV8FetchTags) *GitCloneV8Builder {
+	b.Builder.WithInput("fetch_tags", string(value))
 	return b
 }
 
@@ -74,8 +122,8 @@ func (b *GitCloneV8Builder) WithSparseDirectories(value string) *GitCloneV8Build
 }
 
 // WithIgnoreBranchForCommitFetch sets ignore branch for commit fetch.
-func (b *GitCloneV8Builder) WithIgnoreBranchForCommitFetch(value string) *GitCloneV8Builder {
-	b.Builder.WithInput("ignore_branch_for_commit_fetch", value)
+func (b *GitCloneV8Builder) WithIgnoreBranchForCommitFetch(value GitCloneV8IgnoreBranchForCommitFetch) *GitCloneV8Builder {
+	b.Builder.WithInput("ignore_branch_for_commit_fetch", string(value))
 	return b
 }
 
@@ -134,14 +182,14 @@ func (b *GitCloneV8Builder) WithPullRequestHeadBranch(value string) *GitCloneV8B
 }
 
 // WithResetRepository sets reset repository.
-func (b *GitCloneV8Builder) WithResetRepository(value string) *GitCloneV8Builder {
-	b.Builder.WithInput("reset_repository", value)
+func (b *GitCloneV8Builder) WithResetRepository(value GitCloneV8ResetRepository) *GitCloneV8Builder {
+	b.Builder.WithInput("reset_repository", string(value))
 	return b
 }
 
 // WithPerformanceMonitoring sets performance monitoring.
-func (b *GitCloneV8Builder) WithPerformanceMonitoring(value string) *GitCloneV8Builder {
-	b.Builder.WithInput("performance_monitoring", value)
+func (b *GitCloneV8Builder) WithPerformanceMonitoring(value GitCloneV8PerformanceMonitoring) *GitCloneV8Builder {
+	b.Builder.WithInput("performance_monitoring", string(value))
 	return b
 }
 

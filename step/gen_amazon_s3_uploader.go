@@ -3,6 +3,14 @@
 
 package step
 
+// AmazonS3UploaderFileAccessLevel enumerates the valid values for the file_access_level input.
+type AmazonS3UploaderFileAccessLevel string
+
+const (
+	AmazonS3UploaderFileAccessLevelPrivate    AmazonS3UploaderFileAccessLevel = "private"
+	AmazonS3UploaderFileAccessLevelPublicRead AmazonS3UploaderFileAccessLevel = "public_read"
+)
+
 // AmazonS3UploaderBuilder builds a amazon-s3-uploader step with typed input methods.
 //
 // Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
@@ -72,8 +80,8 @@ func (b *AmazonS3UploaderBuilder) WithPathInBucket(value string) *AmazonS3Upload
 }
 
 // WithFileAccessLevel sets amazon S3 file access level.
-func (b *AmazonS3UploaderBuilder) WithFileAccessLevel(value string) *AmazonS3UploaderBuilder {
-	b.Builder.WithInput("file_access_level", value)
+func (b *AmazonS3UploaderBuilder) WithFileAccessLevel(value AmazonS3UploaderFileAccessLevel) *AmazonS3UploaderBuilder {
+	b.Builder.WithInput("file_access_level", string(value))
 	return b
 }
 

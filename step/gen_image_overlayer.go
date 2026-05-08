@@ -3,6 +3,30 @@
 
 package step
 
+// ImageOverlayerCenterIcon enumerates the valid values for the center_icon input.
+type ImageOverlayerCenterIcon string
+
+const (
+	ImageOverlayerCenterIconTrue  ImageOverlayerCenterIcon = "True"
+	ImageOverlayerCenterIconFalse ImageOverlayerCenterIcon = "False"
+)
+
+// ImageOverlayerArchiveResult enumerates the valid values for the archive_result input.
+type ImageOverlayerArchiveResult string
+
+const (
+	ImageOverlayerArchiveResultTrue  ImageOverlayerArchiveResult = "True"
+	ImageOverlayerArchiveResultFalse ImageOverlayerArchiveResult = "False"
+)
+
+// ImageOverlayerExportResults enumerates the valid values for the export_results input.
+type ImageOverlayerExportResults string
+
+const (
+	ImageOverlayerExportResultsTrue  ImageOverlayerExportResults = "True"
+	ImageOverlayerExportResultsFalse ImageOverlayerExportResults = "False"
+)
+
 // ImageOverlayerBuilder builds a image-overlayer step with typed input methods.
 type ImageOverlayerBuilder struct{ *Builder }
 
@@ -50,19 +74,19 @@ func (b *ImageOverlayerBuilder) WithTextColor(value string) *ImageOverlayerBuild
 }
 
 // WithCenterIcon sets if you want center the icon in the background image.
-func (b *ImageOverlayerBuilder) WithCenterIcon(value string) *ImageOverlayerBuilder {
-	b.Builder.WithInput("center_icon", value)
+func (b *ImageOverlayerBuilder) WithCenterIcon(value ImageOverlayerCenterIcon) *ImageOverlayerBuilder {
+	b.Builder.WithInput("center_icon", string(value))
 	return b
 }
 
 // WithArchiveResult sets if you want archive assets at the end.
-func (b *ImageOverlayerBuilder) WithArchiveResult(value string) *ImageOverlayerBuilder {
-	b.Builder.WithInput("archive_result", value)
+func (b *ImageOverlayerBuilder) WithArchiveResult(value ImageOverlayerArchiveResult) *ImageOverlayerBuilder {
+	b.Builder.WithInput("archive_result", string(value))
 	return b
 }
 
 // WithExportResults sets if you want export assets at the end.
-func (b *ImageOverlayerBuilder) WithExportResults(value string) *ImageOverlayerBuilder {
-	b.Builder.WithInput("export_results", value)
+func (b *ImageOverlayerBuilder) WithExportResults(value ImageOverlayerExportResults) *ImageOverlayerBuilder {
+	b.Builder.WithInput("export_results", string(value))
 	return b
 }

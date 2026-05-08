@@ -18,3 +18,19 @@ func GooglePlayDeploy(version ...string) *GooglePlayDeployV3Builder {
 // published by google-play-deploy at the latest major version (v3).
 // For outputs of a specific major version use GooglePlayDeployV{N}Outputs directly.
 var GooglePlayDeployOutputs = GooglePlayDeployV3Outputs
+
+// GooglePlayDeployRetryWithoutSendingToReview is a type alias for GooglePlayDeployV3RetryWithoutSendingToReview,
+// pointing to the latest supported major version of the step's enum type.
+type GooglePlayDeployRetryWithoutSendingToReview = GooglePlayDeployV3RetryWithoutSendingToReview
+
+// GooglePlayDeployAckBundleInstallationWarning is a type alias for GooglePlayDeployV3AckBundleInstallationWarning,
+// pointing to the latest supported major version of the step's enum type.
+type GooglePlayDeployAckBundleInstallationWarning = GooglePlayDeployV3AckBundleInstallationWarning
+
+// GooglePlayDeployDryRun is a type alias for GooglePlayDeployV3DryRun,
+// pointing to the latest supported major version of the step's enum type.
+type GooglePlayDeployDryRun = GooglePlayDeployV3DryRun
+
+// GooglePlayDeployVerboseLog is a type alias for GooglePlayDeployV3VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type GooglePlayDeployVerboseLog = GooglePlayDeployV3VerboseLog

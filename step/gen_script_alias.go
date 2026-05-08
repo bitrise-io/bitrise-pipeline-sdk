@@ -13,3 +13,7 @@ type ScriptBuilder = ScriptV1Builder
 func Script(version ...string) *ScriptV1Builder {
 	return ScriptV1(version...)
 }
+
+// ScriptIsDebug is a type alias for ScriptV1IsDebug,
+// pointing to the latest supported major version of the step's enum type.
+type ScriptIsDebug = ScriptV1IsDebug

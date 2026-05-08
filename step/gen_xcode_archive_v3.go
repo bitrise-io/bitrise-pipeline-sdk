@@ -3,6 +3,81 @@
 
 package step
 
+// XcodeArchiveV3ExportMethod enumerates the valid values for the export_method input.
+type XcodeArchiveV3ExportMethod string
+
+const (
+	XcodeArchiveV3ExportMethodAutoDetect  XcodeArchiveV3ExportMethod = "auto-detect"
+	XcodeArchiveV3ExportMethodAppStore    XcodeArchiveV3ExportMethod = "app-store"
+	XcodeArchiveV3ExportMethodAdHoc       XcodeArchiveV3ExportMethod = "ad-hoc"
+	XcodeArchiveV3ExportMethodEnterprise  XcodeArchiveV3ExportMethod = "enterprise"
+	XcodeArchiveV3ExportMethodDevelopment XcodeArchiveV3ExportMethod = "development"
+)
+
+// XcodeArchiveV3CompileBitcode enumerates the valid values for the compile_bitcode input.
+type XcodeArchiveV3CompileBitcode string
+
+const (
+	XcodeArchiveV3CompileBitcodeYes XcodeArchiveV3CompileBitcode = "yes"
+	XcodeArchiveV3CompileBitcodeNo  XcodeArchiveV3CompileBitcode = "no"
+)
+
+// XcodeArchiveV3UploadBitcode enumerates the valid values for the upload_bitcode input.
+type XcodeArchiveV3UploadBitcode string
+
+const (
+	XcodeArchiveV3UploadBitcodeYes XcodeArchiveV3UploadBitcode = "yes"
+	XcodeArchiveV3UploadBitcodeNo  XcodeArchiveV3UploadBitcode = "no"
+)
+
+// XcodeArchiveV3DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeArchiveV3DisableIndexWhileBuilding string
+
+const (
+	XcodeArchiveV3DisableIndexWhileBuildingYes XcodeArchiveV3DisableIndexWhileBuilding = "yes"
+	XcodeArchiveV3DisableIndexWhileBuildingNo  XcodeArchiveV3DisableIndexWhileBuilding = "no"
+)
+
+// XcodeArchiveV3CacheLevel enumerates the valid values for the cache_level input.
+type XcodeArchiveV3CacheLevel string
+
+const (
+	XcodeArchiveV3CacheLevelNone          XcodeArchiveV3CacheLevel = "none"
+	XcodeArchiveV3CacheLevelSwiftPackages XcodeArchiveV3CacheLevel = "swift_packages"
+)
+
+// XcodeArchiveV3IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeArchiveV3IsCleanBuild string
+
+const (
+	XcodeArchiveV3IsCleanBuildYes XcodeArchiveV3IsCleanBuild = "yes"
+	XcodeArchiveV3IsCleanBuildNo  XcodeArchiveV3IsCleanBuild = "no"
+)
+
+// XcodeArchiveV3OutputTool enumerates the valid values for the output_tool input.
+type XcodeArchiveV3OutputTool string
+
+const (
+	XcodeArchiveV3OutputToolXcpretty   XcodeArchiveV3OutputTool = "xcpretty"
+	XcodeArchiveV3OutputToolXcodebuild XcodeArchiveV3OutputTool = "xcodebuild"
+)
+
+// XcodeArchiveV3ExportAllDsyms enumerates the valid values for the export_all_dsyms input.
+type XcodeArchiveV3ExportAllDsyms string
+
+const (
+	XcodeArchiveV3ExportAllDsymsYes XcodeArchiveV3ExportAllDsyms = "yes"
+	XcodeArchiveV3ExportAllDsymsNo  XcodeArchiveV3ExportAllDsyms = "no"
+)
+
+// XcodeArchiveV3VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeArchiveV3VerboseLog string
+
+const (
+	XcodeArchiveV3VerboseLogYes XcodeArchiveV3VerboseLog = "yes"
+	XcodeArchiveV3VerboseLogNo  XcodeArchiveV3VerboseLog = "no"
+)
+
 // XcodeArchiveV3Builder builds a xcode-archive step with typed input methods.
 type XcodeArchiveV3Builder struct{ *Builder }
 
@@ -38,8 +113,8 @@ func (b *XcodeArchiveV3Builder) WithConfiguration(value string) *XcodeArchiveV3B
 }
 
 // WithExportMethod sets select method for export.
-func (b *XcodeArchiveV3Builder) WithExportMethod(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *XcodeArchiveV3Builder) WithExportMethod(value XcodeArchiveV3ExportMethod) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
@@ -50,14 +125,14 @@ func (b *XcodeArchiveV3Builder) WithTeamId(value string) *XcodeArchiveV3Builder 
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *XcodeArchiveV3Builder) WithCompileBitcode(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *XcodeArchiveV3Builder) WithCompileBitcode(value XcodeArchiveV3CompileBitcode) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *XcodeArchiveV3Builder) WithUploadBitcode(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *XcodeArchiveV3Builder) WithUploadBitcode(value XcodeArchiveV3UploadBitcode) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
@@ -68,14 +143,14 @@ func (b *XcodeArchiveV3Builder) WithIcloudContainerEnvironment(value string) *Xc
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeArchiveV3Builder) WithDisableIndexWhileBuilding(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeArchiveV3Builder) WithDisableIndexWhileBuilding(value XcodeArchiveV3DisableIndexWhileBuilding) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
 // WithCacheLevel sets enable caching of Swift Package Manager packages.
-func (b *XcodeArchiveV3Builder) WithCacheLevel(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeArchiveV3Builder) WithCacheLevel(value XcodeArchiveV3CacheLevel) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -134,26 +209,26 @@ func (b *XcodeArchiveV3Builder) WithOutputDir(value string) *XcodeArchiveV3Build
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before the archive?.
-func (b *XcodeArchiveV3Builder) WithIsCleanBuild(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeArchiveV3Builder) WithIsCleanBuild(value XcodeArchiveV3IsCleanBuild) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeArchiveV3Builder) WithOutputTool(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeArchiveV3Builder) WithOutputTool(value XcodeArchiveV3OutputTool) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
 // WithExportAllDsyms sets export all dsyms.
-func (b *XcodeArchiveV3Builder) WithExportAllDsyms(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("export_all_dsyms", value)
+func (b *XcodeArchiveV3Builder) WithExportAllDsyms(value XcodeArchiveV3ExportAllDsyms) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("export_all_dsyms", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *XcodeArchiveV3Builder) WithVerboseLog(value string) *XcodeArchiveV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeArchiveV3Builder) WithVerboseLog(value XcodeArchiveV3VerboseLog) *XcodeArchiveV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

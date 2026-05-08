@@ -3,6 +3,70 @@
 
 package step
 
+// CodecovV4CCDISABLEFILEFIXES enumerates the valid values for the CC_DISABLE_FILE_FIXES input.
+type CodecovV4CCDISABLEFILEFIXES string
+
+const (
+	CodecovV4CCDISABLEFILEFIXESTrue  CodecovV4CCDISABLEFILEFIXES = "true"
+	CodecovV4CCDISABLEFILEFIXESFalse CodecovV4CCDISABLEFILEFIXES = "false"
+)
+
+// CodecovV4CCDISABLESEARCH enumerates the valid values for the CC_DISABLE_SEARCH input.
+type CodecovV4CCDISABLESEARCH string
+
+const (
+	CodecovV4CCDISABLESEARCHTrue  CodecovV4CCDISABLESEARCH = "true"
+	CodecovV4CCDISABLESEARCHFalse CodecovV4CCDISABLESEARCH = "false"
+)
+
+// CodecovV4CCDRYRUN enumerates the valid values for the CC_DRY_RUN input.
+type CodecovV4CCDRYRUN string
+
+const (
+	CodecovV4CCDRYRUNTrue  CodecovV4CCDRYRUN = "true"
+	CodecovV4CCDRYRUNFalse CodecovV4CCDRYRUN = "false"
+)
+
+// CodecovV4CCFAILONERROR enumerates the valid values for the CC_FAIL_ON_ERROR input.
+type CodecovV4CCFAILONERROR string
+
+const (
+	CodecovV4CCFAILONERRORTrue  CodecovV4CCFAILONERROR = "true"
+	CodecovV4CCFAILONERRORFalse CodecovV4CCFAILONERROR = "false"
+)
+
+// CodecovV4CCHANDLENOREPORTSFOUND enumerates the valid values for the CC_HANDLE_NO_REPORTS_FOUND input.
+type CodecovV4CCHANDLENOREPORTSFOUND string
+
+const (
+	CodecovV4CCHANDLENOREPORTSFOUNDTrue  CodecovV4CCHANDLENOREPORTSFOUND = "true"
+	CodecovV4CCHANDLENOREPORTSFOUNDFalse CodecovV4CCHANDLENOREPORTSFOUND = "false"
+)
+
+// CodecovV4CCLEGACY enumerates the valid values for the CC_LEGACY input.
+type CodecovV4CCLEGACY string
+
+const (
+	CodecovV4CCLEGACYTrue  CodecovV4CCLEGACY = "true"
+	CodecovV4CCLEGACYFalse CodecovV4CCLEGACY = "false"
+)
+
+// CodecovV4CCSKIPVALIDATION enumerates the valid values for the CC_SKIP_VALIDATION input.
+type CodecovV4CCSKIPVALIDATION string
+
+const (
+	CodecovV4CCSKIPVALIDATIONTrue  CodecovV4CCSKIPVALIDATION = "true"
+	CodecovV4CCSKIPVALIDATIONFalse CodecovV4CCSKIPVALIDATION = "false"
+)
+
+// CodecovV4CCVERBOSE enumerates the valid values for the CC_VERBOSE input.
+type CodecovV4CCVERBOSE string
+
+const (
+	CodecovV4CCVERBOSETrue  CodecovV4CCVERBOSE = "true"
+	CodecovV4CCVERBOSEFalse CodecovV4CCVERBOSE = "false"
+)
+
 // CodecovV4Builder builds a codecov step with typed input methods.
 type CodecovV4Builder struct{ *Builder }
 
@@ -56,20 +120,20 @@ func (b *CodecovV4Builder) WithCCDIR(value string) *CodecovV4Builder {
 }
 
 // WithCCDISABLEFILEFIXES sets disable_file_fixes.
-func (b *CodecovV4Builder) WithCCDISABLEFILEFIXES(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_DISABLE_FILE_FIXES", value)
+func (b *CodecovV4Builder) WithCCDISABLEFILEFIXES(value CodecovV4CCDISABLEFILEFIXES) *CodecovV4Builder {
+	b.Builder.WithInput("CC_DISABLE_FILE_FIXES", string(value))
 	return b
 }
 
 // WithCCDISABLESEARCH sets disable_search.
-func (b *CodecovV4Builder) WithCCDISABLESEARCH(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_DISABLE_SEARCH", value)
+func (b *CodecovV4Builder) WithCCDISABLESEARCH(value CodecovV4CCDISABLESEARCH) *CodecovV4Builder {
+	b.Builder.WithInput("CC_DISABLE_SEARCH", string(value))
 	return b
 }
 
 // WithCCDRYRUN sets dry_run.
-func (b *CodecovV4Builder) WithCCDRYRUN(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_DRY_RUN", value)
+func (b *CodecovV4Builder) WithCCDRYRUN(value CodecovV4CCDRYRUN) *CodecovV4Builder {
+	b.Builder.WithInput("CC_DRY_RUN", string(value))
 	return b
 }
 
@@ -92,8 +156,8 @@ func (b *CodecovV4Builder) WithCCEXCLUDES(value string) *CodecovV4Builder {
 }
 
 // WithCCFAILONERROR sets fail_on_error.
-func (b *CodecovV4Builder) WithCCFAILONERROR(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_FAIL_ON_ERROR", value)
+func (b *CodecovV4Builder) WithCCFAILONERROR(value CodecovV4CCFAILONERROR) *CodecovV4Builder {
+	b.Builder.WithInput("CC_FAIL_ON_ERROR", string(value))
 	return b
 }
 
@@ -140,8 +204,8 @@ func (b *CodecovV4Builder) WithCCGITSERVICE(value string) *CodecovV4Builder {
 }
 
 // WithCCHANDLENOREPORTSFOUND sets handle_no_reports_found.
-func (b *CodecovV4Builder) WithCCHANDLENOREPORTSFOUND(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_HANDLE_NO_REPORTS_FOUND", value)
+func (b *CodecovV4Builder) WithCCHANDLENOREPORTSFOUND(value CodecovV4CCHANDLENOREPORTSFOUND) *CodecovV4Builder {
+	b.Builder.WithInput("CC_HANDLE_NO_REPORTS_FOUND", string(value))
 	return b
 }
 
@@ -152,8 +216,8 @@ func (b *CodecovV4Builder) WithCCJOBCODE(value string) *CodecovV4Builder {
 }
 
 // WithCCLEGACY sets legacy.
-func (b *CodecovV4Builder) WithCCLEGACY(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_LEGACY", value)
+func (b *CodecovV4Builder) WithCCLEGACY(value CodecovV4CCLEGACY) *CodecovV4Builder {
+	b.Builder.WithInput("CC_LEGACY", string(value))
 	return b
 }
 
@@ -212,8 +276,8 @@ func (b *CodecovV4Builder) WithCCSHA(value string) *CodecovV4Builder {
 }
 
 // WithCCSKIPVALIDATION sets skip_validation.
-func (b *CodecovV4Builder) WithCCSKIPVALIDATION(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_SKIP_VALIDATION", value)
+func (b *CodecovV4Builder) WithCCSKIPVALIDATION(value CodecovV4CCSKIPVALIDATION) *CodecovV4Builder {
+	b.Builder.WithInput("CC_SKIP_VALIDATION", string(value))
 	return b
 }
 
@@ -236,8 +300,8 @@ func (b *CodecovV4Builder) WithCCTOKEN(value string) *CodecovV4Builder {
 }
 
 // WithCCVERBOSE sets verbose.
-func (b *CodecovV4Builder) WithCCVERBOSE(value string) *CodecovV4Builder {
-	b.Builder.WithInput("CC_VERBOSE", value)
+func (b *CodecovV4Builder) WithCCVERBOSE(value CodecovV4CCVERBOSE) *CodecovV4Builder {
+	b.Builder.WithInput("CC_VERBOSE", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// BitbucketSnippetRunnerV1IsDebug enumerates the valid values for the is_debug input.
+type BitbucketSnippetRunnerV1IsDebug string
+
+const (
+	BitbucketSnippetRunnerV1IsDebugNo  BitbucketSnippetRunnerV1IsDebug = "no"
+	BitbucketSnippetRunnerV1IsDebugYes BitbucketSnippetRunnerV1IsDebug = "yes"
+)
+
 // BitbucketSnippetRunnerV1Builder builds a bitbucket-snippet-runner step with typed input methods.
 type BitbucketSnippetRunnerV1Builder struct{ *Builder }
 
@@ -50,7 +58,7 @@ func (b *BitbucketSnippetRunnerV1Builder) WithScriptArgs(value string) *Bitbucke
 }
 
 // WithIsDebug sets debug print?.
-func (b *BitbucketSnippetRunnerV1Builder) WithIsDebug(value string) *BitbucketSnippetRunnerV1Builder {
-	b.Builder.WithInput("is_debug", value)
+func (b *BitbucketSnippetRunnerV1Builder) WithIsDebug(value BitbucketSnippetRunnerV1IsDebug) *BitbucketSnippetRunnerV1Builder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

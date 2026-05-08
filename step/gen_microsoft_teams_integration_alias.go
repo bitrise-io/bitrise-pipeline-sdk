@@ -13,3 +13,19 @@ type MicrosoftTeamsIntegrationBuilder = MicrosoftTeamsIntegrationV2Builder
 func MicrosoftTeamsIntegration(version ...string) *MicrosoftTeamsIntegrationV2Builder {
 	return MicrosoftTeamsIntegrationV2(version...)
 }
+
+// MicrosoftTeamsIntegrationEnableDebug is a type alias for MicrosoftTeamsIntegrationV2EnableDebug,
+// pointing to the latest supported major version of the step's enum type.
+type MicrosoftTeamsIntegrationEnableDebug = MicrosoftTeamsIntegrationV2EnableDebug
+
+// MicrosoftTeamsIntegrationEnablePrimarySectionMarkdown is a type alias for MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown,
+// pointing to the latest supported major version of the step's enum type.
+type MicrosoftTeamsIntegrationEnablePrimarySectionMarkdown = MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown
+
+// MicrosoftTeamsIntegrationEnableBuildStatusFactsMarkdown is a type alias for MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown,
+// pointing to the latest supported major version of the step's enum type.
+type MicrosoftTeamsIntegrationEnableBuildStatusFactsMarkdown = MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown
+
+// MicrosoftTeamsIntegrationEnableDefaultActions is a type alias for MicrosoftTeamsIntegrationV2EnableDefaultActions,
+// pointing to the latest supported major version of the step's enum type.
+type MicrosoftTeamsIntegrationEnableDefaultActions = MicrosoftTeamsIntegrationV2EnableDefaultActions

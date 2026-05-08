@@ -3,6 +3,22 @@
 
 package step
 
+// EmailWithMailgunApiEndpoint enumerates the valid values for the api_endpoint input.
+type EmailWithMailgunApiEndpoint string
+
+const (
+	EmailWithMailgunApiEndpointApiMailgunNet   EmailWithMailgunApiEndpoint = "api.mailgun.net"
+	EmailWithMailgunApiEndpointApiEuMailgunNet EmailWithMailgunApiEndpoint = "api.eu.mailgun.net"
+)
+
+// EmailWithMailgunMessageFormat enumerates the valid values for the message_format input.
+type EmailWithMailgunMessageFormat string
+
+const (
+	EmailWithMailgunMessageFormatHtml EmailWithMailgunMessageFormat = "html"
+	EmailWithMailgunMessageFormatText EmailWithMailgunMessageFormat = "text"
+)
+
 // EmailWithMailgunBuilder builds a email-with-mailgun step with typed input methods.
 type EmailWithMailgunBuilder struct{ *Builder }
 
@@ -26,8 +42,8 @@ func (b *EmailWithMailgunBuilder) WithApiKey(value string) *EmailWithMailgunBuil
 }
 
 // WithApiEndpoint sets mailgun API Endpoint.
-func (b *EmailWithMailgunBuilder) WithApiEndpoint(value string) *EmailWithMailgunBuilder {
-	b.Builder.WithInput("api_endpoint", value)
+func (b *EmailWithMailgunBuilder) WithApiEndpoint(value EmailWithMailgunApiEndpoint) *EmailWithMailgunBuilder {
+	b.Builder.WithInput("api_endpoint", string(value))
 	return b
 }
 
@@ -68,8 +84,8 @@ func (b *EmailWithMailgunBuilder) WithErrorMessage(value string) *EmailWithMailg
 }
 
 // WithMessageFormat sets message format.
-func (b *EmailWithMailgunBuilder) WithMessageFormat(value string) *EmailWithMailgunBuilder {
-	b.Builder.WithInput("message_format", value)
+func (b *EmailWithMailgunBuilder) WithMessageFormat(value EmailWithMailgunMessageFormat) *EmailWithMailgunBuilder {
+	b.Builder.WithInput("message_format", string(value))
 	return b
 }
 

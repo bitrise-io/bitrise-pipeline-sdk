@@ -3,6 +3,14 @@
 
 package step
 
+// XamarinArchiveV1BuildTool enumerates the valid values for the build_tool input.
+type XamarinArchiveV1BuildTool string
+
+const (
+	XamarinArchiveV1BuildToolMsbuild XamarinArchiveV1BuildTool = "msbuild"
+	XamarinArchiveV1BuildToolXbuild  XamarinArchiveV1BuildTool = "xbuild"
+)
+
 // XamarinArchiveV1Builder builds a xamarin-archive step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -48,8 +56,8 @@ func (b *XamarinArchiveV1Builder) WithProjectTypeWhitelist(value string) *Xamari
 }
 
 // WithBuildTool sets which tool to use for building?.
-func (b *XamarinArchiveV1Builder) WithBuildTool(value string) *XamarinArchiveV1Builder {
-	b.Builder.WithInput("build_tool", value)
+func (b *XamarinArchiveV1Builder) WithBuildTool(value XamarinArchiveV1BuildTool) *XamarinArchiveV1Builder {
+	b.Builder.WithInput("build_tool", string(value))
 	return b
 }
 

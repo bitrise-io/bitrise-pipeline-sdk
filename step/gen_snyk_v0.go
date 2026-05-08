@@ -3,6 +3,32 @@
 
 package step
 
+// SnykV0SeverityThreshold enumerates the valid values for the severity_threshold input.
+type SnykV0SeverityThreshold string
+
+const (
+	SnykV0SeverityThresholdLow      SnykV0SeverityThreshold = "low"
+	SnykV0SeverityThresholdMedium   SnykV0SeverityThreshold = "medium"
+	SnykV0SeverityThresholdHigh     SnykV0SeverityThreshold = "high"
+	SnykV0SeverityThresholdCritical SnykV0SeverityThreshold = "critical"
+)
+
+// SnykV0FailOnIssues enumerates the valid values for the fail_on_issues input.
+type SnykV0FailOnIssues string
+
+const (
+	SnykV0FailOnIssuesYes SnykV0FailOnIssues = "yes"
+	SnykV0FailOnIssuesNo  SnykV0FailOnIssues = "no"
+)
+
+// SnykV0Monitor enumerates the valid values for the monitor input.
+type SnykV0Monitor string
+
+const (
+	SnykV0MonitorNo  SnykV0Monitor = "no"
+	SnykV0MonitorYes SnykV0Monitor = "yes"
+)
+
 // SnykV0Builder builds a snyk step with typed input methods.
 type SnykV0Builder struct{ *Builder }
 
@@ -32,20 +58,20 @@ func (b *SnykV0Builder) WithCommand(value string) *SnykV0Builder {
 }
 
 // WithSeverityThreshold sets severity threshold.
-func (b *SnykV0Builder) WithSeverityThreshold(value string) *SnykV0Builder {
-	b.Builder.WithInput("severity_threshold", value)
+func (b *SnykV0Builder) WithSeverityThreshold(value SnykV0SeverityThreshold) *SnykV0Builder {
+	b.Builder.WithInput("severity_threshold", string(value))
 	return b
 }
 
 // WithFailOnIssues sets fail on issues.
-func (b *SnykV0Builder) WithFailOnIssues(value string) *SnykV0Builder {
-	b.Builder.WithInput("fail_on_issues", value)
+func (b *SnykV0Builder) WithFailOnIssues(value SnykV0FailOnIssues) *SnykV0Builder {
+	b.Builder.WithInput("fail_on_issues", string(value))
 	return b
 }
 
 // WithMonitor sets monitor (import to Snyk).
-func (b *SnykV0Builder) WithMonitor(value string) *SnykV0Builder {
-	b.Builder.WithInput("monitor", value)
+func (b *SnykV0Builder) WithMonitor(value SnykV0Monitor) *SnykV0Builder {
+	b.Builder.WithInput("monitor", string(value))
 	return b
 }
 

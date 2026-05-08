@@ -18,3 +18,27 @@ func XcodeAnalyze(version ...string) *XcodeAnalyzeV2Builder {
 // published by xcode-analyze at the latest major version (v2).
 // For outputs of a specific major version use XcodeAnalyzeV{N}Outputs directly.
 var XcodeAnalyzeOutputs = XcodeAnalyzeV2Outputs
+
+// XcodeAnalyzeIsCleanBuild is a type alias for XcodeAnalyzeV2IsCleanBuild,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeAnalyzeIsCleanBuild = XcodeAnalyzeV2IsCleanBuild
+
+// XcodeAnalyzeDisableCodesign is a type alias for XcodeAnalyzeV2DisableCodesign,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeAnalyzeDisableCodesign = XcodeAnalyzeV2DisableCodesign
+
+// XcodeAnalyzeDisableIndexWhileBuilding is a type alias for XcodeAnalyzeV2DisableIndexWhileBuilding,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeAnalyzeDisableIndexWhileBuilding = XcodeAnalyzeV2DisableIndexWhileBuilding
+
+// XcodeAnalyzeCacheLevel is a type alias for XcodeAnalyzeV2CacheLevel,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeAnalyzeCacheLevel = XcodeAnalyzeV2CacheLevel
+
+// XcodeAnalyzeOutputTool is a type alias for XcodeAnalyzeV2OutputTool,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeAnalyzeOutputTool = XcodeAnalyzeV2OutputTool
+
+// XcodeAnalyzeVerboseLog is a type alias for XcodeAnalyzeV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeAnalyzeVerboseLog = XcodeAnalyzeV2VerboseLog

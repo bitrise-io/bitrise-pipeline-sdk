@@ -3,6 +3,14 @@
 
 package step
 
+// SaucelabsEspressoAppAutomateSaucelabsDataCenter enumerates the valid values for the saucelabs_data_center input.
+type SaucelabsEspressoAppAutomateSaucelabsDataCenter string
+
+const (
+	SaucelabsEspressoAppAutomateSaucelabsDataCenterUsWest1    SaucelabsEspressoAppAutomateSaucelabsDataCenter = "us-west-1"
+	SaucelabsEspressoAppAutomateSaucelabsDataCenterEuCentral1 SaucelabsEspressoAppAutomateSaucelabsDataCenter = "eu-central-1"
+)
+
 // SaucelabsEspressoAppAutomateBuilder builds a saucelabs-espresso-app-automate step with typed input methods.
 type SaucelabsEspressoAppAutomateBuilder struct{ *Builder }
 
@@ -50,7 +58,7 @@ func (b *SaucelabsEspressoAppAutomateBuilder) WithSaucelabsDeviceName(value stri
 }
 
 // WithSaucelabsDataCenter sets sauceLabs Data Center.
-func (b *SaucelabsEspressoAppAutomateBuilder) WithSaucelabsDataCenter(value string) *SaucelabsEspressoAppAutomateBuilder {
-	b.Builder.WithInput("saucelabs_data_center", value)
+func (b *SaucelabsEspressoAppAutomateBuilder) WithSaucelabsDataCenter(value SaucelabsEspressoAppAutomateSaucelabsDataCenter) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithInput("saucelabs_data_center", string(value))
 	return b
 }

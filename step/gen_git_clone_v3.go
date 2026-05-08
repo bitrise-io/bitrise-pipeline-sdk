@@ -3,6 +3,30 @@
 
 package step
 
+// GitCloneV3ResetRepository enumerates the valid values for the reset_repository input.
+type GitCloneV3ResetRepository string
+
+const (
+	GitCloneV3ResetRepositoryNo  GitCloneV3ResetRepository = "No"
+	GitCloneV3ResetRepositoryYes GitCloneV3ResetRepository = "Yes"
+)
+
+// GitCloneV3UpdateSubmodules enumerates the valid values for the update_submodules input.
+type GitCloneV3UpdateSubmodules string
+
+const (
+	GitCloneV3UpdateSubmodulesYes GitCloneV3UpdateSubmodules = "yes"
+	GitCloneV3UpdateSubmodulesNo  GitCloneV3UpdateSubmodules = "no"
+)
+
+// GitCloneV3ManualMerge enumerates the valid values for the manual_merge input.
+type GitCloneV3ManualMerge string
+
+const (
+	GitCloneV3ManualMergeYes GitCloneV3ManualMerge = "yes"
+	GitCloneV3ManualMergeNo  GitCloneV3ManualMerge = "no"
+)
+
 // GitCloneV3Builder builds a git-clone step with typed input methods.
 type GitCloneV3Builder struct{ *Builder }
 
@@ -74,8 +98,8 @@ func (b *GitCloneV3Builder) WithPullRequestMergeBranch(value string) *GitCloneV3
 }
 
 // WithResetRepository sets reset repository.
-func (b *GitCloneV3Builder) WithResetRepository(value string) *GitCloneV3Builder {
-	b.Builder.WithInput("reset_repository", value)
+func (b *GitCloneV3Builder) WithResetRepository(value GitCloneV3ResetRepository) *GitCloneV3Builder {
+	b.Builder.WithInput("reset_repository", string(value))
 	return b
 }
 
@@ -98,14 +122,14 @@ func (b *GitCloneV3Builder) WithBuildApiToken(value string) *GitCloneV3Builder {
 }
 
 // WithUpdateSubmodules sets update the registered submodules?.
-func (b *GitCloneV3Builder) WithUpdateSubmodules(value string) *GitCloneV3Builder {
-	b.Builder.WithInput("update_submodules", value)
+func (b *GitCloneV3Builder) WithUpdateSubmodules(value GitCloneV3UpdateSubmodules) *GitCloneV3Builder {
+	b.Builder.WithInput("update_submodules", string(value))
 	return b
 }
 
 // WithManualMerge sets manual merge.
-func (b *GitCloneV3Builder) WithManualMerge(value string) *GitCloneV3Builder {
-	b.Builder.WithInput("manual_merge", value)
+func (b *GitCloneV3Builder) WithManualMerge(value GitCloneV3ManualMerge) *GitCloneV3Builder {
+	b.Builder.WithInput("manual_merge", string(value))
 	return b
 }
 

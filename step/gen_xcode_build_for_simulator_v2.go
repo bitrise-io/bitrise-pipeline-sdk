@@ -3,6 +3,47 @@
 
 package step
 
+// XcodeBuildForSimulatorV2Destination enumerates the valid values for the destination input.
+type XcodeBuildForSimulatorV2Destination string
+
+const (
+	XcodeBuildForSimulatorV2DestinationGenericPlatformIOSSimulator     XcodeBuildForSimulatorV2Destination = "generic/platform=iOS Simulator"
+	XcodeBuildForSimulatorV2DestinationGenericPlatformWatchOSSimulator XcodeBuildForSimulatorV2Destination = "generic/platform=watchOS Simulator"
+	XcodeBuildForSimulatorV2DestinationGenericPlatformTvOSSimulator    XcodeBuildForSimulatorV2Destination = "generic/platform=tvOS Simulator"
+)
+
+// XcodeBuildForSimulatorV2PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeBuildForSimulatorV2PerformCleanAction string
+
+const (
+	XcodeBuildForSimulatorV2PerformCleanActionYes XcodeBuildForSimulatorV2PerformCleanAction = "yes"
+	XcodeBuildForSimulatorV2PerformCleanActionNo  XcodeBuildForSimulatorV2PerformCleanAction = "no"
+)
+
+// XcodeBuildForSimulatorV2LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeBuildForSimulatorV2LogFormatter string
+
+const (
+	XcodeBuildForSimulatorV2LogFormatterXcpretty   XcodeBuildForSimulatorV2LogFormatter = "xcpretty"
+	XcodeBuildForSimulatorV2LogFormatterXcodebuild XcodeBuildForSimulatorV2LogFormatter = "xcodebuild"
+)
+
+// XcodeBuildForSimulatorV2CacheLevel enumerates the valid values for the cache_level input.
+type XcodeBuildForSimulatorV2CacheLevel string
+
+const (
+	XcodeBuildForSimulatorV2CacheLevelNone          XcodeBuildForSimulatorV2CacheLevel = "none"
+	XcodeBuildForSimulatorV2CacheLevelSwiftPackages XcodeBuildForSimulatorV2CacheLevel = "swift_packages"
+)
+
+// XcodeBuildForSimulatorV2VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeBuildForSimulatorV2VerboseLog string
+
+const (
+	XcodeBuildForSimulatorV2VerboseLogYes XcodeBuildForSimulatorV2VerboseLog = "yes"
+	XcodeBuildForSimulatorV2VerboseLogNo  XcodeBuildForSimulatorV2VerboseLog = "no"
+)
+
 // XcodeBuildForSimulatorV2Builder builds a xcode-build-for-simulator step with typed input methods.
 type XcodeBuildForSimulatorV2Builder struct{ *Builder }
 
@@ -32,8 +73,8 @@ func (b *XcodeBuildForSimulatorV2Builder) WithScheme(value string) *XcodeBuildFo
 }
 
 // WithDestination sets device destination specifier.
-func (b *XcodeBuildForSimulatorV2Builder) WithDestination(value string) *XcodeBuildForSimulatorV2Builder {
-	b.Builder.WithInput("destination", value)
+func (b *XcodeBuildForSimulatorV2Builder) WithDestination(value XcodeBuildForSimulatorV2Destination) *XcodeBuildForSimulatorV2Builder {
+	b.Builder.WithInput("destination", string(value))
 	return b
 }
 
@@ -50,8 +91,8 @@ func (b *XcodeBuildForSimulatorV2Builder) WithConfiguration(value string) *Xcode
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeBuildForSimulatorV2Builder) WithPerformCleanAction(value string) *XcodeBuildForSimulatorV2Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeBuildForSimulatorV2Builder) WithPerformCleanAction(value XcodeBuildForSimulatorV2PerformCleanAction) *XcodeBuildForSimulatorV2Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -62,8 +103,8 @@ func (b *XcodeBuildForSimulatorV2Builder) WithXcodebuildOptions(value string) *X
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeBuildForSimulatorV2Builder) WithLogFormatter(value string) *XcodeBuildForSimulatorV2Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeBuildForSimulatorV2Builder) WithLogFormatter(value XcodeBuildForSimulatorV2LogFormatter) *XcodeBuildForSimulatorV2Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
@@ -74,14 +115,14 @@ func (b *XcodeBuildForSimulatorV2Builder) WithOutputDir(value string) *XcodeBuil
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeBuildForSimulatorV2Builder) WithCacheLevel(value string) *XcodeBuildForSimulatorV2Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeBuildForSimulatorV2Builder) WithCacheLevel(value XcodeBuildForSimulatorV2CacheLevel) *XcodeBuildForSimulatorV2Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeBuildForSimulatorV2Builder) WithVerboseLog(value string) *XcodeBuildForSimulatorV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeBuildForSimulatorV2Builder) WithVerboseLog(value XcodeBuildForSimulatorV2VerboseLog) *XcodeBuildForSimulatorV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

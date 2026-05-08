@@ -13,3 +13,7 @@ type TelegramNotifyBuilder = TelegramNotifyV2Builder
 func TelegramNotify(version ...string) *TelegramNotifyV2Builder {
 	return TelegramNotifyV2(version...)
 }
+
+// TelegramNotifyLinkPreviewsEnabled is a type alias for TelegramNotifyV2LinkPreviewsEnabled,
+// pointing to the latest supported major version of the step's enum type.
+type TelegramNotifyLinkPreviewsEnabled = TelegramNotifyV2LinkPreviewsEnabled

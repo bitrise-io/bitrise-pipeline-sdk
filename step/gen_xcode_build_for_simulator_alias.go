@@ -18,3 +18,19 @@ func XcodeBuildForSimulator(version ...string) *XcodeBuildForSimulatorV3Builder 
 // published by xcode-build-for-simulator at the latest major version (v3).
 // For outputs of a specific major version use XcodeBuildForSimulatorV{N}Outputs directly.
 var XcodeBuildForSimulatorOutputs = XcodeBuildForSimulatorV3Outputs
+
+// XcodeBuildForSimulatorDestination is a type alias for XcodeBuildForSimulatorV3Destination,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForSimulatorDestination = XcodeBuildForSimulatorV3Destination
+
+// XcodeBuildForSimulatorPerformCleanAction is a type alias for XcodeBuildForSimulatorV3PerformCleanAction,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForSimulatorPerformCleanAction = XcodeBuildForSimulatorV3PerformCleanAction
+
+// XcodeBuildForSimulatorLogFormatter is a type alias for XcodeBuildForSimulatorV3LogFormatter,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForSimulatorLogFormatter = XcodeBuildForSimulatorV3LogFormatter
+
+// XcodeBuildForSimulatorVerboseLog is a type alias for XcodeBuildForSimulatorV3VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForSimulatorVerboseLog = XcodeBuildForSimulatorV3VerboseLog

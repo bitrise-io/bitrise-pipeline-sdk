@@ -3,6 +3,40 @@
 
 package step
 
+// FastlaneV3Connection enumerates the valid values for the connection input.
+type FastlaneV3Connection string
+
+const (
+	FastlaneV3ConnectionAutomatic FastlaneV3Connection = "automatic"
+	FastlaneV3ConnectionApiKey    FastlaneV3Connection = "api_key"
+	FastlaneV3ConnectionAppleId   FastlaneV3Connection = "apple_id"
+	FastlaneV3ConnectionOff       FastlaneV3Connection = "off"
+)
+
+// FastlaneV3UpdateFastlane enumerates the valid values for the update_fastlane input.
+type FastlaneV3UpdateFastlane string
+
+const (
+	FastlaneV3UpdateFastlaneTrue  FastlaneV3UpdateFastlane = "true"
+	FastlaneV3UpdateFastlaneFalse FastlaneV3UpdateFastlane = "false"
+)
+
+// FastlaneV3VerboseLog enumerates the valid values for the verbose_log input.
+type FastlaneV3VerboseLog string
+
+const (
+	FastlaneV3VerboseLogYes FastlaneV3VerboseLog = "yes"
+	FastlaneV3VerboseLogNo  FastlaneV3VerboseLog = "no"
+)
+
+// FastlaneV3EnableCache enumerates the valid values for the enable_cache input.
+type FastlaneV3EnableCache string
+
+const (
+	FastlaneV3EnableCacheYes FastlaneV3EnableCache = "yes"
+	FastlaneV3EnableCacheNo  FastlaneV3EnableCache = "no"
+)
+
 // FastlaneV3Builder builds a fastlane step with typed input methods.
 type FastlaneV3Builder struct{ *Builder }
 
@@ -32,8 +66,8 @@ func (b *FastlaneV3Builder) WithWorkDir(value string) *FastlaneV3Builder {
 }
 
 // WithConnection sets bitrise Apple Developer Connection.
-func (b *FastlaneV3Builder) WithConnection(value string) *FastlaneV3Builder {
-	b.Builder.WithInput("connection", value)
+func (b *FastlaneV3Builder) WithConnection(value FastlaneV3Connection) *FastlaneV3Builder {
+	b.Builder.WithInput("connection", string(value))
 	return b
 }
 
@@ -68,19 +102,19 @@ func (b *FastlaneV3Builder) WithAppPassword(value string) *FastlaneV3Builder {
 }
 
 // WithUpdateFastlane sets should update fastlane gem before run?.
-func (b *FastlaneV3Builder) WithUpdateFastlane(value string) *FastlaneV3Builder {
-	b.Builder.WithInput("update_fastlane", value)
+func (b *FastlaneV3Builder) WithUpdateFastlane(value FastlaneV3UpdateFastlane) *FastlaneV3Builder {
+	b.Builder.WithInput("update_fastlane", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *FastlaneV3Builder) WithVerboseLog(value string) *FastlaneV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *FastlaneV3Builder) WithVerboseLog(value FastlaneV3VerboseLog) *FastlaneV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithEnableCache sets enable collecting files to be included in the build cache.
-func (b *FastlaneV3Builder) WithEnableCache(value string) *FastlaneV3Builder {
-	b.Builder.WithInput("enable_cache", value)
+func (b *FastlaneV3Builder) WithEnableCache(value FastlaneV3EnableCache) *FastlaneV3Builder {
+	b.Builder.WithInput("enable_cache", string(value))
 	return b
 }

@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreCarthageCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreCarthageCacheV2Verbose string
+
+const (
+	RestoreCarthageCacheV2VerboseTrue  RestoreCarthageCacheV2Verbose = "true"
+	RestoreCarthageCacheV2VerboseFalse RestoreCarthageCacheV2Verbose = "false"
+)
+
 // RestoreCarthageCacheV2Builder builds a restore-carthage-cache step with typed input methods.
 type RestoreCarthageCacheV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func RestoreCarthageCacheV2(version ...string) *RestoreCarthageCacheV2Builder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreCarthageCacheV2Builder) WithVerbose(value string) *RestoreCarthageCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreCarthageCacheV2Builder) WithVerbose(value RestoreCarthageCacheV2Verbose) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

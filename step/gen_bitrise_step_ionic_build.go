@@ -3,6 +3,14 @@
 
 package step
 
+// BitriseStepIonicBuildProductionMode enumerates the valid values for the production_mode input.
+type BitriseStepIonicBuildProductionMode string
+
+const (
+	BitriseStepIonicBuildProductionModeYes BitriseStepIonicBuildProductionMode = "yes"
+	BitriseStepIonicBuildProductionModeNo  BitriseStepIonicBuildProductionMode = "no"
+)
+
 // BitriseStepIonicBuildBuilder builds a bitrise-step-ionic-build step with typed input methods.
 type BitriseStepIonicBuildBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func BitriseStepIonicBuild(version ...string) *BitriseStepIonicBuildBuilder {
 }
 
 // WithProductionMode sets production Configuration.
-func (b *BitriseStepIonicBuildBuilder) WithProductionMode(value string) *BitriseStepIonicBuildBuilder {
-	b.Builder.WithInput("production_mode", value)
+func (b *BitriseStepIonicBuildBuilder) WithProductionMode(value BitriseStepIonicBuildProductionMode) *BitriseStepIonicBuildBuilder {
+	b.Builder.WithInput("production_mode", string(value))
 	return b
 }
 

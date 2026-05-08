@@ -3,6 +3,22 @@
 
 package step
 
+// CertificateAndProfileInstallerInstallDefaults enumerates the valid values for the install_defaults input.
+type CertificateAndProfileInstallerInstallDefaults string
+
+const (
+	CertificateAndProfileInstallerInstallDefaultsNo  CertificateAndProfileInstallerInstallDefaults = "no"
+	CertificateAndProfileInstallerInstallDefaultsYes CertificateAndProfileInstallerInstallDefaults = "yes"
+)
+
+// CertificateAndProfileInstallerVerbose enumerates the valid values for the verbose input.
+type CertificateAndProfileInstallerVerbose string
+
+const (
+	CertificateAndProfileInstallerVerboseTrue  CertificateAndProfileInstallerVerbose = "true"
+	CertificateAndProfileInstallerVerboseFalse CertificateAndProfileInstallerVerbose = "false"
+)
+
 // CertificateAndProfileInstallerBuilder builds a certificate-and-profile-installer step with typed input methods.
 type CertificateAndProfileInstallerBuilder struct{ *Builder }
 
@@ -50,8 +66,8 @@ func (b *CertificateAndProfileInstallerBuilder) WithKeychainPassword(value strin
 }
 
 // WithInstallDefaults sets installs default Codesign Files.
-func (b *CertificateAndProfileInstallerBuilder) WithInstallDefaults(value string) *CertificateAndProfileInstallerBuilder {
-	b.Builder.WithInput("install_defaults", value)
+func (b *CertificateAndProfileInstallerBuilder) WithInstallDefaults(value CertificateAndProfileInstallerInstallDefaults) *CertificateAndProfileInstallerBuilder {
+	b.Builder.WithInput("install_defaults", string(value))
 	return b
 }
 
@@ -74,7 +90,7 @@ func (b *CertificateAndProfileInstallerBuilder) WithDefaultProvisioningProfileUr
 }
 
 // WithVerbose sets verbose logging.
-func (b *CertificateAndProfileInstallerBuilder) WithVerbose(value string) *CertificateAndProfileInstallerBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *CertificateAndProfileInstallerBuilder) WithVerbose(value CertificateAndProfileInstallerVerbose) *CertificateAndProfileInstallerBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

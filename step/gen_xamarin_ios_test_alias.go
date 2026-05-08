@@ -22,3 +22,7 @@ func XamarinIosTest(version ...string) *XamarinIosTestV2Builder {
 // published by xamarin-ios-test at the latest major version (v2).
 // For outputs of a specific major version use XamarinIosTestV{N}Outputs directly.
 var XamarinIosTestOutputs = XamarinIosTestV2Outputs
+
+// XamarinIosTestBuildTool is a type alias for XamarinIosTestV2BuildTool,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinIosTestBuildTool = XamarinIosTestV2BuildTool

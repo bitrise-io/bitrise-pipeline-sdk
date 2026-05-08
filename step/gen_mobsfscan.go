@@ -3,6 +3,51 @@
 
 package step
 
+// MobsfscanOutputFormat enumerates the valid values for the output_format input.
+type MobsfscanOutputFormat string
+
+const (
+	MobsfscanOutputFormatTxt       MobsfscanOutputFormat = "txt"
+	MobsfscanOutputFormatJson      MobsfscanOutputFormat = "json"
+	MobsfscanOutputFormatSarif     MobsfscanOutputFormat = "sarif"
+	MobsfscanOutputFormatSonarqube MobsfscanOutputFormat = "sonarqube"
+	MobsfscanOutputFormatHtml      MobsfscanOutputFormat = "html"
+)
+
+// MobsfscanProjectType enumerates the valid values for the project_type input.
+type MobsfscanProjectType string
+
+const (
+	MobsfscanProjectTypeAuto    MobsfscanProjectType = "auto"
+	MobsfscanProjectTypeAndroid MobsfscanProjectType = "android"
+	MobsfscanProjectTypeIos     MobsfscanProjectType = "ios"
+)
+
+// MobsfscanMultiprocessing enumerates the valid values for the multiprocessing input.
+type MobsfscanMultiprocessing string
+
+const (
+	MobsfscanMultiprocessingDefault  MobsfscanMultiprocessing = "default"
+	MobsfscanMultiprocessingBilliard MobsfscanMultiprocessing = "billiard"
+	MobsfscanMultiprocessingThread   MobsfscanMultiprocessing = "thread"
+)
+
+// MobsfscanFailOnWarning enumerates the valid values for the fail_on_warning input.
+type MobsfscanFailOnWarning string
+
+const (
+	MobsfscanFailOnWarningYes MobsfscanFailOnWarning = "yes"
+	MobsfscanFailOnWarningNo  MobsfscanFailOnWarning = "no"
+)
+
+// MobsfscanNoFail enumerates the valid values for the no_fail input.
+type MobsfscanNoFail string
+
+const (
+	MobsfscanNoFailYes MobsfscanNoFail = "yes"
+	MobsfscanNoFailNo  MobsfscanNoFail = "no"
+)
+
 // MobsfscanBuilder builds a mobsfscan step with typed input methods.
 type MobsfscanBuilder struct{ *Builder }
 
@@ -32,14 +77,14 @@ func (b *MobsfscanBuilder) WithReportFilePath(value string) *MobsfscanBuilder {
 }
 
 // WithOutputFormat sets output format.
-func (b *MobsfscanBuilder) WithOutputFormat(value string) *MobsfscanBuilder {
-	b.Builder.WithInput("output_format", value)
+func (b *MobsfscanBuilder) WithOutputFormat(value MobsfscanOutputFormat) *MobsfscanBuilder {
+	b.Builder.WithInput("output_format", string(value))
 	return b
 }
 
 // WithProjectType sets project type.
-func (b *MobsfscanBuilder) WithProjectType(value string) *MobsfscanBuilder {
-	b.Builder.WithInput("project_type", value)
+func (b *MobsfscanBuilder) WithProjectType(value MobsfscanProjectType) *MobsfscanBuilder {
+	b.Builder.WithInput("project_type", string(value))
 	return b
 }
 
@@ -50,19 +95,19 @@ func (b *MobsfscanBuilder) WithConfigFile(value string) *MobsfscanBuilder {
 }
 
 // WithMultiprocessing sets multiprocessing.
-func (b *MobsfscanBuilder) WithMultiprocessing(value string) *MobsfscanBuilder {
-	b.Builder.WithInput("multiprocessing", value)
+func (b *MobsfscanBuilder) WithMultiprocessing(value MobsfscanMultiprocessing) *MobsfscanBuilder {
+	b.Builder.WithInput("multiprocessing", string(value))
 	return b
 }
 
 // WithFailOnWarning sets fail on warning.
-func (b *MobsfscanBuilder) WithFailOnWarning(value string) *MobsfscanBuilder {
-	b.Builder.WithInput("fail_on_warning", value)
+func (b *MobsfscanBuilder) WithFailOnWarning(value MobsfscanFailOnWarning) *MobsfscanBuilder {
+	b.Builder.WithInput("fail_on_warning", string(value))
 	return b
 }
 
 // WithNoFail sets step never fails.
-func (b *MobsfscanBuilder) WithNoFail(value string) *MobsfscanBuilder {
-	b.Builder.WithInput("no_fail", value)
+func (b *MobsfscanBuilder) WithNoFail(value MobsfscanNoFail) *MobsfscanBuilder {
+	b.Builder.WithInput("no_fail", string(value))
 	return b
 }

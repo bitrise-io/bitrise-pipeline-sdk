@@ -3,6 +3,30 @@
 
 package step
 
+// SlackV2IsDebugMode enumerates the valid values for the is_debug_mode input.
+type SlackV2IsDebugMode string
+
+const (
+	SlackV2IsDebugModeYes SlackV2IsDebugMode = "yes"
+	SlackV2IsDebugModeNo  SlackV2IsDebugMode = "no"
+)
+
+// SlackV2LinkNames enumerates the valid values for the link_names input.
+type SlackV2LinkNames string
+
+const (
+	SlackV2LinkNamesYes SlackV2LinkNames = "yes"
+	SlackV2LinkNamesNo  SlackV2LinkNames = "no"
+)
+
+// SlackV2Timestamp enumerates the valid values for the timestamp input.
+type SlackV2Timestamp string
+
+const (
+	SlackV2TimestampYes SlackV2Timestamp = "yes"
+	SlackV2TimestampNo  SlackV2Timestamp = "no"
+)
+
 // SlackV2Builder builds a slack step with typed input methods.
 type SlackV2Builder struct{ *Builder }
 
@@ -20,8 +44,8 @@ func SlackV2(version ...string) *SlackV2Builder {
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *SlackV2Builder) WithIsDebugMode(value string) *SlackV2Builder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *SlackV2Builder) WithIsDebugMode(value SlackV2IsDebugMode) *SlackV2Builder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 
@@ -80,8 +104,8 @@ func (b *SlackV2Builder) WithIconUrlOnError(value string) *SlackV2Builder {
 }
 
 // WithLinkNames sets linkify channel names and usernames?.
-func (b *SlackV2Builder) WithLinkNames(value string) *SlackV2Builder {
-	b.Builder.WithInput("link_names", value)
+func (b *SlackV2Builder) WithLinkNames(value SlackV2LinkNames) *SlackV2Builder {
+	b.Builder.WithInput("link_names", string(value))
 	return b
 }
 
@@ -194,8 +218,8 @@ func (b *SlackV2Builder) WithFooterIcon(value string) *SlackV2Builder {
 }
 
 // WithTimestamp sets show the current time as part of the attachment's footer?.
-func (b *SlackV2Builder) WithTimestamp(value string) *SlackV2Builder {
-	b.Builder.WithInput("timestamp", value)
+func (b *SlackV2Builder) WithTimestamp(value SlackV2Timestamp) *SlackV2Builder {
+	b.Builder.WithInput("timestamp", string(value))
 	return b
 }
 

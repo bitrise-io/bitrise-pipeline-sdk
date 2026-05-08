@@ -3,6 +3,47 @@
 
 package step
 
+// KobitonExecuteTestV2UseCustomDeviceInput enumerates the valid values for the use_custom_device_input input.
+type KobitonExecuteTestV2UseCustomDeviceInput string
+
+const (
+	KobitonExecuteTestV2UseCustomDeviceInputTrue  KobitonExecuteTestV2UseCustomDeviceInput = "true"
+	KobitonExecuteTestV2UseCustomDeviceInputFalse KobitonExecuteTestV2UseCustomDeviceInput = "false"
+)
+
+// KobitonExecuteTestV2DevicePlatformInput enumerates the valid values for the device_platform_input input.
+type KobitonExecuteTestV2DevicePlatformInput string
+
+const (
+	KobitonExecuteTestV2DevicePlatformInputAndroid KobitonExecuteTestV2DevicePlatformInput = "android"
+	KobitonExecuteTestV2DevicePlatformInputIos     KobitonExecuteTestV2DevicePlatformInput = "ios"
+)
+
+// KobitonExecuteTestV2ScriptlessAutomation enumerates the valid values for the scriptless_automation input.
+type KobitonExecuteTestV2ScriptlessAutomation string
+
+const (
+	KobitonExecuteTestV2ScriptlessAutomationTrue  KobitonExecuteTestV2ScriptlessAutomation = "true"
+	KobitonExecuteTestV2ScriptlessAutomationFalse KobitonExecuteTestV2ScriptlessAutomation = "false"
+)
+
+// KobitonExecuteTestV2WaitForExecutionInput enumerates the valid values for the wait_for_execution_input input.
+type KobitonExecuteTestV2WaitForExecutionInput string
+
+const (
+	KobitonExecuteTestV2WaitForExecutionInputTrue  KobitonExecuteTestV2WaitForExecutionInput = "true"
+	KobitonExecuteTestV2WaitForExecutionInputFalse KobitonExecuteTestV2WaitForExecutionInput = "false"
+)
+
+// KobitonExecuteTestV2LogTypeInput enumerates the valid values for the log_type_input input.
+type KobitonExecuteTestV2LogTypeInput string
+
+const (
+	KobitonExecuteTestV2LogTypeInputCombined KobitonExecuteTestV2LogTypeInput = "combined"
+	KobitonExecuteTestV2LogTypeInputOutput   KobitonExecuteTestV2LogTypeInput = "output"
+	KobitonExecuteTestV2LogTypeInputError    KobitonExecuteTestV2LogTypeInput = "error"
+)
+
 // KobitonExecuteTestV2Builder builds a kobiton-execute-test step with typed input methods.
 type KobitonExecuteTestV2Builder struct{ *Builder }
 
@@ -74,8 +115,8 @@ func (b *KobitonExecuteTestV2Builder) WithAppInput(value string) *KobitonExecute
 }
 
 // WithUseCustomDeviceInput sets use Custom Device.
-func (b *KobitonExecuteTestV2Builder) WithUseCustomDeviceInput(value string) *KobitonExecuteTestV2Builder {
-	b.Builder.WithInput("use_custom_device_input", value)
+func (b *KobitonExecuteTestV2Builder) WithUseCustomDeviceInput(value KobitonExecuteTestV2UseCustomDeviceInput) *KobitonExecuteTestV2Builder {
+	b.Builder.WithInput("use_custom_device_input", string(value))
 	return b
 }
 
@@ -92,14 +133,14 @@ func (b *KobitonExecuteTestV2Builder) WithDevicePlatformVersionInput(value strin
 }
 
 // WithDevicePlatformInput sets device platform.
-func (b *KobitonExecuteTestV2Builder) WithDevicePlatformInput(value string) *KobitonExecuteTestV2Builder {
-	b.Builder.WithInput("device_platform_input", value)
+func (b *KobitonExecuteTestV2Builder) WithDevicePlatformInput(value KobitonExecuteTestV2DevicePlatformInput) *KobitonExecuteTestV2Builder {
+	b.Builder.WithInput("device_platform_input", string(value))
 	return b
 }
 
 // WithScriptlessAutomation sets trigger Scriptless on multiple devices.
-func (b *KobitonExecuteTestV2Builder) WithScriptlessAutomation(value string) *KobitonExecuteTestV2Builder {
-	b.Builder.WithInput("scriptless_automation", value)
+func (b *KobitonExecuteTestV2Builder) WithScriptlessAutomation(value KobitonExecuteTestV2ScriptlessAutomation) *KobitonExecuteTestV2Builder {
+	b.Builder.WithInput("scriptless_automation", string(value))
 	return b
 }
 
@@ -128,14 +169,14 @@ func (b *KobitonExecuteTestV2Builder) WithCommandInput(value string) *KobitonExe
 }
 
 // WithWaitForExecutionInput sets wait for execution.
-func (b *KobitonExecuteTestV2Builder) WithWaitForExecutionInput(value string) *KobitonExecuteTestV2Builder {
-	b.Builder.WithInput("wait_for_execution_input", value)
+func (b *KobitonExecuteTestV2Builder) WithWaitForExecutionInput(value KobitonExecuteTestV2WaitForExecutionInput) *KobitonExecuteTestV2Builder {
+	b.Builder.WithInput("wait_for_execution_input", string(value))
 	return b
 }
 
 // WithLogTypeInput sets log type.
-func (b *KobitonExecuteTestV2Builder) WithLogTypeInput(value string) *KobitonExecuteTestV2Builder {
-	b.Builder.WithInput("log_type_input", value)
+func (b *KobitonExecuteTestV2Builder) WithLogTypeInput(value KobitonExecuteTestV2LogTypeInput) *KobitonExecuteTestV2Builder {
+	b.Builder.WithInput("log_type_input", string(value))
 	return b
 }
 

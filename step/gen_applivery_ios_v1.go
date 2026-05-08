@@ -3,6 +3,30 @@
 
 package step
 
+// AppliveryIosV1NotifyCollaborators enumerates the valid values for the notifyCollaborators input.
+type AppliveryIosV1NotifyCollaborators string
+
+const (
+	AppliveryIosV1NotifyCollaboratorsTrue  AppliveryIosV1NotifyCollaborators = "true"
+	AppliveryIosV1NotifyCollaboratorsFalse AppliveryIosV1NotifyCollaborators = "false"
+)
+
+// AppliveryIosV1NotifyEmployees enumerates the valid values for the notifyEmployees input.
+type AppliveryIosV1NotifyEmployees string
+
+const (
+	AppliveryIosV1NotifyEmployeesTrue  AppliveryIosV1NotifyEmployees = "true"
+	AppliveryIosV1NotifyEmployeesFalse AppliveryIosV1NotifyEmployees = "false"
+)
+
+// AppliveryIosV1UploadCodeSigning enumerates the valid values for the uploadCodeSigning input.
+type AppliveryIosV1UploadCodeSigning string
+
+const (
+	AppliveryIosV1UploadCodeSigningTrue  AppliveryIosV1UploadCodeSigning = "true"
+	AppliveryIosV1UploadCodeSigningFalse AppliveryIosV1UploadCodeSigning = "false"
+)
+
 // AppliveryIosV1Builder builds a applivery-ios step with typed input methods.
 type AppliveryIosV1Builder struct{ *Builder }
 
@@ -38,14 +62,14 @@ func (b *AppliveryIosV1Builder) WithChangelog(value string) *AppliveryIosV1Build
 }
 
 // WithNotifyCollaborators sets notify Collaborators?.
-func (b *AppliveryIosV1Builder) WithNotifyCollaborators(value string) *AppliveryIosV1Builder {
-	b.Builder.WithInput("notifyCollaborators", value)
+func (b *AppliveryIosV1Builder) WithNotifyCollaborators(value AppliveryIosV1NotifyCollaborators) *AppliveryIosV1Builder {
+	b.Builder.WithInput("notifyCollaborators", string(value))
 	return b
 }
 
 // WithNotifyEmployees sets notify Employees?.
-func (b *AppliveryIosV1Builder) WithNotifyEmployees(value string) *AppliveryIosV1Builder {
-	b.Builder.WithInput("notifyEmployees", value)
+func (b *AppliveryIosV1Builder) WithNotifyEmployees(value AppliveryIosV1NotifyEmployees) *AppliveryIosV1Builder {
+	b.Builder.WithInput("notifyEmployees", string(value))
 	return b
 }
 
@@ -68,8 +92,8 @@ func (b *AppliveryIosV1Builder) WithVersionName(value string) *AppliveryIosV1Bui
 }
 
 // WithUploadCodeSigning sets enable to upload certificates and provisioning profiles to Applivery..
-func (b *AppliveryIosV1Builder) WithUploadCodeSigning(value string) *AppliveryIosV1Builder {
-	b.Builder.WithInput("uploadCodeSigning", value)
+func (b *AppliveryIosV1Builder) WithUploadCodeSigning(value AppliveryIosV1UploadCodeSigning) *AppliveryIosV1Builder {
+	b.Builder.WithInput("uploadCodeSigning", string(value))
 	return b
 }
 

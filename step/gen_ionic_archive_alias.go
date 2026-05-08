@@ -18,3 +18,23 @@ func IonicArchive(version ...string) *IonicArchiveV2Builder {
 // published by ionic-archive at the latest major version (v2).
 // For outputs of a specific major version use IonicArchiveV{N}Outputs directly.
 var IonicArchiveOutputs = IonicArchiveV2Outputs
+
+// IonicArchivePlatform is a type alias for IonicArchiveV2Platform,
+// pointing to the latest supported major version of the step's enum type.
+type IonicArchivePlatform = IonicArchiveV2Platform
+
+// IonicArchiveConfiguration is a type alias for IonicArchiveV2Configuration,
+// pointing to the latest supported major version of the step's enum type.
+type IonicArchiveConfiguration = IonicArchiveV2Configuration
+
+// IonicArchiveTarget is a type alias for IonicArchiveV2Target,
+// pointing to the latest supported major version of the step's enum type.
+type IonicArchiveTarget = IonicArchiveV2Target
+
+// IonicArchiveAndroidAppType is a type alias for IonicArchiveV2AndroidAppType,
+// pointing to the latest supported major version of the step's enum type.
+type IonicArchiveAndroidAppType = IonicArchiveV2AndroidAppType
+
+// IonicArchiveCacheLocalDeps is a type alias for IonicArchiveV2CacheLocalDeps,
+// pointing to the latest supported major version of the step's enum type.
+type IonicArchiveCacheLocalDeps = IonicArchiveV2CacheLocalDeps

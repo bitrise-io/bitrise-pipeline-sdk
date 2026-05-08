@@ -3,6 +3,14 @@
 
 package step
 
+// ApispotterTestRunnerAbortBuild enumerates the valid values for the abort_build input.
+type ApispotterTestRunnerAbortBuild string
+
+const (
+	ApispotterTestRunnerAbortBuildYes ApispotterTestRunnerAbortBuild = "yes"
+	ApispotterTestRunnerAbortBuildNo  ApispotterTestRunnerAbortBuild = "no"
+)
+
 // ApispotterTestRunnerBuilder builds a apispotter-test-runner step with typed input methods.
 type ApispotterTestRunnerBuilder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *ApispotterTestRunnerBuilder) WithApispotterTestGroupId(value string) *A
 }
 
 // WithAbortBuild sets abort The Current Build.
-func (b *ApispotterTestRunnerBuilder) WithAbortBuild(value string) *ApispotterTestRunnerBuilder {
-	b.Builder.WithInput("abort_build", value)
+func (b *ApispotterTestRunnerBuilder) WithAbortBuild(value ApispotterTestRunnerAbortBuild) *ApispotterTestRunnerBuilder {
+	b.Builder.WithInput("abort_build", string(value))
 	return b
 }
 

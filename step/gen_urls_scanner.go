@@ -3,6 +3,14 @@
 
 package step
 
+// UrlsScannerSslLabsScan enumerates the valid values for the ssl_labs_scan input.
+type UrlsScannerSslLabsScan string
+
+const (
+	UrlsScannerSslLabsScanYes UrlsScannerSslLabsScan = "yes"
+	UrlsScannerSslLabsScanNo  UrlsScannerSslLabsScan = "no"
+)
+
 // UrlsScannerBuilder builds a urls-scanner step with typed input methods.
 type UrlsScannerBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func UrlsScanner(version ...string) *UrlsScannerBuilder {
 }
 
 // WithSslLabsScan sets analyze HTTPS URLs with SSLLabs.
-func (b *UrlsScannerBuilder) WithSslLabsScan(value string) *UrlsScannerBuilder {
-	b.Builder.WithInput("ssl_labs_scan", value)
+func (b *UrlsScannerBuilder) WithSslLabsScan(value UrlsScannerSslLabsScan) *UrlsScannerBuilder {
+	b.Builder.WithInput("ssl_labs_scan", string(value))
 	return b
 }
 

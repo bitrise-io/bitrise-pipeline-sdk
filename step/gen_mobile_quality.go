@@ -3,6 +3,32 @@
 
 package step
 
+// MobileQualityCheckAndroid enumerates the valid values for the check_android input.
+type MobileQualityCheckAndroid string
+
+const (
+	MobileQualityCheckAndroidYes MobileQualityCheckAndroid = "yes"
+	MobileQualityCheckAndroidNo  MobileQualityCheckAndroid = "no"
+)
+
+// MobileQualityCheckIos enumerates the valid values for the check_ios input.
+type MobileQualityCheckIos string
+
+const (
+	MobileQualityCheckIosYes MobileQualityCheckIos = "yes"
+	MobileQualityCheckIosNo  MobileQualityCheckIos = "no"
+)
+
+// MobileQualityAlertThreshold enumerates the valid values for the alert_threshold input.
+type MobileQualityAlertThreshold string
+
+const (
+	MobileQualityAlertThreshold3  MobileQualityAlertThreshold = "3"
+	MobileQualityAlertThreshold5  MobileQualityAlertThreshold = "5"
+	MobileQualityAlertThreshold10 MobileQualityAlertThreshold = "10"
+	MobileQualityAlertThreshold20 MobileQualityAlertThreshold = "20"
+)
+
 // MobileQualityBuilder builds a mobile-quality step with typed input methods.
 //
 // Deprecated: This step is deprecated. Now it was split to use each feature separately (eg. Mobile apps permissions monitoring [monitoring-apps-permissions step])
@@ -24,14 +50,14 @@ func MobileQuality(version ...string) *MobileQualityBuilder {
 }
 
 // WithCheckAndroid sets check Android.
-func (b *MobileQualityBuilder) WithCheckAndroid(value string) *MobileQualityBuilder {
-	b.Builder.WithInput("check_android", value)
+func (b *MobileQualityBuilder) WithCheckAndroid(value MobileQualityCheckAndroid) *MobileQualityBuilder {
+	b.Builder.WithInput("check_android", string(value))
 	return b
 }
 
 // WithCheckIos sets check iOS.
-func (b *MobileQualityBuilder) WithCheckIos(value string) *MobileQualityBuilder {
-	b.Builder.WithInput("check_ios", value)
+func (b *MobileQualityBuilder) WithCheckIos(value MobileQualityCheckIos) *MobileQualityBuilder {
+	b.Builder.WithInput("check_ios", string(value))
 	return b
 }
 
@@ -90,8 +116,8 @@ func (b *MobileQualityBuilder) WithIosPermissionCount(value string) *MobileQuali
 }
 
 // WithAlertThreshold sets alert threshold.
-func (b *MobileQualityBuilder) WithAlertThreshold(value string) *MobileQualityBuilder {
-	b.Builder.WithInput("alert_threshold", value)
+func (b *MobileQualityBuilder) WithAlertThreshold(value MobileQualityAlertThreshold) *MobileQualityBuilder {
+	b.Builder.WithInput("alert_threshold", string(value))
 	return b
 }
 

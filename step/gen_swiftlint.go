@@ -3,6 +3,46 @@
 
 package step
 
+// SwiftlintLintRange enumerates the valid values for the lint_range input.
+type SwiftlintLintRange string
+
+const (
+	SwiftlintLintRangeAll     SwiftlintLintRange = "all"
+	SwiftlintLintRangeChanged SwiftlintLintRange = "changed"
+)
+
+// SwiftlintReporter enumerates the valid values for the reporter input.
+type SwiftlintReporter string
+
+const (
+	SwiftlintReporterCsv                  SwiftlintReporter = "csv"
+	SwiftlintReporterCheckstyle           SwiftlintReporter = "checkstyle"
+	SwiftlintReporterEmoji                SwiftlintReporter = "emoji"
+	SwiftlintReporterGithubActionsLogging SwiftlintReporter = "github-actions-logging"
+	SwiftlintReporterHtml                 SwiftlintReporter = "html"
+	SwiftlintReporterJson                 SwiftlintReporter = "json"
+	SwiftlintReporterJunit                SwiftlintReporter = "junit"
+	SwiftlintReporterMarkdown             SwiftlintReporter = "markdown"
+	SwiftlintReporterSonarqube            SwiftlintReporter = "sonarqube"
+	SwiftlintReporterXcode                SwiftlintReporter = "xcode"
+)
+
+// SwiftlintStrict enumerates the valid values for the strict input.
+type SwiftlintStrict string
+
+const (
+	SwiftlintStrictYes SwiftlintStrict = "yes"
+	SwiftlintStrictNo  SwiftlintStrict = "no"
+)
+
+// SwiftlintQuiet enumerates the valid values for the quiet input.
+type SwiftlintQuiet string
+
+const (
+	SwiftlintQuietYes SwiftlintQuiet = "yes"
+	SwiftlintQuietNo  SwiftlintQuiet = "no"
+)
+
 // SwiftlintBuilder builds a swiftlint step with typed input methods.
 type SwiftlintBuilder struct{ *Builder }
 
@@ -26,8 +66,8 @@ func (b *SwiftlintBuilder) WithLintingPath(value string) *SwiftlintBuilder {
 }
 
 // WithLintRange sets select option for range of Swiftlint.
-func (b *SwiftlintBuilder) WithLintRange(value string) *SwiftlintBuilder {
-	b.Builder.WithInput("lint_range", value)
+func (b *SwiftlintBuilder) WithLintRange(value SwiftlintLintRange) *SwiftlintBuilder {
+	b.Builder.WithInput("lint_range", string(value))
 	return b
 }
 
@@ -38,20 +78,20 @@ func (b *SwiftlintBuilder) WithLintConfigFile(value string) *SwiftlintBuilder {
 }
 
 // WithReporter sets select method for export.
-func (b *SwiftlintBuilder) WithReporter(value string) *SwiftlintBuilder {
-	b.Builder.WithInput("reporter", value)
+func (b *SwiftlintBuilder) WithReporter(value SwiftlintReporter) *SwiftlintBuilder {
+	b.Builder.WithInput("reporter", string(value))
 	return b
 }
 
 // WithStrict sets use strict mode.
-func (b *SwiftlintBuilder) WithStrict(value string) *SwiftlintBuilder {
-	b.Builder.WithInput("strict", value)
+func (b *SwiftlintBuilder) WithStrict(value SwiftlintStrict) *SwiftlintBuilder {
+	b.Builder.WithInput("strict", string(value))
 	return b
 }
 
 // WithQuiet sets use quiet mode.
-func (b *SwiftlintBuilder) WithQuiet(value string) *SwiftlintBuilder {
-	b.Builder.WithInput("quiet", value)
+func (b *SwiftlintBuilder) WithQuiet(value SwiftlintQuiet) *SwiftlintBuilder {
+	b.Builder.WithInput("quiet", string(value))
 	return b
 }
 

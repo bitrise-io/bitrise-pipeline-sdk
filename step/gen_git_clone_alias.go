@@ -18,3 +18,27 @@ func GitClone(version ...string) *GitCloneV8Builder {
 // published by git-clone at the latest major version (v8).
 // For outputs of a specific major version use GitCloneV{N}Outputs directly.
 var GitCloneOutputs = GitCloneV8Outputs
+
+// GitCloneMergePr is a type alias for GitCloneV8MergePr,
+// pointing to the latest supported major version of the step's enum type.
+type GitCloneMergePr = GitCloneV8MergePr
+
+// GitCloneUpdateSubmodules is a type alias for GitCloneV8UpdateSubmodules,
+// pointing to the latest supported major version of the step's enum type.
+type GitCloneUpdateSubmodules = GitCloneV8UpdateSubmodules
+
+// GitCloneFetchTags is a type alias for GitCloneV8FetchTags,
+// pointing to the latest supported major version of the step's enum type.
+type GitCloneFetchTags = GitCloneV8FetchTags
+
+// GitCloneIgnoreBranchForCommitFetch is a type alias for GitCloneV8IgnoreBranchForCommitFetch,
+// pointing to the latest supported major version of the step's enum type.
+type GitCloneIgnoreBranchForCommitFetch = GitCloneV8IgnoreBranchForCommitFetch
+
+// GitCloneResetRepository is a type alias for GitCloneV8ResetRepository,
+// pointing to the latest supported major version of the step's enum type.
+type GitCloneResetRepository = GitCloneV8ResetRepository
+
+// GitClonePerformanceMonitoring is a type alias for GitCloneV8PerformanceMonitoring,
+// pointing to the latest supported major version of the step's enum type.
+type GitClonePerformanceMonitoring = GitCloneV8PerformanceMonitoring

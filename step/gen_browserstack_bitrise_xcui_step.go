@@ -3,6 +3,70 @@
 
 package step
 
+// BrowserstackBitriseXcuiStepInstrumentationLogs enumerates the valid values for the instrumentation_logs input.
+type BrowserstackBitriseXcuiStepInstrumentationLogs string
+
+const (
+	BrowserstackBitriseXcuiStepInstrumentationLogsTrue  BrowserstackBitriseXcuiStepInstrumentationLogs = "true"
+	BrowserstackBitriseXcuiStepInstrumentationLogsFalse BrowserstackBitriseXcuiStepInstrumentationLogs = "false"
+)
+
+// BrowserstackBitriseXcuiStepNetworkLogs enumerates the valid values for the network_logs input.
+type BrowserstackBitriseXcuiStepNetworkLogs string
+
+const (
+	BrowserstackBitriseXcuiStepNetworkLogsTrue  BrowserstackBitriseXcuiStepNetworkLogs = "true"
+	BrowserstackBitriseXcuiStepNetworkLogsFalse BrowserstackBitriseXcuiStepNetworkLogs = "false"
+)
+
+// BrowserstackBitriseXcuiStepDeviceLogs enumerates the valid values for the device_logs input.
+type BrowserstackBitriseXcuiStepDeviceLogs string
+
+const (
+	BrowserstackBitriseXcuiStepDeviceLogsTrue  BrowserstackBitriseXcuiStepDeviceLogs = "true"
+	BrowserstackBitriseXcuiStepDeviceLogsFalse BrowserstackBitriseXcuiStepDeviceLogs = "false"
+)
+
+// BrowserstackBitriseXcuiStepDebugScreenshots enumerates the valid values for the debug_screenshots input.
+type BrowserstackBitriseXcuiStepDebugScreenshots string
+
+const (
+	BrowserstackBitriseXcuiStepDebugScreenshotsTrue  BrowserstackBitriseXcuiStepDebugScreenshots = "true"
+	BrowserstackBitriseXcuiStepDebugScreenshotsFalse BrowserstackBitriseXcuiStepDebugScreenshots = "false"
+)
+
+// BrowserstackBitriseXcuiStepVideoRecording enumerates the valid values for the video_recording input.
+type BrowserstackBitriseXcuiStepVideoRecording string
+
+const (
+	BrowserstackBitriseXcuiStepVideoRecordingTrue  BrowserstackBitriseXcuiStepVideoRecording = "true"
+	BrowserstackBitriseXcuiStepVideoRecordingFalse BrowserstackBitriseXcuiStepVideoRecording = "false"
+)
+
+// BrowserstackBitriseXcuiStepUseLocal enumerates the valid values for the use_local input.
+type BrowserstackBitriseXcuiStepUseLocal string
+
+const (
+	BrowserstackBitriseXcuiStepUseLocalTrue  BrowserstackBitriseXcuiStepUseLocal = "true"
+	BrowserstackBitriseXcuiStepUseLocalFalse BrowserstackBitriseXcuiStepUseLocal = "false"
+)
+
+// BrowserstackBitriseXcuiStepUseDynamicTests enumerates the valid values for the use_dynamic_tests input.
+type BrowserstackBitriseXcuiStepUseDynamicTests string
+
+const (
+	BrowserstackBitriseXcuiStepUseDynamicTestsTrue  BrowserstackBitriseXcuiStepUseDynamicTests = "true"
+	BrowserstackBitriseXcuiStepUseDynamicTestsFalse BrowserstackBitriseXcuiStepUseDynamicTests = "false"
+)
+
+// BrowserstackBitriseXcuiStepCheckBuildStatus enumerates the valid values for the check_build_status input.
+type BrowserstackBitriseXcuiStepCheckBuildStatus string
+
+const (
+	BrowserstackBitriseXcuiStepCheckBuildStatusTrue  BrowserstackBitriseXcuiStepCheckBuildStatus = "true"
+	BrowserstackBitriseXcuiStepCheckBuildStatusFalse BrowserstackBitriseXcuiStepCheckBuildStatus = "false"
+)
+
 // BrowserstackBitriseXcuiStepBuilder builds a browserstack-bitrise-xcui-step step with typed input methods.
 type BrowserstackBitriseXcuiStepBuilder struct{ *Builder }
 
@@ -50,32 +114,32 @@ func (b *BrowserstackBitriseXcuiStepBuilder) WithDevicesList(value string) *Brow
 }
 
 // WithInstrumentationLogs sets instrumentation logs.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithInstrumentationLogs(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("instrumentation_logs", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithInstrumentationLogs(value BrowserstackBitriseXcuiStepInstrumentationLogs) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("instrumentation_logs", string(value))
 	return b
 }
 
 // WithNetworkLogs sets network Logs.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithNetworkLogs(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("network_logs", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithNetworkLogs(value BrowserstackBitriseXcuiStepNetworkLogs) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("network_logs", string(value))
 	return b
 }
 
 // WithDeviceLogs sets device Logs.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithDeviceLogs(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("device_logs", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithDeviceLogs(value BrowserstackBitriseXcuiStepDeviceLogs) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("device_logs", string(value))
 	return b
 }
 
 // WithDebugScreenshots sets capture Screenshots.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithDebugScreenshots(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("debug_screenshots", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithDebugScreenshots(value BrowserstackBitriseXcuiStepDebugScreenshots) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("debug_screenshots", string(value))
 	return b
 }
 
 // WithVideoRecording sets video recording.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithVideoRecording(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("video_recording", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithVideoRecording(value BrowserstackBitriseXcuiStepVideoRecording) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("video_recording", string(value))
 	return b
 }
 
@@ -92,8 +156,8 @@ func (b *BrowserstackBitriseXcuiStepBuilder) WithProjectNotifyUrl(value string) 
 }
 
 // WithUseLocal sets local testing.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithUseLocal(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("use_local", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithUseLocal(value BrowserstackBitriseXcuiStepUseLocal) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("use_local", string(value))
 	return b
 }
 
@@ -110,14 +174,14 @@ func (b *BrowserstackBitriseXcuiStepBuilder) WithFilterTest(value string) *Brows
 }
 
 // WithUseDynamicTests sets run dynamic tests.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithUseDynamicTests(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("use_dynamic_tests", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithUseDynamicTests(value BrowserstackBitriseXcuiStepUseDynamicTests) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("use_dynamic_tests", string(value))
 	return b
 }
 
 // WithCheckBuildStatus sets build Status.
-func (b *BrowserstackBitriseXcuiStepBuilder) WithCheckBuildStatus(value string) *BrowserstackBitriseXcuiStepBuilder {
-	b.Builder.WithInput("check_build_status", value)
+func (b *BrowserstackBitriseXcuiStepBuilder) WithCheckBuildStatus(value BrowserstackBitriseXcuiStepCheckBuildStatus) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithInput("check_build_status", string(value))
 	return b
 }
 

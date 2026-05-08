@@ -3,6 +3,30 @@
 
 package step
 
+// AppcenterDeployAndroidV1NotifyTesters enumerates the valid values for the notify_testers input.
+type AppcenterDeployAndroidV1NotifyTesters string
+
+const (
+	AppcenterDeployAndroidV1NotifyTestersYes AppcenterDeployAndroidV1NotifyTesters = "yes"
+	AppcenterDeployAndroidV1NotifyTestersNo  AppcenterDeployAndroidV1NotifyTesters = "no"
+)
+
+// AppcenterDeployAndroidV1Mandatory enumerates the valid values for the mandatory input.
+type AppcenterDeployAndroidV1Mandatory string
+
+const (
+	AppcenterDeployAndroidV1MandatoryNo  AppcenterDeployAndroidV1Mandatory = "no"
+	AppcenterDeployAndroidV1MandatoryYes AppcenterDeployAndroidV1Mandatory = "yes"
+)
+
+// AppcenterDeployAndroidV1Debug enumerates the valid values for the debug input.
+type AppcenterDeployAndroidV1Debug string
+
+const (
+	AppcenterDeployAndroidV1DebugNo  AppcenterDeployAndroidV1Debug = "no"
+	AppcenterDeployAndroidV1DebugYes AppcenterDeployAndroidV1Debug = "yes"
+)
+
 // AppcenterDeployAndroidV1Builder builds a appcenter-deploy-android step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -78,20 +102,20 @@ func (b *AppcenterDeployAndroidV1Builder) WithReleaseNotes(value string) *Appcen
 }
 
 // WithNotifyTesters sets notify Testers.
-func (b *AppcenterDeployAndroidV1Builder) WithNotifyTesters(value string) *AppcenterDeployAndroidV1Builder {
-	b.Builder.WithInput("notify_testers", value)
+func (b *AppcenterDeployAndroidV1Builder) WithNotifyTesters(value AppcenterDeployAndroidV1NotifyTesters) *AppcenterDeployAndroidV1Builder {
+	b.Builder.WithInput("notify_testers", string(value))
 	return b
 }
 
 // WithMandatory sets mandatory.
-func (b *AppcenterDeployAndroidV1Builder) WithMandatory(value string) *AppcenterDeployAndroidV1Builder {
-	b.Builder.WithInput("mandatory", value)
+func (b *AppcenterDeployAndroidV1Builder) WithMandatory(value AppcenterDeployAndroidV1Mandatory) *AppcenterDeployAndroidV1Builder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 
 // WithDebug sets debug.
-func (b *AppcenterDeployAndroidV1Builder) WithDebug(value string) *AppcenterDeployAndroidV1Builder {
-	b.Builder.WithInput("debug", value)
+func (b *AppcenterDeployAndroidV1Builder) WithDebug(value AppcenterDeployAndroidV1Debug) *AppcenterDeployAndroidV1Builder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 

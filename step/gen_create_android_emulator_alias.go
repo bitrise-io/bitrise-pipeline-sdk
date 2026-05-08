@@ -22,3 +22,11 @@ func CreateAndroidEmulator(version ...string) *CreateAndroidEmulatorV1Builder {
 // published by create-android-emulator at the latest major version (v1).
 // For outputs of a specific major version use CreateAndroidEmulatorV{N}Outputs directly.
 var CreateAndroidEmulatorOutputs = CreateAndroidEmulatorV1Outputs
+
+// CreateAndroidEmulatorAbi is a type alias for CreateAndroidEmulatorV1Abi,
+// pointing to the latest supported major version of the step's enum type.
+type CreateAndroidEmulatorAbi = CreateAndroidEmulatorV1Abi
+
+// CreateAndroidEmulatorTag is a type alias for CreateAndroidEmulatorV1Tag,
+// pointing to the latest supported major version of the step's enum type.
+type CreateAndroidEmulatorTag = CreateAndroidEmulatorV1Tag

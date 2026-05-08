@@ -13,3 +13,7 @@ type CodifiedSecurityBitriseBuilder = CodifiedSecurityBitriseV2Builder
 func CodifiedSecurityBitrise(version ...string) *CodifiedSecurityBitriseV2Builder {
 	return CodifiedSecurityBitriseV2(version...)
 }
+
+// CodifiedSecurityBitriseIsXamarinIos is a type alias for CodifiedSecurityBitriseV2IsXamarinIos,
+// pointing to the latest supported major version of the step's enum type.
+type CodifiedSecurityBitriseIsXamarinIos = CodifiedSecurityBitriseV2IsXamarinIos

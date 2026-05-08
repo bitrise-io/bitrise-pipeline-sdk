@@ -3,6 +3,14 @@
 
 package step
 
+// TwitterMessageV0TwDebugMode enumerates the valid values for the tw_debug_mode input.
+type TwitterMessageV0TwDebugMode string
+
+const (
+	TwitterMessageV0TwDebugModeYes TwitterMessageV0TwDebugMode = "yes"
+	TwitterMessageV0TwDebugModeNo  TwitterMessageV0TwDebugMode = "no"
+)
+
 // TwitterMessageV0Builder builds a twitter-message step with typed input methods.
 type TwitterMessageV0Builder struct{ *Builder }
 
@@ -56,7 +64,7 @@ func (b *TwitterMessageV0Builder) WithTwStatus(value string) *TwitterMessageV0Bu
 }
 
 // WithTwDebugMode sets debug mode ?.
-func (b *TwitterMessageV0Builder) WithTwDebugMode(value string) *TwitterMessageV0Builder {
-	b.Builder.WithInput("tw_debug_mode", value)
+func (b *TwitterMessageV0Builder) WithTwDebugMode(value TwitterMessageV0TwDebugMode) *TwitterMessageV0Builder {
+	b.Builder.WithInput("tw_debug_mode", string(value))
 	return b
 }

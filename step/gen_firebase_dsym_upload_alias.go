@@ -13,3 +13,7 @@ type FirebaseDsymUploadBuilder = FirebaseDsymUploadV2Builder
 func FirebaseDsymUpload(version ...string) *FirebaseDsymUploadV2Builder {
 	return FirebaseDsymUploadV2(version...)
 }
+
+// FirebaseDsymUploadFduLogging is a type alias for FirebaseDsymUploadV2FduLogging,
+// pointing to the latest supported major version of the step's enum type.
+type FirebaseDsymUploadFduLogging = FirebaseDsymUploadV2FduLogging

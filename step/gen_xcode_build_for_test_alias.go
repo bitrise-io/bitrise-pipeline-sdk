@@ -18,3 +18,27 @@ func XcodeBuildForTest(version ...string) *XcodeBuildForTestV3Builder {
 // published by xcode-build-for-test at the latest major version (v3).
 // For outputs of a specific major version use XcodeBuildForTestV{N}Outputs directly.
 var XcodeBuildForTestOutputs = XcodeBuildForTestV3Outputs
+
+// XcodeBuildForTestLogFormatter is a type alias for XcodeBuildForTestV3LogFormatter,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForTestLogFormatter = XcodeBuildForTestV3LogFormatter
+
+// XcodeBuildForTestAutomaticCodeSigning is a type alias for XcodeBuildForTestV3AutomaticCodeSigning,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForTestAutomaticCodeSigning = XcodeBuildForTestV3AutomaticCodeSigning
+
+// XcodeBuildForTestRegisterTestDevices is a type alias for XcodeBuildForTestV3RegisterTestDevices,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForTestRegisterTestDevices = XcodeBuildForTestV3RegisterTestDevices
+
+// XcodeBuildForTestCacheLevel is a type alias for XcodeBuildForTestV3CacheLevel,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForTestCacheLevel = XcodeBuildForTestV3CacheLevel
+
+// XcodeBuildForTestApiKeyEnterpriseAccount is a type alias for XcodeBuildForTestV3ApiKeyEnterpriseAccount,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForTestApiKeyEnterpriseAccount = XcodeBuildForTestV3ApiKeyEnterpriseAccount
+
+// XcodeBuildForTestVerboseLog is a type alias for XcodeBuildForTestV3VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeBuildForTestVerboseLog = XcodeBuildForTestV3VerboseLog

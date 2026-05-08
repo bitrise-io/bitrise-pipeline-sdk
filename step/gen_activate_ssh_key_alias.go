@@ -18,3 +18,11 @@ func ActivateSshKey(version ...string) *ActivateSshKeyV4Builder {
 // published by activate-ssh-key at the latest major version (v4).
 // For outputs of a specific major version use ActivateSshKeyV{N}Outputs directly.
 var ActivateSshKeyOutputs = ActivateSshKeyV4Outputs
+
+// ActivateSshKeyIsRemoveOtherIdentities is a type alias for ActivateSshKeyV4IsRemoveOtherIdentities,
+// pointing to the latest supported major version of the step's enum type.
+type ActivateSshKeyIsRemoveOtherIdentities = ActivateSshKeyV4IsRemoveOtherIdentities
+
+// ActivateSshKeyVerbose is a type alias for ActivateSshKeyV4Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type ActivateSshKeyVerbose = ActivateSshKeyV4Verbose

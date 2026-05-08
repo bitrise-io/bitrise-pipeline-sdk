@@ -18,3 +18,23 @@ func AvdManager(version ...string) *AvdManagerV2Builder {
 // published by avd-manager at the latest major version (v2).
 // For outputs of a specific major version use AvdManagerV{N}Outputs directly.
 var AvdManagerOutputs = AvdManagerV2Outputs
+
+// AvdManagerTag is a type alias for AvdManagerV2Tag,
+// pointing to the latest supported major version of the step's enum type.
+type AvdManagerTag = AvdManagerV2Tag
+
+// AvdManagerAbi is a type alias for AvdManagerV2Abi,
+// pointing to the latest supported major version of the step's enum type.
+type AvdManagerAbi = AvdManagerV2Abi
+
+// AvdManagerDisableAnimations is a type alias for AvdManagerV2DisableAnimations,
+// pointing to the latest supported major version of the step's enum type.
+type AvdManagerDisableAnimations = AvdManagerV2DisableAnimations
+
+// AvdManagerEmulatorChannel is a type alias for AvdManagerV2EmulatorChannel,
+// pointing to the latest supported major version of the step's enum type.
+type AvdManagerEmulatorChannel = AvdManagerV2EmulatorChannel
+
+// AvdManagerHeadlessMode is a type alias for AvdManagerV2HeadlessMode,
+// pointing to the latest supported major version of the step's enum type.
+type AvdManagerHeadlessMode = AvdManagerV2HeadlessMode

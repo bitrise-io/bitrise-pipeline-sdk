@@ -3,6 +3,31 @@
 
 package step
 
+// TestfairyDeployNotify enumerates the valid values for the notify input.
+type TestfairyDeployNotify string
+
+const (
+	TestfairyDeployNotifyOn  TestfairyDeployNotify = "on"
+	TestfairyDeployNotifyOff TestfairyDeployNotify = "off"
+)
+
+// TestfairyDeployAutoUpdate enumerates the valid values for the auto_update input.
+type TestfairyDeployAutoUpdate string
+
+const (
+	TestfairyDeployAutoUpdateOn  TestfairyDeployAutoUpdate = "on"
+	TestfairyDeployAutoUpdateOff TestfairyDeployAutoUpdate = "off"
+)
+
+// TestfairyDeployVideoRecording enumerates the valid values for the video_recording input.
+type TestfairyDeployVideoRecording string
+
+const (
+	TestfairyDeployVideoRecordingOn   TestfairyDeployVideoRecording = "on"
+	TestfairyDeployVideoRecordingWifi TestfairyDeployVideoRecording = "wifi"
+	TestfairyDeployVideoRecordingOff  TestfairyDeployVideoRecording = "off"
+)
+
 // TestfairyDeployBuilder builds a testfairy-deploy step with typed input methods.
 type TestfairyDeployBuilder struct{ *Builder }
 
@@ -50,14 +75,14 @@ func (b *TestfairyDeployBuilder) WithTesterGroups(value string) *TestfairyDeploy
 }
 
 // WithNotify sets email notification.
-func (b *TestfairyDeployBuilder) WithNotify(value string) *TestfairyDeployBuilder {
-	b.Builder.WithInput("notify", value)
+func (b *TestfairyDeployBuilder) WithNotify(value TestfairyDeployNotify) *TestfairyDeployBuilder {
+	b.Builder.WithInput("notify", string(value))
 	return b
 }
 
 // WithAutoUpdate sets auto update.
-func (b *TestfairyDeployBuilder) WithAutoUpdate(value string) *TestfairyDeployBuilder {
-	b.Builder.WithInput("auto_update", value)
+func (b *TestfairyDeployBuilder) WithAutoUpdate(value TestfairyDeployAutoUpdate) *TestfairyDeployBuilder {
+	b.Builder.WithInput("auto_update", string(value))
 	return b
 }
 
@@ -68,8 +93,8 @@ func (b *TestfairyDeployBuilder) WithMaxTestDuration(value string) *TestfairyDep
 }
 
 // WithVideoRecording sets video recording.
-func (b *TestfairyDeployBuilder) WithVideoRecording(value string) *TestfairyDeployBuilder {
-	b.Builder.WithInput("video_recording", value)
+func (b *TestfairyDeployBuilder) WithVideoRecording(value TestfairyDeployVideoRecording) *TestfairyDeployBuilder {
+	b.Builder.WithInput("video_recording", string(value))
 	return b
 }
 

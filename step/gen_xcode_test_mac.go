@@ -3,6 +3,38 @@
 
 package step
 
+// XcodeTestMacIsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeTestMacIsCleanBuild string
+
+const (
+	XcodeTestMacIsCleanBuildYes XcodeTestMacIsCleanBuild = "yes"
+	XcodeTestMacIsCleanBuildNo  XcodeTestMacIsCleanBuild = "no"
+)
+
+// XcodeTestMacGenerateCodeCoverageFiles enumerates the valid values for the generate_code_coverage_files input.
+type XcodeTestMacGenerateCodeCoverageFiles string
+
+const (
+	XcodeTestMacGenerateCodeCoverageFilesYes XcodeTestMacGenerateCodeCoverageFiles = "yes"
+	XcodeTestMacGenerateCodeCoverageFilesNo  XcodeTestMacGenerateCodeCoverageFiles = "no"
+)
+
+// XcodeTestMacOutputTool enumerates the valid values for the output_tool input.
+type XcodeTestMacOutputTool string
+
+const (
+	XcodeTestMacOutputToolXcpretty   XcodeTestMacOutputTool = "xcpretty"
+	XcodeTestMacOutputToolXcodebuild XcodeTestMacOutputTool = "xcodebuild"
+)
+
+// XcodeTestMacDisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeTestMacDisableIndexWhileBuilding string
+
+const (
+	XcodeTestMacDisableIndexWhileBuildingYes XcodeTestMacDisableIndexWhileBuilding = "yes"
+	XcodeTestMacDisableIndexWhileBuildingNo  XcodeTestMacDisableIndexWhileBuilding = "no"
+)
+
 // XcodeTestMacBuilder builds a xcode-test-mac step with typed input methods.
 type XcodeTestMacBuilder struct{ *Builder }
 
@@ -38,20 +70,20 @@ func (b *XcodeTestMacBuilder) WithDestination(value string) *XcodeTestMacBuilder
 }
 
 // WithIsCleanBuild sets should a clean Xcode build run before testing?.
-func (b *XcodeTestMacBuilder) WithIsCleanBuild(value string) *XcodeTestMacBuilder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeTestMacBuilder) WithIsCleanBuild(value XcodeTestMacIsCleanBuild) *XcodeTestMacBuilder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithGenerateCodeCoverageFiles sets generate code coverage files?.
-func (b *XcodeTestMacBuilder) WithGenerateCodeCoverageFiles(value string) *XcodeTestMacBuilder {
-	b.Builder.WithInput("generate_code_coverage_files", value)
+func (b *XcodeTestMacBuilder) WithGenerateCodeCoverageFiles(value XcodeTestMacGenerateCodeCoverageFiles) *XcodeTestMacBuilder {
+	b.Builder.WithInput("generate_code_coverage_files", string(value))
 	return b
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeTestMacBuilder) WithOutputTool(value string) *XcodeTestMacBuilder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeTestMacBuilder) WithOutputTool(value XcodeTestMacOutputTool) *XcodeTestMacBuilder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -62,8 +94,8 @@ func (b *XcodeTestMacBuilder) WithXcodebuildOptions(value string) *XcodeTestMacB
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeTestMacBuilder) WithDisableIndexWhileBuilding(value string) *XcodeTestMacBuilder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeTestMacBuilder) WithDisableIndexWhileBuilding(value XcodeTestMacDisableIndexWhileBuilding) *XcodeTestMacBuilder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 

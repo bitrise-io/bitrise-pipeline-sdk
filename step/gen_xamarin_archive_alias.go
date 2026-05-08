@@ -22,3 +22,7 @@ func XamarinArchive(version ...string) *XamarinArchiveV1Builder {
 // published by xamarin-archive at the latest major version (v1).
 // For outputs of a specific major version use XamarinArchiveV{N}Outputs directly.
 var XamarinArchiveOutputs = XamarinArchiveV1Outputs
+
+// XamarinArchiveBuildTool is a type alias for XamarinArchiveV1BuildTool,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinArchiveBuildTool = XamarinArchiveV1BuildTool

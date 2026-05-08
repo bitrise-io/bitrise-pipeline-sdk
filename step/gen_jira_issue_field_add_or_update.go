@@ -3,6 +3,22 @@
 
 package step
 
+// JiraIssueFieldAddOrUpdateJiraIssueFieldType enumerates the valid values for the jira_issue_field_type input.
+type JiraIssueFieldAddOrUpdateJiraIssueFieldType string
+
+const (
+	JiraIssueFieldAddOrUpdateJiraIssueFieldTypeSingle JiraIssueFieldAddOrUpdateJiraIssueFieldType = "single"
+	JiraIssueFieldAddOrUpdateJiraIssueFieldTypeArray  JiraIssueFieldAddOrUpdateJiraIssueFieldType = "array"
+)
+
+// JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSet enumerates the valid values for the jira_should_array_add_or_set input.
+type JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSet string
+
+const (
+	JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSetAdd JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSet = "add"
+	JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSetSet JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSet = "set"
+)
+
 // JiraIssueFieldAddOrUpdateBuilder builds a jira-issue-field-add-or-update step with typed input methods.
 type JiraIssueFieldAddOrUpdateBuilder struct{ *Builder }
 
@@ -50,8 +66,8 @@ func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraIssueFieldName(value string) 
 }
 
 // WithJiraIssueFieldType sets jira issue field type.
-func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraIssueFieldType(value string) *JiraIssueFieldAddOrUpdateBuilder {
-	b.Builder.WithInput("jira_issue_field_type", value)
+func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraIssueFieldType(value JiraIssueFieldAddOrUpdateJiraIssueFieldType) *JiraIssueFieldAddOrUpdateBuilder {
+	b.Builder.WithInput("jira_issue_field_type", string(value))
 	return b
 }
 
@@ -62,7 +78,7 @@ func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraIssueFieldValue(value string)
 }
 
 // WithJiraShouldArrayAddOrSet sets if field type is array, should add or set values?.
-func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraShouldArrayAddOrSet(value string) *JiraIssueFieldAddOrUpdateBuilder {
-	b.Builder.WithInput("jira_should_array_add_or_set", value)
+func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraShouldArrayAddOrSet(value JiraIssueFieldAddOrUpdateJiraShouldArrayAddOrSet) *JiraIssueFieldAddOrUpdateBuilder {
+	b.Builder.WithInput("jira_should_array_add_or_set", string(value))
 	return b
 }

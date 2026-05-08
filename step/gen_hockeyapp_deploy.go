@@ -3,6 +3,39 @@
 
 package step
 
+// HockeyappDeployNotesType enumerates the valid values for the notes_type input.
+type HockeyappDeployNotesType string
+
+const (
+	HockeyappDeployNotesType0 HockeyappDeployNotesType = "0"
+	HockeyappDeployNotesType1 HockeyappDeployNotesType = "1"
+)
+
+// HockeyappDeployNotify enumerates the valid values for the notify input.
+type HockeyappDeployNotify string
+
+const (
+	HockeyappDeployNotify0 HockeyappDeployNotify = "0"
+	HockeyappDeployNotify1 HockeyappDeployNotify = "1"
+	HockeyappDeployNotify2 HockeyappDeployNotify = "2"
+)
+
+// HockeyappDeployStatus enumerates the valid values for the status input.
+type HockeyappDeployStatus string
+
+const (
+	HockeyappDeployStatus1 HockeyappDeployStatus = "1"
+	HockeyappDeployStatus2 HockeyappDeployStatus = "2"
+)
+
+// HockeyappDeployMandatory enumerates the valid values for the mandatory input.
+type HockeyappDeployMandatory string
+
+const (
+	HockeyappDeployMandatoryTrue  HockeyappDeployMandatory = "true"
+	HockeyappDeployMandatoryFalse HockeyappDeployMandatory = "false"
+)
+
 // HockeyappDeployBuilder builds a hockeyapp-deploy step with typed input methods.
 type HockeyappDeployBuilder struct{ *Builder }
 
@@ -50,26 +83,26 @@ func (b *HockeyappDeployBuilder) WithNotes(value string) *HockeyappDeployBuilder
 }
 
 // WithNotesType sets notes type.
-func (b *HockeyappDeployBuilder) WithNotesType(value string) *HockeyappDeployBuilder {
-	b.Builder.WithInput("notes_type", value)
+func (b *HockeyappDeployBuilder) WithNotesType(value HockeyappDeployNotesType) *HockeyappDeployBuilder {
+	b.Builder.WithInput("notes_type", string(value))
 	return b
 }
 
 // WithNotify sets notify Testers?.
-func (b *HockeyappDeployBuilder) WithNotify(value string) *HockeyappDeployBuilder {
-	b.Builder.WithInput("notify", value)
+func (b *HockeyappDeployBuilder) WithNotify(value HockeyappDeployNotify) *HockeyappDeployBuilder {
+	b.Builder.WithInput("notify", string(value))
 	return b
 }
 
 // WithStatus sets allow Download?.
-func (b *HockeyappDeployBuilder) WithStatus(value string) *HockeyappDeployBuilder {
-	b.Builder.WithInput("status", value)
+func (b *HockeyappDeployBuilder) WithStatus(value HockeyappDeployStatus) *HockeyappDeployBuilder {
+	b.Builder.WithInput("status", string(value))
 	return b
 }
 
 // WithMandatory sets mandatory?.
-func (b *HockeyappDeployBuilder) WithMandatory(value string) *HockeyappDeployBuilder {
-	b.Builder.WithInput("mandatory", value)
+func (b *HockeyappDeployBuilder) WithMandatory(value HockeyappDeployMandatory) *HockeyappDeployBuilder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 

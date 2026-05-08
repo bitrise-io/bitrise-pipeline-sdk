@@ -3,6 +3,30 @@
 
 package step
 
+// CocoapodsInstallV1IsUpdateCocoapods enumerates the valid values for the is_update_cocoapods input.
+type CocoapodsInstallV1IsUpdateCocoapods string
+
+const (
+	CocoapodsInstallV1IsUpdateCocoapodsTrue  CocoapodsInstallV1IsUpdateCocoapods = "true"
+	CocoapodsInstallV1IsUpdateCocoapodsFalse CocoapodsInstallV1IsUpdateCocoapods = "false"
+)
+
+// CocoapodsInstallV1Verbose enumerates the valid values for the verbose input.
+type CocoapodsInstallV1Verbose string
+
+const (
+	CocoapodsInstallV1VerboseTrue  CocoapodsInstallV1Verbose = "true"
+	CocoapodsInstallV1VerboseFalse CocoapodsInstallV1Verbose = "false"
+)
+
+// CocoapodsInstallV1IsCacheDisabled enumerates the valid values for the is_cache_disabled input.
+type CocoapodsInstallV1IsCacheDisabled string
+
+const (
+	CocoapodsInstallV1IsCacheDisabledTrue  CocoapodsInstallV1IsCacheDisabled = "true"
+	CocoapodsInstallV1IsCacheDisabledFalse CocoapodsInstallV1IsCacheDisabled = "false"
+)
+
 // CocoapodsInstallV1Builder builds a cocoapods-install step with typed input methods.
 type CocoapodsInstallV1Builder struct{ *Builder }
 
@@ -32,8 +56,8 @@ func (b *CocoapodsInstallV1Builder) WithPodfilePath(value string) *CocoapodsInst
 }
 
 // WithIsUpdateCocoapods sets update CocoaPods to the latest version?.
-func (b *CocoapodsInstallV1Builder) WithIsUpdateCocoapods(value string) *CocoapodsInstallV1Builder {
-	b.Builder.WithInput("is_update_cocoapods", value)
+func (b *CocoapodsInstallV1Builder) WithIsUpdateCocoapods(value CocoapodsInstallV1IsUpdateCocoapods) *CocoapodsInstallV1Builder {
+	b.Builder.WithInput("is_update_cocoapods", string(value))
 	return b
 }
 
@@ -44,13 +68,13 @@ func (b *CocoapodsInstallV1Builder) WithInstallCocoapodsVersion(value string) *C
 }
 
 // WithVerbose sets execute cocoapods in verbose mode?.
-func (b *CocoapodsInstallV1Builder) WithVerbose(value string) *CocoapodsInstallV1Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *CocoapodsInstallV1Builder) WithVerbose(value CocoapodsInstallV1Verbose) *CocoapodsInstallV1Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithIsCacheDisabled sets disable built-in cache.
-func (b *CocoapodsInstallV1Builder) WithIsCacheDisabled(value string) *CocoapodsInstallV1Builder {
-	b.Builder.WithInput("is_cache_disabled", value)
+func (b *CocoapodsInstallV1Builder) WithIsCacheDisabled(value CocoapodsInstallV1IsCacheDisabled) *CocoapodsInstallV1Builder {
+	b.Builder.WithInput("is_cache_disabled", string(value))
 	return b
 }

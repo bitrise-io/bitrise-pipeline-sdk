@@ -17,3 +17,7 @@ type NugetRestoreBuilder = NugetRestoreV1Builder
 func NugetRestore(version ...string) *NugetRestoreV1Builder {
 	return NugetRestoreV1(version...)
 }
+
+// NugetRestoreCacheLevel is a type alias for NugetRestoreV1CacheLevel,
+// pointing to the latest supported major version of the step's enum type.
+type NugetRestoreCacheLevel = NugetRestoreV1CacheLevel

@@ -3,6 +3,97 @@
 
 package step
 
+// AwsDeviceFarmRunnerBillingMethod enumerates the valid values for the billing_method input.
+type AwsDeviceFarmRunnerBillingMethod string
+
+const (
+	AwsDeviceFarmRunnerBillingMethodMETERED   AwsDeviceFarmRunnerBillingMethod = "METERED"
+	AwsDeviceFarmRunnerBillingMethodUNMETERED AwsDeviceFarmRunnerBillingMethod = "UNMETERED"
+)
+
+// AwsDeviceFarmRunnerLocale enumerates the valid values for the locale input.
+type AwsDeviceFarmRunnerLocale string
+
+const (
+	AwsDeviceFarmRunnerLocaleArIL AwsDeviceFarmRunnerLocale = "ar_IL"
+	AwsDeviceFarmRunnerLocaleBgBG AwsDeviceFarmRunnerLocale = "bg_BG"
+	AwsDeviceFarmRunnerLocaleCaES AwsDeviceFarmRunnerLocale = "ca_ES"
+	AwsDeviceFarmRunnerLocaleZhCN AwsDeviceFarmRunnerLocale = "zh_CN"
+	AwsDeviceFarmRunnerLocaleZhTW AwsDeviceFarmRunnerLocale = "zh_TW"
+	AwsDeviceFarmRunnerLocaleHrHR AwsDeviceFarmRunnerLocale = "hr_HR"
+	AwsDeviceFarmRunnerLocaleCsCZ AwsDeviceFarmRunnerLocale = "cs_CZ"
+	AwsDeviceFarmRunnerLocaleDaDK AwsDeviceFarmRunnerLocale = "da_DK"
+	AwsDeviceFarmRunnerLocaleNlBE AwsDeviceFarmRunnerLocale = "nl_BE"
+	AwsDeviceFarmRunnerLocaleNlNL AwsDeviceFarmRunnerLocale = "nl_NL"
+	AwsDeviceFarmRunnerLocaleEnAU AwsDeviceFarmRunnerLocale = "en_AU"
+	AwsDeviceFarmRunnerLocaleEnGB AwsDeviceFarmRunnerLocale = "en_GB"
+	AwsDeviceFarmRunnerLocaleEnCA AwsDeviceFarmRunnerLocale = "en_CA"
+	AwsDeviceFarmRunnerLocaleEnIE AwsDeviceFarmRunnerLocale = "en_IE"
+	AwsDeviceFarmRunnerLocaleEnIN AwsDeviceFarmRunnerLocale = "en_IN"
+	AwsDeviceFarmRunnerLocaleEnNZ AwsDeviceFarmRunnerLocale = "en_NZ"
+	AwsDeviceFarmRunnerLocaleEnUS AwsDeviceFarmRunnerLocale = "en_US"
+	AwsDeviceFarmRunnerLocaleFiFI AwsDeviceFarmRunnerLocale = "fi_FI"
+	AwsDeviceFarmRunnerLocaleFrBE AwsDeviceFarmRunnerLocale = "fr_BE"
+	AwsDeviceFarmRunnerLocaleFrCA AwsDeviceFarmRunnerLocale = "fr_CA"
+	AwsDeviceFarmRunnerLocaleFrFR AwsDeviceFarmRunnerLocale = "fr_FR"
+	AwsDeviceFarmRunnerLocaleFrCH AwsDeviceFarmRunnerLocale = "fr_CH"
+	AwsDeviceFarmRunnerLocaleDeAT AwsDeviceFarmRunnerLocale = "de_AT"
+	AwsDeviceFarmRunnerLocaleDeDE AwsDeviceFarmRunnerLocale = "de_DE"
+	AwsDeviceFarmRunnerLocaleDeLI AwsDeviceFarmRunnerLocale = "de_LI"
+	AwsDeviceFarmRunnerLocaleDeCH AwsDeviceFarmRunnerLocale = "de_CH"
+	AwsDeviceFarmRunnerLocaleElGR AwsDeviceFarmRunnerLocale = "el_GR"
+	AwsDeviceFarmRunnerLocaleHeIL AwsDeviceFarmRunnerLocale = "he_IL"
+	AwsDeviceFarmRunnerLocaleHiIN AwsDeviceFarmRunnerLocale = "hi_IN"
+	AwsDeviceFarmRunnerLocaleHuHU AwsDeviceFarmRunnerLocale = "hu_HU"
+	AwsDeviceFarmRunnerLocaleIdID AwsDeviceFarmRunnerLocale = "id_ID"
+	AwsDeviceFarmRunnerLocaleItIT AwsDeviceFarmRunnerLocale = "it_IT"
+	AwsDeviceFarmRunnerLocaleItCH AwsDeviceFarmRunnerLocale = "it_CH"
+	AwsDeviceFarmRunnerLocaleJaJP AwsDeviceFarmRunnerLocale = "ja_JP"
+	AwsDeviceFarmRunnerLocaleKoKR AwsDeviceFarmRunnerLocale = "ko_KR"
+	AwsDeviceFarmRunnerLocaleLvLV AwsDeviceFarmRunnerLocale = "lv_LV"
+	AwsDeviceFarmRunnerLocaleLtLT AwsDeviceFarmRunnerLocale = "lt_LT"
+	AwsDeviceFarmRunnerLocaleNbNO AwsDeviceFarmRunnerLocale = "nb_NO"
+	AwsDeviceFarmRunnerLocalePlPL AwsDeviceFarmRunnerLocale = "pl_PL"
+	AwsDeviceFarmRunnerLocaleRoRO AwsDeviceFarmRunnerLocale = "ro_RO"
+	AwsDeviceFarmRunnerLocaleRuRU AwsDeviceFarmRunnerLocale = "ru_RU"
+	AwsDeviceFarmRunnerLocaleSrRS AwsDeviceFarmRunnerLocale = "sr_RS"
+	AwsDeviceFarmRunnerLocaleSkSK AwsDeviceFarmRunnerLocale = "sk_SK"
+	AwsDeviceFarmRunnerLocaleSlSI AwsDeviceFarmRunnerLocale = "sl_SI"
+	AwsDeviceFarmRunnerLocaleEsES AwsDeviceFarmRunnerLocale = "es_ES"
+	AwsDeviceFarmRunnerLocaleEsUS AwsDeviceFarmRunnerLocale = "es_US"
+	AwsDeviceFarmRunnerLocaleSvSE AwsDeviceFarmRunnerLocale = "sv_SE"
+	AwsDeviceFarmRunnerLocaleTlPH AwsDeviceFarmRunnerLocale = "tl_PH"
+	AwsDeviceFarmRunnerLocaleThTH AwsDeviceFarmRunnerLocale = "th_TH"
+	AwsDeviceFarmRunnerLocaleTrTR AwsDeviceFarmRunnerLocale = "tr_TR"
+	AwsDeviceFarmRunnerLocaleUkUA AwsDeviceFarmRunnerLocale = "uk_UA"
+	AwsDeviceFarmRunnerLocaleViVN AwsDeviceFarmRunnerLocale = "vi_VN"
+)
+
+// AwsDeviceFarmRunnerPlatform enumerates the valid values for the platform input.
+type AwsDeviceFarmRunnerPlatform string
+
+const (
+	AwsDeviceFarmRunnerPlatformIos        AwsDeviceFarmRunnerPlatform = "ios"
+	AwsDeviceFarmRunnerPlatformAndroid    AwsDeviceFarmRunnerPlatform = "android"
+	AwsDeviceFarmRunnerPlatformIosAndroid AwsDeviceFarmRunnerPlatform = "ios+android"
+)
+
+// AwsDeviceFarmRunnerRunWaitForResults enumerates the valid values for the run_wait_for_results input.
+type AwsDeviceFarmRunnerRunWaitForResults string
+
+const (
+	AwsDeviceFarmRunnerRunWaitForResultsTrue  AwsDeviceFarmRunnerRunWaitForResults = "true"
+	AwsDeviceFarmRunnerRunWaitForResultsFalse AwsDeviceFarmRunnerRunWaitForResults = "false"
+)
+
+// AwsDeviceFarmRunnerRunFailOnWarning enumerates the valid values for the run_fail_on_warning input.
+type AwsDeviceFarmRunnerRunFailOnWarning string
+
+const (
+	AwsDeviceFarmRunnerRunFailOnWarningTrue  AwsDeviceFarmRunnerRunFailOnWarning = "true"
+	AwsDeviceFarmRunnerRunFailOnWarningFalse AwsDeviceFarmRunnerRunFailOnWarning = "false"
+)
+
 // AwsDeviceFarmRunnerBuilder builds a aws-device-farm-runner step with typed input methods.
 type AwsDeviceFarmRunnerBuilder struct{ *Builder }
 
@@ -38,14 +129,14 @@ func (b *AwsDeviceFarmRunnerBuilder) WithDeviceFarmProject(value string) *AwsDev
 }
 
 // WithBillingMethod sets billing Method.
-func (b *AwsDeviceFarmRunnerBuilder) WithBillingMethod(value string) *AwsDeviceFarmRunnerBuilder {
-	b.Builder.WithInput("billing_method", value)
+func (b *AwsDeviceFarmRunnerBuilder) WithBillingMethod(value AwsDeviceFarmRunnerBillingMethod) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithInput("billing_method", string(value))
 	return b
 }
 
 // WithLocale sets the locale for the devices to use.
-func (b *AwsDeviceFarmRunnerBuilder) WithLocale(value string) *AwsDeviceFarmRunnerBuilder {
-	b.Builder.WithInput("locale", value)
+func (b *AwsDeviceFarmRunnerBuilder) WithLocale(value AwsDeviceFarmRunnerLocale) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithInput("locale", string(value))
 	return b
 }
 
@@ -74,8 +165,8 @@ func (b *AwsDeviceFarmRunnerBuilder) WithTestSpec(value string) *AwsDeviceFarmRu
 }
 
 // WithPlatform sets platform.
-func (b *AwsDeviceFarmRunnerBuilder) WithPlatform(value string) *AwsDeviceFarmRunnerBuilder {
-	b.Builder.WithInput("platform", value)
+func (b *AwsDeviceFarmRunnerBuilder) WithPlatform(value AwsDeviceFarmRunnerPlatform) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -122,14 +213,14 @@ func (b *AwsDeviceFarmRunnerBuilder) WithAwsRegion(value string) *AwsDeviceFarmR
 }
 
 // WithRunWaitForResults sets whether or not to wait for the test results from device farm.
-func (b *AwsDeviceFarmRunnerBuilder) WithRunWaitForResults(value string) *AwsDeviceFarmRunnerBuilder {
-	b.Builder.WithInput("run_wait_for_results", value)
+func (b *AwsDeviceFarmRunnerBuilder) WithRunWaitForResults(value AwsDeviceFarmRunnerRunWaitForResults) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithInput("run_wait_for_results", string(value))
 	return b
 }
 
 // WithRunFailOnWarning sets fail if the device farm results return result of WARNED.
-func (b *AwsDeviceFarmRunnerBuilder) WithRunFailOnWarning(value string) *AwsDeviceFarmRunnerBuilder {
-	b.Builder.WithInput("run_fail_on_warning", value)
+func (b *AwsDeviceFarmRunnerBuilder) WithRunFailOnWarning(value AwsDeviceFarmRunnerRunFailOnWarning) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithInput("run_fail_on_warning", string(value))
 	return b
 }
 

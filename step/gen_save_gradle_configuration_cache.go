@@ -3,6 +3,14 @@
 
 package step
 
+// SaveGradleConfigurationCacheVerbose enumerates the valid values for the verbose input.
+type SaveGradleConfigurationCacheVerbose string
+
+const (
+	SaveGradleConfigurationCacheVerboseTrue  SaveGradleConfigurationCacheVerbose = "true"
+	SaveGradleConfigurationCacheVerboseFalse SaveGradleConfigurationCacheVerbose = "false"
+)
+
 // SaveGradleConfigurationCacheBuilder builds a save-gradle-configuration-cache step with typed input methods.
 type SaveGradleConfigurationCacheBuilder struct{ *Builder }
 
@@ -32,7 +40,7 @@ func (b *SaveGradleConfigurationCacheBuilder) WithConfigCacheDir(value string) *
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveGradleConfigurationCacheBuilder) WithVerbose(value string) *SaveGradleConfigurationCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveGradleConfigurationCacheBuilder) WithVerbose(value SaveGradleConfigurationCacheVerbose) *SaveGradleConfigurationCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

@@ -3,6 +3,14 @@
 
 package step
 
+// CachePullV0IsDebugMode enumerates the valid values for the is_debug_mode input.
+type CachePullV0IsDebugMode string
+
+const (
+	CachePullV0IsDebugModeTrue  CachePullV0IsDebugMode = "true"
+	CachePullV0IsDebugModeFalse CachePullV0IsDebugMode = "false"
+)
+
 // CachePullV0Builder builds a cache-pull step with typed input methods.
 //
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
@@ -30,8 +38,8 @@ func (b *CachePullV0Builder) WithWorkdir(value string) *CachePullV0Builder {
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *CachePullV0Builder) WithIsDebugMode(value string) *CachePullV0Builder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *CachePullV0Builder) WithIsDebugMode(value CachePullV0IsDebugMode) *CachePullV0Builder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 

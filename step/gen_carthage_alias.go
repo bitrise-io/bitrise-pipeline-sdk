@@ -13,3 +13,7 @@ type CarthageBuilder = CarthageV3Builder
 func Carthage(version ...string) *CarthageV3Builder {
 	return CarthageV3(version...)
 }
+
+// CarthageVerboseLog is a type alias for CarthageV3VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type CarthageVerboseLog = CarthageV3VerboseLog

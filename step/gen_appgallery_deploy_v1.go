@@ -3,6 +3,30 @@
 
 package step
 
+// AppgalleryDeployV1ReleaseType enumerates the valid values for the release_type input.
+type AppgalleryDeployV1ReleaseType string
+
+const (
+	AppgalleryDeployV1ReleaseTypeEntireNetwork AppgalleryDeployV1ReleaseType = "Entire Network"
+	AppgalleryDeployV1ReleaseTypeByPhase       AppgalleryDeployV1ReleaseType = "By Phase"
+)
+
+// AppgalleryDeployV1SubmitForReview enumerates the valid values for the submit_for_review input.
+type AppgalleryDeployV1SubmitForReview string
+
+const (
+	AppgalleryDeployV1SubmitForReviewTrue  AppgalleryDeployV1SubmitForReview = "true"
+	AppgalleryDeployV1SubmitForReviewFalse AppgalleryDeployV1SubmitForReview = "false"
+)
+
+// AppgalleryDeployV1ShowDebugLogs enumerates the valid values for the show_debug_logs input.
+type AppgalleryDeployV1ShowDebugLogs string
+
+const (
+	AppgalleryDeployV1ShowDebugLogsNo  AppgalleryDeployV1ShowDebugLogs = "no"
+	AppgalleryDeployV1ShowDebugLogsYes AppgalleryDeployV1ShowDebugLogs = "yes"
+)
+
 // AppgalleryDeployV1Builder builds a appgallery-deploy step with typed input methods.
 type AppgalleryDeployV1Builder struct{ *Builder }
 
@@ -50,14 +74,14 @@ func (b *AppgalleryDeployV1Builder) WithHuaweiClientSecret(value string) *Appgal
 }
 
 // WithReleaseType sets release Type.
-func (b *AppgalleryDeployV1Builder) WithReleaseType(value string) *AppgalleryDeployV1Builder {
-	b.Builder.WithInput("release_type", value)
+func (b *AppgalleryDeployV1Builder) WithReleaseType(value AppgalleryDeployV1ReleaseType) *AppgalleryDeployV1Builder {
+	b.Builder.WithInput("release_type", string(value))
 	return b
 }
 
 // WithSubmitForReview sets submit for Review.
-func (b *AppgalleryDeployV1Builder) WithSubmitForReview(value string) *AppgalleryDeployV1Builder {
-	b.Builder.WithInput("submit_for_review", value)
+func (b *AppgalleryDeployV1Builder) WithSubmitForReview(value AppgalleryDeployV1SubmitForReview) *AppgalleryDeployV1Builder {
+	b.Builder.WithInput("submit_for_review", string(value))
 	return b
 }
 
@@ -86,7 +110,7 @@ func (b *AppgalleryDeployV1Builder) WithPhaseReleaseDescription(value string) *A
 }
 
 // WithShowDebugLogs sets show debug logs?.
-func (b *AppgalleryDeployV1Builder) WithShowDebugLogs(value string) *AppgalleryDeployV1Builder {
-	b.Builder.WithInput("show_debug_logs", value)
+func (b *AppgalleryDeployV1Builder) WithShowDebugLogs(value AppgalleryDeployV1ShowDebugLogs) *AppgalleryDeployV1Builder {
+	b.Builder.WithInput("show_debug_logs", string(value))
 	return b
 }

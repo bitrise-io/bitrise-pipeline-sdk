@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreCacheV2Verbose string
+
+const (
+	RestoreCacheV2VerboseTrue  RestoreCacheV2Verbose = "true"
+	RestoreCacheV2VerboseFalse RestoreCacheV2Verbose = "false"
+)
+
 // RestoreCacheV2Builder builds a restore-cache step with typed input methods.
 type RestoreCacheV2Builder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *RestoreCacheV2Builder) WithKey(value string) *RestoreCacheV2Builder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreCacheV2Builder) WithVerbose(value string) *RestoreCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreCacheV2Builder) WithVerbose(value RestoreCacheV2Verbose) *RestoreCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

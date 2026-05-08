@@ -3,6 +3,22 @@
 
 package step
 
+// ActivateSshKeyV4IsRemoveOtherIdentities enumerates the valid values for the is_remove_other_identities input.
+type ActivateSshKeyV4IsRemoveOtherIdentities string
+
+const (
+	ActivateSshKeyV4IsRemoveOtherIdentitiesTrue  ActivateSshKeyV4IsRemoveOtherIdentities = "true"
+	ActivateSshKeyV4IsRemoveOtherIdentitiesFalse ActivateSshKeyV4IsRemoveOtherIdentities = "false"
+)
+
+// ActivateSshKeyV4Verbose enumerates the valid values for the verbose input.
+type ActivateSshKeyV4Verbose string
+
+const (
+	ActivateSshKeyV4VerboseTrue  ActivateSshKeyV4Verbose = "true"
+	ActivateSshKeyV4VerboseFalse ActivateSshKeyV4Verbose = "false"
+)
+
 // ActivateSshKeyV4Builder builds a activate-ssh-key step with typed input methods.
 type ActivateSshKeyV4Builder struct{ *Builder }
 
@@ -32,14 +48,14 @@ func (b *ActivateSshKeyV4Builder) WithSshKeySavePath(value string) *ActivateSshK
 }
 
 // WithIsRemoveOtherIdentities sets remove other identities from SSH agent.
-func (b *ActivateSshKeyV4Builder) WithIsRemoveOtherIdentities(value string) *ActivateSshKeyV4Builder {
-	b.Builder.WithInput("is_remove_other_identities", value)
+func (b *ActivateSshKeyV4Builder) WithIsRemoveOtherIdentities(value ActivateSshKeyV4IsRemoveOtherIdentities) *ActivateSshKeyV4Builder {
+	b.Builder.WithInput("is_remove_other_identities", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *ActivateSshKeyV4Builder) WithVerbose(value string) *ActivateSshKeyV4Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *ActivateSshKeyV4Builder) WithVerbose(value ActivateSshKeyV4Verbose) *ActivateSshKeyV4Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

@@ -3,6 +3,25 @@
 
 package step
 
+// BadgetizrCiStatus enumerates the valid values for the ci_status input.
+type BadgetizrCiStatus string
+
+const (
+	BadgetizrCiStatusAutomatic BadgetizrCiStatus = "automatic"
+	BadgetizrCiStatusStarted   BadgetizrCiStatus = "started"
+	BadgetizrCiStatusPassed    BadgetizrCiStatus = "passed"
+	BadgetizrCiStatusWarning   BadgetizrCiStatus = "warning"
+	BadgetizrCiStatusFailed    BadgetizrCiStatus = "failed"
+)
+
+// BadgetizrProvider enumerates the valid values for the provider input.
+type BadgetizrProvider string
+
+const (
+	BadgetizrProviderGithub BadgetizrProvider = "github"
+	BadgetizrProviderGitlab BadgetizrProvider = "gitlab"
+)
+
 // BadgetizrBuilder builds a badgetizr step with typed input methods.
 type BadgetizrBuilder struct{ *Builder }
 
@@ -50,8 +69,8 @@ func (b *BadgetizrBuilder) WithPrBuildUrl(value string) *BadgetizrBuilder {
 }
 
 // WithCiStatus sets cI Status.
-func (b *BadgetizrBuilder) WithCiStatus(value string) *BadgetizrBuilder {
-	b.Builder.WithInput("ci_status", value)
+func (b *BadgetizrBuilder) WithCiStatus(value BadgetizrCiStatus) *BadgetizrBuilder {
+	b.Builder.WithInput("ci_status", string(value))
 	return b
 }
 
@@ -62,8 +81,8 @@ func (b *BadgetizrBuilder) WithCiText(value string) *BadgetizrBuilder {
 }
 
 // WithProvider sets provider.
-func (b *BadgetizrBuilder) WithProvider(value string) *BadgetizrBuilder {
-	b.Builder.WithInput("provider", value)
+func (b *BadgetizrBuilder) WithProvider(value BadgetizrProvider) *BadgetizrBuilder {
+	b.Builder.WithInput("provider", string(value))
 	return b
 }
 

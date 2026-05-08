@@ -3,6 +3,31 @@
 
 package step
 
+// BitriseSnykScanOsList enumerates the valid values for the os_list input.
+type BitriseSnykScanOsList string
+
+const (
+	BitriseSnykScanOsListIos     BitriseSnykScanOsList = "ios"
+	BitriseSnykScanOsListAndroid BitriseSnykScanOsList = "android"
+)
+
+// BitriseSnykScanSeverityThreshold enumerates the valid values for the severity_threshold input.
+type BitriseSnykScanSeverityThreshold string
+
+const (
+	BitriseSnykScanSeverityThresholdLow    BitriseSnykScanSeverityThreshold = "low"
+	BitriseSnykScanSeverityThresholdMedium BitriseSnykScanSeverityThreshold = "medium"
+	BitriseSnykScanSeverityThresholdHigh   BitriseSnykScanSeverityThreshold = "high"
+)
+
+// BitriseSnykScanJsScan enumerates the valid values for the js_scan input.
+type BitriseSnykScanJsScan string
+
+const (
+	BitriseSnykScanJsScanTrue  BitriseSnykScanJsScan = "true"
+	BitriseSnykScanJsScanFalse BitriseSnykScanJsScan = "false"
+)
+
 // BitriseSnykScanBuilder builds a bitrise-snyk-scan step with typed input methods.
 type BitriseSnykScanBuilder struct{ *Builder }
 
@@ -20,14 +45,14 @@ func BitriseSnykScan(version ...string) *BitriseSnykScanBuilder {
 }
 
 // WithOsList sets project's OS.
-func (b *BitriseSnykScanBuilder) WithOsList(value string) *BitriseSnykScanBuilder {
-	b.Builder.WithInput("os_list", value)
+func (b *BitriseSnykScanBuilder) WithOsList(value BitriseSnykScanOsList) *BitriseSnykScanBuilder {
+	b.Builder.WithInput("os_list", string(value))
 	return b
 }
 
 // WithSeverityThreshold sets severity threshold.
-func (b *BitriseSnykScanBuilder) WithSeverityThreshold(value string) *BitriseSnykScanBuilder {
-	b.Builder.WithInput("severity_threshold", value)
+func (b *BitriseSnykScanBuilder) WithSeverityThreshold(value BitriseSnykScanSeverityThreshold) *BitriseSnykScanBuilder {
+	b.Builder.WithInput("severity_threshold", string(value))
 	return b
 }
 
@@ -44,7 +69,7 @@ func (b *BitriseSnykScanBuilder) WithSnykAuthToken(value string) *BitriseSnykSca
 }
 
 // WithJsScan sets project is using javascript.
-func (b *BitriseSnykScanBuilder) WithJsScan(value string) *BitriseSnykScanBuilder {
-	b.Builder.WithInput("js_scan", value)
+func (b *BitriseSnykScanBuilder) WithJsScan(value BitriseSnykScanJsScan) *BitriseSnykScanBuilder {
+	b.Builder.WithInput("js_scan", string(value))
 	return b
 }

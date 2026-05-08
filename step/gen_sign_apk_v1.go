@@ -3,6 +3,49 @@
 
 package step
 
+// SignApkV1PageAlign enumerates the valid values for the page_align input.
+type SignApkV1PageAlign string
+
+const (
+	SignApkV1PageAlignTrue      SignApkV1PageAlign = "true"
+	SignApkV1PageAlignFalse     SignApkV1PageAlign = "false"
+	SignApkV1PageAlignAutomatic SignApkV1PageAlign = "automatic"
+)
+
+// SignApkV1UseApkSigner enumerates the valid values for the use_apk_signer input.
+type SignApkV1UseApkSigner string
+
+const (
+	SignApkV1UseApkSignerTrue  SignApkV1UseApkSigner = "true"
+	SignApkV1UseApkSignerFalse SignApkV1UseApkSigner = "false"
+)
+
+// SignApkV1SignerScheme enumerates the valid values for the signer_scheme input.
+type SignApkV1SignerScheme string
+
+const (
+	SignApkV1SignerSchemeAutomatic SignApkV1SignerScheme = "automatic"
+	SignApkV1SignerSchemeV2        SignApkV1SignerScheme = "v2"
+	SignApkV1SignerSchemeV3        SignApkV1SignerScheme = "v3"
+	SignApkV1SignerSchemeV4        SignApkV1SignerScheme = "v4"
+)
+
+// SignApkV1DebuggablePermitted enumerates the valid values for the debuggable_permitted input.
+type SignApkV1DebuggablePermitted string
+
+const (
+	SignApkV1DebuggablePermittedTrue  SignApkV1DebuggablePermitted = "true"
+	SignApkV1DebuggablePermittedFalse SignApkV1DebuggablePermitted = "false"
+)
+
+// SignApkV1VerboseLog enumerates the valid values for the verbose_log input.
+type SignApkV1VerboseLog string
+
+const (
+	SignApkV1VerboseLogTrue  SignApkV1VerboseLog = "true"
+	SignApkV1VerboseLogFalse SignApkV1VerboseLog = "false"
+)
+
 // SignApkV1Builder builds a sign-apk step with typed input methods.
 type SignApkV1Builder struct{ *Builder }
 
@@ -50,26 +93,26 @@ func (b *SignApkV1Builder) WithPrivateKeyPassword(value string) *SignApkV1Builde
 }
 
 // WithPageAlign sets page alignment.
-func (b *SignApkV1Builder) WithPageAlign(value string) *SignApkV1Builder {
-	b.Builder.WithInput("page_align", value)
+func (b *SignApkV1Builder) WithPageAlign(value SignApkV1PageAlign) *SignApkV1Builder {
+	b.Builder.WithInput("page_align", string(value))
 	return b
 }
 
 // WithUseApkSigner sets enables apksigner.
-func (b *SignApkV1Builder) WithUseApkSigner(value string) *SignApkV1Builder {
-	b.Builder.WithInput("use_apk_signer", value)
+func (b *SignApkV1Builder) WithUseApkSigner(value SignApkV1UseApkSigner) *SignApkV1Builder {
+	b.Builder.WithInput("use_apk_signer", string(value))
 	return b
 }
 
 // WithSignerScheme sets aPK Signature Scheme.
-func (b *SignApkV1Builder) WithSignerScheme(value string) *SignApkV1Builder {
-	b.Builder.WithInput("signer_scheme", value)
+func (b *SignApkV1Builder) WithSignerScheme(value SignApkV1SignerScheme) *SignApkV1Builder {
+	b.Builder.WithInput("signer_scheme", string(value))
 	return b
 }
 
 // WithDebuggablePermitted sets enable debuggable APKs.
-func (b *SignApkV1Builder) WithDebuggablePermitted(value string) *SignApkV1Builder {
-	b.Builder.WithInput("debuggable_permitted", value)
+func (b *SignApkV1Builder) WithDebuggablePermitted(value SignApkV1DebuggablePermitted) *SignApkV1Builder {
+	b.Builder.WithInput("debuggable_permitted", string(value))
 	return b
 }
 
@@ -80,8 +123,8 @@ func (b *SignApkV1Builder) WithOutputName(value string) *SignApkV1Builder {
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *SignApkV1Builder) WithVerboseLog(value string) *SignApkV1Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *SignApkV1Builder) WithVerboseLog(value SignApkV1VerboseLog) *SignApkV1Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

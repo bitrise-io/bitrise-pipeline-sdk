@@ -3,6 +3,14 @@
 
 package step
 
+// MsbuildSonarscannerBeginIsDebug enumerates the valid values for the is_debug input.
+type MsbuildSonarscannerBeginIsDebug string
+
+const (
+	MsbuildSonarscannerBeginIsDebugTrue  MsbuildSonarscannerBeginIsDebug = "true"
+	MsbuildSonarscannerBeginIsDebugFalse MsbuildSonarscannerBeginIsDebug = "false"
+)
+
 // MsbuildSonarscannerBeginBuilder builds a msbuild-sonarscanner-begin step with typed input methods.
 type MsbuildSonarscannerBeginBuilder struct{ *Builder }
 
@@ -68,8 +76,8 @@ func (b *MsbuildSonarscannerBeginBuilder) WithSonarProperties(value string) *Msb
 }
 
 // WithIsDebug sets print all executed shell commands to a build log?.
-func (b *MsbuildSonarscannerBeginBuilder) WithIsDebug(value string) *MsbuildSonarscannerBeginBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *MsbuildSonarscannerBeginBuilder) WithIsDebug(value MsbuildSonarscannerBeginIsDebug) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
 

@@ -13,3 +13,19 @@ type RunTestsUsingMarathonCloudBuilder = RunTestsUsingMarathonCloudV1Builder
 func RunTestsUsingMarathonCloud(version ...string) *RunTestsUsingMarathonCloudV1Builder {
 	return RunTestsUsingMarathonCloudV1(version...)
 }
+
+// RunTestsUsingMarathonCloudPlatform is a type alias for RunTestsUsingMarathonCloudV1Platform,
+// pointing to the latest supported major version of the step's enum type.
+type RunTestsUsingMarathonCloudPlatform = RunTestsUsingMarathonCloudV1Platform
+
+// RunTestsUsingMarathonCloudSystemImage is a type alias for RunTestsUsingMarathonCloudV1SystemImage,
+// pointing to the latest supported major version of the step's enum type.
+type RunTestsUsingMarathonCloudSystemImage = RunTestsUsingMarathonCloudV1SystemImage
+
+// RunTestsUsingMarathonCloudIsolated is a type alias for RunTestsUsingMarathonCloudV1Isolated,
+// pointing to the latest supported major version of the step's enum type.
+type RunTestsUsingMarathonCloudIsolated = RunTestsUsingMarathonCloudV1Isolated
+
+// RunTestsUsingMarathonCloudIgnoreTestFailures is a type alias for RunTestsUsingMarathonCloudV1IgnoreTestFailures,
+// pointing to the latest supported major version of the step's enum type.
+type RunTestsUsingMarathonCloudIgnoreTestFailures = RunTestsUsingMarathonCloudV1IgnoreTestFailures

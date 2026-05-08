@@ -3,6 +3,14 @@
 
 package step
 
+// ChangeWorkdirIsCreatePath enumerates the valid values for the is_create_path input.
+type ChangeWorkdirIsCreatePath string
+
+const (
+	ChangeWorkdirIsCreatePathTrue  ChangeWorkdirIsCreatePath = "true"
+	ChangeWorkdirIsCreatePathFalse ChangeWorkdirIsCreatePath = "false"
+)
+
 // ChangeWorkdirBuilder builds a change-workdir step with typed input methods.
 type ChangeWorkdirBuilder struct{ *Builder }
 
@@ -26,7 +34,7 @@ func (b *ChangeWorkdirBuilder) WithPath(value string) *ChangeWorkdirBuilder {
 }
 
 // WithIsCreatePath sets create path if doesn't exist?.
-func (b *ChangeWorkdirBuilder) WithIsCreatePath(value string) *ChangeWorkdirBuilder {
-	b.Builder.WithInput("is_create_path", value)
+func (b *ChangeWorkdirBuilder) WithIsCreatePath(value ChangeWorkdirIsCreatePath) *ChangeWorkdirBuilder {
+	b.Builder.WithInput("is_create_path", string(value))
 	return b
 }

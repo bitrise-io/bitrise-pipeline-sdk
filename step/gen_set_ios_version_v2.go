@@ -3,6 +3,14 @@
 
 package step
 
+// SetIosVersionV2AppendVersion enumerates the valid values for the append_version input.
+type SetIosVersionV2AppendVersion string
+
+const (
+	SetIosVersionV2AppendVersionTrue  SetIosVersionV2AppendVersion = "true"
+	SetIosVersionV2AppendVersionFalse SetIosVersionV2AppendVersion = "false"
+)
+
 // SetIosVersionV2Builder builds a set-ios-version step with typed input methods.
 type SetIosVersionV2Builder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *SetIosVersionV2Builder) WithVersionShortOffset(value string) *SetIosVer
 }
 
 // WithAppendVersion sets append Version.
-func (b *SetIosVersionV2Builder) WithAppendVersion(value string) *SetIosVersionV2Builder {
-	b.Builder.WithInput("append_version", value)
+func (b *SetIosVersionV2Builder) WithAppendVersion(value SetIosVersionV2AppendVersion) *SetIosVersionV2Builder {
+	b.Builder.WithInput("append_version", string(value))
 	return b
 }
 

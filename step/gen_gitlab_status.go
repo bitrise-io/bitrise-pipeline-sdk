@@ -3,6 +3,18 @@
 
 package step
 
+// GitlabStatusPresetStatus enumerates the valid values for the preset_status input.
+type GitlabStatusPresetStatus string
+
+const (
+	GitlabStatusPresetStatusAuto     GitlabStatusPresetStatus = "auto"
+	GitlabStatusPresetStatusPending  GitlabStatusPresetStatus = "pending"
+	GitlabStatusPresetStatusRunning  GitlabStatusPresetStatus = "running"
+	GitlabStatusPresetStatusSuccess  GitlabStatusPresetStatus = "success"
+	GitlabStatusPresetStatusFailed   GitlabStatusPresetStatus = "failed"
+	GitlabStatusPresetStatusCanceled GitlabStatusPresetStatus = "canceled"
+)
+
 // GitlabStatusBuilder builds a gitlab-status step with typed input methods.
 type GitlabStatusBuilder struct{ *Builder }
 
@@ -62,8 +74,8 @@ func (b *GitlabStatusBuilder) WithContext(value string) *GitlabStatusBuilder {
 }
 
 // WithPresetStatus sets set Specific Status.
-func (b *GitlabStatusBuilder) WithPresetStatus(value string) *GitlabStatusBuilder {
-	b.Builder.WithInput("preset_status", value)
+func (b *GitlabStatusBuilder) WithPresetStatus(value GitlabStatusPresetStatus) *GitlabStatusBuilder {
+	b.Builder.WithInput("preset_status", string(value))
 	return b
 }
 

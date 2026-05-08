@@ -18,3 +18,7 @@ func MagicPod(version ...string) *MagicPodV1Builder {
 // published by magic-pod at the latest major version (v1).
 // For outputs of a specific major version use MagicPodV{N}Outputs directly.
 var MagicPodOutputs = MagicPodV1Outputs
+
+// MagicPodDeleteAppAfterTest is a type alias for MagicPodV1DeleteAppAfterTest,
+// pointing to the latest supported major version of the step's enum type.
+type MagicPodDeleteAppAfterTest = MagicPodV1DeleteAppAfterTest

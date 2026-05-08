@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreDartCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreDartCacheV2Verbose string
+
+const (
+	RestoreDartCacheV2VerboseTrue  RestoreDartCacheV2Verbose = "true"
+	RestoreDartCacheV2VerboseFalse RestoreDartCacheV2Verbose = "false"
+)
+
 // RestoreDartCacheV2Builder builds a restore-dart-cache step with typed input methods.
 type RestoreDartCacheV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func RestoreDartCacheV2(version ...string) *RestoreDartCacheV2Builder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreDartCacheV2Builder) WithVerbose(value string) *RestoreDartCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreDartCacheV2Builder) WithVerbose(value RestoreDartCacheV2Verbose) *RestoreDartCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

@@ -3,6 +3,22 @@
 
 package step
 
+// YarnV0CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type YarnV0CacheLocalDeps string
+
+const (
+	YarnV0CacheLocalDepsYes YarnV0CacheLocalDeps = "yes"
+	YarnV0CacheLocalDepsNo  YarnV0CacheLocalDeps = "no"
+)
+
+// YarnV0VerboseLog enumerates the valid values for the verbose_log input.
+type YarnV0VerboseLog string
+
+const (
+	YarnV0VerboseLogYes YarnV0VerboseLog = "yes"
+	YarnV0VerboseLogNo  YarnV0VerboseLog = "no"
+)
+
 // YarnV0Builder builds a yarn step with typed input methods.
 type YarnV0Builder struct{ *Builder }
 
@@ -38,13 +54,13 @@ func (b *YarnV0Builder) WithArgs(value string) *YarnV0Builder {
 }
 
 // WithCacheLocalDeps sets cache node_modules.
-func (b *YarnV0Builder) WithCacheLocalDeps(value string) *YarnV0Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *YarnV0Builder) WithCacheLocalDeps(value YarnV0CacheLocalDeps) *YarnV0Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *YarnV0Builder) WithVerboseLog(value string) *YarnV0Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *YarnV0Builder) WithVerboseLog(value YarnV0VerboseLog) *YarnV0Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }

@@ -18,3 +18,7 @@ func RestoreCocoapodsCache(version ...string) *RestoreCocoapodsCacheV3Builder {
 // published by restore-cocoapods-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreCocoapodsCacheV{N}Outputs directly.
 var RestoreCocoapodsCacheOutputs = RestoreCocoapodsCacheV3Outputs
+
+// RestoreCocoapodsCacheVerbose is a type alias for RestoreCocoapodsCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreCocoapodsCacheVerbose = RestoreCocoapodsCacheV3Verbose

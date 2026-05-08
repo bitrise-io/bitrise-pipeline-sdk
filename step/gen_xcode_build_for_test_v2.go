@@ -3,6 +3,47 @@
 
 package step
 
+// XcodeBuildForTestV2LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeBuildForTestV2LogFormatter string
+
+const (
+	XcodeBuildForTestV2LogFormatterXcpretty   XcodeBuildForTestV2LogFormatter = "xcpretty"
+	XcodeBuildForTestV2LogFormatterXcodebuild XcodeBuildForTestV2LogFormatter = "xcodebuild"
+)
+
+// XcodeBuildForTestV2AutomaticCodeSigning enumerates the valid values for the automatic_code_signing input.
+type XcodeBuildForTestV2AutomaticCodeSigning string
+
+const (
+	XcodeBuildForTestV2AutomaticCodeSigningOff     XcodeBuildForTestV2AutomaticCodeSigning = "off"
+	XcodeBuildForTestV2AutomaticCodeSigningApiKey  XcodeBuildForTestV2AutomaticCodeSigning = "api-key"
+	XcodeBuildForTestV2AutomaticCodeSigningAppleId XcodeBuildForTestV2AutomaticCodeSigning = "apple-id"
+)
+
+// XcodeBuildForTestV2RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type XcodeBuildForTestV2RegisterTestDevices string
+
+const (
+	XcodeBuildForTestV2RegisterTestDevicesYes XcodeBuildForTestV2RegisterTestDevices = "yes"
+	XcodeBuildForTestV2RegisterTestDevicesNo  XcodeBuildForTestV2RegisterTestDevices = "no"
+)
+
+// XcodeBuildForTestV2CacheLevel enumerates the valid values for the cache_level input.
+type XcodeBuildForTestV2CacheLevel string
+
+const (
+	XcodeBuildForTestV2CacheLevelNone          XcodeBuildForTestV2CacheLevel = "none"
+	XcodeBuildForTestV2CacheLevelSwiftPackages XcodeBuildForTestV2CacheLevel = "swift_packages"
+)
+
+// XcodeBuildForTestV2VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeBuildForTestV2VerboseLog string
+
+const (
+	XcodeBuildForTestV2VerboseLogYes XcodeBuildForTestV2VerboseLog = "yes"
+	XcodeBuildForTestV2VerboseLogNo  XcodeBuildForTestV2VerboseLog = "no"
+)
+
 // XcodeBuildForTestV2Builder builds a xcode-build-for-test step with typed input methods.
 type XcodeBuildForTestV2Builder struct{ *Builder }
 
@@ -62,20 +103,20 @@ func (b *XcodeBuildForTestV2Builder) WithXcodebuildOptions(value string) *XcodeB
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeBuildForTestV2Builder) WithLogFormatter(value string) *XcodeBuildForTestV2Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeBuildForTestV2Builder) WithLogFormatter(value XcodeBuildForTestV2LogFormatter) *XcodeBuildForTestV2Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
 // WithAutomaticCodeSigning sets automatic code signing method.
-func (b *XcodeBuildForTestV2Builder) WithAutomaticCodeSigning(value string) *XcodeBuildForTestV2Builder {
-	b.Builder.WithInput("automatic_code_signing", value)
+func (b *XcodeBuildForTestV2Builder) WithAutomaticCodeSigning(value XcodeBuildForTestV2AutomaticCodeSigning) *XcodeBuildForTestV2Builder {
+	b.Builder.WithInput("automatic_code_signing", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *XcodeBuildForTestV2Builder) WithRegisterTestDevices(value string) *XcodeBuildForTestV2Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *XcodeBuildForTestV2Builder) WithRegisterTestDevices(value XcodeBuildForTestV2RegisterTestDevices) *XcodeBuildForTestV2Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -128,8 +169,8 @@ func (b *XcodeBuildForTestV2Builder) WithOutputDir(value string) *XcodeBuildForT
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeBuildForTestV2Builder) WithCacheLevel(value string) *XcodeBuildForTestV2Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeBuildForTestV2Builder) WithCacheLevel(value XcodeBuildForTestV2CacheLevel) *XcodeBuildForTestV2Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -152,8 +193,8 @@ func (b *XcodeBuildForTestV2Builder) WithApiKeyIssuerId(value string) *XcodeBuil
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeBuildForTestV2Builder) WithVerboseLog(value string) *XcodeBuildForTestV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeBuildForTestV2Builder) WithVerboseLog(value XcodeBuildForTestV2VerboseLog) *XcodeBuildForTestV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

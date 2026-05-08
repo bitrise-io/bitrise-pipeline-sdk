@@ -3,6 +3,56 @@
 
 package step
 
+// ExportXcarchiveMacV1ExportMethod enumerates the valid values for the export_method input.
+type ExportXcarchiveMacV1ExportMethod string
+
+const (
+	ExportXcarchiveMacV1ExportMethodAppStore    ExportXcarchiveMacV1ExportMethod = "app-store"
+	ExportXcarchiveMacV1ExportMethodDevelopment ExportXcarchiveMacV1ExportMethod = "development"
+	ExportXcarchiveMacV1ExportMethodDeveloperId ExportXcarchiveMacV1ExportMethod = "developer-id"
+	ExportXcarchiveMacV1ExportMethodNone        ExportXcarchiveMacV1ExportMethod = "none"
+)
+
+// ExportXcarchiveMacV1UploadBitcode enumerates the valid values for the upload_bitcode input.
+type ExportXcarchiveMacV1UploadBitcode string
+
+const (
+	ExportXcarchiveMacV1UploadBitcodeYes ExportXcarchiveMacV1UploadBitcode = "yes"
+	ExportXcarchiveMacV1UploadBitcodeNo  ExportXcarchiveMacV1UploadBitcode = "no"
+)
+
+// ExportXcarchiveMacV1CompileBitcode enumerates the valid values for the compile_bitcode input.
+type ExportXcarchiveMacV1CompileBitcode string
+
+const (
+	ExportXcarchiveMacV1CompileBitcodeYes ExportXcarchiveMacV1CompileBitcode = "yes"
+	ExportXcarchiveMacV1CompileBitcodeNo  ExportXcarchiveMacV1CompileBitcode = "no"
+)
+
+// ExportXcarchiveMacV1UseLegacyExport enumerates the valid values for the use_legacy_export input.
+type ExportXcarchiveMacV1UseLegacyExport string
+
+const (
+	ExportXcarchiveMacV1UseLegacyExportYes ExportXcarchiveMacV1UseLegacyExport = "yes"
+	ExportXcarchiveMacV1UseLegacyExportNo  ExportXcarchiveMacV1UseLegacyExport = "no"
+)
+
+// ExportXcarchiveMacV1LegacyExportOutputFormat enumerates the valid values for the legacy_export_output_format input.
+type ExportXcarchiveMacV1LegacyExportOutputFormat string
+
+const (
+	ExportXcarchiveMacV1LegacyExportOutputFormatApp ExportXcarchiveMacV1LegacyExportOutputFormat = "app"
+	ExportXcarchiveMacV1LegacyExportOutputFormatPkg ExportXcarchiveMacV1LegacyExportOutputFormat = "pkg"
+)
+
+// ExportXcarchiveMacV1VerboseLog enumerates the valid values for the verbose_log input.
+type ExportXcarchiveMacV1VerboseLog string
+
+const (
+	ExportXcarchiveMacV1VerboseLogYes ExportXcarchiveMacV1VerboseLog = "yes"
+	ExportXcarchiveMacV1VerboseLogNo  ExportXcarchiveMacV1VerboseLog = "no"
+)
+
 // ExportXcarchiveMacV1Builder builds a export-xcarchive-mac step with typed input methods.
 type ExportXcarchiveMacV1Builder struct{ *Builder }
 
@@ -26,20 +76,20 @@ func (b *ExportXcarchiveMacV1Builder) WithArchivePath(value string) *ExportXcarc
 }
 
 // WithExportMethod sets select method for export.
-func (b *ExportXcarchiveMacV1Builder) WithExportMethod(value string) *ExportXcarchiveMacV1Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *ExportXcarchiveMacV1Builder) WithExportMethod(value ExportXcarchiveMacV1ExportMethod) *ExportXcarchiveMacV1Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *ExportXcarchiveMacV1Builder) WithUploadBitcode(value string) *ExportXcarchiveMacV1Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *ExportXcarchiveMacV1Builder) WithUploadBitcode(value ExportXcarchiveMacV1UploadBitcode) *ExportXcarchiveMacV1Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *ExportXcarchiveMacV1Builder) WithCompileBitcode(value string) *ExportXcarchiveMacV1Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *ExportXcarchiveMacV1Builder) WithCompileBitcode(value ExportXcarchiveMacV1CompileBitcode) *ExportXcarchiveMacV1Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
@@ -56,8 +106,8 @@ func (b *ExportXcarchiveMacV1Builder) WithCustomExportOptionsPlistContent(value 
 }
 
 // WithUseLegacyExport sets use legacy export method?.
-func (b *ExportXcarchiveMacV1Builder) WithUseLegacyExport(value string) *ExportXcarchiveMacV1Builder {
-	b.Builder.WithInput("use_legacy_export", value)
+func (b *ExportXcarchiveMacV1Builder) WithUseLegacyExport(value ExportXcarchiveMacV1UseLegacyExport) *ExportXcarchiveMacV1Builder {
+	b.Builder.WithInput("use_legacy_export", string(value))
 	return b
 }
 
@@ -68,14 +118,14 @@ func (b *ExportXcarchiveMacV1Builder) WithLegacyExportProvisioningProfileName(va
 }
 
 // WithLegacyExportOutputFormat sets specify export format.
-func (b *ExportXcarchiveMacV1Builder) WithLegacyExportOutputFormat(value string) *ExportXcarchiveMacV1Builder {
-	b.Builder.WithInput("legacy_export_output_format", value)
+func (b *ExportXcarchiveMacV1Builder) WithLegacyExportOutputFormat(value ExportXcarchiveMacV1LegacyExportOutputFormat) *ExportXcarchiveMacV1Builder {
+	b.Builder.WithInput("legacy_export_output_format", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *ExportXcarchiveMacV1Builder) WithVerboseLog(value string) *ExportXcarchiveMacV1Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *ExportXcarchiveMacV1Builder) WithVerboseLog(value ExportXcarchiveMacV1VerboseLog) *ExportXcarchiveMacV1Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

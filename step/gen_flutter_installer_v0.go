@@ -3,6 +3,22 @@
 
 package step
 
+// FlutterInstallerV0IsUpdate enumerates the valid values for the is_update input.
+type FlutterInstallerV0IsUpdate string
+
+const (
+	FlutterInstallerV0IsUpdateFalse FlutterInstallerV0IsUpdate = "false"
+	FlutterInstallerV0IsUpdateTrue  FlutterInstallerV0IsUpdate = "true"
+)
+
+// FlutterInstallerV0IsDebug enumerates the valid values for the is_debug input.
+type FlutterInstallerV0IsDebug string
+
+const (
+	FlutterInstallerV0IsDebugFalse FlutterInstallerV0IsDebug = "false"
+	FlutterInstallerV0IsDebugTrue  FlutterInstallerV0IsDebug = "true"
+)
+
 // FlutterInstallerV0Builder builds a flutter-installer step with typed input methods.
 type FlutterInstallerV0Builder struct{ *Builder }
 
@@ -26,8 +42,8 @@ func (b *FlutterInstallerV0Builder) WithVersion(value string) *FlutterInstallerV
 }
 
 // WithIsUpdate sets update to the latest version.
-func (b *FlutterInstallerV0Builder) WithIsUpdate(value string) *FlutterInstallerV0Builder {
-	b.Builder.WithInput("is_update", value)
+func (b *FlutterInstallerV0Builder) WithIsUpdate(value FlutterInstallerV0IsUpdate) *FlutterInstallerV0Builder {
+	b.Builder.WithInput("is_update", string(value))
 	return b
 }
 
@@ -38,7 +54,7 @@ func (b *FlutterInstallerV0Builder) WithInstallationBundleUrl(value string) *Flu
 }
 
 // WithIsDebug sets print debug information.
-func (b *FlutterInstallerV0Builder) WithIsDebug(value string) *FlutterInstallerV0Builder {
-	b.Builder.WithInput("is_debug", value)
+func (b *FlutterInstallerV0Builder) WithIsDebug(value FlutterInstallerV0IsDebug) *FlutterInstallerV0Builder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

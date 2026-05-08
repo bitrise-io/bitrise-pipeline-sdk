@@ -3,6 +3,22 @@
 
 package step
 
+// BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug enumerates the valid values for the enable_debug input.
+type BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug string
+
+const (
+	BitriseStepQyrusMobilityTestRunnerAndroidEnableDebugYes BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug = "yes"
+	BitriseStepQyrusMobilityTestRunnerAndroidEnableDebugNo  BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug = "no"
+)
+
+// BitriseStepQyrusMobilityTestRunnerAndroidUploadApp enumerates the valid values for the upload_app input.
+type BitriseStepQyrusMobilityTestRunnerAndroidUploadApp string
+
+const (
+	BitriseStepQyrusMobilityTestRunnerAndroidUploadAppYes BitriseStepQyrusMobilityTestRunnerAndroidUploadApp = "yes"
+	BitriseStepQyrusMobilityTestRunnerAndroidUploadAppNo  BitriseStepQyrusMobilityTestRunnerAndroidUploadApp = "no"
+)
+
 // BitriseStepQyrusMobilityTestRunnerAndroidBuilder builds a bitrise-step-qyrus-mobility-test-runner-android step with typed input methods.
 type BitriseStepQyrusMobilityTestRunnerAndroidBuilder struct{ *Builder }
 
@@ -20,14 +36,14 @@ func BitriseStepQyrusMobilityTestRunnerAndroid(version ...string) *BitriseStepQy
 }
 
 // WithEnableDebug sets debug mode.
-func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithEnableDebug(value string) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
-	b.Builder.WithInput("enable_debug", value)
+func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithEnableDebug(value BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
+	b.Builder.WithInput("enable_debug", string(value))
 	return b
 }
 
 // WithUploadApp sets upload app.
-func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithUploadApp(value string) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
-	b.Builder.WithInput("upload_app", value)
+func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithUploadApp(value BitriseStepQyrusMobilityTestRunnerAndroidUploadApp) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
+	b.Builder.WithInput("upload_app", string(value))
 	return b
 }
 

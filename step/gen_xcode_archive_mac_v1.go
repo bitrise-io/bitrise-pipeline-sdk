@@ -3,6 +3,64 @@
 
 package step
 
+// XcodeArchiveMacV1ExportMethod enumerates the valid values for the export_method input.
+type XcodeArchiveMacV1ExportMethod string
+
+const (
+	XcodeArchiveMacV1ExportMethodDevelopment XcodeArchiveMacV1ExportMethod = "development"
+	XcodeArchiveMacV1ExportMethodAppStore    XcodeArchiveMacV1ExportMethod = "app-store"
+	XcodeArchiveMacV1ExportMethodDeveloperId XcodeArchiveMacV1ExportMethod = "developer-id"
+	XcodeArchiveMacV1ExportMethodNone        XcodeArchiveMacV1ExportMethod = "none"
+)
+
+// XcodeArchiveMacV1IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeArchiveMacV1IsCleanBuild string
+
+const (
+	XcodeArchiveMacV1IsCleanBuildYes XcodeArchiveMacV1IsCleanBuild = "yes"
+	XcodeArchiveMacV1IsCleanBuildNo  XcodeArchiveMacV1IsCleanBuild = "no"
+)
+
+// XcodeArchiveMacV1DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeArchiveMacV1DisableIndexWhileBuilding string
+
+const (
+	XcodeArchiveMacV1DisableIndexWhileBuildingYes XcodeArchiveMacV1DisableIndexWhileBuilding = "yes"
+	XcodeArchiveMacV1DisableIndexWhileBuildingNo  XcodeArchiveMacV1DisableIndexWhileBuilding = "no"
+)
+
+// XcodeArchiveMacV1OutputTool enumerates the valid values for the output_tool input.
+type XcodeArchiveMacV1OutputTool string
+
+const (
+	XcodeArchiveMacV1OutputToolXcpretty   XcodeArchiveMacV1OutputTool = "xcpretty"
+	XcodeArchiveMacV1OutputToolXcodebuild XcodeArchiveMacV1OutputTool = "xcodebuild"
+)
+
+// XcodeArchiveMacV1IsExportXcarchiveZip enumerates the valid values for the is_export_xcarchive_zip input.
+type XcodeArchiveMacV1IsExportXcarchiveZip string
+
+const (
+	XcodeArchiveMacV1IsExportXcarchiveZipYes XcodeArchiveMacV1IsExportXcarchiveZip = "yes"
+	XcodeArchiveMacV1IsExportXcarchiveZipNo  XcodeArchiveMacV1IsExportXcarchiveZip = "no"
+)
+
+// XcodeArchiveMacV1IsExportAllDsyms enumerates the valid values for the is_export_all_dsyms input.
+type XcodeArchiveMacV1IsExportAllDsyms string
+
+const (
+	XcodeArchiveMacV1IsExportAllDsymsYes XcodeArchiveMacV1IsExportAllDsyms = "yes"
+	XcodeArchiveMacV1IsExportAllDsymsNo  XcodeArchiveMacV1IsExportAllDsyms = "no"
+)
+
+// XcodeArchiveMacV1VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeArchiveMacV1VerboseLog string
+
+const (
+	XcodeArchiveMacV1VerboseLogYes XcodeArchiveMacV1VerboseLog = "yes"
+	XcodeArchiveMacV1VerboseLogNo  XcodeArchiveMacV1VerboseLog = "no"
+)
+
 // XcodeArchiveMacV1Builder builds a xcode-archive-mac step with typed input methods.
 type XcodeArchiveMacV1Builder struct{ *Builder }
 
@@ -20,8 +78,8 @@ func XcodeArchiveMacV1(version ...string) *XcodeArchiveMacV1Builder {
 }
 
 // WithExportMethod sets export method.
-func (b *XcodeArchiveMacV1Builder) WithExportMethod(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *XcodeArchiveMacV1Builder) WithExportMethod(value XcodeArchiveMacV1ExportMethod) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
@@ -50,8 +108,8 @@ func (b *XcodeArchiveMacV1Builder) WithConfiguration(value string) *XcodeArchive
 }
 
 // WithIsCleanBuild sets clean build before archive.
-func (b *XcodeArchiveMacV1Builder) WithIsCleanBuild(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeArchiveMacV1Builder) WithIsCleanBuild(value XcodeArchiveMacV1IsCleanBuild) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
@@ -68,8 +126,8 @@ func (b *XcodeArchiveMacV1Builder) WithXcodebuildOptions(value string) *XcodeArc
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeArchiveMacV1Builder) WithDisableIndexWhileBuilding(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeArchiveMacV1Builder) WithDisableIndexWhileBuilding(value XcodeArchiveMacV1DisableIndexWhileBuilding) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
@@ -98,8 +156,8 @@ func (b *XcodeArchiveMacV1Builder) WithForceProvisioningProfile(value string) *X
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeArchiveMacV1Builder) WithOutputTool(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeArchiveMacV1Builder) WithOutputTool(value XcodeArchiveMacV1OutputTool) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -116,20 +174,20 @@ func (b *XcodeArchiveMacV1Builder) WithArtifactName(value string) *XcodeArchiveM
 }
 
 // WithIsExportXcarchiveZip sets export the generated archive?.
-func (b *XcodeArchiveMacV1Builder) WithIsExportXcarchiveZip(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("is_export_xcarchive_zip", value)
+func (b *XcodeArchiveMacV1Builder) WithIsExportXcarchiveZip(value XcodeArchiveMacV1IsExportXcarchiveZip) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("is_export_xcarchive_zip", string(value))
 	return b
 }
 
 // WithIsExportAllDsyms sets export all dsyms?.
-func (b *XcodeArchiveMacV1Builder) WithIsExportAllDsyms(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("is_export_all_dsyms", value)
+func (b *XcodeArchiveMacV1Builder) WithIsExportAllDsyms(value XcodeArchiveMacV1IsExportAllDsyms) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("is_export_all_dsyms", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *XcodeArchiveMacV1Builder) WithVerboseLog(value string) *XcodeArchiveMacV1Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeArchiveMacV1Builder) WithVerboseLog(value XcodeArchiveMacV1VerboseLog) *XcodeArchiveMacV1Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

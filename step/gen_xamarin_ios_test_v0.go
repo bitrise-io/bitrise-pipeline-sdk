@@ -3,6 +3,22 @@
 
 package step
 
+// XamarinIosTestV0IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XamarinIosTestV0IsCleanBuild string
+
+const (
+	XamarinIosTestV0IsCleanBuildTrue  XamarinIosTestV0IsCleanBuild = "true"
+	XamarinIosTestV0IsCleanBuildFalse XamarinIosTestV0IsCleanBuild = "false"
+)
+
+// XamarinIosTestV0XamarinBuilder enumerates the valid values for the xamarin_builder input.
+type XamarinIosTestV0XamarinBuilder string
+
+const (
+	XamarinIosTestV0XamarinBuilderXbuild XamarinIosTestV0XamarinBuilder = "xbuild"
+	XamarinIosTestV0XamarinBuilderMdtool XamarinIosTestV0XamarinBuilder = "mdtool"
+)
+
 // XamarinIosTestV0Builder builds a xamarin-ios-test step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -48,14 +64,14 @@ func (b *XamarinIosTestV0Builder) WithXamarinPlatform(value string) *XamarinIosT
 }
 
 // WithIsCleanBuild sets do a clean before the archive?.
-func (b *XamarinIosTestV0Builder) WithIsCleanBuild(value string) *XamarinIosTestV0Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XamarinIosTestV0Builder) WithIsCleanBuild(value XamarinIosTestV0IsCleanBuild) *XamarinIosTestV0Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithXamarinBuilder sets build tool.
-func (b *XamarinIosTestV0Builder) WithXamarinBuilder(value string) *XamarinIosTestV0Builder {
-	b.Builder.WithInput("xamarin_builder", value)
+func (b *XamarinIosTestV0Builder) WithXamarinBuilder(value XamarinIosTestV0XamarinBuilder) *XamarinIosTestV0Builder {
+	b.Builder.WithInput("xamarin_builder", string(value))
 	return b
 }
 

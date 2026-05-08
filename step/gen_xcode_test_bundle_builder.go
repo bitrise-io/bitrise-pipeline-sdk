@@ -3,6 +3,14 @@
 
 package step
 
+// XcodeTestBundleBuilderOutputTool enumerates the valid values for the output_tool input.
+type XcodeTestBundleBuilderOutputTool string
+
+const (
+	XcodeTestBundleBuilderOutputToolXcpretty   XcodeTestBundleBuilderOutputTool = "xcpretty"
+	XcodeTestBundleBuilderOutputToolXcodebuild XcodeTestBundleBuilderOutputTool = "xcodebuild"
+)
+
 // XcodeTestBundleBuilderBuilder builds a xcode-test-bundle-builder step with typed input methods.
 type XcodeTestBundleBuilderBuilder struct{ *Builder }
 
@@ -44,8 +52,8 @@ func (b *XcodeTestBundleBuilderBuilder) WithConfiguration(value string) *XcodeTe
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeTestBundleBuilderBuilder) WithOutputTool(value string) *XcodeTestBundleBuilderBuilder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeTestBundleBuilderBuilder) WithOutputTool(value XcodeTestBundleBuilderOutputTool) *XcodeTestBundleBuilderBuilder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 

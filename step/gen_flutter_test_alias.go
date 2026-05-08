@@ -18,3 +18,7 @@ func FlutterTest(version ...string) *FlutterTestV1Builder {
 // published by flutter-test at the latest major version (v1).
 // For outputs of a specific major version use FlutterTestV{N}Outputs directly.
 var FlutterTestOutputs = FlutterTestV1Outputs
+
+// FlutterTestGenerateCodeCoverageFiles is a type alias for FlutterTestV1GenerateCodeCoverageFiles,
+// pointing to the latest supported major version of the step's enum type.
+type FlutterTestGenerateCodeCoverageFiles = FlutterTestV1GenerateCodeCoverageFiles

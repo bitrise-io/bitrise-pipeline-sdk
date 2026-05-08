@@ -3,6 +3,55 @@
 
 package step
 
+// CordovaArchiveV2Platform enumerates the valid values for the platform input.
+type CordovaArchiveV2Platform string
+
+const (
+	CordovaArchiveV2PlatformIosAndroid CordovaArchiveV2Platform = "ios,android"
+	CordovaArchiveV2PlatformIos        CordovaArchiveV2Platform = "ios"
+	CordovaArchiveV2PlatformAndroid    CordovaArchiveV2Platform = "android"
+)
+
+// CordovaArchiveV2Configuration enumerates the valid values for the configuration input.
+type CordovaArchiveV2Configuration string
+
+const (
+	CordovaArchiveV2ConfigurationRelease CordovaArchiveV2Configuration = "release"
+	CordovaArchiveV2ConfigurationDebug   CordovaArchiveV2Configuration = "debug"
+)
+
+// CordovaArchiveV2Target enumerates the valid values for the target input.
+type CordovaArchiveV2Target string
+
+const (
+	CordovaArchiveV2TargetDevice   CordovaArchiveV2Target = "device"
+	CordovaArchiveV2TargetEmulator CordovaArchiveV2Target = "emulator"
+)
+
+// CordovaArchiveV2RunCordovaPrepare enumerates the valid values for the run_cordova_prepare input.
+type CordovaArchiveV2RunCordovaPrepare string
+
+const (
+	CordovaArchiveV2RunCordovaPrepareTrue  CordovaArchiveV2RunCordovaPrepare = "true"
+	CordovaArchiveV2RunCordovaPrepareFalse CordovaArchiveV2RunCordovaPrepare = "false"
+)
+
+// CordovaArchiveV2CacheLocalDeps enumerates the valid values for the cache_local_deps input.
+type CordovaArchiveV2CacheLocalDeps string
+
+const (
+	CordovaArchiveV2CacheLocalDepsTrue  CordovaArchiveV2CacheLocalDeps = "true"
+	CordovaArchiveV2CacheLocalDepsFalse CordovaArchiveV2CacheLocalDeps = "false"
+)
+
+// CordovaArchiveV2AndroidAppType enumerates the valid values for the android_app_type input.
+type CordovaArchiveV2AndroidAppType string
+
+const (
+	CordovaArchiveV2AndroidAppTypeApk CordovaArchiveV2AndroidAppType = "apk"
+	CordovaArchiveV2AndroidAppTypeAab CordovaArchiveV2AndroidAppType = "aab"
+)
+
 // CordovaArchiveV2Builder builds a cordova-archive step with typed input methods.
 type CordovaArchiveV2Builder struct{ *Builder }
 
@@ -20,20 +69,20 @@ func CordovaArchiveV2(version ...string) *CordovaArchiveV2Builder {
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.
-func (b *CordovaArchiveV2Builder) WithPlatform(value string) *CordovaArchiveV2Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CordovaArchiveV2Builder) WithPlatform(value CordovaArchiveV2Platform) *CordovaArchiveV2Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *CordovaArchiveV2Builder) WithConfiguration(value string) *CordovaArchiveV2Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *CordovaArchiveV2Builder) WithConfiguration(value CordovaArchiveV2Configuration) *CordovaArchiveV2Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *CordovaArchiveV2Builder) WithTarget(value string) *CordovaArchiveV2Builder {
-	b.Builder.WithInput("target", value)
+func (b *CordovaArchiveV2Builder) WithTarget(value CordovaArchiveV2Target) *CordovaArchiveV2Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 
@@ -44,8 +93,8 @@ func (b *CordovaArchiveV2Builder) WithBuildConfig(value string) *CordovaArchiveV
 }
 
 // WithRunCordovaPrepare sets should `cordova prepare` be executed before `cordova compile`?.
-func (b *CordovaArchiveV2Builder) WithRunCordovaPrepare(value string) *CordovaArchiveV2Builder {
-	b.Builder.WithInput("run_cordova_prepare", value)
+func (b *CordovaArchiveV2Builder) WithRunCordovaPrepare(value CordovaArchiveV2RunCordovaPrepare) *CordovaArchiveV2Builder {
+	b.Builder.WithInput("run_cordova_prepare", string(value))
 	return b
 }
 
@@ -68,14 +117,14 @@ func (b *CordovaArchiveV2Builder) WithOptions(value string) *CordovaArchiveV2Bui
 }
 
 // WithCacheLocalDeps sets cache node_modules.
-func (b *CordovaArchiveV2Builder) WithCacheLocalDeps(value string) *CordovaArchiveV2Builder {
-	b.Builder.WithInput("cache_local_deps", value)
+func (b *CordovaArchiveV2Builder) WithCacheLocalDeps(value CordovaArchiveV2CacheLocalDeps) *CordovaArchiveV2Builder {
+	b.Builder.WithInput("cache_local_deps", string(value))
 	return b
 }
 
 // WithAndroidAppType sets android app type.
-func (b *CordovaArchiveV2Builder) WithAndroidAppType(value string) *CordovaArchiveV2Builder {
-	b.Builder.WithInput("android_app_type", value)
+func (b *CordovaArchiveV2Builder) WithAndroidAppType(value CordovaArchiveV2AndroidAppType) *CordovaArchiveV2Builder {
+	b.Builder.WithInput("android_app_type", string(value))
 	return b
 }
 

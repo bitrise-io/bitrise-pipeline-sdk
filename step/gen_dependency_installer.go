@@ -3,6 +3,14 @@
 
 package step
 
+// DependencyInstallerVerbose enumerates the valid values for the verbose input.
+type DependencyInstallerVerbose string
+
+const (
+	DependencyInstallerVerboseTrue  DependencyInstallerVerbose = "true"
+	DependencyInstallerVerboseFalse DependencyInstallerVerbose = "false"
+)
+
 // DependencyInstallerBuilder builds a dependency-installer step with typed input methods.
 type DependencyInstallerBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *DependencyInstallerBuilder) WithToolVersionFile(value string) *Dependen
 }
 
 // WithVerbose sets verbose Output.
-func (b *DependencyInstallerBuilder) WithVerbose(value string) *DependencyInstallerBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *DependencyInstallerBuilder) WithVerbose(value DependencyInstallerVerbose) *DependencyInstallerBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

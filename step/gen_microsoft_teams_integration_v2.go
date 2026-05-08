@@ -3,6 +3,38 @@
 
 package step
 
+// MicrosoftTeamsIntegrationV2EnableDebug enumerates the valid values for the enable_debug input.
+type MicrosoftTeamsIntegrationV2EnableDebug string
+
+const (
+	MicrosoftTeamsIntegrationV2EnableDebugYes MicrosoftTeamsIntegrationV2EnableDebug = "yes"
+	MicrosoftTeamsIntegrationV2EnableDebugNo  MicrosoftTeamsIntegrationV2EnableDebug = "no"
+)
+
+// MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown enumerates the valid values for the enable_primary_section_markdown input.
+type MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown string
+
+const (
+	MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdownYes MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown = "yes"
+	MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdownNo  MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown = "no"
+)
+
+// MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown enumerates the valid values for the enable_build_status_facts_markdown input.
+type MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown string
+
+const (
+	MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdownYes MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown = "yes"
+	MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdownNo  MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown = "no"
+)
+
+// MicrosoftTeamsIntegrationV2EnableDefaultActions enumerates the valid values for the enable_default_actions input.
+type MicrosoftTeamsIntegrationV2EnableDefaultActions string
+
+const (
+	MicrosoftTeamsIntegrationV2EnableDefaultActionsYes MicrosoftTeamsIntegrationV2EnableDefaultActions = "yes"
+	MicrosoftTeamsIntegrationV2EnableDefaultActionsNo  MicrosoftTeamsIntegrationV2EnableDefaultActions = "no"
+)
+
 // MicrosoftTeamsIntegrationV2Builder builds a microsoft-teams-integration step with typed input methods.
 type MicrosoftTeamsIntegrationV2Builder struct{ *Builder }
 
@@ -26,8 +58,8 @@ func (b *MicrosoftTeamsIntegrationV2Builder) WithCardTitle(value string) *Micros
 }
 
 // WithEnableDebug sets enable debug logging.
-func (b *MicrosoftTeamsIntegrationV2Builder) WithEnableDebug(value string) *MicrosoftTeamsIntegrationV2Builder {
-	b.Builder.WithInput("enable_debug", value)
+func (b *MicrosoftTeamsIntegrationV2Builder) WithEnableDebug(value MicrosoftTeamsIntegrationV2EnableDebug) *MicrosoftTeamsIntegrationV2Builder {
+	b.Builder.WithInput("enable_debug", string(value))
 	return b
 }
 
@@ -44,14 +76,14 @@ func (b *MicrosoftTeamsIntegrationV2Builder) WithFailedThemeColor(value string) 
 }
 
 // WithEnablePrimarySectionMarkdown sets primary Section Markdown.
-func (b *MicrosoftTeamsIntegrationV2Builder) WithEnablePrimarySectionMarkdown(value string) *MicrosoftTeamsIntegrationV2Builder {
-	b.Builder.WithInput("enable_primary_section_markdown", value)
+func (b *MicrosoftTeamsIntegrationV2Builder) WithEnablePrimarySectionMarkdown(value MicrosoftTeamsIntegrationV2EnablePrimarySectionMarkdown) *MicrosoftTeamsIntegrationV2Builder {
+	b.Builder.WithInput("enable_primary_section_markdown", string(value))
 	return b
 }
 
 // WithEnableBuildStatusFactsMarkdown sets build Status Facts Markdown.
-func (b *MicrosoftTeamsIntegrationV2Builder) WithEnableBuildStatusFactsMarkdown(value string) *MicrosoftTeamsIntegrationV2Builder {
-	b.Builder.WithInput("enable_build_status_facts_markdown", value)
+func (b *MicrosoftTeamsIntegrationV2Builder) WithEnableBuildStatusFactsMarkdown(value MicrosoftTeamsIntegrationV2EnableBuildStatusFactsMarkdown) *MicrosoftTeamsIntegrationV2Builder {
+	b.Builder.WithInput("enable_build_status_facts_markdown", string(value))
 	return b
 }
 
@@ -92,8 +124,8 @@ func (b *MicrosoftTeamsIntegrationV2Builder) WithSectionImageDescription(value s
 }
 
 // WithEnableDefaultActions sets default MessageCard Actions.
-func (b *MicrosoftTeamsIntegrationV2Builder) WithEnableDefaultActions(value string) *MicrosoftTeamsIntegrationV2Builder {
-	b.Builder.WithInput("enable_default_actions", value)
+func (b *MicrosoftTeamsIntegrationV2Builder) WithEnableDefaultActions(value MicrosoftTeamsIntegrationV2EnableDefaultActions) *MicrosoftTeamsIntegrationV2Builder {
+	b.Builder.WithInput("enable_default_actions", string(value))
 	return b
 }
 

@@ -3,6 +3,14 @@
 
 package step
 
+// RestoreSpmCacheV2Verbose enumerates the valid values for the verbose input.
+type RestoreSpmCacheV2Verbose string
+
+const (
+	RestoreSpmCacheV2VerboseTrue  RestoreSpmCacheV2Verbose = "true"
+	RestoreSpmCacheV2VerboseFalse RestoreSpmCacheV2Verbose = "false"
+)
+
 // RestoreSpmCacheV2Builder builds a restore-spm-cache step with typed input methods.
 type RestoreSpmCacheV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func RestoreSpmCacheV2(version ...string) *RestoreSpmCacheV2Builder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *RestoreSpmCacheV2Builder) WithVerbose(value string) *RestoreSpmCacheV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *RestoreSpmCacheV2Builder) WithVerbose(value RestoreSpmCacheV2Verbose) *RestoreSpmCacheV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

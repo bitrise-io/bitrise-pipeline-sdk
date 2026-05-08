@@ -3,6 +3,55 @@
 
 package step
 
+// LifxNotifierSelectorType enumerates the valid values for the selector_type input.
+type LifxNotifierSelectorType string
+
+const (
+	LifxNotifierSelectorTypeAll      LifxNotifierSelectorType = "all"
+	LifxNotifierSelectorTypeLabel    LifxNotifierSelectorType = "label"
+	LifxNotifierSelectorTypeGroup    LifxNotifierSelectorType = "group"
+	LifxNotifierSelectorTypeLocation LifxNotifierSelectorType = "location"
+)
+
+// LifxNotifierColorBuildSuccess enumerates the valid values for the color_build_success input.
+type LifxNotifierColorBuildSuccess string
+
+const (
+	LifxNotifierColorBuildSuccessBlue   LifxNotifierColorBuildSuccess = "blue"
+	LifxNotifierColorBuildSuccessCyan   LifxNotifierColorBuildSuccess = "cyan"
+	LifxNotifierColorBuildSuccessGreen  LifxNotifierColorBuildSuccess = "green"
+	LifxNotifierColorBuildSuccessOrange LifxNotifierColorBuildSuccess = "orange"
+	LifxNotifierColorBuildSuccessPink   LifxNotifierColorBuildSuccess = "pink"
+	LifxNotifierColorBuildSuccessPurple LifxNotifierColorBuildSuccess = "purple"
+	LifxNotifierColorBuildSuccessRed    LifxNotifierColorBuildSuccess = "red"
+	LifxNotifierColorBuildSuccessYellow LifxNotifierColorBuildSuccess = "yellow"
+	LifxNotifierColorBuildSuccessWhite  LifxNotifierColorBuildSuccess = "white"
+)
+
+// LifxNotifierColorBuildFailure enumerates the valid values for the color_build_failure input.
+type LifxNotifierColorBuildFailure string
+
+const (
+	LifxNotifierColorBuildFailureBlue   LifxNotifierColorBuildFailure = "blue"
+	LifxNotifierColorBuildFailureCyan   LifxNotifierColorBuildFailure = "cyan"
+	LifxNotifierColorBuildFailureGreen  LifxNotifierColorBuildFailure = "green"
+	LifxNotifierColorBuildFailureOrange LifxNotifierColorBuildFailure = "orange"
+	LifxNotifierColorBuildFailurePink   LifxNotifierColorBuildFailure = "pink"
+	LifxNotifierColorBuildFailurePurple LifxNotifierColorBuildFailure = "purple"
+	LifxNotifierColorBuildFailureRed    LifxNotifierColorBuildFailure = "red"
+	LifxNotifierColorBuildFailureYellow LifxNotifierColorBuildFailure = "yellow"
+	LifxNotifierColorBuildFailureWhite  LifxNotifierColorBuildFailure = "white"
+)
+
+// LifxNotifierEffect enumerates the valid values for the effect input.
+type LifxNotifierEffect string
+
+const (
+	LifxNotifierEffectNone    LifxNotifierEffect = "none"
+	LifxNotifierEffectPulse   LifxNotifierEffect = "pulse"
+	LifxNotifierEffectBreathe LifxNotifierEffect = "breathe"
+)
+
 // LifxNotifierBuilder builds a lifx-notifier step with typed input methods.
 type LifxNotifierBuilder struct{ *Builder }
 
@@ -26,8 +75,8 @@ func (b *LifxNotifierBuilder) WithAuthToken(value string) *LifxNotifierBuilder {
 }
 
 // WithSelectorType sets selector type.
-func (b *LifxNotifierBuilder) WithSelectorType(value string) *LifxNotifierBuilder {
-	b.Builder.WithInput("selector_type", value)
+func (b *LifxNotifierBuilder) WithSelectorType(value LifxNotifierSelectorType) *LifxNotifierBuilder {
+	b.Builder.WithInput("selector_type", string(value))
 	return b
 }
 
@@ -38,8 +87,8 @@ func (b *LifxNotifierBuilder) WithBulbLabel(value string) *LifxNotifierBuilder {
 }
 
 // WithColorBuildSuccess sets build success color (LIFX default).
-func (b *LifxNotifierBuilder) WithColorBuildSuccess(value string) *LifxNotifierBuilder {
-	b.Builder.WithInput("color_build_success", value)
+func (b *LifxNotifierBuilder) WithColorBuildSuccess(value LifxNotifierColorBuildSuccess) *LifxNotifierBuilder {
+	b.Builder.WithInput("color_build_success", string(value))
 	return b
 }
 
@@ -50,8 +99,8 @@ func (b *LifxNotifierBuilder) WithColorBuildSuccessCustom(value string) *LifxNot
 }
 
 // WithColorBuildFailure sets build failure color (LIFX default).
-func (b *LifxNotifierBuilder) WithColorBuildFailure(value string) *LifxNotifierBuilder {
-	b.Builder.WithInput("color_build_failure", value)
+func (b *LifxNotifierBuilder) WithColorBuildFailure(value LifxNotifierColorBuildFailure) *LifxNotifierBuilder {
+	b.Builder.WithInput("color_build_failure", string(value))
 	return b
 }
 
@@ -62,8 +111,8 @@ func (b *LifxNotifierBuilder) WithColorBuildFailureCustom(value string) *LifxNot
 }
 
 // WithEffect sets effect.
-func (b *LifxNotifierBuilder) WithEffect(value string) *LifxNotifierBuilder {
-	b.Builder.WithInput("effect", value)
+func (b *LifxNotifierBuilder) WithEffect(value LifxNotifierEffect) *LifxNotifierBuilder {
+	b.Builder.WithInput("effect", string(value))
 	return b
 }
 

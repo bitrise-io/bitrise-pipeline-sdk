@@ -18,3 +18,7 @@ func VirtualDeviceTestingForIos(version ...string) *VirtualDeviceTestingForIosV1
 // published by virtual-device-testing-for-ios at the latest major version (v1).
 // For outputs of a specific major version use VirtualDeviceTestingForIosV{N}Outputs directly.
 var VirtualDeviceTestingForIosOutputs = VirtualDeviceTestingForIosV1Outputs
+
+// VirtualDeviceTestingForIosDownloadTestResults is a type alias for VirtualDeviceTestingForIosV1DownloadTestResults,
+// pointing to the latest supported major version of the step's enum type.
+type VirtualDeviceTestingForIosDownloadTestResults = VirtualDeviceTestingForIosV1DownloadTestResults

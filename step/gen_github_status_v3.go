@@ -3,6 +3,25 @@
 
 package step
 
+// GithubStatusV3SetSpecificStatus enumerates the valid values for the set_specific_status input.
+type GithubStatusV3SetSpecificStatus string
+
+const (
+	GithubStatusV3SetSpecificStatusAuto    GithubStatusV3SetSpecificStatus = "auto"
+	GithubStatusV3SetSpecificStatusPending GithubStatusV3SetSpecificStatus = "pending"
+	GithubStatusV3SetSpecificStatusSuccess GithubStatusV3SetSpecificStatus = "success"
+	GithubStatusV3SetSpecificStatusError   GithubStatusV3SetSpecificStatus = "error"
+	GithubStatusV3SetSpecificStatusFailure GithubStatusV3SetSpecificStatus = "failure"
+)
+
+// GithubStatusV3Verbose enumerates the valid values for the verbose input.
+type GithubStatusV3Verbose string
+
+const (
+	GithubStatusV3VerboseYes GithubStatusV3Verbose = "yes"
+	GithubStatusV3VerboseNo  GithubStatusV3Verbose = "no"
+)
+
 // GithubStatusV3Builder builds a github-status step with typed input methods.
 type GithubStatusV3Builder struct{ *Builder }
 
@@ -38,8 +57,8 @@ func (b *GithubStatusV3Builder) WithCommitHash(value string) *GithubStatusV3Buil
 }
 
 // WithSetSpecificStatus sets set Specific Status.
-func (b *GithubStatusV3Builder) WithSetSpecificStatus(value string) *GithubStatusV3Builder {
-	b.Builder.WithInput("set_specific_status", value)
+func (b *GithubStatusV3Builder) WithSetSpecificStatus(value GithubStatusV3SetSpecificStatus) *GithubStatusV3Builder {
+	b.Builder.WithInput("set_specific_status", string(value))
 	return b
 }
 
@@ -62,8 +81,8 @@ func (b *GithubStatusV3Builder) WithApiBaseUrl(value string) *GithubStatusV3Buil
 }
 
 // WithVerbose sets verbose logging.
-func (b *GithubStatusV3Builder) WithVerbose(value string) *GithubStatusV3Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *GithubStatusV3Builder) WithVerbose(value GithubStatusV3Verbose) *GithubStatusV3Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

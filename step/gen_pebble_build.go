@@ -3,6 +3,38 @@
 
 package step
 
+// PebbleBuildSdkWithoutEmulator enumerates the valid values for the sdk_without_emulator input.
+type PebbleBuildSdkWithoutEmulator string
+
+const (
+	PebbleBuildSdkWithoutEmulatorYes PebbleBuildSdkWithoutEmulator = "yes"
+	PebbleBuildSdkWithoutEmulatorNo  PebbleBuildSdkWithoutEmulator = "no"
+)
+
+// PebbleBuildSdkWithoutFreetype enumerates the valid values for the sdk_without_freetype input.
+type PebbleBuildSdkWithoutFreetype string
+
+const (
+	PebbleBuildSdkWithoutFreetypeYes PebbleBuildSdkWithoutFreetype = "yes"
+	PebbleBuildSdkWithoutFreetypeNo  PebbleBuildSdkWithoutFreetype = "no"
+)
+
+// PebbleBuildSdkWithoutNode enumerates the valid values for the sdk_without_node input.
+type PebbleBuildSdkWithoutNode string
+
+const (
+	PebbleBuildSdkWithoutNodeYes PebbleBuildSdkWithoutNode = "yes"
+	PebbleBuildSdkWithoutNodeNo  PebbleBuildSdkWithoutNode = "no"
+)
+
+// PebbleBuildSdkEnableAnalytics enumerates the valid values for the sdk_enable_analytics input.
+type PebbleBuildSdkEnableAnalytics string
+
+const (
+	PebbleBuildSdkEnableAnalyticsYes PebbleBuildSdkEnableAnalytics = "yes"
+	PebbleBuildSdkEnableAnalyticsNo  PebbleBuildSdkEnableAnalytics = "no"
+)
+
 // PebbleBuildBuilder builds a pebble-build step with typed input methods.
 type PebbleBuildBuilder struct{ *Builder }
 
@@ -26,26 +58,26 @@ func (b *PebbleBuildBuilder) WithProjectPath(value string) *PebbleBuildBuilder {
 }
 
 // WithSdkWithoutEmulator sets install SDK without Emulator?.
-func (b *PebbleBuildBuilder) WithSdkWithoutEmulator(value string) *PebbleBuildBuilder {
-	b.Builder.WithInput("sdk_without_emulator", value)
+func (b *PebbleBuildBuilder) WithSdkWithoutEmulator(value PebbleBuildSdkWithoutEmulator) *PebbleBuildBuilder {
+	b.Builder.WithInput("sdk_without_emulator", string(value))
 	return b
 }
 
 // WithSdkWithoutFreetype sets install SDK without FreeType?.
-func (b *PebbleBuildBuilder) WithSdkWithoutFreetype(value string) *PebbleBuildBuilder {
-	b.Builder.WithInput("sdk_without_freetype", value)
+func (b *PebbleBuildBuilder) WithSdkWithoutFreetype(value PebbleBuildSdkWithoutFreetype) *PebbleBuildBuilder {
+	b.Builder.WithInput("sdk_without_freetype", string(value))
 	return b
 }
 
 // WithSdkWithoutNode sets install SDK without Pebble Packages?.
-func (b *PebbleBuildBuilder) WithSdkWithoutNode(value string) *PebbleBuildBuilder {
-	b.Builder.WithInput("sdk_without_node", value)
+func (b *PebbleBuildBuilder) WithSdkWithoutNode(value PebbleBuildSdkWithoutNode) *PebbleBuildBuilder {
+	b.Builder.WithInput("sdk_without_node", string(value))
 	return b
 }
 
 // WithSdkEnableAnalytics sets send analytics about SDK usage to Pebble?.
-func (b *PebbleBuildBuilder) WithSdkEnableAnalytics(value string) *PebbleBuildBuilder {
-	b.Builder.WithInput("sdk_enable_analytics", value)
+func (b *PebbleBuildBuilder) WithSdkEnableAnalytics(value PebbleBuildSdkEnableAnalytics) *PebbleBuildBuilder {
+	b.Builder.WithInput("sdk_enable_analytics", string(value))
 	return b
 }
 

@@ -3,6 +3,17 @@
 
 package step
 
+// CakebuildVerbosity enumerates the valid values for the verbosity input.
+type CakebuildVerbosity string
+
+const (
+	CakebuildVerbosityQuiet      CakebuildVerbosity = "quiet"
+	CakebuildVerbosityMinimal    CakebuildVerbosity = "minimal"
+	CakebuildVerbosityNormal     CakebuildVerbosity = "normal"
+	CakebuildVerbosityVerbose    CakebuildVerbosity = "verbose"
+	CakebuildVerbosityDiagnostic CakebuildVerbosity = "diagnostic"
+)
+
 // CakebuildBuilder builds a cakebuild step with typed input methods.
 type CakebuildBuilder struct{ *Builder }
 
@@ -38,8 +49,8 @@ func (b *CakebuildBuilder) WithConfiguration(value string) *CakebuildBuilder {
 }
 
 // WithVerbosity sets verbosity.
-func (b *CakebuildBuilder) WithVerbosity(value string) *CakebuildBuilder {
-	b.Builder.WithInput("verbosity", value)
+func (b *CakebuildBuilder) WithVerbosity(value CakebuildVerbosity) *CakebuildBuilder {
+	b.Builder.WithInput("verbosity", string(value))
 	return b
 }
 

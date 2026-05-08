@@ -3,6 +3,177 @@
 
 package step
 
+// LocoImportFileExt enumerates the valid values for the import_file_ext input.
+type LocoImportFileExt string
+
+const (
+	LocoImportFileExtArb        LocoImportFileExt = "arb"
+	LocoImportFileExtBplist     LocoImportFileExt = "bplist"
+	LocoImportFileExtCsv        LocoImportFileExt = "csv"
+	LocoImportFileExtIni        LocoImportFileExt = "ini"
+	LocoImportFileExtJson       LocoImportFileExt = "json"
+	LocoImportFileExtMo         LocoImportFileExt = "mo"
+	LocoImportFileExtPhp        LocoImportFileExt = "php"
+	LocoImportFileExtPlist      LocoImportFileExt = "plist"
+	LocoImportFileExtPo         LocoImportFileExt = "po"
+	LocoImportFileExtPot        LocoImportFileExt = "pot"
+	LocoImportFileExtProperties LocoImportFileExt = "properties"
+	LocoImportFileExtRes        LocoImportFileExt = "res"
+	LocoImportFileExtResx       LocoImportFileExt = "resx"
+	LocoImportFileExtStrings    LocoImportFileExt = "strings"
+	LocoImportFileExtTmx        LocoImportFileExt = "tmx"
+	LocoImportFileExtTs         LocoImportFileExt = "ts"
+	LocoImportFileExtTxt        LocoImportFileExt = "txt"
+	LocoImportFileExtXlf        LocoImportFileExt = "xlf"
+	LocoImportFileExtXml        LocoImportFileExt = "xml"
+	LocoImportFileExtYml        LocoImportFileExt = "yml"
+)
+
+// LocoImportIndex enumerates the valid values for the import_index input.
+type LocoImportIndex string
+
+const (
+	LocoImportIndexId   LocoImportIndex = "id"
+	LocoImportIndexText LocoImportIndex = "text"
+)
+
+// LocoImportAsync enumerates the valid values for the import_async input.
+type LocoImportAsync string
+
+const (
+	LocoImportAsyncTrue  LocoImportAsync = "true"
+	LocoImportAsyncFalse LocoImportAsync = "false"
+)
+
+// LocoImportIgnoreNew enumerates the valid values for the import_ignore_new input.
+type LocoImportIgnoreNew string
+
+const (
+	LocoImportIgnoreNewTrue  LocoImportIgnoreNew = "true"
+	LocoImportIgnoreNewFalse LocoImportIgnoreNew = "false"
+)
+
+// LocoImportIgnoreExisting enumerates the valid values for the import_ignore_existing input.
+type LocoImportIgnoreExisting string
+
+const (
+	LocoImportIgnoreExistingTrue  LocoImportIgnoreExisting = "true"
+	LocoImportIgnoreExistingFalse LocoImportIgnoreExisting = "false"
+)
+
+// LocoImportDeleteAbsent enumerates the valid values for the import_delete_absent input.
+type LocoImportDeleteAbsent string
+
+const (
+	LocoImportDeleteAbsentTrue  LocoImportDeleteAbsent = "true"
+	LocoImportDeleteAbsentFalse LocoImportDeleteAbsent = "false"
+)
+
+// LocoExportFileExt enumerates the valid values for the export_file_ext input.
+type LocoExportFileExt string
+
+const (
+	LocoExportFileExtAllJson            LocoExportFileExt = "all|json"
+	LocoExportFileExtAllCsv             LocoExportFileExt = "all|csv"
+	LocoExportFileExtAllHtml            LocoExportFileExt = "all|html"
+	LocoExportFileExtAllSql             LocoExportFileExt = "all|sql"
+	LocoExportFileExtAllTmx             LocoExportFileExt = "all|tmx"
+	LocoExportFileExtAllXlf             LocoExportFileExt = "all|xlf"
+	LocoExportFileExtAllYml             LocoExportFileExt = "all|yml"
+	LocoExportFileExtArchiveArb         LocoExportFileExt = "archive|arb"
+	LocoExportFileExtArchiveCsv         LocoExportFileExt = "archive|csv"
+	LocoExportFileExtArchiveHtml        LocoExportFileExt = "archive|html"
+	LocoExportFileExtArchiveIni         LocoExportFileExt = "archive|ini"
+	LocoExportFileExtArchiveJson        LocoExportFileExt = "archive|json"
+	LocoExportFileExtArchiveMo          LocoExportFileExt = "archive|mo"
+	LocoExportFileExtArchivePhp         LocoExportFileExt = "archive|php"
+	LocoExportFileExtArchivePo          LocoExportFileExt = "archive|po"
+	LocoExportFileExtArchivePot         LocoExportFileExt = "archive|pot"
+	LocoExportFileExtArchivePlist       LocoExportFileExt = "archive|plist"
+	LocoExportFileExtArchiveBplist      LocoExportFileExt = "archive|bplist"
+	LocoExportFileExtArchiveProperties  LocoExportFileExt = "archive|properties"
+	LocoExportFileExtArchiveRes         LocoExportFileExt = "archive|res"
+	LocoExportFileExtArchiveResx        LocoExportFileExt = "archive|resx"
+	LocoExportFileExtArchiveSql         LocoExportFileExt = "archive|sql"
+	LocoExportFileExtArchiveStrings     LocoExportFileExt = "archive|strings"
+	LocoExportFileExtArchiveStringsdict LocoExportFileExt = "archive|stringsdict"
+	LocoExportFileExtArchiveTmx         LocoExportFileExt = "archive|tmx"
+	LocoExportFileExtArchiveTs          LocoExportFileExt = "archive|ts"
+	LocoExportFileExtArchiveTxt         LocoExportFileExt = "archive|txt"
+	LocoExportFileExtArchiveXlf         LocoExportFileExt = "archive|xlf"
+	LocoExportFileExtArchiveXliff       LocoExportFileExt = "archive|xliff"
+	LocoExportFileExtArchiveXml         LocoExportFileExt = "archive|xml"
+	LocoExportFileExtArchiveYml         LocoExportFileExt = "archive|yml"
+	LocoExportFileExtLocaleArb          LocoExportFileExt = "locale|arb"
+	LocoExportFileExtLocaleCsv          LocoExportFileExt = "locale|csv"
+	LocoExportFileExtLocaleHtml         LocoExportFileExt = "locale|html"
+	LocoExportFileExtLocaleIni          LocoExportFileExt = "locale|ini"
+	LocoExportFileExtLocaleJson         LocoExportFileExt = "locale|json"
+	LocoExportFileExtLocaleMo           LocoExportFileExt = "locale|mo"
+	LocoExportFileExtLocalePhp          LocoExportFileExt = "locale|php"
+	LocoExportFileExtLocalePo           LocoExportFileExt = "locale|po"
+	LocoExportFileExtLocalePot          LocoExportFileExt = "locale|pot"
+	LocoExportFileExtLocalePlist        LocoExportFileExt = "locale|plist"
+	LocoExportFileExtLocaleBplist       LocoExportFileExt = "locale|bplist"
+	LocoExportFileExtLocaleProperties   LocoExportFileExt = "locale|properties"
+	LocoExportFileExtLocaleRes          LocoExportFileExt = "locale|res"
+	LocoExportFileExtLocaleResx         LocoExportFileExt = "locale|resx"
+	LocoExportFileExtLocaleSql          LocoExportFileExt = "locale|sql"
+	LocoExportFileExtLocaleStrings      LocoExportFileExt = "locale|strings"
+	LocoExportFileExtLocaleStringsdict  LocoExportFileExt = "locale|stringsdict"
+	LocoExportFileExtLocaleTmx          LocoExportFileExt = "locale|tmx"
+	LocoExportFileExtLocaleTs           LocoExportFileExt = "locale|ts"
+	LocoExportFileExtLocaleTxt          LocoExportFileExt = "locale|txt"
+	LocoExportFileExtLocaleXlf          LocoExportFileExt = "locale|xlf"
+	LocoExportFileExtLocaleXliff        LocoExportFileExt = "locale|xliff"
+	LocoExportFileExtLocaleXml          LocoExportFileExt = "locale|xml"
+	LocoExportFileExtLocaleYml          LocoExportFileExt = "locale|yml"
+)
+
+// LocoExportOrder enumerates the valid values for the export_order input.
+type LocoExportOrder string
+
+const (
+	LocoExportOrderCreated LocoExportOrder = "created"
+	LocoExportOrderId      LocoExportOrder = "id"
+)
+
+// LocoExportPrintf enumerates the valid values for the export_printf input.
+type LocoExportPrintf string
+
+const (
+	LocoExportPrintfDefault LocoExportPrintf = "default"
+	LocoExportPrintfPhp     LocoExportPrintf = "php"
+	LocoExportPrintfJava    LocoExportPrintf = "java"
+	LocoExportPrintfObjc    LocoExportPrintf = "objc"
+	LocoExportPrintfIcu     LocoExportPrintf = "icu"
+)
+
+// LocoExportBreaks enumerates the valid values for the export_breaks input.
+type LocoExportBreaks string
+
+const (
+	LocoExportBreaksUnix LocoExportBreaks = "Unix"
+	LocoExportBreaksDOS  LocoExportBreaks = "DOS"
+	LocoExportBreaksMac  LocoExportBreaks = "Mac"
+)
+
+// LocoExportNoComments enumerates the valid values for the export_no_comments input.
+type LocoExportNoComments string
+
+const (
+	LocoExportNoCommentsTrue  LocoExportNoComments = "true"
+	LocoExportNoCommentsFalse LocoExportNoComments = "false"
+)
+
+// LocoExportNoFolding enumerates the valid values for the export_no_folding input.
+type LocoExportNoFolding string
+
+const (
+	LocoExportNoFoldingTrue  LocoExportNoFolding = "true"
+	LocoExportNoFoldingFalse LocoExportNoFolding = "false"
+)
+
 // LocoBuilder builds a loco step with typed input methods.
 type LocoBuilder struct{ *Builder }
 
@@ -26,8 +197,8 @@ func (b *LocoBuilder) WithLocoApiKey(value string) *LocoBuilder {
 }
 
 // WithImportFileExt sets file extension.
-func (b *LocoBuilder) WithImportFileExt(value string) *LocoBuilder {
-	b.Builder.WithInput("import_file_ext", value)
+func (b *LocoBuilder) WithImportFileExt(value LocoImportFileExt) *LocoBuilder {
+	b.Builder.WithInput("import_file_ext", string(value))
 	return b
 }
 
@@ -38,8 +209,8 @@ func (b *LocoBuilder) WithImportFilePath(value string) *LocoBuilder {
 }
 
 // WithImportIndex sets index type.
-func (b *LocoBuilder) WithImportIndex(value string) *LocoBuilder {
-	b.Builder.WithInput("import_index", value)
+func (b *LocoBuilder) WithImportIndex(value LocoImportIndex) *LocoBuilder {
+	b.Builder.WithInput("import_index", string(value))
 	return b
 }
 
@@ -50,8 +221,8 @@ func (b *LocoBuilder) WithImportLocale(value string) *LocoBuilder {
 }
 
 // WithImportAsync sets async.
-func (b *LocoBuilder) WithImportAsync(value string) *LocoBuilder {
-	b.Builder.WithInput("import_async", value)
+func (b *LocoBuilder) WithImportAsync(value LocoImportAsync) *LocoBuilder {
+	b.Builder.WithInput("import_async", string(value))
 	return b
 }
 
@@ -62,20 +233,20 @@ func (b *LocoBuilder) WithImportSourcePath(value string) *LocoBuilder {
 }
 
 // WithImportIgnoreNew sets ignore new.
-func (b *LocoBuilder) WithImportIgnoreNew(value string) *LocoBuilder {
-	b.Builder.WithInput("import_ignore_new", value)
+func (b *LocoBuilder) WithImportIgnoreNew(value LocoImportIgnoreNew) *LocoBuilder {
+	b.Builder.WithInput("import_ignore_new", string(value))
 	return b
 }
 
 // WithImportIgnoreExisting sets ignore existing.
-func (b *LocoBuilder) WithImportIgnoreExisting(value string) *LocoBuilder {
-	b.Builder.WithInput("import_ignore_existing", value)
+func (b *LocoBuilder) WithImportIgnoreExisting(value LocoImportIgnoreExisting) *LocoBuilder {
+	b.Builder.WithInput("import_ignore_existing", string(value))
 	return b
 }
 
 // WithImportDeleteAbsent sets delete absent.
-func (b *LocoBuilder) WithImportDeleteAbsent(value string) *LocoBuilder {
-	b.Builder.WithInput("import_delete_absent", value)
+func (b *LocoBuilder) WithImportDeleteAbsent(value LocoImportDeleteAbsent) *LocoBuilder {
+	b.Builder.WithInput("import_delete_absent", string(value))
 	return b
 }
 
@@ -122,8 +293,8 @@ func (b *LocoBuilder) WithImportUntagAbsent(value string) *LocoBuilder {
 }
 
 // WithExportFileExt sets file extension.
-func (b *LocoBuilder) WithExportFileExt(value string) *LocoBuilder {
-	b.Builder.WithInput("export_file_ext", value)
+func (b *LocoBuilder) WithExportFileExt(value LocoExportFileExt) *LocoBuilder {
+	b.Builder.WithInput("export_file_ext", string(value))
 	return b
 }
 
@@ -170,14 +341,14 @@ func (b *LocoBuilder) WithExportFallback(value string) *LocoBuilder {
 }
 
 // WithExportOrder sets order.
-func (b *LocoBuilder) WithExportOrder(value string) *LocoBuilder {
-	b.Builder.WithInput("export_order", value)
+func (b *LocoBuilder) WithExportOrder(value LocoExportOrder) *LocoBuilder {
+	b.Builder.WithInput("export_order", string(value))
 	return b
 }
 
 // WithExportPrintf sets printf style.
-func (b *LocoBuilder) WithExportPrintf(value string) *LocoBuilder {
-	b.Builder.WithInput("export_printf", value)
+func (b *LocoBuilder) WithExportPrintf(value LocoExportPrintf) *LocoBuilder {
+	b.Builder.WithInput("export_printf", string(value))
 	return b
 }
 
@@ -188,20 +359,20 @@ func (b *LocoBuilder) WithExportCharset(value string) *LocoBuilder {
 }
 
 // WithExportBreaks sets line-endings.
-func (b *LocoBuilder) WithExportBreaks(value string) *LocoBuilder {
-	b.Builder.WithInput("export_breaks", value)
+func (b *LocoBuilder) WithExportBreaks(value LocoExportBreaks) *LocoBuilder {
+	b.Builder.WithInput("export_breaks", string(value))
 	return b
 }
 
 // WithExportNoComments sets no comments.
-func (b *LocoBuilder) WithExportNoComments(value string) *LocoBuilder {
-	b.Builder.WithInput("export_no_comments", value)
+func (b *LocoBuilder) WithExportNoComments(value LocoExportNoComments) *LocoBuilder {
+	b.Builder.WithInput("export_no_comments", string(value))
 	return b
 }
 
 // WithExportNoFolding sets no folding.
-func (b *LocoBuilder) WithExportNoFolding(value string) *LocoBuilder {
-	b.Builder.WithInput("export_no_folding", value)
+func (b *LocoBuilder) WithExportNoFolding(value LocoExportNoFolding) *LocoBuilder {
+	b.Builder.WithInput("export_no_folding", string(value))
 	return b
 }
 

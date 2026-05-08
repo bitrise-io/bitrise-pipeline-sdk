@@ -3,6 +3,23 @@
 
 package step
 
+// IonicPrepareV0Platform enumerates the valid values for the platform input.
+type IonicPrepareV0Platform string
+
+const (
+	IonicPrepareV0PlatformIosAndroid IonicPrepareV0Platform = "ios,android"
+	IonicPrepareV0PlatformIos        IonicPrepareV0Platform = "ios"
+	IonicPrepareV0PlatformAndroid    IonicPrepareV0Platform = "android"
+)
+
+// IonicPrepareV0ReaddPlatform enumerates the valid values for the readd_platform input.
+type IonicPrepareV0ReaddPlatform string
+
+const (
+	IonicPrepareV0ReaddPlatformTrue  IonicPrepareV0ReaddPlatform = "true"
+	IonicPrepareV0ReaddPlatformFalse IonicPrepareV0ReaddPlatform = "false"
+)
+
 // IonicPrepareV0Builder builds a ionic-prepare step with typed input methods.
 type IonicPrepareV0Builder struct{ *Builder }
 
@@ -20,14 +37,14 @@ func IonicPrepareV0(version ...string) *IonicPrepareV0Builder {
 }
 
 // WithPlatform sets platform to use in ionic-cli commands.
-func (b *IonicPrepareV0Builder) WithPlatform(value string) *IonicPrepareV0Builder {
-	b.Builder.WithInput("platform", value)
+func (b *IonicPrepareV0Builder) WithPlatform(value IonicPrepareV0Platform) *IonicPrepareV0Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithReaddPlatform sets should remove platforms as prepare step?.
-func (b *IonicPrepareV0Builder) WithReaddPlatform(value string) *IonicPrepareV0Builder {
-	b.Builder.WithInput("readd_platform", value)
+func (b *IonicPrepareV0Builder) WithReaddPlatform(value IonicPrepareV0ReaddPlatform) *IonicPrepareV0Builder {
+	b.Builder.WithInput("readd_platform", string(value))
 	return b
 }
 

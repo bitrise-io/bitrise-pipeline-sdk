@@ -3,6 +3,14 @@
 
 package step
 
+// GithubScriptRunnerRunScript enumerates the valid values for the run_script input.
+type GithubScriptRunnerRunScript string
+
+const (
+	GithubScriptRunnerRunScriptNo  GithubScriptRunnerRunScript = "no"
+	GithubScriptRunnerRunScriptYes GithubScriptRunnerRunScript = "yes"
+)
+
 // GithubScriptRunnerBuilder builds a github-script-runner step with typed input methods.
 type GithubScriptRunnerBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *GithubScriptRunnerBuilder) WithRawFilePath(value string) *GithubScriptR
 }
 
 // WithRunScript sets field that says if the script should be run.
-func (b *GithubScriptRunnerBuilder) WithRunScript(value string) *GithubScriptRunnerBuilder {
-	b.Builder.WithInput("run_script", value)
+func (b *GithubScriptRunnerBuilder) WithRunScript(value GithubScriptRunnerRunScript) *GithubScriptRunnerBuilder {
+	b.Builder.WithInput("run_script", string(value))
 	return b
 }
 

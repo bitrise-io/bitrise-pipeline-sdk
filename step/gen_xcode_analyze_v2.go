@@ -3,6 +3,54 @@
 
 package step
 
+// XcodeAnalyzeV2IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeAnalyzeV2IsCleanBuild string
+
+const (
+	XcodeAnalyzeV2IsCleanBuildYes XcodeAnalyzeV2IsCleanBuild = "yes"
+	XcodeAnalyzeV2IsCleanBuildNo  XcodeAnalyzeV2IsCleanBuild = "no"
+)
+
+// XcodeAnalyzeV2DisableCodesign enumerates the valid values for the disable_codesign input.
+type XcodeAnalyzeV2DisableCodesign string
+
+const (
+	XcodeAnalyzeV2DisableCodesignYes XcodeAnalyzeV2DisableCodesign = "yes"
+	XcodeAnalyzeV2DisableCodesignNo  XcodeAnalyzeV2DisableCodesign = "no"
+)
+
+// XcodeAnalyzeV2DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeAnalyzeV2DisableIndexWhileBuilding string
+
+const (
+	XcodeAnalyzeV2DisableIndexWhileBuildingYes XcodeAnalyzeV2DisableIndexWhileBuilding = "yes"
+	XcodeAnalyzeV2DisableIndexWhileBuildingNo  XcodeAnalyzeV2DisableIndexWhileBuilding = "no"
+)
+
+// XcodeAnalyzeV2CacheLevel enumerates the valid values for the cache_level input.
+type XcodeAnalyzeV2CacheLevel string
+
+const (
+	XcodeAnalyzeV2CacheLevelNone          XcodeAnalyzeV2CacheLevel = "none"
+	XcodeAnalyzeV2CacheLevelSwiftPackages XcodeAnalyzeV2CacheLevel = "swift_packages"
+)
+
+// XcodeAnalyzeV2OutputTool enumerates the valid values for the output_tool input.
+type XcodeAnalyzeV2OutputTool string
+
+const (
+	XcodeAnalyzeV2OutputToolXcpretty   XcodeAnalyzeV2OutputTool = "xcpretty"
+	XcodeAnalyzeV2OutputToolXcodebuild XcodeAnalyzeV2OutputTool = "xcodebuild"
+)
+
+// XcodeAnalyzeV2VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeAnalyzeV2VerboseLog string
+
+const (
+	XcodeAnalyzeV2VerboseLogYes XcodeAnalyzeV2VerboseLog = "yes"
+	XcodeAnalyzeV2VerboseLogNo  XcodeAnalyzeV2VerboseLog = "no"
+)
+
 // XcodeAnalyzeV2Builder builds a xcode-analyze step with typed input methods.
 type XcodeAnalyzeV2Builder struct{ *Builder }
 
@@ -38,8 +86,8 @@ func (b *XcodeAnalyzeV2Builder) WithScheme(value string) *XcodeAnalyzeV2Builder 
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before testing?.
-func (b *XcodeAnalyzeV2Builder) WithIsCleanBuild(value string) *XcodeAnalyzeV2Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeAnalyzeV2Builder) WithIsCleanBuild(value XcodeAnalyzeV2IsCleanBuild) *XcodeAnalyzeV2Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
@@ -56,20 +104,20 @@ func (b *XcodeAnalyzeV2Builder) WithForceProvisioningProfile(value string) *Xcod
 }
 
 // WithDisableCodesign sets disable code signing.
-func (b *XcodeAnalyzeV2Builder) WithDisableCodesign(value string) *XcodeAnalyzeV2Builder {
-	b.Builder.WithInput("disable_codesign", value)
+func (b *XcodeAnalyzeV2Builder) WithDisableCodesign(value XcodeAnalyzeV2DisableCodesign) *XcodeAnalyzeV2Builder {
+	b.Builder.WithInput("disable_codesign", string(value))
 	return b
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeAnalyzeV2Builder) WithDisableIndexWhileBuilding(value string) *XcodeAnalyzeV2Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeAnalyzeV2Builder) WithDisableIndexWhileBuilding(value XcodeAnalyzeV2DisableIndexWhileBuilding) *XcodeAnalyzeV2Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
 // WithCacheLevel sets enable caching of Swift Package Manager packages.
-func (b *XcodeAnalyzeV2Builder) WithCacheLevel(value string) *XcodeAnalyzeV2Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeAnalyzeV2Builder) WithCacheLevel(value XcodeAnalyzeV2CacheLevel) *XcodeAnalyzeV2Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -80,8 +128,8 @@ func (b *XcodeAnalyzeV2Builder) WithXcodebuildOptions(value string) *XcodeAnalyz
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeAnalyzeV2Builder) WithOutputTool(value string) *XcodeAnalyzeV2Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeAnalyzeV2Builder) WithOutputTool(value XcodeAnalyzeV2OutputTool) *XcodeAnalyzeV2Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
@@ -92,8 +140,8 @@ func (b *XcodeAnalyzeV2Builder) WithOutputDir(value string) *XcodeAnalyzeV2Build
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *XcodeAnalyzeV2Builder) WithVerboseLog(value string) *XcodeAnalyzeV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeAnalyzeV2Builder) WithVerboseLog(value XcodeAnalyzeV2VerboseLog) *XcodeAnalyzeV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

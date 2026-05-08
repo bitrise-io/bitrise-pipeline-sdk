@@ -3,6 +3,39 @@
 
 package step
 
+// HockeyappDeployAndroidV0NotesType enumerates the valid values for the notes_type input.
+type HockeyappDeployAndroidV0NotesType string
+
+const (
+	HockeyappDeployAndroidV0NotesType0 HockeyappDeployAndroidV0NotesType = "0"
+	HockeyappDeployAndroidV0NotesType1 HockeyappDeployAndroidV0NotesType = "1"
+)
+
+// HockeyappDeployAndroidV0Notify enumerates the valid values for the notify input.
+type HockeyappDeployAndroidV0Notify string
+
+const (
+	HockeyappDeployAndroidV0Notify0 HockeyappDeployAndroidV0Notify = "0"
+	HockeyappDeployAndroidV0Notify1 HockeyappDeployAndroidV0Notify = "1"
+	HockeyappDeployAndroidV0Notify2 HockeyappDeployAndroidV0Notify = "2"
+)
+
+// HockeyappDeployAndroidV0Status enumerates the valid values for the status input.
+type HockeyappDeployAndroidV0Status string
+
+const (
+	HockeyappDeployAndroidV0Status1 HockeyappDeployAndroidV0Status = "1"
+	HockeyappDeployAndroidV0Status2 HockeyappDeployAndroidV0Status = "2"
+)
+
+// HockeyappDeployAndroidV0Mandatory enumerates the valid values for the mandatory input.
+type HockeyappDeployAndroidV0Mandatory string
+
+const (
+	HockeyappDeployAndroidV0MandatoryTrue  HockeyappDeployAndroidV0Mandatory = "true"
+	HockeyappDeployAndroidV0MandatoryFalse HockeyappDeployAndroidV0Mandatory = "false"
+)
+
 // HockeyappDeployAndroidV0Builder builds a hockeyapp-deploy-android step with typed input methods.
 type HockeyappDeployAndroidV0Builder struct{ *Builder }
 
@@ -50,26 +83,26 @@ func (b *HockeyappDeployAndroidV0Builder) WithNotes(value string) *HockeyappDepl
 }
 
 // WithNotesType sets notes type.
-func (b *HockeyappDeployAndroidV0Builder) WithNotesType(value string) *HockeyappDeployAndroidV0Builder {
-	b.Builder.WithInput("notes_type", value)
+func (b *HockeyappDeployAndroidV0Builder) WithNotesType(value HockeyappDeployAndroidV0NotesType) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithInput("notes_type", string(value))
 	return b
 }
 
 // WithNotify sets notify Testers?.
-func (b *HockeyappDeployAndroidV0Builder) WithNotify(value string) *HockeyappDeployAndroidV0Builder {
-	b.Builder.WithInput("notify", value)
+func (b *HockeyappDeployAndroidV0Builder) WithNotify(value HockeyappDeployAndroidV0Notify) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithInput("notify", string(value))
 	return b
 }
 
 // WithStatus sets allow Download?.
-func (b *HockeyappDeployAndroidV0Builder) WithStatus(value string) *HockeyappDeployAndroidV0Builder {
-	b.Builder.WithInput("status", value)
+func (b *HockeyappDeployAndroidV0Builder) WithStatus(value HockeyappDeployAndroidV0Status) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithInput("status", string(value))
 	return b
 }
 
 // WithMandatory sets mandatory?.
-func (b *HockeyappDeployAndroidV0Builder) WithMandatory(value string) *HockeyappDeployAndroidV0Builder {
-	b.Builder.WithInput("mandatory", value)
+func (b *HockeyappDeployAndroidV0Builder) WithMandatory(value HockeyappDeployAndroidV0Mandatory) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 

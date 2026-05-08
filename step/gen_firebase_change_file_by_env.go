@@ -3,6 +3,15 @@
 
 package step
 
+// FirebaseChangeFileByEnvPlatform enumerates the valid values for the platform input.
+type FirebaseChangeFileByEnvPlatform string
+
+const (
+	FirebaseChangeFileByEnvPlatformBoth    FirebaseChangeFileByEnvPlatform = "both"
+	FirebaseChangeFileByEnvPlatformIOS     FirebaseChangeFileByEnvPlatform = "iOS"
+	FirebaseChangeFileByEnvPlatformAndroid FirebaseChangeFileByEnvPlatform = "Android"
+)
+
 // FirebaseChangeFileByEnvBuilder builds a firebase-change-file-by-env step with typed input methods.
 type FirebaseChangeFileByEnvBuilder struct{ *Builder }
 
@@ -26,8 +35,8 @@ func (b *FirebaseChangeFileByEnvBuilder) WithPrincipalBranch(value string) *Fire
 }
 
 // WithPlatform sets platform to use.
-func (b *FirebaseChangeFileByEnvBuilder) WithPlatform(value string) *FirebaseChangeFileByEnvBuilder {
-	b.Builder.WithInput("platform", value)
+func (b *FirebaseChangeFileByEnvBuilder) WithPlatform(value FirebaseChangeFileByEnvPlatform) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 

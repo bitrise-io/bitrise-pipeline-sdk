@@ -3,6 +3,117 @@
 
 package step
 
+// XcodeArchiveV5Platform enumerates the valid values for the platform input.
+type XcodeArchiveV5Platform string
+
+const (
+	XcodeArchiveV5PlatformDetect   XcodeArchiveV5Platform = "detect"
+	XcodeArchiveV5PlatformIOS      XcodeArchiveV5Platform = "iOS"
+	XcodeArchiveV5PlatformWatchOS  XcodeArchiveV5Platform = "watchOS"
+	XcodeArchiveV5PlatformTvOS     XcodeArchiveV5Platform = "tvOS"
+	XcodeArchiveV5PlatformVisionOS XcodeArchiveV5Platform = "visionOS"
+)
+
+// XcodeArchiveV5DistributionMethod enumerates the valid values for the distribution_method input.
+type XcodeArchiveV5DistributionMethod string
+
+const (
+	XcodeArchiveV5DistributionMethodDevelopment XcodeArchiveV5DistributionMethod = "development"
+	XcodeArchiveV5DistributionMethodAppStore    XcodeArchiveV5DistributionMethod = "app-store"
+	XcodeArchiveV5DistributionMethodAdHoc       XcodeArchiveV5DistributionMethod = "ad-hoc"
+	XcodeArchiveV5DistributionMethodEnterprise  XcodeArchiveV5DistributionMethod = "enterprise"
+)
+
+// XcodeArchiveV5PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeArchiveV5PerformCleanAction string
+
+const (
+	XcodeArchiveV5PerformCleanActionYes XcodeArchiveV5PerformCleanAction = "yes"
+	XcodeArchiveV5PerformCleanActionNo  XcodeArchiveV5PerformCleanAction = "no"
+)
+
+// XcodeArchiveV5LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeArchiveV5LogFormatter string
+
+const (
+	XcodeArchiveV5LogFormatterXcbeautify XcodeArchiveV5LogFormatter = "xcbeautify"
+	XcodeArchiveV5LogFormatterXcodebuild XcodeArchiveV5LogFormatter = "xcodebuild"
+	XcodeArchiveV5LogFormatterXcpretty   XcodeArchiveV5LogFormatter = "xcpretty"
+)
+
+// XcodeArchiveV5AutomaticCodeSigning enumerates the valid values for the automatic_code_signing input.
+type XcodeArchiveV5AutomaticCodeSigning string
+
+const (
+	XcodeArchiveV5AutomaticCodeSigningOff     XcodeArchiveV5AutomaticCodeSigning = "off"
+	XcodeArchiveV5AutomaticCodeSigningApiKey  XcodeArchiveV5AutomaticCodeSigning = "api-key"
+	XcodeArchiveV5AutomaticCodeSigningAppleId XcodeArchiveV5AutomaticCodeSigning = "apple-id"
+)
+
+// XcodeArchiveV5RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type XcodeArchiveV5RegisterTestDevices string
+
+const (
+	XcodeArchiveV5RegisterTestDevicesYes XcodeArchiveV5RegisterTestDevices = "yes"
+	XcodeArchiveV5RegisterTestDevicesNo  XcodeArchiveV5RegisterTestDevices = "no"
+)
+
+// XcodeArchiveV5CompileBitcode enumerates the valid values for the compile_bitcode input.
+type XcodeArchiveV5CompileBitcode string
+
+const (
+	XcodeArchiveV5CompileBitcodeYes XcodeArchiveV5CompileBitcode = "yes"
+	XcodeArchiveV5CompileBitcodeNo  XcodeArchiveV5CompileBitcode = "no"
+)
+
+// XcodeArchiveV5UploadBitcode enumerates the valid values for the upload_bitcode input.
+type XcodeArchiveV5UploadBitcode string
+
+const (
+	XcodeArchiveV5UploadBitcodeYes XcodeArchiveV5UploadBitcode = "yes"
+	XcodeArchiveV5UploadBitcodeNo  XcodeArchiveV5UploadBitcode = "no"
+)
+
+// XcodeArchiveV5TestflightInternalTestingOnly enumerates the valid values for the testflight_internal_testing_only input.
+type XcodeArchiveV5TestflightInternalTestingOnly string
+
+const (
+	XcodeArchiveV5TestflightInternalTestingOnlyYes XcodeArchiveV5TestflightInternalTestingOnly = "yes"
+	XcodeArchiveV5TestflightInternalTestingOnlyNo  XcodeArchiveV5TestflightInternalTestingOnly = "no"
+)
+
+// XcodeArchiveV5ExportAllDsyms enumerates the valid values for the export_all_dsyms input.
+type XcodeArchiveV5ExportAllDsyms string
+
+const (
+	XcodeArchiveV5ExportAllDsymsYes XcodeArchiveV5ExportAllDsyms = "yes"
+	XcodeArchiveV5ExportAllDsymsNo  XcodeArchiveV5ExportAllDsyms = "no"
+)
+
+// XcodeArchiveV5CacheLevel enumerates the valid values for the cache_level input.
+type XcodeArchiveV5CacheLevel string
+
+const (
+	XcodeArchiveV5CacheLevelNone          XcodeArchiveV5CacheLevel = "none"
+	XcodeArchiveV5CacheLevelSwiftPackages XcodeArchiveV5CacheLevel = "swift_packages"
+)
+
+// XcodeArchiveV5ApiKeyEnterpriseAccount enumerates the valid values for the api_key_enterprise_account input.
+type XcodeArchiveV5ApiKeyEnterpriseAccount string
+
+const (
+	XcodeArchiveV5ApiKeyEnterpriseAccountYes XcodeArchiveV5ApiKeyEnterpriseAccount = "yes"
+	XcodeArchiveV5ApiKeyEnterpriseAccountNo  XcodeArchiveV5ApiKeyEnterpriseAccount = "no"
+)
+
+// XcodeArchiveV5VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeArchiveV5VerboseLog string
+
+const (
+	XcodeArchiveV5VerboseLogYes XcodeArchiveV5VerboseLog = "yes"
+	XcodeArchiveV5VerboseLogNo  XcodeArchiveV5VerboseLog = "no"
+)
+
 // XcodeArchiveV5Builder builds a xcode-archive step with typed input methods.
 type XcodeArchiveV5Builder struct{ *Builder }
 
@@ -32,14 +143,14 @@ func (b *XcodeArchiveV5Builder) WithScheme(value string) *XcodeArchiveV5Builder 
 }
 
 // WithPlatform sets platform.
-func (b *XcodeArchiveV5Builder) WithPlatform(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("platform", value)
+func (b *XcodeArchiveV5Builder) WithPlatform(value XcodeArchiveV5Platform) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithDistributionMethod sets distribution method.
-func (b *XcodeArchiveV5Builder) WithDistributionMethod(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("distribution_method", value)
+func (b *XcodeArchiveV5Builder) WithDistributionMethod(value XcodeArchiveV5DistributionMethod) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("distribution_method", string(value))
 	return b
 }
 
@@ -56,8 +167,8 @@ func (b *XcodeArchiveV5Builder) WithXcconfigContent(value string) *XcodeArchiveV
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeArchiveV5Builder) WithPerformCleanAction(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeArchiveV5Builder) WithPerformCleanAction(value XcodeArchiveV5PerformCleanAction) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -68,20 +179,20 @@ func (b *XcodeArchiveV5Builder) WithXcodebuildOptions(value string) *XcodeArchiv
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeArchiveV5Builder) WithLogFormatter(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeArchiveV5Builder) WithLogFormatter(value XcodeArchiveV5LogFormatter) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
 // WithAutomaticCodeSigning sets automatic code signing method.
-func (b *XcodeArchiveV5Builder) WithAutomaticCodeSigning(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("automatic_code_signing", value)
+func (b *XcodeArchiveV5Builder) WithAutomaticCodeSigning(value XcodeArchiveV5AutomaticCodeSigning) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("automatic_code_signing", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *XcodeArchiveV5Builder) WithRegisterTestDevices(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *XcodeArchiveV5Builder) WithRegisterTestDevices(value XcodeArchiveV5RegisterTestDevices) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -134,14 +245,14 @@ func (b *XcodeArchiveV5Builder) WithExportDevelopmentTeam(value string) *XcodeAr
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *XcodeArchiveV5Builder) WithCompileBitcode(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *XcodeArchiveV5Builder) WithCompileBitcode(value XcodeArchiveV5CompileBitcode) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *XcodeArchiveV5Builder) WithUploadBitcode(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *XcodeArchiveV5Builder) WithUploadBitcode(value XcodeArchiveV5UploadBitcode) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
@@ -152,8 +263,8 @@ func (b *XcodeArchiveV5Builder) WithIcloudContainerEnvironment(value string) *Xc
 }
 
 // WithTestflightInternalTestingOnly sets testflight Internal Testing Only.
-func (b *XcodeArchiveV5Builder) WithTestflightInternalTestingOnly(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("testflight_internal_testing_only", value)
+func (b *XcodeArchiveV5Builder) WithTestflightInternalTestingOnly(value XcodeArchiveV5TestflightInternalTestingOnly) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("testflight_internal_testing_only", string(value))
 	return b
 }
 
@@ -170,8 +281,8 @@ func (b *XcodeArchiveV5Builder) WithOutputDir(value string) *XcodeArchiveV5Build
 }
 
 // WithExportAllDsyms sets export all dSYMs.
-func (b *XcodeArchiveV5Builder) WithExportAllDsyms(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("export_all_dsyms", value)
+func (b *XcodeArchiveV5Builder) WithExportAllDsyms(value XcodeArchiveV5ExportAllDsyms) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("export_all_dsyms", string(value))
 	return b
 }
 
@@ -182,8 +293,8 @@ func (b *XcodeArchiveV5Builder) WithArtifactName(value string) *XcodeArchiveV5Bu
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeArchiveV5Builder) WithCacheLevel(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeArchiveV5Builder) WithCacheLevel(value XcodeArchiveV5CacheLevel) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -206,14 +317,14 @@ func (b *XcodeArchiveV5Builder) WithApiKeyIssuerId(value string) *XcodeArchiveV5
 }
 
 // WithApiKeyEnterpriseAccount sets app Store Connect API enterprise account.
-func (b *XcodeArchiveV5Builder) WithApiKeyEnterpriseAccount(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("api_key_enterprise_account", value)
+func (b *XcodeArchiveV5Builder) WithApiKeyEnterpriseAccount(value XcodeArchiveV5ApiKeyEnterpriseAccount) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("api_key_enterprise_account", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeArchiveV5Builder) WithVerboseLog(value string) *XcodeArchiveV5Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeArchiveV5Builder) WithVerboseLog(value XcodeArchiveV5VerboseLog) *XcodeArchiveV5Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

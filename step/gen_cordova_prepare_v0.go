@@ -3,6 +3,23 @@
 
 package step
 
+// CordovaPrepareV0Platform enumerates the valid values for the platform input.
+type CordovaPrepareV0Platform string
+
+const (
+	CordovaPrepareV0PlatformIosAndroid CordovaPrepareV0Platform = "ios,android"
+	CordovaPrepareV0PlatformIos        CordovaPrepareV0Platform = "ios"
+	CordovaPrepareV0PlatformAndroid    CordovaPrepareV0Platform = "android"
+)
+
+// CordovaPrepareV0ReaddPlatform enumerates the valid values for the readd_platform input.
+type CordovaPrepareV0ReaddPlatform string
+
+const (
+	CordovaPrepareV0ReaddPlatformTrue  CordovaPrepareV0ReaddPlatform = "true"
+	CordovaPrepareV0ReaddPlatformFalse CordovaPrepareV0ReaddPlatform = "false"
+)
+
 // CordovaPrepareV0Builder builds a cordova-prepare step with typed input methods.
 type CordovaPrepareV0Builder struct{ *Builder }
 
@@ -20,14 +37,14 @@ func CordovaPrepareV0(version ...string) *CordovaPrepareV0Builder {
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.
-func (b *CordovaPrepareV0Builder) WithPlatform(value string) *CordovaPrepareV0Builder {
-	b.Builder.WithInput("platform", value)
+func (b *CordovaPrepareV0Builder) WithPlatform(value CordovaPrepareV0Platform) *CordovaPrepareV0Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithReaddPlatform sets should remove platforms as prepare step?.
-func (b *CordovaPrepareV0Builder) WithReaddPlatform(value string) *CordovaPrepareV0Builder {
-	b.Builder.WithInput("readd_platform", value)
+func (b *CordovaPrepareV0Builder) WithReaddPlatform(value CordovaPrepareV0ReaddPlatform) *CordovaPrepareV0Builder {
+	b.Builder.WithInput("readd_platform", string(value))
 	return b
 }
 

@@ -13,3 +13,7 @@ type BitbucketSnippetRunnerBuilder = BitbucketSnippetRunnerV1Builder
 func BitbucketSnippetRunner(version ...string) *BitbucketSnippetRunnerV1Builder {
 	return BitbucketSnippetRunnerV1(version...)
 }
+
+// BitbucketSnippetRunnerIsDebug is a type alias for BitbucketSnippetRunnerV1IsDebug,
+// pointing to the latest supported major version of the step's enum type.
+type BitbucketSnippetRunnerIsDebug = BitbucketSnippetRunnerV1IsDebug

@@ -3,6 +3,30 @@
 
 package step
 
+// XctestHtmlReportV0GenerateJunit enumerates the valid values for the generate_junit input.
+type XctestHtmlReportV0GenerateJunit string
+
+const (
+	XctestHtmlReportV0GenerateJunitYes XctestHtmlReportV0GenerateJunit = "yes"
+	XctestHtmlReportV0GenerateJunitNo  XctestHtmlReportV0GenerateJunit = "no"
+)
+
+// XctestHtmlReportV0InstallBranch enumerates the valid values for the install_branch input.
+type XctestHtmlReportV0InstallBranch string
+
+const (
+	XctestHtmlReportV0InstallBranchDevelop XctestHtmlReportV0InstallBranch = "develop"
+	XctestHtmlReportV0InstallBranchMaster  XctestHtmlReportV0InstallBranch = "master"
+)
+
+// XctestHtmlReportV0Verbose enumerates the valid values for the verbose input.
+type XctestHtmlReportV0Verbose string
+
+const (
+	XctestHtmlReportV0VerboseYes XctestHtmlReportV0Verbose = "yes"
+	XctestHtmlReportV0VerboseNo  XctestHtmlReportV0Verbose = "no"
+)
+
 // XctestHtmlReportV0Builder builds a xctest-html-report step with typed input methods.
 //
 // Deprecated: This step is no longer maintained. To generate HTML reports from xcresult files use the new official Bitrise step: "Generate Xcode test report html" (https://devcenter.bitrise.io/en/testing/testing-ios-apps/viewing-xcode-test-results-in-rich-html-format.html).
@@ -30,8 +54,8 @@ func (b *XctestHtmlReportV0Builder) WithTestResultPath(value string) *XctestHtml
 }
 
 // WithGenerateJunit sets generate JUnit report?.
-func (b *XctestHtmlReportV0Builder) WithGenerateJunit(value string) *XctestHtmlReportV0Builder {
-	b.Builder.WithInput("generate_junit", value)
+func (b *XctestHtmlReportV0Builder) WithGenerateJunit(value XctestHtmlReportV0GenerateJunit) *XctestHtmlReportV0Builder {
+	b.Builder.WithInput("generate_junit", string(value))
 	return b
 }
 
@@ -42,14 +66,14 @@ func (b *XctestHtmlReportV0Builder) WithOutputDir(value string) *XctestHtmlRepor
 }
 
 // WithInstallBranch sets install branch of XCTestHTMLReport.
-func (b *XctestHtmlReportV0Builder) WithInstallBranch(value string) *XctestHtmlReportV0Builder {
-	b.Builder.WithInput("install_branch", value)
+func (b *XctestHtmlReportV0Builder) WithInstallBranch(value XctestHtmlReportV0InstallBranch) *XctestHtmlReportV0Builder {
+	b.Builder.WithInput("install_branch", string(value))
 	return b
 }
 
 // WithVerbose sets enable verbose log?.
-func (b *XctestHtmlReportV0Builder) WithVerbose(value string) *XctestHtmlReportV0Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *XctestHtmlReportV0Builder) WithVerbose(value XctestHtmlReportV0Verbose) *XctestHtmlReportV0Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

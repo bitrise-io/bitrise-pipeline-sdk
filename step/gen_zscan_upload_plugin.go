@@ -3,6 +3,22 @@
 
 package step
 
+// ZscanUploadPluginWaitForReport enumerates the valid values for the wait_for_report input.
+type ZscanUploadPluginWaitForReport string
+
+const (
+	ZscanUploadPluginWaitForReportTrue  ZscanUploadPluginWaitForReport = "true"
+	ZscanUploadPluginWaitForReportFalse ZscanUploadPluginWaitForReport = "false"
+)
+
+// ZscanUploadPluginReportFormat enumerates the valid values for the report_format input.
+type ZscanUploadPluginReportFormat string
+
+const (
+	ZscanUploadPluginReportFormatJson  ZscanUploadPluginReportFormat = "json"
+	ZscanUploadPluginReportFormatSarif ZscanUploadPluginReportFormat = "sarif"
+)
+
 // ZscanUploadPluginBuilder builds a zscan-upload-plugin step with typed input methods.
 type ZscanUploadPluginBuilder struct{ *Builder }
 
@@ -44,14 +60,14 @@ func (b *ZscanUploadPluginBuilder) WithFilePath(value string) *ZscanUploadPlugin
 }
 
 // WithWaitForReport sets wait for Report.
-func (b *ZscanUploadPluginBuilder) WithWaitForReport(value string) *ZscanUploadPluginBuilder {
-	b.Builder.WithInput("wait_for_report", value)
+func (b *ZscanUploadPluginBuilder) WithWaitForReport(value ZscanUploadPluginWaitForReport) *ZscanUploadPluginBuilder {
+	b.Builder.WithInput("wait_for_report", string(value))
 	return b
 }
 
 // WithReportFormat sets report Format.
-func (b *ZscanUploadPluginBuilder) WithReportFormat(value string) *ZscanUploadPluginBuilder {
-	b.Builder.WithInput("report_format", value)
+func (b *ZscanUploadPluginBuilder) WithReportFormat(value ZscanUploadPluginReportFormat) *ZscanUploadPluginBuilder {
+	b.Builder.WithInput("report_format", string(value))
 	return b
 }
 

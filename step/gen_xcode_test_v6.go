@@ -3,6 +3,74 @@
 
 package step
 
+// XcodeTestV6TestRepetitionMode enumerates the valid values for the test_repetition_mode input.
+type XcodeTestV6TestRepetitionMode string
+
+const (
+	XcodeTestV6TestRepetitionModeNone                      XcodeTestV6TestRepetitionMode = "none"
+	XcodeTestV6TestRepetitionModeUntilFailure              XcodeTestV6TestRepetitionMode = "until_failure"
+	XcodeTestV6TestRepetitionModeRetryOnFailure            XcodeTestV6TestRepetitionMode = "retry_on_failure"
+	XcodeTestV6TestRepetitionModeUpUntilMaximumRepetitions XcodeTestV6TestRepetitionMode = "up_until_maximum_repetitions"
+)
+
+// XcodeTestV6RelaunchTestsForEachRepetition enumerates the valid values for the relaunch_tests_for_each_repetition input.
+type XcodeTestV6RelaunchTestsForEachRepetition string
+
+const (
+	XcodeTestV6RelaunchTestsForEachRepetitionYes XcodeTestV6RelaunchTestsForEachRepetition = "yes"
+	XcodeTestV6RelaunchTestsForEachRepetitionNo  XcodeTestV6RelaunchTestsForEachRepetition = "no"
+)
+
+// XcodeTestV6PerformCleanAction enumerates the valid values for the perform_clean_action input.
+type XcodeTestV6PerformCleanAction string
+
+const (
+	XcodeTestV6PerformCleanActionYes XcodeTestV6PerformCleanAction = "yes"
+	XcodeTestV6PerformCleanActionNo  XcodeTestV6PerformCleanAction = "no"
+)
+
+// XcodeTestV6LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeTestV6LogFormatter string
+
+const (
+	XcodeTestV6LogFormatterXcbeautify XcodeTestV6LogFormatter = "xcbeautify"
+	XcodeTestV6LogFormatterXcodebuild XcodeTestV6LogFormatter = "xcodebuild"
+	XcodeTestV6LogFormatterXcpretty   XcodeTestV6LogFormatter = "xcpretty"
+)
+
+// XcodeTestV6CacheLevel enumerates the valid values for the cache_level input.
+type XcodeTestV6CacheLevel string
+
+const (
+	XcodeTestV6CacheLevelNone          XcodeTestV6CacheLevel = "none"
+	XcodeTestV6CacheLevelSwiftPackages XcodeTestV6CacheLevel = "swift_packages"
+)
+
+// XcodeTestV6VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeTestV6VerboseLog string
+
+const (
+	XcodeTestV6VerboseLogYes XcodeTestV6VerboseLog = "yes"
+	XcodeTestV6VerboseLogNo  XcodeTestV6VerboseLog = "no"
+)
+
+// XcodeTestV6CollectSimulatorDiagnostics enumerates the valid values for the collect_simulator_diagnostics input.
+type XcodeTestV6CollectSimulatorDiagnostics string
+
+const (
+	XcodeTestV6CollectSimulatorDiagnosticsAlways    XcodeTestV6CollectSimulatorDiagnostics = "always"
+	XcodeTestV6CollectSimulatorDiagnosticsOnFailure XcodeTestV6CollectSimulatorDiagnostics = "on_failure"
+	XcodeTestV6CollectSimulatorDiagnosticsNever     XcodeTestV6CollectSimulatorDiagnostics = "never"
+)
+
+// XcodeTestV6HeadlessMode enumerates the valid values for the headless_mode input.
+type XcodeTestV6HeadlessMode string
+
+const (
+	XcodeTestV6HeadlessModeYes XcodeTestV6HeadlessMode = "yes"
+	XcodeTestV6HeadlessModeNo  XcodeTestV6HeadlessMode = "no"
+)
+
 // XcodeTestV6Builder builds a xcode-test step with typed input methods.
 type XcodeTestV6Builder struct{ *Builder }
 
@@ -44,8 +112,8 @@ func (b *XcodeTestV6Builder) WithTestPlan(value string) *XcodeTestV6Builder {
 }
 
 // WithTestRepetitionMode sets test Repetition Mode.
-func (b *XcodeTestV6Builder) WithTestRepetitionMode(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("test_repetition_mode", value)
+func (b *XcodeTestV6Builder) WithTestRepetitionMode(value XcodeTestV6TestRepetitionMode) *XcodeTestV6Builder {
+	b.Builder.WithInput("test_repetition_mode", string(value))
 	return b
 }
 
@@ -56,8 +124,8 @@ func (b *XcodeTestV6Builder) WithMaximumTestRepetitions(value string) *XcodeTest
 }
 
 // WithRelaunchTestsForEachRepetition sets relaunch Tests for Each Repetition.
-func (b *XcodeTestV6Builder) WithRelaunchTestsForEachRepetition(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("relaunch_tests_for_each_repetition", value)
+func (b *XcodeTestV6Builder) WithRelaunchTestsForEachRepetition(value XcodeTestV6RelaunchTestsForEachRepetition) *XcodeTestV6Builder {
+	b.Builder.WithInput("relaunch_tests_for_each_repetition", string(value))
 	return b
 }
 
@@ -68,8 +136,8 @@ func (b *XcodeTestV6Builder) WithXcconfigContent(value string) *XcodeTestV6Build
 }
 
 // WithPerformCleanAction sets perform clean action.
-func (b *XcodeTestV6Builder) WithPerformCleanAction(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("perform_clean_action", value)
+func (b *XcodeTestV6Builder) WithPerformCleanAction(value XcodeTestV6PerformCleanAction) *XcodeTestV6Builder {
+	b.Builder.WithInput("perform_clean_action", string(value))
 	return b
 }
 
@@ -80,8 +148,8 @@ func (b *XcodeTestV6Builder) WithXcodebuildOptions(value string) *XcodeTestV6Bui
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeTestV6Builder) WithLogFormatter(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeTestV6Builder) WithLogFormatter(value XcodeTestV6LogFormatter) *XcodeTestV6Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
@@ -98,26 +166,26 @@ func (b *XcodeTestV6Builder) WithXcprettyOptions(value string) *XcodeTestV6Build
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeTestV6Builder) WithCacheLevel(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeTestV6Builder) WithCacheLevel(value XcodeTestV6CacheLevel) *XcodeTestV6Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeTestV6Builder) WithVerboseLog(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeTestV6Builder) WithVerboseLog(value XcodeTestV6VerboseLog) *XcodeTestV6Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithCollectSimulatorDiagnostics sets collect Simulator diagnostics.
-func (b *XcodeTestV6Builder) WithCollectSimulatorDiagnostics(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("collect_simulator_diagnostics", value)
+func (b *XcodeTestV6Builder) WithCollectSimulatorDiagnostics(value XcodeTestV6CollectSimulatorDiagnostics) *XcodeTestV6Builder {
+	b.Builder.WithInput("collect_simulator_diagnostics", string(value))
 	return b
 }
 
 // WithHeadlessMode sets run the simulator in headless mode.
-func (b *XcodeTestV6Builder) WithHeadlessMode(value string) *XcodeTestV6Builder {
-	b.Builder.WithInput("headless_mode", value)
+func (b *XcodeTestV6Builder) WithHeadlessMode(value XcodeTestV6HeadlessMode) *XcodeTestV6Builder {
+	b.Builder.WithInput("headless_mode", string(value))
 	return b
 }
 

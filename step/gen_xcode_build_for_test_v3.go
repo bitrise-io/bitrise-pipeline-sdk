@@ -3,6 +3,55 @@
 
 package step
 
+// XcodeBuildForTestV3LogFormatter enumerates the valid values for the log_formatter input.
+type XcodeBuildForTestV3LogFormatter string
+
+const (
+	XcodeBuildForTestV3LogFormatterXcpretty   XcodeBuildForTestV3LogFormatter = "xcpretty"
+	XcodeBuildForTestV3LogFormatterXcodebuild XcodeBuildForTestV3LogFormatter = "xcodebuild"
+)
+
+// XcodeBuildForTestV3AutomaticCodeSigning enumerates the valid values for the automatic_code_signing input.
+type XcodeBuildForTestV3AutomaticCodeSigning string
+
+const (
+	XcodeBuildForTestV3AutomaticCodeSigningOff     XcodeBuildForTestV3AutomaticCodeSigning = "off"
+	XcodeBuildForTestV3AutomaticCodeSigningApiKey  XcodeBuildForTestV3AutomaticCodeSigning = "api-key"
+	XcodeBuildForTestV3AutomaticCodeSigningAppleId XcodeBuildForTestV3AutomaticCodeSigning = "apple-id"
+)
+
+// XcodeBuildForTestV3RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type XcodeBuildForTestV3RegisterTestDevices string
+
+const (
+	XcodeBuildForTestV3RegisterTestDevicesYes XcodeBuildForTestV3RegisterTestDevices = "yes"
+	XcodeBuildForTestV3RegisterTestDevicesNo  XcodeBuildForTestV3RegisterTestDevices = "no"
+)
+
+// XcodeBuildForTestV3CacheLevel enumerates the valid values for the cache_level input.
+type XcodeBuildForTestV3CacheLevel string
+
+const (
+	XcodeBuildForTestV3CacheLevelNone          XcodeBuildForTestV3CacheLevel = "none"
+	XcodeBuildForTestV3CacheLevelSwiftPackages XcodeBuildForTestV3CacheLevel = "swift_packages"
+)
+
+// XcodeBuildForTestV3ApiKeyEnterpriseAccount enumerates the valid values for the api_key_enterprise_account input.
+type XcodeBuildForTestV3ApiKeyEnterpriseAccount string
+
+const (
+	XcodeBuildForTestV3ApiKeyEnterpriseAccountYes XcodeBuildForTestV3ApiKeyEnterpriseAccount = "yes"
+	XcodeBuildForTestV3ApiKeyEnterpriseAccountNo  XcodeBuildForTestV3ApiKeyEnterpriseAccount = "no"
+)
+
+// XcodeBuildForTestV3VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeBuildForTestV3VerboseLog string
+
+const (
+	XcodeBuildForTestV3VerboseLogYes XcodeBuildForTestV3VerboseLog = "yes"
+	XcodeBuildForTestV3VerboseLogNo  XcodeBuildForTestV3VerboseLog = "no"
+)
+
 // XcodeBuildForTestV3Builder builds a xcode-build-for-test step with typed input methods.
 type XcodeBuildForTestV3Builder struct{ *Builder }
 
@@ -62,20 +111,20 @@ func (b *XcodeBuildForTestV3Builder) WithXcodebuildOptions(value string) *XcodeB
 }
 
 // WithLogFormatter sets log formatter.
-func (b *XcodeBuildForTestV3Builder) WithLogFormatter(value string) *XcodeBuildForTestV3Builder {
-	b.Builder.WithInput("log_formatter", value)
+func (b *XcodeBuildForTestV3Builder) WithLogFormatter(value XcodeBuildForTestV3LogFormatter) *XcodeBuildForTestV3Builder {
+	b.Builder.WithInput("log_formatter", string(value))
 	return b
 }
 
 // WithAutomaticCodeSigning sets automatic code signing method.
-func (b *XcodeBuildForTestV3Builder) WithAutomaticCodeSigning(value string) *XcodeBuildForTestV3Builder {
-	b.Builder.WithInput("automatic_code_signing", value)
+func (b *XcodeBuildForTestV3Builder) WithAutomaticCodeSigning(value XcodeBuildForTestV3AutomaticCodeSigning) *XcodeBuildForTestV3Builder {
+	b.Builder.WithInput("automatic_code_signing", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *XcodeBuildForTestV3Builder) WithRegisterTestDevices(value string) *XcodeBuildForTestV3Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *XcodeBuildForTestV3Builder) WithRegisterTestDevices(value XcodeBuildForTestV3RegisterTestDevices) *XcodeBuildForTestV3Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -134,8 +183,8 @@ func (b *XcodeBuildForTestV3Builder) WithOutputDir(value string) *XcodeBuildForT
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeBuildForTestV3Builder) WithCacheLevel(value string) *XcodeBuildForTestV3Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeBuildForTestV3Builder) WithCacheLevel(value XcodeBuildForTestV3CacheLevel) *XcodeBuildForTestV3Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -158,14 +207,14 @@ func (b *XcodeBuildForTestV3Builder) WithApiKeyIssuerId(value string) *XcodeBuil
 }
 
 // WithApiKeyEnterpriseAccount sets app Store Connect API enterprise account.
-func (b *XcodeBuildForTestV3Builder) WithApiKeyEnterpriseAccount(value string) *XcodeBuildForTestV3Builder {
-	b.Builder.WithInput("api_key_enterprise_account", value)
+func (b *XcodeBuildForTestV3Builder) WithApiKeyEnterpriseAccount(value XcodeBuildForTestV3ApiKeyEnterpriseAccount) *XcodeBuildForTestV3Builder {
+	b.Builder.WithInput("api_key_enterprise_account", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeBuildForTestV3Builder) WithVerboseLog(value string) *XcodeBuildForTestV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeBuildForTestV3Builder) WithVerboseLog(value XcodeBuildForTestV3VerboseLog) *XcodeBuildForTestV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

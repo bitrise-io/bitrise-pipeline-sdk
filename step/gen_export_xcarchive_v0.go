@@ -3,6 +3,41 @@
 
 package step
 
+// ExportXcarchiveV0ExportMethod enumerates the valid values for the export_method input.
+type ExportXcarchiveV0ExportMethod string
+
+const (
+	ExportXcarchiveV0ExportMethodAutoDetect  ExportXcarchiveV0ExportMethod = "auto-detect"
+	ExportXcarchiveV0ExportMethodAppStore    ExportXcarchiveV0ExportMethod = "app-store"
+	ExportXcarchiveV0ExportMethodAdHoc       ExportXcarchiveV0ExportMethod = "ad-hoc"
+	ExportXcarchiveV0ExportMethodEnterprise  ExportXcarchiveV0ExportMethod = "enterprise"
+	ExportXcarchiveV0ExportMethodDevelopment ExportXcarchiveV0ExportMethod = "development"
+)
+
+// ExportXcarchiveV0UploadBitcode enumerates the valid values for the upload_bitcode input.
+type ExportXcarchiveV0UploadBitcode string
+
+const (
+	ExportXcarchiveV0UploadBitcodeYes ExportXcarchiveV0UploadBitcode = "yes"
+	ExportXcarchiveV0UploadBitcodeNo  ExportXcarchiveV0UploadBitcode = "no"
+)
+
+// ExportXcarchiveV0CompileBitcode enumerates the valid values for the compile_bitcode input.
+type ExportXcarchiveV0CompileBitcode string
+
+const (
+	ExportXcarchiveV0CompileBitcodeYes ExportXcarchiveV0CompileBitcode = "yes"
+	ExportXcarchiveV0CompileBitcodeNo  ExportXcarchiveV0CompileBitcode = "no"
+)
+
+// ExportXcarchiveV0UseLegacyExport enumerates the valid values for the use_legacy_export input.
+type ExportXcarchiveV0UseLegacyExport string
+
+const (
+	ExportXcarchiveV0UseLegacyExportYes ExportXcarchiveV0UseLegacyExport = "yes"
+	ExportXcarchiveV0UseLegacyExportNo  ExportXcarchiveV0UseLegacyExport = "no"
+)
+
 // ExportXcarchiveV0Builder builds a export-xcarchive step with typed input methods.
 type ExportXcarchiveV0Builder struct{ *Builder }
 
@@ -26,20 +61,20 @@ func (b *ExportXcarchiveV0Builder) WithArchivePath(value string) *ExportXcarchiv
 }
 
 // WithExportMethod sets select method for export.
-func (b *ExportXcarchiveV0Builder) WithExportMethod(value string) *ExportXcarchiveV0Builder {
-	b.Builder.WithInput("export_method", value)
+func (b *ExportXcarchiveV0Builder) WithExportMethod(value ExportXcarchiveV0ExportMethod) *ExportXcarchiveV0Builder {
+	b.Builder.WithInput("export_method", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *ExportXcarchiveV0Builder) WithUploadBitcode(value string) *ExportXcarchiveV0Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *ExportXcarchiveV0Builder) WithUploadBitcode(value ExportXcarchiveV0UploadBitcode) *ExportXcarchiveV0Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *ExportXcarchiveV0Builder) WithCompileBitcode(value string) *ExportXcarchiveV0Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *ExportXcarchiveV0Builder) WithCompileBitcode(value ExportXcarchiveV0CompileBitcode) *ExportXcarchiveV0Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
@@ -56,8 +91,8 @@ func (b *ExportXcarchiveV0Builder) WithCustomExportOptionsPlistContent(value str
 }
 
 // WithUseLegacyExport sets use legacy ipa export method?.
-func (b *ExportXcarchiveV0Builder) WithUseLegacyExport(value string) *ExportXcarchiveV0Builder {
-	b.Builder.WithInput("use_legacy_export", value)
+func (b *ExportXcarchiveV0Builder) WithUseLegacyExport(value ExportXcarchiveV0UseLegacyExport) *ExportXcarchiveV0Builder {
+	b.Builder.WithInput("use_legacy_export", string(value))
 	return b
 }
 

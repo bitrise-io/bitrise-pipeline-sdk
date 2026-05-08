@@ -3,6 +3,14 @@
 
 package step
 
+// ScanWithAppsweepV1BuildVariant enumerates the valid values for the build_variant input.
+type ScanWithAppsweepV1BuildVariant string
+
+const (
+	ScanWithAppsweepV1BuildVariantDebug   ScanWithAppsweepV1BuildVariant = "debug"
+	ScanWithAppsweepV1BuildVariantRelease ScanWithAppsweepV1BuildVariant = "release"
+)
+
 // ScanWithAppsweepV1Builder builds a scan-with-appsweep step with typed input methods.
 type ScanWithAppsweepV1Builder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *ScanWithAppsweepV1Builder) WithAppsweepApiKey(value string) *ScanWithAp
 }
 
 // WithBuildVariant sets select the build variant which should be uploaded.
-func (b *ScanWithAppsweepV1Builder) WithBuildVariant(value string) *ScanWithAppsweepV1Builder {
-	b.Builder.WithInput("build_variant", value)
+func (b *ScanWithAppsweepV1Builder) WithBuildVariant(value ScanWithAppsweepV1BuildVariant) *ScanWithAppsweepV1Builder {
+	b.Builder.WithInput("build_variant", string(value))
 	return b
 }
 

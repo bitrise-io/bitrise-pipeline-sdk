@@ -3,6 +3,14 @@
 
 package step
 
+// MaestroIosTestRunExportTestReport enumerates the valid values for the export_test_report input.
+type MaestroIosTestRunExportTestReport string
+
+const (
+	MaestroIosTestRunExportTestReportTrue  MaestroIosTestRunExportTestReport = "true"
+	MaestroIosTestRunExportTestReportFalse MaestroIosTestRunExportTestReport = "false"
+)
+
 // MaestroIosTestRunBuilder builds a maestro-ios-test-run step with typed input methods.
 type MaestroIosTestRunBuilder struct{ *Builder }
 
@@ -38,8 +46,8 @@ func (b *MaestroIosTestRunBuilder) WithAdditionalParams(value string) *MaestroIo
 }
 
 // WithExportTestReport sets export test report (JUnit) and Video(mp4) to Deploy Directory.
-func (b *MaestroIosTestRunBuilder) WithExportTestReport(value string) *MaestroIosTestRunBuilder {
-	b.Builder.WithInput("export_test_report", value)
+func (b *MaestroIosTestRunBuilder) WithExportTestReport(value MaestroIosTestRunExportTestReport) *MaestroIosTestRunBuilder {
+	b.Builder.WithInput("export_test_report", string(value))
 	return b
 }
 

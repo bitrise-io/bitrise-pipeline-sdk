@@ -3,6 +3,96 @@
 
 package step
 
+// MagicpodUiTestEnvironment enumerates the valid values for the environment input.
+type MagicpodUiTestEnvironment string
+
+const (
+	MagicpodUiTestEnvironmentMagicPod               MagicpodUiTestEnvironment = "Magic Pod"
+	MagicpodUiTestEnvironmentRemoteTestKit          MagicpodUiTestEnvironment = "Remote TestKit"
+	MagicpodUiTestEnvironmentRemoteTestKitOnpremise MagicpodUiTestEnvironment = "Remote TestKit Onpremise"
+)
+
+// MagicpodUiTestOs enumerates the valid values for the os input.
+type MagicpodUiTestOs string
+
+const (
+	MagicpodUiTestOsIOS     MagicpodUiTestOs = "iOS"
+	MagicpodUiTestOsAndroid MagicpodUiTestOs = "Android"
+)
+
+// MagicpodUiTestDeviceType enumerates the valid values for the device_type input.
+type MagicpodUiTestDeviceType string
+
+const (
+	MagicpodUiTestDeviceTypeSimulator  MagicpodUiTestDeviceType = "Simulator"
+	MagicpodUiTestDeviceTypeEmulator   MagicpodUiTestDeviceType = "Emulator"
+	MagicpodUiTestDeviceTypeRealDevice MagicpodUiTestDeviceType = "Real Device"
+)
+
+// MagicpodUiTestAppType enumerates the valid values for the app_type input.
+type MagicpodUiTestAppType string
+
+const (
+	MagicpodUiTestAppTypeAppFileCloudUpload MagicpodUiTestAppType = "App file (cloud upload)"
+	MagicpodUiTestAppTypeAppFileURL         MagicpodUiTestAppType = "App file (URL)"
+	MagicpodUiTestAppTypeInstalledApp       MagicpodUiTestAppType = "Installed app"
+)
+
+// MagicpodUiTestSendMail enumerates the valid values for the send_mail input.
+type MagicpodUiTestSendMail string
+
+const (
+	MagicpodUiTestSendMailTrue  MagicpodUiTestSendMail = "true"
+	MagicpodUiTestSendMailFalse MagicpodUiTestSendMail = "false"
+)
+
+// MagicpodUiTestCaptureType enumerates the valid values for the capture_type input.
+type MagicpodUiTestCaptureType string
+
+const (
+	MagicpodUiTestCaptureTypeEveryStep          MagicpodUiTestCaptureType = "Every step"
+	MagicpodUiTestCaptureTypeEveryUITransit     MagicpodUiTestCaptureType = "Every UI transit"
+	MagicpodUiTestCaptureTypeFailureCaptureOnly MagicpodUiTestCaptureType = "Failure capture only"
+)
+
+// MagicpodUiTestDeviceLanguage enumerates the valid values for the device_language input.
+type MagicpodUiTestDeviceLanguage string
+
+const (
+	MagicpodUiTestDeviceLanguageDefault  MagicpodUiTestDeviceLanguage = "Default"
+	MagicpodUiTestDeviceLanguageEnglish  MagicpodUiTestDeviceLanguage = "English"
+	MagicpodUiTestDeviceLanguageJapanese MagicpodUiTestDeviceLanguage = "Japanese"
+	MagicpodUiTestDeviceLanguageKorean   MagicpodUiTestDeviceLanguage = "Korean"
+)
+
+// MagicpodUiTestDeviceRegion enumerates the valid values for the device_region input.
+type MagicpodUiTestDeviceRegion string
+
+const (
+	MagicpodUiTestDeviceRegionDefault       MagicpodUiTestDeviceRegion = "Default"
+	MagicpodUiTestDeviceRegionAustralia     MagicpodUiTestDeviceRegion = "Australia"
+	MagicpodUiTestDeviceRegionBrazil        MagicpodUiTestDeviceRegion = "Brazil"
+	MagicpodUiTestDeviceRegionCanada        MagicpodUiTestDeviceRegion = "Canada"
+	MagicpodUiTestDeviceRegionChinaMainland MagicpodUiTestDeviceRegion = "China mainland"
+	MagicpodUiTestDeviceRegionFrance        MagicpodUiTestDeviceRegion = "France"
+	MagicpodUiTestDeviceRegionGermany       MagicpodUiTestDeviceRegion = "Germany"
+	MagicpodUiTestDeviceRegionIndia         MagicpodUiTestDeviceRegion = "India"
+	MagicpodUiTestDeviceRegionIndonesia     MagicpodUiTestDeviceRegion = "Indonesia"
+	MagicpodUiTestDeviceRegionItaly         MagicpodUiTestDeviceRegion = "Italy"
+	MagicpodUiTestDeviceRegionJapan         MagicpodUiTestDeviceRegion = "Japan"
+	MagicpodUiTestDeviceRegionMexico        MagicpodUiTestDeviceRegion = "Mexico"
+	MagicpodUiTestDeviceRegionNetherlands   MagicpodUiTestDeviceRegion = "Netherlands"
+	MagicpodUiTestDeviceRegionRussia        MagicpodUiTestDeviceRegion = "Russia"
+	MagicpodUiTestDeviceRegionSaudiArabia   MagicpodUiTestDeviceRegion = "Saudi Arabia"
+	MagicpodUiTestDeviceRegionSouthKorea    MagicpodUiTestDeviceRegion = "South Korea"
+	MagicpodUiTestDeviceRegionSpain         MagicpodUiTestDeviceRegion = "Spain"
+	MagicpodUiTestDeviceRegionSwitzerland   MagicpodUiTestDeviceRegion = "Switzerland"
+	MagicpodUiTestDeviceRegionTaiwan        MagicpodUiTestDeviceRegion = "Taiwan"
+	MagicpodUiTestDeviceRegionTurkey        MagicpodUiTestDeviceRegion = "Turkey"
+	MagicpodUiTestDeviceRegionUnitedKingdom MagicpodUiTestDeviceRegion = "United Kingdom"
+	MagicpodUiTestDeviceRegionUnitedStates  MagicpodUiTestDeviceRegion = "United States"
+)
+
 // MagicpodUiTestBuilder builds a magicpod-ui-test step with typed input methods.
 //
 // Deprecated: This step is deprecated. Please use magic-pod step instead.
@@ -42,8 +132,8 @@ func (b *MagicpodUiTestBuilder) WithProjectName(value string) *MagicpodUiTestBui
 }
 
 // WithEnvironment sets environment.
-func (b *MagicpodUiTestBuilder) WithEnvironment(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("environment", value)
+func (b *MagicpodUiTestBuilder) WithEnvironment(value MagicpodUiTestEnvironment) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("environment", string(value))
 	return b
 }
 
@@ -72,14 +162,14 @@ func (b *MagicpodUiTestBuilder) WithExternalServiceServerUrl(value string) *Magi
 }
 
 // WithOs sets oS.
-func (b *MagicpodUiTestBuilder) WithOs(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("os", value)
+func (b *MagicpodUiTestBuilder) WithOs(value MagicpodUiTestOs) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("os", string(value))
 	return b
 }
 
 // WithDeviceType sets device type.
-func (b *MagicpodUiTestBuilder) WithDeviceType(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("device_type", value)
+func (b *MagicpodUiTestBuilder) WithDeviceType(value MagicpodUiTestDeviceType) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("device_type", string(value))
 	return b
 }
 
@@ -96,8 +186,8 @@ func (b *MagicpodUiTestBuilder) WithModel(value string) *MagicpodUiTestBuilder {
 }
 
 // WithAppType sets app type.
-func (b *MagicpodUiTestBuilder) WithAppType(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("app_type", value)
+func (b *MagicpodUiTestBuilder) WithAppType(value MagicpodUiTestAppType) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("app_type", string(value))
 	return b
 }
 
@@ -138,8 +228,8 @@ func (b *MagicpodUiTestBuilder) WithWaitForResult(value string) *MagicpodUiTestB
 }
 
 // WithSendMail sets send mail.
-func (b *MagicpodUiTestBuilder) WithSendMail(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("send_mail", value)
+func (b *MagicpodUiTestBuilder) WithSendMail(value MagicpodUiTestSendMail) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("send_mail", string(value))
 	return b
 }
 
@@ -156,20 +246,20 @@ func (b *MagicpodUiTestBuilder) WithRetryCount(value string) *MagicpodUiTestBuil
 }
 
 // WithCaptureType sets capture type.
-func (b *MagicpodUiTestBuilder) WithCaptureType(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("capture_type", value)
+func (b *MagicpodUiTestBuilder) WithCaptureType(value MagicpodUiTestCaptureType) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("capture_type", string(value))
 	return b
 }
 
 // WithDeviceLanguage sets device language.
-func (b *MagicpodUiTestBuilder) WithDeviceLanguage(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("device_language", value)
+func (b *MagicpodUiTestBuilder) WithDeviceLanguage(value MagicpodUiTestDeviceLanguage) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("device_language", string(value))
 	return b
 }
 
 // WithDeviceRegion sets device region.
-func (b *MagicpodUiTestBuilder) WithDeviceRegion(value string) *MagicpodUiTestBuilder {
-	b.Builder.WithInput("device_region", value)
+func (b *MagicpodUiTestBuilder) WithDeviceRegion(value MagicpodUiTestDeviceRegion) *MagicpodUiTestBuilder {
+	b.Builder.WithInput("device_region", string(value))
 	return b
 }
 

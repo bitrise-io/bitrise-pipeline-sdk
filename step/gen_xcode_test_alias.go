@@ -18,3 +18,35 @@ func XcodeTest(version ...string) *XcodeTestV6Builder {
 // published by xcode-test at the latest major version (v6).
 // For outputs of a specific major version use XcodeTestV{N}Outputs directly.
 var XcodeTestOutputs = XcodeTestV6Outputs
+
+// XcodeTestTestRepetitionMode is a type alias for XcodeTestV6TestRepetitionMode,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestTestRepetitionMode = XcodeTestV6TestRepetitionMode
+
+// XcodeTestRelaunchTestsForEachRepetition is a type alias for XcodeTestV6RelaunchTestsForEachRepetition,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestRelaunchTestsForEachRepetition = XcodeTestV6RelaunchTestsForEachRepetition
+
+// XcodeTestPerformCleanAction is a type alias for XcodeTestV6PerformCleanAction,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestPerformCleanAction = XcodeTestV6PerformCleanAction
+
+// XcodeTestLogFormatter is a type alias for XcodeTestV6LogFormatter,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestLogFormatter = XcodeTestV6LogFormatter
+
+// XcodeTestCacheLevel is a type alias for XcodeTestV6CacheLevel,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestCacheLevel = XcodeTestV6CacheLevel
+
+// XcodeTestVerboseLog is a type alias for XcodeTestV6VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestVerboseLog = XcodeTestV6VerboseLog
+
+// XcodeTestCollectSimulatorDiagnostics is a type alias for XcodeTestV6CollectSimulatorDiagnostics,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestCollectSimulatorDiagnostics = XcodeTestV6CollectSimulatorDiagnostics
+
+// XcodeTestHeadlessMode is a type alias for XcodeTestV6HeadlessMode,
+// pointing to the latest supported major version of the step's enum type.
+type XcodeTestHeadlessMode = XcodeTestV6HeadlessMode

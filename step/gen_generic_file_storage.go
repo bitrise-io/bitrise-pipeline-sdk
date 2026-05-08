@@ -3,6 +3,14 @@
 
 package step
 
+// GenericFileStorageEnableDebug enumerates the valid values for the enable_debug input.
+type GenericFileStorageEnableDebug string
+
+const (
+	GenericFileStorageEnableDebugTrue  GenericFileStorageEnableDebug = "true"
+	GenericFileStorageEnableDebugFalse GenericFileStorageEnableDebug = "false"
+)
+
 // GenericFileStorageBuilder builds a generic-file-storage step with typed input methods.
 type GenericFileStorageBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func GenericFileStorage(version ...string) *GenericFileStorageBuilder {
 }
 
 // WithEnableDebug sets enable debug mode.
-func (b *GenericFileStorageBuilder) WithEnableDebug(value string) *GenericFileStorageBuilder {
-	b.Builder.WithInput("enable_debug", value)
+func (b *GenericFileStorageBuilder) WithEnableDebug(value GenericFileStorageEnableDebug) *GenericFileStorageBuilder {
+	b.Builder.WithInput("enable_debug", string(value))
 	return b
 }
 

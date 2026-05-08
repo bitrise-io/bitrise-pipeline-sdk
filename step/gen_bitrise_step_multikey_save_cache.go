@@ -3,6 +3,14 @@
 
 package step
 
+// BitriseStepMultikeySaveCacheVerbose enumerates the valid values for the verbose input.
+type BitriseStepMultikeySaveCacheVerbose string
+
+const (
+	BitriseStepMultikeySaveCacheVerboseTrue  BitriseStepMultikeySaveCacheVerbose = "true"
+	BitriseStepMultikeySaveCacheVerboseFalse BitriseStepMultikeySaveCacheVerbose = "false"
+)
+
 // BitriseStepMultikeySaveCacheBuilder builds a bitrise-step-multikey-save-cache step with typed input methods.
 type BitriseStepMultikeySaveCacheBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *BitriseStepMultikeySaveCacheBuilder) WithKeyPathPairs(value string) *Bi
 }
 
 // WithVerbose sets verbose logging.
-func (b *BitriseStepMultikeySaveCacheBuilder) WithVerbose(value string) *BitriseStepMultikeySaveCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *BitriseStepMultikeySaveCacheBuilder) WithVerbose(value BitriseStepMultikeySaveCacheVerbose) *BitriseStepMultikeySaveCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

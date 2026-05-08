@@ -18,3 +18,27 @@ func ManageIosCodeSigning(version ...string) *ManageIosCodeSigningV2Builder {
 // published by manage-ios-code-signing at the latest major version (v2).
 // For outputs of a specific major version use ManageIosCodeSigningV{N}Outputs directly.
 var ManageIosCodeSigningOutputs = ManageIosCodeSigningV2Outputs
+
+// ManageIosCodeSigningAppleServiceConnection is a type alias for ManageIosCodeSigningV2AppleServiceConnection,
+// pointing to the latest supported major version of the step's enum type.
+type ManageIosCodeSigningAppleServiceConnection = ManageIosCodeSigningV2AppleServiceConnection
+
+// ManageIosCodeSigningDistributionMethod is a type alias for ManageIosCodeSigningV2DistributionMethod,
+// pointing to the latest supported major version of the step's enum type.
+type ManageIosCodeSigningDistributionMethod = ManageIosCodeSigningV2DistributionMethod
+
+// ManageIosCodeSigningSignUitestTargets is a type alias for ManageIosCodeSigningV2SignUitestTargets,
+// pointing to the latest supported major version of the step's enum type.
+type ManageIosCodeSigningSignUitestTargets = ManageIosCodeSigningV2SignUitestTargets
+
+// ManageIosCodeSigningRegisterTestDevices is a type alias for ManageIosCodeSigningV2RegisterTestDevices,
+// pointing to the latest supported major version of the step's enum type.
+type ManageIosCodeSigningRegisterTestDevices = ManageIosCodeSigningV2RegisterTestDevices
+
+// ManageIosCodeSigningApiKeyEnterpriseAccount is a type alias for ManageIosCodeSigningV2ApiKeyEnterpriseAccount,
+// pointing to the latest supported major version of the step's enum type.
+type ManageIosCodeSigningApiKeyEnterpriseAccount = ManageIosCodeSigningV2ApiKeyEnterpriseAccount
+
+// ManageIosCodeSigningVerboseLog is a type alias for ManageIosCodeSigningV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type ManageIosCodeSigningVerboseLog = ManageIosCodeSigningV2VerboseLog

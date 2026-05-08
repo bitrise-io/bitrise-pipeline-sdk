@@ -13,3 +13,35 @@ type CodecovBuilder = CodecovV4Builder
 func Codecov(version ...string) *CodecovV4Builder {
 	return CodecovV4(version...)
 }
+
+// CodecovCCDISABLEFILEFIXES is a type alias for CodecovV4CCDISABLEFILEFIXES,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCDISABLEFILEFIXES = CodecovV4CCDISABLEFILEFIXES
+
+// CodecovCCDISABLESEARCH is a type alias for CodecovV4CCDISABLESEARCH,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCDISABLESEARCH = CodecovV4CCDISABLESEARCH
+
+// CodecovCCDRYRUN is a type alias for CodecovV4CCDRYRUN,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCDRYRUN = CodecovV4CCDRYRUN
+
+// CodecovCCFAILONERROR is a type alias for CodecovV4CCFAILONERROR,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCFAILONERROR = CodecovV4CCFAILONERROR
+
+// CodecovCCHANDLENOREPORTSFOUND is a type alias for CodecovV4CCHANDLENOREPORTSFOUND,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCHANDLENOREPORTSFOUND = CodecovV4CCHANDLENOREPORTSFOUND
+
+// CodecovCCLEGACY is a type alias for CodecovV4CCLEGACY,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCLEGACY = CodecovV4CCLEGACY
+
+// CodecovCCSKIPVALIDATION is a type alias for CodecovV4CCSKIPVALIDATION,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCSKIPVALIDATION = CodecovV4CCSKIPVALIDATION
+
+// CodecovCCVERBOSE is a type alias for CodecovV4CCVERBOSE,
+// pointing to the latest supported major version of the step's enum type.
+type CodecovCCVERBOSE = CodecovV4CCVERBOSE

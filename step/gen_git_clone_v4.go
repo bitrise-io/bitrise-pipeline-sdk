@@ -3,6 +3,46 @@
 
 package step
 
+// GitCloneV4UpdateSubmodules enumerates the valid values for the update_submodules input.
+type GitCloneV4UpdateSubmodules string
+
+const (
+	GitCloneV4UpdateSubmodulesYes GitCloneV4UpdateSubmodules = "yes"
+	GitCloneV4UpdateSubmodulesNo  GitCloneV4UpdateSubmodules = "no"
+)
+
+// GitCloneV4LimitSubmoduleUpdateDepth enumerates the valid values for the limit_submodule_update_depth input.
+type GitCloneV4LimitSubmoduleUpdateDepth string
+
+const (
+	GitCloneV4LimitSubmoduleUpdateDepthYes GitCloneV4LimitSubmoduleUpdateDepth = "yes"
+	GitCloneV4LimitSubmoduleUpdateDepthNo  GitCloneV4LimitSubmoduleUpdateDepth = "no"
+)
+
+// GitCloneV4MergePr enumerates the valid values for the merge_pr input.
+type GitCloneV4MergePr string
+
+const (
+	GitCloneV4MergePrYes GitCloneV4MergePr = "yes"
+	GitCloneV4MergePrNo  GitCloneV4MergePr = "no"
+)
+
+// GitCloneV4ResetRepository enumerates the valid values for the reset_repository input.
+type GitCloneV4ResetRepository string
+
+const (
+	GitCloneV4ResetRepositoryNo  GitCloneV4ResetRepository = "No"
+	GitCloneV4ResetRepositoryYes GitCloneV4ResetRepository = "Yes"
+)
+
+// GitCloneV4ManualMerge enumerates the valid values for the manual_merge input.
+type GitCloneV4ManualMerge string
+
+const (
+	GitCloneV4ManualMergeYes GitCloneV4ManualMerge = "yes"
+	GitCloneV4ManualMergeNo  GitCloneV4ManualMerge = "no"
+)
+
 // GitCloneV4Builder builds a git-clone step with typed input methods.
 type GitCloneV4Builder struct{ *Builder }
 
@@ -80,8 +120,8 @@ func (b *GitCloneV4Builder) WithPullRequestHeadBranch(value string) *GitCloneV4B
 }
 
 // WithUpdateSubmodules sets update the registered submodules?.
-func (b *GitCloneV4Builder) WithUpdateSubmodules(value string) *GitCloneV4Builder {
-	b.Builder.WithInput("update_submodules", value)
+func (b *GitCloneV4Builder) WithUpdateSubmodules(value GitCloneV4UpdateSubmodules) *GitCloneV4Builder {
+	b.Builder.WithInput("update_submodules", string(value))
 	return b
 }
 
@@ -92,26 +132,26 @@ func (b *GitCloneV4Builder) WithCloneDepth(value string) *GitCloneV4Builder {
 }
 
 // WithLimitSubmoduleUpdateDepth sets shallow update submodules.
-func (b *GitCloneV4Builder) WithLimitSubmoduleUpdateDepth(value string) *GitCloneV4Builder {
-	b.Builder.WithInput("limit_submodule_update_depth", value)
+func (b *GitCloneV4Builder) WithLimitSubmoduleUpdateDepth(value GitCloneV4LimitSubmoduleUpdateDepth) *GitCloneV4Builder {
+	b.Builder.WithInput("limit_submodule_update_depth", string(value))
 	return b
 }
 
 // WithMergePr sets merge the Pull Request source branch into destination.
-func (b *GitCloneV4Builder) WithMergePr(value string) *GitCloneV4Builder {
-	b.Builder.WithInput("merge_pr", value)
+func (b *GitCloneV4Builder) WithMergePr(value GitCloneV4MergePr) *GitCloneV4Builder {
+	b.Builder.WithInput("merge_pr", string(value))
 	return b
 }
 
 // WithResetRepository sets reset repository.
-func (b *GitCloneV4Builder) WithResetRepository(value string) *GitCloneV4Builder {
-	b.Builder.WithInput("reset_repository", value)
+func (b *GitCloneV4Builder) WithResetRepository(value GitCloneV4ResetRepository) *GitCloneV4Builder {
+	b.Builder.WithInput("reset_repository", string(value))
 	return b
 }
 
 // WithManualMerge sets manual merge.
-func (b *GitCloneV4Builder) WithManualMerge(value string) *GitCloneV4Builder {
-	b.Builder.WithInput("manual_merge", value)
+func (b *GitCloneV4Builder) WithManualMerge(value GitCloneV4ManualMerge) *GitCloneV4Builder {
+	b.Builder.WithInput("manual_merge", string(value))
 	return b
 }
 

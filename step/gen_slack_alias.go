@@ -13,3 +13,23 @@ type SlackBuilder = SlackV4Builder
 func Slack(version ...string) *SlackV4Builder {
 	return SlackV4(version...)
 }
+
+// SlackIsDebugMode is a type alias for SlackV4IsDebugMode,
+// pointing to the latest supported major version of the step's enum type.
+type SlackIsDebugMode = SlackV4IsDebugMode
+
+// SlackLinkNames is a type alias for SlackV4LinkNames,
+// pointing to the latest supported major version of the step's enum type.
+type SlackLinkNames = SlackV4LinkNames
+
+// SlackReplyBroadcast is a type alias for SlackV4ReplyBroadcast,
+// pointing to the latest supported major version of the step's enum type.
+type SlackReplyBroadcast = SlackV4ReplyBroadcast
+
+// SlackReplyBroadcastOnError is a type alias for SlackV4ReplyBroadcastOnError,
+// pointing to the latest supported major version of the step's enum type.
+type SlackReplyBroadcastOnError = SlackV4ReplyBroadcastOnError
+
+// SlackTimestamp is a type alias for SlackV4Timestamp,
+// pointing to the latest supported major version of the step's enum type.
+type SlackTimestamp = SlackV4Timestamp

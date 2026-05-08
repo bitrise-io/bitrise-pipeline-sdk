@@ -3,6 +3,15 @@
 
 package step
 
+// BitriseStepAppdomeBuild2secureIosSignMethod enumerates the valid values for the sign_method input.
+type BitriseStepAppdomeBuild2secureIosSignMethod string
+
+const (
+	BitriseStepAppdomeBuild2secureIosSignMethodOnAppdome      BitriseStepAppdomeBuild2secureIosSignMethod = "On-Appdome"
+	BitriseStepAppdomeBuild2secureIosSignMethodPrivateSigning BitriseStepAppdomeBuild2secureIosSignMethod = "Private-Signing"
+	BitriseStepAppdomeBuild2secureIosSignMethodAutoDevSigning BitriseStepAppdomeBuild2secureIosSignMethod = "Auto-Dev-Signing"
+)
+
 // BitriseStepAppdomeBuild2secureIosBuilder builds a bitrise-step-appdome-build-2secure-ios step with typed input methods.
 //
 // Deprecated: This step is deprecated as it was replaced by appdome-build-2secure-ios, and it is no longer maintained.
@@ -42,8 +51,8 @@ func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithTeamId(value string) *Bit
 }
 
 // WithSignMethod sets signing Method.
-func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithSignMethod(value string) *BitriseStepAppdomeBuild2secureIosBuilder {
-	b.Builder.WithInput("sign_method", value)
+func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithSignMethod(value BitriseStepAppdomeBuild2secureIosSignMethod) *BitriseStepAppdomeBuild2secureIosBuilder {
+	b.Builder.WithInput("sign_method", string(value))
 	return b
 }
 

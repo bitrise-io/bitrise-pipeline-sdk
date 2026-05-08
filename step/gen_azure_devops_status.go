@@ -3,6 +3,19 @@
 
 package step
 
+// AzureDevopsStatusDevopsCommitState enumerates the valid values for the devops_commit_state input.
+type AzureDevopsStatusDevopsCommitState string
+
+const (
+	AzureDevopsStatusDevopsCommitStateAuto          AzureDevopsStatusDevopsCommitState = "auto"
+	AzureDevopsStatusDevopsCommitStatePending       AzureDevopsStatusDevopsCommitState = "pending"
+	AzureDevopsStatusDevopsCommitStateSucceeded     AzureDevopsStatusDevopsCommitState = "succeeded"
+	AzureDevopsStatusDevopsCommitStateFailed        AzureDevopsStatusDevopsCommitState = "failed"
+	AzureDevopsStatusDevopsCommitStateError         AzureDevopsStatusDevopsCommitState = "error"
+	AzureDevopsStatusDevopsCommitStateNotSet        AzureDevopsStatusDevopsCommitState = "notSet"
+	AzureDevopsStatusDevopsCommitStateNotApplicable AzureDevopsStatusDevopsCommitState = "notApplicable"
+)
+
 // AzureDevopsStatusBuilder builds a azure-devops-status step with typed input methods.
 type AzureDevopsStatusBuilder struct{ *Builder }
 
@@ -50,8 +63,8 @@ func (b *AzureDevopsStatusBuilder) WithDevopsRepositoryId(value string) *AzureDe
 }
 
 // WithDevopsCommitState sets commit status.
-func (b *AzureDevopsStatusBuilder) WithDevopsCommitState(value string) *AzureDevopsStatusBuilder {
-	b.Builder.WithInput("devops_commit_state", value)
+func (b *AzureDevopsStatusBuilder) WithDevopsCommitState(value AzureDevopsStatusDevopsCommitState) *AzureDevopsStatusBuilder {
+	b.Builder.WithInput("devops_commit_state", string(value))
 	return b
 }
 

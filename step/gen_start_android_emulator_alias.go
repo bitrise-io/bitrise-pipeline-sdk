@@ -22,3 +22,7 @@ func StartAndroidEmulator(version ...string) *StartAndroidEmulatorV1Builder {
 // published by start-android-emulator at the latest major version (v1).
 // For outputs of a specific major version use StartAndroidEmulatorV{N}Outputs directly.
 var StartAndroidEmulatorOutputs = StartAndroidEmulatorV1Outputs
+
+// StartAndroidEmulatorWaitForBoot is a type alias for StartAndroidEmulatorV1WaitForBoot,
+// pointing to the latest supported major version of the step's enum type.
+type StartAndroidEmulatorWaitForBoot = StartAndroidEmulatorV1WaitForBoot

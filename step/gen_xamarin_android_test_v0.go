@@ -3,6 +3,14 @@
 
 package step
 
+// XamarinAndroidTestV0IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XamarinAndroidTestV0IsCleanBuild string
+
+const (
+	XamarinAndroidTestV0IsCleanBuildTrue  XamarinAndroidTestV0IsCleanBuild = "true"
+	XamarinAndroidTestV0IsCleanBuildFalse XamarinAndroidTestV0IsCleanBuild = "false"
+)
+
 // XamarinAndroidTestV0Builder builds a xamarin-android-test step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -48,8 +56,8 @@ func (b *XamarinAndroidTestV0Builder) WithXamarinPlatform(value string) *Xamarin
 }
 
 // WithIsCleanBuild sets do a clean before the archive?.
-func (b *XamarinAndroidTestV0Builder) WithIsCleanBuild(value string) *XamarinAndroidTestV0Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XamarinAndroidTestV0Builder) WithIsCleanBuild(value XamarinAndroidTestV0IsCleanBuild) *XamarinAndroidTestV0Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 

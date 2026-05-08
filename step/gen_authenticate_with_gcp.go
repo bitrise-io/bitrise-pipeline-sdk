@@ -3,6 +3,22 @@
 
 package step
 
+// AuthenticateWithGcpDockerLogin enumerates the valid values for the docker_login input.
+type AuthenticateWithGcpDockerLogin string
+
+const (
+	AuthenticateWithGcpDockerLoginTrue  AuthenticateWithGcpDockerLogin = "true"
+	AuthenticateWithGcpDockerLoginFalse AuthenticateWithGcpDockerLogin = "false"
+)
+
+// AuthenticateWithGcpVerbose enumerates the valid values for the verbose input.
+type AuthenticateWithGcpVerbose string
+
+const (
+	AuthenticateWithGcpVerboseTrue  AuthenticateWithGcpVerbose = "true"
+	AuthenticateWithGcpVerboseFalse AuthenticateWithGcpVerbose = "false"
+)
+
 // AuthenticateWithGcpBuilder builds a authenticate-with-gcp step with typed input methods.
 type AuthenticateWithGcpBuilder struct{ *Builder }
 
@@ -38,8 +54,8 @@ func (b *AuthenticateWithGcpBuilder) WithAudience(value string) *AuthenticateWit
 }
 
 // WithDockerLogin sets docker login.
-func (b *AuthenticateWithGcpBuilder) WithDockerLogin(value string) *AuthenticateWithGcpBuilder {
-	b.Builder.WithInput("docker_login", value)
+func (b *AuthenticateWithGcpBuilder) WithDockerLogin(value AuthenticateWithGcpDockerLogin) *AuthenticateWithGcpBuilder {
+	b.Builder.WithInput("docker_login", string(value))
 	return b
 }
 
@@ -62,8 +78,8 @@ func (b *AuthenticateWithGcpBuilder) WithBuildApiToken(value string) *Authentica
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *AuthenticateWithGcpBuilder) WithVerbose(value string) *AuthenticateWithGcpBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *AuthenticateWithGcpBuilder) WithVerbose(value AuthenticateWithGcpVerbose) *AuthenticateWithGcpBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

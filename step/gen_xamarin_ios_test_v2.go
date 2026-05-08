@@ -3,6 +3,14 @@
 
 package step
 
+// XamarinIosTestV2BuildTool enumerates the valid values for the build_tool input.
+type XamarinIosTestV2BuildTool string
+
+const (
+	XamarinIosTestV2BuildToolMsbuild XamarinIosTestV2BuildTool = "msbuild"
+	XamarinIosTestV2BuildToolXbuild  XamarinIosTestV2BuildTool = "xbuild"
+)
+
 // XamarinIosTestV2Builder builds a xamarin-ios-test step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -60,8 +68,8 @@ func (b *XamarinIosTestV2Builder) WithXamarinPlatform(value string) *XamarinIosT
 }
 
 // WithBuildTool sets which tool to use for building?.
-func (b *XamarinIosTestV2Builder) WithBuildTool(value string) *XamarinIosTestV2Builder {
-	b.Builder.WithInput("build_tool", value)
+func (b *XamarinIosTestV2Builder) WithBuildTool(value XamarinIosTestV2BuildTool) *XamarinIosTestV2Builder {
+	b.Builder.WithInput("build_tool", string(value))
 	return b
 }
 

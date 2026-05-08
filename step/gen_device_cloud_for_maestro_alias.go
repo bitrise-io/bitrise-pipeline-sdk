@@ -18,3 +18,55 @@ func DeviceCloudForMaestro(version ...string) *DeviceCloudForMaestroV1Builder {
 // published by device-cloud-for-maestro at the latest major version (v1).
 // For outputs of a specific major version use DeviceCloudForMaestroV{N}Outputs directly.
 var DeviceCloudForMaestroOutputs = DeviceCloudForMaestroV1Outputs
+
+// DeviceCloudForMaestroAsync is a type alias for DeviceCloudForMaestroV1Async,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroAsync = DeviceCloudForMaestroV1Async
+
+// DeviceCloudForMaestroDryRun is a type alias for DeviceCloudForMaestroV1DryRun,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroDryRun = DeviceCloudForMaestroV1DryRun
+
+// DeviceCloudForMaestroAndroidNoSnapshot is a type alias for DeviceCloudForMaestroV1AndroidNoSnapshot,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroAndroidNoSnapshot = DeviceCloudForMaestroV1AndroidNoSnapshot
+
+// DeviceCloudForMaestroGooglePlay is a type alias for DeviceCloudForMaestroV1GooglePlay,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroGooglePlay = DeviceCloudForMaestroV1GooglePlay
+
+// DeviceCloudForMaestroShowCrosshairs is a type alias for DeviceCloudForMaestroV1ShowCrosshairs,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroShowCrosshairs = DeviceCloudForMaestroV1ShowCrosshairs
+
+// DeviceCloudForMaestroMaestroChromeOnboarding is a type alias for DeviceCloudForMaestroV1MaestroChromeOnboarding,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroMaestroChromeOnboarding = DeviceCloudForMaestroV1MaestroChromeOnboarding
+
+// DeviceCloudForMaestroIgnoreShaCheck is a type alias for DeviceCloudForMaestroV1IgnoreShaCheck,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroIgnoreShaCheck = DeviceCloudForMaestroV1IgnoreShaCheck
+
+// DeviceCloudForMaestroDebug is a type alias for DeviceCloudForMaestroV1Debug,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroDebug = DeviceCloudForMaestroV1Debug
+
+// DeviceCloudForMaestroDisableAnimations is a type alias for DeviceCloudForMaestroV1DisableAnimations,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroDisableAnimations = DeviceCloudForMaestroV1DisableAnimations
+
+// DeviceCloudForMaestroQuiet is a type alias for DeviceCloudForMaestroV1Quiet,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroQuiet = DeviceCloudForMaestroV1Quiet
+
+// DeviceCloudForMaestroUseBeta is a type alias for DeviceCloudForMaestroV1UseBeta,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroUseBeta = DeviceCloudForMaestroV1UseBeta
+
+// DeviceCloudForMaestroJson is a type alias for DeviceCloudForMaestroV1Json,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroJson = DeviceCloudForMaestroV1Json
+
+// DeviceCloudForMaestroJsonFile is a type alias for DeviceCloudForMaestroV1JsonFile,
+// pointing to the latest supported major version of the step's enum type.
+type DeviceCloudForMaestroJsonFile = DeviceCloudForMaestroV1JsonFile

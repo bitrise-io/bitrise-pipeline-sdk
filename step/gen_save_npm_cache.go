@@ -3,6 +3,14 @@
 
 package step
 
+// SaveNpmCacheVerbose enumerates the valid values for the verbose input.
+type SaveNpmCacheVerbose string
+
+const (
+	SaveNpmCacheVerboseTrue  SaveNpmCacheVerbose = "true"
+	SaveNpmCacheVerboseFalse SaveNpmCacheVerbose = "false"
+)
+
 // SaveNpmCacheBuilder builds a save-npm-cache step with typed input methods.
 type SaveNpmCacheBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func SaveNpmCache(version ...string) *SaveNpmCacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveNpmCacheBuilder) WithVerbose(value string) *SaveNpmCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveNpmCacheBuilder) WithVerbose(value SaveNpmCacheVerbose) *SaveNpmCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

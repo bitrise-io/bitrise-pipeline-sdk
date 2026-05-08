@@ -3,6 +3,53 @@
 
 package step
 
+// SaveS3CacheVerbose enumerates the valid values for the verbose input.
+type SaveS3CacheVerbose string
+
+const (
+	SaveS3CacheVerboseTrue  SaveS3CacheVerbose = "true"
+	SaveS3CacheVerboseFalse SaveS3CacheVerbose = "false"
+)
+
+// SaveS3CacheAwsRegion enumerates the valid values for the aws_region input.
+type SaveS3CacheAwsRegion string
+
+const (
+	SaveS3CacheAwsRegionUsEast1      SaveS3CacheAwsRegion = "us-east-1"
+	SaveS3CacheAwsRegionUsEast2      SaveS3CacheAwsRegion = "us-east-2"
+	SaveS3CacheAwsRegionUsWest1      SaveS3CacheAwsRegion = "us-west-1"
+	SaveS3CacheAwsRegionUsWest2      SaveS3CacheAwsRegion = "us-west-2"
+	SaveS3CacheAwsRegionCaCentral1   SaveS3CacheAwsRegion = "ca-central-1"
+	SaveS3CacheAwsRegionCaWest1      SaveS3CacheAwsRegion = "ca-west-1"
+	SaveS3CacheAwsRegionEuNorth1     SaveS3CacheAwsRegion = "eu-north-1"
+	SaveS3CacheAwsRegionEuWest3      SaveS3CacheAwsRegion = "eu-west-3"
+	SaveS3CacheAwsRegionEuWest2      SaveS3CacheAwsRegion = "eu-west-2"
+	SaveS3CacheAwsRegionEuWest1      SaveS3CacheAwsRegion = "eu-west-1"
+	SaveS3CacheAwsRegionEuCentral1   SaveS3CacheAwsRegion = "eu-central-1"
+	SaveS3CacheAwsRegionEuCentral2   SaveS3CacheAwsRegion = "eu-central-2"
+	SaveS3CacheAwsRegionEuSouth1     SaveS3CacheAwsRegion = "eu-south-1"
+	SaveS3CacheAwsRegionEuSouth2     SaveS3CacheAwsRegion = "eu-south-2"
+	SaveS3CacheAwsRegionApSouth1     SaveS3CacheAwsRegion = "ap-south-1"
+	SaveS3CacheAwsRegionApSouth2     SaveS3CacheAwsRegion = "ap-south-2"
+	SaveS3CacheAwsRegionApNortheast1 SaveS3CacheAwsRegion = "ap-northeast-1"
+	SaveS3CacheAwsRegionApNortheast2 SaveS3CacheAwsRegion = "ap-northeast-2"
+	SaveS3CacheAwsRegionApNortheast3 SaveS3CacheAwsRegion = "ap-northeast-3"
+	SaveS3CacheAwsRegionApSoutheast1 SaveS3CacheAwsRegion = "ap-southeast-1"
+	SaveS3CacheAwsRegionApSoutheast2 SaveS3CacheAwsRegion = "ap-southeast-2"
+	SaveS3CacheAwsRegionApSoutheast3 SaveS3CacheAwsRegion = "ap-southeast-3"
+	SaveS3CacheAwsRegionApSoutheast4 SaveS3CacheAwsRegion = "ap-southeast-4"
+	SaveS3CacheAwsRegionApEast1      SaveS3CacheAwsRegion = "ap-east-1"
+	SaveS3CacheAwsRegionSaEast1      SaveS3CacheAwsRegion = "sa-east-1"
+	SaveS3CacheAwsRegionCnNorth1     SaveS3CacheAwsRegion = "cn-north-1"
+	SaveS3CacheAwsRegionCnNorthwest1 SaveS3CacheAwsRegion = "cn-northwest-1"
+	SaveS3CacheAwsRegionUsGovEast1   SaveS3CacheAwsRegion = "us-gov-east-1"
+	SaveS3CacheAwsRegionUsGovWest1   SaveS3CacheAwsRegion = "us-gov-west-1"
+	SaveS3CacheAwsRegionMeSouth1     SaveS3CacheAwsRegion = "me-south-1"
+	SaveS3CacheAwsRegionMeCentral1   SaveS3CacheAwsRegion = "me-central-1"
+	SaveS3CacheAwsRegionAfSouth1     SaveS3CacheAwsRegion = "af-south-1"
+	SaveS3CacheAwsRegionIlCentral1   SaveS3CacheAwsRegion = "il-central-1"
+)
+
 // SaveS3CacheBuilder builds a save-s3-cache step with typed input methods.
 type SaveS3CacheBuilder struct{ *Builder }
 
@@ -32,8 +79,8 @@ func (b *SaveS3CacheBuilder) WithPaths(value string) *SaveS3CacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveS3CacheBuilder) WithVerbose(value string) *SaveS3CacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveS3CacheBuilder) WithVerbose(value SaveS3CacheVerbose) *SaveS3CacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
@@ -44,8 +91,8 @@ func (b *SaveS3CacheBuilder) WithAwsBucket(value string) *SaveS3CacheBuilder {
 }
 
 // WithAwsRegion sets aWS Region.
-func (b *SaveS3CacheBuilder) WithAwsRegion(value string) *SaveS3CacheBuilder {
-	b.Builder.WithInput("aws_region", value)
+func (b *SaveS3CacheBuilder) WithAwsRegion(value SaveS3CacheAwsRegion) *SaveS3CacheBuilder {
+	b.Builder.WithInput("aws_region", string(value))
 	return b
 }
 

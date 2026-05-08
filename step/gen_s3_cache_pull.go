@@ -3,6 +3,39 @@
 
 package step
 
+// S3CachePullCacheAwsRegion enumerates the valid values for the cache_aws_region input.
+type S3CachePullCacheAwsRegion string
+
+const (
+	S3CachePullCacheAwsRegionUsEast1         S3CachePullCacheAwsRegion = "us-east-1"
+	S3CachePullCacheAwsRegionUsEast2         S3CachePullCacheAwsRegion = "us-east-2"
+	S3CachePullCacheAwsRegionUsWest1         S3CachePullCacheAwsRegion = "us-west-1"
+	S3CachePullCacheAwsRegionUsWest2         S3CachePullCacheAwsRegion = "us-west-2"
+	S3CachePullCacheAwsRegionCaCentral1      S3CachePullCacheAwsRegion = "ca-central-1"
+	S3CachePullCacheAwsRegionEuNorth1        S3CachePullCacheAwsRegion = "eu-north-1"
+	S3CachePullCacheAwsRegionEuWest3         S3CachePullCacheAwsRegion = "eu-west-3"
+	S3CachePullCacheAwsRegionEuWest2         S3CachePullCacheAwsRegion = "eu-west-2"
+	S3CachePullCacheAwsRegionEuWest1         S3CachePullCacheAwsRegion = "eu-west-1"
+	S3CachePullCacheAwsRegionEuCentral1      S3CachePullCacheAwsRegion = "eu-central-1"
+	S3CachePullCacheAwsRegionEuSouth1        S3CachePullCacheAwsRegion = "eu-south-1"
+	S3CachePullCacheAwsRegionApSouth1        S3CachePullCacheAwsRegion = "ap-south-1"
+	S3CachePullCacheAwsRegionApNortheast1    S3CachePullCacheAwsRegion = "ap-northeast-1"
+	S3CachePullCacheAwsRegionApNortheast2    S3CachePullCacheAwsRegion = "ap-northeast-2"
+	S3CachePullCacheAwsRegionApNortheast3    S3CachePullCacheAwsRegion = "ap-northeast-3"
+	S3CachePullCacheAwsRegionApSoutheast1    S3CachePullCacheAwsRegion = "ap-southeast-1"
+	S3CachePullCacheAwsRegionApSoutheast2    S3CachePullCacheAwsRegion = "ap-southeast-2"
+	S3CachePullCacheAwsRegionApEast1         S3CachePullCacheAwsRegion = "ap-east-1"
+	S3CachePullCacheAwsRegionSaEast1         S3CachePullCacheAwsRegion = "sa-east-1"
+	S3CachePullCacheAwsRegionCnNorth1        S3CachePullCacheAwsRegion = "cn-north-1"
+	S3CachePullCacheAwsRegionCnNorthwest1    S3CachePullCacheAwsRegion = "cn-northwest-1"
+	S3CachePullCacheAwsRegionUsGovEast1      S3CachePullCacheAwsRegion = "us-gov-east-1"
+	S3CachePullCacheAwsRegionUsGovWest1      S3CachePullCacheAwsRegion = "us-gov-west-1"
+	S3CachePullCacheAwsRegionUsGovSecret1    S3CachePullCacheAwsRegion = "us-gov-secret-1"
+	S3CachePullCacheAwsRegionUsGovTopsecret1 S3CachePullCacheAwsRegion = "us-gov-topsecret-1"
+	S3CachePullCacheAwsRegionMeSouth1        S3CachePullCacheAwsRegion = "me-south-1"
+	S3CachePullCacheAwsRegionAfSouth1        S3CachePullCacheAwsRegion = "af-south-1"
+)
+
 // S3CachePullBuilder builds a s3-cache-pull step with typed input methods.
 type S3CachePullBuilder struct{ *Builder }
 
@@ -32,8 +65,8 @@ func (b *S3CachePullBuilder) WithCacheAwsSecretAccessKey(value string) *S3CacheP
 }
 
 // WithCacheAwsRegion sets aWS Region.
-func (b *S3CachePullBuilder) WithCacheAwsRegion(value string) *S3CachePullBuilder {
-	b.Builder.WithInput("cache_aws_region", value)
+func (b *S3CachePullBuilder) WithCacheAwsRegion(value S3CachePullCacheAwsRegion) *S3CachePullBuilder {
+	b.Builder.WithInput("cache_aws_region", string(value))
 	return b
 }
 

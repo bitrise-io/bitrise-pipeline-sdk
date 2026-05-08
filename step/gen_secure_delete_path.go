@@ -3,6 +3,14 @@
 
 package step
 
+// SecureDeletePathWithSudo enumerates the valid values for the with_sudo input.
+type SecureDeletePathWithSudo string
+
+const (
+	SecureDeletePathWithSudoTrue  SecureDeletePathWithSudo = "true"
+	SecureDeletePathWithSudoFalse SecureDeletePathWithSudo = "false"
+)
+
 // SecureDeletePathBuilder builds a secure-delete-path step with typed input methods.
 type SecureDeletePathBuilder struct{ *Builder }
 
@@ -26,7 +34,7 @@ func (b *SecureDeletePathBuilder) WithPath(value string) *SecureDeletePathBuilde
 }
 
 // WithWithSudo sets use sudo for delete..
-func (b *SecureDeletePathBuilder) WithWithSudo(value string) *SecureDeletePathBuilder {
-	b.Builder.WithInput("with_sudo", value)
+func (b *SecureDeletePathBuilder) WithWithSudo(value SecureDeletePathWithSudo) *SecureDeletePathBuilder {
+	b.Builder.WithInput("with_sudo", string(value))
 	return b
 }

@@ -3,6 +3,22 @@
 
 package step
 
+// DeployReactNativeUpdateToAppzungCodepushMandatory enumerates the valid values for the mandatory input.
+type DeployReactNativeUpdateToAppzungCodepushMandatory string
+
+const (
+	DeployReactNativeUpdateToAppzungCodepushMandatoryYes DeployReactNativeUpdateToAppzungCodepushMandatory = "yes"
+	DeployReactNativeUpdateToAppzungCodepushMandatoryNo  DeployReactNativeUpdateToAppzungCodepushMandatory = "no"
+)
+
+// DeployReactNativeUpdateToAppzungCodepushDescriptionFromGit enumerates the valid values for the description_from_git input.
+type DeployReactNativeUpdateToAppzungCodepushDescriptionFromGit string
+
+const (
+	DeployReactNativeUpdateToAppzungCodepushDescriptionFromGitYes DeployReactNativeUpdateToAppzungCodepushDescriptionFromGit = "yes"
+	DeployReactNativeUpdateToAppzungCodepushDescriptionFromGitNo  DeployReactNativeUpdateToAppzungCodepushDescriptionFromGit = "no"
+)
+
 // DeployReactNativeUpdateToAppzungCodepushBuilder builds a deploy-react-native-update-to-appzung-codepush step with typed input methods.
 type DeployReactNativeUpdateToAppzungCodepushBuilder struct{ *Builder }
 
@@ -32,8 +48,8 @@ func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithReleaseChannel(val
 }
 
 // WithMandatory sets mandatory update.
-func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithMandatory(value string) *DeployReactNativeUpdateToAppzungCodepushBuilder {
-	b.Builder.WithInput("mandatory", value)
+func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithMandatory(value DeployReactNativeUpdateToAppzungCodepushMandatory) *DeployReactNativeUpdateToAppzungCodepushBuilder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 
@@ -56,8 +72,8 @@ func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithPrivateKeyPath(val
 }
 
 // WithDescriptionFromGit sets use Git Commit Message.
-func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithDescriptionFromGit(value string) *DeployReactNativeUpdateToAppzungCodepushBuilder {
-	b.Builder.WithInput("description_from_git", value)
+func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithDescriptionFromGit(value DeployReactNativeUpdateToAppzungCodepushDescriptionFromGit) *DeployReactNativeUpdateToAppzungCodepushBuilder {
+	b.Builder.WithInput("description_from_git", string(value))
 	return b
 }
 

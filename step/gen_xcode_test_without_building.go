@@ -3,6 +3,24 @@
 
 package step
 
+// XcodeTestWithoutBuildingTestRepetitionMode enumerates the valid values for the test_repetition_mode input.
+type XcodeTestWithoutBuildingTestRepetitionMode string
+
+const (
+	XcodeTestWithoutBuildingTestRepetitionModeNone                      XcodeTestWithoutBuildingTestRepetitionMode = "none"
+	XcodeTestWithoutBuildingTestRepetitionModeUntilFailure              XcodeTestWithoutBuildingTestRepetitionMode = "until_failure"
+	XcodeTestWithoutBuildingTestRepetitionModeRetryOnFailure            XcodeTestWithoutBuildingTestRepetitionMode = "retry_on_failure"
+	XcodeTestWithoutBuildingTestRepetitionModeUpUntilMaximumRepetitions XcodeTestWithoutBuildingTestRepetitionMode = "up_until_maximum_repetitions"
+)
+
+// XcodeTestWithoutBuildingRelaunchTestsForEachRepetition enumerates the valid values for the relaunch_tests_for_each_repetition input.
+type XcodeTestWithoutBuildingRelaunchTestsForEachRepetition string
+
+const (
+	XcodeTestWithoutBuildingRelaunchTestsForEachRepetitionYes XcodeTestWithoutBuildingRelaunchTestsForEachRepetition = "yes"
+	XcodeTestWithoutBuildingRelaunchTestsForEachRepetitionNo  XcodeTestWithoutBuildingRelaunchTestsForEachRepetition = "no"
+)
+
 // XcodeTestWithoutBuildingBuilder builds a xcode-test-without-building step with typed input methods.
 type XcodeTestWithoutBuildingBuilder struct{ *Builder }
 
@@ -44,8 +62,8 @@ func (b *XcodeTestWithoutBuildingBuilder) WithSkipTesting(value string) *XcodeTe
 }
 
 // WithTestRepetitionMode sets test Repetition Mode (Available in Xcode 13+).
-func (b *XcodeTestWithoutBuildingBuilder) WithTestRepetitionMode(value string) *XcodeTestWithoutBuildingBuilder {
-	b.Builder.WithInput("test_repetition_mode", value)
+func (b *XcodeTestWithoutBuildingBuilder) WithTestRepetitionMode(value XcodeTestWithoutBuildingTestRepetitionMode) *XcodeTestWithoutBuildingBuilder {
+	b.Builder.WithInput("test_repetition_mode", string(value))
 	return b
 }
 
@@ -56,8 +74,8 @@ func (b *XcodeTestWithoutBuildingBuilder) WithMaximumTestRepetitions(value strin
 }
 
 // WithRelaunchTestsForEachRepetition sets relaunch Tests for Each Repetition (Available in Xcode 13+).
-func (b *XcodeTestWithoutBuildingBuilder) WithRelaunchTestsForEachRepetition(value string) *XcodeTestWithoutBuildingBuilder {
-	b.Builder.WithInput("relaunch_tests_for_each_repetition", value)
+func (b *XcodeTestWithoutBuildingBuilder) WithRelaunchTestsForEachRepetition(value XcodeTestWithoutBuildingRelaunchTestsForEachRepetition) *XcodeTestWithoutBuildingBuilder {
+	b.Builder.WithInput("relaunch_tests_for_each_repetition", string(value))
 	return b
 }
 

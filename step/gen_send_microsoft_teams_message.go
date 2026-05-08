@@ -3,6 +3,14 @@
 
 package step
 
+// SendMicrosoftTeamsMessageIsDebugMode enumerates the valid values for the is_debug_mode input.
+type SendMicrosoftTeamsMessageIsDebugMode string
+
+const (
+	SendMicrosoftTeamsMessageIsDebugModeYes SendMicrosoftTeamsMessageIsDebugMode = "yes"
+	SendMicrosoftTeamsMessageIsDebugModeNo  SendMicrosoftTeamsMessageIsDebugMode = "no"
+)
+
 // SendMicrosoftTeamsMessageBuilder builds a send-microsoft-teams-message step with typed input methods.
 type SendMicrosoftTeamsMessageBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func SendMicrosoftTeamsMessage(version ...string) *SendMicrosoftTeamsMessageBuil
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *SendMicrosoftTeamsMessageBuilder) WithIsDebugMode(value string) *SendMicrosoftTeamsMessageBuilder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *SendMicrosoftTeamsMessageBuilder) WithIsDebugMode(value SendMicrosoftTeamsMessageIsDebugMode) *SendMicrosoftTeamsMessageBuilder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 

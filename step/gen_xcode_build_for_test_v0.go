@@ -3,6 +3,38 @@
 
 package step
 
+// XcodeBuildForTestV0DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeBuildForTestV0DisableIndexWhileBuilding string
+
+const (
+	XcodeBuildForTestV0DisableIndexWhileBuildingYes XcodeBuildForTestV0DisableIndexWhileBuilding = "yes"
+	XcodeBuildForTestV0DisableIndexWhileBuildingNo  XcodeBuildForTestV0DisableIndexWhileBuilding = "no"
+)
+
+// XcodeBuildForTestV0CacheLevel enumerates the valid values for the cache_level input.
+type XcodeBuildForTestV0CacheLevel string
+
+const (
+	XcodeBuildForTestV0CacheLevelNone          XcodeBuildForTestV0CacheLevel = "none"
+	XcodeBuildForTestV0CacheLevelSwiftPackages XcodeBuildForTestV0CacheLevel = "swift_packages"
+)
+
+// XcodeBuildForTestV0OutputTool enumerates the valid values for the output_tool input.
+type XcodeBuildForTestV0OutputTool string
+
+const (
+	XcodeBuildForTestV0OutputToolXcpretty   XcodeBuildForTestV0OutputTool = "xcpretty"
+	XcodeBuildForTestV0OutputToolXcodebuild XcodeBuildForTestV0OutputTool = "xcodebuild"
+)
+
+// XcodeBuildForTestV0VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeBuildForTestV0VerboseLog string
+
+const (
+	XcodeBuildForTestV0VerboseLogYes XcodeBuildForTestV0VerboseLog = "yes"
+	XcodeBuildForTestV0VerboseLogNo  XcodeBuildForTestV0VerboseLog = "no"
+)
+
 // XcodeBuildForTestV0Builder builds a xcode-build-for-test step with typed input methods.
 type XcodeBuildForTestV0Builder struct{ *Builder }
 
@@ -44,14 +76,14 @@ func (b *XcodeBuildForTestV0Builder) WithDestination(value string) *XcodeBuildFo
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeBuildForTestV0Builder) WithDisableIndexWhileBuilding(value string) *XcodeBuildForTestV0Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeBuildForTestV0Builder) WithDisableIndexWhileBuilding(value XcodeBuildForTestV0DisableIndexWhileBuilding) *XcodeBuildForTestV0Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
 // WithCacheLevel sets enable caching of Swift Package Manager packages.
-func (b *XcodeBuildForTestV0Builder) WithCacheLevel(value string) *XcodeBuildForTestV0Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeBuildForTestV0Builder) WithCacheLevel(value XcodeBuildForTestV0CacheLevel) *XcodeBuildForTestV0Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -68,14 +100,14 @@ func (b *XcodeBuildForTestV0Builder) WithOutputDir(value string) *XcodeBuildForT
 }
 
 // WithOutputTool sets output tool.
-func (b *XcodeBuildForTestV0Builder) WithOutputTool(value string) *XcodeBuildForTestV0Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeBuildForTestV0Builder) WithOutputTool(value XcodeBuildForTestV0OutputTool) *XcodeBuildForTestV0Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *XcodeBuildForTestV0Builder) WithVerboseLog(value string) *XcodeBuildForTestV0Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeBuildForTestV0Builder) WithVerboseLog(value XcodeBuildForTestV0VerboseLog) *XcodeBuildForTestV0Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

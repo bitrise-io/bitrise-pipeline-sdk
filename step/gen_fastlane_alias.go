@@ -13,3 +13,19 @@ type FastlaneBuilder = FastlaneV3Builder
 func Fastlane(version ...string) *FastlaneV3Builder {
 	return FastlaneV3(version...)
 }
+
+// FastlaneConnection is a type alias for FastlaneV3Connection,
+// pointing to the latest supported major version of the step's enum type.
+type FastlaneConnection = FastlaneV3Connection
+
+// FastlaneUpdateFastlane is a type alias for FastlaneV3UpdateFastlane,
+// pointing to the latest supported major version of the step's enum type.
+type FastlaneUpdateFastlane = FastlaneV3UpdateFastlane
+
+// FastlaneVerboseLog is a type alias for FastlaneV3VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type FastlaneVerboseLog = FastlaneV3VerboseLog
+
+// FastlaneEnableCache is a type alias for FastlaneV3EnableCache,
+// pointing to the latest supported major version of the step's enum type.
+type FastlaneEnableCache = FastlaneV3EnableCache

@@ -3,6 +3,14 @@
 
 package step
 
+// XcodeTestV0IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeTestV0IsCleanBuild string
+
+const (
+	XcodeTestV0IsCleanBuildYes XcodeTestV0IsCleanBuild = "yes"
+	XcodeTestV0IsCleanBuildNo  XcodeTestV0IsCleanBuild = "no"
+)
+
 // XcodeTestV0Builder builds a xcode-test step with typed input methods.
 type XcodeTestV0Builder struct{ *Builder }
 
@@ -50,7 +58,7 @@ func (b *XcodeTestV0Builder) WithSimulatorOsVersion(value string) *XcodeTestV0Bu
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before testing?.
-func (b *XcodeTestV0Builder) WithIsCleanBuild(value string) *XcodeTestV0Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeTestV0Builder) WithIsCleanBuild(value XcodeTestV0IsCleanBuild) *XcodeTestV0Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }

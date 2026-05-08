@@ -3,6 +3,14 @@
 
 package step
 
+// GulpIsDebug enumerates the valid values for the is_debug input.
+type GulpIsDebug string
+
+const (
+	GulpIsDebugNo  GulpIsDebug = "no"
+	GulpIsDebugYes GulpIsDebug = "yes"
+)
+
 // GulpBuilder builds a gulp step with typed input methods.
 type GulpBuilder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *GulpBuilder) WithArgs(value string) *GulpBuilder {
 }
 
 // WithIsDebug sets debug?.
-func (b *GulpBuilder) WithIsDebug(value string) *GulpBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *GulpBuilder) WithIsDebug(value GulpIsDebug) *GulpBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

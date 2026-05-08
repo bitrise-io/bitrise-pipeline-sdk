@@ -3,6 +3,56 @@
 
 package step
 
+// ManageIosCodeSigningV2AppleServiceConnection enumerates the valid values for the apple_service_connection input.
+type ManageIosCodeSigningV2AppleServiceConnection string
+
+const (
+	ManageIosCodeSigningV2AppleServiceConnectionApiKey  ManageIosCodeSigningV2AppleServiceConnection = "api-key"
+	ManageIosCodeSigningV2AppleServiceConnectionAppleId ManageIosCodeSigningV2AppleServiceConnection = "apple-id"
+)
+
+// ManageIosCodeSigningV2DistributionMethod enumerates the valid values for the distribution_method input.
+type ManageIosCodeSigningV2DistributionMethod string
+
+const (
+	ManageIosCodeSigningV2DistributionMethodDevelopment ManageIosCodeSigningV2DistributionMethod = "development"
+	ManageIosCodeSigningV2DistributionMethodAppStore    ManageIosCodeSigningV2DistributionMethod = "app-store"
+	ManageIosCodeSigningV2DistributionMethodAdHoc       ManageIosCodeSigningV2DistributionMethod = "ad-hoc"
+	ManageIosCodeSigningV2DistributionMethodEnterprise  ManageIosCodeSigningV2DistributionMethod = "enterprise"
+)
+
+// ManageIosCodeSigningV2SignUitestTargets enumerates the valid values for the sign_uitest_targets input.
+type ManageIosCodeSigningV2SignUitestTargets string
+
+const (
+	ManageIosCodeSigningV2SignUitestTargetsYes ManageIosCodeSigningV2SignUitestTargets = "yes"
+	ManageIosCodeSigningV2SignUitestTargetsNo  ManageIosCodeSigningV2SignUitestTargets = "no"
+)
+
+// ManageIosCodeSigningV2RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type ManageIosCodeSigningV2RegisterTestDevices string
+
+const (
+	ManageIosCodeSigningV2RegisterTestDevicesYes ManageIosCodeSigningV2RegisterTestDevices = "yes"
+	ManageIosCodeSigningV2RegisterTestDevicesNo  ManageIosCodeSigningV2RegisterTestDevices = "no"
+)
+
+// ManageIosCodeSigningV2ApiKeyEnterpriseAccount enumerates the valid values for the api_key_enterprise_account input.
+type ManageIosCodeSigningV2ApiKeyEnterpriseAccount string
+
+const (
+	ManageIosCodeSigningV2ApiKeyEnterpriseAccountYes ManageIosCodeSigningV2ApiKeyEnterpriseAccount = "yes"
+	ManageIosCodeSigningV2ApiKeyEnterpriseAccountNo  ManageIosCodeSigningV2ApiKeyEnterpriseAccount = "no"
+)
+
+// ManageIosCodeSigningV2VerboseLog enumerates the valid values for the verbose_log input.
+type ManageIosCodeSigningV2VerboseLog string
+
+const (
+	ManageIosCodeSigningV2VerboseLogYes ManageIosCodeSigningV2VerboseLog = "yes"
+	ManageIosCodeSigningV2VerboseLogNo  ManageIosCodeSigningV2VerboseLog = "no"
+)
+
 // ManageIosCodeSigningV2Builder builds a manage-ios-code-signing step with typed input methods.
 type ManageIosCodeSigningV2Builder struct{ *Builder }
 
@@ -20,14 +70,14 @@ func ManageIosCodeSigningV2(version ...string) *ManageIosCodeSigningV2Builder {
 }
 
 // WithAppleServiceConnection sets apple service connection method.
-func (b *ManageIosCodeSigningV2Builder) WithAppleServiceConnection(value string) *ManageIosCodeSigningV2Builder {
-	b.Builder.WithInput("apple_service_connection", value)
+func (b *ManageIosCodeSigningV2Builder) WithAppleServiceConnection(value ManageIosCodeSigningV2AppleServiceConnection) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithInput("apple_service_connection", string(value))
 	return b
 }
 
 // WithDistributionMethod sets distribution method.
-func (b *ManageIosCodeSigningV2Builder) WithDistributionMethod(value string) *ManageIosCodeSigningV2Builder {
-	b.Builder.WithInput("distribution_method", value)
+func (b *ManageIosCodeSigningV2Builder) WithDistributionMethod(value ManageIosCodeSigningV2DistributionMethod) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithInput("distribution_method", string(value))
 	return b
 }
 
@@ -50,14 +100,14 @@ func (b *ManageIosCodeSigningV2Builder) WithConfiguration(value string) *ManageI
 }
 
 // WithSignUitestTargets sets ensure code signing assets for UITest targets too.
-func (b *ManageIosCodeSigningV2Builder) WithSignUitestTargets(value string) *ManageIosCodeSigningV2Builder {
-	b.Builder.WithInput("sign_uitest_targets", value)
+func (b *ManageIosCodeSigningV2Builder) WithSignUitestTargets(value ManageIosCodeSigningV2SignUitestTargets) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithInput("sign_uitest_targets", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *ManageIosCodeSigningV2Builder) WithRegisterTestDevices(value string) *ManageIosCodeSigningV2Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *ManageIosCodeSigningV2Builder) WithRegisterTestDevices(value ManageIosCodeSigningV2RegisterTestDevices) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -134,14 +184,14 @@ func (b *ManageIosCodeSigningV2Builder) WithApiKeyIssuerId(value string) *Manage
 }
 
 // WithApiKeyEnterpriseAccount sets app Store Connect API enterprise account.
-func (b *ManageIosCodeSigningV2Builder) WithApiKeyEnterpriseAccount(value string) *ManageIosCodeSigningV2Builder {
-	b.Builder.WithInput("api_key_enterprise_account", value)
+func (b *ManageIosCodeSigningV2Builder) WithApiKeyEnterpriseAccount(value ManageIosCodeSigningV2ApiKeyEnterpriseAccount) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithInput("api_key_enterprise_account", string(value))
 	return b
 }
 
 // WithVerboseLog sets verbose logging.
-func (b *ManageIosCodeSigningV2Builder) WithVerboseLog(value string) *ManageIosCodeSigningV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *ManageIosCodeSigningV2Builder) WithVerboseLog(value ManageIosCodeSigningV2VerboseLog) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

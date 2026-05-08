@@ -18,3 +18,7 @@ func SetIosVersion(version ...string) *SetIosVersionV2Builder {
 // published by set-ios-version at the latest major version (v2).
 // For outputs of a specific major version use SetIosVersionV{N}Outputs directly.
 var SetIosVersionOutputs = SetIosVersionV2Outputs
+
+// SetIosVersionAppendVersion is a type alias for SetIosVersionV2AppendVersion,
+// pointing to the latest supported major version of the step's enum type.
+type SetIosVersionAppendVersion = SetIosVersionV2AppendVersion

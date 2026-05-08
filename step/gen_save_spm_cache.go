@@ -3,6 +3,14 @@
 
 package step
 
+// SaveSpmCacheVerbose enumerates the valid values for the verbose input.
+type SaveSpmCacheVerbose string
+
+const (
+	SaveSpmCacheVerboseTrue  SaveSpmCacheVerbose = "true"
+	SaveSpmCacheVerboseFalse SaveSpmCacheVerbose = "false"
+)
+
 // SaveSpmCacheBuilder builds a save-spm-cache step with typed input methods.
 type SaveSpmCacheBuilder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *SaveSpmCacheBuilder) WithProjectPath(value string) *SaveSpmCacheBuilder
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveSpmCacheBuilder) WithVerbose(value string) *SaveSpmCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveSpmCacheBuilder) WithVerbose(value SaveSpmCacheVerbose) *SaveSpmCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

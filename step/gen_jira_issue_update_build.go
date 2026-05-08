@@ -3,6 +3,14 @@
 
 package step
 
+// JiraIssueUpdateBuildOverwriteField enumerates the valid values for the overwrite_field input.
+type JiraIssueUpdateBuildOverwriteField string
+
+const (
+	JiraIssueUpdateBuildOverwriteFieldTrue  JiraIssueUpdateBuildOverwriteField = "true"
+	JiraIssueUpdateBuildOverwriteFieldFalse JiraIssueUpdateBuildOverwriteField = "false"
+)
+
 // JiraIssueUpdateBuildBuilder builds a jira-issue-update-build step with typed input methods.
 type JiraIssueUpdateBuildBuilder struct{ *Builder }
 
@@ -62,7 +70,7 @@ func (b *JiraIssueUpdateBuildBuilder) WithBitriseApiToken(value string) *JiraIss
 }
 
 // WithOverwriteField sets should overwrite content of custom field.
-func (b *JiraIssueUpdateBuildBuilder) WithOverwriteField(value string) *JiraIssueUpdateBuildBuilder {
-	b.Builder.WithInput("overwrite_field", value)
+func (b *JiraIssueUpdateBuildBuilder) WithOverwriteField(value JiraIssueUpdateBuildOverwriteField) *JiraIssueUpdateBuildBuilder {
+	b.Builder.WithInput("overwrite_field", string(value))
 	return b
 }

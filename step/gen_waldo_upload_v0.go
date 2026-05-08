@@ -3,6 +3,14 @@
 
 package step
 
+// WaldoUploadV0FindSymbols enumerates the valid values for the find_symbols input.
+type WaldoUploadV0FindSymbols string
+
+const (
+	WaldoUploadV0FindSymbolsYes WaldoUploadV0FindSymbols = "yes"
+	WaldoUploadV0FindSymbolsNo  WaldoUploadV0FindSymbols = "no"
+)
+
 // WaldoUploadV0Builder builds a waldo-upload step with typed input methods.
 type WaldoUploadV0Builder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *WaldoUploadV0Builder) WithUploadToken(value string) *WaldoUploadV0Build
 }
 
 // WithFindSymbols sets find symbols associated with the build upload.
-func (b *WaldoUploadV0Builder) WithFindSymbols(value string) *WaldoUploadV0Builder {
-	b.Builder.WithInput("find_symbols", value)
+func (b *WaldoUploadV0Builder) WithFindSymbols(value WaldoUploadV0FindSymbols) *WaldoUploadV0Builder {
+	b.Builder.WithInput("find_symbols", string(value))
 	return b
 }
 

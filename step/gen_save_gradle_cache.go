@@ -3,6 +3,22 @@
 
 package step
 
+// SaveGradleCacheVerbose enumerates the valid values for the verbose input.
+type SaveGradleCacheVerbose string
+
+const (
+	SaveGradleCacheVerboseTrue  SaveGradleCacheVerbose = "true"
+	SaveGradleCacheVerboseFalse SaveGradleCacheVerbose = "false"
+)
+
+// SaveGradleCacheSaveTransforms enumerates the valid values for the save_transforms input.
+type SaveGradleCacheSaveTransforms string
+
+const (
+	SaveGradleCacheSaveTransformsTrue  SaveGradleCacheSaveTransforms = "true"
+	SaveGradleCacheSaveTransformsFalse SaveGradleCacheSaveTransforms = "false"
+)
+
 // SaveGradleCacheBuilder builds a save-gradle-cache step with typed input methods.
 type SaveGradleCacheBuilder struct{ *Builder }
 
@@ -20,8 +36,8 @@ func SaveGradleCache(version ...string) *SaveGradleCacheBuilder {
 }
 
 // WithVerbose sets verbose logging.
-func (b *SaveGradleCacheBuilder) WithVerbose(value string) *SaveGradleCacheBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *SaveGradleCacheBuilder) WithVerbose(value SaveGradleCacheVerbose) *SaveGradleCacheBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
@@ -32,7 +48,7 @@ func (b *SaveGradleCacheBuilder) WithCompressionLevel(value string) *SaveGradleC
 }
 
 // WithSaveTransforms sets save transforms.
-func (b *SaveGradleCacheBuilder) WithSaveTransforms(value string) *SaveGradleCacheBuilder {
-	b.Builder.WithInput("save_transforms", value)
+func (b *SaveGradleCacheBuilder) WithSaveTransforms(value SaveGradleCacheSaveTransforms) *SaveGradleCacheBuilder {
+	b.Builder.WithInput("save_transforms", string(value))
 	return b
 }

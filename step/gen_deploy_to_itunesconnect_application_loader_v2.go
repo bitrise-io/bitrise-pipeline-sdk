@@ -3,6 +3,34 @@
 
 package step
 
+// DeployToItunesconnectApplicationLoaderV2Connection enumerates the valid values for the connection input.
+type DeployToItunesconnectApplicationLoaderV2Connection string
+
+const (
+	DeployToItunesconnectApplicationLoaderV2ConnectionAutomatic DeployToItunesconnectApplicationLoaderV2Connection = "automatic"
+	DeployToItunesconnectApplicationLoaderV2ConnectionApiKey    DeployToItunesconnectApplicationLoaderV2Connection = "api_key"
+	DeployToItunesconnectApplicationLoaderV2ConnectionAppleId   DeployToItunesconnectApplicationLoaderV2Connection = "apple_id"
+	DeployToItunesconnectApplicationLoaderV2ConnectionOff       DeployToItunesconnectApplicationLoaderV2Connection = "off"
+)
+
+// DeployToItunesconnectApplicationLoaderV2Platform enumerates the valid values for the platform input.
+type DeployToItunesconnectApplicationLoaderV2Platform string
+
+const (
+	DeployToItunesconnectApplicationLoaderV2PlatformAuto  DeployToItunesconnectApplicationLoaderV2Platform = "auto"
+	DeployToItunesconnectApplicationLoaderV2PlatformIos   DeployToItunesconnectApplicationLoaderV2Platform = "ios"
+	DeployToItunesconnectApplicationLoaderV2PlatformMacos DeployToItunesconnectApplicationLoaderV2Platform = "macos"
+	DeployToItunesconnectApplicationLoaderV2PlatformTvos  DeployToItunesconnectApplicationLoaderV2Platform = "tvos"
+)
+
+// DeployToItunesconnectApplicationLoaderV2VerboseLog enumerates the valid values for the verbose_log input.
+type DeployToItunesconnectApplicationLoaderV2VerboseLog string
+
+const (
+	DeployToItunesconnectApplicationLoaderV2VerboseLogYes DeployToItunesconnectApplicationLoaderV2VerboseLog = "yes"
+	DeployToItunesconnectApplicationLoaderV2VerboseLogNo  DeployToItunesconnectApplicationLoaderV2VerboseLog = "no"
+)
+
 // DeployToItunesconnectApplicationLoaderV2Builder builds a deploy-to-itunesconnect-application-loader step with typed input methods.
 type DeployToItunesconnectApplicationLoaderV2Builder struct{ *Builder }
 
@@ -20,8 +48,8 @@ func DeployToItunesconnectApplicationLoaderV2(version ...string) *DeployToItunes
 }
 
 // WithConnection sets bitrise Apple Developer Connection.
-func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithConnection(value string) *DeployToItunesconnectApplicationLoaderV2Builder {
-	b.Builder.WithInput("connection", value)
+func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithConnection(value DeployToItunesconnectApplicationLoaderV2Connection) *DeployToItunesconnectApplicationLoaderV2Builder {
+	b.Builder.WithInput("connection", string(value))
 	return b
 }
 
@@ -38,8 +66,8 @@ func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithPkgPath(value stri
 }
 
 // WithPlatform sets platform.
-func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithPlatform(value string) *DeployToItunesconnectApplicationLoaderV2Builder {
-	b.Builder.WithInput("platform", value)
+func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithPlatform(value DeployToItunesconnectApplicationLoaderV2Platform) *DeployToItunesconnectApplicationLoaderV2Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
@@ -98,8 +126,8 @@ func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithAppPassword(value 
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithVerboseLog(value string) *DeployToItunesconnectApplicationLoaderV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithVerboseLog(value DeployToItunesconnectApplicationLoaderV2VerboseLog) *DeployToItunesconnectApplicationLoaderV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

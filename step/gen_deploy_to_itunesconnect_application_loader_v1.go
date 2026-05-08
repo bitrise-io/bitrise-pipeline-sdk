@@ -3,6 +3,26 @@
 
 package step
 
+// DeployToItunesconnectApplicationLoaderV1Connection enumerates the valid values for the connection input.
+type DeployToItunesconnectApplicationLoaderV1Connection string
+
+const (
+	DeployToItunesconnectApplicationLoaderV1ConnectionAutomatic DeployToItunesconnectApplicationLoaderV1Connection = "automatic"
+	DeployToItunesconnectApplicationLoaderV1ConnectionApiKey    DeployToItunesconnectApplicationLoaderV1Connection = "api_key"
+	DeployToItunesconnectApplicationLoaderV1ConnectionAppleId   DeployToItunesconnectApplicationLoaderV1Connection = "apple_id"
+	DeployToItunesconnectApplicationLoaderV1ConnectionOff       DeployToItunesconnectApplicationLoaderV1Connection = "off"
+)
+
+// DeployToItunesconnectApplicationLoaderV1Platform enumerates the valid values for the platform input.
+type DeployToItunesconnectApplicationLoaderV1Platform string
+
+const (
+	DeployToItunesconnectApplicationLoaderV1PlatformAuto  DeployToItunesconnectApplicationLoaderV1Platform = "auto"
+	DeployToItunesconnectApplicationLoaderV1PlatformIos   DeployToItunesconnectApplicationLoaderV1Platform = "ios"
+	DeployToItunesconnectApplicationLoaderV1PlatformMacos DeployToItunesconnectApplicationLoaderV1Platform = "macos"
+	DeployToItunesconnectApplicationLoaderV1PlatformTvos  DeployToItunesconnectApplicationLoaderV1Platform = "tvos"
+)
+
 // DeployToItunesconnectApplicationLoaderV1Builder builds a deploy-to-itunesconnect-application-loader step with typed input methods.
 type DeployToItunesconnectApplicationLoaderV1Builder struct{ *Builder }
 
@@ -20,8 +40,8 @@ func DeployToItunesconnectApplicationLoaderV1(version ...string) *DeployToItunes
 }
 
 // WithConnection sets bitrise Apple Developer Connection.
-func (b *DeployToItunesconnectApplicationLoaderV1Builder) WithConnection(value string) *DeployToItunesconnectApplicationLoaderV1Builder {
-	b.Builder.WithInput("connection", value)
+func (b *DeployToItunesconnectApplicationLoaderV1Builder) WithConnection(value DeployToItunesconnectApplicationLoaderV1Connection) *DeployToItunesconnectApplicationLoaderV1Builder {
+	b.Builder.WithInput("connection", string(value))
 	return b
 }
 
@@ -68,8 +88,8 @@ func (b *DeployToItunesconnectApplicationLoaderV1Builder) WithPkgPath(value stri
 }
 
 // WithPlatform sets platform.
-func (b *DeployToItunesconnectApplicationLoaderV1Builder) WithPlatform(value string) *DeployToItunesconnectApplicationLoaderV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *DeployToItunesconnectApplicationLoaderV1Builder) WithPlatform(value DeployToItunesconnectApplicationLoaderV1Platform) *DeployToItunesconnectApplicationLoaderV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 

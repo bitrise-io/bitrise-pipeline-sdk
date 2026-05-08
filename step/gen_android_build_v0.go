@@ -3,6 +3,23 @@
 
 package step
 
+// AndroidBuildV0BuildType enumerates the valid values for the build_type input.
+type AndroidBuildV0BuildType string
+
+const (
+	AndroidBuildV0BuildTypeApk AndroidBuildV0BuildType = "apk"
+	AndroidBuildV0BuildTypeAab AndroidBuildV0BuildType = "aab"
+)
+
+// AndroidBuildV0CacheLevel enumerates the valid values for the cache_level input.
+type AndroidBuildV0CacheLevel string
+
+const (
+	AndroidBuildV0CacheLevelAll      AndroidBuildV0CacheLevel = "all"
+	AndroidBuildV0CacheLevelOnlyDeps AndroidBuildV0CacheLevel = "only_deps"
+	AndroidBuildV0CacheLevelNone     AndroidBuildV0CacheLevel = "none"
+)
+
 // AndroidBuildV0Builder builds a android-build step with typed input methods.
 type AndroidBuildV0Builder struct{ *Builder }
 
@@ -38,8 +55,8 @@ func (b *AndroidBuildV0Builder) WithVariant(value string) *AndroidBuildV0Builder
 }
 
 // WithBuildType sets build type.
-func (b *AndroidBuildV0Builder) WithBuildType(value string) *AndroidBuildV0Builder {
-	b.Builder.WithInput("build_type", value)
+func (b *AndroidBuildV0Builder) WithBuildType(value AndroidBuildV0BuildType) *AndroidBuildV0Builder {
+	b.Builder.WithInput("build_type", string(value))
 	return b
 }
 
@@ -50,8 +67,8 @@ func (b *AndroidBuildV0Builder) WithAppPathPattern(value string) *AndroidBuildV0
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *AndroidBuildV0Builder) WithCacheLevel(value string) *AndroidBuildV0Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *AndroidBuildV0Builder) WithCacheLevel(value AndroidBuildV0CacheLevel) *AndroidBuildV0Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 

@@ -13,3 +13,7 @@ type InstallMissingAndroidToolsBuilder = InstallMissingAndroidToolsV3Builder
 func InstallMissingAndroidTools(version ...string) *InstallMissingAndroidToolsV3Builder {
 	return InstallMissingAndroidToolsV3(version...)
 }
+
+// InstallMissingAndroidToolsEnableRepoMirror is a type alias for InstallMissingAndroidToolsV3EnableRepoMirror,
+// pointing to the latest supported major version of the step's enum type.
+type InstallMissingAndroidToolsEnableRepoMirror = InstallMissingAndroidToolsV3EnableRepoMirror

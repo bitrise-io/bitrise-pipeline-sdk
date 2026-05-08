@@ -3,6 +3,110 @@
 
 package step
 
+// DeviceCloudForMaestroV1Async enumerates the valid values for the async input.
+type DeviceCloudForMaestroV1Async string
+
+const (
+	DeviceCloudForMaestroV1AsyncTrue  DeviceCloudForMaestroV1Async = "true"
+	DeviceCloudForMaestroV1AsyncFalse DeviceCloudForMaestroV1Async = "false"
+)
+
+// DeviceCloudForMaestroV1DryRun enumerates the valid values for the dry_run input.
+type DeviceCloudForMaestroV1DryRun string
+
+const (
+	DeviceCloudForMaestroV1DryRunTrue  DeviceCloudForMaestroV1DryRun = "true"
+	DeviceCloudForMaestroV1DryRunFalse DeviceCloudForMaestroV1DryRun = "false"
+)
+
+// DeviceCloudForMaestroV1AndroidNoSnapshot enumerates the valid values for the android_no_snapshot input.
+type DeviceCloudForMaestroV1AndroidNoSnapshot string
+
+const (
+	DeviceCloudForMaestroV1AndroidNoSnapshotTrue  DeviceCloudForMaestroV1AndroidNoSnapshot = "true"
+	DeviceCloudForMaestroV1AndroidNoSnapshotFalse DeviceCloudForMaestroV1AndroidNoSnapshot = "false"
+)
+
+// DeviceCloudForMaestroV1GooglePlay enumerates the valid values for the google_play input.
+type DeviceCloudForMaestroV1GooglePlay string
+
+const (
+	DeviceCloudForMaestroV1GooglePlayTrue  DeviceCloudForMaestroV1GooglePlay = "true"
+	DeviceCloudForMaestroV1GooglePlayFalse DeviceCloudForMaestroV1GooglePlay = "false"
+)
+
+// DeviceCloudForMaestroV1ShowCrosshairs enumerates the valid values for the show_crosshairs input.
+type DeviceCloudForMaestroV1ShowCrosshairs string
+
+const (
+	DeviceCloudForMaestroV1ShowCrosshairsTrue  DeviceCloudForMaestroV1ShowCrosshairs = "true"
+	DeviceCloudForMaestroV1ShowCrosshairsFalse DeviceCloudForMaestroV1ShowCrosshairs = "false"
+)
+
+// DeviceCloudForMaestroV1MaestroChromeOnboarding enumerates the valid values for the maestro_chrome_onboarding input.
+type DeviceCloudForMaestroV1MaestroChromeOnboarding string
+
+const (
+	DeviceCloudForMaestroV1MaestroChromeOnboardingTrue  DeviceCloudForMaestroV1MaestroChromeOnboarding = "true"
+	DeviceCloudForMaestroV1MaestroChromeOnboardingFalse DeviceCloudForMaestroV1MaestroChromeOnboarding = "false"
+)
+
+// DeviceCloudForMaestroV1IgnoreShaCheck enumerates the valid values for the ignore_sha_check input.
+type DeviceCloudForMaestroV1IgnoreShaCheck string
+
+const (
+	DeviceCloudForMaestroV1IgnoreShaCheckTrue  DeviceCloudForMaestroV1IgnoreShaCheck = "true"
+	DeviceCloudForMaestroV1IgnoreShaCheckFalse DeviceCloudForMaestroV1IgnoreShaCheck = "false"
+)
+
+// DeviceCloudForMaestroV1Debug enumerates the valid values for the debug input.
+type DeviceCloudForMaestroV1Debug string
+
+const (
+	DeviceCloudForMaestroV1DebugTrue  DeviceCloudForMaestroV1Debug = "true"
+	DeviceCloudForMaestroV1DebugFalse DeviceCloudForMaestroV1Debug = "false"
+)
+
+// DeviceCloudForMaestroV1DisableAnimations enumerates the valid values for the disable_animations input.
+type DeviceCloudForMaestroV1DisableAnimations string
+
+const (
+	DeviceCloudForMaestroV1DisableAnimationsTrue  DeviceCloudForMaestroV1DisableAnimations = "true"
+	DeviceCloudForMaestroV1DisableAnimationsFalse DeviceCloudForMaestroV1DisableAnimations = "false"
+)
+
+// DeviceCloudForMaestroV1Quiet enumerates the valid values for the quiet input.
+type DeviceCloudForMaestroV1Quiet string
+
+const (
+	DeviceCloudForMaestroV1QuietTrue  DeviceCloudForMaestroV1Quiet = "true"
+	DeviceCloudForMaestroV1QuietFalse DeviceCloudForMaestroV1Quiet = "false"
+)
+
+// DeviceCloudForMaestroV1UseBeta enumerates the valid values for the use_beta input.
+type DeviceCloudForMaestroV1UseBeta string
+
+const (
+	DeviceCloudForMaestroV1UseBetaTrue  DeviceCloudForMaestroV1UseBeta = "true"
+	DeviceCloudForMaestroV1UseBetaFalse DeviceCloudForMaestroV1UseBeta = "false"
+)
+
+// DeviceCloudForMaestroV1Json enumerates the valid values for the json input.
+type DeviceCloudForMaestroV1Json string
+
+const (
+	DeviceCloudForMaestroV1JsonTrue  DeviceCloudForMaestroV1Json = "true"
+	DeviceCloudForMaestroV1JsonFalse DeviceCloudForMaestroV1Json = "false"
+)
+
+// DeviceCloudForMaestroV1JsonFile enumerates the valid values for the json_file input.
+type DeviceCloudForMaestroV1JsonFile string
+
+const (
+	DeviceCloudForMaestroV1JsonFileTrue  DeviceCloudForMaestroV1JsonFile = "true"
+	DeviceCloudForMaestroV1JsonFileFalse DeviceCloudForMaestroV1JsonFile = "false"
+)
+
 // DeviceCloudForMaestroV1Builder builds a device-cloud-for-maestro step with typed input methods.
 type DeviceCloudForMaestroV1Builder struct{ *Builder }
 
@@ -74,14 +178,14 @@ func (b *DeviceCloudForMaestroV1Builder) WithMetadata(value string) *DeviceCloud
 }
 
 // WithAsync sets async Execution.
-func (b *DeviceCloudForMaestroV1Builder) WithAsync(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("async", value)
+func (b *DeviceCloudForMaestroV1Builder) WithAsync(value DeviceCloudForMaestroV1Async) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("async", string(value))
 	return b
 }
 
 // WithDryRun sets dry Run.
-func (b *DeviceCloudForMaestroV1Builder) WithDryRun(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("dry_run", value)
+func (b *DeviceCloudForMaestroV1Builder) WithDryRun(value DeviceCloudForMaestroV1DryRun) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("dry_run", string(value))
 	return b
 }
 
@@ -92,8 +196,8 @@ func (b *DeviceCloudForMaestroV1Builder) WithAndroidApiLevel(value string) *Devi
 }
 
 // WithAndroidNoSnapshot sets android No Snapshot.
-func (b *DeviceCloudForMaestroV1Builder) WithAndroidNoSnapshot(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("android_no_snapshot", value)
+func (b *DeviceCloudForMaestroV1Builder) WithAndroidNoSnapshot(value DeviceCloudForMaestroV1AndroidNoSnapshot) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("android_no_snapshot", string(value))
 	return b
 }
 
@@ -122,8 +226,8 @@ func (b *DeviceCloudForMaestroV1Builder) WithExcludeFlows(value string) *DeviceC
 }
 
 // WithGooglePlay sets google Play.
-func (b *DeviceCloudForMaestroV1Builder) WithGooglePlay(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("google_play", value)
+func (b *DeviceCloudForMaestroV1Builder) WithGooglePlay(value DeviceCloudForMaestroV1GooglePlay) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("google_play", string(value))
 	return b
 }
 
@@ -158,14 +262,14 @@ func (b *DeviceCloudForMaestroV1Builder) WithOrientation(value string) *DeviceCl
 }
 
 // WithShowCrosshairs sets show Crosshairs.
-func (b *DeviceCloudForMaestroV1Builder) WithShowCrosshairs(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("show_crosshairs", value)
+func (b *DeviceCloudForMaestroV1Builder) WithShowCrosshairs(value DeviceCloudForMaestroV1ShowCrosshairs) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("show_crosshairs", string(value))
 	return b
 }
 
 // WithMaestroChromeOnboarding sets maestro Chrome Onboarding.
-func (b *DeviceCloudForMaestroV1Builder) WithMaestroChromeOnboarding(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("maestro_chrome_onboarding", value)
+func (b *DeviceCloudForMaestroV1Builder) WithMaestroChromeOnboarding(value DeviceCloudForMaestroV1MaestroChromeOnboarding) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("maestro_chrome_onboarding", string(value))
 	return b
 }
 
@@ -206,8 +310,8 @@ func (b *DeviceCloudForMaestroV1Builder) WithHtmlPath(value string) *DeviceCloud
 }
 
 // WithIgnoreShaCheck sets ignore SHA Check.
-func (b *DeviceCloudForMaestroV1Builder) WithIgnoreShaCheck(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("ignore_sha_check", value)
+func (b *DeviceCloudForMaestroV1Builder) WithIgnoreShaCheck(value DeviceCloudForMaestroV1IgnoreShaCheck) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("ignore_sha_check", string(value))
 	return b
 }
 
@@ -218,38 +322,38 @@ func (b *DeviceCloudForMaestroV1Builder) WithApiUrl(value string) *DeviceCloudFo
 }
 
 // WithDebug sets debug Mode.
-func (b *DeviceCloudForMaestroV1Builder) WithDebug(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("debug", value)
+func (b *DeviceCloudForMaestroV1Builder) WithDebug(value DeviceCloudForMaestroV1Debug) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 
 // WithDisableAnimations sets disable Animations.
-func (b *DeviceCloudForMaestroV1Builder) WithDisableAnimations(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("disable_animations", value)
+func (b *DeviceCloudForMaestroV1Builder) WithDisableAnimations(value DeviceCloudForMaestroV1DisableAnimations) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("disable_animations", string(value))
 	return b
 }
 
 // WithQuiet sets quiet Mode.
-func (b *DeviceCloudForMaestroV1Builder) WithQuiet(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("quiet", value)
+func (b *DeviceCloudForMaestroV1Builder) WithQuiet(value DeviceCloudForMaestroV1Quiet) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("quiet", string(value))
 	return b
 }
 
 // WithUseBeta sets use Beta CLI.
-func (b *DeviceCloudForMaestroV1Builder) WithUseBeta(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("use_beta", value)
+func (b *DeviceCloudForMaestroV1Builder) WithUseBeta(value DeviceCloudForMaestroV1UseBeta) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("use_beta", string(value))
 	return b
 }
 
 // WithJson sets jSON Output.
-func (b *DeviceCloudForMaestroV1Builder) WithJson(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("json", value)
+func (b *DeviceCloudForMaestroV1Builder) WithJson(value DeviceCloudForMaestroV1Json) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("json", string(value))
 	return b
 }
 
 // WithJsonFile sets jSON File Output.
-func (b *DeviceCloudForMaestroV1Builder) WithJsonFile(value string) *DeviceCloudForMaestroV1Builder {
-	b.Builder.WithInput("json_file", value)
+func (b *DeviceCloudForMaestroV1Builder) WithJsonFile(value DeviceCloudForMaestroV1JsonFile) *DeviceCloudForMaestroV1Builder {
+	b.Builder.WithInput("json_file", string(value))
 	return b
 }
 

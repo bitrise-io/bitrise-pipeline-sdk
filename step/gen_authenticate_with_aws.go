@@ -3,6 +3,22 @@
 
 package step
 
+// AuthenticateWithAwsDockerLogin enumerates the valid values for the docker_login input.
+type AuthenticateWithAwsDockerLogin string
+
+const (
+	AuthenticateWithAwsDockerLoginTrue  AuthenticateWithAwsDockerLogin = "true"
+	AuthenticateWithAwsDockerLoginFalse AuthenticateWithAwsDockerLogin = "false"
+)
+
+// AuthenticateWithAwsVerbose enumerates the valid values for the verbose input.
+type AuthenticateWithAwsVerbose string
+
+const (
+	AuthenticateWithAwsVerboseTrue  AuthenticateWithAwsVerbose = "true"
+	AuthenticateWithAwsVerboseFalse AuthenticateWithAwsVerbose = "false"
+)
+
 // AuthenticateWithAwsBuilder builds a authenticate-with-aws step with typed input methods.
 type AuthenticateWithAwsBuilder struct{ *Builder }
 
@@ -44,8 +60,8 @@ func (b *AuthenticateWithAwsBuilder) WithSessionName(value string) *Authenticate
 }
 
 // WithDockerLogin sets docker login.
-func (b *AuthenticateWithAwsBuilder) WithDockerLogin(value string) *AuthenticateWithAwsBuilder {
-	b.Builder.WithInput("docker_login", value)
+func (b *AuthenticateWithAwsBuilder) WithDockerLogin(value AuthenticateWithAwsDockerLogin) *AuthenticateWithAwsBuilder {
+	b.Builder.WithInput("docker_login", string(value))
 	return b
 }
 
@@ -62,8 +78,8 @@ func (b *AuthenticateWithAwsBuilder) WithBuildApiToken(value string) *Authentica
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *AuthenticateWithAwsBuilder) WithVerbose(value string) *AuthenticateWithAwsBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *AuthenticateWithAwsBuilder) WithVerbose(value AuthenticateWithAwsVerbose) *AuthenticateWithAwsBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

@@ -3,6 +3,25 @@
 
 package step
 
+// SendGoogleChatMessageNotifyOnSuccess enumerates the valid values for the notify_on_success input.
+type SendGoogleChatMessageNotifyOnSuccess string
+
+const (
+	SendGoogleChatMessageNotifyOnSuccessTrue  SendGoogleChatMessageNotifyOnSuccess = "true"
+	SendGoogleChatMessageNotifyOnSuccessFalse SendGoogleChatMessageNotifyOnSuccess = "false"
+)
+
+// SendGoogleChatMessageStateOverride enumerates the valid values for the state_override input.
+type SendGoogleChatMessageStateOverride string
+
+const (
+	SendGoogleChatMessageStateOverrideAuto    SendGoogleChatMessageStateOverride = "auto"
+	SendGoogleChatMessageStateOverridePending SendGoogleChatMessageStateOverride = "pending"
+	SendGoogleChatMessageStateOverrideSuccess SendGoogleChatMessageStateOverride = "success"
+	SendGoogleChatMessageStateOverrideError   SendGoogleChatMessageStateOverride = "error"
+	SendGoogleChatMessageStateOverrideFailure SendGoogleChatMessageStateOverride = "failure"
+)
+
 // SendGoogleChatMessageBuilder builds a send-google-chat-message step with typed input methods.
 type SendGoogleChatMessageBuilder struct{ *Builder }
 
@@ -26,14 +45,14 @@ func (b *SendGoogleChatMessageBuilder) WithGoogleChatWebhookUrl(value string) *S
 }
 
 // WithNotifyOnSuccess sets notify on Success.
-func (b *SendGoogleChatMessageBuilder) WithNotifyOnSuccess(value string) *SendGoogleChatMessageBuilder {
-	b.Builder.WithInput("notify_on_success", value)
+func (b *SendGoogleChatMessageBuilder) WithNotifyOnSuccess(value SendGoogleChatMessageNotifyOnSuccess) *SendGoogleChatMessageBuilder {
+	b.Builder.WithInput("notify_on_success", string(value))
 	return b
 }
 
 // WithStateOverride sets set Specific Status.
-func (b *SendGoogleChatMessageBuilder) WithStateOverride(value string) *SendGoogleChatMessageBuilder {
-	b.Builder.WithInput("state_override", value)
+func (b *SendGoogleChatMessageBuilder) WithStateOverride(value SendGoogleChatMessageStateOverride) *SendGoogleChatMessageBuilder {
+	b.Builder.WithInput("state_override", string(value))
 	return b
 }
 

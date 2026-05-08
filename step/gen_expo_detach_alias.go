@@ -13,3 +13,7 @@ type ExpoDetachBuilder = ExpoDetachV1Builder
 func ExpoDetach(version ...string) *ExpoDetachV1Builder {
 	return ExpoDetachV1(version...)
 }
+
+// ExpoDetachRunPublish is a type alias for ExpoDetachV1RunPublish,
+// pointing to the latest supported major version of the step's enum type.
+type ExpoDetachRunPublish = ExpoDetachV1RunPublish

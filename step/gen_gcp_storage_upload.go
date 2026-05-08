@@ -3,6 +3,14 @@
 
 package step
 
+// GcpStorageUploadVerbose enumerates the valid values for the verbose input.
+type GcpStorageUploadVerbose string
+
+const (
+	GcpStorageUploadVerboseTrue  GcpStorageUploadVerbose = "true"
+	GcpStorageUploadVerboseFalse GcpStorageUploadVerbose = "false"
+)
+
 // GcpStorageUploadBuilder builds a gcp-storage-upload step with typed input methods.
 type GcpStorageUploadBuilder struct{ *Builder }
 
@@ -44,7 +52,7 @@ func (b *GcpStorageUploadBuilder) WithAccessToken(value string) *GcpStorageUploa
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *GcpStorageUploadBuilder) WithVerbose(value string) *GcpStorageUploadBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *GcpStorageUploadBuilder) WithVerbose(value GcpStorageUploadVerbose) *GcpStorageUploadBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }

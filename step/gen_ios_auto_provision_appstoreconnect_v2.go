@@ -3,6 +3,51 @@
 
 package step
 
+// IosAutoProvisionAppstoreconnectV2Connection enumerates the valid values for the connection input.
+type IosAutoProvisionAppstoreconnectV2Connection string
+
+const (
+	IosAutoProvisionAppstoreconnectV2ConnectionAutomatic             IosAutoProvisionAppstoreconnectV2Connection = "automatic"
+	IosAutoProvisionAppstoreconnectV2ConnectionApiKey                IosAutoProvisionAppstoreconnectV2Connection = "api_key"
+	IosAutoProvisionAppstoreconnectV2ConnectionOff                   IosAutoProvisionAppstoreconnectV2Connection = "off"
+	IosAutoProvisionAppstoreconnectV2ConnectionEnterpriseWithAppleId IosAutoProvisionAppstoreconnectV2Connection = "enterprise_with_apple_id"
+	IosAutoProvisionAppstoreconnectV2ConnectionAppleId               IosAutoProvisionAppstoreconnectV2Connection = "apple_id"
+)
+
+// IosAutoProvisionAppstoreconnectV2DistributionType enumerates the valid values for the distribution_type input.
+type IosAutoProvisionAppstoreconnectV2DistributionType string
+
+const (
+	IosAutoProvisionAppstoreconnectV2DistributionTypeDevelopment IosAutoProvisionAppstoreconnectV2DistributionType = "development"
+	IosAutoProvisionAppstoreconnectV2DistributionTypeAppStore    IosAutoProvisionAppstoreconnectV2DistributionType = "app-store"
+	IosAutoProvisionAppstoreconnectV2DistributionTypeAdHoc       IosAutoProvisionAppstoreconnectV2DistributionType = "ad-hoc"
+	IosAutoProvisionAppstoreconnectV2DistributionTypeEnterprise  IosAutoProvisionAppstoreconnectV2DistributionType = "enterprise"
+)
+
+// IosAutoProvisionAppstoreconnectV2SignUitestTargets enumerates the valid values for the sign_uitest_targets input.
+type IosAutoProvisionAppstoreconnectV2SignUitestTargets string
+
+const (
+	IosAutoProvisionAppstoreconnectV2SignUitestTargetsYes IosAutoProvisionAppstoreconnectV2SignUitestTargets = "yes"
+	IosAutoProvisionAppstoreconnectV2SignUitestTargetsNo  IosAutoProvisionAppstoreconnectV2SignUitestTargets = "no"
+)
+
+// IosAutoProvisionAppstoreconnectV2RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type IosAutoProvisionAppstoreconnectV2RegisterTestDevices string
+
+const (
+	IosAutoProvisionAppstoreconnectV2RegisterTestDevicesYes IosAutoProvisionAppstoreconnectV2RegisterTestDevices = "yes"
+	IosAutoProvisionAppstoreconnectV2RegisterTestDevicesNo  IosAutoProvisionAppstoreconnectV2RegisterTestDevices = "no"
+)
+
+// IosAutoProvisionAppstoreconnectV2VerboseLog enumerates the valid values for the verbose_log input.
+type IosAutoProvisionAppstoreconnectV2VerboseLog string
+
+const (
+	IosAutoProvisionAppstoreconnectV2VerboseLogYes IosAutoProvisionAppstoreconnectV2VerboseLog = "yes"
+	IosAutoProvisionAppstoreconnectV2VerboseLogNo  IosAutoProvisionAppstoreconnectV2VerboseLog = "no"
+)
+
 // IosAutoProvisionAppstoreconnectV2Builder builds a ios-auto-provision-appstoreconnect step with typed input methods.
 //
 // Deprecated: This Step has been deprecated in favour of the new automatic code signing options on Bitrise.  Option A) The latest versions of the [Xcode Archive & Export for iOS](https://github.com/bitrise-steplib/steps-xcode-archive), [Xcode Build for testing for iOS](https://github.com/bitrise-steplib/steps-xcode-build-for-test), and the [Export iOS and tvOS Xcode archive](https://github.com/bitrise-steplib/steps-export-xcarchive) Steps have built-in automatic code signing. We recommend removing this Step from your Workflow and using the automatic code signing feature in the Steps mentioned above.  Option B) If you are not using any of the mentioned Xcode steps, then you can replace this iOS Auto Provision Step with the [Manage iOS Code signing](https://www.bitrise.io/integrations/steps/manage-ios-code-signing) Step.  You can [read more](https://blog.bitrise.io/post/simplifying-automatic-code-signing-on-bitrise) about these changes in our blog post.
@@ -24,8 +69,8 @@ func IosAutoProvisionAppstoreconnectV2(version ...string) *IosAutoProvisionAppst
 }
 
 // WithConnection sets bitrise Apple Developer Connection.
-func (b *IosAutoProvisionAppstoreconnectV2Builder) WithConnection(value string) *IosAutoProvisionAppstoreconnectV2Builder {
-	b.Builder.WithInput("connection", value)
+func (b *IosAutoProvisionAppstoreconnectV2Builder) WithConnection(value IosAutoProvisionAppstoreconnectV2Connection) *IosAutoProvisionAppstoreconnectV2Builder {
+	b.Builder.WithInput("connection", string(value))
 	return b
 }
 
@@ -48,8 +93,8 @@ func (b *IosAutoProvisionAppstoreconnectV2Builder) WithAppleIdTeamId(value strin
 }
 
 // WithDistributionType sets distribution type.
-func (b *IosAutoProvisionAppstoreconnectV2Builder) WithDistributionType(value string) *IosAutoProvisionAppstoreconnectV2Builder {
-	b.Builder.WithInput("distribution_type", value)
+func (b *IosAutoProvisionAppstoreconnectV2Builder) WithDistributionType(value IosAutoProvisionAppstoreconnectV2DistributionType) *IosAutoProvisionAppstoreconnectV2Builder {
+	b.Builder.WithInput("distribution_type", string(value))
 	return b
 }
 
@@ -72,14 +117,14 @@ func (b *IosAutoProvisionAppstoreconnectV2Builder) WithConfiguration(value strin
 }
 
 // WithSignUitestTargets sets should the step manage UITest target's codesigning?.
-func (b *IosAutoProvisionAppstoreconnectV2Builder) WithSignUitestTargets(value string) *IosAutoProvisionAppstoreconnectV2Builder {
-	b.Builder.WithInput("sign_uitest_targets", value)
+func (b *IosAutoProvisionAppstoreconnectV2Builder) WithSignUitestTargets(value IosAutoProvisionAppstoreconnectV2SignUitestTargets) *IosAutoProvisionAppstoreconnectV2Builder {
+	b.Builder.WithInput("sign_uitest_targets", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets should the step register test devices with the Apple Developer Portal?.
-func (b *IosAutoProvisionAppstoreconnectV2Builder) WithRegisterTestDevices(value string) *IosAutoProvisionAppstoreconnectV2Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *IosAutoProvisionAppstoreconnectV2Builder) WithRegisterTestDevices(value IosAutoProvisionAppstoreconnectV2RegisterTestDevices) *IosAutoProvisionAppstoreconnectV2Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -90,8 +135,8 @@ func (b *IosAutoProvisionAppstoreconnectV2Builder) WithMinProfileDaysValid(value
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *IosAutoProvisionAppstoreconnectV2Builder) WithVerboseLog(value string) *IosAutoProvisionAppstoreconnectV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *IosAutoProvisionAppstoreconnectV2Builder) WithVerboseLog(value IosAutoProvisionAppstoreconnectV2VerboseLog) *IosAutoProvisionAppstoreconnectV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

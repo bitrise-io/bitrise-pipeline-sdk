@@ -13,3 +13,11 @@ type CordovaPrepareBuilder = CordovaPrepareV1Builder
 func CordovaPrepare(version ...string) *CordovaPrepareV1Builder {
 	return CordovaPrepareV1(version...)
 }
+
+// CordovaPreparePlatform is a type alias for CordovaPrepareV1Platform,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaPreparePlatform = CordovaPrepareV1Platform
+
+// CordovaPrepareCacheLocalDeps is a type alias for CordovaPrepareV1CacheLocalDeps,
+// pointing to the latest supported major version of the step's enum type.
+type CordovaPrepareCacheLocalDeps = CordovaPrepareV1CacheLocalDeps

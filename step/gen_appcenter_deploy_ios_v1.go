@@ -3,6 +3,30 @@
 
 package step
 
+// AppcenterDeployIosV1NotifyTesters enumerates the valid values for the notify_testers input.
+type AppcenterDeployIosV1NotifyTesters string
+
+const (
+	AppcenterDeployIosV1NotifyTestersYes AppcenterDeployIosV1NotifyTesters = "yes"
+	AppcenterDeployIosV1NotifyTestersNo  AppcenterDeployIosV1NotifyTesters = "no"
+)
+
+// AppcenterDeployIosV1Mandatory enumerates the valid values for the mandatory input.
+type AppcenterDeployIosV1Mandatory string
+
+const (
+	AppcenterDeployIosV1MandatoryNo  AppcenterDeployIosV1Mandatory = "no"
+	AppcenterDeployIosV1MandatoryYes AppcenterDeployIosV1Mandatory = "yes"
+)
+
+// AppcenterDeployIosV1Debug enumerates the valid values for the debug input.
+type AppcenterDeployIosV1Debug string
+
+const (
+	AppcenterDeployIosV1DebugNo  AppcenterDeployIosV1Debug = "no"
+	AppcenterDeployIosV1DebugYes AppcenterDeployIosV1Debug = "yes"
+)
+
 // AppcenterDeployIosV1Builder builds a appcenter-deploy-ios step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -78,20 +102,20 @@ func (b *AppcenterDeployIosV1Builder) WithReleaseNotes(value string) *AppcenterD
 }
 
 // WithNotifyTesters sets notify Testers.
-func (b *AppcenterDeployIosV1Builder) WithNotifyTesters(value string) *AppcenterDeployIosV1Builder {
-	b.Builder.WithInput("notify_testers", value)
+func (b *AppcenterDeployIosV1Builder) WithNotifyTesters(value AppcenterDeployIosV1NotifyTesters) *AppcenterDeployIosV1Builder {
+	b.Builder.WithInput("notify_testers", string(value))
 	return b
 }
 
 // WithMandatory sets mandatory update.
-func (b *AppcenterDeployIosV1Builder) WithMandatory(value string) *AppcenterDeployIosV1Builder {
-	b.Builder.WithInput("mandatory", value)
+func (b *AppcenterDeployIosV1Builder) WithMandatory(value AppcenterDeployIosV1Mandatory) *AppcenterDeployIosV1Builder {
+	b.Builder.WithInput("mandatory", string(value))
 	return b
 }
 
 // WithDebug sets debug.
-func (b *AppcenterDeployIosV1Builder) WithDebug(value string) *AppcenterDeployIosV1Builder {
-	b.Builder.WithInput("debug", value)
+func (b *AppcenterDeployIosV1Builder) WithDebug(value AppcenterDeployIosV1Debug) *AppcenterDeployIosV1Builder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 

@@ -3,6 +3,32 @@
 
 package step
 
+// MonitoringAppsSizesCheckAndroid enumerates the valid values for the check_android input.
+type MonitoringAppsSizesCheckAndroid string
+
+const (
+	MonitoringAppsSizesCheckAndroidYes MonitoringAppsSizesCheckAndroid = "yes"
+	MonitoringAppsSizesCheckAndroidNo  MonitoringAppsSizesCheckAndroid = "no"
+)
+
+// MonitoringAppsSizesCheckIos enumerates the valid values for the check_ios input.
+type MonitoringAppsSizesCheckIos string
+
+const (
+	MonitoringAppsSizesCheckIosYes MonitoringAppsSizesCheckIos = "yes"
+	MonitoringAppsSizesCheckIosNo  MonitoringAppsSizesCheckIos = "no"
+)
+
+// MonitoringAppsSizesAlertThreshold enumerates the valid values for the alert_threshold input.
+type MonitoringAppsSizesAlertThreshold string
+
+const (
+	MonitoringAppsSizesAlertThreshold3  MonitoringAppsSizesAlertThreshold = "3"
+	MonitoringAppsSizesAlertThreshold5  MonitoringAppsSizesAlertThreshold = "5"
+	MonitoringAppsSizesAlertThreshold10 MonitoringAppsSizesAlertThreshold = "10"
+	MonitoringAppsSizesAlertThreshold20 MonitoringAppsSizesAlertThreshold = "20"
+)
+
 // MonitoringAppsSizesBuilder builds a monitoring-apps-sizes step with typed input methods.
 type MonitoringAppsSizesBuilder struct{ *Builder }
 
@@ -20,14 +46,14 @@ func MonitoringAppsSizes(version ...string) *MonitoringAppsSizesBuilder {
 }
 
 // WithCheckAndroid sets check Android.
-func (b *MonitoringAppsSizesBuilder) WithCheckAndroid(value string) *MonitoringAppsSizesBuilder {
-	b.Builder.WithInput("check_android", value)
+func (b *MonitoringAppsSizesBuilder) WithCheckAndroid(value MonitoringAppsSizesCheckAndroid) *MonitoringAppsSizesBuilder {
+	b.Builder.WithInput("check_android", string(value))
 	return b
 }
 
 // WithCheckIos sets check iOS.
-func (b *MonitoringAppsSizesBuilder) WithCheckIos(value string) *MonitoringAppsSizesBuilder {
-	b.Builder.WithInput("check_ios", value)
+func (b *MonitoringAppsSizesBuilder) WithCheckIos(value MonitoringAppsSizesCheckIos) *MonitoringAppsSizesBuilder {
+	b.Builder.WithInput("check_ios", string(value))
 	return b
 }
 
@@ -50,8 +76,8 @@ func (b *MonitoringAppsSizesBuilder) WithIosIpaSize(value string) *MonitoringApp
 }
 
 // WithAlertThreshold sets alert threshold.
-func (b *MonitoringAppsSizesBuilder) WithAlertThreshold(value string) *MonitoringAppsSizesBuilder {
-	b.Builder.WithInput("alert_threshold", value)
+func (b *MonitoringAppsSizesBuilder) WithAlertThreshold(value MonitoringAppsSizesAlertThreshold) *MonitoringAppsSizesBuilder {
+	b.Builder.WithInput("alert_threshold", string(value))
 	return b
 }
 

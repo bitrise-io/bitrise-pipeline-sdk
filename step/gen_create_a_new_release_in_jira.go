@@ -3,6 +3,14 @@
 
 package step
 
+// CreateANewReleaseInJiraVersionReleased enumerates the valid values for the version_released input.
+type CreateANewReleaseInJiraVersionReleased string
+
+const (
+	CreateANewReleaseInJiraVersionReleasedYes CreateANewReleaseInJiraVersionReleased = "yes"
+	CreateANewReleaseInJiraVersionReleasedNo  CreateANewReleaseInJiraVersionReleased = "no"
+)
+
 // CreateANewReleaseInJiraBuilder builds a create-a-new-release-in-jira step with typed input methods.
 type CreateANewReleaseInJiraBuilder struct{ *Builder }
 
@@ -56,7 +64,7 @@ func (b *CreateANewReleaseInJiraBuilder) WithVersionName(value string) *CreateAN
 }
 
 // WithVersionReleased sets if the version is Released?.
-func (b *CreateANewReleaseInJiraBuilder) WithVersionReleased(value string) *CreateANewReleaseInJiraBuilder {
-	b.Builder.WithInput("version_released", value)
+func (b *CreateANewReleaseInJiraBuilder) WithVersionReleased(value CreateANewReleaseInJiraVersionReleased) *CreateANewReleaseInJiraBuilder {
+	b.Builder.WithInput("version_released", string(value))
 	return b
 }

@@ -3,6 +3,81 @@
 
 package step
 
+// ExportXcarchiveV4Product enumerates the valid values for the product input.
+type ExportXcarchiveV4Product string
+
+const (
+	ExportXcarchiveV4ProductApp     ExportXcarchiveV4Product = "app"
+	ExportXcarchiveV4ProductAppClip ExportXcarchiveV4Product = "app-clip"
+)
+
+// ExportXcarchiveV4DistributionMethod enumerates the valid values for the distribution_method input.
+type ExportXcarchiveV4DistributionMethod string
+
+const (
+	ExportXcarchiveV4DistributionMethodDevelopment ExportXcarchiveV4DistributionMethod = "development"
+	ExportXcarchiveV4DistributionMethodAppStore    ExportXcarchiveV4DistributionMethod = "app-store"
+	ExportXcarchiveV4DistributionMethodAdHoc       ExportXcarchiveV4DistributionMethod = "ad-hoc"
+	ExportXcarchiveV4DistributionMethodEnterprise  ExportXcarchiveV4DistributionMethod = "enterprise"
+)
+
+// ExportXcarchiveV4AutomaticCodeSigning enumerates the valid values for the automatic_code_signing input.
+type ExportXcarchiveV4AutomaticCodeSigning string
+
+const (
+	ExportXcarchiveV4AutomaticCodeSigningOff     ExportXcarchiveV4AutomaticCodeSigning = "off"
+	ExportXcarchiveV4AutomaticCodeSigningApiKey  ExportXcarchiveV4AutomaticCodeSigning = "api-key"
+	ExportXcarchiveV4AutomaticCodeSigningAppleId ExportXcarchiveV4AutomaticCodeSigning = "apple-id"
+)
+
+// ExportXcarchiveV4RegisterTestDevices enumerates the valid values for the register_test_devices input.
+type ExportXcarchiveV4RegisterTestDevices string
+
+const (
+	ExportXcarchiveV4RegisterTestDevicesYes ExportXcarchiveV4RegisterTestDevices = "yes"
+	ExportXcarchiveV4RegisterTestDevicesNo  ExportXcarchiveV4RegisterTestDevices = "no"
+)
+
+// ExportXcarchiveV4CompileBitcode enumerates the valid values for the compile_bitcode input.
+type ExportXcarchiveV4CompileBitcode string
+
+const (
+	ExportXcarchiveV4CompileBitcodeYes ExportXcarchiveV4CompileBitcode = "yes"
+	ExportXcarchiveV4CompileBitcodeNo  ExportXcarchiveV4CompileBitcode = "no"
+)
+
+// ExportXcarchiveV4UploadBitcode enumerates the valid values for the upload_bitcode input.
+type ExportXcarchiveV4UploadBitcode string
+
+const (
+	ExportXcarchiveV4UploadBitcodeYes ExportXcarchiveV4UploadBitcode = "yes"
+	ExportXcarchiveV4UploadBitcodeNo  ExportXcarchiveV4UploadBitcode = "no"
+)
+
+// ExportXcarchiveV4ManageVersionAndBuildNumber enumerates the valid values for the manage_version_and_build_number input.
+type ExportXcarchiveV4ManageVersionAndBuildNumber string
+
+const (
+	ExportXcarchiveV4ManageVersionAndBuildNumberYes ExportXcarchiveV4ManageVersionAndBuildNumber = "yes"
+	ExportXcarchiveV4ManageVersionAndBuildNumberNo  ExportXcarchiveV4ManageVersionAndBuildNumber = "no"
+)
+
+// ExportXcarchiveV4ApiKeyEnterpriseAccount enumerates the valid values for the api_key_enterprise_account input.
+type ExportXcarchiveV4ApiKeyEnterpriseAccount string
+
+const (
+	ExportXcarchiveV4ApiKeyEnterpriseAccountYes ExportXcarchiveV4ApiKeyEnterpriseAccount = "yes"
+	ExportXcarchiveV4ApiKeyEnterpriseAccountNo  ExportXcarchiveV4ApiKeyEnterpriseAccount = "no"
+)
+
+// ExportXcarchiveV4VerboseLog enumerates the valid values for the verbose_log input.
+type ExportXcarchiveV4VerboseLog string
+
+const (
+	ExportXcarchiveV4VerboseLogYes ExportXcarchiveV4VerboseLog = "yes"
+	ExportXcarchiveV4VerboseLogNo  ExportXcarchiveV4VerboseLog = "no"
+)
+
 // ExportXcarchiveV4Builder builds a export-xcarchive step with typed input methods.
 type ExportXcarchiveV4Builder struct{ *Builder }
 
@@ -26,26 +101,26 @@ func (b *ExportXcarchiveV4Builder) WithArchivePath(value string) *ExportXcarchiv
 }
 
 // WithProduct sets select a product to distribute.
-func (b *ExportXcarchiveV4Builder) WithProduct(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("product", value)
+func (b *ExportXcarchiveV4Builder) WithProduct(value ExportXcarchiveV4Product) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("product", string(value))
 	return b
 }
 
 // WithDistributionMethod sets distribution method.
-func (b *ExportXcarchiveV4Builder) WithDistributionMethod(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("distribution_method", value)
+func (b *ExportXcarchiveV4Builder) WithDistributionMethod(value ExportXcarchiveV4DistributionMethod) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("distribution_method", string(value))
 	return b
 }
 
 // WithAutomaticCodeSigning sets automatic code signing method.
-func (b *ExportXcarchiveV4Builder) WithAutomaticCodeSigning(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("automatic_code_signing", value)
+func (b *ExportXcarchiveV4Builder) WithAutomaticCodeSigning(value ExportXcarchiveV4AutomaticCodeSigning) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("automatic_code_signing", string(value))
 	return b
 }
 
 // WithRegisterTestDevices sets register test devices on the Apple Developer Portal.
-func (b *ExportXcarchiveV4Builder) WithRegisterTestDevices(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("register_test_devices", value)
+func (b *ExportXcarchiveV4Builder) WithRegisterTestDevices(value ExportXcarchiveV4RegisterTestDevices) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("register_test_devices", string(value))
 	return b
 }
 
@@ -98,20 +173,20 @@ func (b *ExportXcarchiveV4Builder) WithExportDevelopmentTeam(value string) *Expo
 }
 
 // WithCompileBitcode sets rebuild from bitcode.
-func (b *ExportXcarchiveV4Builder) WithCompileBitcode(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("compile_bitcode", value)
+func (b *ExportXcarchiveV4Builder) WithCompileBitcode(value ExportXcarchiveV4CompileBitcode) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("compile_bitcode", string(value))
 	return b
 }
 
 // WithUploadBitcode sets include bitcode.
-func (b *ExportXcarchiveV4Builder) WithUploadBitcode(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("upload_bitcode", value)
+func (b *ExportXcarchiveV4Builder) WithUploadBitcode(value ExportXcarchiveV4UploadBitcode) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("upload_bitcode", string(value))
 	return b
 }
 
 // WithManageVersionAndBuildNumber sets xcode manage version and build number (App Store Connect).
-func (b *ExportXcarchiveV4Builder) WithManageVersionAndBuildNumber(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("manage_version_and_build_number", value)
+func (b *ExportXcarchiveV4Builder) WithManageVersionAndBuildNumber(value ExportXcarchiveV4ManageVersionAndBuildNumber) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("manage_version_and_build_number", string(value))
 	return b
 }
 
@@ -140,14 +215,14 @@ func (b *ExportXcarchiveV4Builder) WithApiKeyIssuerId(value string) *ExportXcarc
 }
 
 // WithApiKeyEnterpriseAccount sets app Store Connect API enterprise account.
-func (b *ExportXcarchiveV4Builder) WithApiKeyEnterpriseAccount(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("api_key_enterprise_account", value)
+func (b *ExportXcarchiveV4Builder) WithApiKeyEnterpriseAccount(value ExportXcarchiveV4ApiKeyEnterpriseAccount) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("api_key_enterprise_account", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *ExportXcarchiveV4Builder) WithVerboseLog(value string) *ExportXcarchiveV4Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *ExportXcarchiveV4Builder) WithVerboseLog(value ExportXcarchiveV4VerboseLog) *ExportXcarchiveV4Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

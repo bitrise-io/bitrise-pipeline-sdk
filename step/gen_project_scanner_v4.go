@@ -3,6 +3,22 @@
 
 package step
 
+// ProjectScannerV4VerboseLog enumerates the valid values for the verbose_log input.
+type ProjectScannerV4VerboseLog string
+
+const (
+	ProjectScannerV4VerboseLogTrue  ProjectScannerV4VerboseLog = "true"
+	ProjectScannerV4VerboseLogFalse ProjectScannerV4VerboseLog = "false"
+)
+
+// ProjectScannerV4EnableRepoClone enumerates the valid values for the enable_repo_clone input.
+type ProjectScannerV4EnableRepoClone string
+
+const (
+	ProjectScannerV4EnableRepoCloneYes ProjectScannerV4EnableRepoClone = "yes"
+	ProjectScannerV4EnableRepoCloneNo  ProjectScannerV4EnableRepoClone = "no"
+)
+
 // ProjectScannerV4Builder builds a project-scanner step with typed input methods.
 type ProjectScannerV4Builder struct{ *Builder }
 
@@ -44,14 +60,14 @@ func (b *ProjectScannerV4Builder) WithIconCandidatesUrl(value string) *ProjectSc
 }
 
 // WithVerboseLog sets verbose log option.
-func (b *ProjectScannerV4Builder) WithVerboseLog(value string) *ProjectScannerV4Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *ProjectScannerV4Builder) WithVerboseLog(value ProjectScannerV4VerboseLog) *ProjectScannerV4Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithEnableRepoClone sets activate SSH key and clone git repo inside the Step.
-func (b *ProjectScannerV4Builder) WithEnableRepoClone(value string) *ProjectScannerV4Builder {
-	b.Builder.WithInput("enable_repo_clone", value)
+func (b *ProjectScannerV4Builder) WithEnableRepoClone(value ProjectScannerV4EnableRepoClone) *ProjectScannerV4Builder {
+	b.Builder.WithInput("enable_repo_clone", string(value))
 	return b
 }
 

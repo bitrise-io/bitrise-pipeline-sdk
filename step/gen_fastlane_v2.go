@@ -3,6 +3,30 @@
 
 package step
 
+// FastlaneV2UpdateFastlane enumerates the valid values for the update_fastlane input.
+type FastlaneV2UpdateFastlane string
+
+const (
+	FastlaneV2UpdateFastlaneTrue  FastlaneV2UpdateFastlane = "true"
+	FastlaneV2UpdateFastlaneFalse FastlaneV2UpdateFastlane = "false"
+)
+
+// FastlaneV2VerboseLog enumerates the valid values for the verbose_log input.
+type FastlaneV2VerboseLog string
+
+const (
+	FastlaneV2VerboseLogYes FastlaneV2VerboseLog = "yes"
+	FastlaneV2VerboseLogNo  FastlaneV2VerboseLog = "no"
+)
+
+// FastlaneV2EnableCache enumerates the valid values for the enable_cache input.
+type FastlaneV2EnableCache string
+
+const (
+	FastlaneV2EnableCacheYes FastlaneV2EnableCache = "yes"
+	FastlaneV2EnableCacheNo  FastlaneV2EnableCache = "no"
+)
+
 // FastlaneV2Builder builds a fastlane step with typed input methods.
 type FastlaneV2Builder struct{ *Builder }
 
@@ -32,19 +56,19 @@ func (b *FastlaneV2Builder) WithWorkDir(value string) *FastlaneV2Builder {
 }
 
 // WithUpdateFastlane sets should update fastlane gem before run?.
-func (b *FastlaneV2Builder) WithUpdateFastlane(value string) *FastlaneV2Builder {
-	b.Builder.WithInput("update_fastlane", value)
+func (b *FastlaneV2Builder) WithUpdateFastlane(value FastlaneV2UpdateFastlane) *FastlaneV2Builder {
+	b.Builder.WithInput("update_fastlane", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *FastlaneV2Builder) WithVerboseLog(value string) *FastlaneV2Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *FastlaneV2Builder) WithVerboseLog(value FastlaneV2VerboseLog) *FastlaneV2Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 
 // WithEnableCache sets enable collecting files to be included in the build cache.
-func (b *FastlaneV2Builder) WithEnableCache(value string) *FastlaneV2Builder {
-	b.Builder.WithInput("enable_cache", value)
+func (b *FastlaneV2Builder) WithEnableCache(value FastlaneV2EnableCache) *FastlaneV2Builder {
+	b.Builder.WithInput("enable_cache", string(value))
 	return b
 }

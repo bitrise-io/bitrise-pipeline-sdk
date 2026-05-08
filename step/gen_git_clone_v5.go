@@ -3,6 +3,54 @@
 
 package step
 
+// GitCloneV5UpdateSubmodules enumerates the valid values for the update_submodules input.
+type GitCloneV5UpdateSubmodules string
+
+const (
+	GitCloneV5UpdateSubmodulesYes GitCloneV5UpdateSubmodules = "yes"
+	GitCloneV5UpdateSubmodulesNo  GitCloneV5UpdateSubmodules = "no"
+)
+
+// GitCloneV5LimitSubmoduleUpdateDepth enumerates the valid values for the limit_submodule_update_depth input.
+type GitCloneV5LimitSubmoduleUpdateDepth string
+
+const (
+	GitCloneV5LimitSubmoduleUpdateDepthYes GitCloneV5LimitSubmoduleUpdateDepth = "yes"
+	GitCloneV5LimitSubmoduleUpdateDepthNo  GitCloneV5LimitSubmoduleUpdateDepth = "no"
+)
+
+// GitCloneV5MergePr enumerates the valid values for the merge_pr input.
+type GitCloneV5MergePr string
+
+const (
+	GitCloneV5MergePrYes GitCloneV5MergePr = "yes"
+	GitCloneV5MergePrNo  GitCloneV5MergePr = "no"
+)
+
+// GitCloneV5ResetRepository enumerates the valid values for the reset_repository input.
+type GitCloneV5ResetRepository string
+
+const (
+	GitCloneV5ResetRepositoryNo  GitCloneV5ResetRepository = "No"
+	GitCloneV5ResetRepositoryYes GitCloneV5ResetRepository = "Yes"
+)
+
+// GitCloneV5ManualMerge enumerates the valid values for the manual_merge input.
+type GitCloneV5ManualMerge string
+
+const (
+	GitCloneV5ManualMergeYes GitCloneV5ManualMerge = "yes"
+	GitCloneV5ManualMergeNo  GitCloneV5ManualMerge = "no"
+)
+
+// GitCloneV5FetchTags enumerates the valid values for the fetch_tags input.
+type GitCloneV5FetchTags string
+
+const (
+	GitCloneV5FetchTagsYes GitCloneV5FetchTags = "yes"
+	GitCloneV5FetchTagsNo  GitCloneV5FetchTags = "no"
+)
+
 // GitCloneV5Builder builds a git-clone step with typed input methods.
 type GitCloneV5Builder struct{ *Builder }
 
@@ -80,8 +128,8 @@ func (b *GitCloneV5Builder) WithPullRequestHeadBranch(value string) *GitCloneV5B
 }
 
 // WithUpdateSubmodules sets update the registered submodules?.
-func (b *GitCloneV5Builder) WithUpdateSubmodules(value string) *GitCloneV5Builder {
-	b.Builder.WithInput("update_submodules", value)
+func (b *GitCloneV5Builder) WithUpdateSubmodules(value GitCloneV5UpdateSubmodules) *GitCloneV5Builder {
+	b.Builder.WithInput("update_submodules", string(value))
 	return b
 }
 
@@ -92,14 +140,14 @@ func (b *GitCloneV5Builder) WithCloneDepth(value string) *GitCloneV5Builder {
 }
 
 // WithLimitSubmoduleUpdateDepth sets shallow update submodules.
-func (b *GitCloneV5Builder) WithLimitSubmoduleUpdateDepth(value string) *GitCloneV5Builder {
-	b.Builder.WithInput("limit_submodule_update_depth", value)
+func (b *GitCloneV5Builder) WithLimitSubmoduleUpdateDepth(value GitCloneV5LimitSubmoduleUpdateDepth) *GitCloneV5Builder {
+	b.Builder.WithInput("limit_submodule_update_depth", string(value))
 	return b
 }
 
 // WithMergePr sets merge the Pull Request source branch into destination.
-func (b *GitCloneV5Builder) WithMergePr(value string) *GitCloneV5Builder {
-	b.Builder.WithInput("merge_pr", value)
+func (b *GitCloneV5Builder) WithMergePr(value GitCloneV5MergePr) *GitCloneV5Builder {
+	b.Builder.WithInput("merge_pr", string(value))
 	return b
 }
 
@@ -110,20 +158,20 @@ func (b *GitCloneV5Builder) WithSparseDirectories(value string) *GitCloneV5Build
 }
 
 // WithResetRepository sets reset repository.
-func (b *GitCloneV5Builder) WithResetRepository(value string) *GitCloneV5Builder {
-	b.Builder.WithInput("reset_repository", value)
+func (b *GitCloneV5Builder) WithResetRepository(value GitCloneV5ResetRepository) *GitCloneV5Builder {
+	b.Builder.WithInput("reset_repository", string(value))
 	return b
 }
 
 // WithManualMerge sets manual merge.
-func (b *GitCloneV5Builder) WithManualMerge(value string) *GitCloneV5Builder {
-	b.Builder.WithInput("manual_merge", value)
+func (b *GitCloneV5Builder) WithManualMerge(value GitCloneV5ManualMerge) *GitCloneV5Builder {
+	b.Builder.WithInput("manual_merge", string(value))
 	return b
 }
 
 // WithFetchTags sets should the Step fetch tags?.
-func (b *GitCloneV5Builder) WithFetchTags(value string) *GitCloneV5Builder {
-	b.Builder.WithInput("fetch_tags", value)
+func (b *GitCloneV5Builder) WithFetchTags(value GitCloneV5FetchTags) *GitCloneV5Builder {
+	b.Builder.WithInput("fetch_tags", string(value))
 	return b
 }
 

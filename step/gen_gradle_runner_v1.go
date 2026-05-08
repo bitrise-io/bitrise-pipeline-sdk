@@ -3,6 +3,23 @@
 
 package step
 
+// GradleRunnerV1CacheLevel enumerates the valid values for the cache_level input.
+type GradleRunnerV1CacheLevel string
+
+const (
+	GradleRunnerV1CacheLevelAll      GradleRunnerV1CacheLevel = "all"
+	GradleRunnerV1CacheLevelOnlyDeps GradleRunnerV1CacheLevel = "only_deps"
+	GradleRunnerV1CacheLevelNone     GradleRunnerV1CacheLevel = "none"
+)
+
+// GradleRunnerV1RetryOnFailure enumerates the valid values for the retry_on_failure input.
+type GradleRunnerV1RetryOnFailure string
+
+const (
+	GradleRunnerV1RetryOnFailureNo  GradleRunnerV1RetryOnFailure = "no"
+	GradleRunnerV1RetryOnFailureYes GradleRunnerV1RetryOnFailure = "yes"
+)
+
 // GradleRunnerV1Builder builds a gradle-runner step with typed input methods.
 type GradleRunnerV1Builder struct{ *Builder }
 
@@ -74,8 +91,8 @@ func (b *GradleRunnerV1Builder) WithMappingFileExcludeFilter(value string) *Grad
 }
 
 // WithCacheLevel sets set the level of cache.
-func (b *GradleRunnerV1Builder) WithCacheLevel(value string) *GradleRunnerV1Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *GradleRunnerV1Builder) WithCacheLevel(value GradleRunnerV1CacheLevel) *GradleRunnerV1Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -86,8 +103,8 @@ func (b *GradleRunnerV1Builder) WithGradleOptions(value string) *GradleRunnerV1B
 }
 
 // WithRetryOnFailure sets retry failed Gradle command, in case of temporary failure (for example a network timeout)..
-func (b *GradleRunnerV1Builder) WithRetryOnFailure(value string) *GradleRunnerV1Builder {
-	b.Builder.WithInput("retry_on_failure", value)
+func (b *GradleRunnerV1Builder) WithRetryOnFailure(value GradleRunnerV1RetryOnFailure) *GradleRunnerV1Builder {
+	b.Builder.WithInput("retry_on_failure", string(value))
 	return b
 }
 

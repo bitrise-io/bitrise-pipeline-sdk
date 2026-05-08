@@ -22,3 +22,15 @@ func XamarinTestCloudForIos(version ...string) *XamarinTestCloudForIosV2Builder 
 // published by xamarin-test-cloud-for-ios at the latest major version (v2).
 // For outputs of a specific major version use XamarinTestCloudForIosV{N}Outputs directly.
 var XamarinTestCloudForIosOutputs = XamarinTestCloudForIosV2Outputs
+
+// XamarinTestCloudForIosTestCloudIsAsync is a type alias for XamarinTestCloudForIosV2TestCloudIsAsync,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinTestCloudForIosTestCloudIsAsync = XamarinTestCloudForIosV2TestCloudIsAsync
+
+// XamarinTestCloudForIosTestCloudParallelization is a type alias for XamarinTestCloudForIosV2TestCloudParallelization,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinTestCloudForIosTestCloudParallelization = XamarinTestCloudForIosV2TestCloudParallelization
+
+// XamarinTestCloudForIosBuildTool is a type alias for XamarinTestCloudForIosV2BuildTool,
+// pointing to the latest supported major version of the step's enum type.
+type XamarinTestCloudForIosBuildTool = XamarinTestCloudForIosV2BuildTool

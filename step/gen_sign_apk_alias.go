@@ -18,3 +18,23 @@ func SignApk(version ...string) *SignApkV2Builder {
 // published by sign-apk at the latest major version (v2).
 // For outputs of a specific major version use SignApkV{N}Outputs directly.
 var SignApkOutputs = SignApkV2Outputs
+
+// SignApkPageAlign is a type alias for SignApkV2PageAlign,
+// pointing to the latest supported major version of the step's enum type.
+type SignApkPageAlign = SignApkV2PageAlign
+
+// SignApkSignerTool is a type alias for SignApkV2SignerTool,
+// pointing to the latest supported major version of the step's enum type.
+type SignApkSignerTool = SignApkV2SignerTool
+
+// SignApkSignerScheme is a type alias for SignApkV2SignerScheme,
+// pointing to the latest supported major version of the step's enum type.
+type SignApkSignerScheme = SignApkV2SignerScheme
+
+// SignApkDebuggablePermitted is a type alias for SignApkV2DebuggablePermitted,
+// pointing to the latest supported major version of the step's enum type.
+type SignApkDebuggablePermitted = SignApkV2DebuggablePermitted
+
+// SignApkVerboseLog is a type alias for SignApkV2VerboseLog,
+// pointing to the latest supported major version of the step's enum type.
+type SignApkVerboseLog = SignApkV2VerboseLog

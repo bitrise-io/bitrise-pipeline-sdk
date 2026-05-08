@@ -13,3 +13,11 @@ type ChangeValueBuilder = ChangeValueV2Builder
 func ChangeValue(version ...string) *ChangeValueV2Builder {
 	return ChangeValueV2(version...)
 }
+
+// ChangeValueShowFile is a type alias for ChangeValueV2ShowFile,
+// pointing to the latest supported major version of the step's enum type.
+type ChangeValueShowFile = ChangeValueV2ShowFile
+
+// ChangeValueNotfoundExit is a type alias for ChangeValueV2NotfoundExit,
+// pointing to the latest supported major version of the step's enum type.
+type ChangeValueNotfoundExit = ChangeValueV2NotfoundExit

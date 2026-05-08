@@ -3,6 +3,14 @@
 
 package step
 
+// AndroidBuildV1BuildType enumerates the valid values for the build_type input.
+type AndroidBuildV1BuildType string
+
+const (
+	AndroidBuildV1BuildTypeApk AndroidBuildV1BuildType = "apk"
+	AndroidBuildV1BuildTypeAab AndroidBuildV1BuildType = "aab"
+)
+
 // AndroidBuildV1Builder builds a android-build step with typed input methods.
 type AndroidBuildV1Builder struct{ *Builder }
 
@@ -38,8 +46,8 @@ func (b *AndroidBuildV1Builder) WithVariant(value string) *AndroidBuildV1Builder
 }
 
 // WithBuildType sets build type.
-func (b *AndroidBuildV1Builder) WithBuildType(value string) *AndroidBuildV1Builder {
-	b.Builder.WithInput("build_type", value)
+func (b *AndroidBuildV1Builder) WithBuildType(value AndroidBuildV1BuildType) *AndroidBuildV1Builder {
+	b.Builder.WithInput("build_type", string(value))
 	return b
 }
 

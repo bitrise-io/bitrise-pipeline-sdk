@@ -3,6 +3,14 @@
 
 package step
 
+// AndroidUnitTestV1IsDebug enumerates the valid values for the is_debug input.
+type AndroidUnitTestV1IsDebug string
+
+const (
+	AndroidUnitTestV1IsDebugFalse AndroidUnitTestV1IsDebug = "false"
+	AndroidUnitTestV1IsDebugTrue  AndroidUnitTestV1IsDebug = "true"
+)
+
 // AndroidUnitTestV1Builder builds a android-unit-test step with typed input methods.
 type AndroidUnitTestV1Builder struct{ *Builder }
 
@@ -56,8 +64,8 @@ func (b *AndroidUnitTestV1Builder) WithResultPathPattern(value string) *AndroidU
 }
 
 // WithIsDebug sets enable Debug Mode.
-func (b *AndroidUnitTestV1Builder) WithIsDebug(value string) *AndroidUnitTestV1Builder {
-	b.Builder.WithInput("is_debug", value)
+func (b *AndroidUnitTestV1Builder) WithIsDebug(value AndroidUnitTestV1IsDebug) *AndroidUnitTestV1Builder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
 

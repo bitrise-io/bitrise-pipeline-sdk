@@ -3,6 +3,62 @@
 
 package step
 
+// XcodeBuildForSimulatorV0SimulatorPlatform enumerates the valid values for the simulator_platform input.
+type XcodeBuildForSimulatorV0SimulatorPlatform string
+
+const (
+	XcodeBuildForSimulatorV0SimulatorPlatformIOS  XcodeBuildForSimulatorV0SimulatorPlatform = "iOS"
+	XcodeBuildForSimulatorV0SimulatorPlatformTvOS XcodeBuildForSimulatorV0SimulatorPlatform = "tvOS"
+)
+
+// XcodeBuildForSimulatorV0DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
+type XcodeBuildForSimulatorV0DisableIndexWhileBuilding string
+
+const (
+	XcodeBuildForSimulatorV0DisableIndexWhileBuildingYes XcodeBuildForSimulatorV0DisableIndexWhileBuilding = "yes"
+	XcodeBuildForSimulatorV0DisableIndexWhileBuildingNo  XcodeBuildForSimulatorV0DisableIndexWhileBuilding = "no"
+)
+
+// XcodeBuildForSimulatorV0CodeSigningAllowed enumerates the valid values for the code_signing_allowed input.
+type XcodeBuildForSimulatorV0CodeSigningAllowed string
+
+const (
+	XcodeBuildForSimulatorV0CodeSigningAllowedYes XcodeBuildForSimulatorV0CodeSigningAllowed = "yes"
+	XcodeBuildForSimulatorV0CodeSigningAllowedNo  XcodeBuildForSimulatorV0CodeSigningAllowed = "no"
+)
+
+// XcodeBuildForSimulatorV0CacheLevel enumerates the valid values for the cache_level input.
+type XcodeBuildForSimulatorV0CacheLevel string
+
+const (
+	XcodeBuildForSimulatorV0CacheLevelNone          XcodeBuildForSimulatorV0CacheLevel = "none"
+	XcodeBuildForSimulatorV0CacheLevelSwiftPackages XcodeBuildForSimulatorV0CacheLevel = "swift_packages"
+)
+
+// XcodeBuildForSimulatorV0IsCleanBuild enumerates the valid values for the is_clean_build input.
+type XcodeBuildForSimulatorV0IsCleanBuild string
+
+const (
+	XcodeBuildForSimulatorV0IsCleanBuildYes XcodeBuildForSimulatorV0IsCleanBuild = "yes"
+	XcodeBuildForSimulatorV0IsCleanBuildNo  XcodeBuildForSimulatorV0IsCleanBuild = "no"
+)
+
+// XcodeBuildForSimulatorV0OutputTool enumerates the valid values for the output_tool input.
+type XcodeBuildForSimulatorV0OutputTool string
+
+const (
+	XcodeBuildForSimulatorV0OutputToolXcpretty   XcodeBuildForSimulatorV0OutputTool = "xcpretty"
+	XcodeBuildForSimulatorV0OutputToolXcodebuild XcodeBuildForSimulatorV0OutputTool = "xcodebuild"
+)
+
+// XcodeBuildForSimulatorV0VerboseLog enumerates the valid values for the verbose_log input.
+type XcodeBuildForSimulatorV0VerboseLog string
+
+const (
+	XcodeBuildForSimulatorV0VerboseLogYes XcodeBuildForSimulatorV0VerboseLog = "yes"
+	XcodeBuildForSimulatorV0VerboseLogNo  XcodeBuildForSimulatorV0VerboseLog = "no"
+)
+
 // XcodeBuildForSimulatorV0Builder builds a xcode-build-for-simulator step with typed input methods.
 type XcodeBuildForSimulatorV0Builder struct{ *Builder }
 
@@ -44,8 +100,8 @@ func (b *XcodeBuildForSimulatorV0Builder) WithSimulatorOsVersion(value string) *
 }
 
 // WithSimulatorPlatform sets platform.
-func (b *XcodeBuildForSimulatorV0Builder) WithSimulatorPlatform(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("simulator_platform", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithSimulatorPlatform(value XcodeBuildForSimulatorV0SimulatorPlatform) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("simulator_platform", string(value))
 	return b
 }
 
@@ -56,20 +112,20 @@ func (b *XcodeBuildForSimulatorV0Builder) WithConfiguration(value string) *Xcode
 }
 
 // WithDisableIndexWhileBuilding sets disable indexing during the build.
-func (b *XcodeBuildForSimulatorV0Builder) WithDisableIndexWhileBuilding(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("disable_index_while_building", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithDisableIndexWhileBuilding(value XcodeBuildForSimulatorV0DisableIndexWhileBuilding) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("disable_index_while_building", string(value))
 	return b
 }
 
 // WithCodeSigningAllowed sets code signing allowed.
-func (b *XcodeBuildForSimulatorV0Builder) WithCodeSigningAllowed(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("code_signing_allowed", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithCodeSigningAllowed(value XcodeBuildForSimulatorV0CodeSigningAllowed) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("code_signing_allowed", string(value))
 	return b
 }
 
 // WithCacheLevel sets enable collecting cache content.
-func (b *XcodeBuildForSimulatorV0Builder) WithCacheLevel(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("cache_level", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithCacheLevel(value XcodeBuildForSimulatorV0CacheLevel) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }
 
@@ -92,20 +148,20 @@ func (b *XcodeBuildForSimulatorV0Builder) WithOutputDir(value string) *XcodeBuil
 }
 
 // WithIsCleanBuild sets do a clean Xcode build before the build?.
-func (b *XcodeBuildForSimulatorV0Builder) WithIsCleanBuild(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("is_clean_build", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithIsCleanBuild(value XcodeBuildForSimulatorV0IsCleanBuild) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("is_clean_build", string(value))
 	return b
 }
 
 // WithOutputTool sets log formatter.
-func (b *XcodeBuildForSimulatorV0Builder) WithOutputTool(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("output_tool", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithOutputTool(value XcodeBuildForSimulatorV0OutputTool) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("output_tool", string(value))
 	return b
 }
 
 // WithVerboseLog sets enable verbose logging.
-func (b *XcodeBuildForSimulatorV0Builder) WithVerboseLog(value string) *XcodeBuildForSimulatorV0Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *XcodeBuildForSimulatorV0Builder) WithVerboseLog(value XcodeBuildForSimulatorV0VerboseLog) *XcodeBuildForSimulatorV0Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
 

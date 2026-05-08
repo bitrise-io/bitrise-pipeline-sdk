@@ -3,6 +3,30 @@
 
 package step
 
+// CachePushV0FingerprintMethod enumerates the valid values for the fingerprint_method input.
+type CachePushV0FingerprintMethod string
+
+const (
+	CachePushV0FingerprintMethodFileContentHash CachePushV0FingerprintMethod = "file-content-hash"
+	CachePushV0FingerprintMethodFileModTime     CachePushV0FingerprintMethod = "file-mod-time"
+)
+
+// CachePushV0IsDebugMode enumerates the valid values for the is_debug_mode input.
+type CachePushV0IsDebugMode string
+
+const (
+	CachePushV0IsDebugModeTrue  CachePushV0IsDebugMode = "true"
+	CachePushV0IsDebugModeFalse CachePushV0IsDebugMode = "false"
+)
+
+// CachePushV0CompressArchive enumerates the valid values for the compress_archive input.
+type CachePushV0CompressArchive string
+
+const (
+	CachePushV0CompressArchiveTrue  CachePushV0CompressArchive = "true"
+	CachePushV0CompressArchiveFalse CachePushV0CompressArchive = "false"
+)
+
 // CachePushV0Builder builds a cache-push step with typed input methods.
 //
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
@@ -42,20 +66,20 @@ func (b *CachePushV0Builder) WithWorkdir(value string) *CachePushV0Builder {
 }
 
 // WithFingerprintMethod sets fingerprint Method.
-func (b *CachePushV0Builder) WithFingerprintMethod(value string) *CachePushV0Builder {
-	b.Builder.WithInput("fingerprint_method", value)
+func (b *CachePushV0Builder) WithFingerprintMethod(value CachePushV0FingerprintMethod) *CachePushV0Builder {
+	b.Builder.WithInput("fingerprint_method", string(value))
 	return b
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *CachePushV0Builder) WithIsDebugMode(value string) *CachePushV0Builder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *CachePushV0Builder) WithIsDebugMode(value CachePushV0IsDebugMode) *CachePushV0Builder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 
 // WithCompressArchive sets compress cache?.
-func (b *CachePushV0Builder) WithCompressArchive(value string) *CachePushV0Builder {
-	b.Builder.WithInput("compress_archive", value)
+func (b *CachePushV0Builder) WithCompressArchive(value CachePushV0CompressArchive) *CachePushV0Builder {
+	b.Builder.WithInput("compress_archive", string(value))
 	return b
 }
 

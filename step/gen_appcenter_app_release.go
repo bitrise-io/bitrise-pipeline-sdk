@@ -3,6 +3,22 @@
 
 package step
 
+// AppcenterAppReleaseMandatoryUpdate enumerates the valid values for the mandatory_update input.
+type AppcenterAppReleaseMandatoryUpdate string
+
+const (
+	AppcenterAppReleaseMandatoryUpdateTrue  AppcenterAppReleaseMandatoryUpdate = "true"
+	AppcenterAppReleaseMandatoryUpdateFalse AppcenterAppReleaseMandatoryUpdate = "false"
+)
+
+// AppcenterAppReleaseNotifyTesters enumerates the valid values for the notify_testers input.
+type AppcenterAppReleaseNotifyTesters string
+
+const (
+	AppcenterAppReleaseNotifyTestersTrue  AppcenterAppReleaseNotifyTesters = "true"
+	AppcenterAppReleaseNotifyTestersFalse AppcenterAppReleaseNotifyTesters = "false"
+)
+
 // AppcenterAppReleaseBuilder builds a appcenter-app-release step with typed input methods.
 //
 // Deprecated: This step is no longer maintained by its author.  It's recommended to use the new AppCenter steps created and maintained by Bitrise: - For iOS, use the [AppCenter iOS Deploy](https://github.com/bitrise-steplib/steps-appcenter-deploy-ios) Step instead - For Android, use the [AppCenter Android Deploy](https://github.com/bitrise-steplib/steps-appcenter-deploy-android) Step instead
@@ -54,14 +70,14 @@ func (b *AppcenterAppReleaseBuilder) WithDistributionGroups(value string) *Appce
 }
 
 // WithMandatoryUpdate sets appCenter Mandatory Update flag.
-func (b *AppcenterAppReleaseBuilder) WithMandatoryUpdate(value string) *AppcenterAppReleaseBuilder {
-	b.Builder.WithInput("mandatory_update", value)
+func (b *AppcenterAppReleaseBuilder) WithMandatoryUpdate(value AppcenterAppReleaseMandatoryUpdate) *AppcenterAppReleaseBuilder {
+	b.Builder.WithInput("mandatory_update", string(value))
 	return b
 }
 
 // WithNotifyTesters sets notify testers?.
-func (b *AppcenterAppReleaseBuilder) WithNotifyTesters(value string) *AppcenterAppReleaseBuilder {
-	b.Builder.WithInput("notify_testers", value)
+func (b *AppcenterAppReleaseBuilder) WithNotifyTesters(value AppcenterAppReleaseNotifyTesters) *AppcenterAppReleaseBuilder {
+	b.Builder.WithInput("notify_testers", string(value))
 	return b
 }
 

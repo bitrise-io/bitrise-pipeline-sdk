@@ -3,6 +3,30 @@
 
 package step
 
+// GithubReleaseGenerateReleaseNotes enumerates the valid values for the generate_release_notes input.
+type GithubReleaseGenerateReleaseNotes string
+
+const (
+	GithubReleaseGenerateReleaseNotesYes GithubReleaseGenerateReleaseNotes = "yes"
+	GithubReleaseGenerateReleaseNotesNo  GithubReleaseGenerateReleaseNotes = "no"
+)
+
+// GithubReleaseDraft enumerates the valid values for the draft input.
+type GithubReleaseDraft string
+
+const (
+	GithubReleaseDraftYes GithubReleaseDraft = "yes"
+	GithubReleaseDraftNo  GithubReleaseDraft = "no"
+)
+
+// GithubReleasePreRelease enumerates the valid values for the pre_release input.
+type GithubReleasePreRelease string
+
+const (
+	GithubReleasePreReleaseYes GithubReleasePreRelease = "yes"
+	GithubReleasePreReleaseNo  GithubReleasePreRelease = "no"
+)
+
 // GithubReleaseBuilder builds a github-release step with typed input methods.
 type GithubReleaseBuilder struct{ *Builder }
 
@@ -62,20 +86,20 @@ func (b *GithubReleaseBuilder) WithBody(value string) *GithubReleaseBuilder {
 }
 
 // WithGenerateReleaseNotes sets generate Release Notes.
-func (b *GithubReleaseBuilder) WithGenerateReleaseNotes(value string) *GithubReleaseBuilder {
-	b.Builder.WithInput("generate_release_notes", value)
+func (b *GithubReleaseBuilder) WithGenerateReleaseNotes(value GithubReleaseGenerateReleaseNotes) *GithubReleaseBuilder {
+	b.Builder.WithInput("generate_release_notes", string(value))
 	return b
 }
 
 // WithDraft sets draft.
-func (b *GithubReleaseBuilder) WithDraft(value string) *GithubReleaseBuilder {
-	b.Builder.WithInput("draft", value)
+func (b *GithubReleaseBuilder) WithDraft(value GithubReleaseDraft) *GithubReleaseBuilder {
+	b.Builder.WithInput("draft", string(value))
 	return b
 }
 
 // WithPreRelease sets pre-release.
-func (b *GithubReleaseBuilder) WithPreRelease(value string) *GithubReleaseBuilder {
-	b.Builder.WithInput("pre_release", value)
+func (b *GithubReleaseBuilder) WithPreRelease(value GithubReleasePreRelease) *GithubReleaseBuilder {
+	b.Builder.WithInput("pre_release", string(value))
 	return b
 }
 

@@ -18,3 +18,7 @@ func RestoreGradleCache(version ...string) *RestoreGradleCacheV3Builder {
 // published by restore-gradle-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreGradleCacheV{N}Outputs directly.
 var RestoreGradleCacheOutputs = RestoreGradleCacheV3Outputs
+
+// RestoreGradleCacheVerbose is a type alias for RestoreGradleCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreGradleCacheVerbose = RestoreGradleCacheV3Verbose

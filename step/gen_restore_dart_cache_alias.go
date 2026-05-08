@@ -18,3 +18,7 @@ func RestoreDartCache(version ...string) *RestoreDartCacheV3Builder {
 // published by restore-dart-cache at the latest major version (v3).
 // For outputs of a specific major version use RestoreDartCacheV{N}Outputs directly.
 var RestoreDartCacheOutputs = RestoreDartCacheV3Outputs
+
+// RestoreDartCacheVerbose is a type alias for RestoreDartCacheV3Verbose,
+// pointing to the latest supported major version of the step's enum type.
+type RestoreDartCacheVerbose = RestoreDartCacheV3Verbose

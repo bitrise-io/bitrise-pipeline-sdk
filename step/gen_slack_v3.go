@@ -3,6 +3,46 @@
 
 package step
 
+// SlackV3IsDebugMode enumerates the valid values for the is_debug_mode input.
+type SlackV3IsDebugMode string
+
+const (
+	SlackV3IsDebugModeYes SlackV3IsDebugMode = "yes"
+	SlackV3IsDebugModeNo  SlackV3IsDebugMode = "no"
+)
+
+// SlackV3LinkNames enumerates the valid values for the link_names input.
+type SlackV3LinkNames string
+
+const (
+	SlackV3LinkNamesYes SlackV3LinkNames = "yes"
+	SlackV3LinkNamesNo  SlackV3LinkNames = "no"
+)
+
+// SlackV3ReplyBroadcast enumerates the valid values for the reply_broadcast input.
+type SlackV3ReplyBroadcast string
+
+const (
+	SlackV3ReplyBroadcastYes SlackV3ReplyBroadcast = "yes"
+	SlackV3ReplyBroadcastNo  SlackV3ReplyBroadcast = "no"
+)
+
+// SlackV3ReplyBroadcastOnError enumerates the valid values for the reply_broadcast_on_error input.
+type SlackV3ReplyBroadcastOnError string
+
+const (
+	SlackV3ReplyBroadcastOnErrorYes SlackV3ReplyBroadcastOnError = "yes"
+	SlackV3ReplyBroadcastOnErrorNo  SlackV3ReplyBroadcastOnError = "no"
+)
+
+// SlackV3Timestamp enumerates the valid values for the timestamp input.
+type SlackV3Timestamp string
+
+const (
+	SlackV3TimestampYes SlackV3Timestamp = "yes"
+	SlackV3TimestampNo  SlackV3Timestamp = "no"
+)
+
 // SlackV3Builder builds a slack step with typed input methods.
 type SlackV3Builder struct{ *Builder }
 
@@ -20,8 +60,8 @@ func SlackV3(version ...string) *SlackV3Builder {
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *SlackV3Builder) WithIsDebugMode(value string) *SlackV3Builder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *SlackV3Builder) WithIsDebugMode(value SlackV3IsDebugMode) *SlackV3Builder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }
 
@@ -92,8 +132,8 @@ func (b *SlackV3Builder) WithIconUrlOnError(value string) *SlackV3Builder {
 }
 
 // WithLinkNames sets linkify channel names and usernames?.
-func (b *SlackV3Builder) WithLinkNames(value string) *SlackV3Builder {
-	b.Builder.WithInput("link_names", value)
+func (b *SlackV3Builder) WithLinkNames(value SlackV3LinkNames) *SlackV3Builder {
+	b.Builder.WithInput("link_names", string(value))
 	return b
 }
 
@@ -122,14 +162,14 @@ func (b *SlackV3Builder) WithThreadTsOnError(value string) *SlackV3Builder {
 }
 
 // WithReplyBroadcast sets reply Broadcast.
-func (b *SlackV3Builder) WithReplyBroadcast(value string) *SlackV3Builder {
-	b.Builder.WithInput("reply_broadcast", value)
+func (b *SlackV3Builder) WithReplyBroadcast(value SlackV3ReplyBroadcast) *SlackV3Builder {
+	b.Builder.WithInput("reply_broadcast", string(value))
 	return b
 }
 
 // WithReplyBroadcastOnError sets reply Broadcast if the build failed.
-func (b *SlackV3Builder) WithReplyBroadcastOnError(value string) *SlackV3Builder {
-	b.Builder.WithInput("reply_broadcast_on_error", value)
+func (b *SlackV3Builder) WithReplyBroadcastOnError(value SlackV3ReplyBroadcastOnError) *SlackV3Builder {
+	b.Builder.WithInput("reply_broadcast_on_error", string(value))
 	return b
 }
 
@@ -230,8 +270,8 @@ func (b *SlackV3Builder) WithFooterIcon(value string) *SlackV3Builder {
 }
 
 // WithTimestamp sets show the current time as part of the attachment's footer?.
-func (b *SlackV3Builder) WithTimestamp(value string) *SlackV3Builder {
-	b.Builder.WithInput("timestamp", value)
+func (b *SlackV3Builder) WithTimestamp(value SlackV3Timestamp) *SlackV3Builder {
+	b.Builder.WithInput("timestamp", string(value))
 	return b
 }
 

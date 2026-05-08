@@ -3,6 +3,40 @@
 
 package step
 
+// SnykV1SeverityThreshold enumerates the valid values for the severity_threshold input.
+type SnykV1SeverityThreshold string
+
+const (
+	SnykV1SeverityThresholdLow      SnykV1SeverityThreshold = "low"
+	SnykV1SeverityThresholdMedium   SnykV1SeverityThreshold = "medium"
+	SnykV1SeverityThresholdHigh     SnykV1SeverityThreshold = "high"
+	SnykV1SeverityThresholdCritical SnykV1SeverityThreshold = "critical"
+)
+
+// SnykV1FailOnIssues enumerates the valid values for the fail_on_issues input.
+type SnykV1FailOnIssues string
+
+const (
+	SnykV1FailOnIssuesYes SnykV1FailOnIssues = "yes"
+	SnykV1FailOnIssuesNo  SnykV1FailOnIssues = "no"
+)
+
+// SnykV1CreateReport enumerates the valid values for the create_report input.
+type SnykV1CreateReport string
+
+const (
+	SnykV1CreateReportYes SnykV1CreateReport = "yes"
+	SnykV1CreateReportNo  SnykV1CreateReport = "no"
+)
+
+// SnykV1Monitor enumerates the valid values for the monitor input.
+type SnykV1Monitor string
+
+const (
+	SnykV1MonitorNo  SnykV1Monitor = "no"
+	SnykV1MonitorYes SnykV1Monitor = "yes"
+)
+
 // SnykV1Builder builds a snyk step with typed input methods.
 type SnykV1Builder struct{ *Builder }
 
@@ -32,26 +66,26 @@ func (b *SnykV1Builder) WithCommand(value string) *SnykV1Builder {
 }
 
 // WithSeverityThreshold sets severity threshold.
-func (b *SnykV1Builder) WithSeverityThreshold(value string) *SnykV1Builder {
-	b.Builder.WithInput("severity_threshold", value)
+func (b *SnykV1Builder) WithSeverityThreshold(value SnykV1SeverityThreshold) *SnykV1Builder {
+	b.Builder.WithInput("severity_threshold", string(value))
 	return b
 }
 
 // WithFailOnIssues sets fail on issues.
-func (b *SnykV1Builder) WithFailOnIssues(value string) *SnykV1Builder {
-	b.Builder.WithInput("fail_on_issues", value)
+func (b *SnykV1Builder) WithFailOnIssues(value SnykV1FailOnIssues) *SnykV1Builder {
+	b.Builder.WithInput("fail_on_issues", string(value))
 	return b
 }
 
 // WithCreateReport sets create HTML Report.
-func (b *SnykV1Builder) WithCreateReport(value string) *SnykV1Builder {
-	b.Builder.WithInput("create_report", value)
+func (b *SnykV1Builder) WithCreateReport(value SnykV1CreateReport) *SnykV1Builder {
+	b.Builder.WithInput("create_report", string(value))
 	return b
 }
 
 // WithMonitor sets monitor (import to Snyk).
-func (b *SnykV1Builder) WithMonitor(value string) *SnykV1Builder {
-	b.Builder.WithInput("monitor", value)
+func (b *SnykV1Builder) WithMonitor(value SnykV1Monitor) *SnykV1Builder {
+	b.Builder.WithInput("monitor", string(value))
 	return b
 }
 

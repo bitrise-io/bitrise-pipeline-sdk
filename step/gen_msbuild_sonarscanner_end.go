@@ -3,6 +3,14 @@
 
 package step
 
+// MsbuildSonarscannerEndIsDebug enumerates the valid values for the is_debug input.
+type MsbuildSonarscannerEndIsDebug string
+
+const (
+	MsbuildSonarscannerEndIsDebugTrue  MsbuildSonarscannerEndIsDebug = "true"
+	MsbuildSonarscannerEndIsDebugFalse MsbuildSonarscannerEndIsDebug = "false"
+)
+
 // MsbuildSonarscannerEndBuilder builds a msbuild-sonarscanner-end step with typed input methods.
 type MsbuildSonarscannerEndBuilder struct{ *Builder }
 
@@ -32,7 +40,7 @@ func (b *MsbuildSonarscannerEndBuilder) WithSonarscannerFilePath(value string) *
 }
 
 // WithIsDebug sets print all executed shell commands to a build log?.
-func (b *MsbuildSonarscannerEndBuilder) WithIsDebug(value string) *MsbuildSonarscannerEndBuilder {
-	b.Builder.WithInput("is_debug", value)
+func (b *MsbuildSonarscannerEndBuilder) WithIsDebug(value MsbuildSonarscannerEndIsDebug) *MsbuildSonarscannerEndBuilder {
+	b.Builder.WithInput("is_debug", string(value))
 	return b
 }

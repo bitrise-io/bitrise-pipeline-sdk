@@ -3,6 +3,14 @@
 
 package step
 
+// CodifiedSecurityBitriseV2IsXamarinIos enumerates the valid values for the is_xamarin_ios input.
+type CodifiedSecurityBitriseV2IsXamarinIos string
+
+const (
+	CodifiedSecurityBitriseV2IsXamarinIosTrue  CodifiedSecurityBitriseV2IsXamarinIos = "true"
+	CodifiedSecurityBitriseV2IsXamarinIosFalse CodifiedSecurityBitriseV2IsXamarinIos = "false"
+)
+
 // CodifiedSecurityBitriseV2Builder builds a codified-security-bitrise step with typed input methods.
 type CodifiedSecurityBitriseV2Builder struct{ *Builder }
 
@@ -32,8 +40,8 @@ func (b *CodifiedSecurityBitriseV2Builder) WithAppPath(value string) *CodifiedSe
 }
 
 // WithIsXamarinIos sets select true if you want to upload a Xamarin.iOS app.
-func (b *CodifiedSecurityBitriseV2Builder) WithIsXamarinIos(value string) *CodifiedSecurityBitriseV2Builder {
-	b.Builder.WithInput("is_xamarin_ios", value)
+func (b *CodifiedSecurityBitriseV2Builder) WithIsXamarinIos(value CodifiedSecurityBitriseV2IsXamarinIos) *CodifiedSecurityBitriseV2Builder {
+	b.Builder.WithInput("is_xamarin_ios", string(value))
 	return b
 }
 

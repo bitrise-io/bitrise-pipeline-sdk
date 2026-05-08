@@ -3,6 +3,14 @@
 
 package step
 
+// AndroidScreenrecordStopRemoveFrames enumerates the valid values for the remove_frames input.
+type AndroidScreenrecordStopRemoveFrames string
+
+const (
+	AndroidScreenrecordStopRemoveFramesTrue  AndroidScreenrecordStopRemoveFrames = "true"
+	AndroidScreenrecordStopRemoveFramesFalse AndroidScreenrecordStopRemoveFrames = "false"
+)
+
 // AndroidScreenrecordStopBuilder builds a android-screenrecord-stop step with typed input methods.
 //
 // Deprecated: This step is deprecated, android emulators no longer support screen recording
@@ -30,8 +38,8 @@ func (b *AndroidScreenrecordStopBuilder) WithRecordId(value string) *AndroidScre
 }
 
 // WithRemoveFrames sets remove Duplicate Frames.
-func (b *AndroidScreenrecordStopBuilder) WithRemoveFrames(value string) *AndroidScreenrecordStopBuilder {
-	b.Builder.WithInput("remove_frames", value)
+func (b *AndroidScreenrecordStopBuilder) WithRemoveFrames(value AndroidScreenrecordStopRemoveFrames) *AndroidScreenrecordStopBuilder {
+	b.Builder.WithInput("remove_frames", string(value))
 	return b
 }
 

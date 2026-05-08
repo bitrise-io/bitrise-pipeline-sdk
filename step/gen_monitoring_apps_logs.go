@@ -3,6 +3,14 @@
 
 package step
 
+// MonitoringAppsLogsCheckAndroid enumerates the valid values for the check_android input.
+type MonitoringAppsLogsCheckAndroid string
+
+const (
+	MonitoringAppsLogsCheckAndroidYes MonitoringAppsLogsCheckAndroid = "yes"
+	MonitoringAppsLogsCheckAndroidNo  MonitoringAppsLogsCheckAndroid = "no"
+)
+
 // MonitoringAppsLogsBuilder builds a monitoring-apps-logs step with typed input methods.
 type MonitoringAppsLogsBuilder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func MonitoringAppsLogs(version ...string) *MonitoringAppsLogsBuilder {
 }
 
 // WithCheckAndroid sets check Android logs.
-func (b *MonitoringAppsLogsBuilder) WithCheckAndroid(value string) *MonitoringAppsLogsBuilder {
-	b.Builder.WithInput("check_android", value)
+func (b *MonitoringAppsLogsBuilder) WithCheckAndroid(value MonitoringAppsLogsCheckAndroid) *MonitoringAppsLogsBuilder {
+	b.Builder.WithInput("check_android", string(value))
 	return b
 }
 

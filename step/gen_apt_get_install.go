@@ -3,6 +3,22 @@
 
 package step
 
+// AptGetInstallUpgrade enumerates the valid values for the upgrade input.
+type AptGetInstallUpgrade string
+
+const (
+	AptGetInstallUpgradeYes AptGetInstallUpgrade = "yes"
+	AptGetInstallUpgradeNo  AptGetInstallUpgrade = "no"
+)
+
+// AptGetInstallCacheLevel enumerates the valid values for the cache_level input.
+type AptGetInstallCacheLevel string
+
+const (
+	AptGetInstallCacheLevelAll  AptGetInstallCacheLevel = "all"
+	AptGetInstallCacheLevelNone AptGetInstallCacheLevel = "none"
+)
+
 // AptGetInstallBuilder builds a apt-get-install step with typed input methods.
 type AptGetInstallBuilder struct{ *Builder }
 
@@ -32,13 +48,13 @@ func (b *AptGetInstallBuilder) WithOptions(value string) *AptGetInstallBuilder {
 }
 
 // WithUpgrade sets upgrade packages if previously installed.
-func (b *AptGetInstallBuilder) WithUpgrade(value string) *AptGetInstallBuilder {
-	b.Builder.WithInput("upgrade", value)
+func (b *AptGetInstallBuilder) WithUpgrade(value AptGetInstallUpgrade) *AptGetInstallBuilder {
+	b.Builder.WithInput("upgrade", string(value))
 	return b
 }
 
 // WithCacheLevel sets cache level.
-func (b *AptGetInstallBuilder) WithCacheLevel(value string) *AptGetInstallBuilder {
-	b.Builder.WithInput("cache_level", value)
+func (b *AptGetInstallBuilder) WithCacheLevel(value AptGetInstallCacheLevel) *AptGetInstallBuilder {
+	b.Builder.WithInput("cache_level", string(value))
 	return b
 }

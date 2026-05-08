@@ -3,6 +3,14 @@
 
 package step
 
+// ReleaseNotesExtractorTrimMarkdownOutput enumerates the valid values for the trim_markdown_output input.
+type ReleaseNotesExtractorTrimMarkdownOutput string
+
+const (
+	ReleaseNotesExtractorTrimMarkdownOutputYes ReleaseNotesExtractorTrimMarkdownOutput = "Yes"
+	ReleaseNotesExtractorTrimMarkdownOutputNo  ReleaseNotesExtractorTrimMarkdownOutput = "No"
+)
+
 // ReleaseNotesExtractorBuilder builds a release-notes-extractor step with typed input methods.
 type ReleaseNotesExtractorBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *ReleaseNotesExtractorBuilder) WithChangelogFilePath(value string) *Rele
 }
 
 // WithTrimMarkdownOutput sets trim markdown output.
-func (b *ReleaseNotesExtractorBuilder) WithTrimMarkdownOutput(value string) *ReleaseNotesExtractorBuilder {
-	b.Builder.WithInput("trim_markdown_output", value)
+func (b *ReleaseNotesExtractorBuilder) WithTrimMarkdownOutput(value ReleaseNotesExtractorTrimMarkdownOutput) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithInput("trim_markdown_output", string(value))
 	return b
 }
 

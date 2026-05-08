@@ -3,6 +3,46 @@
 
 package step
 
+// NitroAndroidDisableVersionNameFromPackageJson enumerates the valid values for the disable_version_name_from_package_json input.
+type NitroAndroidDisableVersionNameFromPackageJson string
+
+const (
+	NitroAndroidDisableVersionNameFromPackageJsonYes NitroAndroidDisableVersionNameFromPackageJson = "yes"
+	NitroAndroidDisableVersionNameFromPackageJsonNo  NitroAndroidDisableVersionNameFromPackageJson = "no"
+)
+
+// NitroAndroidDisableVersionCodeAutoGeneration enumerates the valid values for the disable_version_code_auto_generation input.
+type NitroAndroidDisableVersionCodeAutoGeneration string
+
+const (
+	NitroAndroidDisableVersionCodeAutoGenerationYes NitroAndroidDisableVersionCodeAutoGeneration = "yes"
+	NitroAndroidDisableVersionCodeAutoGenerationNo  NitroAndroidDisableVersionCodeAutoGeneration = "no"
+)
+
+// NitroAndroidCacheProvider enumerates the valid values for the cache_provider input.
+type NitroAndroidCacheProvider string
+
+const (
+	NitroAndroidCacheProviderFs NitroAndroidCacheProvider = "fs"
+	NitroAndroidCacheProviderS3 NitroAndroidCacheProvider = "s3"
+)
+
+// NitroAndroidVerbose enumerates the valid values for the verbose input.
+type NitroAndroidVerbose string
+
+const (
+	NitroAndroidVerboseYes NitroAndroidVerbose = "yes"
+	NitroAndroidVerboseNo  NitroAndroidVerbose = "no"
+)
+
+// NitroAndroidDebug enumerates the valid values for the debug input.
+type NitroAndroidDebug string
+
+const (
+	NitroAndroidDebugYes NitroAndroidDebug = "yes"
+	NitroAndroidDebugNo  NitroAndroidDebug = "no"
+)
+
 // NitroAndroidBuilder builds a nitro-android step with typed input methods.
 type NitroAndroidBuilder struct{ *Builder }
 
@@ -50,14 +90,14 @@ func (b *NitroAndroidBuilder) WithVersionCode(value string) *NitroAndroidBuilder
 }
 
 // WithDisableVersionNameFromPackageJson sets disable automatic version name configuration.
-func (b *NitroAndroidBuilder) WithDisableVersionNameFromPackageJson(value string) *NitroAndroidBuilder {
-	b.Builder.WithInput("disable_version_name_from_package_json", value)
+func (b *NitroAndroidBuilder) WithDisableVersionNameFromPackageJson(value NitroAndroidDisableVersionNameFromPackageJson) *NitroAndroidBuilder {
+	b.Builder.WithInput("disable_version_name_from_package_json", string(value))
 	return b
 }
 
 // WithDisableVersionCodeAutoGeneration sets disable automatic version code generation.
-func (b *NitroAndroidBuilder) WithDisableVersionCodeAutoGeneration(value string) *NitroAndroidBuilder {
-	b.Builder.WithInput("disable_version_code_auto_generation", value)
+func (b *NitroAndroidBuilder) WithDisableVersionCodeAutoGeneration(value NitroAndroidDisableVersionCodeAutoGeneration) *NitroAndroidBuilder {
+	b.Builder.WithInput("disable_version_code_auto_generation", string(value))
 	return b
 }
 
@@ -86,8 +126,8 @@ func (b *NitroAndroidBuilder) WithKeystoreKeyPassword(value string) *NitroAndroi
 }
 
 // WithCacheProvider sets cache provider.
-func (b *NitroAndroidBuilder) WithCacheProvider(value string) *NitroAndroidBuilder {
-	b.Builder.WithInput("cache_provider", value)
+func (b *NitroAndroidBuilder) WithCacheProvider(value NitroAndroidCacheProvider) *NitroAndroidBuilder {
+	b.Builder.WithInput("cache_provider", string(value))
 	return b
 }
 
@@ -176,14 +216,14 @@ func (b *NitroAndroidBuilder) WithEntryFile(value string) *NitroAndroidBuilder {
 }
 
 // WithVerbose sets verbose logs.
-func (b *NitroAndroidBuilder) WithVerbose(value string) *NitroAndroidBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *NitroAndroidBuilder) WithVerbose(value NitroAndroidVerbose) *NitroAndroidBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 
 // WithDebug sets debug step.
-func (b *NitroAndroidBuilder) WithDebug(value string) *NitroAndroidBuilder {
-	b.Builder.WithInput("debug", value)
+func (b *NitroAndroidBuilder) WithDebug(value NitroAndroidDebug) *NitroAndroidBuilder {
+	b.Builder.WithInput("debug", string(value))
 	return b
 }
 

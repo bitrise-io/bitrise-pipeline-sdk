@@ -3,6 +3,14 @@
 
 package step
 
+// CarthageV3VerboseLog enumerates the valid values for the verbose_log input.
+type CarthageV3VerboseLog string
+
+const (
+	CarthageV3VerboseLogYes CarthageV3VerboseLog = "yes"
+	CarthageV3VerboseLogNo  CarthageV3VerboseLog = "no"
+)
+
 // CarthageV3Builder builds a carthage step with typed input methods.
 type CarthageV3Builder struct{ *Builder }
 
@@ -44,7 +52,7 @@ func (b *CarthageV3Builder) WithXcconfig(value string) *CarthageV3Builder {
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *CarthageV3Builder) WithVerboseLog(value string) *CarthageV3Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *CarthageV3Builder) WithVerboseLog(value CarthageV3VerboseLog) *CarthageV3Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }

@@ -3,6 +3,25 @@
 
 package step
 
+// DiscordMessagePresetStatus enumerates the valid values for the preset_status input.
+type DiscordMessagePresetStatus string
+
+const (
+	DiscordMessagePresetStatusAuto    DiscordMessagePresetStatus = "auto"
+	DiscordMessagePresetStatusRunning DiscordMessagePresetStatus = "running"
+	DiscordMessagePresetStatusSuccess DiscordMessagePresetStatus = "success"
+	DiscordMessagePresetStatusFailed  DiscordMessagePresetStatus = "failed"
+	DiscordMessagePresetStatusAborted DiscordMessagePresetStatus = "aborted"
+)
+
+// DiscordMessageIsDebugMode enumerates the valid values for the is_debug_mode input.
+type DiscordMessageIsDebugMode string
+
+const (
+	DiscordMessageIsDebugModeYes DiscordMessageIsDebugMode = "yes"
+	DiscordMessageIsDebugModeNo  DiscordMessageIsDebugMode = "no"
+)
+
 // DiscordMessageBuilder builds a discord-message step with typed input methods.
 type DiscordMessageBuilder struct{ *Builder }
 
@@ -32,13 +51,13 @@ func (b *DiscordMessageBuilder) WithMentionRole(value string) *DiscordMessageBui
 }
 
 // WithPresetStatus sets set Specific Status.
-func (b *DiscordMessageBuilder) WithPresetStatus(value string) *DiscordMessageBuilder {
-	b.Builder.WithInput("preset_status", value)
+func (b *DiscordMessageBuilder) WithPresetStatus(value DiscordMessagePresetStatus) *DiscordMessageBuilder {
+	b.Builder.WithInput("preset_status", string(value))
 	return b
 }
 
 // WithIsDebugMode sets debug mode?.
-func (b *DiscordMessageBuilder) WithIsDebugMode(value string) *DiscordMessageBuilder {
-	b.Builder.WithInput("is_debug_mode", value)
+func (b *DiscordMessageBuilder) WithIsDebugMode(value DiscordMessageIsDebugMode) *DiscordMessageBuilder {
+	b.Builder.WithInput("is_debug_mode", string(value))
 	return b
 }

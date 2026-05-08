@@ -3,6 +3,14 @@
 
 package step
 
+// FirebaseDsymUploadV2FduLogging enumerates the valid values for the fdu_logging input.
+type FirebaseDsymUploadV2FduLogging string
+
+const (
+	FirebaseDsymUploadV2FduLoggingYes FirebaseDsymUploadV2FduLogging = "yes"
+	FirebaseDsymUploadV2FduLoggingNo  FirebaseDsymUploadV2FduLogging = "no"
+)
+
 // FirebaseDsymUploadV2Builder builds a firebase-dsym-upload step with typed input methods.
 type FirebaseDsymUploadV2Builder struct{ *Builder }
 
@@ -38,7 +46,7 @@ func (b *FirebaseDsymUploadV2Builder) WithFduDsymLocation(value string) *Firebas
 }
 
 // WithFduLogging sets show additional logging.
-func (b *FirebaseDsymUploadV2Builder) WithFduLogging(value string) *FirebaseDsymUploadV2Builder {
-	b.Builder.WithInput("fdu_logging", value)
+func (b *FirebaseDsymUploadV2Builder) WithFduLogging(value FirebaseDsymUploadV2FduLogging) *FirebaseDsymUploadV2Builder {
+	b.Builder.WithInput("fdu_logging", string(value))
 	return b
 }

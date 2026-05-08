@@ -3,6 +3,24 @@
 
 package step
 
+// GooglePlayDeployV1UserFraction enumerates the valid values for the user_fraction input.
+type GooglePlayDeployV1UserFraction string
+
+const (
+	GooglePlayDeployV1UserFraction005 GooglePlayDeployV1UserFraction = "0.05"
+	GooglePlayDeployV1UserFraction01  GooglePlayDeployV1UserFraction = "0.1"
+	GooglePlayDeployV1UserFraction02  GooglePlayDeployV1UserFraction = "0.2"
+	GooglePlayDeployV1UserFraction05  GooglePlayDeployV1UserFraction = "0.5"
+)
+
+// GooglePlayDeployV1UntrackBlockingVersions enumerates the valid values for the untrack_blocking_versions input.
+type GooglePlayDeployV1UntrackBlockingVersions string
+
+const (
+	GooglePlayDeployV1UntrackBlockingVersionsTrue  GooglePlayDeployV1UntrackBlockingVersions = "true"
+	GooglePlayDeployV1UntrackBlockingVersionsFalse GooglePlayDeployV1UntrackBlockingVersions = "false"
+)
+
 // GooglePlayDeployV1Builder builds a google-play-deploy step with typed input methods.
 type GooglePlayDeployV1Builder struct{ *Builder }
 
@@ -50,8 +68,8 @@ func (b *GooglePlayDeployV1Builder) WithTrack(value string) *GooglePlayDeployV1B
 }
 
 // WithUserFraction sets user Fraction.
-func (b *GooglePlayDeployV1Builder) WithUserFraction(value string) *GooglePlayDeployV1Builder {
-	b.Builder.WithInput("user_fraction", value)
+func (b *GooglePlayDeployV1Builder) WithUserFraction(value GooglePlayDeployV1UserFraction) *GooglePlayDeployV1Builder {
+	b.Builder.WithInput("user_fraction", string(value))
 	return b
 }
 
@@ -68,8 +86,8 @@ func (b *GooglePlayDeployV1Builder) WithMappingFile(value string) *GooglePlayDep
 }
 
 // WithUntrackBlockingVersions sets untrack blocking versions?.
-func (b *GooglePlayDeployV1Builder) WithUntrackBlockingVersions(value string) *GooglePlayDeployV1Builder {
-	b.Builder.WithInput("untrack_blocking_versions", value)
+func (b *GooglePlayDeployV1Builder) WithUntrackBlockingVersions(value GooglePlayDeployV1UntrackBlockingVersions) *GooglePlayDeployV1Builder {
+	b.Builder.WithInput("untrack_blocking_versions", string(value))
 	return b
 }
 

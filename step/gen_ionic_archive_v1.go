@@ -3,6 +3,39 @@
 
 package step
 
+// IonicArchiveV1Platform enumerates the valid values for the platform input.
+type IonicArchiveV1Platform string
+
+const (
+	IonicArchiveV1PlatformIosAndroid IonicArchiveV1Platform = "ios,android"
+	IonicArchiveV1PlatformIos        IonicArchiveV1Platform = "ios"
+	IonicArchiveV1PlatformAndroid    IonicArchiveV1Platform = "android"
+)
+
+// IonicArchiveV1Configuration enumerates the valid values for the configuration input.
+type IonicArchiveV1Configuration string
+
+const (
+	IonicArchiveV1ConfigurationRelease IonicArchiveV1Configuration = "release"
+	IonicArchiveV1ConfigurationDebug   IonicArchiveV1Configuration = "debug"
+)
+
+// IonicArchiveV1Target enumerates the valid values for the target input.
+type IonicArchiveV1Target string
+
+const (
+	IonicArchiveV1TargetDevice   IonicArchiveV1Target = "device"
+	IonicArchiveV1TargetEmulator IonicArchiveV1Target = "emulator"
+)
+
+// IonicArchiveV1ReaddPlatform enumerates the valid values for the readd_platform input.
+type IonicArchiveV1ReaddPlatform string
+
+const (
+	IonicArchiveV1ReaddPlatformTrue  IonicArchiveV1ReaddPlatform = "true"
+	IonicArchiveV1ReaddPlatformFalse IonicArchiveV1ReaddPlatform = "false"
+)
+
 // IonicArchiveV1Builder builds a ionic-archive step with typed input methods.
 type IonicArchiveV1Builder struct{ *Builder }
 
@@ -20,20 +53,20 @@ func IonicArchiveV1(version ...string) *IonicArchiveV1Builder {
 }
 
 // WithPlatform sets platform to use in ionic-cli commands.
-func (b *IonicArchiveV1Builder) WithPlatform(value string) *IonicArchiveV1Builder {
-	b.Builder.WithInput("platform", value)
+func (b *IonicArchiveV1Builder) WithPlatform(value IonicArchiveV1Platform) *IonicArchiveV1Builder {
+	b.Builder.WithInput("platform", string(value))
 	return b
 }
 
 // WithConfiguration sets build command configuration.
-func (b *IonicArchiveV1Builder) WithConfiguration(value string) *IonicArchiveV1Builder {
-	b.Builder.WithInput("configuration", value)
+func (b *IonicArchiveV1Builder) WithConfiguration(value IonicArchiveV1Configuration) *IonicArchiveV1Builder {
+	b.Builder.WithInput("configuration", string(value))
 	return b
 }
 
 // WithTarget sets build command target.
-func (b *IonicArchiveV1Builder) WithTarget(value string) *IonicArchiveV1Builder {
-	b.Builder.WithInput("target", value)
+func (b *IonicArchiveV1Builder) WithTarget(value IonicArchiveV1Target) *IonicArchiveV1Builder {
+	b.Builder.WithInput("target", string(value))
 	return b
 }
 
@@ -68,8 +101,8 @@ func (b *IonicArchiveV1Builder) WithIonicVersion(value string) *IonicArchiveV1Bu
 }
 
 // WithReaddPlatform sets should remove platforms as prepare step?.
-func (b *IonicArchiveV1Builder) WithReaddPlatform(value string) *IonicArchiveV1Builder {
-	b.Builder.WithInput("readd_platform", value)
+func (b *IonicArchiveV1Builder) WithReaddPlatform(value IonicArchiveV1ReaddPlatform) *IonicArchiveV1Builder {
+	b.Builder.WithInput("readd_platform", string(value))
 	return b
 }
 

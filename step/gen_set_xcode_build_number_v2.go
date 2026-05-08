@@ -3,6 +3,14 @@
 
 package step
 
+// SetXcodeBuildNumberV2Verbose enumerates the valid values for the verbose input.
+type SetXcodeBuildNumberV2Verbose string
+
+const (
+	SetXcodeBuildNumberV2VerboseTrue  SetXcodeBuildNumberV2Verbose = "true"
+	SetXcodeBuildNumberV2VerboseFalse SetXcodeBuildNumberV2Verbose = "false"
+)
+
 // SetXcodeBuildNumberV2Builder builds a set-xcode-build-number step with typed input methods.
 type SetXcodeBuildNumberV2Builder struct{ *Builder }
 
@@ -62,8 +70,8 @@ func (b *SetXcodeBuildNumberV2Builder) WithBuildShortVersionString(value string)
 }
 
 // WithVerbose sets enable verbose logging.
-func (b *SetXcodeBuildNumberV2Builder) WithVerbose(value string) *SetXcodeBuildNumberV2Builder {
-	b.Builder.WithInput("verbose", value)
+func (b *SetXcodeBuildNumberV2Builder) WithVerbose(value SetXcodeBuildNumberV2Verbose) *SetXcodeBuildNumberV2Builder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

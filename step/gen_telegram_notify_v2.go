@@ -3,6 +3,14 @@
 
 package step
 
+// TelegramNotifyV2LinkPreviewsEnabled enumerates the valid values for the link_previews_enabled input.
+type TelegramNotifyV2LinkPreviewsEnabled string
+
+const (
+	TelegramNotifyV2LinkPreviewsEnabledNo  TelegramNotifyV2LinkPreviewsEnabled = "no"
+	TelegramNotifyV2LinkPreviewsEnabledYes TelegramNotifyV2LinkPreviewsEnabled = "yes"
+)
+
 // TelegramNotifyV2Builder builds a telegram-notify step with typed input methods.
 type TelegramNotifyV2Builder struct{ *Builder }
 
@@ -20,8 +28,8 @@ func TelegramNotifyV2(version ...string) *TelegramNotifyV2Builder {
 }
 
 // WithLinkPreviewsEnabled sets enable Link Previews.
-func (b *TelegramNotifyV2Builder) WithLinkPreviewsEnabled(value string) *TelegramNotifyV2Builder {
-	b.Builder.WithInput("link_previews_enabled", value)
+func (b *TelegramNotifyV2Builder) WithLinkPreviewsEnabled(value TelegramNotifyV2LinkPreviewsEnabled) *TelegramNotifyV2Builder {
+	b.Builder.WithInput("link_previews_enabled", string(value))
 	return b
 }
 

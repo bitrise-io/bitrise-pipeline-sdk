@@ -3,6 +3,14 @@
 
 package step
 
+// BuildStatusChangeVerbose enumerates the valid values for the verbose input.
+type BuildStatusChangeVerbose string
+
+const (
+	BuildStatusChangeVerboseNo  BuildStatusChangeVerbose = "no"
+	BuildStatusChangeVerboseYes BuildStatusChangeVerbose = "yes"
+)
+
 // BuildStatusChangeBuilder builds a build-status-change step with typed input methods.
 type BuildStatusChangeBuilder struct{ *Builder }
 
@@ -26,8 +34,8 @@ func (b *BuildStatusChangeBuilder) WithAccessToken(value string) *BuildStatusCha
 }
 
 // WithVerbose sets enable verbose logging?.
-func (b *BuildStatusChangeBuilder) WithVerbose(value string) *BuildStatusChangeBuilder {
-	b.Builder.WithInput("verbose", value)
+func (b *BuildStatusChangeBuilder) WithVerbose(value BuildStatusChangeVerbose) *BuildStatusChangeBuilder {
+	b.Builder.WithInput("verbose", string(value))
 	return b
 }
 

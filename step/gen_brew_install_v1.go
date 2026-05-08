@@ -3,6 +3,38 @@
 
 package step
 
+// BrewInstallV1Upgrade enumerates the valid values for the upgrade input.
+type BrewInstallV1Upgrade string
+
+const (
+	BrewInstallV1UpgradeYes BrewInstallV1Upgrade = "yes"
+	BrewInstallV1UpgradeNo  BrewInstallV1Upgrade = "no"
+)
+
+// BrewInstallV1UpgradeDependents enumerates the valid values for the upgrade_dependents input.
+type BrewInstallV1UpgradeDependents string
+
+const (
+	BrewInstallV1UpgradeDependentsYes BrewInstallV1UpgradeDependents = "yes"
+	BrewInstallV1UpgradeDependentsNo  BrewInstallV1UpgradeDependents = "no"
+)
+
+// BrewInstallV1UseBrewfile enumerates the valid values for the use_brewfile input.
+type BrewInstallV1UseBrewfile string
+
+const (
+	BrewInstallV1UseBrewfileYes BrewInstallV1UseBrewfile = "yes"
+	BrewInstallV1UseBrewfileNo  BrewInstallV1UseBrewfile = "no"
+)
+
+// BrewInstallV1VerboseLog enumerates the valid values for the verbose_log input.
+type BrewInstallV1VerboseLog string
+
+const (
+	BrewInstallV1VerboseLogYes BrewInstallV1VerboseLog = "yes"
+	BrewInstallV1VerboseLogNo  BrewInstallV1VerboseLog = "no"
+)
+
 // BrewInstallV1Builder builds a brew-install step with typed input methods.
 type BrewInstallV1Builder struct{ *Builder }
 
@@ -26,20 +58,20 @@ func (b *BrewInstallV1Builder) WithPackages(value string) *BrewInstallV1Builder 
 }
 
 // WithUpgrade sets upgrade formula?.
-func (b *BrewInstallV1Builder) WithUpgrade(value string) *BrewInstallV1Builder {
-	b.Builder.WithInput("upgrade", value)
+func (b *BrewInstallV1Builder) WithUpgrade(value BrewInstallV1Upgrade) *BrewInstallV1Builder {
+	b.Builder.WithInput("upgrade", string(value))
 	return b
 }
 
 // WithUpgradeDependents sets upgrade dependent packages.
-func (b *BrewInstallV1Builder) WithUpgradeDependents(value string) *BrewInstallV1Builder {
-	b.Builder.WithInput("upgrade_dependents", value)
+func (b *BrewInstallV1Builder) WithUpgradeDependents(value BrewInstallV1UpgradeDependents) *BrewInstallV1Builder {
+	b.Builder.WithInput("upgrade_dependents", string(value))
 	return b
 }
 
 // WithUseBrewfile sets use a Brewfile to install packages?.
-func (b *BrewInstallV1Builder) WithUseBrewfile(value string) *BrewInstallV1Builder {
-	b.Builder.WithInput("use_brewfile", value)
+func (b *BrewInstallV1Builder) WithUseBrewfile(value BrewInstallV1UseBrewfile) *BrewInstallV1Builder {
+	b.Builder.WithInput("use_brewfile", string(value))
 	return b
 }
 
@@ -56,7 +88,7 @@ func (b *BrewInstallV1Builder) WithOptions(value string) *BrewInstallV1Builder {
 }
 
 // WithVerboseLog sets enable verbose logging?.
-func (b *BrewInstallV1Builder) WithVerboseLog(value string) *BrewInstallV1Builder {
-	b.Builder.WithInput("verbose_log", value)
+func (b *BrewInstallV1Builder) WithVerboseLog(value BrewInstallV1VerboseLog) *BrewInstallV1Builder {
+	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
