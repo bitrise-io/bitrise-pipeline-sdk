@@ -4,9 +4,13 @@
 package step
 
 // MobileQualityBuilder builds a mobile-quality step with typed input methods.
+//
+// Deprecated: This step is deprecated. Now it was split to use each feature separately (eg. Mobile apps permissions monitoring [monitoring-apps-permissions step])
 type MobileQualityBuilder struct{ *Builder }
 
 // MobileQuality creates a mobile-quality step builder (v1).
+//
+// Deprecated: This step is deprecated. Now it was split to use each feature separately (eg. Mobile apps permissions monitoring [monitoring-apps-permissions step])
 func MobileQuality() *MobileQualityBuilder {
 	return &MobileQualityBuilder{Builder: From("mobile-quality", "1")}
 }

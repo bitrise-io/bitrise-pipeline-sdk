@@ -4,9 +4,13 @@
 package step
 
 // CreateAndroidEmulatorBuilder builds a create-android-emulator step with typed input methods.
+//
+// Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 type CreateAndroidEmulatorBuilder struct{ *Builder }
 
 // CreateAndroidEmulator creates a create-android-emulator step builder (v1).
+//
+// Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 func CreateAndroidEmulator() *CreateAndroidEmulatorBuilder {
 	return &CreateAndroidEmulatorBuilder{Builder: From("create-android-emulator", "1")}
 }

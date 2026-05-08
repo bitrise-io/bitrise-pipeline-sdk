@@ -4,9 +4,13 @@
 package step
 
 // AndroidScreenrecordStopBuilder builds a android-screenrecord-stop step with typed input methods.
+//
+// Deprecated: This step is deprecated, android emulators no longer support screen recording
 type AndroidScreenrecordStopBuilder struct{ *Builder }
 
 // AndroidScreenrecordStop creates a android-screenrecord-stop step builder (v0).
+//
+// Deprecated: This step is deprecated, android emulators no longer support screen recording
 func AndroidScreenrecordStop() *AndroidScreenrecordStopBuilder {
 	return &AndroidScreenrecordStopBuilder{Builder: From("android-screenrecord-stop", "0")}
 }

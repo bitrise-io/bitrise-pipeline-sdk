@@ -4,9 +4,13 @@
 package step
 
 // XamarinTestCloudForCalabashAndroidBuilder builds a xamarin-test-cloud-for-calabash-android step with typed input methods.
+//
+// Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 type XamarinTestCloudForCalabashAndroidBuilder struct{ *Builder }
 
 // XamarinTestCloudForCalabashAndroid creates a xamarin-test-cloud-for-calabash-android step builder (v1).
+//
+// Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 func XamarinTestCloudForCalabashAndroid() *XamarinTestCloudForCalabashAndroidBuilder {
 	return &XamarinTestCloudForCalabashAndroidBuilder{Builder: From("xamarin-test-cloud-for-calabash-android", "1")}
 }

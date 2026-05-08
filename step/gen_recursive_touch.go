@@ -4,9 +4,13 @@
 package step
 
 // RecursiveTouchBuilder builds a recursive-touch step with typed input methods.
+//
+// Deprecated: This step is deprecated as it is not reliable in daily development.
 type RecursiveTouchBuilder struct{ *Builder }
 
 // RecursiveTouch creates a recursive-touch step builder (v0).
+//
+// Deprecated: This step is deprecated as it is not reliable in daily development.
 func RecursiveTouch() *RecursiveTouchBuilder {
 	return &RecursiveTouchBuilder{Builder: From("recursive-touch", "0")}
 }

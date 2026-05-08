@@ -4,9 +4,13 @@
 package step
 
 // XamarinInsightsBuilder builds a xamarin-insights step with typed input methods.
+//
+// Deprecated: This step is deprecated, the Xamarin Insights service will be shutted down on March 31, 2018.
 type XamarinInsightsBuilder struct{ *Builder }
 
 // XamarinInsights creates a xamarin-insights step builder (v1).
+//
+// Deprecated: This step is deprecated, the Xamarin Insights service will be shutted down on March 31, 2018.
 func XamarinInsights() *XamarinInsightsBuilder {
 	return &XamarinInsightsBuilder{Builder: From("xamarin-insights", "1")}
 }

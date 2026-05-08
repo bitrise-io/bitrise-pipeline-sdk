@@ -4,9 +4,13 @@
 package step
 
 // InstallDotnetcoreBuilder builds a install-dotnetcore step with typed input methods.
+//
+// Deprecated: This step is deprecated as it is no longer maintained.
 type InstallDotnetcoreBuilder struct{ *Builder }
 
 // InstallDotnetcore creates a install-dotnetcore step builder (v1).
+//
+// Deprecated: This step is deprecated as it is no longer maintained.
 func InstallDotnetcore() *InstallDotnetcoreBuilder {
 	return &InstallDotnetcoreBuilder{Builder: From("install-dotnetcore", "1")}
 }

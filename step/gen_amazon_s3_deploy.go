@@ -4,9 +4,13 @@
 package step
 
 // AmazonS3DeployBuilder builds a amazon-s3-deploy step with typed input methods.
+//
+// Deprecated: This step is deprecated. Please use the build distribution feature: https://docs.bitrise.io/en/release-management/build-distribution/distributing-builds-to-testers.html
 type AmazonS3DeployBuilder struct{ *Builder }
 
 // AmazonS3Deploy creates a amazon-s3-deploy step builder (v3).
+//
+// Deprecated: This step is deprecated. Please use the build distribution feature: https://docs.bitrise.io/en/release-management/build-distribution/distributing-builds-to-testers.html
 func AmazonS3Deploy() *AmazonS3DeployBuilder {
 	return &AmazonS3DeployBuilder{Builder: From("amazon-s3-deploy", "3")}
 }

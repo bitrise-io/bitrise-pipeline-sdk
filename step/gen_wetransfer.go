@@ -4,9 +4,13 @@
 package step
 
 // WetransferBuilder builds a wetransfer step with typed input methods.
+//
+// Deprecated: This step is deprecated. The wetransfer API does not work anymore.
 type WetransferBuilder struct{ *Builder }
 
 // Wetransfer creates a wetransfer step builder (v0).
+//
+// Deprecated: This step is deprecated. The wetransfer API does not work anymore.
 func Wetransfer() *WetransferBuilder {
 	return &WetransferBuilder{Builder: From("wetransfer", "0")}
 }

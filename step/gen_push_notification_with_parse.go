@@ -4,9 +4,13 @@
 package step
 
 // PushNotificationWithParseBuilder builds a push-notification-with-parse step with typed input methods.
+//
+// Deprecated: This step is deprecated, Push Notifications are no longer supported by Parse server.
 type PushNotificationWithParseBuilder struct{ *Builder }
 
 // PushNotificationWithParse creates a push-notification-with-parse step builder (v2).
+//
+// Deprecated: This step is deprecated, Push Notifications are no longer supported by Parse server.
 func PushNotificationWithParse() *PushNotificationWithParseBuilder {
 	return &PushNotificationWithParseBuilder{Builder: From("push-notification-with-parse", "2")}
 }

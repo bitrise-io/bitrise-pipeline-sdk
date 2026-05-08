@@ -4,9 +4,13 @@
 package step
 
 // XamarinTestCloudForAndroidBuilder builds a xamarin-test-cloud-for-android step with typed input methods.
+//
+// Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 type XamarinTestCloudForAndroidBuilder struct{ *Builder }
 
 // XamarinTestCloudForAndroid creates a xamarin-test-cloud-for-android step builder (v2).
+//
+// Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 func XamarinTestCloudForAndroid() *XamarinTestCloudForAndroidBuilder {
 	return &XamarinTestCloudForAndroidBuilder{Builder: From("xamarin-test-cloud-for-android", "2")}
 }

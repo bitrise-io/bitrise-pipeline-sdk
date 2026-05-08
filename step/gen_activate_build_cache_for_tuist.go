@@ -4,9 +4,13 @@
 package step
 
 // ActivateBuildCacheForTuistBuilder builds a activate-build-cache-for-tuist step with typed input methods.
+//
+// Deprecated: This step is deprecated. For more information please see: https://bitrise.io/blog/post/tuist-bitrise-build-cache-update
 type ActivateBuildCacheForTuistBuilder struct{ *Builder }
 
 // ActivateBuildCacheForTuist creates a activate-build-cache-for-tuist step builder (v1).
+//
+// Deprecated: This step is deprecated. For more information please see: https://bitrise.io/blog/post/tuist-bitrise-build-cache-update
 func ActivateBuildCacheForTuist() *ActivateBuildCacheForTuistBuilder {
 	return &ActivateBuildCacheForTuistBuilder{Builder: From("activate-build-cache-for-tuist", "1")}
 }

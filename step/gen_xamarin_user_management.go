@@ -4,9 +4,13 @@
 package step
 
 // XamarinUserManagementBuilder builds a xamarin-user-management step with typed input methods.
+//
+// Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
 type XamarinUserManagementBuilder struct{ *Builder }
 
 // XamarinUserManagement creates a xamarin-user-management step builder (v1).
+//
+// Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
 func XamarinUserManagement() *XamarinUserManagementBuilder {
 	return &XamarinUserManagementBuilder{Builder: From("xamarin-user-management", "1")}
 }

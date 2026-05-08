@@ -4,9 +4,13 @@
 package step
 
 // VersionPreReleaseInfoBuilder builds a version-pre-release-info step with typed input methods.
+//
+// Deprecated: This step is a duplicate of "bitrise-step-version-pre-release-info". Please use that step ID instead.
 type VersionPreReleaseInfoBuilder struct{ *Builder }
 
 // VersionPreReleaseInfo creates a version-pre-release-info step builder (v1).
+//
+// Deprecated: This step is a duplicate of "bitrise-step-version-pre-release-info". Please use that step ID instead.
 func VersionPreReleaseInfo() *VersionPreReleaseInfoBuilder {
 	return &VersionPreReleaseInfoBuilder{Builder: From("version-pre-release-info", "1")}
 }

@@ -4,9 +4,13 @@
 package step
 
 // StartAndroidEmulatorBuilder builds a start-android-emulator step with typed input methods.
+//
+// Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 type StartAndroidEmulatorBuilder struct{ *Builder }
 
 // StartAndroidEmulator creates a start-android-emulator step builder (v1).
+//
+// Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 func StartAndroidEmulator() *StartAndroidEmulatorBuilder {
 	return &StartAndroidEmulatorBuilder{Builder: From("start-android-emulator", "1")}
 }

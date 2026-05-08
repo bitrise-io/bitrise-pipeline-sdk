@@ -4,9 +4,13 @@
 package step
 
 // VersionExtractorAndroidBuilder builds a version-extractor-android step with typed input methods.
+//
+// Deprecated: This step is no longer maintained by its author.
 type VersionExtractorAndroidBuilder struct{ *Builder }
 
 // VersionExtractorAndroid creates a version-extractor-android step builder (v0).
+//
+// Deprecated: This step is no longer maintained by its author.
 func VersionExtractorAndroid() *VersionExtractorAndroidBuilder {
 	return &VersionExtractorAndroidBuilder{Builder: From("version-extractor-android", "0")}
 }

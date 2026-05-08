@@ -4,9 +4,13 @@
 package step
 
 // MagicpodUiTestBuilder builds a magicpod-ui-test step with typed input methods.
+//
+// Deprecated: This step is deprecated. Please use magic-pod step instead.
 type MagicpodUiTestBuilder struct{ *Builder }
 
 // MagicpodUiTest creates a magicpod-ui-test step builder (v0).
+//
+// Deprecated: This step is deprecated. Please use magic-pod step instead.
 func MagicpodUiTest() *MagicpodUiTestBuilder {
 	return &MagicpodUiTestBuilder{Builder: From("magicpod-ui-test", "0")}
 }

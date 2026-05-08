@@ -4,9 +4,13 @@
 package step
 
 // RepositoryScannerBuilder builds a repository-scanner step with typed input methods.
+//
+// Deprecated: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner) instead.
 type RepositoryScannerBuilder struct{ *Builder }
 
 // RepositoryScanner creates a repository-scanner step builder (v1).
+//
+// Deprecated: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner) instead.
 func RepositoryScanner() *RepositoryScannerBuilder {
 	return &RepositoryScannerBuilder{Builder: From("repository-scanner", "1")}
 }

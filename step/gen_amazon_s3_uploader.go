@@ -4,9 +4,13 @@
 package step
 
 // AmazonS3UploaderBuilder builds a amazon-s3-uploader step with typed input methods.
+//
+// Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
 type AmazonS3UploaderBuilder struct{ *Builder }
 
 // AmazonS3Uploader creates a amazon-s3-uploader step builder (v1).
+//
+// Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
 func AmazonS3Uploader() *AmazonS3UploaderBuilder {
 	return &AmazonS3UploaderBuilder{Builder: From("amazon-s3-uploader", "1")}
 }

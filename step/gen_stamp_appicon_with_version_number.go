@@ -4,9 +4,13 @@
 package step
 
 // StampAppiconWithVersionNumberBuilder builds a stamp-appicon-with-version-number step with typed input methods.
+//
+// Deprecated: This step is a duplicate of "bitrise-step-stamp-appicon-with-version-number". Please use that step ID instead.
 type StampAppiconWithVersionNumberBuilder struct{ *Builder }
 
 // StampAppiconWithVersionNumber creates a stamp-appicon-with-version-number step builder (v1).
+//
+// Deprecated: This step is a duplicate of "bitrise-step-stamp-appicon-with-version-number". Please use that step ID instead.
 func StampAppiconWithVersionNumber() *StampAppiconWithVersionNumberBuilder {
 	return &StampAppiconWithVersionNumberBuilder{Builder: From("stamp-appicon-with-version-number", "1")}
 }

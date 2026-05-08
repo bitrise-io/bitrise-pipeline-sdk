@@ -4,9 +4,13 @@
 package step
 
 // AddTraceSdkBuilder builds a add-trace-sdk step with typed input methods.
+//
+// Deprecated: This step is deprecated as it is not supported anymore.
 type AddTraceSdkBuilder struct{ *Builder }
 
 // AddTraceSdk creates a add-trace-sdk step builder (v1).
+//
+// Deprecated: This step is deprecated as it is not supported anymore.
 func AddTraceSdk() *AddTraceSdkBuilder {
 	return &AddTraceSdkBuilder{Builder: From("add-trace-sdk", "1")}
 }

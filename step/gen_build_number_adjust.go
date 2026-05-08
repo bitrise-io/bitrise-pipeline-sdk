@@ -4,9 +4,13 @@
 package step
 
 // BuildNumberAdjustBuilder builds a build-number-adjust step with typed input methods.
+//
+// Deprecated: This community step is no longer available as a GitHub repo.
 type BuildNumberAdjustBuilder struct{ *Builder }
 
 // BuildNumberAdjust creates a build-number-adjust step builder (v1).
+//
+// Deprecated: This community step is no longer available as a GitHub repo.
 func BuildNumberAdjust() *BuildNumberAdjustBuilder {
 	return &BuildNumberAdjustBuilder{Builder: From("build-number-adjust", "1")}
 }
