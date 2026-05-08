@@ -196,7 +196,7 @@ func TestCollectBuilders_EmptyDir(t *testing.T) {
 	assert.Contains(t, err.Error(), "no gen_*.go files found")
 }
 
-// ---- buildTable ------------------------------------------------------------
+// ---- buildTable / buildVersionsTable ---------------------------------------
 
 func TestBuildTable(t *testing.T) {
 	entries := []builderEntry{
@@ -208,6 +208,24 @@ func TestBuildTable(t *testing.T) {
 	assert.Contains(t, table, "|---|---|")
 	assert.Contains(t, table, "| `step.GitClone()` | `git-clone` |")
 	assert.Contains(t, table, "| `step.Script()` | `script` |")
+}
+
+func TestBuildVersionsTable(t *testing.T) {
+	entries := []versionedBuilderEntry{
+		{stepID: "git-clone", funcName: "GitCloneV7", major: 7},
+		{stepID: "git-clone", funcName: "GitCloneV8", major: 8},
+		{stepID: "xcode-test", funcName: "XcodeTestV5", major: 5},
+	}
+	table := string(buildVersionsTable(entries))
+	assert.Contains(t, table, "| Function | Step | Major |")
+	assert.Contains(t, table, "| `step.GitCloneV7()` | `git-clone` | v7.x |")
+	assert.Contains(t, table, "| `step.GitCloneV8()` | `git-clone` | v8.x |")
+	assert.Contains(t, table, "| `step.XcodeTestV5()` | `xcode-test` | v5.x |")
+}
+
+func TestBuildVersionsTable_Empty(t *testing.T) {
+	result := buildVersionsTable(nil)
+	assert.Nil(t, result, "empty entry list should produce nil output")
 }
 
 // ---- replaceMarkers --------------------------------------------------------
@@ -271,7 +289,7 @@ func TestUpdateReadme(t *testing.T) {
 	entries := []builderEntry{
 		{stepID: "git-clone", funcName: "GitClone"},
 	}
-	require.NoError(t, updateReadme(readmePath, entries))
+	require.NoError(t, updateReadme(readmePath, entries, nil))
 
 	updated, err := os.ReadFile(readmePath)
 	require.NoError(t, err)
@@ -283,9 +301,101 @@ func TestUpdateReadme(t *testing.T) {
 	assert.NotContains(t, result, "stale content")
 }
 
+func TestUpdateReadme_WithVersionsSection(t *testing.T) {
+	readmePath := filepath.Join(t.TempDir(), "README.md")
+	content := "# Title\n" +
+		"<!-- step-table-start -->\nold\n<!-- step-table-end -->\n" +
+		"### Versioned\n" +
+		"<!-- step-versions-start -->\nold versions\n<!-- step-versions-end -->\n" +
+		"footer\n"
+	require.NoError(t, os.WriteFile(readmePath, []byte(content), 0644))
+
+	entries := []builderEntry{{stepID: "git-clone", funcName: "GitClone"}}
+	vEntries := []versionedBuilderEntry{
+		{stepID: "git-clone", funcName: "GitCloneV7", major: 7},
+		{stepID: "git-clone", funcName: "GitCloneV8", major: 8},
+	}
+	require.NoError(t, updateReadme(readmePath, entries, vEntries))
+
+	updated, _ := os.ReadFile(readmePath)
+	result := string(updated)
+
+	assert.Contains(t, result, "| `step.GitClone()` |")
+	assert.Contains(t, result, "| `step.GitCloneV7()` | `git-clone` | v7.x |")
+	assert.Contains(t, result, "| `step.GitCloneV8()` | `git-clone` | v8.x |")
+	assert.NotContains(t, result, "old versions")
+}
+
+func TestUpdateReadme_NoVersionsMarkers_Skipped(t *testing.T) {
+	// README without versions markers: the versioned table update is silently skipped.
+	readmePath := filepath.Join(t.TempDir(), "README.md")
+	content := "# Title\n<!-- step-table-start -->\nold\n<!-- step-table-end -->\nfooter\n"
+	require.NoError(t, os.WriteFile(readmePath, []byte(content), 0644))
+
+	vEntries := []versionedBuilderEntry{{stepID: "git-clone", funcName: "GitCloneV8", major: 8}}
+	require.NoError(t, updateReadme(readmePath, nil, vEntries))
+
+	updated, _ := os.ReadFile(readmePath)
+	// Versioned table must not appear when markers are absent.
+	assert.NotContains(t, string(updated), "GitCloneV8")
+}
+
 func TestUpdateReadme_MissingFile(t *testing.T) {
-	err := updateReadme("/nonexistent/README.md", nil)
+	err := updateReadme("/nonexistent/README.md", nil, nil)
 	require.Error(t, err)
+}
+
+// ---- collectVersionedBuilders ----------------------------------------------
+
+func TestCollectVersionedBuilders_CollectsAndSorts(t *testing.T) {
+	dir := t.TempDir()
+
+	// Write versioned files for two steps.
+	writeVersionedBuilderFile(t, dir, "gen_git_clone_v7.go", "git-clone", "7.0.0", "GitCloneV7", false)
+	writeVersionedBuilderFile(t, dir, "gen_git_clone_v8.go", "git-clone", "8.5.0", "GitCloneV8", false)
+	writeVersionedBuilderFile(t, dir, "gen_xcode_test_v5.go", "xcode-test", "5.4.0", "XcodeTestV5", false)
+	writeVersionedBuilderFile(t, dir, "gen_xcode_test_v6.go", "xcode-test", "6.2.0", "XcodeTestV6", false)
+	// Also add a non-versioned file to make sure it's ignored.
+	writeBuilderFile(t, dir, "gen_script.go", "script", "1.0.0", "Script", false)
+	// Deprecated versioned file must be excluded.
+	writeVersionedBuilderFile(t, dir, "gen_old_step_v1.go", "old-step", "1.0.0", "OldStepV1", true)
+
+	entries, err := collectVersionedBuilders(dir)
+	require.NoError(t, err)
+	require.Len(t, entries, 4)
+
+	// Sorted by step ID, then major ascending.
+	assert.Equal(t, "git-clone", entries[0].stepID)
+	assert.Equal(t, 7, entries[0].major)
+	assert.Equal(t, "GitCloneV7", entries[0].funcName)
+
+	assert.Equal(t, "git-clone", entries[1].stepID)
+	assert.Equal(t, 8, entries[1].major)
+
+	assert.Equal(t, "xcode-test", entries[2].stepID)
+	assert.Equal(t, 5, entries[2].major)
+
+	assert.Equal(t, "xcode-test", entries[3].stepID)
+	assert.Equal(t, 6, entries[3].major)
+}
+
+// ---- parseVersionFromHeader / majorFromVersion helpers ---------------------
+
+func TestParseVersionFromHeader(t *testing.T) {
+	v, err := parseVersionFromHeader("// Step: git-clone (8.5.0)")
+	require.NoError(t, err)
+	assert.Equal(t, "8.5.0", v)
+}
+
+func TestParseVersionFromHeader_Invalid(t *testing.T) {
+	_, err := parseVersionFromHeader("// Step: git-clone")
+	require.Error(t, err)
+}
+
+func TestMajorFromVersion(t *testing.T) {
+	assert.Equal(t, "8", majorFromVersion("8.5.0"))
+	assert.Equal(t, "0", majorFromVersion("0.9.1"))
+	assert.Equal(t, "6", majorFromVersion("6"))
 }
 
 // ---- helpers ---------------------------------------------------------------
@@ -332,5 +442,27 @@ func writeAliasBuilderFile(t *testing.T, dir, name, stepID, version, funcName, l
 	sb.WriteString("type " + funcName + "Builder = " + latestTypeName + "Builder\n\n")
 	sb.WriteString("func " + funcName + "(version ...string) *" + latestTypeName + "Builder {\n")
 	sb.WriteString("\treturn " + latestTypeName + "(version...)\n}\n")
+	require.NoError(t, os.WriteFile(filepath.Join(dir, name), []byte(sb.String()), 0644))
+}
+
+// writeVersionedBuilderFile writes a minimal gen_*_v{N}.go file that matches
+// the format expected by parseVersionedBuilderFile (and collectVersionedBuilders).
+func writeVersionedBuilderFile(t *testing.T, dir, name, stepID, version, funcName string, deprecated bool) {
+	t.Helper()
+	var sb strings.Builder
+	sb.WriteString("// Code generated by cmd/stepgen. DO NOT EDIT.\n")
+	sb.WriteString("// Step: " + stepID + " (" + version + ")\n\n")
+	sb.WriteString("package step\n\n")
+	if deprecated {
+		sb.WriteString("// " + funcName + "Builder builds the step.\n//\n// Deprecated: use something else.\n")
+	} else {
+		sb.WriteString("// " + funcName + "Builder builds the step.\n")
+	}
+	sb.WriteString("type " + funcName + "Builder struct{ *Builder }\n\n")
+	if deprecated {
+		sb.WriteString("// " + funcName + " creates the builder.\n//\n// Deprecated: use something else.\n")
+	}
+	sb.WriteString("func " + funcName + "(version ...string) *" + funcName + "Builder {\n")
+	sb.WriteString("\treturn &" + funcName + "Builder{}\n}\n")
 	require.NoError(t, os.WriteFile(filepath.Join(dir, name), []byte(sb.String()), 0644))
 }
