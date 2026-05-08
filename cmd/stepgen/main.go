@@ -119,10 +119,15 @@ func main() {
 	outputDir := flag.String("output", "step", "directory to write generated files into")
 	configFile := flag.String("config", "stepgen.json", "path to stepgen.json")
 	steplibDir := flag.String("steplib-dir", "", "path to a local clone of bitrise-steplib (skips GitHub API)")
+	prune := flag.Bool("prune", false, "remove skipped (removed) and deprecated steps from the config file after generation")
+	deleteFiles := flag.Bool("delete", false, "delete generated files for deprecated steps (intended to be used with --prune)")
 	flag.Parse()
 
+	// Track whether step IDs came from the config file so --prune knows
+	// whether it has a file to rewrite.
 	stepIDs := flag.Args()
-	if len(stepIDs) == 0 {
+	usingConfig := len(stepIDs) == 0
+	if usingConfig {
 		cfg, err := loadConfig(*configFile)
 		if err != nil {
 			fatalf("reading %s: %v", *configFile, err)
@@ -143,6 +148,7 @@ func main() {
 	tmpl := template.Must(template.New("builder").Parse(builderTmpl))
 
 	ok, skip, fail := 0, 0, 0
+	var skippedIDs []string
 	var deprecated []deprecationInfo
 	for _, id := range stepIDs {
 		if handcraftedSteps[id] {
@@ -156,6 +162,7 @@ func main() {
 			fail++
 		} else if skipped {
 			skip++
+			skippedIDs = append(skippedIDs, id)
 		} else {
 			ok++
 			if dep != nil {
@@ -175,8 +182,97 @@ func main() {
 			}
 			fmt.Fprintf(os.Stderr, "    %s\n", strings.ReplaceAll(d.Notes, "\n", "\n    "))
 		}
-		fmt.Fprintln(os.Stderr, "\nConsider removing these steps from stepgen.json.")
+		if !*prune {
+			fmt.Fprintln(os.Stderr, "\nConsider removing these steps from stepgen.json or re-running with --prune.")
+		}
 	}
+
+	if *prune {
+		if !usingConfig {
+			fmt.Fprintln(os.Stderr, "\nwarning: --prune has no effect when step IDs are passed as arguments (no config file to rewrite)")
+		} else {
+			pruneIDs := append(skippedIDs, deprecatedIDs(deprecated)...)
+			if err := pruneConfig(*configFile, pruneIDs); err != nil {
+				fatalf("pruning config: %v", err)
+			}
+		}
+	}
+
+	if *deleteFiles {
+		if err := deleteDeprecatedFiles(*outputDir, deprecated); err != nil {
+			fatalf("deleting deprecated files: %v", err)
+		}
+	}
+}
+
+// deprecatedIDs returns just the step ID strings from a slice of deprecationInfo.
+func deprecatedIDs(deps []deprecationInfo) []string {
+	ids := make([]string, len(deps))
+	for i, d := range deps {
+		ids[i] = d.StepID
+	}
+	return ids
+}
+
+// pruneConfig rewrites the config file at path with the given step IDs removed.
+func pruneConfig(path string, removeIDs []string) error {
+	if len(removeIDs) == 0 {
+		fmt.Println("\nnothing to prune")
+		return nil
+	}
+
+	cfg, err := loadConfig(path)
+	if err != nil {
+		return err
+	}
+
+	remove := make(map[string]bool, len(removeIDs))
+	for _, id := range removeIDs {
+		remove[id] = true
+	}
+
+	kept := cfg.Steps[:0]
+	for _, id := range cfg.Steps {
+		if !remove[id] {
+			kept = append(kept, id)
+		}
+	}
+	cfg.Steps = kept
+
+	data, err := json.MarshalIndent(cfg, "", "  ")
+	if err != nil {
+		return fmt.Errorf("marshal config: %w", err)
+	}
+	data = append(data, '\n')
+	if err := os.WriteFile(path, data, 0644); err != nil {
+		return fmt.Errorf("write config: %w", err)
+	}
+
+	fmt.Fprintf(os.Stderr, "\n🧹 pruned %d step(s) from %s:\n", len(removeIDs), path)
+	for _, id := range removeIDs {
+		fmt.Fprintf(os.Stderr, "  - %s\n", id)
+	}
+	return nil
+}
+
+// deleteDeprecatedFiles removes the generated .go file for each deprecated step.
+func deleteDeprecatedFiles(outputDir string, deps []deprecationInfo) error {
+	if len(deps) == 0 {
+		return nil
+	}
+	fmt.Fprintf(os.Stderr, "\n🗑️  deleting %d deprecated generated file(s):\n", len(deps))
+	for _, d := range deps {
+		base := "gen_" + normalizeID(d.StepID)
+		if strings.HasSuffix(base, "_test") {
+			base += "_builder"
+		}
+		path := filepath.Join(outputDir, base+".go")
+		if err := os.Remove(path); err != nil && !os.IsNotExist(err) {
+			return fmt.Errorf("remove %s: %w", path, err)
+		}
+		fmt.Fprintf(os.Stderr, "  - %s\n", path)
+	}
+	return nil
 }
 
 // ---- step source abstraction -----------------------------------------------
