@@ -42,3 +42,16 @@ func (b *RestoreCacheV3Builder) WithRetries(value string) *RestoreCacheV3Builder
 	b.Builder.WithInput("retries", value)
 	return b
 }
+
+// restoreCacheV3Outputs holds the names of environment variables published
+// by the restore-cache step (v3) at run time.
+type restoreCacheV3Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreCacheV3Outputs provides typed access to the environment variable names
+// that restore-cache (v3) exports after a successful run.
+var RestoreCacheV3Outputs = restoreCacheV3Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

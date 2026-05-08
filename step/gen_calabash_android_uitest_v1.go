@@ -54,3 +54,16 @@ func (b *CalabashAndroidUitestV1Builder) WithCalabashAndroidVersion(value string
 	b.Builder.WithInput("calabash_android_version", value)
 	return b
 }
+
+// calabashAndroidUitestV1Outputs holds the names of environment variables published
+// by the calabash-android-uitest step (v1) at run time.
+type calabashAndroidUitestV1Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+}
+
+// CalabashAndroidUitestV1Outputs provides typed access to the environment variable names
+// that calabash-android-uitest (v1) exports after a successful run.
+var CalabashAndroidUitestV1Outputs = calabashAndroidUitestV1Outputs{
+	BitriseXamarinTestResult: "BITRISE_XAMARIN_TEST_RESULT",
+}

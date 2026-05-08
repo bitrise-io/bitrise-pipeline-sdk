@@ -42,3 +42,16 @@ func (b *DeployToUpdraftBuilder) WithReleaseNotes(value string) *DeployToUpdraft
 	b.Builder.WithInput("release_notes", value)
 	return b
 }
+
+// deployToUpdraftOutputs holds the names of environment variables published
+// by the deploy-to-updraft step (v0) at run time.
+type deployToUpdraftOutputs struct {
+	// UpdraftDeployStepOutput is the "Deploy Updraft step output" output env var.
+	UpdraftDeployStepOutput string
+}
+
+// DeployToUpdraftOutputs provides typed access to the environment variable names
+// that deploy-to-updraft (v0) exports after a successful run.
+var DeployToUpdraftOutputs = deployToUpdraftOutputs{
+	UpdraftDeployStepOutput: "UPDRAFT_DEPLOY_STEP_OUTPUT",
+}

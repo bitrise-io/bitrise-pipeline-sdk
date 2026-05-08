@@ -70,3 +70,16 @@ func (b *AppcenterAppReleaseBuilder) WithReleaseNotes(value string) *AppcenterAp
 	b.Builder.WithInput("release_notes", value)
 	return b
 }
+
+// appcenterAppReleaseOutputs holds the names of environment variables published
+// by the appcenter-app-release step (v1) at run time.
+type appcenterAppReleaseOutputs struct {
+	// AppcenterDownloadUrl is the "Download URL from AppCenter" output env var.
+	AppcenterDownloadUrl string
+}
+
+// AppcenterAppReleaseOutputs provides typed access to the environment variable names
+// that appcenter-app-release (v1) exports after a successful run.
+var AppcenterAppReleaseOutputs = appcenterAppReleaseOutputs{
+	AppcenterDownloadUrl: "APPCENTER_DOWNLOAD_URL",
+}

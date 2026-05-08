@@ -42,3 +42,16 @@ func (b *SetXcodeBuildNumberV1Builder) WithBuildShortVersionString(value string)
 	b.Builder.WithInput("build_short_version_string", value)
 	return b
 }
+
+// setXcodeBuildNumberV1Outputs holds the names of environment variables published
+// by the set-xcode-build-number step (v1) at run time.
+type setXcodeBuildNumberV1Outputs struct {
+	// XcodeBundleVersion is the "Xcode Bundle Version" output env var.
+	XcodeBundleVersion string
+}
+
+// SetXcodeBuildNumberV1Outputs provides typed access to the environment variable names
+// that set-xcode-build-number (v1) exports after a successful run.
+var SetXcodeBuildNumberV1Outputs = setXcodeBuildNumberV1Outputs{
+	XcodeBundleVersion: "XCODE_BUNDLE_VERSION",
+}

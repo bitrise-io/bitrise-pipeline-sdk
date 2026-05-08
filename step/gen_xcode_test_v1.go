@@ -120,3 +120,22 @@ func (b *XcodeTestV1Builder) WithXcprettyTestOptions(value string) *XcodeTestV1B
 	b.Builder.WithInput("xcpretty_test_options", value)
 	return b
 }
+
+// xcodeTestV1Outputs holds the names of environment variables published
+// by the xcode-test step (v1) at run time.
+type xcodeTestV1Outputs struct {
+	// BitriseXcodeTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXcodeTestResult string
+	// BitriseXcodeRawTestResultTextPath is the "The full, raw test output file path" output env var.
+	BitriseXcodeRawTestResultTextPath string
+	// BitriseXcodeTestAttachmentsPath is the "The full, test attachments zip path" output env var.
+	BitriseXcodeTestAttachmentsPath string
+}
+
+// XcodeTestV1Outputs provides typed access to the environment variable names
+// that xcode-test (v1) exports after a successful run.
+var XcodeTestV1Outputs = xcodeTestV1Outputs{
+	BitriseXcodeTestResult:            "BITRISE_XCODE_TEST_RESULT",
+	BitriseXcodeRawTestResultTextPath: "BITRISE_XCODE_RAW_TEST_RESULT_TEXT_PATH",
+	BitriseXcodeTestAttachmentsPath:   "BITRISE_XCODE_TEST_ATTACHMENTS_PATH",
+}

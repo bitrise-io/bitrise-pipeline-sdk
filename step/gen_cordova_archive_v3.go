@@ -84,3 +84,34 @@ func (b *CordovaArchiveV3Builder) WithAndroidAppType(value string) *CordovaArchi
 	b.Builder.WithInput("android_app_type", value)
 	return b
 }
+
+// cordovaArchiveV3Outputs holds the names of environment variables published
+// by the cordova-archive step (v3) at run time.
+type cordovaArchiveV3Outputs struct {
+	// BitriseIpaPath is the "The created ios .ipa file's path" output env var.
+	BitriseIpaPath string
+	// BitriseAppDirPath is the "The created ios .app dir's path" output env var.
+	BitriseAppDirPath string
+	// BitriseAppPath is the "The created ios .app.zip file's path" output env var.
+	BitriseAppPath string
+	// BitriseDsymDirPath is the "The created ios .dSYM dir's path" output env var.
+	BitriseDsymDirPath string
+	// BitriseDsymPath is the "The created ios .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseApkPath is the "The created android .apk file's path" output env var.
+	BitriseApkPath string
+	// BitriseAabPath is the "The created android .aab file's path" output env var.
+	BitriseAabPath string
+}
+
+// CordovaArchiveV3Outputs provides typed access to the environment variable names
+// that cordova-archive (v3) exports after a successful run.
+var CordovaArchiveV3Outputs = cordovaArchiveV3Outputs{
+	BitriseIpaPath:     "BITRISE_IPA_PATH",
+	BitriseAppDirPath:  "BITRISE_APP_DIR_PATH",
+	BitriseAppPath:     "BITRISE_APP_PATH",
+	BitriseDsymDirPath: "BITRISE_DSYM_DIR_PATH",
+	BitriseDsymPath:    "BITRISE_DSYM_PATH",
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseAabPath:     "BITRISE_AAB_PATH",
+}

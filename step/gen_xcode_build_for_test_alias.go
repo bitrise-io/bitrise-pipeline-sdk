@@ -13,3 +13,8 @@ type XcodeBuildForTestBuilder = XcodeBuildForTestV3Builder
 func XcodeBuildForTest(version ...string) *XcodeBuildForTestV3Builder {
 	return XcodeBuildForTestV3(version...)
 }
+
+// XcodeBuildForTestOutputs provides typed access to the environment variable names
+// published by xcode-build-for-test at the latest major version (v3).
+// For outputs of a specific major version use XcodeBuildForTestV{N}Outputs directly.
+var XcodeBuildForTestOutputs = XcodeBuildForTestV3Outputs

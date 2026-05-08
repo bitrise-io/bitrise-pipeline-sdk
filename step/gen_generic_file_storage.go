@@ -24,3 +24,16 @@ func (b *GenericFileStorageBuilder) WithEnableDebug(value string) *GenericFileSt
 	b.Builder.WithInput("enable_debug", value)
 	return b
 }
+
+// genericFileStorageOutputs holds the names of environment variables published
+// by the generic-file-storage step (v0) at run time.
+type genericFileStorageOutputs struct {
+	// GenericFileStorage is the "Generic File Storage Path" output env var.
+	GenericFileStorage string
+}
+
+// GenericFileStorageOutputs provides typed access to the environment variable names
+// that generic-file-storage (v0) exports after a successful run.
+var GenericFileStorageOutputs = genericFileStorageOutputs{
+	GenericFileStorage: "GENERIC_FILE_STORAGE",
+}

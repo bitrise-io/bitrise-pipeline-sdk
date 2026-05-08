@@ -13,3 +13,8 @@ type HockeyappDeployAndroidBuilder = HockeyappDeployAndroidV1Builder
 func HockeyappDeployAndroid(version ...string) *HockeyappDeployAndroidV1Builder {
 	return HockeyappDeployAndroidV1(version...)
 }
+
+// HockeyappDeployAndroidOutputs provides typed access to the environment variable names
+// published by hockeyapp-deploy-android at the latest major version (v1).
+// For outputs of a specific major version use HockeyappDeployAndroidV{N}Outputs directly.
+var HockeyappDeployAndroidOutputs = HockeyappDeployAndroidV1Outputs

@@ -48,3 +48,16 @@ func (b *AppRayMobileSecurityBuilder) WithResultPath(value string) *AppRayMobile
 	b.Builder.WithInput("result_path", value)
 	return b
 }
+
+// appRayMobileSecurityOutputs holds the names of environment variables published
+// by the app-ray-mobile-security step (v1) at run time.
+type appRayMobileSecurityOutputs struct {
+	// AppRayRiskScore is the "App-Ray Risk Score" output env var.
+	AppRayRiskScore string
+}
+
+// AppRayMobileSecurityOutputs provides typed access to the environment variable names
+// that app-ray-mobile-security (v1) exports after a successful run.
+var AppRayMobileSecurityOutputs = appRayMobileSecurityOutputs{
+	AppRayRiskScore: "APP_RAY_RISK_SCORE",
+}

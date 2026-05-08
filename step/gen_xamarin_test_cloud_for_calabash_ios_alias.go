@@ -17,3 +17,8 @@ type XamarinTestCloudForCalabashIosBuilder = XamarinTestCloudForCalabashIosV1Bui
 func XamarinTestCloudForCalabashIos(version ...string) *XamarinTestCloudForCalabashIosV1Builder {
 	return XamarinTestCloudForCalabashIosV1(version...)
 }
+
+// XamarinTestCloudForCalabashIosOutputs provides typed access to the environment variable names
+// published by xamarin-test-cloud-for-calabash-ios at the latest major version (v1).
+// For outputs of a specific major version use XamarinTestCloudForCalabashIosV{N}Outputs directly.
+var XamarinTestCloudForCalabashIosOutputs = XamarinTestCloudForCalabashIosV1Outputs

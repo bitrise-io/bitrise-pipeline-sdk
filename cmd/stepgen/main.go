@@ -81,14 +81,22 @@ type inputDef struct {
 	Comment    string
 }
 
+type outputDef struct {
+	Key       string // the env var name, e.g. "GIT_CLONE_COMMIT_HASH"
+	FieldName string // Go struct field name, e.g. "GitCloneCommitHash"
+	Comment   string // from opts.title / opts.summary
+}
+
 type stepDef struct {
-	StepID         string
-	Version        string
-	MajorVersion   string
-	Title          string
-	TypeName       string
-	DeprecateNotes string // non-empty when the step is deprecated
-	Inputs         []inputDef
+	StepID          string
+	Version         string
+	MajorVersion    string
+	Title           string
+	TypeName        string
+	OutputsTypeName string // unexported struct type name for the outputs var
+	DeprecateNotes  string // non-empty when the step is deprecated
+	Inputs          []inputDef
+	Outputs         []outputDef
 }
 
 // aliasDef is passed to the alias template when generating the
@@ -99,6 +107,7 @@ type aliasDef struct {
 	LatestMajor    string // e.g. "6"
 	LatestVersion  string // e.g. "6.4.1"
 	DeprecateNotes string
+	HasOutputs     bool // true when the latest major version publishes output env vars
 }
 
 // ---- code generation templates ---------------------------------------------
@@ -140,6 +149,23 @@ func (b *{{$.TypeName}}Builder) With{{.MethodName}}(value string) *{{$.TypeName}
 	b.Builder.WithInput("{{.Key}}", value)
 	return b
 }
+{{end}}{{if .Outputs}}
+// {{.OutputsTypeName}} holds the names of environment variables published
+// by the {{.StepID}} step (v{{.MajorVersion}}) at run time.
+type {{.OutputsTypeName}} struct {
+{{- range .Outputs}}
+	// {{.Comment}}
+	{{.FieldName}} string
+{{- end}}
+}
+
+// {{.TypeName}}Outputs provides typed access to the environment variable names
+// that {{.StepID}} (v{{.MajorVersion}}) exports after a successful run.
+var {{.TypeName}}Outputs = {{.OutputsTypeName}}{
+{{- range .Outputs}}
+	{{.FieldName}}: "{{.Key}}",
+{{- end}}
+}
 {{end}}`
 
 // aliasBuilderTmpl is rendered into gen_{id}_alias.go for steps that have
@@ -165,7 +191,12 @@ type {{.TypeName}}Builder = {{.TypeName}}V{{.LatestMajor}}Builder
 func {{.TypeName}}(version ...string) *{{.TypeName}}V{{.LatestMajor}}Builder {
 	return {{.TypeName}}V{{.LatestMajor}}(version...)
 }
-`
+{{if .HasOutputs}}
+// {{.TypeName}}Outputs provides typed access to the environment variable names
+// published by {{.StepID}} at the latest major version (v{{.LatestMajor}}).
+// For outputs of a specific major version use {{.TypeName}}V{N}Outputs directly.
+var {{.TypeName}}Outputs = {{.TypeName}}V{{.LatestMajor}}Outputs
+{{end}}`
 
 // ---- main ------------------------------------------------------------------
 
@@ -666,6 +697,10 @@ func generateMultiMajorStep(
 		return stepOutcome{}, fmt.Errorf("remove old single-major file %s: %w", oldSingle, err)
 	}
 
+	// latestOutputCount is set during the versioned loop and used when building
+	// aliasDef so the alias template knows whether to emit the Outputs var.
+	var latestOutputCount int
+
 	// Generate one versioned builder file per major version.
 	for _, major := range majorNums {
 		latestForMajor := latestOfMajor(versions, major)
@@ -694,6 +729,7 @@ func generateMultiMajorStep(
 
 		// Override TypeName to include the major-version suffix, e.g. "XcodeTestV6".
 		def.TypeName = toTypeName(stepID) + "V" + strconv.Itoa(major)
+		def.OutputsTypeName = lcFirst(def.TypeName) + "Outputs"
 
 		if dep != nil {
 			def.DeprecateNotes = dep.Notes
@@ -721,6 +757,10 @@ func generateMultiMajorStep(
 			mu.Unlock()
 			return stepOutcome{}, fmt.Errorf("write %s: %w", vPath, err)
 		}
+
+		if major == latestMajor {
+			latestOutputCount = len(def.Outputs)
+		}
 	}
 
 	// Build and write the alias file (last, so it acts as the fingerprint).
@@ -734,6 +774,7 @@ func generateMultiMajorStep(
 		LatestMajor:    strconv.Itoa(latestMajor),
 		LatestVersion:  overallLatest,
 		DeprecateNotes: depNotes,
+		HasOutputs:     latestOutputCount > 0,
 	}
 
 	var aliasBuf bytes.Buffer
@@ -920,8 +961,9 @@ func parseStepInfo(data []byte) (*deprecationInfo, error) {
 // ---- step.yml parsing ------------------------------------------------------
 
 type rawStepYML struct {
-	Title  string                   `yaml:"title"`
-	Inputs []map[string]interface{} `yaml:"inputs"`
+	Title   string                   `yaml:"title"`
+	Inputs  []map[string]interface{} `yaml:"inputs"`
+	Outputs []map[string]interface{} `yaml:"outputs"`
 }
 
 func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
@@ -930,12 +972,14 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 		return nil, fmt.Errorf("unmarshal YAML: %w", err)
 	}
 
+	typeName := toTypeName(stepID)
 	def := &stepDef{
-		StepID:       stepID,
-		Version:      version,
-		MajorVersion: majorVersion(version),
-		Title:        raw.Title,
-		TypeName:     toTypeName(stepID),
+		StepID:          stepID,
+		Version:         version,
+		MajorVersion:    majorVersion(version),
+		Title:           raw.Title,
+		TypeName:        typeName,
+		OutputsTypeName: lcFirst(typeName) + "Outputs",
 	}
 
 	seen := map[string]bool{}
@@ -974,6 +1018,46 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 		}
 		def.Inputs = append(def.Inputs, in)
 	}
+
+	// Parse outputs — same map structure as inputs, but keys are UPPER_SNAKE_CASE
+	// env var names rather than lower_snake_case input keys.
+	seenOut := map[string]bool{}
+	for _, rawOutput := range raw.Outputs {
+		var key string
+		var rawOpts interface{}
+		for k, v := range rawOutput {
+			if k == "opts" {
+				rawOpts = v
+			} else {
+				key = k
+			}
+		}
+		if key == "" || !isValidIdentifier(key) {
+			continue
+		}
+		fieldName := toOutputFieldName(key)
+		if seenOut[fieldName] {
+			continue
+		}
+		seenOut[fieldName] = true
+
+		out := outputDef{Key: key, FieldName: fieldName}
+		if opts, ok := rawOpts.(map[interface{}]interface{}); ok {
+			// Prefer "title"; fall back to "summary".
+			title, _ := opts["title"].(string)
+			if title == "" {
+				title, _ = opts["summary"].(string)
+			}
+			if title != "" {
+				out.Comment = fmt.Sprintf("%s is the %q output env var.", fieldName, sanitizeComment(title))
+			}
+		}
+		if out.Comment == "" {
+			out.Comment = fmt.Sprintf("%s is the %q output env var.", fieldName, key)
+		}
+		def.Outputs = append(def.Outputs, out)
+	}
+
 	return def, nil
 }
 
@@ -1112,6 +1196,23 @@ func isValidIdentifier(key string) bool {
 		}
 	}
 	return !unicode.IsDigit(rune(key[0]))
+}
+
+// toOutputFieldName converts an UPPER_SNAKE_CASE output env var name to a
+// title-cased Go struct field name.
+// e.g. "GIT_CLONE_COMMIT_HASH" → "GitCloneCommitHash"
+//
+//	"BITRISE_IPA_PATH"      → "BitriseIpaPath"
+func toOutputFieldName(key string) string {
+	var b strings.Builder
+	for _, part := range strings.Split(key, "_") {
+		if len(part) == 0 {
+			continue
+		}
+		b.WriteRune(unicode.ToUpper(rune(part[0])))
+		b.WriteString(strings.ToLower(part[1:]))
+	}
+	return b.String()
 }
 
 func lcFirst(s string) string {

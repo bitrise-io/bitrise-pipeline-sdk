@@ -42,3 +42,16 @@ func (b *BitriseStepEscheckerBuilder) WithEscheckerCampaignId(value string) *Bit
 	b.Builder.WithInput("eschecker_campaign_id", value)
 	return b
 }
+
+// bitriseStepEscheckerOutputs holds the names of environment variables published
+// by the bitrise-step-eschecker step (v0) at run time.
+type bitriseStepEscheckerOutputs struct {
+	// EscheckerPdfReport is the "esChecker report PDF" output env var.
+	EscheckerPdfReport string
+}
+
+// BitriseStepEscheckerOutputs provides typed access to the environment variable names
+// that bitrise-step-eschecker (v0) exports after a successful run.
+var BitriseStepEscheckerOutputs = bitriseStepEscheckerOutputs{
+	EscheckerPdfReport: "eschecker_pdf_report",
+}

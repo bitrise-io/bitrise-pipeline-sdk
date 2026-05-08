@@ -30,3 +30,16 @@ func (b *AsciiGeneratorBuilder) WithAccessToken(value string) *AsciiGeneratorBui
 	b.Builder.WithInput("access_token", value)
 	return b
 }
+
+// asciiGeneratorOutputs holds the names of environment variables published
+// by the ascii-generator step (v1) at run time.
+type asciiGeneratorOutputs struct {
+	// BitriseAsciiArt is the "Generated random Bitrise ASCII art" output env var.
+	BitriseAsciiArt string
+}
+
+// AsciiGeneratorOutputs provides typed access to the environment variable names
+// that ascii-generator (v1) exports after a successful run.
+var AsciiGeneratorOutputs = asciiGeneratorOutputs{
+	BitriseAsciiArt: "BITRISE_ASCII_ART",
+}

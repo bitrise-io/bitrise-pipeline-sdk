@@ -48,3 +48,16 @@ func (b *GradleUnitTestV1Builder) WithCacheLevel(value string) *GradleUnitTestV1
 	b.Builder.WithInput("cache_level", value)
 	return b
 }
+
+// gradleUnitTestV1Outputs holds the names of environment variables published
+// by the gradle-unit-test step (v1) at run time.
+type gradleUnitTestV1Outputs struct {
+	// BitriseGradleTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseGradleTestResult string
+}
+
+// GradleUnitTestV1Outputs provides typed access to the environment variable names
+// that gradle-unit-test (v1) exports after a successful run.
+var GradleUnitTestV1Outputs = gradleUnitTestV1Outputs{
+	BitriseGradleTestResult: "BITRISE_GRADLE_TEST_RESULT",
+}

@@ -96,3 +96,16 @@ func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestVideo(value string)
 	b.Builder.WithInput("lambdatest_video", value)
 	return b
 }
+
+// lambdatestXcuitestAppAutomateOutputs holds the names of environment variables published
+// by the lambdatest-xcuitest-app-automate step (v1) at run time.
+type lambdatestXcuitestAppAutomateOutputs struct {
+	// LambdatestBuildId is the "Build ID" output env var.
+	LambdatestBuildId string
+}
+
+// LambdatestXcuitestAppAutomateOutputs provides typed access to the environment variable names
+// that lambdatest-xcuitest-app-automate (v1) exports after a successful run.
+var LambdatestXcuitestAppAutomateOutputs = lambdatestXcuitestAppAutomateOutputs{
+	LambdatestBuildId: "LAMBDATEST_BUILD_ID",
+}

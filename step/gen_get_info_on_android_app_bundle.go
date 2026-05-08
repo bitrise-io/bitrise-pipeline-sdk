@@ -24,3 +24,28 @@ func (b *GetInfoOnAndroidAppBundleBuilder) WithAabPath(value string) *GetInfoOnA
 	b.Builder.WithInput("aab_path", value)
 	return b
 }
+
+// getInfoOnAndroidAppBundleOutputs holds the names of environment variables published
+// by the get-info-on-android-app-bundle step (v0) at run time.
+type getInfoOnAndroidAppBundleOutputs struct {
+	// AndroidVersionCode is the "Version Code" output env var.
+	AndroidVersionCode string
+	// AndroidVersionName is the "Version Name" output env var.
+	AndroidVersionName string
+	// AndroidPackageName is the "Package Name" output env var.
+	AndroidPackageName string
+	// AndroidMinSdkVersion is the "Minimum SDK Version" output env var.
+	AndroidMinSdkVersion string
+	// AndroidTargetSdkVersion is the "Target SDK Version" output env var.
+	AndroidTargetSdkVersion string
+}
+
+// GetInfoOnAndroidAppBundleOutputs provides typed access to the environment variable names
+// that get-info-on-android-app-bundle (v0) exports after a successful run.
+var GetInfoOnAndroidAppBundleOutputs = getInfoOnAndroidAppBundleOutputs{
+	AndroidVersionCode:      "ANDROID_VERSION_CODE",
+	AndroidVersionName:      "ANDROID_VERSION_NAME",
+	AndroidPackageName:      "ANDROID_PACKAGE_NAME",
+	AndroidMinSdkVersion:    "ANDROID_MIN_SDK_VERSION",
+	AndroidTargetSdkVersion: "ANDROID_TARGET_SDK_VERSION",
+}

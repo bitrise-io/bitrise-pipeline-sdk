@@ -78,3 +78,16 @@ func (b *UpdateGitopsRepositoryV0Builder) WithPullRequestBody(value string) *Upd
 	b.Builder.WithInput("pull_request_body", value)
 	return b
 }
+
+// updateGitopsRepositoryV0Outputs holds the names of environment variables published
+// by the update-gitops-repository step (v0) at run time.
+type updateGitopsRepositoryV0Outputs struct {
+	// PrUrl is the "URL of opened pull request" output env var.
+	PrUrl string
+}
+
+// UpdateGitopsRepositoryV0Outputs provides typed access to the environment variable names
+// that update-gitops-repository (v0) exports after a successful run.
+var UpdateGitopsRepositoryV0Outputs = updateGitopsRepositoryV0Outputs{
+	PrUrl: "PR_URL",
+}

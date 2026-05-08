@@ -58,3 +58,16 @@ func (b *ArtifactPullBuilder) WithBitriseApiAccessToken(value string) *ArtifactP
 	b.Builder.WithInput("bitrise_api_access_token", value)
 	return b
 }
+
+// artifactPullOutputs holds the names of environment variables published
+// by the artifact-pull step (v1) at run time.
+type artifactPullOutputs struct {
+	// BitriseArtifactPaths is the "Pulled artifacts locations" output env var.
+	BitriseArtifactPaths string
+}
+
+// ArtifactPullOutputs provides typed access to the environment variable names
+// that artifact-pull (v1) exports after a successful run.
+var ArtifactPullOutputs = artifactPullOutputs{
+	BitriseArtifactPaths: "BITRISE_ARTIFACT_PATHS",
+}

@@ -60,3 +60,16 @@ func (b *BuildRouterStartBuilder) WithVerbose(value string) *BuildRouterStartBui
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// buildRouterStartOutputs holds the names of environment variables published
+// by the build-router-start step (v0) at run time.
+type buildRouterStartOutputs struct {
+	// RouterStartedBuildSlugs is the "Started Build Slugs" output env var.
+	RouterStartedBuildSlugs string
+}
+
+// BuildRouterStartOutputs provides typed access to the environment variable names
+// that build-router-start (v0) exports after a successful run.
+var BuildRouterStartOutputs = buildRouterStartOutputs{
+	RouterStartedBuildSlugs: "ROUTER_STARTED_BUILD_SLUGS",
+}

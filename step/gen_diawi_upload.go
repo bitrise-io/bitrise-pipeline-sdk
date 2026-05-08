@@ -36,3 +36,16 @@ func (b *DiawiUploadBuilder) WithPassword(value string) *DiawiUploadBuilder {
 	b.Builder.WithInput("password", value)
 	return b
 }
+
+// diawiUploadOutputs holds the names of environment variables published
+// by the diawi-upload step (v0) at run time.
+type diawiUploadOutputs struct {
+	// DiawiUploadUrl is the "The URL of the uploaded file" output env var.
+	DiawiUploadUrl string
+}
+
+// DiawiUploadOutputs provides typed access to the environment variable names
+// that diawi-upload (v0) exports after a successful run.
+var DiawiUploadOutputs = diawiUploadOutputs{
+	DiawiUploadUrl: "DIAWI_UPLOAD_URL",
+}

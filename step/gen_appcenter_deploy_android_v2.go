@@ -100,3 +100,34 @@ func (b *AppcenterDeployAndroidV2Builder) WithAllDistributionGroups(value string
 	b.Builder.WithInput("all_distribution_groups", value)
 	return b
 }
+
+// appcenterDeployAndroidV2Outputs holds the names of environment variables published
+// by the appcenter-deploy-android step (v2) at run time.
+type appcenterDeployAndroidV2Outputs struct {
+	// AppcenterDeployStatus is the "Deployment status" output env var.
+	AppcenterDeployStatus string
+	// AppcenterDeployInstallUrl is the "Install page URL" output env var.
+	AppcenterDeployInstallUrl string
+	// AppcenterDeployDownloadUrl is the "Download URL" output env var.
+	AppcenterDeployDownloadUrl string
+	// AppcenterDeployReleaseId is the "Release ID" output env var.
+	AppcenterDeployReleaseId string
+	// AppcenterPublicInstallPageUrl is the "Public install page URL" output env var.
+	AppcenterPublicInstallPageUrl string
+	// AppcenterPublicInstallPageUrls is the "Comma-separated public install pages by groups" output env var.
+	AppcenterPublicInstallPageUrls string
+	// AppcenterReleasePageUrl is the "Release Page URL" output env var.
+	AppcenterReleasePageUrl string
+}
+
+// AppcenterDeployAndroidV2Outputs provides typed access to the environment variable names
+// that appcenter-deploy-android (v2) exports after a successful run.
+var AppcenterDeployAndroidV2Outputs = appcenterDeployAndroidV2Outputs{
+	AppcenterDeployStatus:          "APPCENTER_DEPLOY_STATUS",
+	AppcenterDeployInstallUrl:      "APPCENTER_DEPLOY_INSTALL_URL",
+	AppcenterDeployDownloadUrl:     "APPCENTER_DEPLOY_DOWNLOAD_URL",
+	AppcenterDeployReleaseId:       "APPCENTER_DEPLOY_RELEASE_ID",
+	AppcenterPublicInstallPageUrl:  "APPCENTER_PUBLIC_INSTALL_PAGE_URL",
+	AppcenterPublicInstallPageUrls: "APPCENTER_PUBLIC_INSTALL_PAGE_URLS",
+	AppcenterReleasePageUrl:        "APPCENTER_RELEASE_PAGE_URL",
+}

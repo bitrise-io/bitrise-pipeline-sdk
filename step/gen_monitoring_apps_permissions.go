@@ -54,3 +54,19 @@ func (b *MonitoringAppsPermissionsBuilder) WithIosPermissionCount(value string) 
 	b.Builder.WithInput("ios_permission_count", value)
 	return b
 }
+
+// monitoringAppsPermissionsOutputs holds the names of environment variables published
+// by the monitoring-apps-permissions step (v1) at run time.
+type monitoringAppsPermissionsOutputs struct {
+	// IosPermissionCount is the "Current build's ios permission count" output env var.
+	IosPermissionCount string
+	// AndroidPermissionCount is the "Current build's Android permission count" output env var.
+	AndroidPermissionCount string
+}
+
+// MonitoringAppsPermissionsOutputs provides typed access to the environment variable names
+// that monitoring-apps-permissions (v1) exports after a successful run.
+var MonitoringAppsPermissionsOutputs = monitoringAppsPermissionsOutputs{
+	IosPermissionCount:     "IOS_PERMISSION_COUNT",
+	AndroidPermissionCount: "ANDROID_PERMISSION_COUNT",
+}

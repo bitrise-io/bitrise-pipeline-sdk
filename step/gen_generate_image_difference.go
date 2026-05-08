@@ -30,3 +30,16 @@ func (b *GenerateImageDifferenceBuilder) WithAfterImages(value string) *Generate
 	b.Builder.WithInput("after_images", value)
 	return b
 }
+
+// generateImageDifferenceOutputs holds the names of environment variables published
+// by the generate-image-difference step (v0) at run time.
+type generateImageDifferenceOutputs struct {
+	// GeneratedDiffImagesDir is the "Directory of generated difference images" output env var.
+	GeneratedDiffImagesDir string
+}
+
+// GenerateImageDifferenceOutputs provides typed access to the environment variable names
+// that generate-image-difference (v0) exports after a successful run.
+var GenerateImageDifferenceOutputs = generateImageDifferenceOutputs{
+	GeneratedDiffImagesDir: "GENERATED_DIFF_IMAGES_DIR",
+}

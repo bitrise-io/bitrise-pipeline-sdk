@@ -13,3 +13,8 @@ type GoListBuilder = GoListV1Builder
 func GoList(version ...string) *GoListV1Builder {
 	return GoListV1(version...)
 }
+
+// GoListOutputs provides typed access to the environment variable names
+// published by go-list at the latest major version (v1).
+// For outputs of a specific major version use GoListV{N}Outputs directly.
+var GoListOutputs = GoListV1Outputs

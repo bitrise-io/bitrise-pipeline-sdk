@@ -13,3 +13,8 @@ type RestoreCacheBuilder = RestoreCacheV3Builder
 func RestoreCache(version ...string) *RestoreCacheV3Builder {
 	return RestoreCacheV3(version...)
 }
+
+// RestoreCacheOutputs provides typed access to the environment variable names
+// published by restore-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreCacheV{N}Outputs directly.
+var RestoreCacheOutputs = RestoreCacheV3Outputs

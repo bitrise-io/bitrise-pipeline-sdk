@@ -138,3 +138,28 @@ func (b *XcodeArchiveV1Builder) WithCustomExportOptionsPlistContent(value string
 	b.Builder.WithInput("custom_export_options_plist_content", value)
 	return b
 }
+
+// xcodeArchiveV1Outputs holds the names of environment variables published
+// by the xcode-archive step (v1) at run time.
+type xcodeArchiveV1Outputs struct {
+	// BitriseIpaPath is the "The created .ipa file's path" output env var.
+	BitriseIpaPath string
+	// BitriseAppDirPath is the "The generated .app directory" output env var.
+	BitriseAppDirPath string
+	// BitriseDsymPath is the "The created .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseXcarchivePath is the "The created .xcarchive.zip file's path" output env var.
+	BitriseXcarchivePath string
+	// BitriseXcodeArchiveRawResultTextPath is the "The full, raw archive output file path" output env var.
+	BitriseXcodeArchiveRawResultTextPath string
+}
+
+// XcodeArchiveV1Outputs provides typed access to the environment variable names
+// that xcode-archive (v1) exports after a successful run.
+var XcodeArchiveV1Outputs = xcodeArchiveV1Outputs{
+	BitriseIpaPath:                       "BITRISE_IPA_PATH",
+	BitriseAppDirPath:                    "BITRISE_APP_DIR_PATH",
+	BitriseDsymPath:                      "BITRISE_DSYM_PATH",
+	BitriseXcarchivePath:                 "BITRISE_XCARCHIVE_PATH",
+	BitriseXcodeArchiveRawResultTextPath: "BITRISE_XCODE_ARCHIVE_RAW_RESULT_TEXT_PATH",
+}

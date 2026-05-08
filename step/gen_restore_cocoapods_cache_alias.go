@@ -13,3 +13,8 @@ type RestoreCocoapodsCacheBuilder = RestoreCocoapodsCacheV3Builder
 func RestoreCocoapodsCache(version ...string) *RestoreCocoapodsCacheV3Builder {
 	return RestoreCocoapodsCacheV3(version...)
 }
+
+// RestoreCocoapodsCacheOutputs provides typed access to the environment variable names
+// published by restore-cocoapods-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreCocoapodsCacheV{N}Outputs directly.
+var RestoreCocoapodsCacheOutputs = RestoreCocoapodsCacheV3Outputs

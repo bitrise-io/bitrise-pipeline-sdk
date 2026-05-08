@@ -48,3 +48,19 @@ func (b *SwiftlintExtendedBuilder) WithReportFile(value string) *SwiftlintExtend
 	b.Builder.WithInput("report_file", value)
 	return b
 }
+
+// swiftlintExtendedOutputs holds the names of environment variables published
+// by the swiftlint-extended step (v1) at run time.
+type swiftlintExtendedOutputs struct {
+	// SwiftlintReport is the "A Swiftlint report" output env var.
+	SwiftlintReport string
+	// SwiftlintReportPath is the "A Swiftlint report path" output env var.
+	SwiftlintReportPath string
+}
+
+// SwiftlintExtendedOutputs provides typed access to the environment variable names
+// that swiftlint-extended (v1) exports after a successful run.
+var SwiftlintExtendedOutputs = swiftlintExtendedOutputs{
+	SwiftlintReport:     "SWIFTLINT_REPORT",
+	SwiftlintReportPath: "SWIFTLINT_REPORT_PATH",
+}

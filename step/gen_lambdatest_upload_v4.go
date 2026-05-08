@@ -60,3 +60,16 @@ func (b *LambdatestUploadV4Builder) WithShowDebugLogs(value string) *LambdatestU
 	b.Builder.WithInput("show_debug_logs", value)
 	return b
 }
+
+// lambdatestUploadV4Outputs holds the names of environment variables published
+// by the lambdatest-upload step (v4) at run time.
+type lambdatestUploadV4Outputs struct {
+	// LambdatestAppUrl is the "LambdaTest App Automate App URL" output env var.
+	LambdatestAppUrl string
+}
+
+// LambdatestUploadV4Outputs provides typed access to the environment variable names
+// that lambdatest-upload (v4) exports after a successful run.
+var LambdatestUploadV4Outputs = lambdatestUploadV4Outputs{
+	LambdatestAppUrl: "LAMBDATEST_APP_URL",
+}

@@ -118,3 +118,31 @@ func (b *IosAutoProvisionAppstoreconnectV1Builder) WithBuildUrl(value string) *I
 	b.Builder.WithInput("build_url", value)
 	return b
 }
+
+// iosAutoProvisionAppstoreconnectV1Outputs holds the names of environment variables published
+// by the ios-auto-provision-appstoreconnect step (v1) at run time.
+type iosAutoProvisionAppstoreconnectV1Outputs struct {
+	// BitriseExportMethod is the "The selected distribution type" output env var.
+	BitriseExportMethod string
+	// BitriseDeveloperTeam is the "The development team's ID" output env var.
+	BitriseDeveloperTeam string
+	// BitriseDevelopmentCodesignIdentity is the "The development codesign identity's name" output env var.
+	BitriseDevelopmentCodesignIdentity string
+	// BitriseProductionCodesignIdentity is the "The production codesign identity's name" output env var.
+	BitriseProductionCodesignIdentity string
+	// BitriseDevelopmentProfile is the "The main target's development provisioning profile UUID" output env var.
+	BitriseDevelopmentProfile string
+	// BitriseProductionProfile is the "The main target's production provisioning profile UUID" output env var.
+	BitriseProductionProfile string
+}
+
+// IosAutoProvisionAppstoreconnectV1Outputs provides typed access to the environment variable names
+// that ios-auto-provision-appstoreconnect (v1) exports after a successful run.
+var IosAutoProvisionAppstoreconnectV1Outputs = iosAutoProvisionAppstoreconnectV1Outputs{
+	BitriseExportMethod:                "BITRISE_EXPORT_METHOD",
+	BitriseDeveloperTeam:               "BITRISE_DEVELOPER_TEAM",
+	BitriseDevelopmentCodesignIdentity: "BITRISE_DEVELOPMENT_CODESIGN_IDENTITY",
+	BitriseProductionCodesignIdentity:  "BITRISE_PRODUCTION_CODESIGN_IDENTITY",
+	BitriseDevelopmentProfile:          "BITRISE_DEVELOPMENT_PROFILE",
+	BitriseProductionProfile:           "BITRISE_PRODUCTION_PROFILE",
+}

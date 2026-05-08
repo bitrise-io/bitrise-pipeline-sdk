@@ -58,3 +58,19 @@ func (b *VersionPreReleaseInfoBuilder) WithPreReleaseNumberPrefix(value string) 
 	b.Builder.WithInput("pre_release_number_prefix", value)
 	return b
 }
+
+// versionPreReleaseInfoOutputs holds the names of environment variables published
+// by the version-pre-release-info step (v1) at run time.
+type versionPreReleaseInfoOutputs struct {
+	// AppVersionPreReleaseInfo is the "Pre-release info (e.g. `rc.3`)" output env var.
+	AppVersionPreReleaseInfo string
+	// AppVersionWithPreReleaseInfo is the "Version number containing pre-release info (e.g. `v2.0-rc.3`)" output env var.
+	AppVersionWithPreReleaseInfo string
+}
+
+// VersionPreReleaseInfoOutputs provides typed access to the environment variable names
+// that version-pre-release-info (v1) exports after a successful run.
+var VersionPreReleaseInfoOutputs = versionPreReleaseInfoOutputs{
+	AppVersionPreReleaseInfo:     "APP_VERSION_PRE_RELEASE_INFO",
+	AppVersionWithPreReleaseInfo: "APP_VERSION_WITH_PRE_RELEASE_INFO",
+}

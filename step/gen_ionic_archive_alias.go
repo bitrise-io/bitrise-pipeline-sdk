@@ -13,3 +13,8 @@ type IonicArchiveBuilder = IonicArchiveV2Builder
 func IonicArchive(version ...string) *IonicArchiveV2Builder {
 	return IonicArchiveV2(version...)
 }
+
+// IonicArchiveOutputs provides typed access to the environment variable names
+// published by ionic-archive at the latest major version (v2).
+// For outputs of a specific major version use IonicArchiveV{N}Outputs directly.
+var IonicArchiveOutputs = IonicArchiveV2Outputs

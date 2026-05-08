@@ -24,3 +24,16 @@ func (b *RestoreCarthageCacheV1Builder) WithVerbose(value string) *RestoreCartha
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// restoreCarthageCacheV1Outputs holds the names of environment variables published
+// by the restore-carthage-cache step (v1) at run time.
+type restoreCarthageCacheV1Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreCarthageCacheV1Outputs provides typed access to the environment variable names
+// that restore-carthage-cache (v1) exports after a successful run.
+var RestoreCarthageCacheV1Outputs = restoreCarthageCacheV1Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

@@ -66,3 +66,22 @@ func (b *AutifyTestRunBuilder) WithAutifyCliInstallerUrl(value string) *AutifyTe
 	b.Builder.WithInput("autify_cli_installer_url", value)
 	return b
 }
+
+// autifyTestRunOutputs holds the names of environment variables published
+// by the autify-test-run step (v1) at run time.
+type autifyTestRunOutputs struct {
+	// AutifyTestResultUrl is the "URL to see the test result at Autify for Mobile" output env var.
+	AutifyTestResultUrl string
+	// AutifyBuildId is the "Used build id on Autify for Mobile" output env var.
+	AutifyBuildId string
+	// AutifyTestRunExitCode is the "Exit code of the step" output env var.
+	AutifyTestRunExitCode string
+}
+
+// AutifyTestRunOutputs provides typed access to the environment variable names
+// that autify-test-run (v1) exports after a successful run.
+var AutifyTestRunOutputs = autifyTestRunOutputs{
+	AutifyTestResultUrl:   "AUTIFY_TEST_RESULT_URL",
+	AutifyBuildId:         "AUTIFY_BUILD_ID",
+	AutifyTestRunExitCode: "AUTIFY_TEST_RUN_EXIT_CODE",
+}

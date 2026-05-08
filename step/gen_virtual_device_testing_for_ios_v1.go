@@ -66,3 +66,19 @@ func (b *VirtualDeviceTestingForIosV1Builder) WithQuarantinedTests(value string)
 	b.Builder.WithInput("quarantined_tests", value)
 	return b
 }
+
+// virtualDeviceTestingForIosV1Outputs holds the names of environment variables published
+// by the virtual-device-testing-for-ios step (v1) at run time.
+type virtualDeviceTestingForIosV1Outputs struct {
+	// VdtestingDownloadedFilesDir is the "Downloaded files directory" output env var.
+	VdtestingDownloadedFilesDir string
+	// BitriseFlakyTestCases is the "List of flaky test cases" output env var.
+	BitriseFlakyTestCases string
+}
+
+// VirtualDeviceTestingForIosV1Outputs provides typed access to the environment variable names
+// that virtual-device-testing-for-ios (v1) exports after a successful run.
+var VirtualDeviceTestingForIosV1Outputs = virtualDeviceTestingForIosV1Outputs{
+	VdtestingDownloadedFilesDir: "VDTESTING_DOWNLOADED_FILES_DIR",
+	BitriseFlakyTestCases:       "BITRISE_FLAKY_TEST_CASES",
+}

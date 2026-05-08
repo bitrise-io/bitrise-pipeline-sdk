@@ -17,3 +17,8 @@ type IosAutoProvisionAppstoreconnectBuilder = IosAutoProvisionAppstoreconnectV2B
 func IosAutoProvisionAppstoreconnect(version ...string) *IosAutoProvisionAppstoreconnectV2Builder {
 	return IosAutoProvisionAppstoreconnectV2(version...)
 }
+
+// IosAutoProvisionAppstoreconnectOutputs provides typed access to the environment variable names
+// published by ios-auto-provision-appstoreconnect at the latest major version (v2).
+// For outputs of a specific major version use IosAutoProvisionAppstoreconnectV{N}Outputs directly.
+var IosAutoProvisionAppstoreconnectOutputs = IosAutoProvisionAppstoreconnectV2Outputs

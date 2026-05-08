@@ -13,3 +13,8 @@ type AvdManagerBuilder = AvdManagerV2Builder
 func AvdManager(version ...string) *AvdManagerV2Builder {
 	return AvdManagerV2(version...)
 }
+
+// AvdManagerOutputs provides typed access to the environment variable names
+// published by avd-manager at the latest major version (v2).
+// For outputs of a specific major version use AvdManagerV{N}Outputs directly.
+var AvdManagerOutputs = AvdManagerV2Outputs

@@ -177,6 +177,54 @@ func TestParseStepYML_InvalidYAML(t *testing.T) {
 	require.Error(t, err)
 }
 
+func TestParseStepYML_Outputs(t *testing.T) {
+	yml := []byte(`
+title: My Step
+outputs:
+  - MY_OUTPUT_KEY: null
+    opts:
+      title: The output value
+  - ANOTHER_OUTPUT: null
+    opts:
+      summary: A summary description
+`)
+	def, err := parseStepYML("my-step", "1.0.0", yml)
+	require.NoError(t, err)
+	require.Len(t, def.Outputs, 2)
+
+	assert.Equal(t, "MY_OUTPUT_KEY", def.Outputs[0].Key)
+	assert.Equal(t, "MyOutputKey", def.Outputs[0].FieldName)
+	assert.Contains(t, def.Outputs[0].Comment, "The output value")
+
+	assert.Equal(t, "ANOTHER_OUTPUT", def.Outputs[1].Key)
+	assert.Equal(t, "AnotherOutput", def.Outputs[1].FieldName)
+	assert.Contains(t, def.Outputs[1].Comment, "A summary description")
+}
+
+func TestParseStepYML_NoOutputs(t *testing.T) {
+	yml := []byte(`title: Simple Step`)
+	def, err := parseStepYML("simple", "1.0.0", yml)
+	require.NoError(t, err)
+	assert.Empty(t, def.Outputs)
+}
+
+// ---- toOutputFieldName helper -----------------------------------------------
+
+func TestToOutputFieldName(t *testing.T) {
+	tests := []struct {
+		key  string
+		want string
+	}{
+		{"GIT_CLONE_COMMIT_HASH", "GitCloneCommitHash"},
+		{"BITRISE_IPA_PATH", "BitriseIpaPath"},
+		{"MY_OUTPUT", "MyOutput"},
+		{"SINGLE", "Single"},
+	}
+	for _, tt := range tests {
+		assert.Equal(t, tt.want, toOutputFieldName(tt.key), "key=%q", tt.key)
+	}
+}
+
 // ---- file I/O ---------------------------------------------------------------
 
 func TestReadCachedVersion_Missing(t *testing.T) {
@@ -397,6 +445,76 @@ inputs:
 	assert.Contains(t, content, "func Script(version ...string) *ScriptBuilder {")
 	assert.Contains(t, content, `v := "1"`)
 	assert.Contains(t, content, "func (b *ScriptBuilder) WithContent(")
+}
+
+func TestGenerateStep_WritesOutputs(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"my-step": {"1.0.0"}},
+		stepYML: map[string][]byte{"my-step/1.0.0": []byte(`
+title: My Step
+outputs:
+  - MY_RESULT: null
+    opts:
+      title: The result value
+  - MY_STATUS: null
+    opts:
+      summary: The status code
+`)},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step.go"))
+	content := string(data)
+	assert.Contains(t, content, "type myStepOutputs struct")
+	assert.Contains(t, content, "MyResult string")
+	assert.Contains(t, content, "MyStatus string")
+	assert.Contains(t, content, "var MyStepOutputs = myStepOutputs{")
+	assert.Contains(t, content, `MyResult: "MY_RESULT"`)
+	assert.Contains(t, content, `MyStatus: "MY_STATUS"`)
+}
+
+func TestGenerateStep_NoOutputs(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"script": {"1.0.0"}},
+		stepYML:  map[string][]byte{"script/1.0.0": minimalStepYML("Script")},
+	}
+
+	_, err := generateStep("script", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	data, _ := os.ReadFile(filepath.Join(outputDir, "gen_script.go"))
+	assert.NotContains(t, string(data), "Outputs", "no outputs section when step has no outputs")
+}
+
+func TestGenerateStep_MultiMajor_WritesOutputsVarAndAlias(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"my-step": {"1.0.0", "2.0.0"}},
+		stepYML: map[string][]byte{
+			"my-step/1.0.0": []byte("title: My Step\noutputs:\n  - OLD_OUTPUT: null\n    opts:\n      title: Old\n"),
+			"my-step/2.0.0": []byte("title: My Step\noutputs:\n  - NEW_OUTPUT: null\n    opts:\n      title: New\n"),
+		},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	// Versioned files each have their own outputs var.
+	v1Data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_v1.go"))
+	assert.Contains(t, string(v1Data), "var MyStepV1Outputs = myStepV1Outputs{")
+	assert.Contains(t, string(v1Data), `OldOutput: "OLD_OUTPUT"`)
+
+	v2Data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_v2.go"))
+	assert.Contains(t, string(v2Data), "var MyStepV2Outputs = myStepV2Outputs{")
+	assert.Contains(t, string(v2Data), `NewOutput: "NEW_OUTPUT"`)
+
+	// Alias file re-exports the latest major's outputs.
+	aliasData, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_alias.go"))
+	assert.Contains(t, string(aliasData), "var MyStepOutputs = MyStepV2Outputs")
 }
 
 func TestGenerateStep_DeprecatedStep(t *testing.T) {

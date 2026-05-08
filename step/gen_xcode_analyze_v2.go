@@ -96,3 +96,16 @@ func (b *XcodeAnalyzeV2Builder) WithVerboseLog(value string) *XcodeAnalyzeV2Buil
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// xcodeAnalyzeV2Outputs holds the names of environment variables published
+// by the xcode-analyze step (v2) at run time.
+type xcodeAnalyzeV2Outputs struct {
+	// BitriseXcresultPath is the "The path of the generated `.xcresult`" output env var.
+	BitriseXcresultPath string
+}
+
+// XcodeAnalyzeV2Outputs provides typed access to the environment variable names
+// that xcode-analyze (v2) exports after a successful run.
+var XcodeAnalyzeV2Outputs = xcodeAnalyzeV2Outputs{
+	BitriseXcresultPath: "BITRISE_XCRESULT_PATH",
+}

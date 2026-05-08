@@ -54,3 +54,16 @@ func (b *SignApkV0Builder) WithJarsignerOptions(value string) *SignApkV0Builder 
 	b.Builder.WithInput("jarsigner_options", value)
 	return b
 }
+
+// signApkV0Outputs holds the names of environment variables published
+// by the sign-apk step (v0) at run time.
+type signApkV0Outputs struct {
+	// BitriseSignedApkPath is the "Bitrise signed apk path" output env var.
+	BitriseSignedApkPath string
+}
+
+// SignApkV0Outputs provides typed access to the environment variable names
+// that sign-apk (v0) exports after a successful run.
+var SignApkV0Outputs = signApkV0Outputs{
+	BitriseSignedApkPath: "BITRISE_SIGNED_APK_PATH",
+}

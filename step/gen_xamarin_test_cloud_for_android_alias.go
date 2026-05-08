@@ -17,3 +17,8 @@ type XamarinTestCloudForAndroidBuilder = XamarinTestCloudForAndroidV2Builder
 func XamarinTestCloudForAndroid(version ...string) *XamarinTestCloudForAndroidV2Builder {
 	return XamarinTestCloudForAndroidV2(version...)
 }
+
+// XamarinTestCloudForAndroidOutputs provides typed access to the environment variable names
+// published by xamarin-test-cloud-for-android at the latest major version (v2).
+// For outputs of a specific major version use XamarinTestCloudForAndroidV{N}Outputs directly.
+var XamarinTestCloudForAndroidOutputs = XamarinTestCloudForAndroidV2Outputs

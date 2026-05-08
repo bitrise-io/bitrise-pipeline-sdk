@@ -34,3 +34,16 @@ func (b *AndroidScreenrecordStartBuilder) WithEmulatorSerial(value string) *Andr
 	b.Builder.WithInput("emulator_serial", value)
 	return b
 }
+
+// androidScreenrecordStartOutputs holds the names of environment variables published
+// by the android-screenrecord-start step (v0) at run time.
+type androidScreenrecordStartOutputs struct {
+	// BitriseRecordId is the "Record ID" output env var.
+	BitriseRecordId string
+}
+
+// AndroidScreenrecordStartOutputs provides typed access to the environment variable names
+// that android-screenrecord-start (v0) exports after a successful run.
+var AndroidScreenrecordStartOutputs = androidScreenrecordStartOutputs{
+	BitriseRecordId: "BITRISE_RECORD_ID",
+}

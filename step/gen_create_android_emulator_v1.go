@@ -58,3 +58,16 @@ func (b *CreateAndroidEmulatorV1Builder) WithCustomHardwareProfileContent(value 
 	b.Builder.WithInput("custom_hardware_profile_content", value)
 	return b
 }
+
+// createAndroidEmulatorV1Outputs holds the names of environment variables published
+// by the create-android-emulator step (v1) at run time.
+type createAndroidEmulatorV1Outputs struct {
+	// BitriseEmulatorName is the "Name of the new AVD" output env var.
+	BitriseEmulatorName string
+}
+
+// CreateAndroidEmulatorV1Outputs provides typed access to the environment variable names
+// that create-android-emulator (v1) exports after a successful run.
+var CreateAndroidEmulatorV1Outputs = createAndroidEmulatorV1Outputs{
+	BitriseEmulatorName: "BITRISE_EMULATOR_NAME",
+}

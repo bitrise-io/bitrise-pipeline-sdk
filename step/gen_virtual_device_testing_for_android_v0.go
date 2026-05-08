@@ -144,3 +144,16 @@ func (b *VirtualDeviceTestingForAndroidV0Builder) WithApiToken(value string) *Vi
 	b.Builder.WithInput("api_token", value)
 	return b
 }
+
+// virtualDeviceTestingForAndroidV0Outputs holds the names of environment variables published
+// by the virtual-device-testing-for-android step (v0) at run time.
+type virtualDeviceTestingForAndroidV0Outputs struct {
+	// VdtestingDownloadedFilesDir is the "Downloaded files directory" output env var.
+	VdtestingDownloadedFilesDir string
+}
+
+// VirtualDeviceTestingForAndroidV0Outputs provides typed access to the environment variable names
+// that virtual-device-testing-for-android (v0) exports after a successful run.
+var VirtualDeviceTestingForAndroidV0Outputs = virtualDeviceTestingForAndroidV0Outputs{
+	VdtestingDownloadedFilesDir: "VDTESTING_DOWNLOADED_FILES_DIR",
+}

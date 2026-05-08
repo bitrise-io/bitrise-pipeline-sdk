@@ -13,3 +13,8 @@ type MagicPodBuilder = MagicPodV1Builder
 func MagicPod(version ...string) *MagicPodV1Builder {
 	return MagicPodV1(version...)
 }
+
+// MagicPodOutputs provides typed access to the environment variable names
+// published by magic-pod at the latest major version (v1).
+// For outputs of a specific major version use MagicPodV{N}Outputs directly.
+var MagicPodOutputs = MagicPodV1Outputs

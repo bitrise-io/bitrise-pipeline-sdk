@@ -13,3 +13,8 @@ type UpdateGitopsRepositoryBuilder = UpdateGitopsRepositoryV3Builder
 func UpdateGitopsRepository(version ...string) *UpdateGitopsRepositoryV3Builder {
 	return UpdateGitopsRepositoryV3(version...)
 }
+
+// UpdateGitopsRepositoryOutputs provides typed access to the environment variable names
+// published by update-gitops-repository at the latest major version (v3).
+// For outputs of a specific major version use UpdateGitopsRepositoryV{N}Outputs directly.
+var UpdateGitopsRepositoryOutputs = UpdateGitopsRepositoryV3Outputs

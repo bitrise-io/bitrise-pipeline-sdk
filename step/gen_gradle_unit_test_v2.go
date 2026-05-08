@@ -42,3 +42,19 @@ func (b *GradleUnitTestV2Builder) WithGradleBuildScriptPath(value string) *Gradl
 	b.Builder.WithInput("gradle_build_script_path", value)
 	return b
 }
+
+// gradleUnitTestV2Outputs holds the names of environment variables published
+// by the gradle-unit-test step (v2) at run time.
+type gradleUnitTestV2Outputs struct {
+	// BitriseGradleTestResult is the "Result of the tests (`succeeded` or `failed`)." output env var.
+	BitriseGradleTestResult string
+	// BitriseFlakyTestCases is the "List of flaky test cases" output env var.
+	BitriseFlakyTestCases string
+}
+
+// GradleUnitTestV2Outputs provides typed access to the environment variable names
+// that gradle-unit-test (v2) exports after a successful run.
+var GradleUnitTestV2Outputs = gradleUnitTestV2Outputs{
+	BitriseGradleTestResult: "BITRISE_GRADLE_TEST_RESULT",
+	BitriseFlakyTestCases:   "BITRISE_FLAKY_TEST_CASES",
+}

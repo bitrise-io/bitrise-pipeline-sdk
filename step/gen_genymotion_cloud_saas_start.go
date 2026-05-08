@@ -54,3 +54,19 @@ func (b *GenymotionCloudSaasStartBuilder) WithGmsaasVersion(value string) *Genym
 	b.Builder.WithInput("gmsaas_version", value)
 	return b
 }
+
+// genymotionCloudSaasStartOutputs holds the names of environment variables published
+// by the genymotion-cloud-saas-start step (v0) at run time.
+type genymotionCloudSaasStartOutputs struct {
+	// GmcloudSaasInstanceUuid is the "UUID list of started and connected instances" output env var.
+	GmcloudSaasInstanceUuid string
+	// GmcloudSaasInstanceAdbSerialPort is the "ADB Serial Port list of connected instances" output env var.
+	GmcloudSaasInstanceAdbSerialPort string
+}
+
+// GenymotionCloudSaasStartOutputs provides typed access to the environment variable names
+// that genymotion-cloud-saas-start (v0) exports after a successful run.
+var GenymotionCloudSaasStartOutputs = genymotionCloudSaasStartOutputs{
+	GmcloudSaasInstanceUuid:          "GMCLOUD_SAAS_INSTANCE_UUID",
+	GmcloudSaasInstanceAdbSerialPort: "GMCLOUD_SAAS_INSTANCE_ADB_SERIAL_PORT",
+}

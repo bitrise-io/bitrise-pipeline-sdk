@@ -13,3 +13,8 @@ type XcodeProjectInfoBuilder = XcodeProjectInfoV2Builder
 func XcodeProjectInfo(version ...string) *XcodeProjectInfoV2Builder {
 	return XcodeProjectInfoV2(version...)
 }
+
+// XcodeProjectInfoOutputs provides typed access to the environment variable names
+// published by xcode-project-info at the latest major version (v2).
+// For outputs of a specific major version use XcodeProjectInfoV{N}Outputs directly.
+var XcodeProjectInfoOutputs = XcodeProjectInfoV2Outputs

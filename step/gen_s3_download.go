@@ -48,3 +48,16 @@ func (b *S3DownloadBuilder) WithOutputLocation(value string) *S3DownloadBuilder 
 	b.Builder.WithInput("output_location", value)
 	return b
 }
+
+// s3DownloadOutputs holds the names of environment variables published
+// by the s3-download step (v1) at run time.
+type s3DownloadOutputs struct {
+	// S3DownloadOutputPath is the "S3 Download output" output env var.
+	S3DownloadOutputPath string
+}
+
+// S3DownloadOutputs provides typed access to the environment variable names
+// that s3-download (v1) exports after a successful run.
+var S3DownloadOutputs = s3DownloadOutputs{
+	S3DownloadOutputPath: "S3_DOWNLOAD_OUTPUT_PATH",
+}

@@ -270,3 +270,25 @@ func (b *DeviceCloudForMaestroV1Builder) WithArtifactsPath(value string) *Device
 	b.Builder.WithInput("artifacts_path", value)
 	return b
 }
+
+// deviceCloudForMaestroV1Outputs holds the names of environment variables published
+// by the device-cloud-for-maestro step (v1) at run time.
+type deviceCloudForMaestroV1Outputs struct {
+	// DeviceCloudConsoleUrl is the "Device Cloud Console URL" output env var.
+	DeviceCloudConsoleUrl string
+	// DeviceCloudFlowResults is the "Flow Results" output env var.
+	DeviceCloudFlowResults string
+	// DeviceCloudUploadStatus is the "Test Run Status" output env var.
+	DeviceCloudUploadStatus string
+	// DeviceCloudAppBinaryId is the "App Binary ID" output env var.
+	DeviceCloudAppBinaryId string
+}
+
+// DeviceCloudForMaestroV1Outputs provides typed access to the environment variable names
+// that device-cloud-for-maestro (v1) exports after a successful run.
+var DeviceCloudForMaestroV1Outputs = deviceCloudForMaestroV1Outputs{
+	DeviceCloudConsoleUrl:   "DEVICE_CLOUD_CONSOLE_URL",
+	DeviceCloudFlowResults:  "DEVICE_CLOUD_FLOW_RESULTS",
+	DeviceCloudUploadStatus: "DEVICE_CLOUD_UPLOAD_STATUS",
+	DeviceCloudAppBinaryId:  "DEVICE_CLOUD_APP_BINARY_ID",
+}

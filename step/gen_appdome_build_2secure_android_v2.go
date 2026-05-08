@@ -78,3 +78,28 @@ func (b *AppdomeBuild2secureAndroidV2Builder) WithBuildToTest(value string) *App
 	b.Builder.WithInput("build_to_test", value)
 	return b
 }
+
+// appdomeBuild2secureAndroidV2Outputs holds the names of environment variables published
+// by the appdome-build-2secure-android step (v2) at run time.
+type appdomeBuild2secureAndroidV2Outputs struct {
+	// AppdomeSecuredApkPath is the "Secured .apk file path" output env var.
+	AppdomeSecuredApkPath string
+	// AppdomeSecuredAabPath is the "Secured .aab file path" output env var.
+	AppdomeSecuredAabPath string
+	// AppdomeSecuredSoPath is the "Secured secondary output file path (Appdome_Universal.apk)" output env var.
+	AppdomeSecuredSoPath string
+	// AppdomePrivateSignScriptPath is the ".sh sign script file path" output env var.
+	AppdomePrivateSignScriptPath string
+	// AppdomeCertificatePath is the "Certified Secure Certificate .pdf file path" output env var.
+	AppdomeCertificatePath string
+}
+
+// AppdomeBuild2secureAndroidV2Outputs provides typed access to the environment variable names
+// that appdome-build-2secure-android (v2) exports after a successful run.
+var AppdomeBuild2secureAndroidV2Outputs = appdomeBuild2secureAndroidV2Outputs{
+	AppdomeSecuredApkPath:        "APPDOME_SECURED_APK_PATH",
+	AppdomeSecuredAabPath:        "APPDOME_SECURED_AAB_PATH",
+	AppdomeSecuredSoPath:         "APPDOME_SECURED_SO_PATH",
+	AppdomePrivateSignScriptPath: "APPDOME_PRIVATE_SIGN_SCRIPT_PATH",
+	AppdomeCertificatePath:       "APPDOME_CERTIFICATE_PATH",
+}

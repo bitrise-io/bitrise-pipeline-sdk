@@ -42,3 +42,16 @@ func (b *AndroidSdkAddOnInstallerBuilder) WithValidateChecksum(value string) *An
 	b.Builder.WithInput("validate_checksum", value)
 	return b
 }
+
+// androidSdkAddOnInstallerOutputs holds the names of environment variables published
+// by the android-sdk-add-on-installer step (v0) at run time.
+type androidSdkAddOnInstallerOutputs struct {
+	// AddOnSdkPath is the "Local Path of Addon" output env var.
+	AddOnSdkPath string
+}
+
+// AndroidSdkAddOnInstallerOutputs provides typed access to the environment variable names
+// that android-sdk-add-on-installer (v0) exports after a successful run.
+var AndroidSdkAddOnInstallerOutputs = androidSdkAddOnInstallerOutputs{
+	AddOnSdkPath: "ADD_ON_SDK_PATH",
+}

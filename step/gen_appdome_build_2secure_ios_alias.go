@@ -13,3 +13,8 @@ type AppdomeBuild2secureIosBuilder = AppdomeBuild2secureIosV3Builder
 func AppdomeBuild2secureIos(version ...string) *AppdomeBuild2secureIosV3Builder {
 	return AppdomeBuild2secureIosV3(version...)
 }
+
+// AppdomeBuild2secureIosOutputs provides typed access to the environment variable names
+// published by appdome-build-2secure-ios at the latest major version (v3).
+// For outputs of a specific major version use AppdomeBuild2secureIosV{N}Outputs directly.
+var AppdomeBuild2secureIosOutputs = AppdomeBuild2secureIosV3Outputs

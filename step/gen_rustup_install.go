@@ -42,3 +42,22 @@ func (b *RustupInstallBuilder) WithShowExportedEnvs(value string) *RustupInstall
 	b.Builder.WithInput("show_exported_envs", value)
 	return b
 }
+
+// rustupInstallOutputs holds the names of environment variables published
+// by the rustup-install step (v0) at run time.
+type rustupInstallOutputs struct {
+	// RustupVersion is the "Current `rustup` version" output env var.
+	RustupVersion string
+	// RustcVersion is the "Current `rustc` version" output env var.
+	RustcVersion string
+	// CargoVersion is the "Current `cargo` version" output env var.
+	CargoVersion string
+}
+
+// RustupInstallOutputs provides typed access to the environment variable names
+// that rustup-install (v0) exports after a successful run.
+var RustupInstallOutputs = rustupInstallOutputs{
+	RustupVersion: "RUSTUP_VERSION",
+	RustcVersion:  "RUSTC_VERSION",
+	CargoVersion:  "CARGO_VERSION",
+}

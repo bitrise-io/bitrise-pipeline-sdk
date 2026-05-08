@@ -78,3 +78,19 @@ func (b *MagicPodV0Builder) WithBaseUrl(value string) *MagicPodV0Builder {
 	b.Builder.WithInput("base_url", value)
 	return b
 }
+
+// magicPodV0Outputs holds the names of environment variables published
+// by the magic-pod step (v0) at run time.
+type magicPodV0Outputs struct {
+	// MagicPodTestSucceeded is the "MAGIC_POD_TEST_SUCCEEDED" output env var.
+	MagicPodTestSucceeded string
+	// MagicPodTestResult is the "MAGIC_POD_TEST_RESULT" output env var.
+	MagicPodTestResult string
+}
+
+// MagicPodV0Outputs provides typed access to the environment variable names
+// that magic-pod (v0) exports after a successful run.
+var MagicPodV0Outputs = magicPodV0Outputs{
+	MagicPodTestSucceeded: "MAGIC_POD_TEST_SUCCEEDED",
+	MagicPodTestResult:    "MAGIC_POD_TEST_RESULT",
+}

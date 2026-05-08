@@ -30,3 +30,19 @@ func (b *XcodeBuildVersionBuilder) WithInfoPlistPath(value string) *XcodeBuildVe
 	b.Builder.WithInput("info_plist_path", value)
 	return b
 }
+
+// xcodeBuildVersionOutputs holds the names of environment variables published
+// by the xcode-build-version step (v0) at run time.
+type xcodeBuildVersionOutputs struct {
+	// XbvProjectVersion is the "CFBundleShortVersionString" output env var.
+	XbvProjectVersion string
+	// XbvProjectBuild is the "CFBundleVersion" output env var.
+	XbvProjectBuild string
+}
+
+// XcodeBuildVersionOutputs provides typed access to the environment variable names
+// that xcode-build-version (v0) exports after a successful run.
+var XcodeBuildVersionOutputs = xcodeBuildVersionOutputs{
+	XbvProjectVersion: "XBV_PROJECT_VERSION",
+	XbvProjectBuild:   "XBV_PROJECT_BUILD",
+}

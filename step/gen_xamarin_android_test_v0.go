@@ -58,3 +58,19 @@ func (b *XamarinAndroidTestV0Builder) WithEmulatorSerial(value string) *XamarinA
 	b.Builder.WithInput("emulator_serial", value)
 	return b
 }
+
+// xamarinAndroidTestV0Outputs holds the names of environment variables published
+// by the xamarin-android-test step (v0) at run time.
+type xamarinAndroidTestV0Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// XamarinAndroidTestV0Outputs provides typed access to the environment variable names
+// that xamarin-android-test (v0) exports after a successful run.
+var XamarinAndroidTestV0Outputs = xamarinAndroidTestV0Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

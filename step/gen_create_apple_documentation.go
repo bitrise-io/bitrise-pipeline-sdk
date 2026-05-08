@@ -108,3 +108,16 @@ func (b *CreateAppleDocumentationBuilder) WithUmbrellaHeader(value string) *Crea
 	b.Builder.WithInput("umbrella_header", value)
 	return b
 }
+
+// createAppleDocumentationOutputs holds the names of environment variables published
+// by the create-apple-documentation step (v1) at run time.
+type createAppleDocumentationOutputs struct {
+	// DocumentationPath is the "Path with the generated files" output env var.
+	DocumentationPath string
+}
+
+// CreateAppleDocumentationOutputs provides typed access to the environment variable names
+// that create-apple-documentation (v1) exports after a successful run.
+var CreateAppleDocumentationOutputs = createAppleDocumentationOutputs{
+	DocumentationPath: "DOCUMENTATION_PATH",
+}

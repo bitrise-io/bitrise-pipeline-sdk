@@ -84,3 +84,25 @@ func (b *AppdomeBuild2secureIosV3Builder) WithWorkflowOutputLogs(value string) *
 	b.Builder.WithInput("workflow_output_logs", value)
 	return b
 }
+
+// appdomeBuild2secureIosV3Outputs holds the names of environment variables published
+// by the appdome-build-2secure-ios step (v3) at run time.
+type appdomeBuild2secureIosV3Outputs struct {
+	// AppdomeSecuredIpaPath is the "Secured .ipa file path" output env var.
+	AppdomeSecuredIpaPath string
+	// AppdomePrivateSignScriptPath is the ".sh sign script file path" output env var.
+	AppdomePrivateSignScriptPath string
+	// AppdomeCertificatePath is the "Certified Secure Certificate .pdf file path" output env var.
+	AppdomeCertificatePath string
+	// AppdomeWorkflowLogs is the "Appdome workflow logs file" output env var.
+	AppdomeWorkflowLogs string
+}
+
+// AppdomeBuild2secureIosV3Outputs provides typed access to the environment variable names
+// that appdome-build-2secure-ios (v3) exports after a successful run.
+var AppdomeBuild2secureIosV3Outputs = appdomeBuild2secureIosV3Outputs{
+	AppdomeSecuredIpaPath:        "APPDOME_SECURED_IPA_PATH",
+	AppdomePrivateSignScriptPath: "APPDOME_PRIVATE_SIGN_SCRIPT_PATH",
+	AppdomeCertificatePath:       "APPDOME_CERTIFICATE_PATH",
+	AppdomeWorkflowLogs:          "APPDOME_WORKFLOW_LOGS",
+}

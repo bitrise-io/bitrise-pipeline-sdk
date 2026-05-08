@@ -64,3 +64,19 @@ func (b *XamarinIosTestV2Builder) WithBuildTool(value string) *XamarinIosTestV2B
 	b.Builder.WithInput("build_tool", value)
 	return b
 }
+
+// xamarinIosTestV2Outputs holds the names of environment variables published
+// by the xamarin-ios-test step (v2) at run time.
+type xamarinIosTestV2Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// XamarinIosTestV2Outputs provides typed access to the environment variable names
+// that xamarin-ios-test (v2) exports after a successful run.
+var XamarinIosTestV2Outputs = xamarinIosTestV2Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

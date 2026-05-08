@@ -138,3 +138,37 @@ func (b *GitCloneV5Builder) WithBuildApiToken(value string) *GitCloneV5Builder {
 	b.Builder.WithInput("build_api_token", value)
 	return b
 }
+
+// gitCloneV5Outputs holds the names of environment variables published
+// by the git-clone step (v5) at run time.
+type gitCloneV5Outputs struct {
+	// GitCloneCommitHash is the "Cloned git commit's commit hash" output env var.
+	GitCloneCommitHash string
+	// GitCloneCommitMessageSubject is the "Cloned git commit's message subject" output env var.
+	GitCloneCommitMessageSubject string
+	// GitCloneCommitMessageBody is the "Cloned git commit's message body" output env var.
+	GitCloneCommitMessageBody string
+	// GitCloneCommitCount is the "Cloned git commit counts" output env var.
+	GitCloneCommitCount string
+	// GitCloneCommitAuthorName is the "Cloned git commit's author name" output env var.
+	GitCloneCommitAuthorName string
+	// GitCloneCommitAuthorEmail is the "Cloned git commit's author email address" output env var.
+	GitCloneCommitAuthorEmail string
+	// GitCloneCommitCommiterName is the "Cloned git commit's committer name" output env var.
+	GitCloneCommitCommiterName string
+	// GitCloneCommitCommiterEmail is the "Cloned git commit's committer email" output env var.
+	GitCloneCommitCommiterEmail string
+}
+
+// GitCloneV5Outputs provides typed access to the environment variable names
+// that git-clone (v5) exports after a successful run.
+var GitCloneV5Outputs = gitCloneV5Outputs{
+	GitCloneCommitHash:           "GIT_CLONE_COMMIT_HASH",
+	GitCloneCommitMessageSubject: "GIT_CLONE_COMMIT_MESSAGE_SUBJECT",
+	GitCloneCommitMessageBody:    "GIT_CLONE_COMMIT_MESSAGE_BODY",
+	GitCloneCommitCount:          "GIT_CLONE_COMMIT_COUNT",
+	GitCloneCommitAuthorName:     "GIT_CLONE_COMMIT_AUTHOR_NAME",
+	GitCloneCommitAuthorEmail:    "GIT_CLONE_COMMIT_AUTHOR_EMAIL",
+	GitCloneCommitCommiterName:   "GIT_CLONE_COMMIT_COMMITER_NAME",
+	GitCloneCommitCommiterEmail:  "GIT_CLONE_COMMIT_COMMITER_EMAIL",
+}

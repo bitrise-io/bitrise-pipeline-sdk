@@ -94,3 +94,31 @@ func (b *AppcenterDeployAndroidV1Builder) WithDebug(value string) *AppcenterDepl
 	b.Builder.WithInput("debug", value)
 	return b
 }
+
+// appcenterDeployAndroidV1Outputs holds the names of environment variables published
+// by the appcenter-deploy-android step (v1) at run time.
+type appcenterDeployAndroidV1Outputs struct {
+	// AppcenterDeployStatus is the "Deployment status" output env var.
+	AppcenterDeployStatus string
+	// AppcenterDeployInstallUrl is the "Install page URL" output env var.
+	AppcenterDeployInstallUrl string
+	// AppcenterDeployDownloadUrl is the "Download URL" output env var.
+	AppcenterDeployDownloadUrl string
+	// AppcenterDeployReleaseId is the "Release ID" output env var.
+	AppcenterDeployReleaseId string
+	// AppcenterPublicInstallPageUrl is the "Public install page URL" output env var.
+	AppcenterPublicInstallPageUrl string
+	// AppcenterReleasePageUrl is the "Release Page URL" output env var.
+	AppcenterReleasePageUrl string
+}
+
+// AppcenterDeployAndroidV1Outputs provides typed access to the environment variable names
+// that appcenter-deploy-android (v1) exports after a successful run.
+var AppcenterDeployAndroidV1Outputs = appcenterDeployAndroidV1Outputs{
+	AppcenterDeployStatus:         "APPCENTER_DEPLOY_STATUS",
+	AppcenterDeployInstallUrl:     "APPCENTER_DEPLOY_INSTALL_URL",
+	AppcenterDeployDownloadUrl:    "APPCENTER_DEPLOY_DOWNLOAD_URL",
+	AppcenterDeployReleaseId:      "APPCENTER_DEPLOY_RELEASE_ID",
+	AppcenterPublicInstallPageUrl: "APPCENTER_PUBLIC_INSTALL_PAGE_URL",
+	AppcenterReleasePageUrl:       "APPCENTER_RELEASE_PAGE_URL",
+}

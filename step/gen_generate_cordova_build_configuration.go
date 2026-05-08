@@ -78,3 +78,16 @@ func (b *GenerateCordovaBuildConfigurationBuilder) WithPrivateKeyPassword(value 
 	b.Builder.WithInput("private_key_password", value)
 	return b
 }
+
+// generateCordovaBuildConfigurationOutputs holds the names of environment variables published
+// by the generate-cordova-build-configuration step (v0) at run time.
+type generateCordovaBuildConfigurationOutputs struct {
+	// BitriseCordovaBuildConfiguration is the "The generated build configuration's path" output env var.
+	BitriseCordovaBuildConfiguration string
+}
+
+// GenerateCordovaBuildConfigurationOutputs provides typed access to the environment variable names
+// that generate-cordova-build-configuration (v0) exports after a successful run.
+var GenerateCordovaBuildConfigurationOutputs = generateCordovaBuildConfigurationOutputs{
+	BitriseCordovaBuildConfiguration: "BITRISE_CORDOVA_BUILD_CONFIGURATION",
+}

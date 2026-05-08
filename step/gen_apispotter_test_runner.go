@@ -36,3 +36,19 @@ func (b *ApispotterTestRunnerBuilder) WithAbortBuild(value string) *ApispotterTe
 	b.Builder.WithInput("abort_build", value)
 	return b
 }
+
+// apispotterTestRunnerOutputs holds the names of environment variables published
+// by the apispotter-test-runner step (v0) at run time.
+type apispotterTestRunnerOutputs struct {
+	// AsRunResult is the "Test Group Run Result" output env var.
+	AsRunResult string
+	// AsErrorMessage is the "Error Message" output env var.
+	AsErrorMessage string
+}
+
+// ApispotterTestRunnerOutputs provides typed access to the environment variable names
+// that apispotter-test-runner (v0) exports after a successful run.
+var ApispotterTestRunnerOutputs = apispotterTestRunnerOutputs{
+	AsRunResult:    "AS_RUN_RESULT",
+	AsErrorMessage: "AS_ERROR_MESSAGE",
+}

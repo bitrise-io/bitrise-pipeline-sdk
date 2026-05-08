@@ -42,3 +42,16 @@ func (b *PcloudyAppUploadBuilder) WithPcloudyAccessKey(value string) *PcloudyApp
 	b.Builder.WithInput("pcloudy_access_key", value)
 	return b
 }
+
+// pcloudyAppUploadOutputs holds the names of environment variables published
+// by the pcloudy-app-upload step (v0) at run time.
+type pcloudyAppUploadOutputs struct {
+	// PcloudyAppName is the "Pcloudy Application Name" output env var.
+	PcloudyAppName string
+}
+
+// PcloudyAppUploadOutputs provides typed access to the environment variable names
+// that pcloudy-app-upload (v0) exports after a successful run.
+var PcloudyAppUploadOutputs = pcloudyAppUploadOutputs{
+	PcloudyAppName: "PCLOUDY_APP_NAME",
+}

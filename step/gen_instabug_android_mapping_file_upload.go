@@ -30,3 +30,19 @@ func (b *InstabugAndroidMappingFileUploadBuilder) WithBuildGradlePath(value stri
 	b.Builder.WithInput("build_gradle_path", value)
 	return b
 }
+
+// instabugAndroidMappingFileUploadOutputs holds the names of environment variables published
+// by the instabug-android-mapping-file-upload step (v1) at run time.
+type instabugAndroidMappingFileUploadOutputs struct {
+	// VersionCode is the "Version Code" output env var.
+	VersionCode string
+	// VersionName is the "Version Name" output env var.
+	VersionName string
+}
+
+// InstabugAndroidMappingFileUploadOutputs provides typed access to the environment variable names
+// that instabug-android-mapping-file-upload (v1) exports after a successful run.
+var InstabugAndroidMappingFileUploadOutputs = instabugAndroidMappingFileUploadOutputs{
+	VersionCode: "VERSION_CODE",
+	VersionName: "VERSION_NAME",
+}

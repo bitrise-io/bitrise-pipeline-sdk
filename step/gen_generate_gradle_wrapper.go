@@ -30,3 +30,16 @@ func (b *GenerateGradleWrapperBuilder) WithGradleVersion(value string) *Generate
 	b.Builder.WithInput("gradle_version", value)
 	return b
 }
+
+// generateGradleWrapperOutputs holds the names of environment variables published
+// by the generate-gradle-wrapper step (v0) at run time.
+type generateGradleWrapperOutputs struct {
+	// GradlewPath is the "Gradle Wrapper file path" output env var.
+	GradlewPath string
+}
+
+// GenerateGradleWrapperOutputs provides typed access to the environment variable names
+// that generate-gradle-wrapper (v0) exports after a successful run.
+var GenerateGradleWrapperOutputs = generateGradleWrapperOutputs{
+	GradlewPath: "GRADLEW_PATH",
+}

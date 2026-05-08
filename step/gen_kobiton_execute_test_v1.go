@@ -120,3 +120,19 @@ func (b *KobitonExecuteTestV1Builder) WithLogTypeInput(value string) *KobitonExe
 	b.Builder.WithInput("log_type_input", value)
 	return b
 }
+
+// kobitonExecuteTestV1Outputs holds the names of environment variables published
+// by the kobiton-execute-test step (v1) at run time.
+type kobitonExecuteTestV1Outputs struct {
+	// JobId is the "Executor Job ID" output env var.
+	JobId string
+	// ReportUrl is the "TestNG Report URL" output env var.
+	ReportUrl string
+}
+
+// KobitonExecuteTestV1Outputs provides typed access to the environment variable names
+// that kobiton-execute-test (v1) exports after a successful run.
+var KobitonExecuteTestV1Outputs = kobitonExecuteTestV1Outputs{
+	JobId:     "JOB_ID",
+	ReportUrl: "REPORT_URL",
+}

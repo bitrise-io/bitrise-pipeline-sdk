@@ -18,3 +18,16 @@ func GitCommitChangelog(version ...string) *GitCommitChangelogBuilder {
 	}
 	return &GitCommitChangelogBuilder{Builder: From("git-commit-changelog", v)}
 }
+
+// gitCommitChangelogOutputs holds the names of environment variables published
+// by the git-commit-changelog step (v1) at run time.
+type gitCommitChangelogOutputs struct {
+	// CommitChangelog is the "Environment variable containing the generated commit changelog" output env var.
+	CommitChangelog string
+}
+
+// GitCommitChangelogOutputs provides typed access to the environment variable names
+// that git-commit-changelog (v1) exports after a successful run.
+var GitCommitChangelogOutputs = gitCommitChangelogOutputs{
+	CommitChangelog: "COMMIT_CHANGELOG",
+}

@@ -36,3 +36,19 @@ func (b *InstallMissingAndroidToolsV1Builder) WithUpdateSupportLibraryAndPlaySer
 	b.Builder.WithInput("update_support_library_and_play_services", value)
 	return b
 }
+
+// installMissingAndroidToolsV1Outputs holds the names of environment variables published
+// by the install-missing-android-tools step (v1) at run time.
+type installMissingAndroidToolsV1Outputs struct {
+	// CompileSdkVersions is the "The compileSdkVersions" output env var.
+	CompileSdkVersions string
+	// BuildToolsVersions is the "The buildToolsVersions" output env var.
+	BuildToolsVersions string
+}
+
+// InstallMissingAndroidToolsV1Outputs provides typed access to the environment variable names
+// that install-missing-android-tools (v1) exports after a successful run.
+var InstallMissingAndroidToolsV1Outputs = installMissingAndroidToolsV1Outputs{
+	CompileSdkVersions: "COMPILE_SDK_VERSIONS",
+	BuildToolsVersions: "BUILD_TOOLS_VERSIONS",
+}

@@ -78,3 +78,16 @@ func (b *AppliveryIosV1Builder) WithFilter(value string) *AppliveryIosV1Builder 
 	b.Builder.WithInput("filter", value)
 	return b
 }
+
+// appliveryIosV1Outputs holds the names of environment variables published
+// by the applivery-ios step (v1) at run time.
+type appliveryIosV1Outputs struct {
+	// AppliveryDeployStatus is the "Deployment result: 'success' or 'failed'" output env var.
+	AppliveryDeployStatus string
+}
+
+// AppliveryIosV1Outputs provides typed access to the environment variable names
+// that applivery-ios (v1) exports after a successful run.
+var AppliveryIosV1Outputs = appliveryIosV1Outputs{
+	AppliveryDeployStatus: "APPLIVERY_DEPLOY_STATUS",
+}

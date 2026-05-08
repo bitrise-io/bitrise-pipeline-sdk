@@ -30,3 +30,16 @@ func (b *RestoreGradleCacheV2Builder) WithRetries(value string) *RestoreGradleCa
 	b.Builder.WithInput("retries", value)
 	return b
 }
+
+// restoreGradleCacheV2Outputs holds the names of environment variables published
+// by the restore-gradle-cache step (v2) at run time.
+type restoreGradleCacheV2Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreGradleCacheV2Outputs provides typed access to the environment variable names
+// that restore-gradle-cache (v2) exports after a successful run.
+var RestoreGradleCacheV2Outputs = restoreGradleCacheV2Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

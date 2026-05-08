@@ -48,3 +48,16 @@ func (b *GitTagProjectVersionAndBuildNumberBuilder) WithUpdateTag(value string) 
 	b.Builder.WithInput("update_tag", value)
 	return b
 }
+
+// gitTagProjectVersionAndBuildNumberOutputs holds the names of environment variables published
+// by the git-tag-project-version-and-build-number step (v1) at run time.
+type gitTagProjectVersionAndBuildNumberOutputs struct {
+	// ExampleStepOutput is the "Example Step Output" output env var.
+	ExampleStepOutput string
+}
+
+// GitTagProjectVersionAndBuildNumberOutputs provides typed access to the environment variable names
+// that git-tag-project-version-and-build-number (v1) exports after a successful run.
+var GitTagProjectVersionAndBuildNumberOutputs = gitTagProjectVersionAndBuildNumberOutputs{
+	ExampleStepOutput: "EXAMPLE_STEP_OUTPUT",
+}

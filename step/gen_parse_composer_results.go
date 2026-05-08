@@ -24,3 +24,19 @@ func (b *ParseComposerResultsBuilder) WithResultsDir(value string) *ParseCompose
 	b.Builder.WithInput("results_dir", value)
 	return b
 }
+
+// parseComposerResultsOutputs holds the names of environment variables published
+// by the parse-composer-results step (v0) at run time.
+type parseComposerResultsOutputs struct {
+	// ComposerAllTestCount is the "All test count" output env var.
+	ComposerAllTestCount string
+	// ComposerPassedTestCount is the "Passed test count (excluding skipped)" output env var.
+	ComposerPassedTestCount string
+}
+
+// ParseComposerResultsOutputs provides typed access to the environment variable names
+// that parse-composer-results (v0) exports after a successful run.
+var ParseComposerResultsOutputs = parseComposerResultsOutputs{
+	ComposerAllTestCount:    "COMPOSER_ALL_TEST_COUNT",
+	ComposerPassedTestCount: "COMPOSER_PASSED_TEST_COUNT",
+}

@@ -13,3 +13,8 @@ type CalabashIosUitestBuilder = CalabashIosUitestV1Builder
 func CalabashIosUitest(version ...string) *CalabashIosUitestV1Builder {
 	return CalabashIosUitestV1(version...)
 }
+
+// CalabashIosUitestOutputs provides typed access to the environment variable names
+// published by calabash-ios-uitest at the latest major version (v1).
+// For outputs of a specific major version use CalabashIosUitestV{N}Outputs directly.
+var CalabashIosUitestOutputs = CalabashIosUitestV1Outputs

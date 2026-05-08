@@ -36,3 +36,16 @@ func (b *GenerateXcodeHtmlReportBuilder) WithVerbose(value string) *GenerateXcod
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// generateXcodeHtmlReportOutputs holds the names of environment variables published
+// by the generate-xcode-html-report step (v1) at run time.
+type generateXcodeHtmlReportOutputs struct {
+	// BitriseHtmlReportDir is the "Html test report location" output env var.
+	BitriseHtmlReportDir string
+}
+
+// GenerateXcodeHtmlReportOutputs provides typed access to the environment variable names
+// that generate-xcode-html-report (v1) exports after a successful run.
+var GenerateXcodeHtmlReportOutputs = generateXcodeHtmlReportOutputs{
+	BitriseHtmlReportDir: "BITRISE_HTML_REPORT_DIR",
+}

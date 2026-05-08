@@ -162,3 +162,19 @@ func (b *MaestroCloudUploadBuilder) WithDebugMode(value string) *MaestroCloudUpl
 	b.Builder.WithInput("debug_mode", value)
 	return b
 }
+
+// maestroCloudUploadOutputs holds the names of environment variables published
+// by the maestro-cloud-upload step (v1) at run time.
+type maestroCloudUploadOutputs struct {
+	// MaestroCloudAppBinaryId is the "Maestro Cloud App Binary ID" output env var.
+	MaestroCloudAppBinaryId string
+	// MaestroCloudRunUrl is the "Maestro Cloud Run URL" output env var.
+	MaestroCloudRunUrl string
+}
+
+// MaestroCloudUploadOutputs provides typed access to the environment variable names
+// that maestro-cloud-upload (v1) exports after a successful run.
+var MaestroCloudUploadOutputs = maestroCloudUploadOutputs{
+	MaestroCloudAppBinaryId: "MAESTRO_CLOUD_APP_BINARY_ID",
+	MaestroCloudRunUrl:      "MAESTRO_CLOUD_RUN_URL",
+}

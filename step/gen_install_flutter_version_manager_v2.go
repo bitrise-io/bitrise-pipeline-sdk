@@ -18,3 +18,16 @@ func InstallFlutterVersionManagerV2(version ...string) *InstallFlutterVersionMan
 	}
 	return &InstallFlutterVersionManagerV2Builder{Builder: From("install-flutter-version-manager", v)}
 }
+
+// installFlutterVersionManagerV2Outputs holds the names of environment variables published
+// by the install-flutter-version-manager step (v2) at run time.
+type installFlutterVersionManagerV2Outputs struct {
+	// FvmFlutterVersion is the "Flutter version" output env var.
+	FvmFlutterVersion string
+}
+
+// InstallFlutterVersionManagerV2Outputs provides typed access to the environment variable names
+// that install-flutter-version-manager (v2) exports after a successful run.
+var InstallFlutterVersionManagerV2Outputs = installFlutterVersionManagerV2Outputs{
+	FvmFlutterVersion: "FVM_FLUTTER_VERSION",
+}

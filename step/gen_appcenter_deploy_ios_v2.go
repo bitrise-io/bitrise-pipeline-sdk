@@ -100,3 +100,31 @@ func (b *AppcenterDeployIosV2Builder) WithAllDistributionGroups(value string) *A
 	b.Builder.WithInput("all_distribution_groups", value)
 	return b
 }
+
+// appcenterDeployIosV2Outputs holds the names of environment variables published
+// by the appcenter-deploy-ios step (v2) at run time.
+type appcenterDeployIosV2Outputs struct {
+	// AppcenterDeployStatus is the "Deployment status" output env var.
+	AppcenterDeployStatus string
+	// AppcenterDeployInstallUrl is the "Install page URL" output env var.
+	AppcenterDeployInstallUrl string
+	// AppcenterDeployDownloadUrl is the "Download URL" output env var.
+	AppcenterDeployDownloadUrl string
+	// AppcenterPublicInstallPageUrl is the "Public install page URL" output env var.
+	AppcenterPublicInstallPageUrl string
+	// AppcenterPublicInstallPageUrls is the "Comma-separated public install pages by groups" output env var.
+	AppcenterPublicInstallPageUrls string
+	// AppcenterDeployReleaseId is the "Release ID" output env var.
+	AppcenterDeployReleaseId string
+}
+
+// AppcenterDeployIosV2Outputs provides typed access to the environment variable names
+// that appcenter-deploy-ios (v2) exports after a successful run.
+var AppcenterDeployIosV2Outputs = appcenterDeployIosV2Outputs{
+	AppcenterDeployStatus:          "APPCENTER_DEPLOY_STATUS",
+	AppcenterDeployInstallUrl:      "APPCENTER_DEPLOY_INSTALL_URL",
+	AppcenterDeployDownloadUrl:     "APPCENTER_DEPLOY_DOWNLOAD_URL",
+	AppcenterPublicInstallPageUrl:  "APPCENTER_PUBLIC_INSTALL_PAGE_URL",
+	AppcenterPublicInstallPageUrls: "APPCENTER_PUBLIC_INSTALL_PAGE_URLS",
+	AppcenterDeployReleaseId:       "APPCENTER_DEPLOY_RELEASE_ID",
+}

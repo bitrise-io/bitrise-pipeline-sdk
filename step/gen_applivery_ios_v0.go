@@ -72,3 +72,16 @@ func (b *AppliveryIosV0Builder) WithUploadCodeSigning(value string) *AppliveryIo
 	b.Builder.WithInput("uploadCodeSigning", value)
 	return b
 }
+
+// appliveryIosV0Outputs holds the names of environment variables published
+// by the applivery-ios step (v0) at run time.
+type appliveryIosV0Outputs struct {
+	// AppliveryDeployStatus is the "Deployment result: 'success' or 'failed'" output env var.
+	AppliveryDeployStatus string
+}
+
+// AppliveryIosV0Outputs provides typed access to the environment variable names
+// that applivery-ios (v0) exports after a successful run.
+var AppliveryIosV0Outputs = appliveryIosV0Outputs{
+	AppliveryDeployStatus: "APPLIVERY_DEPLOY_STATUS",
+}

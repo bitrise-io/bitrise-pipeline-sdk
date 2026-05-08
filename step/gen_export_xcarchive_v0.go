@@ -66,3 +66,22 @@ func (b *ExportXcarchiveV0Builder) WithLegacyExportProvisioningProfileName(value
 	b.Builder.WithInput("legacy_export_provisioning_profile_name", value)
 	return b
 }
+
+// exportXcarchiveV0Outputs holds the names of environment variables published
+// by the export-xcarchive step (v0) at run time.
+type exportXcarchiveV0Outputs struct {
+	// BitriseIpaPath is the "The created iOS or tvOS .ipa file's path." output env var.
+	BitriseIpaPath string
+	// BitriseDsymPath is the "The created iOS or tvOS .dSYM zip file's path." output env var.
+	BitriseDsymPath string
+	// BitriseIdedistributionLogsPath is the "Path to the xcdistributionlogs zip" output env var.
+	BitriseIdedistributionLogsPath string
+}
+
+// ExportXcarchiveV0Outputs provides typed access to the environment variable names
+// that export-xcarchive (v0) exports after a successful run.
+var ExportXcarchiveV0Outputs = exportXcarchiveV0Outputs{
+	BitriseIpaPath:                 "BITRISE_IPA_PATH",
+	BitriseDsymPath:                "BITRISE_DSYM_PATH",
+	BitriseIdedistributionLogsPath: "BITRISE_IDEDISTRIBUTION_LOGS_PATH",
+}

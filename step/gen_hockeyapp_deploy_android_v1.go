@@ -96,3 +96,34 @@ func (b *HockeyappDeployAndroidV1Builder) WithRepositoryUrl(value string) *Hocke
 	b.Builder.WithInput("repository_url", value)
 	return b
 }
+
+// hockeyappDeployAndroidV1Outputs holds the names of environment variables published
+// by the hockeyapp-deploy-android step (v1) at run time.
+type hockeyappDeployAndroidV1Outputs struct {
+	// HockeyappDeployStatus is the "Deployment result: 'success' or 'failed'" output env var.
+	HockeyappDeployStatus string
+	// HockeyappDeployPublicUrl is the "Public URL of the newly deployed version" output env var.
+	HockeyappDeployPublicUrl string
+	// HockeyappDeployBuildUrl is the "URL of the HockeyApp build" output env var.
+	HockeyappDeployBuildUrl string
+	// HockeyappDeployConfigUrl is the "URL of the HockeyApp config view" output env var.
+	HockeyappDeployConfigUrl string
+	// HockeyappDeployPublicUrlList is the "List of Public URLs of the newly deployed version" output env var.
+	HockeyappDeployPublicUrlList string
+	// HockeyappDeployBuildUrlList is the "List of HockeyApp build URLs" output env var.
+	HockeyappDeployBuildUrlList string
+	// HockeyappDeployConfigUrlList is the "List of HockeyApp config view URLs" output env var.
+	HockeyappDeployConfigUrlList string
+}
+
+// HockeyappDeployAndroidV1Outputs provides typed access to the environment variable names
+// that hockeyapp-deploy-android (v1) exports after a successful run.
+var HockeyappDeployAndroidV1Outputs = hockeyappDeployAndroidV1Outputs{
+	HockeyappDeployStatus:        "HOCKEYAPP_DEPLOY_STATUS",
+	HockeyappDeployPublicUrl:     "HOCKEYAPP_DEPLOY_PUBLIC_URL",
+	HockeyappDeployBuildUrl:      "HOCKEYAPP_DEPLOY_BUILD_URL",
+	HockeyappDeployConfigUrl:     "HOCKEYAPP_DEPLOY_CONFIG_URL",
+	HockeyappDeployPublicUrlList: "HOCKEYAPP_DEPLOY_PUBLIC_URL_LIST",
+	HockeyappDeployBuildUrlList:  "HOCKEYAPP_DEPLOY_BUILD_URL_LIST",
+	HockeyappDeployConfigUrlList: "HOCKEYAPP_DEPLOY_CONFIG_URL_LIST",
+}

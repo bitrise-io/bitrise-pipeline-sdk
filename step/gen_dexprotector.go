@@ -102,3 +102,19 @@ func (b *DexprotectorBuilder) WithVerbose(value string) *DexprotectorBuilder {
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// dexprotectorOutputs holds the names of environment variables published
+// by the dexprotector step (v1) at run time.
+type dexprotectorOutputs struct {
+	// DexprotectorProtectedAppFile is the "Path to the protected app file" output env var.
+	DexprotectorProtectedAppFile string
+	// DexprotectorLogFile is the "Path to the protection build log file" output env var.
+	DexprotectorLogFile string
+}
+
+// DexprotectorOutputs provides typed access to the environment variable names
+// that dexprotector (v1) exports after a successful run.
+var DexprotectorOutputs = dexprotectorOutputs{
+	DexprotectorProtectedAppFile: "DEXPROTECTOR_PROTECTED_APP_FILE",
+	DexprotectorLogFile:          "DEXPROTECTOR_LOG_FILE",
+}

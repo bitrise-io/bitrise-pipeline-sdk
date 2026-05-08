@@ -24,3 +24,22 @@ func (b *GetFlutterVersionBuilder) WithProjectLocation(value string) *GetFlutter
 	b.Builder.WithInput("project_location", value)
 	return b
 }
+
+// getFlutterVersionOutputs holds the names of environment variables published
+// by the get-flutter-version step (v0) at run time.
+type getFlutterVersionOutputs struct {
+	// FlutterPubspecVersion is the "Flutter version that is defined by pubspec" output env var.
+	FlutterPubspecVersion string
+	// FlutterPubspecYamlVersion is the "Flutter version that is defined by pubspec.yaml" output env var.
+	FlutterPubspecYamlVersion string
+	// FlutterPubspecLockVersion is the "Flutter version that is defined by pubspec.lock" output env var.
+	FlutterPubspecLockVersion string
+}
+
+// GetFlutterVersionOutputs provides typed access to the environment variable names
+// that get-flutter-version (v0) exports after a successful run.
+var GetFlutterVersionOutputs = getFlutterVersionOutputs{
+	FlutterPubspecVersion:     "FLUTTER_PUBSPEC_VERSION",
+	FlutterPubspecYamlVersion: "FLUTTER_PUBSPEC_YAML_VERSION",
+	FlutterPubspecLockVersion: "FLUTTER_PUBSPEC_LOCK_VERSION",
+}

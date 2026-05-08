@@ -13,3 +13,8 @@ type ExportXcarchiveBuilder = ExportXcarchiveV4Builder
 func ExportXcarchive(version ...string) *ExportXcarchiveV4Builder {
 	return ExportXcarchiveV4(version...)
 }
+
+// ExportXcarchiveOutputs provides typed access to the environment variable names
+// published by export-xcarchive at the latest major version (v4).
+// For outputs of a specific major version use ExportXcarchiveV{N}Outputs directly.
+var ExportXcarchiveOutputs = ExportXcarchiveV4Outputs

@@ -216,3 +216,40 @@ func (b *XcodeArchiveV5Builder) WithVerboseLog(value string) *XcodeArchiveV5Buil
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// xcodeArchiveV5Outputs holds the names of environment variables published
+// by the xcode-archive step (v5) at run time.
+type xcodeArchiveV5Outputs struct {
+	// BitriseIpaPath is the ".ipa file path" output env var.
+	BitriseIpaPath string
+	// BitriseAppDirPath is the ".app directory path" output env var.
+	BitriseAppDirPath string
+	// BitriseDsymDirPath is the "The created .dSYM dir's path" output env var.
+	BitriseDsymDirPath string
+	// BitriseDsymPath is the "The created .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseXcarchivePath is the ".xcarchive file path" output env var.
+	BitriseXcarchivePath string
+	// BitriseXcarchiveZipPath is the ".xcarchive.zip path" output env var.
+	BitriseXcarchiveZipPath string
+	// BitriseXcodebuildArchiveLogPath is the "`xcodebuild archive` command log file path" output env var.
+	BitriseXcodebuildArchiveLogPath string
+	// BitriseXcodebuildExportArchiveLogPath is the "`xcodebuild -exportArchive` command log file path" output env var.
+	BitriseXcodebuildExportArchiveLogPath string
+	// BitriseIdedistributionLogsPath is the "Path to the xcdistributionlogs" output env var.
+	BitriseIdedistributionLogsPath string
+}
+
+// XcodeArchiveV5Outputs provides typed access to the environment variable names
+// that xcode-archive (v5) exports after a successful run.
+var XcodeArchiveV5Outputs = xcodeArchiveV5Outputs{
+	BitriseIpaPath:                        "BITRISE_IPA_PATH",
+	BitriseAppDirPath:                     "BITRISE_APP_DIR_PATH",
+	BitriseDsymDirPath:                    "BITRISE_DSYM_DIR_PATH",
+	BitriseDsymPath:                       "BITRISE_DSYM_PATH",
+	BitriseXcarchivePath:                  "BITRISE_XCARCHIVE_PATH",
+	BitriseXcarchiveZipPath:               "BITRISE_XCARCHIVE_ZIP_PATH",
+	BitriseXcodebuildArchiveLogPath:       "BITRISE_XCODEBUILD_ARCHIVE_LOG_PATH",
+	BitriseXcodebuildExportArchiveLogPath: "BITRISE_XCODEBUILD_EXPORT_ARCHIVE_LOG_PATH",
+	BitriseIdedistributionLogsPath:        "BITRISE_IDEDISTRIBUTION_LOGS_PATH",
+}

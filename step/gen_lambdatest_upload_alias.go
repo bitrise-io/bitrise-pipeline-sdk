@@ -13,3 +13,8 @@ type LambdatestUploadBuilder = LambdatestUploadV4Builder
 func LambdatestUpload(version ...string) *LambdatestUploadV4Builder {
 	return LambdatestUploadV4(version...)
 }
+
+// LambdatestUploadOutputs provides typed access to the environment variable names
+// published by lambdatest-upload at the latest major version (v4).
+// For outputs of a specific major version use LambdatestUploadV{N}Outputs directly.
+var LambdatestUploadOutputs = LambdatestUploadV4Outputs

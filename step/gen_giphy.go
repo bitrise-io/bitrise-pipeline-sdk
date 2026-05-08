@@ -30,3 +30,16 @@ func (b *GiphyBuilder) WithApiKey(value string) *GiphyBuilder {
 	b.Builder.WithInput("api_key", value)
 	return b
 }
+
+// giphyOutputs holds the names of environment variables published
+// by the giphy step (v0) at run time.
+type giphyOutputs struct {
+	// GifUrl is the "GIF URL" output env var.
+	GifUrl string
+}
+
+// GiphyOutputs provides typed access to the environment variable names
+// that giphy (v0) exports after a successful run.
+var GiphyOutputs = giphyOutputs{
+	GifUrl: "GIF_URL",
+}

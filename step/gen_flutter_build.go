@@ -96,3 +96,34 @@ func (b *FlutterBuildBuilder) WithAndroidBundleOutputPattern(value string) *Flut
 	b.Builder.WithInput("android_bundle_output_pattern", value)
 	return b
 }
+
+// flutterBuildOutputs holds the names of environment variables published
+// by the flutter-build step (v0) at run time.
+type flutterBuildOutputs struct {
+	// BitriseApkPath is the "The created .apk file's path" output env var.
+	BitriseApkPath string
+	// BitriseApkPathList is the "All created .apk file's path list" output env var.
+	BitriseApkPathList string
+	// BitriseAppDirPath is the "The generated `.app` directory" output env var.
+	BitriseAppDirPath string
+	// BitriseXcarchivePath is the "The generated `.xcarchive` directory" output env var.
+	BitriseXcarchivePath string
+	// BitriseXcarchiveZipPath is the "The generated `.xcarchive` directory compressed as a ZIP archive" output env var.
+	BitriseXcarchiveZipPath string
+	// BitriseAabPathList is the "List of the generated AAB file paths" output env var.
+	BitriseAabPathList string
+	// BitriseAabPath is the "Path of the generated AAB" output env var.
+	BitriseAabPath string
+}
+
+// FlutterBuildOutputs provides typed access to the environment variable names
+// that flutter-build (v0) exports after a successful run.
+var FlutterBuildOutputs = flutterBuildOutputs{
+	BitriseApkPath:          "BITRISE_APK_PATH",
+	BitriseApkPathList:      "BITRISE_APK_PATH_LIST",
+	BitriseAppDirPath:       "BITRISE_APP_DIR_PATH",
+	BitriseXcarchivePath:    "BITRISE_XCARCHIVE_PATH",
+	BitriseXcarchiveZipPath: "BITRISE_XCARCHIVE_ZIP_PATH",
+	BitriseAabPathList:      "BITRISE_AAB_PATH_LIST",
+	BitriseAabPath:          "BITRISE_AAB_PATH",
+}

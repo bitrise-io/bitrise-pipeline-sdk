@@ -13,3 +13,8 @@ type ExportXcarchiveMacBuilder = ExportXcarchiveMacV1Builder
 func ExportXcarchiveMac(version ...string) *ExportXcarchiveMacV1Builder {
 	return ExportXcarchiveMacV1(version...)
 }
+
+// ExportXcarchiveMacOutputs provides typed access to the environment variable names
+// published by export-xcarchive-mac at the latest major version (v1).
+// For outputs of a specific major version use ExportXcarchiveMacV{N}Outputs directly.
+var ExportXcarchiveMacOutputs = ExportXcarchiveMacV1Outputs

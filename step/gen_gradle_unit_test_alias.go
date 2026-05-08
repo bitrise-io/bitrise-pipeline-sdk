@@ -13,3 +13,8 @@ type GradleUnitTestBuilder = GradleUnitTestV2Builder
 func GradleUnitTest(version ...string) *GradleUnitTestV2Builder {
 	return GradleUnitTestV2(version...)
 }
+
+// GradleUnitTestOutputs provides typed access to the environment variable names
+// published by gradle-unit-test at the latest major version (v2).
+// For outputs of a specific major version use GradleUnitTestV{N}Outputs directly.
+var GradleUnitTestOutputs = GradleUnitTestV2Outputs

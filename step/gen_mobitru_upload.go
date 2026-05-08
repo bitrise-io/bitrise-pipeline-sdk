@@ -54,3 +54,16 @@ func (b *MobitruUploadBuilder) WithArtifactAlias(value string) *MobitruUploadBui
 	b.Builder.WithInput("artifact_alias", value)
 	return b
 }
+
+// mobitruUploadOutputs holds the names of environment variables published
+// by the mobitru-upload step (v1) at run time.
+type mobitruUploadOutputs struct {
+	// MobitruArtifactId is the "Mobitru artifact ID" output env var.
+	MobitruArtifactId string
+}
+
+// MobitruUploadOutputs provides typed access to the environment variable names
+// that mobitru-upload (v1) exports after a successful run.
+var MobitruUploadOutputs = mobitruUploadOutputs{
+	MobitruArtifactId: "MOBITRU_ARTIFACT_ID",
+}

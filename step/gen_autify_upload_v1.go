@@ -48,3 +48,19 @@ func (b *AutifyUploadV1Builder) WithAutifyCliInstallerUrl(value string) *AutifyU
 	b.Builder.WithInput("autify_cli_installer_url", value)
 	return b
 }
+
+// autifyUploadV1Outputs holds the names of environment variables published
+// by the autify-upload step (v1) at run time.
+type autifyUploadV1Outputs struct {
+	// AutifyBuildId is the "Uploaded build id on Autify for Mobile" output env var.
+	AutifyBuildId string
+	// AutifyUploadExitCode is the "Exit code of the step" output env var.
+	AutifyUploadExitCode string
+}
+
+// AutifyUploadV1Outputs provides typed access to the environment variable names
+// that autify-upload (v1) exports after a successful run.
+var AutifyUploadV1Outputs = autifyUploadV1Outputs{
+	AutifyBuildId:        "AUTIFY_BUILD_ID",
+	AutifyUploadExitCode: "AUTIFY_UPLOAD_EXIT_CODE",
+}

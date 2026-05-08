@@ -102,3 +102,16 @@ func (b *UpdateGitopsRepositoryV2Builder) WithFiles(value string) *UpdateGitopsR
 	b.Builder.WithInput("files", value)
 	return b
 }
+
+// updateGitopsRepositoryV2Outputs holds the names of environment variables published
+// by the update-gitops-repository step (v2) at run time.
+type updateGitopsRepositoryV2Outputs struct {
+	// PrUrl is the "URL of opened pull request" output env var.
+	PrUrl string
+}
+
+// UpdateGitopsRepositoryV2Outputs provides typed access to the environment variable names
+// that update-gitops-repository (v2) exports after a successful run.
+var UpdateGitopsRepositoryV2Outputs = updateGitopsRepositoryV2Outputs{
+	PrUrl: "PR_URL",
+}

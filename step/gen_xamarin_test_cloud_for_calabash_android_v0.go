@@ -64,3 +64,19 @@ func (b *XamarinTestCloudForCalabashAndroidV0Builder) WithOtherParameters(value 
 	b.Builder.WithInput("other_parameters", value)
 	return b
 }
+
+// xamarinTestCloudForCalabashAndroidV0Outputs holds the names of environment variables published
+// by the xamarin-test-cloud-for-calabash-android step (v0) at run time.
+type xamarinTestCloudForCalabashAndroidV0Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// XamarinTestCloudForCalabashAndroidV0Outputs provides typed access to the environment variable names
+// that xamarin-test-cloud-for-calabash-android (v0) exports after a successful run.
+var XamarinTestCloudForCalabashAndroidV0Outputs = xamarinTestCloudForCalabashAndroidV0Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

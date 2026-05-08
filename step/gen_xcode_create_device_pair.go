@@ -48,3 +48,22 @@ func (b *XcodeCreateDevicePairBuilder) WithDeleteBlockingPairs(value string) *Xc
 	b.Builder.WithInput("delete_blocking_pairs", value)
 	return b
 }
+
+// xcodeCreateDevicePairOutputs holds the names of environment variables published
+// by the xcode-create-device-pair step (v1) at run time.
+type xcodeCreateDevicePairOutputs struct {
+	// BitriseDevicePairUdid is the "Device Pair UDID" output env var.
+	BitriseDevicePairUdid string
+	// BitriseIphoneUdid is the "iPhone Simulator UDID" output env var.
+	BitriseIphoneUdid string
+	// BitriseWatchUdid is the "Watch Simulator UDID" output env var.
+	BitriseWatchUdid string
+}
+
+// XcodeCreateDevicePairOutputs provides typed access to the environment variable names
+// that xcode-create-device-pair (v1) exports after a successful run.
+var XcodeCreateDevicePairOutputs = xcodeCreateDevicePairOutputs{
+	BitriseDevicePairUdid: "BITRISE_DEVICE_PAIR_UDID",
+	BitriseIphoneUdid:     "BITRISE_IPHONE_UDID",
+	BitriseWatchUdid:      "BITRISE_WATCH_UDID",
+}

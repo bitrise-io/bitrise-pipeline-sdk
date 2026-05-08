@@ -13,3 +13,8 @@ type GooglePlayDeployBuilder = GooglePlayDeployV3Builder
 func GooglePlayDeploy(version ...string) *GooglePlayDeployV3Builder {
 	return GooglePlayDeployV3(version...)
 }
+
+// GooglePlayDeployOutputs provides typed access to the environment variable names
+// published by google-play-deploy at the latest major version (v3).
+// For outputs of a specific major version use GooglePlayDeployV{N}Outputs directly.
+var GooglePlayDeployOutputs = GooglePlayDeployV3Outputs

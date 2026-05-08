@@ -88,3 +88,22 @@ func (b *XamarinTestCloudForAndroidV1Builder) WithOtherParameters(value string) 
 	b.Builder.WithInput("other_parameters", value)
 	return b
 }
+
+// xamarinTestCloudForAndroidV1Outputs holds the names of environment variables published
+// by the xamarin-test-cloud-for-android step (v1) at run time.
+type xamarinTestCloudForAndroidV1Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+	// BitriseXamarinTestToRunId is the "Test to run ID." output env var.
+	BitriseXamarinTestToRunId string
+}
+
+// XamarinTestCloudForAndroidV1Outputs provides typed access to the environment variable names
+// that xamarin-test-cloud-for-android (v1) exports after a successful run.
+var XamarinTestCloudForAndroidV1Outputs = xamarinTestCloudForAndroidV1Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+	BitriseXamarinTestToRunId:         "BITRISE_XAMARIN_TEST_TO_RUN_ID",
+}

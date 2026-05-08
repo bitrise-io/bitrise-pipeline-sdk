@@ -66,3 +66,16 @@ func (b *AndroidUnitTestV1Builder) WithQuarantinedTests(value string) *AndroidUn
 	b.Builder.WithInput("quarantined_tests", value)
 	return b
 }
+
+// androidUnitTestV1Outputs holds the names of environment variables published
+// by the android-unit-test step (v1) at run time.
+type androidUnitTestV1Outputs struct {
+	// BitriseFlakyTestCases is the "List of flaky test cases" output env var.
+	BitriseFlakyTestCases string
+}
+
+// AndroidUnitTestV1Outputs provides typed access to the environment variable names
+// that android-unit-test (v1) exports after a successful run.
+var AndroidUnitTestV1Outputs = androidUnitTestV1Outputs{
+	BitriseFlakyTestCases: "BITRISE_FLAKY_TEST_CASES",
+}

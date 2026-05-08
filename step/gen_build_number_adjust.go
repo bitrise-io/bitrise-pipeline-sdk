@@ -40,3 +40,16 @@ func (b *BuildNumberAdjustBuilder) WithDecrease(value string) *BuildNumberAdjust
 	b.Builder.WithInput("decrease", value)
 	return b
 }
+
+// buildNumberAdjustOutputs holds the names of environment variables published
+// by the build-number-adjust step (v1) at run time.
+type buildNumberAdjustOutputs struct {
+	// BitriseBuildNumber is the "Adjusted BITRISE_BUILD_NUMBER value" output env var.
+	BitriseBuildNumber string
+}
+
+// BuildNumberAdjustOutputs provides typed access to the environment variable names
+// that build-number-adjust (v1) exports after a successful run.
+var BuildNumberAdjustOutputs = buildNumberAdjustOutputs{
+	BitriseBuildNumber: "BITRISE_BUILD_NUMBER",
+}

@@ -60,3 +60,31 @@ func (b *FlutterBuildPatrolBuilder) WithIsVerboseMode(value string) *FlutterBuil
 	b.Builder.WithInput("is_verbose_mode", value)
 	return b
 }
+
+// flutterBuildPatrolOutputs holds the names of environment variables published
+// by the flutter-build-patrol step (v0) at run time.
+type flutterBuildPatrolOutputs struct {
+	// AndroidInstrumentationApkPath is the "Patrol Instrumentation APK Path" output env var.
+	AndroidInstrumentationApkPath string
+	// AndroidApkPath is the "Patrol APK Path" output env var.
+	AndroidApkPath string
+	// IosAppUnderTest is the "iOS App Under Test Path" output env var.
+	IosAppUnderTest string
+	// IosTestInstrumentationApp is the "iOS Test Instrumentation App Path" output env var.
+	IosTestInstrumentationApp string
+	// IosRunnerFile is the "iOS xctestrun File Path" output env var.
+	IosRunnerFile string
+	// IosBuildExports is the "iOS Build Exports Zip Path" output env var.
+	IosBuildExports string
+}
+
+// FlutterBuildPatrolOutputs provides typed access to the environment variable names
+// that flutter-build-patrol (v0) exports after a successful run.
+var FlutterBuildPatrolOutputs = flutterBuildPatrolOutputs{
+	AndroidInstrumentationApkPath: "ANDROID_INSTRUMENTATION_APK_PATH",
+	AndroidApkPath:                "ANDROID_APK_PATH",
+	IosAppUnderTest:               "IOS_APP_UNDER_TEST",
+	IosTestInstrumentationApp:     "IOS_TEST_INSTRUMENTATION_APP",
+	IosRunnerFile:                 "IOS_RUNNER_FILE",
+	IosBuildExports:               "IOS_BUILD_EXPORTS",
+}

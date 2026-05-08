@@ -13,3 +13,8 @@ type DeviceCloudForMaestroBuilder = DeviceCloudForMaestroV1Builder
 func DeviceCloudForMaestro(version ...string) *DeviceCloudForMaestroV1Builder {
 	return DeviceCloudForMaestroV1(version...)
 }
+
+// DeviceCloudForMaestroOutputs provides typed access to the environment variable names
+// published by device-cloud-for-maestro at the latest major version (v1).
+// For outputs of a specific major version use DeviceCloudForMaestroV{N}Outputs directly.
+var DeviceCloudForMaestroOutputs = DeviceCloudForMaestroV1Outputs

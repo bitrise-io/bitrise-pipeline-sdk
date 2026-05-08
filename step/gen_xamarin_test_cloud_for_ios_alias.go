@@ -17,3 +17,8 @@ type XamarinTestCloudForIosBuilder = XamarinTestCloudForIosV2Builder
 func XamarinTestCloudForIos(version ...string) *XamarinTestCloudForIosV2Builder {
 	return XamarinTestCloudForIosV2(version...)
 }
+
+// XamarinTestCloudForIosOutputs provides typed access to the environment variable names
+// published by xamarin-test-cloud-for-ios at the latest major version (v2).
+// For outputs of a specific major version use XamarinTestCloudForIosV{N}Outputs directly.
+var XamarinTestCloudForIosOutputs = XamarinTestCloudForIosV2Outputs

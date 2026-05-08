@@ -30,3 +30,16 @@ func (b *GenerateChangelogBuilder) WithWorkingDir(value string) *GenerateChangel
 	b.Builder.WithInput("working_dir", value)
 	return b
 }
+
+// generateChangelogOutputs holds the names of environment variables published
+// by the generate-changelog step (v0) at run time.
+type generateChangelogOutputs struct {
+	// BitriseChangelog is the "Bitrise changelog content" output env var.
+	BitriseChangelog string
+}
+
+// GenerateChangelogOutputs provides typed access to the environment variable names
+// that generate-changelog (v0) exports after a successful run.
+var GenerateChangelogOutputs = generateChangelogOutputs{
+	BitriseChangelog: "BITRISE_CHANGELOG",
+}

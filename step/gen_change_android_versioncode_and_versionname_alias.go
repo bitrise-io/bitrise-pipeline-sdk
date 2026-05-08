@@ -13,3 +13,8 @@ type ChangeAndroidVersioncodeAndVersionnameBuilder = ChangeAndroidVersioncodeAnd
 func ChangeAndroidVersioncodeAndVersionname(version ...string) *ChangeAndroidVersioncodeAndVersionnameV1Builder {
 	return ChangeAndroidVersioncodeAndVersionnameV1(version...)
 }
+
+// ChangeAndroidVersioncodeAndVersionnameOutputs provides typed access to the environment variable names
+// published by change-android-versioncode-and-versionname at the latest major version (v1).
+// For outputs of a specific major version use ChangeAndroidVersioncodeAndVersionnameV{N}Outputs directly.
+var ChangeAndroidVersioncodeAndVersionnameOutputs = ChangeAndroidVersioncodeAndVersionnameV1Outputs

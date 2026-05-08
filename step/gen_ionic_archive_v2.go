@@ -96,3 +96,40 @@ func (b *IonicArchiveV2Builder) WithCacheLocalDeps(value string) *IonicArchiveV2
 	b.Builder.WithInput("cache_local_deps", value)
 	return b
 }
+
+// ionicArchiveV2Outputs holds the names of environment variables published
+// by the ionic-archive step (v2) at run time.
+type ionicArchiveV2Outputs struct {
+	// BitriseIpaPath is the "The created ios .ipa file's path" output env var.
+	BitriseIpaPath string
+	// BitriseAppDirPath is the "The created ios .app dir's path" output env var.
+	BitriseAppDirPath string
+	// BitriseAppPath is the "The created ios .app.zip file's path" output env var.
+	BitriseAppPath string
+	// BitriseDsymDirPath is the "The created ios .dSYM dir's path" output env var.
+	BitriseDsymDirPath string
+	// BitriseDsymPath is the "The created ios .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseApkPath is the "The created android .apk file's path" output env var.
+	BitriseApkPath string
+	// BitriseApkPathList is the "The created android .apk file paths (separated via |)" output env var.
+	BitriseApkPathList string
+	// BitriseAabPath is the "Path of the generated AAB" output env var.
+	BitriseAabPath string
+	// BitriseAabPathList is the "List of the generated AAB paths" output env var.
+	BitriseAabPathList string
+}
+
+// IonicArchiveV2Outputs provides typed access to the environment variable names
+// that ionic-archive (v2) exports after a successful run.
+var IonicArchiveV2Outputs = ionicArchiveV2Outputs{
+	BitriseIpaPath:     "BITRISE_IPA_PATH",
+	BitriseAppDirPath:  "BITRISE_APP_DIR_PATH",
+	BitriseAppPath:     "BITRISE_APP_PATH",
+	BitriseDsymDirPath: "BITRISE_DSYM_DIR_PATH",
+	BitriseDsymPath:    "BITRISE_DSYM_PATH",
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseApkPathList: "BITRISE_APK_PATH_LIST",
+	BitriseAabPath:     "BITRISE_AAB_PATH",
+	BitriseAabPathList: "BITRISE_AAB_PATH_LIST",
+}

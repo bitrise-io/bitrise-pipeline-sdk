@@ -13,3 +13,8 @@ type SignApkBuilder = SignApkV2Builder
 func SignApk(version ...string) *SignApkV2Builder {
 	return SignApkV2(version...)
 }
+
+// SignApkOutputs provides typed access to the environment variable names
+// published by sign-apk at the latest major version (v2).
+// For outputs of a specific major version use SignApkV{N}Outputs directly.
+var SignApkOutputs = SignApkV2Outputs

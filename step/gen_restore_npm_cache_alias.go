@@ -13,3 +13,8 @@ type RestoreNpmCacheBuilder = RestoreNpmCacheV3Builder
 func RestoreNpmCache(version ...string) *RestoreNpmCacheV3Builder {
 	return RestoreNpmCacheV3(version...)
 }
+
+// RestoreNpmCacheOutputs provides typed access to the environment variable names
+// published by restore-npm-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreNpmCacheV{N}Outputs directly.
+var RestoreNpmCacheOutputs = RestoreNpmCacheV3Outputs

@@ -120,3 +120,16 @@ func (b *UploadGradleGithubDependenciesBuilder) WithGithubRepo(value string) *Up
 	b.Builder.WithInput("github_repo", value)
 	return b
 }
+
+// uploadGradleGithubDependenciesOutputs holds the names of environment variables published
+// by the upload-gradle-github-dependencies step (v0) at run time.
+type uploadGradleGithubDependenciesOutputs struct {
+	// GithubDependencyGraph is the "Path to Github dependency graph" output env var.
+	GithubDependencyGraph string
+}
+
+// UploadGradleGithubDependenciesOutputs provides typed access to the environment variable names
+// that upload-gradle-github-dependencies (v0) exports after a successful run.
+var UploadGradleGithubDependenciesOutputs = uploadGradleGithubDependenciesOutputs{
+	GithubDependencyGraph: "GITHUB_DEPENDENCY_GRAPH",
+}

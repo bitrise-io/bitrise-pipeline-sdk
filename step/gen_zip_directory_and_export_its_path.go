@@ -30,3 +30,16 @@ func (b *ZipDirectoryAndExportItsPathBuilder) WithIncludeDirectory(value string)
 	b.Builder.WithInput("include_directory", value)
 	return b
 }
+
+// zipDirectoryAndExportItsPathOutputs holds the names of environment variables published
+// by the zip-directory-and-export-its-path step (v1) at run time.
+type zipDirectoryAndExportItsPathOutputs struct {
+	// ZipFile is the "Path to the zip file" output env var.
+	ZipFile string
+}
+
+// ZipDirectoryAndExportItsPathOutputs provides typed access to the environment variable names
+// that zip-directory-and-export-its-path (v1) exports after a successful run.
+var ZipDirectoryAndExportItsPathOutputs = zipDirectoryAndExportItsPathOutputs{
+	ZipFile: "ZIP_FILE",
+}

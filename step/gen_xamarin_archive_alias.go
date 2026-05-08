@@ -17,3 +17,8 @@ type XamarinArchiveBuilder = XamarinArchiveV1Builder
 func XamarinArchive(version ...string) *XamarinArchiveV1Builder {
 	return XamarinArchiveV1(version...)
 }
+
+// XamarinArchiveOutputs provides typed access to the environment variable names
+// published by xamarin-archive at the latest major version (v1).
+// For outputs of a specific major version use XamarinArchiveV{N}Outputs directly.
+var XamarinArchiveOutputs = XamarinArchiveV1Outputs

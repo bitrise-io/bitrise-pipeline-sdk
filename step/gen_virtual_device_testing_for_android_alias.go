@@ -13,3 +13,8 @@ type VirtualDeviceTestingForAndroidBuilder = VirtualDeviceTestingForAndroidV1Bui
 func VirtualDeviceTestingForAndroid(version ...string) *VirtualDeviceTestingForAndroidV1Builder {
 	return VirtualDeviceTestingForAndroidV1(version...)
 }
+
+// VirtualDeviceTestingForAndroidOutputs provides typed access to the environment variable names
+// published by virtual-device-testing-for-android at the latest major version (v1).
+// For outputs of a specific major version use VirtualDeviceTestingForAndroidV{N}Outputs directly.
+var VirtualDeviceTestingForAndroidOutputs = VirtualDeviceTestingForAndroidV1Outputs

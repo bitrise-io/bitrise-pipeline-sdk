@@ -54,3 +54,16 @@ func (b *ScanWithAppsweepV2Builder) WithGradlePluginVersion(value string) *ScanW
 	b.Builder.WithInput("gradle_plugin_version", value)
 	return b
 }
+
+// scanWithAppsweepV2Outputs holds the names of environment variables published
+// by the scan-with-appsweep step (v2) at run time.
+type scanWithAppsweepV2Outputs struct {
+	// AppsweepUploadUrl is the "AppSweep upload URL" output env var.
+	AppsweepUploadUrl string
+}
+
+// ScanWithAppsweepV2Outputs provides typed access to the environment variable names
+// that scan-with-appsweep (v2) exports after a successful run.
+var ScanWithAppsweepV2Outputs = scanWithAppsweepV2Outputs{
+	AppsweepUploadUrl: "APPSWEEP_UPLOAD_URL",
+}

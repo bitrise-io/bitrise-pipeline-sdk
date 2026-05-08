@@ -17,3 +17,8 @@ type AppcenterDeployIosBuilder = AppcenterDeployIosV2Builder
 func AppcenterDeployIos(version ...string) *AppcenterDeployIosV2Builder {
 	return AppcenterDeployIosV2(version...)
 }
+
+// AppcenterDeployIosOutputs provides typed access to the environment variable names
+// published by appcenter-deploy-ios at the latest major version (v2).
+// For outputs of a specific major version use AppcenterDeployIosV{N}Outputs directly.
+var AppcenterDeployIosOutputs = AppcenterDeployIosV2Outputs

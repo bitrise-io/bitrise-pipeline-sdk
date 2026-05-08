@@ -13,3 +13,8 @@ type GoTestBuilder = GoTestV1Builder
 func GoTest(version ...string) *GoTestV1Builder {
 	return GoTestV1(version...)
 }
+
+// GoTestOutputs provides typed access to the environment variable names
+// published by go-test at the latest major version (v1).
+// For outputs of a specific major version use GoTestV{N}Outputs directly.
+var GoTestOutputs = GoTestV1Outputs

@@ -13,3 +13,8 @@ type AndroidUnitTestBuilder = AndroidUnitTestV1Builder
 func AndroidUnitTest(version ...string) *AndroidUnitTestV1Builder {
 	return AndroidUnitTestV1(version...)
 }
+
+// AndroidUnitTestOutputs provides typed access to the environment variable names
+// published by android-unit-test at the latest major version (v1).
+// For outputs of a specific major version use AndroidUnitTestV{N}Outputs directly.
+var AndroidUnitTestOutputs = AndroidUnitTestV1Outputs

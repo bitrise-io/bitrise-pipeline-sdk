@@ -72,3 +72,19 @@ func (b *XcodeTestWithoutBuildingBuilder) WithQuarantinedTests(value string) *Xc
 	b.Builder.WithInput("quarantined_tests", value)
 	return b
 }
+
+// xcodeTestWithoutBuildingOutputs holds the names of environment variables published
+// by the xcode-test-without-building step (v0) at run time.
+type xcodeTestWithoutBuildingOutputs struct {
+	// BitriseXcresultPath is the "Test result bundle path" output env var.
+	BitriseXcresultPath string
+	// BitriseXcresultZipPath is the "Zipped test result bundle path" output env var.
+	BitriseXcresultZipPath string
+}
+
+// XcodeTestWithoutBuildingOutputs provides typed access to the environment variable names
+// that xcode-test-without-building (v0) exports after a successful run.
+var XcodeTestWithoutBuildingOutputs = xcodeTestWithoutBuildingOutputs{
+	BitriseXcresultPath:    "BITRISE_XCRESULT_PATH",
+	BitriseXcresultZipPath: "BITRISE_XCRESULT_ZIP_PATH",
+}

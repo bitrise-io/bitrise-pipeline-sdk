@@ -13,3 +13,8 @@ type VirtualDeviceTestingForIosBuilder = VirtualDeviceTestingForIosV1Builder
 func VirtualDeviceTestingForIos(version ...string) *VirtualDeviceTestingForIosV1Builder {
 	return VirtualDeviceTestingForIosV1(version...)
 }
+
+// VirtualDeviceTestingForIosOutputs provides typed access to the environment variable names
+// published by virtual-device-testing-for-ios at the latest major version (v1).
+// For outputs of a specific major version use VirtualDeviceTestingForIosV{N}Outputs directly.
+var VirtualDeviceTestingForIosOutputs = VirtualDeviceTestingForIosV1Outputs

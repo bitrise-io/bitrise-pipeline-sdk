@@ -24,3 +24,16 @@ func (b *SetJavaVersionBuilder) WithSetJavaVersion(value string) *SetJavaVersion
 	b.Builder.WithInput("set_java_version", value)
 	return b
 }
+
+// setJavaVersionOutputs holds the names of environment variables published
+// by the set-java-version step (v1) at run time.
+type setJavaVersionOutputs struct {
+	// JavaHome is the "Location of the active Java installation." output env var.
+	JavaHome string
+}
+
+// SetJavaVersionOutputs provides typed access to the environment variable names
+// that set-java-version (v1) exports after a successful run.
+var SetJavaVersionOutputs = setJavaVersionOutputs{
+	JavaHome: "JAVA_HOME",
+}

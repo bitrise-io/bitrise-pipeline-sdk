@@ -60,3 +60,19 @@ func (b *BundleUniversalApkBuilder) WithKeystoreAliasPassword(value string) *Bun
 	b.Builder.WithInput("keystore_alias_password", value)
 	return b
 }
+
+// bundleUniversalApkOutputs holds the names of environment variables published
+// by the bundle-universal-apk step (v0) at run time.
+type bundleUniversalApkOutputs struct {
+	// BitriseApkPath is the "Universal apk path" output env var.
+	BitriseApkPath string
+	// BitriseApkDir is the "Apk direcotry" output env var.
+	BitriseApkDir string
+}
+
+// BundleUniversalApkOutputs provides typed access to the environment variable names
+// that bundle-universal-apk (v0) exports after a successful run.
+var BundleUniversalApkOutputs = bundleUniversalApkOutputs{
+	BitriseApkPath: "BITRISE_APK_PATH",
+	BitriseApkDir:  "BITRISE_APK_DIR",
+}

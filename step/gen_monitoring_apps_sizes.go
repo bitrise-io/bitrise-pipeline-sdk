@@ -54,3 +54,19 @@ func (b *MonitoringAppsSizesBuilder) WithAlertThreshold(value string) *Monitorin
 	b.Builder.WithInput("alert_threshold", value)
 	return b
 }
+
+// monitoringAppsSizesOutputs holds the names of environment variables published
+// by the monitoring-apps-sizes step (v1) at run time.
+type monitoringAppsSizesOutputs struct {
+	// NewIpaSize is the "Current build's ios IPA size (MB)" output env var.
+	NewIpaSize string
+	// NewApkSize is the "Current build's Android APK size (MB)" output env var.
+	NewApkSize string
+}
+
+// MonitoringAppsSizesOutputs provides typed access to the environment variable names
+// that monitoring-apps-sizes (v1) exports after a successful run.
+var MonitoringAppsSizesOutputs = monitoringAppsSizesOutputs{
+	NewIpaSize: "NEW_IPA_SIZE",
+	NewApkSize: "NEW_APK_SIZE",
+}

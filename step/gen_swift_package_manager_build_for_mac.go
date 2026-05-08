@@ -42,3 +42,16 @@ func (b *SwiftPackageManagerBuildForMacBuilder) WithDisableSandbox(value string)
 	b.Builder.WithInput("disable_sandbox", value)
 	return b
 }
+
+// swiftPackageManagerBuildForMacOutputs holds the names of environment variables published
+// by the swift-package-manager-build-for-mac step (v0) at run time.
+type swiftPackageManagerBuildForMacOutputs struct {
+	// BitriseExecutablePath is the "The executable path" output env var.
+	BitriseExecutablePath string
+}
+
+// SwiftPackageManagerBuildForMacOutputs provides typed access to the environment variable names
+// that swift-package-manager-build-for-mac (v0) exports after a successful run.
+var SwiftPackageManagerBuildForMacOutputs = swiftPackageManagerBuildForMacOutputs{
+	BitriseExecutablePath: "BITRISE_EXECUTABLE_PATH",
+}

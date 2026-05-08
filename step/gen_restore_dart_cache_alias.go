@@ -13,3 +13,8 @@ type RestoreDartCacheBuilder = RestoreDartCacheV3Builder
 func RestoreDartCache(version ...string) *RestoreDartCacheV3Builder {
 	return RestoreDartCacheV3(version...)
 }
+
+// RestoreDartCacheOutputs provides typed access to the environment variable names
+// published by restore-dart-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreDartCacheV{N}Outputs directly.
+var RestoreDartCacheOutputs = RestoreDartCacheV3Outputs

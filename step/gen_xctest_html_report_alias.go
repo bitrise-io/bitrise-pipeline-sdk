@@ -17,3 +17,8 @@ type XctestHtmlReportBuilder = XctestHtmlReportV1Builder
 func XctestHtmlReport(version ...string) *XctestHtmlReportV1Builder {
 	return XctestHtmlReportV1(version...)
 }
+
+// XctestHtmlReportOutputs provides typed access to the environment variable names
+// published by xctest-html-report at the latest major version (v1).
+// For outputs of a specific major version use XctestHtmlReportV{N}Outputs directly.
+var XctestHtmlReportOutputs = XctestHtmlReportV1Outputs

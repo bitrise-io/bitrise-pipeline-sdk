@@ -42,3 +42,16 @@ func (b *ActivateSshKeyV4Builder) WithVerbose(value string) *ActivateSshKeyV4Bui
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// activateSshKeyV4Outputs holds the names of environment variables published
+// by the activate-ssh-key step (v4) at run time.
+type activateSshKeyV4Outputs struct {
+	// SshAuthSock is the "SSH agent socket path" output env var.
+	SshAuthSock string
+}
+
+// ActivateSshKeyV4Outputs provides typed access to the environment variable names
+// that activate-ssh-key (v4) exports after a successful run.
+var ActivateSshKeyV4Outputs = activateSshKeyV4Outputs{
+	SshAuthSock: "SSH_AUTH_SOCK",
+}

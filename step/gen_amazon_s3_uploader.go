@@ -76,3 +76,19 @@ func (b *AmazonS3UploaderBuilder) WithFileAccessLevel(value string) *AmazonS3Upl
 	b.Builder.WithInput("file_access_level", value)
 	return b
 }
+
+// amazonS3UploaderOutputs holds the names of environment variables published
+// by the amazon-s3-uploader step (v1) at run time.
+type amazonS3UploaderOutputs struct {
+	// S3UploadStepUrl is the "Amazon S3 Deploy URL" output env var.
+	S3UploadStepUrl string
+	// S3UploadStepStatus is the "Amazon S3 Deploy result ('success' or 'failed')" output env var.
+	S3UploadStepStatus string
+}
+
+// AmazonS3UploaderOutputs provides typed access to the environment variable names
+// that amazon-s3-uploader (v1) exports after a successful run.
+var AmazonS3UploaderOutputs = amazonS3UploaderOutputs{
+	S3UploadStepUrl:    "S3_UPLOAD_STEP_URL",
+	S3UploadStepStatus: "S3_UPLOAD_STEP_STATUS",
+}

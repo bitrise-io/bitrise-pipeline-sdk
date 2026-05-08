@@ -42,3 +42,16 @@ func (b *GradleUnitTestV0Builder) WithUnitTestFlags(value string) *GradleUnitTes
 	b.Builder.WithInput("unit_test_flags", value)
 	return b
 }
+
+// gradleUnitTestV0Outputs holds the names of environment variables published
+// by the gradle-unit-test step (v0) at run time.
+type gradleUnitTestV0Outputs struct {
+	// BitriseGradleTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseGradleTestResult string
+}
+
+// GradleUnitTestV0Outputs provides typed access to the environment variable names
+// that gradle-unit-test (v0) exports after a successful run.
+var GradleUnitTestV0Outputs = gradleUnitTestV0Outputs{
+	BitriseGradleTestResult: "BITRISE_GRADLE_TEST_RESULT",
+}

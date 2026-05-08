@@ -78,3 +78,22 @@ func (b *ExportXcarchiveMacV1Builder) WithVerboseLog(value string) *ExportXcarch
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// exportXcarchiveMacV1Outputs holds the names of environment variables published
+// by the export-xcarchive-mac step (v1) at run time.
+type exportXcarchiveMacV1Outputs struct {
+	// BitriseAppPath is the "macOS .app path" output env var.
+	BitriseAppPath string
+	// BitrisePkgPath is the "macOS .pkg path" output env var.
+	BitrisePkgPath string
+	// BitriseIdedistributionLogsPath is the "`xcdistributionlogs` ZIP path" output env var.
+	BitriseIdedistributionLogsPath string
+}
+
+// ExportXcarchiveMacV1Outputs provides typed access to the environment variable names
+// that export-xcarchive-mac (v1) exports after a successful run.
+var ExportXcarchiveMacV1Outputs = exportXcarchiveMacV1Outputs{
+	BitriseAppPath:                 "BITRISE_APP_PATH",
+	BitrisePkgPath:                 "BITRISE_PKG_PATH",
+	BitriseIdedistributionLogsPath: "BITRISE_IDEDISTRIBUTION_LOGS_PATH",
+}

@@ -30,3 +30,16 @@ func (b *ChangeAndroidApplicationidBuilder) WithNewApplicationId(value string) *
 	b.Builder.WithInput("new_application_id", value)
 	return b
 }
+
+// changeAndroidApplicationidOutputs holds the names of environment variables published
+// by the change-android-applicationid step (v1) at run time.
+type changeAndroidApplicationidOutputs struct {
+	// AndroidApplicationId is the "Final Android applicationId in build.gradle file" output env var.
+	AndroidApplicationId string
+}
+
+// ChangeAndroidApplicationidOutputs provides typed access to the environment variable names
+// that change-android-applicationid (v1) exports after a successful run.
+var ChangeAndroidApplicationidOutputs = changeAndroidApplicationidOutputs{
+	AndroidApplicationId: "ANDROID_APPLICATION_ID",
+}

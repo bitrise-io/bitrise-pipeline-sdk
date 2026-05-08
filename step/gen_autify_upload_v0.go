@@ -36,3 +36,16 @@ func (b *AutifyUploadV0Builder) WithUploadToken(value string) *AutifyUploadV0Bui
 	b.Builder.WithInput("upload_token", value)
 	return b
 }
+
+// autifyUploadV0Outputs holds the names of environment variables published
+// by the autify-upload step (v0) at run time.
+type autifyUploadV0Outputs struct {
+	// AutifyUploadStepResultJson is the "Autify Upload Step Result JSON" output env var.
+	AutifyUploadStepResultJson string
+}
+
+// AutifyUploadV0Outputs provides typed access to the environment variable names
+// that autify-upload (v0) exports after a successful run.
+var AutifyUploadV0Outputs = autifyUploadV0Outputs{
+	AutifyUploadStepResultJson: "AUTIFY_UPLOAD_STEP_RESULT_JSON",
+}

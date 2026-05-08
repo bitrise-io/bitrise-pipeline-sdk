@@ -54,3 +54,16 @@ func (b *UpdateJiraReleaseStatusBuilder) WithReleaseDate(value string) *UpdateJi
 	b.Builder.WithInput("release_date", value)
 	return b
 }
+
+// updateJiraReleaseStatusOutputs holds the names of environment variables published
+// by the update-jira-release-status step (v0) at run time.
+type updateJiraReleaseStatusOutputs struct {
+	// JiraReleaseUpdateSuccess is the "Jira Release Update Status" output env var.
+	JiraReleaseUpdateSuccess string
+}
+
+// UpdateJiraReleaseStatusOutputs provides typed access to the environment variable names
+// that update-jira-release-status (v0) exports after a successful run.
+var UpdateJiraReleaseStatusOutputs = updateJiraReleaseStatusOutputs{
+	JiraReleaseUpdateSuccess: "JIRA_RELEASE_UPDATE_SUCCESS",
+}

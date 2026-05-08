@@ -13,3 +13,8 @@ type AndroidBuildBuilder = AndroidBuildV1Builder
 func AndroidBuild(version ...string) *AndroidBuildV1Builder {
 	return AndroidBuildV1(version...)
 }
+
+// AndroidBuildOutputs provides typed access to the environment variable names
+// published by android-build at the latest major version (v1).
+// For outputs of a specific major version use AndroidBuildV{N}Outputs directly.
+var AndroidBuildOutputs = AndroidBuildV1Outputs

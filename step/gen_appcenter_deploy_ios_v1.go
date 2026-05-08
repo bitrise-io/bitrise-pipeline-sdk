@@ -94,3 +94,28 @@ func (b *AppcenterDeployIosV1Builder) WithDebug(value string) *AppcenterDeployIo
 	b.Builder.WithInput("debug", value)
 	return b
 }
+
+// appcenterDeployIosV1Outputs holds the names of environment variables published
+// by the appcenter-deploy-ios step (v1) at run time.
+type appcenterDeployIosV1Outputs struct {
+	// AppcenterDeployStatus is the "Deployment status" output env var.
+	AppcenterDeployStatus string
+	// AppcenterDeployInstallUrl is the "Install page URL" output env var.
+	AppcenterDeployInstallUrl string
+	// AppcenterDeployDownloadUrl is the "Download URL" output env var.
+	AppcenterDeployDownloadUrl string
+	// AppcenterPublicInstallPageUrl is the "Public install page URL" output env var.
+	AppcenterPublicInstallPageUrl string
+	// AppcenterDeployReleaseId is the "Release ID" output env var.
+	AppcenterDeployReleaseId string
+}
+
+// AppcenterDeployIosV1Outputs provides typed access to the environment variable names
+// that appcenter-deploy-ios (v1) exports after a successful run.
+var AppcenterDeployIosV1Outputs = appcenterDeployIosV1Outputs{
+	AppcenterDeployStatus:         "APPCENTER_DEPLOY_STATUS",
+	AppcenterDeployInstallUrl:     "APPCENTER_DEPLOY_INSTALL_URL",
+	AppcenterDeployDownloadUrl:    "APPCENTER_DEPLOY_DOWNLOAD_URL",
+	AppcenterPublicInstallPageUrl: "APPCENTER_PUBLIC_INSTALL_PAGE_URL",
+	AppcenterDeployReleaseId:      "APPCENTER_DEPLOY_RELEASE_ID",
+}

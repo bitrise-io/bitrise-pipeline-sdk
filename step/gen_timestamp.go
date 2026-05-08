@@ -18,3 +18,19 @@ func Timestamp(version ...string) *TimestampBuilder {
 	}
 	return &TimestampBuilder{Builder: From("timestamp", v)}
 }
+
+// timestampOutputs holds the names of environment variables published
+// by the timestamp step (v0) at run time.
+type timestampOutputs struct {
+	// UnixTimestamp is the "unix style" output env var.
+	UnixTimestamp string
+	// IsoDatetime is the "iso 8601 (RFC3339Nano)" output env var.
+	IsoDatetime string
+}
+
+// TimestampOutputs provides typed access to the environment variable names
+// that timestamp (v0) exports after a successful run.
+var TimestampOutputs = timestampOutputs{
+	UnixTimestamp: "UNIX_TIMESTAMP",
+	IsoDatetime:   "ISO_DATETIME",
+}

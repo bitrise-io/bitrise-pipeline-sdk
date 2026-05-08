@@ -13,3 +13,8 @@ type NunitRunnerBuilder = NunitRunnerV1Builder
 func NunitRunner(version ...string) *NunitRunnerV1Builder {
 	return NunitRunnerV1(version...)
 }
+
+// NunitRunnerOutputs provides typed access to the environment variable names
+// published by nunit-runner at the latest major version (v1).
+// For outputs of a specific major version use NunitRunnerV{N}Outputs directly.
+var NunitRunnerOutputs = NunitRunnerV1Outputs

@@ -54,3 +54,16 @@ func (b *WaldoUploadV2Builder) WithIsDebugMode(value string) *WaldoUploadV2Build
 	b.Builder.WithInput("is_debug_mode", value)
 	return b
 }
+
+// waldoUploadV2Outputs holds the names of environment variables published
+// by the waldo-upload step (v2) at run time.
+type waldoUploadV2Outputs struct {
+	// WaldoBuildId is the "Build ID" output env var.
+	WaldoBuildId string
+}
+
+// WaldoUploadV2Outputs provides typed access to the environment variable names
+// that waldo-upload (v2) exports after a successful run.
+var WaldoUploadV2Outputs = waldoUploadV2Outputs{
+	WaldoBuildId: "WALDO_BUILD_ID",
+}

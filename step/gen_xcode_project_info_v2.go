@@ -36,3 +36,19 @@ func (b *XcodeProjectInfoV2Builder) WithTarget(value string) *XcodeProjectInfoV2
 	b.Builder.WithInput("target", value)
 	return b
 }
+
+// xcodeProjectInfoV2Outputs holds the names of environment variables published
+// by the xcode-project-info step (v2) at run time.
+type xcodeProjectInfoV2Outputs struct {
+	// XpiVersion is the "Version ($CFBundleShortVersionString or $MARKETING_VERSION)" output env var.
+	XpiVersion string
+	// XpiBuild is the "Build ($CFBundleVersion or $CURRENT_PROJECT_VERSION)" output env var.
+	XpiBuild string
+}
+
+// XcodeProjectInfoV2Outputs provides typed access to the environment variable names
+// that xcode-project-info (v2) exports after a successful run.
+var XcodeProjectInfoV2Outputs = xcodeProjectInfoV2Outputs{
+	XpiVersion: "XPI_VERSION",
+	XpiBuild:   "XPI_BUILD",
+}

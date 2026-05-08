@@ -82,3 +82,19 @@ func (b *XamarinTestCloudForIosV0Builder) WithOtherParameters(value string) *Xam
 	b.Builder.WithInput("other_parameters", value)
 	return b
 }
+
+// xamarinTestCloudForIosV0Outputs holds the names of environment variables published
+// by the xamarin-test-cloud-for-ios step (v0) at run time.
+type xamarinTestCloudForIosV0Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// XamarinTestCloudForIosV0Outputs provides typed access to the environment variable names
+// that xamarin-test-cloud-for-ios (v0) exports after a successful run.
+var XamarinTestCloudForIosV0Outputs = xamarinTestCloudForIosV0Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

@@ -84,3 +84,31 @@ func (b *GradleRunnerV4Builder) WithGradleOptions(value string) *GradleRunnerV4B
 	b.Builder.WithInput("gradle_options", value)
 	return b
 }
+
+// gradleRunnerV4Outputs holds the names of environment variables published
+// by the gradle-runner step (v4) at run time.
+type gradleRunnerV4Outputs struct {
+	// BitriseApkPath is the "Path of the generated APK" output env var.
+	BitriseApkPath string
+	// BitriseAabPath is the "Path of the generated AAB" output env var.
+	BitriseAabPath string
+	// BitriseTestApkPath is the "Path of the generated test APK file" output env var.
+	BitriseTestApkPath string
+	// BitriseApkPathList is the "List of the generated APK file paths" output env var.
+	BitriseApkPathList string
+	// BitriseAabPathList is the "List of the generated AAB file paths" output env var.
+	BitriseAabPathList string
+	// BitriseMappingPath is the "Path of the generated mapping.txt" output env var.
+	BitriseMappingPath string
+}
+
+// GradleRunnerV4Outputs provides typed access to the environment variable names
+// that gradle-runner (v4) exports after a successful run.
+var GradleRunnerV4Outputs = gradleRunnerV4Outputs{
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseAabPath:     "BITRISE_AAB_PATH",
+	BitriseTestApkPath: "BITRISE_TEST_APK_PATH",
+	BitriseApkPathList: "BITRISE_APK_PATH_LIST",
+	BitriseAabPathList: "BITRISE_AAB_PATH_LIST",
+	BitriseMappingPath: "BITRISE_MAPPING_PATH",
+}

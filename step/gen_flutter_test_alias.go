@@ -13,3 +13,8 @@ type FlutterTestBuilder = FlutterTestV1Builder
 func FlutterTest(version ...string) *FlutterTestV1Builder {
 	return FlutterTestV1(version...)
 }
+
+// FlutterTestOutputs provides typed access to the environment variable names
+// published by flutter-test at the latest major version (v1).
+// For outputs of a specific major version use FlutterTestV{N}Outputs directly.
+var FlutterTestOutputs = FlutterTestV1Outputs

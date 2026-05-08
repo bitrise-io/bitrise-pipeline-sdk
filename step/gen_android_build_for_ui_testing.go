@@ -54,3 +54,19 @@ func (b *AndroidBuildForUiTestingBuilder) WithArguments(value string) *AndroidBu
 	b.Builder.WithInput("arguments", value)
 	return b
 }
+
+// androidBuildForUiTestingOutputs holds the names of environment variables published
+// by the android-build-for-ui-testing step (v0) at run time.
+type androidBuildForUiTestingOutputs struct {
+	// BitriseApkPath is the "Path of the generated APK" output env var.
+	BitriseApkPath string
+	// BitriseTestApkPath is the "Path of the generated test APK" output env var.
+	BitriseTestApkPath string
+}
+
+// AndroidBuildForUiTestingOutputs provides typed access to the environment variable names
+// that android-build-for-ui-testing (v0) exports after a successful run.
+var AndroidBuildForUiTestingOutputs = androidBuildForUiTestingOutputs{
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseTestApkPath: "BITRISE_TEST_APK_PATH",
+}

@@ -30,3 +30,16 @@ func (b *CalabashIosUitestV0Builder) WithSimulatorOsVersion(value string) *Calab
 	b.Builder.WithInput("simulator_os_version", value)
 	return b
 }
+
+// calabashIosUitestV0Outputs holds the names of environment variables published
+// by the calabash-ios-uitest step (v0) at run time.
+type calabashIosUitestV0Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+}
+
+// CalabashIosUitestV0Outputs provides typed access to the environment variable names
+// that calabash-ios-uitest (v0) exports after a successful run.
+var CalabashIosUitestV0Outputs = calabashIosUitestV0Outputs{
+	BitriseXamarinTestResult: "BITRISE_XAMARIN_TEST_RESULT",
+}

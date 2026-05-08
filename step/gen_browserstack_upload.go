@@ -42,3 +42,16 @@ func (b *BrowserstackUploadBuilder) WithCustomId(value string) *BrowserstackUplo
 	b.Builder.WithInput("custom_id", value)
 	return b
 }
+
+// browserstackUploadOutputs holds the names of environment variables published
+// by the browserstack-upload step (v0) at run time.
+type browserstackUploadOutputs struct {
+	// BrowserstackAppUrl is the "Browserstack App Automate App URL" output env var.
+	BrowserstackAppUrl string
+}
+
+// BrowserstackUploadOutputs provides typed access to the environment variable names
+// that browserstack-upload (v0) exports after a successful run.
+var BrowserstackUploadOutputs = browserstackUploadOutputs{
+	BrowserstackAppUrl: "BROWSERSTACK_APP_URL",
+}

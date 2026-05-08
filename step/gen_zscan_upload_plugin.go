@@ -60,3 +60,16 @@ func (b *ZscanUploadPluginBuilder) WithTeamName(value string) *ZscanUploadPlugin
 	b.Builder.WithInput("team_name", value)
 	return b
 }
+
+// zscanUploadPluginOutputs holds the names of environment variables published
+// by the zscan-upload-plugin step (v1) at run time.
+type zscanUploadPluginOutputs struct {
+	// ZscanReportPath is the "Path to the assessment report" output env var.
+	ZscanReportPath string
+}
+
+// ZscanUploadPluginOutputs provides typed access to the environment variable names
+// that zscan-upload-plugin (v1) exports after a successful run.
+var ZscanUploadPluginOutputs = zscanUploadPluginOutputs{
+	ZscanReportPath: "ZSCAN_REPORT_PATH",
+}

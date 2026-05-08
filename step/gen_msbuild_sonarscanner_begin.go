@@ -72,3 +72,16 @@ func (b *MsbuildSonarscannerBeginBuilder) WithIsDebug(value string) *MsbuildSona
 	b.Builder.WithInput("is_debug", value)
 	return b
 }
+
+// msbuildSonarscannerBeginOutputs holds the names of environment variables published
+// by the msbuild-sonarscanner-begin step (v0) at run time.
+type msbuildSonarscannerBeginOutputs struct {
+	// SonarScannerFilePath is the "The path to `SonarScanner.MSBuild.exe` to be used in the MSBuild SonarScanner End step" output env var.
+	SonarScannerFilePath string
+}
+
+// MsbuildSonarscannerBeginOutputs provides typed access to the environment variable names
+// that msbuild-sonarscanner-begin (v0) exports after a successful run.
+var MsbuildSonarscannerBeginOutputs = msbuildSonarscannerBeginOutputs{
+	SonarScannerFilePath: "SONAR_SCANNER_FILE_PATH",
+}

@@ -42,3 +42,16 @@ func (b *XcodeArchiveV0Builder) WithOutputDir(value string) *XcodeArchiveV0Build
 	b.Builder.WithInput("output_dir", value)
 	return b
 }
+
+// xcodeArchiveV0Outputs holds the names of environment variables published
+// by the xcode-archive step (v0) at run time.
+type xcodeArchiveV0Outputs struct {
+	// BitriseIpaPath is the "The created .ipa file's path" output env var.
+	BitriseIpaPath string
+}
+
+// XcodeArchiveV0Outputs provides typed access to the environment variable names
+// that xcode-archive (v0) exports after a successful run.
+var XcodeArchiveV0Outputs = xcodeArchiveV0Outputs{
+	BitriseIpaPath: "BITRISE_IPA_PATH",
+}

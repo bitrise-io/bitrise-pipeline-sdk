@@ -42,3 +42,16 @@ func (b *GetIdentityTokenBuilder) WithVerbose(value string) *GetIdentityTokenBui
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// getIdentityTokenOutputs holds the names of environment variables published
+// by the get-identity-token step (v0) at run time.
+type getIdentityTokenOutputs struct {
+	// BitriseIdentityToken is the "Identity token" output env var.
+	BitriseIdentityToken string
+}
+
+// GetIdentityTokenOutputs provides typed access to the environment variable names
+// that get-identity-token (v0) exports after a successful run.
+var GetIdentityTokenOutputs = getIdentityTokenOutputs{
+	BitriseIdentityToken: "BITRISE_IDENTITY_TOKEN",
+}

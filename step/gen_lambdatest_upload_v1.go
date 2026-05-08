@@ -42,3 +42,16 @@ func (b *LambdatestUploadV1Builder) WithCustomId(value string) *LambdatestUpload
 	b.Builder.WithInput("custom_id", value)
 	return b
 }
+
+// lambdatestUploadV1Outputs holds the names of environment variables published
+// by the lambdatest-upload step (v1) at run time.
+type lambdatestUploadV1Outputs struct {
+	// LambdatestAppUrl is the "LambdaTest App Automate App URL" output env var.
+	LambdatestAppUrl string
+}
+
+// LambdatestUploadV1Outputs provides typed access to the environment variable names
+// that lambdatest-upload (v1) exports after a successful run.
+var LambdatestUploadV1Outputs = lambdatestUploadV1Outputs{
+	LambdatestAppUrl: "LAMBDATEST_APP_URL",
+}

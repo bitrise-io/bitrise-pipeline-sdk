@@ -24,3 +24,43 @@ func (b *BeatAndroidCodeStatsBuilder) WithProjectLocation(value string) *BeatAnd
 	b.Builder.WithInput("project_location", value)
 	return b
 }
+
+// beatAndroidCodeStatsOutputs holds the names of environment variables published
+// by the beat-android-code-stats step (v0) at run time.
+type beatAndroidCodeStatsOutputs struct {
+	// KotlinLinesCode is the "Kotlin lines of code" output env var.
+	KotlinLinesCode string
+	// JavaLinesCode is the "Java lines of code" output env var.
+	JavaLinesCode string
+	// XmlLinesCode is the "XML lines of code" output env var.
+	XmlLinesCode string
+	// KotlinPercentageCode is the "Kotlin percentage of code" output env var.
+	KotlinPercentageCode string
+	// JavaPercentageCode is the "Java percentage of code" output env var.
+	JavaPercentageCode string
+	// DocumentationFiles is the "Documentation files" output env var.
+	DocumentationFiles string
+	// UnitTestsCount is the "Unit tests" output env var.
+	UnitTestsCount string
+	// UiTestsCount is the "UI tests" output env var.
+	UiTestsCount string
+	// MvpPresentersCount is the "MVP Presenters" output env var.
+	MvpPresentersCount string
+	// ViewmodelCount is the "ViewModels" output env var.
+	ViewmodelCount string
+}
+
+// BeatAndroidCodeStatsOutputs provides typed access to the environment variable names
+// that beat-android-code-stats (v0) exports after a successful run.
+var BeatAndroidCodeStatsOutputs = beatAndroidCodeStatsOutputs{
+	KotlinLinesCode:      "KOTLIN_LINES_CODE",
+	JavaLinesCode:        "JAVA_LINES_CODE",
+	XmlLinesCode:         "XML_LINES_CODE",
+	KotlinPercentageCode: "KOTLIN_PERCENTAGE_CODE",
+	JavaPercentageCode:   "JAVA_PERCENTAGE_CODE",
+	DocumentationFiles:   "DOCUMENTATION_FILES",
+	UnitTestsCount:       "UNIT_TESTS_COUNT",
+	UiTestsCount:         "UI_TESTS_COUNT",
+	MvpPresentersCount:   "MVP_PRESENTERS_COUNT",
+	ViewmodelCount:       "VIEWMODEL_COUNT",
+}

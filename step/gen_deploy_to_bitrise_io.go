@@ -132,3 +132,28 @@ func (b *DeployToBitriseIoBuilder) WithUseLegacyXcresultExtractionMethod(value s
 	b.Builder.WithInput("use_legacy_xcresult_extraction_method", value)
 	return b
 }
+
+// deployToBitriseIoOutputs holds the names of environment variables published
+// by the deploy-to-bitrise-io step (v2) at run time.
+type deployToBitriseIoOutputs struct {
+	// BitrisePublicInstallPageUrl is the "Public Install Page URL" output env var.
+	BitrisePublicInstallPageUrl string
+	// BitrisePublicInstallPageUrlMap is the "Map of filenames and Public Install Page URLs" output env var.
+	BitrisePublicInstallPageUrlMap string
+	// BitrisePermanentDownloadUrlMap is the "Map of filenames and Permanent Download URLs" output env var.
+	BitrisePermanentDownloadUrlMap string
+	// BitriseArtifactDetailsPageUrl is the "Details Page URL" output env var.
+	BitriseArtifactDetailsPageUrl string
+	// BitriseArtifactDetailsPageUrlMap is the "Map of filenames and Public Install Page URLs" output env var.
+	BitriseArtifactDetailsPageUrlMap string
+}
+
+// DeployToBitriseIoOutputs provides typed access to the environment variable names
+// that deploy-to-bitrise-io (v2) exports after a successful run.
+var DeployToBitriseIoOutputs = deployToBitriseIoOutputs{
+	BitrisePublicInstallPageUrl:      "BITRISE_PUBLIC_INSTALL_PAGE_URL",
+	BitrisePublicInstallPageUrlMap:   "BITRISE_PUBLIC_INSTALL_PAGE_URL_MAP",
+	BitrisePermanentDownloadUrlMap:   "BITRISE_PERMANENT_DOWNLOAD_URL_MAP",
+	BitriseArtifactDetailsPageUrl:    "BITRISE_ARTIFACT_DETAILS_PAGE_URL",
+	BitriseArtifactDetailsPageUrlMap: "BITRISE_ARTIFACT_DETAILS_PAGE_URL_MAP",
+}

@@ -13,3 +13,8 @@ type AppliveryIosBuilder = AppliveryIosV1Builder
 func AppliveryIos(version ...string) *AppliveryIosV1Builder {
 	return AppliveryIosV1(version...)
 }
+
+// AppliveryIosOutputs provides typed access to the environment variable names
+// published by applivery-ios at the latest major version (v1).
+// For outputs of a specific major version use AppliveryIosV{N}Outputs directly.
+var AppliveryIosOutputs = AppliveryIosV1Outputs

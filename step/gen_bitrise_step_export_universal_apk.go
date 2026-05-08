@@ -54,3 +54,16 @@ func (b *BitriseStepExportUniversalApkBuilder) WithBundletoolVersion(value strin
 	b.Builder.WithInput("bundletool_version", value)
 	return b
 }
+
+// bitriseStepExportUniversalApkOutputs holds the names of environment variables published
+// by the bitrise-step-export-universal-apk step (v0) at run time.
+type bitriseStepExportUniversalApkOutputs struct {
+	// BitriseApkPath is the "The exported APK's path" output env var.
+	BitriseApkPath string
+}
+
+// BitriseStepExportUniversalApkOutputs provides typed access to the environment variable names
+// that bitrise-step-export-universal-apk (v0) exports after a successful run.
+var BitriseStepExportUniversalApkOutputs = bitriseStepExportUniversalApkOutputs{
+	BitriseApkPath: "BITRISE_APK_PATH",
+}

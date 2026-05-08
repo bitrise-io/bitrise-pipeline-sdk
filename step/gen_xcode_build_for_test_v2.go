@@ -156,3 +156,25 @@ func (b *XcodeBuildForTestV2Builder) WithVerboseLog(value string) *XcodeBuildFor
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// xcodeBuildForTestV2Outputs holds the names of environment variables published
+// by the xcode-build-for-test step (v2) at run time.
+type xcodeBuildForTestV2Outputs struct {
+	// BitriseTestBundlePath is the "Test Bundle directory" output env var.
+	BitriseTestBundlePath string
+	// BitriseTestBundleZipPath is the "Zipped Test Bundle directory" output env var.
+	BitriseTestBundleZipPath string
+	// BitriseXctestrunFilePath is the "xctestrun file path" output env var.
+	BitriseXctestrunFilePath string
+	// BitriseXcodeRawResultTextPath is the "`xcodebuild build-for-testing` command log file path" output env var.
+	BitriseXcodeRawResultTextPath string
+}
+
+// XcodeBuildForTestV2Outputs provides typed access to the environment variable names
+// that xcode-build-for-test (v2) exports after a successful run.
+var XcodeBuildForTestV2Outputs = xcodeBuildForTestV2Outputs{
+	BitriseTestBundlePath:         "BITRISE_TEST_BUNDLE_PATH",
+	BitriseTestBundleZipPath:      "BITRISE_TEST_BUNDLE_ZIP_PATH",
+	BitriseXctestrunFilePath:      "BITRISE_XCTESTRUN_FILE_PATH",
+	BitriseXcodeRawResultTextPath: "BITRISE_XCODE_RAW_RESULT_TEXT_PATH",
+}

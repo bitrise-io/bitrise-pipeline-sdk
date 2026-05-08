@@ -36,3 +36,19 @@ func (b *BitriseStepXctestCoberturaXmlBuilder) WithPathToSourceDir(value string)
 	b.Builder.WithInput("path_to_source_dir", value)
 	return b
 }
+
+// bitriseStepXctestCoberturaXmlOutputs holds the names of environment variables published
+// by the bitrise-step-xctest-cobertura-xml step (v1) at run time.
+type bitriseStepXctestCoberturaXmlOutputs struct {
+	// CoverageXmlTestResultPath is the "Path to the resulting cobertura.xml" output env var.
+	CoverageXmlTestResultPath string
+	// CoverageJsonTestResultPath is the "Path to the resulting coverage.json" output env var.
+	CoverageJsonTestResultPath string
+}
+
+// BitriseStepXctestCoberturaXmlOutputs provides typed access to the environment variable names
+// that bitrise-step-xctest-cobertura-xml (v1) exports after a successful run.
+var BitriseStepXctestCoberturaXmlOutputs = bitriseStepXctestCoberturaXmlOutputs{
+	CoverageXmlTestResultPath:  "COVERAGE_XML_TEST_RESULT_PATH",
+	CoverageJsonTestResultPath: "COVERAGE_JSON_TEST_RESULT_PATH",
+}

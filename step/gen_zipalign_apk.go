@@ -24,3 +24,16 @@ func (b *ZipalignApkBuilder) WithBitriseUnalignedApkPath(value string) *Zipalign
 	b.Builder.WithInput("bitrise_unaligned_apk_path", value)
 	return b
 }
+
+// zipalignApkOutputs holds the names of environment variables published
+// by the zipalign-apk step (v0) at run time.
+type zipalignApkOutputs struct {
+	// BitriseAlignedApkPath is the "Aligned APK Path" output env var.
+	BitriseAlignedApkPath string
+}
+
+// ZipalignApkOutputs provides typed access to the environment variable names
+// that zipalign-apk (v0) exports after a successful run.
+var ZipalignApkOutputs = zipalignApkOutputs{
+	BitriseAlignedApkPath: "BITRISE_ALIGNED_APK_PATH",
+}

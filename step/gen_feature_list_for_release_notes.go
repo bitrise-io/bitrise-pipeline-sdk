@@ -30,3 +30,19 @@ func (b *FeatureListForReleaseNotesBuilder) WithProjectPrefix(value string) *Fea
 	b.Builder.WithInput("project_prefix", value)
 	return b
 }
+
+// featureListForReleaseNotesOutputs holds the names of environment variables published
+// by the feature-list-for-release-notes step (v0) at run time.
+type featureListForReleaseNotesOutputs struct {
+	// FeaturesFromCommits is the "List of features derived from commits" output env var.
+	FeaturesFromCommits string
+	// EpicsFromTags is the "List of epics with titles derived from tags" output env var.
+	EpicsFromTags string
+}
+
+// FeatureListForReleaseNotesOutputs provides typed access to the environment variable names
+// that feature-list-for-release-notes (v0) exports after a successful run.
+var FeatureListForReleaseNotesOutputs = featureListForReleaseNotesOutputs{
+	FeaturesFromCommits: "FEATURES_FROM_COMMITS",
+	EpicsFromTags:       "EPICS_FROM_TAGS",
+}

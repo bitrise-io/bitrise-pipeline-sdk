@@ -24,3 +24,16 @@ func (b *CalabashAndroidUitestV0Builder) WithApkPath(value string) *CalabashAndr
 	b.Builder.WithInput("apk_path", value)
 	return b
 }
+
+// calabashAndroidUitestV0Outputs holds the names of environment variables published
+// by the calabash-android-uitest step (v0) at run time.
+type calabashAndroidUitestV0Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+}
+
+// CalabashAndroidUitestV0Outputs provides typed access to the environment variable names
+// that calabash-android-uitest (v0) exports after a successful run.
+var CalabashAndroidUitestV0Outputs = calabashAndroidUitestV0Outputs{
+	BitriseXamarinTestResult: "BITRISE_XAMARIN_TEST_RESULT",
+}
