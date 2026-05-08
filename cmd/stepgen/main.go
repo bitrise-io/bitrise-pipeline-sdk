@@ -6,8 +6,9 @@
 //
 // Two source modes are supported:
 //
-//  1. GitHub API (default) — fetches step metadata on demand; suitable for
-//     a small number of steps but is subject to the 60 req/hour rate limit.
+//  1. GitHub API (default) — fetches step metadata on demand using a worker
+//     pool (--jobs, default 10). Requires a GITHUB_TOKEN env var to stay
+//     within the 5,000 req/hour authenticated rate limit for large runs.
 //
 //  2. Local steplib clone (--steplib-dir) — reads from a local git clone of
 //     the steplib; no network calls, no rate limits. Recommended when
@@ -40,6 +41,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"text/template"
 	"time"
 	"unicode"
@@ -122,6 +124,7 @@ func main() {
 	steplibDir := flag.String("steplib-dir", "", "path to a local clone of bitrise-steplib (skips GitHub API)")
 	prune := flag.Bool("prune", false, "remove skipped (removed) and deprecated steps from the config file after generation")
 	deleteFiles := flag.Bool("delete", false, "delete generated files for deprecated steps (intended to be used with --prune)")
+	jobs := flag.Int("jobs", 10, "number of steps to process in parallel (applies to both GitHub and local sources)")
 	flag.Parse()
 
 	// Track whether step IDs came from the config file so --prune knows
@@ -156,32 +159,70 @@ func main() {
 
 	tmpl := template.Must(template.New("builder").Parse(builderTmpl))
 
+	// stepResult holds the outcome of processing one step ID.
+	type stepResult struct {
+		id      string
+		dep     *deprecationInfo
+		removed bool
+		err     error
+		ran     bool // false for entries that were skipped before the goroutine launched
+	}
+
+	// Pre-allocate a result slot for every step ID so we can write by index
+	// from goroutines without needing a mutex on the slice itself.
+	results := make([]stepResult, len(stepIDs))
+
+	var (
+		printMu sync.Mutex // serialises all console output across workers
+		wg      sync.WaitGroup
+		sem     = make(chan struct{}, *jobs) // semaphore limiting concurrency
+	)
+
 	ok, skip, fail := 0, 0, 0
-	var removedIDs []string
-	var deprecated []deprecationInfo
-	for _, id := range stepIDs {
+	for i, id := range stepIDs {
 		if handcraftedSteps[id] {
+			printMu.Lock()
 			fmt.Printf("skip %-40s (hand-crafted builder exists)\n", id)
+			printMu.Unlock()
 			skip++
 			continue
 		}
 		if skipSet[id] {
+			printMu.Lock()
 			fmt.Printf("skip %-40s (in skip list)\n", id)
+			printMu.Unlock()
 			skip++
 			continue
 		}
-		dep, removed, err := generateStep(id, *outputDir, tmpl, src)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "ERROR %-40s %v\n", id, err)
+
+		wg.Add(1)
+		go func(i int, id string) {
+			defer wg.Done()
+			sem <- struct{}{}        // acquire
+			defer func() { <-sem }() // release
+
+			dep, removed, err := generateStep(id, *outputDir, tmpl, src, &printMu)
+			results[i] = stepResult{id: id, dep: dep, removed: removed, err: err, ran: true}
+		}(i, id)
+	}
+	wg.Wait()
+
+	var removedIDs []string
+	var deprecated []deprecationInfo
+	for _, r := range results {
+		if !r.ran {
+			continue
+		}
+		if r.err != nil {
 			fail++
-		} else if removed {
+		} else if r.removed {
 			skip++
-			removedIDs = append(removedIDs, id)
+			removedIDs = append(removedIDs, r.id)
 		} else {
 			ok++
-			if dep != nil {
-				dep.StepID = id
-				deprecated = append(deprecated, *dep)
+			if r.dep != nil {
+				r.dep.StepID = r.id
+				deprecated = append(deprecated, *r.dep)
 			}
 		}
 	}
@@ -377,31 +418,39 @@ func (githubSource) readStepInfo(stepID string) ([]byte, error) {
 
 // ---- per-step generation ---------------------------------------------------
 
-func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource) (*deprecationInfo, bool, error) {
-	fmt.Printf("gen  %-40s", stepID)
-
+// generateStep generates a typed builder file for stepID.
+// mu serialises all console output so lines from concurrent workers don't
+// interleave. All work is done before the mutex is acquired.
+func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource, mu *sync.Mutex) (*deprecationInfo, bool, error) {
 	versions, err := src.listVersions(stepID)
 	if err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s list versions: %v\n", stepID, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("list versions: %w", err)
 	}
 	if len(versions) == 0 {
-		fmt.Println("skipped (no versions found — step likely removed from steplib)")
+		mu.Lock()
+		fmt.Printf("skip %-40s (no versions — removed from steplib)\n", stepID)
+		mu.Unlock()
 		return nil, true, nil
 	}
 
 	latest := latestVersion(versions)
-	fmt.Printf("→ %-10s", latest)
 
 	ymlData, err := src.readStepYML(stepID, latest)
 	if err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s read step.yml: %v\n", stepID, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("read step.yml: %w", err)
 	}
 
 	def, err := parseStepYML(stepID, latest, ymlData)
 	if err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s parse step.yml: %v\n", stepID, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("parse step.yml: %w", err)
 	}
 
@@ -409,12 +458,16 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	// is embedded directly in the generated source file.
 	infoData, err := src.readStepInfo(stepID)
 	if err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s read step-info.yml: %v\n", stepID, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("read step-info.yml: %w", err)
 	}
 	dep, err := parseStepInfo(infoData)
 	if err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s parse step-info.yml: %v\n", stepID, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("parse step-info.yml: %w", err)
 	}
 	if dep != nil {
@@ -423,13 +476,17 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, def); err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s render template: %v\n", stepID, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("render template: %w", err)
 	}
 
 	out, err := format.Source(buf.Bytes())
 	if err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s gofmt: %v\n---\n%s", stepID, err, buf.String())
+		mu.Unlock()
 		return nil, false, fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
 	}
 
@@ -443,15 +500,21 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	}
 	outPath := filepath.Join(outputDir, base+".go")
 	if err := os.WriteFile(outPath, out, 0644); err != nil {
-		fmt.Println()
+		mu.Lock()
+		fmt.Fprintf(os.Stderr, "ERROR %-40s write %s: %v\n", stepID, outPath, err)
+		mu.Unlock()
 		return nil, false, fmt.Errorf("write %s: %w", outPath, err)
 	}
 
+	// All work done — print one complete, uninterruptible line.
+	mu.Lock()
 	if dep != nil {
-		fmt.Printf("wrote %s ⚠️  DEPRECATED\n", outPath)
+		fmt.Printf("gen  %-40s → %-10s wrote %s ⚠️  DEPRECATED\n", stepID, latest, outPath)
 	} else {
-		fmt.Printf("wrote %s\n", outPath)
+		fmt.Printf("gen  %-40s → %-10s wrote %s\n", stepID, latest, outPath)
 	}
+	mu.Unlock()
+
 	return dep, false, nil
 }
 
