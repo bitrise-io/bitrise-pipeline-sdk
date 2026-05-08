@@ -138,19 +138,37 @@ func main() {
 	tmpl := template.Must(template.New("builder").Parse(builderTmpl))
 
 	ok, fail := 0, 0
+	var deprecated []deprecationInfo
 	for _, id := range stepIDs {
 		if handcraftedSteps[id] {
 			fmt.Printf("skip %-40s (hand-crafted builder exists)\n", id)
 			continue
 		}
-		if err := generateStep(id, *outputDir, tmpl, src); err != nil {
+		dep, err := generateStep(id, *outputDir, tmpl, src)
+		if err != nil {
 			fmt.Fprintf(os.Stderr, "ERROR %-40s %v\n", id, err)
 			fail++
 		} else {
 			ok++
+			if dep != nil {
+				dep.StepID = id
+				deprecated = append(deprecated, *dep)
+			}
 		}
 	}
 	fmt.Printf("\ndone: %d generated, %d errors\n", ok, fail)
+
+	if len(deprecated) > 0 {
+		fmt.Fprintf(os.Stderr, "\n⚠️  WARNING: %d deprecated step(s) were generated:\n", len(deprecated))
+		for _, d := range deprecated {
+			fmt.Fprintf(os.Stderr, "\n  • %s\n", d.StepID)
+			if d.RemovalDate != "" {
+				fmt.Fprintf(os.Stderr, "    removal date: %s\n", d.RemovalDate)
+			}
+			fmt.Fprintf(os.Stderr, "    %s\n", strings.ReplaceAll(d.Notes, "\n", "\n    "))
+		}
+		fmt.Fprintln(os.Stderr, "\nConsider removing these steps from stepgen.json.")
+	}
 }
 
 // ---- step source abstraction -----------------------------------------------
@@ -158,6 +176,7 @@ func main() {
 type stepSource interface {
 	listVersions(stepID string) ([]string, error)
 	readStepYML(stepID, version string) ([]byte, error)
+	readStepInfo(stepID string) ([]byte, error)
 }
 
 // localSource reads from a local clone of the steplib.
@@ -182,6 +201,15 @@ func (s localSource) readStepYML(stepID, version string) ([]byte, error) {
 	return os.ReadFile(path)
 }
 
+func (s localSource) readStepInfo(stepID string) ([]byte, error) {
+	path := filepath.Join(s.dir, "steps", stepID, "step-info.yml")
+	data, err := os.ReadFile(path)
+	if os.IsNotExist(err) {
+		return nil, nil
+	}
+	return data, err
+}
+
 // githubSource fetches from the GitHub API / raw content endpoint.
 type githubSource struct{}
 
@@ -193,19 +221,23 @@ func (githubSource) readStepYML(stepID, version string) ([]byte, error) {
 	return fetchStepYMLGitHub(stepID, version)
 }
 
+func (githubSource) readStepInfo(stepID string) ([]byte, error) {
+	return fetchStepInfoGitHub(stepID)
+}
+
 // ---- per-step generation ---------------------------------------------------
 
-func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource) error {
+func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource) (*deprecationInfo, error) {
 	fmt.Printf("gen  %-40s", stepID)
 
 	versions, err := src.listVersions(stepID)
 	if err != nil {
 		fmt.Println()
-		return fmt.Errorf("list versions: %w", err)
+		return nil, fmt.Errorf("list versions: %w", err)
 	}
 	if len(versions) == 0 {
 		fmt.Println()
-		return fmt.Errorf("no versions found")
+		return nil, fmt.Errorf("no versions found")
 	}
 
 	latest := latestVersion(versions)
@@ -214,25 +246,25 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	ymlData, err := src.readStepYML(stepID, latest)
 	if err != nil {
 		fmt.Println()
-		return fmt.Errorf("read step.yml: %w", err)
+		return nil, fmt.Errorf("read step.yml: %w", err)
 	}
 
 	def, err := parseStepYML(stepID, latest, ymlData)
 	if err != nil {
 		fmt.Println()
-		return fmt.Errorf("parse step.yml: %w", err)
+		return nil, fmt.Errorf("parse step.yml: %w", err)
 	}
 
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, def); err != nil {
 		fmt.Println()
-		return fmt.Errorf("render template: %w", err)
+		return nil, fmt.Errorf("render template: %w", err)
 	}
 
 	out, err := format.Source(buf.Bytes())
 	if err != nil {
 		fmt.Println()
-		return fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
+		return nil, fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
 	}
 
 	// Files ending in "_test.go" are treated as test files by the Go build
@@ -246,10 +278,27 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	outPath := filepath.Join(outputDir, base+".go")
 	if err := os.WriteFile(outPath, out, 0644); err != nil {
 		fmt.Println()
-		return fmt.Errorf("write %s: %w", outPath, err)
+		return nil, fmt.Errorf("write %s: %w", outPath, err)
 	}
-	fmt.Printf("wrote %s\n", outPath)
-	return nil
+
+	// Check for deprecation after writing — a deprecated step is still
+	// generated (callers may need it), but we surface a warning at the end.
+	infoData, err := src.readStepInfo(stepID)
+	if err != nil {
+		fmt.Printf("wrote %s (deprecation check failed: %v)\n", outPath, err)
+		return nil, nil
+	}
+	dep, err := parseStepInfo(infoData)
+	if err != nil {
+		fmt.Printf("wrote %s (deprecation check failed: %v)\n", outPath, err)
+		return nil, nil
+	}
+	if dep != nil {
+		fmt.Printf("wrote %s ⚠️  DEPRECATED\n", outPath)
+	} else {
+		fmt.Printf("wrote %s\n", outPath)
+	}
+	return dep, nil
 }
 
 // ---- GitHub fetching -------------------------------------------------------
@@ -316,6 +365,57 @@ func fetchStepYMLGitHub(stepID, version string) ([]byte, error) {
 		return nil, fmt.Errorf("HTTP %d", resp.StatusCode)
 	}
 	return body, nil
+}
+
+func fetchStepInfoGitHub(stepID string) ([]byte, error) {
+	url := fmt.Sprintf(
+		"https://raw.githubusercontent.com/bitrise-io/bitrise-steplib/master/steps/%s/step-info.yml",
+		stepID,
+	)
+	resp, err := httpGet(url)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	body, _ := io.ReadAll(resp.Body)
+	if resp.StatusCode == 404 {
+		return nil, nil // no step-info.yml is normal for non-deprecated steps
+	}
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("HTTP %d", resp.StatusCode)
+	}
+	return body, nil
+}
+
+// ---- step-info.yml parsing -------------------------------------------------
+
+type rawStepInfo struct {
+	DeprecateNotes string `yaml:"deprecate_notes"`
+	RemovalDate    string `yaml:"removal_date"`
+}
+
+// deprecationInfo holds deprecation metadata for a step.
+type deprecationInfo struct {
+	StepID      string
+	Notes       string
+	RemovalDate string
+}
+
+func parseStepInfo(data []byte) (*deprecationInfo, error) {
+	if len(data) == 0 {
+		return nil, nil
+	}
+	var raw rawStepInfo
+	if err := yaml.Unmarshal(data, &raw); err != nil {
+		return nil, fmt.Errorf("unmarshal step-info.yml: %w", err)
+	}
+	if raw.DeprecateNotes == "" {
+		return nil, nil
+	}
+	return &deprecationInfo{
+		Notes:       strings.TrimSpace(raw.DeprecateNotes),
+		RemovalDate: raw.RemovalDate,
+	}, nil
 }
 
 // ---- step.yml parsing ------------------------------------------------------
