@@ -7,21 +7,30 @@
 // Two source modes are supported:
 //
 //  1. GitHub API (default) — fetches step metadata on demand using a worker
-//     pool (--jobs, default 10). Requires a GITHUB_TOKEN env var to stay
-//     within the 5,000 req/hour authenticated rate limit for large runs.
+//     pool (--jobs, default 10). Reads GITHUB_TOKEN from the environment to
+//     stay within the 5,000 req/hour authenticated rate limit for large runs.
 //
-//  2. Local steplib clone (--steplib-dir) — reads from a local git clone of
-//     the steplib; no network calls, no rate limits. Recommended when
-//     generating builders for many steps at once.
+//  2. Local steplib clone (--steplib-dir / STEPLIB_DIR env var) — reads from
+//     a local git clone of the steplib; no network calls, no rate limits.
+//     Recommended for CI environments and large regeneration runs.
 //     Clone example:
 //       git clone --depth 1 --filter=blob:none --sparse \
 //         https://github.com/bitrise-io/bitrise-steplib.git /tmp/steplib
 //       cd /tmp/steplib && git sparse-checkout set steps
 //
+// Environment variables:
+//
+//	GITHUB_TOKEN  — GitHub personal-access token; used by the GitHub API source
+//	               to raise the rate limit from 60 to 5,000 req/hour.
+//	STEPLIB_DIR   — path to a local steplib clone; equivalent to --steplib-dir.
+//	               When set, go generate ./step/ uses the local clone
+//	               automatically without any changes to the generate directive.
+//
 // Usage (standalone):
 //
 //	go run ./cmd/stepgen [--output=step] [--config=stepgen.json] [step-id...]
 //	go run ./cmd/stepgen --steplib-dir=/tmp/steplib [step-id...]
+//	STEPLIB_DIR=/tmp/steplib go generate ./step/
 //
 // Usage (via go generate from the step/ directory):
 //
@@ -298,6 +307,12 @@ func main() {
 	skipSet := make(map[string]bool, len(cfg.Skip))
 	for _, id := range cfg.Skip {
 		skipSet[id] = true
+	}
+
+	// Allow STEPLIB_DIR env var as a fallback so that "go generate ./step/"
+	// uses a local clone automatically when the flag is not passed explicitly.
+	if *steplibDir == "" {
+		*steplibDir = os.Getenv("STEPLIB_DIR")
 	}
 
 	var src stepSource
