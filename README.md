@@ -172,7 +172,7 @@ For any step not listed above use `step.From(id, version)`.
 
 The generator fetches the latest step version from the steplib, parses the step's input definitions, and writes a `step/gen_<step_id>.go` file with a fully typed builder.
 
-When using the GitHub source (default), set `GITHUB_TOKEN` to avoid the 60 req/hour unauthenticated rate limit. The `--jobs` flag (default `10`) controls how many steps are fetched in parallel:</p>
+When using the GitHub source (default), set `GITHUB_TOKEN` to avoid the 60 req/hour unauthenticated rate limit. The `--jobs` flag (default `10`) controls how many steps are fetched in parallel:
 
 ```sh
 GITHUB_TOKEN=ghp_... go run ./cmd/stepgen activate-ssh-key git-clone script
@@ -182,6 +182,14 @@ For a full regeneration of all builders without a local clone, increase concurre
 
 ```sh
 GITHUB_TOKEN=ghp_... go run ./cmd/stepgen --config=stepgen.json --output=step --jobs=20
+```
+
+#### Version fingerprinting
+
+By default the generator reads the `// Step: <id> (<version>)` header from each existing generated file. If the latest version in the steplib matches, the step is skipped with no further fetches — saving two network round-trips per unchanged step. Use `--force` to bypass this and regenerate everything:
+
+```sh
+go run ./cmd/stepgen --config=stepgen.json --output=step --force
 ```
 
 ## Updating all step builders at once

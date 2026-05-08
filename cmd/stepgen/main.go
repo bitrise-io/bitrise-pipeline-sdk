@@ -29,6 +29,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -125,6 +126,7 @@ func main() {
 	prune := flag.Bool("prune", false, "remove skipped (removed) and deprecated steps from the config file after generation")
 	deleteFiles := flag.Bool("delete", false, "delete generated files for deprecated steps (intended to be used with --prune)")
 	jobs := flag.Int("jobs", 10, "number of steps to process in parallel (applies to both GitHub and local sources)")
+	force := flag.Bool("force", false, "regenerate all builders even if the cached version matches the latest steplib version")
 	flag.Parse()
 
 	// Track whether step IDs came from the config file so --prune knows
@@ -162,8 +164,7 @@ func main() {
 	// stepResult holds the outcome of processing one step ID.
 	type stepResult struct {
 		id      string
-		dep     *deprecationInfo
-		removed bool
+		outcome stepOutcome
 		err     error
 		ran     bool // false for entries that were skipped before the goroutine launched
 	}
@@ -178,7 +179,7 @@ func main() {
 		sem     = make(chan struct{}, *jobs) // semaphore limiting concurrency
 	)
 
-	ok, skip, fail := 0, 0, 0
+	ok, uptodate, skip, fail := 0, 0, 0, 0
 	for i, id := range stepIDs {
 		if handcraftedSteps[id] {
 			printMu.Lock()
@@ -198,11 +199,11 @@ func main() {
 		wg.Add(1)
 		go func(i int, id string) {
 			defer wg.Done()
-			sem <- struct{}{}        // acquire
+			sem <- struct{}{}         // acquire
 			defer func() { <-sem }() // release
 
-			dep, removed, err := generateStep(id, *outputDir, tmpl, src, &printMu)
-			results[i] = stepResult{id: id, dep: dep, removed: removed, err: err, ran: true}
+			out, err := generateStep(id, *outputDir, tmpl, src, &printMu, *force)
+			results[i] = stepResult{id: id, outcome: out, err: err, ran: true}
 		}(i, id)
 	}
 	wg.Wait()
@@ -215,18 +216,20 @@ func main() {
 		}
 		if r.err != nil {
 			fail++
-		} else if r.removed {
+		} else if r.outcome.removed {
 			skip++
 			removedIDs = append(removedIDs, r.id)
+		} else if r.outcome.upToDate {
+			uptodate++
 		} else {
 			ok++
-			if r.dep != nil {
-				r.dep.StepID = r.id
-				deprecated = append(deprecated, *r.dep)
+			if r.outcome.dep != nil {
+				r.outcome.dep.StepID = r.id
+				deprecated = append(deprecated, *r.outcome.dep)
 			}
 		}
 	}
-	fmt.Printf("\ndone: %d generated, %d skipped, %d errors\n", ok, skip, fail)
+	fmt.Printf("\ndone: %d generated, %d up to date, %d skipped, %d errors\n", ok, uptodate, skip, fail)
 
 	if len(deprecated) > 0 {
 		fmt.Fprintf(os.Stderr, "\n⚠️  WARNING: %d deprecated step(s) were generated:\n", len(deprecated))
@@ -418,32 +421,63 @@ func (githubSource) readStepInfo(stepID string) ([]byte, error) {
 
 // ---- per-step generation ---------------------------------------------------
 
+// stepOutcome carries the result of a generateStep call.
+type stepOutcome struct {
+	dep      *deprecationInfo // non-nil when the step is deprecated
+	removed  bool             // true when the step has no versions in the steplib (tombstone)
+	upToDate bool             // true when the cached file already has the latest version
+}
+
 // generateStep generates a typed builder file for stepID.
-// mu serialises all console output so lines from concurrent workers don't
-// interleave. All work is done before the mutex is acquired.
-func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource, mu *sync.Mutex) (*deprecationInfo, bool, error) {
+//
+// mu serialises all console output so lines from concurrent workers never
+// interleave — all expensive work is done before mu is locked.
+//
+// When force is false the function reads the existing output file's version
+// header and skips full regeneration if the latest steplib version matches.
+func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource, mu *sync.Mutex, force bool) (stepOutcome, error) {
+	// Compute the output path up front so we can check the cached version
+	// before making any further network calls.
+	base := "gen_" + normalizeID(stepID)
+	if strings.HasSuffix(base, "_test") {
+		// Files ending in "_test.go" are excluded from normal builds by the Go
+		// build system. Append "_builder" for steps whose IDs end in "-test"
+		// (e.g. xcode-test → gen_xcode_test_builder.go).
+		base += "_builder"
+	}
+	outPath := filepath.Join(outputDir, base+".go")
+
 	versions, err := src.listVersions(stepID)
 	if err != nil {
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s list versions: %v\n", stepID, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("list versions: %w", err)
+		return stepOutcome{}, fmt.Errorf("list versions: %w", err)
 	}
 	if len(versions) == 0 {
 		mu.Lock()
 		fmt.Printf("skip %-40s (no versions — removed from steplib)\n", stepID)
 		mu.Unlock()
-		return nil, true, nil
+		return stepOutcome{removed: true}, nil
 	}
 
 	latest := latestVersion(versions)
+
+	// Version fingerprinting: if the existing file already encodes the latest
+	// version and --force is not set, skip all remaining fetches.
+	if !force && readCachedVersion(outPath) == latest {
+		mu.Lock()
+		fmt.Printf("ok   %-40s → %-10s (up to date)\n", stepID, latest)
+		mu.Unlock()
+		return stepOutcome{upToDate: true}, nil
+	}
 
 	ymlData, err := src.readStepYML(stepID, latest)
 	if err != nil {
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s read step.yml: %v\n", stepID, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("read step.yml: %w", err)
+		return stepOutcome{}, fmt.Errorf("read step.yml: %w", err)
 	}
 
 	def, err := parseStepYML(stepID, latest, ymlData)
@@ -451,7 +485,7 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s parse step.yml: %v\n", stepID, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("parse step.yml: %w", err)
+		return stepOutcome{}, fmt.Errorf("parse step.yml: %w", err)
 	}
 
 	// Check deprecation before rendering so the // Deprecated: godoc comment
@@ -461,14 +495,14 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s read step-info.yml: %v\n", stepID, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("read step-info.yml: %w", err)
+		return stepOutcome{}, fmt.Errorf("read step-info.yml: %w", err)
 	}
 	dep, err := parseStepInfo(infoData)
 	if err != nil {
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s parse step-info.yml: %v\n", stepID, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("parse step-info.yml: %w", err)
+		return stepOutcome{}, fmt.Errorf("parse step-info.yml: %w", err)
 	}
 	if dep != nil {
 		def.DeprecateNotes = dep.Notes
@@ -479,31 +513,22 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s render template: %v\n", stepID, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("render template: %w", err)
+		return stepOutcome{}, fmt.Errorf("render template: %w", err)
 	}
 
-	out, err := format.Source(buf.Bytes())
+	formatted, err := format.Source(buf.Bytes())
 	if err != nil {
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s gofmt: %v\n---\n%s", stepID, err, buf.String())
 		mu.Unlock()
-		return nil, false, fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
+		return stepOutcome{}, fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
 	}
 
-	// Files ending in "_test.go" are treated as test files by the Go build
-	// system and excluded from normal builds. Append "_builder" to the base
-	// name to sidestep this for steps whose IDs end in "-test" (e.g. xcode-test
-	// → gen_xcode_test_builder.go, android-unit-test → gen_android_unit_test_builder.go).
-	base := "gen_" + normalizeID(stepID)
-	if strings.HasSuffix(base, "_test") {
-		base += "_builder"
-	}
-	outPath := filepath.Join(outputDir, base+".go")
-	if err := os.WriteFile(outPath, out, 0644); err != nil {
+	if err := os.WriteFile(outPath, formatted, 0644); err != nil {
 		mu.Lock()
 		fmt.Fprintf(os.Stderr, "ERROR %-40s write %s: %v\n", stepID, outPath, err)
 		mu.Unlock()
-		return nil, false, fmt.Errorf("write %s: %w", outPath, err)
+		return stepOutcome{}, fmt.Errorf("write %s: %w", outPath, err)
 	}
 
 	// All work done — print one complete, uninterruptible line.
@@ -515,7 +540,35 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	}
 	mu.Unlock()
 
-	return dep, false, nil
+	return stepOutcome{dep: dep}, nil
+}
+
+// readCachedVersion reads the version embedded in the header of a previously
+// generated builder file. It returns the empty string if the file does not
+// exist or the header cannot be parsed.
+//
+// The expected header format (line 2 of every generated file) is:
+//
+//	// Step: <step-id> (<version>)
+func readCachedVersion(path string) string {
+	f, err := os.Open(path)
+	if err != nil {
+		return ""
+	}
+	defer f.Close()
+
+	sc := bufio.NewScanner(f)
+	sc.Scan() // line 1: // Code generated by cmd/stepgen. DO NOT EDIT.
+	if !sc.Scan() {
+		return "" // line 2 missing
+	}
+	line := sc.Text() // e.g. "// Step: activate-ssh-key (4.1.1)"
+	i := strings.LastIndex(line, "(")
+	j := strings.LastIndex(line, ")")
+	if i < 0 || j <= i {
+		return ""
+	}
+	return line[i+1 : j]
 }
 
 // ---- GitHub fetching -------------------------------------------------------
