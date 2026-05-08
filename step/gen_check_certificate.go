@@ -7,8 +7,12 @@ package step
 type CheckCertificateBuilder struct{ *Builder }
 
 // CheckCertificate creates a check-certificate step builder (v1).
-func CheckCertificate() *CheckCertificateBuilder {
-	return &CheckCertificateBuilder{Builder: From("check-certificate", "1")}
+func CheckCertificate(version ...string) *CheckCertificateBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CheckCertificateBuilder{Builder: From("check-certificate", v)}
 }
 
 // WithSmtpServer sets sMTP server.

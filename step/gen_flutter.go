@@ -7,8 +7,12 @@ package step
 type FlutterBuilder struct{ *Builder }
 
 // Flutter creates a flutter step builder (v0).
-func Flutter() *FlutterBuilder {
-	return &FlutterBuilder{Builder: From("flutter", "0")}
+func Flutter(version ...string) *FlutterBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlutterBuilder{Builder: From("flutter", v)}
 }
 
 // WithVersion sets flutter version.

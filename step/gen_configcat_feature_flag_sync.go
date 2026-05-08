@@ -7,8 +7,12 @@ package step
 type ConfigcatFeatureFlagSyncBuilder struct{ *Builder }
 
 // ConfigcatFeatureFlagSync creates a configcat-feature-flag-sync step builder (v0).
-func ConfigcatFeatureFlagSync() *ConfigcatFeatureFlagSyncBuilder {
-	return &ConfigcatFeatureFlagSyncBuilder{Builder: From("configcat-feature-flag-sync", "0")}
+func ConfigcatFeatureFlagSync(version ...string) *ConfigcatFeatureFlagSyncBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ConfigcatFeatureFlagSyncBuilder{Builder: From("configcat-feature-flag-sync", v)}
 }
 
 // WithConfigcatApiHost sets configCat Public Management API host.

@@ -7,8 +7,12 @@ package step
 type XcodeArchiveMacBuilder struct{ *Builder }
 
 // XcodeArchiveMac creates a xcode-archive-mac step builder (v1).
-func XcodeArchiveMac() *XcodeArchiveMacBuilder {
-	return &XcodeArchiveMacBuilder{Builder: From("xcode-archive-mac", "1")}
+func XcodeArchiveMac(version ...string) *XcodeArchiveMacBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeArchiveMacBuilder{Builder: From("xcode-archive-mac", v)}
 }
 
 // WithExportMethod sets export method.

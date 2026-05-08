@@ -7,8 +7,12 @@ package step
 type DeployToBitriseIoBuilder struct{ *Builder }
 
 // DeployToBitriseIo creates a deploy-to-bitrise-io step builder (v2).
-func DeployToBitriseIo() *DeployToBitriseIoBuilder {
-	return &DeployToBitriseIoBuilder{Builder: From("deploy-to-bitrise-io", "2")}
+func DeployToBitriseIo(version ...string) *DeployToBitriseIoBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeployToBitriseIoBuilder{Builder: From("deploy-to-bitrise-io", v)}
 }
 
 // WithDeployPath sets deploy directory or file path.

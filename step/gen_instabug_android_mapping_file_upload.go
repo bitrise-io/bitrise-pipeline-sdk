@@ -7,8 +7,12 @@ package step
 type InstabugAndroidMappingFileUploadBuilder struct{ *Builder }
 
 // InstabugAndroidMappingFileUpload creates a instabug-android-mapping-file-upload step builder (v1).
-func InstabugAndroidMappingFileUpload() *InstabugAndroidMappingFileUploadBuilder {
-	return &InstabugAndroidMappingFileUploadBuilder{Builder: From("instabug-android-mapping-file-upload", "1")}
+func InstabugAndroidMappingFileUpload(version ...string) *InstabugAndroidMappingFileUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstabugAndroidMappingFileUploadBuilder{Builder: From("instabug-android-mapping-file-upload", v)}
 }
 
 // WithInstabugAppToken sets instabug App Token.

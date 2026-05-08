@@ -7,8 +7,12 @@ package step
 type LocalazyBuilder struct{ *Builder }
 
 // Localazy creates a localazy step builder (v1).
-func Localazy() *LocalazyBuilder {
-	return &LocalazyBuilder{Builder: From("localazy", "1")}
+func Localazy(version ...string) *LocalazyBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &LocalazyBuilder{Builder: From("localazy", v)}
 }
 
 // WithConfigFile sets configuration file.

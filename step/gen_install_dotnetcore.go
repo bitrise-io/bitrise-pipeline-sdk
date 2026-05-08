@@ -11,8 +11,12 @@ type InstallDotnetcoreBuilder struct{ *Builder }
 // InstallDotnetcore creates a install-dotnetcore step builder (v1).
 //
 // Deprecated: This step is deprecated as it is no longer maintained.
-func InstallDotnetcore() *InstallDotnetcoreBuilder {
-	return &InstallDotnetcoreBuilder{Builder: From("install-dotnetcore", "1")}
+func InstallDotnetcore(version ...string) *InstallDotnetcoreBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstallDotnetcoreBuilder{Builder: From("install-dotnetcore", v)}
 }
 
 // WithChannel sets channel.

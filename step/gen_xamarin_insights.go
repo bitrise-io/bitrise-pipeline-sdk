@@ -11,8 +11,12 @@ type XamarinInsightsBuilder struct{ *Builder }
 // XamarinInsights creates a xamarin-insights step builder (v1).
 //
 // Deprecated: This step is deprecated, the Xamarin Insights service will be shutted down on March 31, 2018.
-func XamarinInsights() *XamarinInsightsBuilder {
-	return &XamarinInsightsBuilder{Builder: From("xamarin-insights", "1")}
+func XamarinInsights(version ...string) *XamarinInsightsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinInsightsBuilder{Builder: From("xamarin-insights", v)}
 }
 
 // WithXamarinInsightsApiKey sets aPI Key for Xamarin.Insights.

@@ -7,8 +7,12 @@ package step
 type WaldoUploadBuilder struct{ *Builder }
 
 // WaldoUpload creates a waldo-upload step builder (v2).
-func WaldoUpload() *WaldoUploadBuilder {
-	return &WaldoUploadBuilder{Builder: From("waldo-upload", "2")}
+func WaldoUpload(version ...string) *WaldoUploadBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &WaldoUploadBuilder{Builder: From("waldo-upload", v)}
 }
 
 // WithBuildPath sets build path.

@@ -7,8 +7,12 @@ package step
 type UpdateXcodeProjectProvisioningBuilder struct{ *Builder }
 
 // UpdateXcodeProjectProvisioning creates a update-xcode-project-provisioning step builder (v1).
-func UpdateXcodeProjectProvisioning() *UpdateXcodeProjectProvisioningBuilder {
-	return &UpdateXcodeProjectProvisioningBuilder{Builder: From("update-xcode-project-provisioning", "1")}
+func UpdateXcodeProjectProvisioning(version ...string) *UpdateXcodeProjectProvisioningBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UpdateXcodeProjectProvisioningBuilder{Builder: From("update-xcode-project-provisioning", v)}
 }
 
 // WithXcodeXcodeprojFile sets xcode project.xcodeproj Path.

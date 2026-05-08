@@ -7,8 +7,12 @@ package step
 type CreateAppleDocumentationBuilder struct{ *Builder }
 
 // CreateAppleDocumentation creates a create-apple-documentation step builder (v1).
-func CreateAppleDocumentation() *CreateAppleDocumentationBuilder {
-	return &CreateAppleDocumentationBuilder{Builder: From("create-apple-documentation", "1")}
+func CreateAppleDocumentation(version ...string) *CreateAppleDocumentationBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateAppleDocumentationBuilder{Builder: From("create-apple-documentation", v)}
 }
 
 // WithJazzyConfiguration sets path to the jazzy configuration.

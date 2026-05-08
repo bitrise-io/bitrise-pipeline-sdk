@@ -7,8 +7,12 @@ package step
 type NitroAndroidBuilder struct{ *Builder }
 
 // NitroAndroid creates a nitro-android step builder (v4).
-func NitroAndroid() *NitroAndroidBuilder {
-	return &NitroAndroidBuilder{Builder: From("nitro-android", "4")}
+func NitroAndroid(version ...string) *NitroAndroidBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &NitroAndroidBuilder{Builder: From("nitro-android", v)}
 }
 
 // WithApiKey sets nitro API key.

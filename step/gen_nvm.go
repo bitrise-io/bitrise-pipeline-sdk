@@ -7,8 +7,12 @@ package step
 type NvmBuilder struct{ *Builder }
 
 // Nvm creates a nvm step builder (v1).
-func Nvm() *NvmBuilder {
-	return &NvmBuilder{Builder: From("nvm", "1")}
+func Nvm(version ...string) *NvmBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &NvmBuilder{Builder: From("nvm", v)}
 }
 
 // WithWorkingDir sets working directory.

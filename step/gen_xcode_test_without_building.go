@@ -7,8 +7,12 @@ package step
 type XcodeTestWithoutBuildingBuilder struct{ *Builder }
 
 // XcodeTestWithoutBuilding creates a xcode-test-without-building step builder (v0).
-func XcodeTestWithoutBuilding() *XcodeTestWithoutBuildingBuilder {
-	return &XcodeTestWithoutBuildingBuilder{Builder: From("xcode-test-without-building", "0")}
+func XcodeTestWithoutBuilding(version ...string) *XcodeTestWithoutBuildingBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeTestWithoutBuildingBuilder{Builder: From("xcode-test-without-building", v)}
 }
 
 // WithXctestrun sets xctestrun file path.

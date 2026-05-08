@@ -7,8 +7,12 @@ package step
 type CordovaConfigBuilder struct{ *Builder }
 
 // CordovaConfig creates a cordova-config step builder (v0).
-func CordovaConfig() *CordovaConfigBuilder {
-	return &CordovaConfigBuilder{Builder: From("cordova-config", "0")}
+func CordovaConfig(version ...string) *CordovaConfigBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CordovaConfigBuilder{Builder: From("cordova-config", v)}
 }
 
 // WithName sets cordova application name.

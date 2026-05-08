@@ -7,8 +7,12 @@ package step
 type FlutterInstallerBuilder struct{ *Builder }
 
 // FlutterInstaller creates a flutter-installer step builder (v1).
-func FlutterInstaller() *FlutterInstallerBuilder {
-	return &FlutterInstallerBuilder{Builder: From("flutter-installer", "1")}
+func FlutterInstaller(version ...string) *FlutterInstallerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlutterInstallerBuilder{Builder: From("flutter-installer", v)}
 }
 
 // WithVersion sets flutter SDK version or bundle URL.

@@ -7,8 +7,12 @@ package step
 type ApkInfoBuilder struct{ *Builder }
 
 // ApkInfo creates a apk-info step builder (v1).
-func ApkInfo() *ApkInfoBuilder {
-	return &ApkInfoBuilder{Builder: From("apk-info", "1")}
+func ApkInfo(version ...string) *ApkInfoBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ApkInfoBuilder{Builder: From("apk-info", v)}
 }
 
 // WithApkPath sets aPK file path.

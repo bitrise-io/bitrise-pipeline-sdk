@@ -7,8 +7,12 @@ package step
 type BitriseStepExportUniversalApkBuilder struct{ *Builder }
 
 // BitriseStepExportUniversalApk creates a bitrise-step-export-universal-apk step builder (v0).
-func BitriseStepExportUniversalApk() *BitriseStepExportUniversalApkBuilder {
-	return &BitriseStepExportUniversalApkBuilder{Builder: From("bitrise-step-export-universal-apk", "0")}
+func BitriseStepExportUniversalApk(version ...string) *BitriseStepExportUniversalApkBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepExportUniversalApkBuilder{Builder: From("bitrise-step-export-universal-apk", v)}
 }
 
 // WithAabPath sets android App Bundle path.

@@ -7,8 +7,12 @@ package step
 type SonarqubeMsbuildScannerBuilder struct{ *Builder }
 
 // SonarqubeMsbuildScanner creates a sonarqube-msbuild-scanner step builder (v1).
-func SonarqubeMsbuildScanner() *SonarqubeMsbuildScannerBuilder {
-	return &SonarqubeMsbuildScannerBuilder{Builder: From("sonarqube-msbuild-scanner", "1")}
+func SonarqubeMsbuildScanner(version ...string) *SonarqubeMsbuildScannerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SonarqubeMsbuildScannerBuilder{Builder: From("sonarqube-msbuild-scanner", v)}
 }
 
 // WithScannerVersion sets scanner CLI version.

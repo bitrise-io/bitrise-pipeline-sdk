@@ -7,8 +7,12 @@ package step
 type AuthenticateWithGithubOauthBuilder struct{ *Builder }
 
 // AuthenticateWithGithubOauth creates a authenticate-with-github-oauth step builder (v0).
-func AuthenticateWithGithubOauth() *AuthenticateWithGithubOauthBuilder {
-	return &AuthenticateWithGithubOauthBuilder{Builder: From("authenticate-with-github-oauth", "0")}
+func AuthenticateWithGithubOauth(version ...string) *AuthenticateWithGithubOauthBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AuthenticateWithGithubOauthBuilder{Builder: From("authenticate-with-github-oauth", v)}
 }
 
 // WithUsername sets gitHub username.

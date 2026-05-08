@@ -7,8 +7,12 @@ package step
 type RunTestsUsingMarathonCloudBuilder struct{ *Builder }
 
 // RunTestsUsingMarathonCloud creates a run-tests-using-marathon-cloud step builder (v1).
-func RunTestsUsingMarathonCloud() *RunTestsUsingMarathonCloudBuilder {
-	return &RunTestsUsingMarathonCloudBuilder{Builder: From("run-tests-using-marathon-cloud", "1")}
+func RunTestsUsingMarathonCloud(version ...string) *RunTestsUsingMarathonCloudBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RunTestsUsingMarathonCloudBuilder{Builder: From("run-tests-using-marathon-cloud", v)}
 }
 
 // WithApplication sets app File.

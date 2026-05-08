@@ -7,8 +7,12 @@ package step
 type XcodeTestBuilder struct{ *Builder }
 
 // XcodeTest creates a xcode-test step builder (v6).
-func XcodeTest() *XcodeTestBuilder {
-	return &XcodeTestBuilder{Builder: From("xcode-test", "6")}
+func XcodeTest(version ...string) *XcodeTestBuilder {
+	v := "6"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeTestBuilder{Builder: From("xcode-test", v)}
 }
 
 // WithProjectPath sets project path.

@@ -7,8 +7,12 @@ package step
 type CalabashAndroidUitestBuilder struct{ *Builder }
 
 // CalabashAndroidUitest creates a calabash-android-uitest step builder (v1).
-func CalabashAndroidUitest() *CalabashAndroidUitestBuilder {
-	return &CalabashAndroidUitestBuilder{Builder: From("calabash-android-uitest", "1")}
+func CalabashAndroidUitest(version ...string) *CalabashAndroidUitestBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CalabashAndroidUitestBuilder{Builder: From("calabash-android-uitest", v)}
 }
 
 // WithWorkDir sets directory of your calabash features.

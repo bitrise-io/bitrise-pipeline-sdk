@@ -11,8 +11,12 @@ type MagicpodUiTestBuilder struct{ *Builder }
 // MagicpodUiTest creates a magicpod-ui-test step builder (v0).
 //
 // Deprecated: This step is deprecated. Please use magic-pod step instead.
-func MagicpodUiTest() *MagicpodUiTestBuilder {
-	return &MagicpodUiTestBuilder{Builder: From("magicpod-ui-test", "0")}
+func MagicpodUiTest(version ...string) *MagicpodUiTestBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MagicpodUiTestBuilder{Builder: From("magicpod-ui-test", v)}
 }
 
 // WithMagicPodApiToken sets magic Pod API token.

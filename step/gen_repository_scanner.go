@@ -11,8 +11,12 @@ type RepositoryScannerBuilder struct{ *Builder }
 // RepositoryScanner creates a repository-scanner step builder (v1).
 //
 // Deprecated: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner) instead.
-func RepositoryScanner() *RepositoryScannerBuilder {
-	return &RepositoryScannerBuilder{Builder: From("repository-scanner", "1")}
+func RepositoryScanner(version ...string) *RepositoryScannerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RepositoryScannerBuilder{Builder: From("repository-scanner", v)}
 }
 
 // WithSourceRootPath sets source Code Directory path..

@@ -7,8 +7,12 @@ package step
 type LocoBuilder struct{ *Builder }
 
 // Loco creates a loco step builder (v0).
-func Loco() *LocoBuilder {
-	return &LocoBuilder{Builder: From("loco", "0")}
+func Loco(version ...string) *LocoBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &LocoBuilder{Builder: From("loco", v)}
 }
 
 // WithLocoApiKey sets loco API key.

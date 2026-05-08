@@ -7,8 +7,12 @@ package step
 type DsymUploadToCrashlyticsNoCocoapodsBuilder struct{ *Builder }
 
 // DsymUploadToCrashlyticsNoCocoapods creates a dsym-upload-to-crashlytics--no-cocoapods step builder (v0).
-func DsymUploadToCrashlyticsNoCocoapods() *DsymUploadToCrashlyticsNoCocoapodsBuilder {
-	return &DsymUploadToCrashlyticsNoCocoapodsBuilder{Builder: From("dsym-upload-to-crashlytics--no-cocoapods", "0")}
+func DsymUploadToCrashlyticsNoCocoapods(version ...string) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DsymUploadToCrashlyticsNoCocoapodsBuilder{Builder: From("dsym-upload-to-crashlytics--no-cocoapods", v)}
 }
 
 // WithGooglePlistPath sets location of your GoogleService info plist.

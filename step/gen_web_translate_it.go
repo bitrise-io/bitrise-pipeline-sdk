@@ -7,8 +7,12 @@ package step
 type WebTranslateItBuilder struct{ *Builder }
 
 // WebTranslateIt creates a web-translate-it step builder (v1).
-func WebTranslateIt() *WebTranslateItBuilder {
-	return &WebTranslateItBuilder{Builder: From("web-translate-it", "1")}
+func WebTranslateIt(version ...string) *WebTranslateItBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &WebTranslateItBuilder{Builder: From("web-translate-it", v)}
 }
 
 // WithWtiApiKey sets web Translate It API Key.

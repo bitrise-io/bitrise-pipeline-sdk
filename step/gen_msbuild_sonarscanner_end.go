@@ -7,8 +7,12 @@ package step
 type MsbuildSonarscannerEndBuilder struct{ *Builder }
 
 // MsbuildSonarscannerEnd creates a msbuild-sonarscanner-end step builder (v0).
-func MsbuildSonarscannerEnd() *MsbuildSonarscannerEndBuilder {
-	return &MsbuildSonarscannerEndBuilder{Builder: From("msbuild-sonarscanner-end", "0")}
+func MsbuildSonarscannerEnd(version ...string) *MsbuildSonarscannerEndBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MsbuildSonarscannerEndBuilder{Builder: From("msbuild-sonarscanner-end", v)}
 }
 
 // WithSonarLogin sets username or access token to authenticate with to SonarQube.

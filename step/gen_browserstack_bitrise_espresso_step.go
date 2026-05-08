@@ -7,8 +7,12 @@ package step
 type BrowserstackBitriseEspressoStepBuilder struct{ *Builder }
 
 // BrowserstackBitriseEspressoStep creates a browserstack-bitrise-espresso-step step builder (v1).
-func BrowserstackBitriseEspressoStep() *BrowserstackBitriseEspressoStepBuilder {
-	return &BrowserstackBitriseEspressoStepBuilder{Builder: From("browserstack-bitrise-espresso-step", "1")}
+func BrowserstackBitriseEspressoStep(version ...string) *BrowserstackBitriseEspressoStepBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BrowserstackBitriseEspressoStepBuilder{Builder: From("browserstack-bitrise-espresso-step", v)}
 }
 
 // WithBrowserstackUsername sets browserStack username.

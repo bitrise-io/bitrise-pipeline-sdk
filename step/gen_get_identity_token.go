@@ -7,8 +7,12 @@ package step
 type GetIdentityTokenBuilder struct{ *Builder }
 
 // GetIdentityToken creates a get-identity-token step builder (v0).
-func GetIdentityToken() *GetIdentityTokenBuilder {
-	return &GetIdentityTokenBuilder{Builder: From("get-identity-token", "0")}
+func GetIdentityToken(version ...string) *GetIdentityTokenBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GetIdentityTokenBuilder{Builder: From("get-identity-token", v)}
 }
 
 // WithAudience sets token audience.

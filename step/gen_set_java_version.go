@@ -7,8 +7,12 @@ package step
 type SetJavaVersionBuilder struct{ *Builder }
 
 // SetJavaVersion creates a set-java-version step builder (v1).
-func SetJavaVersion() *SetJavaVersionBuilder {
-	return &SetJavaVersionBuilder{Builder: From("set-java-version", "1")}
+func SetJavaVersion(version ...string) *SetJavaVersionBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetJavaVersionBuilder{Builder: From("set-java-version", v)}
 }
 
 // WithSetJavaVersion sets java version.

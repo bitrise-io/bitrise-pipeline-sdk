@@ -7,8 +7,12 @@ package step
 type ChangeWorkdirBuilder struct{ *Builder }
 
 // ChangeWorkdir creates a change-workdir step builder (v1).
-func ChangeWorkdir() *ChangeWorkdirBuilder {
-	return &ChangeWorkdirBuilder{Builder: From("change-workdir", "1")}
+func ChangeWorkdir(version ...string) *ChangeWorkdirBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ChangeWorkdirBuilder{Builder: From("change-workdir", v)}
 }
 
 // WithPath sets directory path.

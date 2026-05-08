@@ -7,8 +7,12 @@ package step
 type GenerateImageDifferenceBuilder struct{ *Builder }
 
 // GenerateImageDifference creates a generate-image-difference step builder (v0).
-func GenerateImageDifference() *GenerateImageDifferenceBuilder {
-	return &GenerateImageDifferenceBuilder{Builder: From("generate-image-difference", "0")}
+func GenerateImageDifference(version ...string) *GenerateImageDifferenceBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenerateImageDifferenceBuilder{Builder: From("generate-image-difference", v)}
 }
 
 // WithBeforeImages sets before images path.

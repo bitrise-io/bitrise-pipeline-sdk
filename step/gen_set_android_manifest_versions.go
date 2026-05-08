@@ -7,8 +7,12 @@ package step
 type SetAndroidManifestVersionsBuilder struct{ *Builder }
 
 // SetAndroidManifestVersions creates a set-android-manifest-versions step builder (v1).
-func SetAndroidManifestVersions() *SetAndroidManifestVersionsBuilder {
-	return &SetAndroidManifestVersionsBuilder{Builder: From("set-android-manifest-versions", "1")}
+func SetAndroidManifestVersions(version ...string) *SetAndroidManifestVersionsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetAndroidManifestVersionsBuilder{Builder: From("set-android-manifest-versions", v)}
 }
 
 // WithManifestFile sets androidManifest.xml file path.

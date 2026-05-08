@@ -7,8 +7,12 @@ package step
 type JandiMessageBuilder struct{ *Builder }
 
 // JandiMessage creates a jandi-message step builder (v0).
-func JandiMessage() *JandiMessageBuilder {
-	return &JandiMessageBuilder{Builder: From("jandi-message", "0")}
+func JandiMessage(version ...string) *JandiMessageBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &JandiMessageBuilder{Builder: From("jandi-message", v)}
 }
 
 // WithIsDebugMode sets debug mode?.

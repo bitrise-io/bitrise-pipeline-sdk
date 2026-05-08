@@ -7,6 +7,10 @@ package step
 type SetGemHomeBuilder struct{ *Builder }
 
 // SetGemHome creates a set-gem-home step builder (v0).
-func SetGemHome() *SetGemHomeBuilder {
-	return &SetGemHomeBuilder{Builder: From("set-gem-home", "0")}
+func SetGemHome(version ...string) *SetGemHomeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetGemHomeBuilder{Builder: From("set-gem-home", v)}
 }

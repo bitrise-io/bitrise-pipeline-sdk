@@ -7,8 +7,12 @@ package step
 type AppliveryAndroidBuilder struct{ *Builder }
 
 // AppliveryAndroid creates a applivery-android step builder (v1).
-func AppliveryAndroid() *AppliveryAndroidBuilder {
-	return &AppliveryAndroidBuilder{Builder: From("applivery-android", "1")}
+func AppliveryAndroid(version ...string) *AppliveryAndroidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppliveryAndroidBuilder{Builder: From("applivery-android", v)}
 }
 
 // WithApkPath sets aPK file path.

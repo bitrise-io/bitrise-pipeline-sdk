@@ -7,8 +7,12 @@ package step
 type VirtualDeviceTestingForAndroidBuilder struct{ *Builder }
 
 // VirtualDeviceTestingForAndroid creates a virtual-device-testing-for-android step builder (v1).
-func VirtualDeviceTestingForAndroid() *VirtualDeviceTestingForAndroidBuilder {
-	return &VirtualDeviceTestingForAndroidBuilder{Builder: From("virtual-device-testing-for-android", "1")}
+func VirtualDeviceTestingForAndroid(version ...string) *VirtualDeviceTestingForAndroidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VirtualDeviceTestingForAndroidBuilder{Builder: From("virtual-device-testing-for-android", v)}
 }
 
 // WithAppPath sets app path.

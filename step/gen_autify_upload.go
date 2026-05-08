@@ -7,8 +7,12 @@ package step
 type AutifyUploadBuilder struct{ *Builder }
 
 // AutifyUpload creates a autify-upload step builder (v1).
-func AutifyUpload() *AutifyUploadBuilder {
-	return &AutifyUploadBuilder{Builder: From("autify-upload", "1")}
+func AutifyUpload(version ...string) *AutifyUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AutifyUploadBuilder{Builder: From("autify-upload", v)}
 }
 
 // WithAccessToken sets access token of Autify for Mobile.

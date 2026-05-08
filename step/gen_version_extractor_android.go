@@ -11,8 +11,12 @@ type VersionExtractorAndroidBuilder struct{ *Builder }
 // VersionExtractorAndroid creates a version-extractor-android step builder (v0).
 //
 // Deprecated: This step is no longer maintained by its author.
-func VersionExtractorAndroid() *VersionExtractorAndroidBuilder {
-	return &VersionExtractorAndroidBuilder{Builder: From("version-extractor-android", "0")}
+func VersionExtractorAndroid(version ...string) *VersionExtractorAndroidBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VersionExtractorAndroidBuilder{Builder: From("version-extractor-android", v)}
 }
 
 // WithBuildGradlePath sets path to the build.gradle file.

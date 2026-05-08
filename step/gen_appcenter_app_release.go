@@ -7,8 +7,12 @@ package step
 type AppcenterAppReleaseBuilder struct{ *Builder }
 
 // AppcenterAppRelease creates a appcenter-app-release step builder (v1).
-func AppcenterAppRelease() *AppcenterAppReleaseBuilder {
-	return &AppcenterAppReleaseBuilder{Builder: From("appcenter-app-release", "1")}
+func AppcenterAppRelease(version ...string) *AppcenterAppReleaseBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterAppReleaseBuilder{Builder: From("appcenter-app-release", v)}
 }
 
 // WithAppcenterApiToken sets appCenter API Token.

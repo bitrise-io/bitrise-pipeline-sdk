@@ -11,8 +11,12 @@ type PushNotificationWithParseBuilder struct{ *Builder }
 // PushNotificationWithParse creates a push-notification-with-parse step builder (v2).
 //
 // Deprecated: This step is deprecated, Push Notifications are no longer supported by Parse server.
-func PushNotificationWithParse() *PushNotificationWithParseBuilder {
-	return &PushNotificationWithParseBuilder{Builder: From("push-notification-with-parse", "2")}
+func PushNotificationWithParse(version ...string) *PushNotificationWithParseBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PushNotificationWithParseBuilder{Builder: From("push-notification-with-parse", v)}
 }
 
 // WithAppId sets parse App ID.

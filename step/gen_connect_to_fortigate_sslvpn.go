@@ -7,8 +7,12 @@ package step
 type ConnectToFortigateSslvpnBuilder struct{ *Builder }
 
 // ConnectToFortigateSslvpn creates a connect-to-fortigate-sslvpn step builder (v1).
-func ConnectToFortigateSslvpn() *ConnectToFortigateSslvpnBuilder {
-	return &ConnectToFortigateSslvpnBuilder{Builder: From("connect-to-fortigate-sslvpn", "1")}
+func ConnectToFortigateSslvpn(version ...string) *ConnectToFortigateSslvpnBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ConnectToFortigateSslvpnBuilder{Builder: From("connect-to-fortigate-sslvpn", v)}
 }
 
 // WithFtgHost sets remote Gateway.

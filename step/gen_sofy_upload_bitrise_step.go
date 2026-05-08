@@ -7,8 +7,12 @@ package step
 type SofyUploadBitriseStepBuilder struct{ *Builder }
 
 // SofyUploadBitriseStep creates a sofy-upload-bitrise-step step builder (v0).
-func SofyUploadBitriseStep() *SofyUploadBitriseStepBuilder {
-	return &SofyUploadBitriseStepBuilder{Builder: From("sofy-upload-bitrise-step", "0")}
+func SofyUploadBitriseStep(version ...string) *SofyUploadBitriseStepBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SofyUploadBitriseStepBuilder{Builder: From("sofy-upload-bitrise-step", v)}
 }
 
 // WithBuildPath sets build Path.

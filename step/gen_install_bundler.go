@@ -7,8 +7,12 @@ package step
 type InstallBundlerBuilder struct{ *Builder }
 
 // InstallBundler creates a install-bundler step builder (v1).
-func InstallBundler() *InstallBundlerBuilder {
-	return &InstallBundlerBuilder{Builder: From("install-bundler", "1")}
+func InstallBundler(version ...string) *InstallBundlerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstallBundlerBuilder{Builder: From("install-bundler", v)}
 }
 
 // WithGemfilePath sets path to the Gemfile lock.

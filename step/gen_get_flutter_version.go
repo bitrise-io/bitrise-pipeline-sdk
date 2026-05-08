@@ -7,8 +7,12 @@ package step
 type GetFlutterVersionBuilder struct{ *Builder }
 
 // GetFlutterVersion creates a get-flutter-version step builder (v0).
-func GetFlutterVersion() *GetFlutterVersionBuilder {
-	return &GetFlutterVersionBuilder{Builder: From("get-flutter-version", "0")}
+func GetFlutterVersion(version ...string) *GetFlutterVersionBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GetFlutterVersionBuilder{Builder: From("get-flutter-version", v)}
 }
 
 // WithProjectLocation sets project Location.

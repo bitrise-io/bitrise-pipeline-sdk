@@ -7,8 +7,12 @@ package step
 type DockerBuildPushBuilder struct{ *Builder }
 
 // DockerBuildPush creates a docker-build-push step builder (v1).
-func DockerBuildPush() *DockerBuildPushBuilder {
-	return &DockerBuildPushBuilder{Builder: From("docker-build-push", "1")}
+func DockerBuildPush(version ...string) *DockerBuildPushBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DockerBuildPushBuilder{Builder: From("docker-build-push", v)}
 }
 
 // WithTags sets image tags.

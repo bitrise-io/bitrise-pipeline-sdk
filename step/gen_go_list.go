@@ -7,8 +7,12 @@ package step
 type GoListBuilder struct{ *Builder }
 
 // GoList creates a go-list step builder (v1).
-func GoList() *GoListBuilder {
-	return &GoListBuilder{Builder: From("go-list", "1")}
+func GoList(version ...string) *GoListBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GoListBuilder{Builder: From("go-list", v)}
 }
 
 // WithExclude sets exclude patterns.

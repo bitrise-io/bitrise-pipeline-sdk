@@ -7,8 +7,12 @@ package step
 type NpmBuilder struct{ *Builder }
 
 // Npm creates a npm step builder (v3).
-func Npm() *NpmBuilder {
-	return &NpmBuilder{Builder: From("npm", "3")}
+func Npm(version ...string) *NpmBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &NpmBuilder{Builder: From("npm", v)}
 }
 
 // WithWorkdir sets working directory.

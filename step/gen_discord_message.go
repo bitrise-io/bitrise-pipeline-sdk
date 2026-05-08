@@ -7,8 +7,12 @@ package step
 type DiscordMessageBuilder struct{ *Builder }
 
 // DiscordMessage creates a discord-message step builder (v0).
-func DiscordMessage() *DiscordMessageBuilder {
-	return &DiscordMessageBuilder{Builder: From("discord-message", "0")}
+func DiscordMessage(version ...string) *DiscordMessageBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DiscordMessageBuilder{Builder: From("discord-message", v)}
 }
 
 // WithWebhookUrl sets discord Webhook URL.

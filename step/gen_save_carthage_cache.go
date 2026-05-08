@@ -7,8 +7,12 @@ package step
 type SaveCarthageCacheBuilder struct{ *Builder }
 
 // SaveCarthageCache creates a save-carthage-cache step builder (v1).
-func SaveCarthageCache() *SaveCarthageCacheBuilder {
-	return &SaveCarthageCacheBuilder{Builder: From("save-carthage-cache", "1")}
+func SaveCarthageCache(version ...string) *SaveCarthageCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveCarthageCacheBuilder{Builder: From("save-carthage-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

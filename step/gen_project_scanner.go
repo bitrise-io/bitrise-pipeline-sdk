@@ -7,8 +7,12 @@ package step
 type ProjectScannerBuilder struct{ *Builder }
 
 // ProjectScanner creates a project-scanner step builder (v4).
-func ProjectScanner() *ProjectScannerBuilder {
-	return &ProjectScannerBuilder{Builder: From("project-scanner", "4")}
+func ProjectScanner(version ...string) *ProjectScannerBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ProjectScannerBuilder{Builder: From("project-scanner", v)}
 }
 
 // WithScanDir sets directory to scan..

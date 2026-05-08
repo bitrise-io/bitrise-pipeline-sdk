@@ -7,8 +7,12 @@ package step
 type MobsfscanBuilder struct{ *Builder }
 
 // Mobsfscan creates a mobsfscan step builder (v1).
-func Mobsfscan() *MobsfscanBuilder {
-	return &MobsfscanBuilder{Builder: From("mobsfscan", "1")}
+func Mobsfscan(version ...string) *MobsfscanBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MobsfscanBuilder{Builder: From("mobsfscan", v)}
 }
 
 // WithProjectPath sets path to the project.

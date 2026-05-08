@@ -7,8 +7,12 @@ package step
 type SonarqubeScannerBuilder struct{ *Builder }
 
 // SonarqubeScanner creates a sonarqube-scanner step builder (v1).
-func SonarqubeScanner() *SonarqubeScannerBuilder {
-	return &SonarqubeScannerBuilder{Builder: From("sonarqube-scanner", "1")}
+func SonarqubeScanner(version ...string) *SonarqubeScannerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SonarqubeScannerBuilder{Builder: From("sonarqube-scanner", v)}
 }
 
 // WithScannerVersion sets scanner CLI version.

@@ -7,8 +7,12 @@ package step
 type RepeatoTestRunnerBuilder struct{ *Builder }
 
 // RepeatoTestRunner creates a repeato-test-runner step builder (v0).
-func RepeatoTestRunner() *RepeatoTestRunnerBuilder {
-	return &RepeatoTestRunnerBuilder{Builder: From("repeato-test-runner", "0")}
+func RepeatoTestRunner(version ...string) *RepeatoTestRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RepeatoTestRunnerBuilder{Builder: From("repeato-test-runner", v)}
 }
 
 // WithRepeatoCliVersion sets repeato CLI Version.

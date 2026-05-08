@@ -7,8 +7,12 @@ package step
 type JiraIssueFieldAddOrUpdateBuilder struct{ *Builder }
 
 // JiraIssueFieldAddOrUpdate creates a jira-issue-field-add-or-update step builder (v0).
-func JiraIssueFieldAddOrUpdate() *JiraIssueFieldAddOrUpdateBuilder {
-	return &JiraIssueFieldAddOrUpdateBuilder{Builder: From("jira-issue-field-add-or-update", "0")}
+func JiraIssueFieldAddOrUpdate(version ...string) *JiraIssueFieldAddOrUpdateBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &JiraIssueFieldAddOrUpdateBuilder{Builder: From("jira-issue-field-add-or-update", v)}
 }
 
 // WithProjectPrefix sets jira project prefix.

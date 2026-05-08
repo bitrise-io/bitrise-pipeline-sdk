@@ -7,8 +7,12 @@ package step
 type SmsTextMessageBuilder struct{ *Builder }
 
 // SmsTextMessage creates a sms-text-message step builder (v2).
-func SmsTextMessage() *SmsTextMessageBuilder {
-	return &SmsTextMessageBuilder{Builder: From("sms-text-message", "2")}
+func SmsTextMessage(version ...string) *SmsTextMessageBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SmsTextMessageBuilder{Builder: From("sms-text-message", v)}
 }
 
 // WithAccountSid sets twilio Account SID.

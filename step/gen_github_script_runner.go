@@ -7,8 +7,12 @@ package step
 type GithubScriptRunnerBuilder struct{ *Builder }
 
 // GithubScriptRunner creates a github-script-runner step builder (v0).
-func GithubScriptRunner() *GithubScriptRunnerBuilder {
-	return &GithubScriptRunnerBuilder{Builder: From("github-script-runner", "0")}
+func GithubScriptRunner(version ...string) *GithubScriptRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GithubScriptRunnerBuilder{Builder: From("github-script-runner", v)}
 }
 
 // WithRawFilePath sets the file raw path.

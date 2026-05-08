@@ -7,8 +7,12 @@ package step
 type DataTheoremMobileSecureBuilder struct{ *Builder }
 
 // DataTheoremMobileSecure creates a data-theorem-mobile-secure step builder (v1).
-func DataTheoremMobileSecure() *DataTheoremMobileSecureBuilder {
-	return &DataTheoremMobileSecureBuilder{Builder: From("data-theorem-mobile-secure", "1")}
+func DataTheoremMobileSecure(version ...string) *DataTheoremMobileSecureBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DataTheoremMobileSecureBuilder{Builder: From("data-theorem-mobile-secure", v)}
 }
 
 // WithFilePath sets file path to the APK or IPA to upload.

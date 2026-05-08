@@ -7,8 +7,12 @@ package step
 type XcodeBuildForTestBuilder struct{ *Builder }
 
 // XcodeBuildForTest creates a xcode-build-for-test step builder (v3).
-func XcodeBuildForTest() *XcodeBuildForTestBuilder {
-	return &XcodeBuildForTestBuilder{Builder: From("xcode-build-for-test", "3")}
+func XcodeBuildForTest(version ...string) *XcodeBuildForTestBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeBuildForTestBuilder{Builder: From("xcode-build-for-test", v)}
 }
 
 // WithProjectPath sets project path.

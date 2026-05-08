@@ -7,8 +7,12 @@ package step
 type FauxpasappBuilder struct{ *Builder }
 
 // Fauxpasapp creates a fauxpasapp step builder (v0).
-func Fauxpasapp() *FauxpasappBuilder {
-	return &FauxpasappBuilder{Builder: From("fauxpasapp", "0")}
+func Fauxpasapp(version ...string) *FauxpasappBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FauxpasappBuilder{Builder: From("fauxpasapp", v)}
 }
 
 // WithFauxpasLicenseType sets license type.

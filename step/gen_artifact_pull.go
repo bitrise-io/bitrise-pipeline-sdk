@@ -7,8 +7,12 @@ package step
 type ArtifactPullBuilder struct{ *Builder }
 
 // ArtifactPull creates a artifact-pull step builder (v1).
-func ArtifactPull() *ArtifactPullBuilder {
-	return &ArtifactPullBuilder{Builder: From("artifact-pull", "1")}
+func ArtifactPull(version ...string) *ArtifactPullBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ArtifactPullBuilder{Builder: From("artifact-pull", v)}
 }
 
 // WithVerbose sets enable verbose logging.

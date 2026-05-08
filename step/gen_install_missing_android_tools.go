@@ -7,8 +7,12 @@ package step
 type InstallMissingAndroidToolsBuilder struct{ *Builder }
 
 // InstallMissingAndroidTools creates a install-missing-android-tools step builder (v3).
-func InstallMissingAndroidTools() *InstallMissingAndroidToolsBuilder {
-	return &InstallMissingAndroidToolsBuilder{Builder: From("install-missing-android-tools", "3")}
+func InstallMissingAndroidTools(version ...string) *InstallMissingAndroidToolsBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstallMissingAndroidToolsBuilder{Builder: From("install-missing-android-tools", v)}
 }
 
 // WithGradlewPath sets gradlew file path.

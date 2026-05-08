@@ -7,8 +7,12 @@ package step
 type BitriseStepVersionPreReleaseInfoBuilder struct{ *Builder }
 
 // BitriseStepVersionPreReleaseInfo creates a bitrise-step-version-pre-release-info step builder (v1).
-func BitriseStepVersionPreReleaseInfo() *BitriseStepVersionPreReleaseInfoBuilder {
-	return &BitriseStepVersionPreReleaseInfoBuilder{Builder: From("bitrise-step-version-pre-release-info", "1")}
+func BitriseStepVersionPreReleaseInfo(version ...string) *BitriseStepVersionPreReleaseInfoBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepVersionPreReleaseInfoBuilder{Builder: From("bitrise-step-version-pre-release-info", v)}
 }
 
 // WithVersionNumber sets version number.

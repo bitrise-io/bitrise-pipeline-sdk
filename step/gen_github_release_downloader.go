@@ -7,8 +7,12 @@ package step
 type GithubReleaseDownloaderBuilder struct{ *Builder }
 
 // GithubReleaseDownloader creates a github-release-downloader step builder (v0).
-func GithubReleaseDownloader() *GithubReleaseDownloaderBuilder {
-	return &GithubReleaseDownloaderBuilder{Builder: From("github-release-downloader", "0")}
+func GithubReleaseDownloader(version ...string) *GithubReleaseDownloaderBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GithubReleaseDownloaderBuilder{Builder: From("github-release-downloader", v)}
 }
 
 // WithGithubAccessToken sets gitHub Access Token.

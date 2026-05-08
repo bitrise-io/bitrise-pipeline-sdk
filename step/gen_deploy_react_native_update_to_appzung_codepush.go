@@ -7,8 +7,12 @@ package step
 type DeployReactNativeUpdateToAppzungCodepushBuilder struct{ *Builder }
 
 // DeployReactNativeUpdateToAppzungCodepush creates a deploy-react-native-update-to-appzung-codepush step builder (v1).
-func DeployReactNativeUpdateToAppzungCodepush() *DeployReactNativeUpdateToAppzungCodepushBuilder {
-	return &DeployReactNativeUpdateToAppzungCodepushBuilder{Builder: From("deploy-react-native-update-to-appzung-codepush", "1")}
+func DeployReactNativeUpdateToAppzungCodepush(version ...string) *DeployReactNativeUpdateToAppzungCodepushBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeployReactNativeUpdateToAppzungCodepushBuilder{Builder: From("deploy-react-native-update-to-appzung-codepush", v)}
 }
 
 // WithApiKey sets aPI Key.

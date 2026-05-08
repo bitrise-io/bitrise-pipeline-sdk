@@ -11,8 +11,12 @@ type XamarinTestCloudForIosBuilder struct{ *Builder }
 // XamarinTestCloudForIos creates a xamarin-test-cloud-for-ios step builder (v2).
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
-func XamarinTestCloudForIos() *XamarinTestCloudForIosBuilder {
-	return &XamarinTestCloudForIosBuilder{Builder: From("xamarin-test-cloud-for-ios", "2")}
+func XamarinTestCloudForIos(version ...string) *XamarinTestCloudForIosBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinTestCloudForIosBuilder{Builder: From("xamarin-test-cloud-for-ios", v)}
 }
 
 // WithXamarinUser sets user email.

@@ -11,8 +11,12 @@ type XamarinTestCloudForCalabashIosBuilder struct{ *Builder }
 // XamarinTestCloudForCalabashIos creates a xamarin-test-cloud-for-calabash-ios step builder (v1).
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
-func XamarinTestCloudForCalabashIos() *XamarinTestCloudForCalabashIosBuilder {
-	return &XamarinTestCloudForCalabashIosBuilder{Builder: From("xamarin-test-cloud-for-calabash-ios", "1")}
+func XamarinTestCloudForCalabashIos(version ...string) *XamarinTestCloudForCalabashIosBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinTestCloudForCalabashIosBuilder{Builder: From("xamarin-test-cloud-for-calabash-ios", v)}
 }
 
 // WithWorkDir sets directory of your calabash features.

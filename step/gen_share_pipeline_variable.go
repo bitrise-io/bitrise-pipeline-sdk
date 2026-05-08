@@ -7,8 +7,12 @@ package step
 type SharePipelineVariableBuilder struct{ *Builder }
 
 // SharePipelineVariable creates a share-pipeline-variable step builder (v1).
-func SharePipelineVariable() *SharePipelineVariableBuilder {
-	return &SharePipelineVariableBuilder{Builder: From("share-pipeline-variable", "1")}
+func SharePipelineVariable(version ...string) *SharePipelineVariableBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SharePipelineVariableBuilder{Builder: From("share-pipeline-variable", v)}
 }
 
 // WithVariables sets variables to share between Pipeline Workflows.

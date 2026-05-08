@@ -7,8 +7,12 @@ package step
 type BrowserstackEspressoAppAutomateBuilder struct{ *Builder }
 
 // BrowserstackEspressoAppAutomate creates a browserstack-espresso-app-automate step builder (v0).
-func BrowserstackEspressoAppAutomate() *BrowserstackEspressoAppAutomateBuilder {
-	return &BrowserstackEspressoAppAutomateBuilder{Builder: From("browserstack-espresso-app-automate", "0")}
+func BrowserstackEspressoAppAutomate(version ...string) *BrowserstackEspressoAppAutomateBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BrowserstackEspressoAppAutomateBuilder{Builder: From("browserstack-espresso-app-automate", v)}
 }
 
 // WithAppApkPath sets app apk path.

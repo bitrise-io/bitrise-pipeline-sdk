@@ -7,8 +7,12 @@ package step
 type ParseComposerResultsBuilder struct{ *Builder }
 
 // ParseComposerResults creates a parse-composer-results step builder (v0).
-func ParseComposerResults() *ParseComposerResultsBuilder {
-	return &ParseComposerResultsBuilder{Builder: From("parse-composer-results", "0")}
+func ParseComposerResults(version ...string) *ParseComposerResultsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ParseComposerResultsBuilder{Builder: From("parse-composer-results", v)}
 }
 
 // WithResultsDir sets directory to search for composer test result files.

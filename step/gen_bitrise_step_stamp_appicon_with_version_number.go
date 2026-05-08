@@ -7,8 +7,12 @@ package step
 type BitriseStepStampAppiconWithVersionNumberBuilder struct{ *Builder }
 
 // BitriseStepStampAppiconWithVersionNumber creates a bitrise-step-stamp-appicon-with-version-number step builder (v1).
-func BitriseStepStampAppiconWithVersionNumber() *BitriseStepStampAppiconWithVersionNumberBuilder {
-	return &BitriseStepStampAppiconWithVersionNumberBuilder{Builder: From("bitrise-step-stamp-appicon-with-version-number", "1")}
+func BitriseStepStampAppiconWithVersionNumber(version ...string) *BitriseStepStampAppiconWithVersionNumberBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepStampAppiconWithVersionNumberBuilder{Builder: From("bitrise-step-stamp-appicon-with-version-number", v)}
 }
 
 // WithStampPathToIcons sets path to icons of the project.

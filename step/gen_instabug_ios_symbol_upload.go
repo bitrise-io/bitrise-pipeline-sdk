@@ -7,8 +7,12 @@ package step
 type InstabugIosSymbolUploadBuilder struct{ *Builder }
 
 // InstabugIosSymbolUpload creates a instabug-ios-symbol-upload step builder (v1).
-func InstabugIosSymbolUpload() *InstabugIosSymbolUploadBuilder {
-	return &InstabugIosSymbolUploadBuilder{Builder: From("instabug-ios-symbol-upload", "1")}
+func InstabugIosSymbolUpload(version ...string) *InstabugIosSymbolUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstabugIosSymbolUploadBuilder{Builder: From("instabug-ios-symbol-upload", v)}
 }
 
 // WithInstabugAppToken sets instabug App Token.

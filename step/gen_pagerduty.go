@@ -7,8 +7,12 @@ package step
 type PagerdutyBuilder struct{ *Builder }
 
 // Pagerduty creates a pagerduty step builder (v0).
-func Pagerduty() *PagerdutyBuilder {
-	return &PagerdutyBuilder{Builder: From("pagerduty", "0")}
+func Pagerduty(version ...string) *PagerdutyBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PagerdutyBuilder{Builder: From("pagerduty", v)}
 }
 
 // WithApiVersion sets aPI version.

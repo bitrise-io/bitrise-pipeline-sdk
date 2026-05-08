@@ -7,8 +7,12 @@ package step
 type CalabashIosUitestBuilder struct{ *Builder }
 
 // CalabashIosUitest creates a calabash-ios-uitest step builder (v1).
-func CalabashIosUitest() *CalabashIosUitestBuilder {
-	return &CalabashIosUitestBuilder{Builder: From("calabash-ios-uitest", "1")}
+func CalabashIosUitest(version ...string) *CalabashIosUitestBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CalabashIosUitestBuilder{Builder: From("calabash-ios-uitest", v)}
 }
 
 // WithWorkDir sets directory of your calabash features.

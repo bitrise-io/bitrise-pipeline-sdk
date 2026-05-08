@@ -7,8 +7,12 @@ package step
 type FabricCrashlyticsBetaDeployBuilder struct{ *Builder }
 
 // FabricCrashlyticsBetaDeploy creates a fabric-crashlytics-beta-deploy step builder (v2).
-func FabricCrashlyticsBetaDeploy() *FabricCrashlyticsBetaDeployBuilder {
-	return &FabricCrashlyticsBetaDeployBuilder{Builder: From("fabric-crashlytics-beta-deploy", "2")}
+func FabricCrashlyticsBetaDeploy(version ...string) *FabricCrashlyticsBetaDeployBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FabricCrashlyticsBetaDeployBuilder{Builder: From("fabric-crashlytics-beta-deploy", v)}
 }
 
 // WithApiKey sets fabric: API Key.

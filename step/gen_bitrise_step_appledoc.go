@@ -7,8 +7,12 @@ package step
 type BitriseStepAppledocBuilder struct{ *Builder }
 
 // BitriseStepAppledoc creates a bitrise-step-appledoc step builder (v1).
-func BitriseStepAppledoc() *BitriseStepAppledocBuilder {
-	return &BitriseStepAppledocBuilder{Builder: From("bitrise-step-appledoc", "1")}
+func BitriseStepAppledoc(version ...string) *BitriseStepAppledocBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepAppledocBuilder{Builder: From("bitrise-step-appledoc", v)}
 }
 
 // WithSourcePath sets source files.

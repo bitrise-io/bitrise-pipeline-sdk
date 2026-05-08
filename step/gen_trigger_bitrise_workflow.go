@@ -7,8 +7,12 @@ package step
 type TriggerBitriseWorkflowBuilder struct{ *Builder }
 
 // TriggerBitriseWorkflow creates a trigger-bitrise-workflow step builder (v0).
-func TriggerBitriseWorkflow() *TriggerBitriseWorkflowBuilder {
-	return &TriggerBitriseWorkflowBuilder{Builder: From("trigger-bitrise-workflow", "0")}
+func TriggerBitriseWorkflow(version ...string) *TriggerBitriseWorkflowBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TriggerBitriseWorkflowBuilder{Builder: From("trigger-bitrise-workflow", v)}
 }
 
 // WithAppSlug sets bitrise App Slug.

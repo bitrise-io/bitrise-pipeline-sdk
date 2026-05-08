@@ -7,8 +7,12 @@ package step
 type ErrcheckBuilder struct{ *Builder }
 
 // Errcheck creates a errcheck step builder (v0).
-func Errcheck() *ErrcheckBuilder {
-	return &ErrcheckBuilder{Builder: From("errcheck", "0")}
+func Errcheck(version ...string) *ErrcheckBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ErrcheckBuilder{Builder: From("errcheck", v)}
 }
 
 // WithPackages sets errcheck target packages.

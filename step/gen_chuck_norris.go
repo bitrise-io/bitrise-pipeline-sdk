@@ -7,8 +7,12 @@ package step
 type ChuckNorrisBuilder struct{ *Builder }
 
 // ChuckNorris creates a chuck-norris step builder (v1).
-func ChuckNorris() *ChuckNorrisBuilder {
-	return &ChuckNorrisBuilder{Builder: From("chuck-norris", "1")}
+func ChuckNorris(version ...string) *ChuckNorrisBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ChuckNorrisBuilder{Builder: From("chuck-norris", v)}
 }
 
 // WithCategory sets joke category, optional..

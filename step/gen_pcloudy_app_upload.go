@@ -7,8 +7,12 @@ package step
 type PcloudyAppUploadBuilder struct{ *Builder }
 
 // PcloudyAppUpload creates a pcloudy-app-upload step builder (v0).
-func PcloudyAppUpload() *PcloudyAppUploadBuilder {
-	return &PcloudyAppUploadBuilder{Builder: From("pcloudy-app-upload", "0")}
+func PcloudyAppUpload(version ...string) *PcloudyAppUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PcloudyAppUploadBuilder{Builder: From("pcloudy-app-upload", v)}
 }
 
 // WithUploadPath sets location of APK or IPA.

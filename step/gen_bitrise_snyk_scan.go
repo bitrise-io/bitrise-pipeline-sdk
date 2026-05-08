@@ -7,8 +7,12 @@ package step
 type BitriseSnykScanBuilder struct{ *Builder }
 
 // BitriseSnykScan creates a bitrise-snyk-scan step builder (v0).
-func BitriseSnykScan() *BitriseSnykScanBuilder {
-	return &BitriseSnykScanBuilder{Builder: From("bitrise-snyk-scan", "0")}
+func BitriseSnykScan(version ...string) *BitriseSnykScanBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseSnykScanBuilder{Builder: From("bitrise-snyk-scan", v)}
 }
 
 // WithOsList sets project's OS.

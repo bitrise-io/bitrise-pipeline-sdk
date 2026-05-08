@@ -7,8 +7,12 @@ package step
 type SetAndroidManifestPackageNameBuilder struct{ *Builder }
 
 // SetAndroidManifestPackageName creates a set-android-manifest-package-name step builder (v0).
-func SetAndroidManifestPackageName() *SetAndroidManifestPackageNameBuilder {
-	return &SetAndroidManifestPackageNameBuilder{Builder: From("set-android-manifest-package-name", "0")}
+func SetAndroidManifestPackageName(version ...string) *SetAndroidManifestPackageNameBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetAndroidManifestPackageNameBuilder{Builder: From("set-android-manifest-package-name", v)}
 }
 
 // WithManifestFile sets androidManifest.xml file path.

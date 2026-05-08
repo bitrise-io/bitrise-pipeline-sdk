@@ -7,8 +7,12 @@ package step
 type CustomTestResultsExportBuilder struct{ *Builder }
 
 // CustomTestResultsExport creates a custom-test-results-export step builder (v1).
-func CustomTestResultsExport() *CustomTestResultsExportBuilder {
-	return &CustomTestResultsExportBuilder{Builder: From("custom-test-results-export", "1")}
+func CustomTestResultsExport(version ...string) *CustomTestResultsExportBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CustomTestResultsExportBuilder{Builder: From("custom-test-results-export", v)}
 }
 
 // WithTestName sets the name of the test.

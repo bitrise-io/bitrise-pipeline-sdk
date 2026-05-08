@@ -7,8 +7,12 @@ package step
 type SetIosProductBundleIdentifierBuilder struct{ *Builder }
 
 // SetIosProductBundleIdentifier creates a set-ios-product-bundle-identifier step builder (v1).
-func SetIosProductBundleIdentifier() *SetIosProductBundleIdentifierBuilder {
-	return &SetIosProductBundleIdentifierBuilder{Builder: From("set-ios-product-bundle-identifier", "1")}
+func SetIosProductBundleIdentifier(version ...string) *SetIosProductBundleIdentifierBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetIosProductBundleIdentifierBuilder{Builder: From("set-ios-product-bundle-identifier", v)}
 }
 
 // WithProjectPath sets xcode project path.

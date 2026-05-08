@@ -7,8 +7,12 @@ package step
 type XcodeTestMacBuilder struct{ *Builder }
 
 // XcodeTestMac creates a xcode-test-mac step builder (v1).
-func XcodeTestMac() *XcodeTestMacBuilder {
-	return &XcodeTestMacBuilder{Builder: From("xcode-test-mac", "1")}
+func XcodeTestMac(version ...string) *XcodeTestMacBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeTestMacBuilder{Builder: From("xcode-test-mac", v)}
 }
 
 // WithProjectPath sets project, Workspace or Package path.

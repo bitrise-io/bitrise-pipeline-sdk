@@ -7,8 +7,12 @@ package step
 type GiphyBuilder struct{ *Builder }
 
 // Giphy creates a giphy step builder (v0).
-func Giphy() *GiphyBuilder {
-	return &GiphyBuilder{Builder: From("giphy", "0")}
+func Giphy(version ...string) *GiphyBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GiphyBuilder{Builder: From("giphy", v)}
 }
 
 // WithGifWords sets random Gif words.

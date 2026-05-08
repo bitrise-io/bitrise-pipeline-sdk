@@ -7,8 +7,12 @@ package step
 type RestoreNpmCacheBuilder struct{ *Builder }
 
 // RestoreNpmCache creates a restore-npm-cache step builder (v3).
-func RestoreNpmCache() *RestoreNpmCacheBuilder {
-	return &RestoreNpmCacheBuilder{Builder: From("restore-npm-cache", "3")}
+func RestoreNpmCache(version ...string) *RestoreNpmCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreNpmCacheBuilder{Builder: From("restore-npm-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

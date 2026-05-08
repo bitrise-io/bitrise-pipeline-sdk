@@ -11,8 +11,12 @@ type AddTraceSdkBuilder struct{ *Builder }
 // AddTraceSdk creates a add-trace-sdk step builder (v1).
 //
 // Deprecated: This step is deprecated as it is not supported anymore.
-func AddTraceSdk() *AddTraceSdkBuilder {
-	return &AddTraceSdkBuilder{Builder: From("add-trace-sdk", "1")}
+func AddTraceSdk(version ...string) *AddTraceSdkBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AddTraceSdkBuilder{Builder: From("add-trace-sdk", v)}
 }
 
 // WithProjectPath sets project (or Workspace) path.

@@ -7,8 +7,12 @@ package step
 type IosAutoProvisionBuilder struct{ *Builder }
 
 // IosAutoProvision creates a ios-auto-provision step builder (v2).
-func IosAutoProvision() *IosAutoProvisionBuilder {
-	return &IosAutoProvisionBuilder{Builder: From("ios-auto-provision", "2")}
+func IosAutoProvision(version ...string) *IosAutoProvisionBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &IosAutoProvisionBuilder{Builder: From("ios-auto-provision", v)}
 }
 
 // WithDistributionType sets distribution type.

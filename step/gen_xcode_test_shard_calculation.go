@@ -7,8 +7,12 @@ package step
 type XcodeTestShardCalculationBuilder struct{ *Builder }
 
 // XcodeTestShardCalculation creates a xcode-test-shard-calculation step builder (v0).
-func XcodeTestShardCalculation() *XcodeTestShardCalculationBuilder {
-	return &XcodeTestShardCalculationBuilder{Builder: From("xcode-test-shard-calculation", "0")}
+func XcodeTestShardCalculation(version ...string) *XcodeTestShardCalculationBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeTestShardCalculationBuilder{Builder: From("xcode-test-shard-calculation", v)}
 }
 
 // WithProductPath sets product path.

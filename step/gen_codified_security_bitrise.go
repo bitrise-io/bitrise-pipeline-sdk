@@ -7,8 +7,12 @@ package step
 type CodifiedSecurityBitriseBuilder struct{ *Builder }
 
 // CodifiedSecurityBitrise creates a codified-security-bitrise step builder (v2).
-func CodifiedSecurityBitrise() *CodifiedSecurityBitriseBuilder {
-	return &CodifiedSecurityBitriseBuilder{Builder: From("codified-security-bitrise", "2")}
+func CodifiedSecurityBitrise(version ...string) *CodifiedSecurityBitriseBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CodifiedSecurityBitriseBuilder{Builder: From("codified-security-bitrise", v)}
 }
 
 // WithCodifiedSecurityApiKey sets codified Security API Key.

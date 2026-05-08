@@ -7,8 +7,12 @@ package step
 type AppcenterDsymUploadBuilder struct{ *Builder }
 
 // AppcenterDsymUpload creates a appcenter-dsym-upload step builder (v0).
-func AppcenterDsymUpload() *AppcenterDsymUploadBuilder {
-	return &AppcenterDsymUploadBuilder{Builder: From("appcenter-dsym-upload", "0")}
+func AppcenterDsymUpload(version ...string) *AppcenterDsymUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterDsymUploadBuilder{Builder: From("appcenter-dsym-upload", v)}
 }
 
 // WithDsymPath sets dSYM path.

@@ -7,8 +7,12 @@ package step
 type SaveS3CacheBuilder struct{ *Builder }
 
 // SaveS3Cache creates a save-s3-cache step builder (v0).
-func SaveS3Cache() *SaveS3CacheBuilder {
-	return &SaveS3CacheBuilder{Builder: From("save-s3-cache", "0")}
+func SaveS3Cache(version ...string) *SaveS3CacheBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveS3CacheBuilder{Builder: From("save-s3-cache", v)}
 }
 
 // WithKey sets cache key.

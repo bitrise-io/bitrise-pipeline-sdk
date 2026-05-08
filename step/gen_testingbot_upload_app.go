@@ -7,8 +7,12 @@ package step
 type TestingbotUploadAppBuilder struct{ *Builder }
 
 // TestingbotUploadApp creates a testingbot-upload-app step builder (v0).
-func TestingbotUploadApp() *TestingbotUploadAppBuilder {
-	return &TestingbotUploadAppBuilder{Builder: From("testingbot-upload-app", "0")}
+func TestingbotUploadApp(version ...string) *TestingbotUploadAppBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TestingbotUploadAppBuilder{Builder: From("testingbot-upload-app", v)}
 }
 
 // WithApkIpaFilepath sets location of the IPA or APK.

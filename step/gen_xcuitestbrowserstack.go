@@ -7,8 +7,12 @@ package step
 type XcuitestbrowserstackBuilder struct{ *Builder }
 
 // Xcuitestbrowserstack creates a xcuitestbrowserstack step builder (v2).
-func Xcuitestbrowserstack() *XcuitestbrowserstackBuilder {
-	return &XcuitestbrowserstackBuilder{Builder: From("xcuitestbrowserstack", "2")}
+func Xcuitestbrowserstack(version ...string) *XcuitestbrowserstackBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcuitestbrowserstackBuilder{Builder: From("xcuitestbrowserstack", v)}
 }
 
 // WithBrowserstackAppUrl sets browserstack ipa url.

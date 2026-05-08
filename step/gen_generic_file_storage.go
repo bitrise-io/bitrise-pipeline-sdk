@@ -7,8 +7,12 @@ package step
 type GenericFileStorageBuilder struct{ *Builder }
 
 // GenericFileStorage creates a generic-file-storage step builder (v0).
-func GenericFileStorage() *GenericFileStorageBuilder {
-	return &GenericFileStorageBuilder{Builder: From("generic-file-storage", "0")}
+func GenericFileStorage(version ...string) *GenericFileStorageBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenericFileStorageBuilder{Builder: From("generic-file-storage", v)}
 }
 
 // WithEnableDebug sets enable debug mode.

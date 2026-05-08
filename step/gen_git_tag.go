@@ -7,8 +7,12 @@ package step
 type GitTagBuilder struct{ *Builder }
 
 // GitTag creates a git-tag step builder (v1).
-func GitTag() *GitTagBuilder {
-	return &GitTagBuilder{Builder: From("git-tag", "1")}
+func GitTag(version ...string) *GitTagBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GitTagBuilder{Builder: From("git-tag", v)}
 }
 
 // WithTag sets tag to set on current commit.

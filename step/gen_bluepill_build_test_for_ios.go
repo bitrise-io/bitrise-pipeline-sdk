@@ -7,8 +7,12 @@ package step
 type BluepillBuildTestForIosBuilder struct{ *Builder }
 
 // BluepillBuildTestForIos creates a bluepill-build-test-for-ios step builder (v0).
-func BluepillBuildTestForIos() *BluepillBuildTestForIosBuilder {
-	return &BluepillBuildTestForIosBuilder{Builder: From("bluepill-build-test-for-ios", "0")}
+func BluepillBuildTestForIos(version ...string) *BluepillBuildTestForIosBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BluepillBuildTestForIosBuilder{Builder: From("bluepill-build-test-for-ios", v)}
 }
 
 // WithBluepillVersion sets bluepill Version.

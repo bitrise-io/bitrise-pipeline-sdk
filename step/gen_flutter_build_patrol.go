@@ -7,8 +7,12 @@ package step
 type FlutterBuildPatrolBuilder struct{ *Builder }
 
 // FlutterBuildPatrol creates a flutter-build-patrol step builder (v0).
-func FlutterBuildPatrol() *FlutterBuildPatrolBuilder {
-	return &FlutterBuildPatrolBuilder{Builder: From("flutter-build-patrol", "0")}
+func FlutterBuildPatrol(version ...string) *FlutterBuildPatrolBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlutterBuildPatrolBuilder{Builder: From("flutter-build-patrol", v)}
 }
 
 // WithCustomPatrolCliVersion sets custom Patrol CLI Version.

@@ -7,8 +7,12 @@ package step
 type S3DownloadBuilder struct{ *Builder }
 
 // S3Download creates a s3-download step builder (v1).
-func S3Download() *S3DownloadBuilder {
-	return &S3DownloadBuilder{Builder: From("s3-download", "1")}
+func S3Download(version ...string) *S3DownloadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &S3DownloadBuilder{Builder: From("s3-download", v)}
 }
 
 // WithAwsAccessKey sets aWS Access Key.

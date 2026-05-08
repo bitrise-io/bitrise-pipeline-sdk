@@ -7,6 +7,10 @@ package step
 type GitLastCommitDateBuilder struct{ *Builder }
 
 // GitLastCommitDate creates a git-last-commit-date step builder (v1).
-func GitLastCommitDate() *GitLastCommitDateBuilder {
-	return &GitLastCommitDateBuilder{Builder: From("git-last-commit-date", "1")}
+func GitLastCommitDate(version ...string) *GitLastCommitDateBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GitLastCommitDateBuilder{Builder: From("git-last-commit-date", v)}
 }

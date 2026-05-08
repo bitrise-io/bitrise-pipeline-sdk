@@ -7,8 +7,12 @@ package step
 type InstallReactNativeBuilder struct{ *Builder }
 
 // InstallReactNative creates a install-react-native step builder (v0).
-func InstallReactNative() *InstallReactNativeBuilder {
-	return &InstallReactNativeBuilder{Builder: From("install-react-native", "0")}
+func InstallReactNative(version ...string) *InstallReactNativeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstallReactNativeBuilder{Builder: From("install-react-native", v)}
 }
 
 // WithVersion sets version of the `@react-native-community/cli` package to install.

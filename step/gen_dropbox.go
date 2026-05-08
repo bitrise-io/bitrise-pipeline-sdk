@@ -7,8 +7,12 @@ package step
 type DropboxBuilder struct{ *Builder }
 
 // Dropbox creates a dropbox step builder (v1).
-func Dropbox() *DropboxBuilder {
-	return &DropboxBuilder{Builder: From("dropbox", "1")}
+func Dropbox(version ...string) *DropboxBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DropboxBuilder{Builder: From("dropbox", v)}
 }
 
 // WithDropboxSecret sets the secret access token (OAuth2).

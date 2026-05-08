@@ -7,8 +7,12 @@ package step
 type GetAppBuilder struct{ *Builder }
 
 // GetApp creates a get-app step builder (v0).
-func GetApp() *GetAppBuilder {
-	return &GetAppBuilder{Builder: From("get-app", "0")}
+func GetApp(version ...string) *GetAppBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GetAppBuilder{Builder: From("get-app", v)}
 }
 
 // WithArtifactName sets artifact Name.

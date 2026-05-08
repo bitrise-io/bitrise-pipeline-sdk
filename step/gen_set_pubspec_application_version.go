@@ -7,8 +7,12 @@ package step
 type SetPubspecApplicationVersionBuilder struct{ *Builder }
 
 // SetPubspecApplicationVersion creates a set-pubspec-application-version step builder (v1).
-func SetPubspecApplicationVersion() *SetPubspecApplicationVersionBuilder {
-	return &SetPubspecApplicationVersionBuilder{Builder: From("set-pubspec-application-version", "1")}
+func SetPubspecApplicationVersion(version ...string) *SetPubspecApplicationVersionBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetPubspecApplicationVersionBuilder{Builder: From("set-pubspec-application-version", v)}
 }
 
 // WithProjectLocation sets project Location.

@@ -7,8 +7,12 @@ package step
 type DeployToUpdraftBuilder struct{ *Builder }
 
 // DeployToUpdraft creates a deploy-to-updraft step builder (v0).
-func DeployToUpdraft() *DeployToUpdraftBuilder {
-	return &DeployToUpdraftBuilder{Builder: From("deploy-to-updraft", "0")}
+func DeployToUpdraft(version ...string) *DeployToUpdraftBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeployToUpdraftBuilder{Builder: From("deploy-to-updraft", v)}
 }
 
 // WithApiKey sets updraft API_KEY.

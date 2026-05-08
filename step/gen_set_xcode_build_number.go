@@ -7,8 +7,12 @@ package step
 type SetXcodeBuildNumberBuilder struct{ *Builder }
 
 // SetXcodeBuildNumber creates a set-xcode-build-number step builder (v2).
-func SetXcodeBuildNumber() *SetXcodeBuildNumberBuilder {
-	return &SetXcodeBuildNumberBuilder{Builder: From("set-xcode-build-number", "2")}
+func SetXcodeBuildNumber(version ...string) *SetXcodeBuildNumberBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetXcodeBuildNumberBuilder{Builder: From("set-xcode-build-number", v)}
 }
 
 // WithProjectPath sets project path.

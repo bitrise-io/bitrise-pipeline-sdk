@@ -7,8 +7,12 @@ package step
 type AppRayMobileSecurityBuilder struct{ *Builder }
 
 // AppRayMobileSecurity creates a app-ray-mobile-security step builder (v1).
-func AppRayMobileSecurity() *AppRayMobileSecurityBuilder {
-	return &AppRayMobileSecurityBuilder{Builder: From("app-ray-mobile-security", "1")}
+func AppRayMobileSecurity(version ...string) *AppRayMobileSecurityBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppRayMobileSecurityBuilder{Builder: From("app-ray-mobile-security", v)}
 }
 
 // WithBaseUrl sets appRay instance base URL.

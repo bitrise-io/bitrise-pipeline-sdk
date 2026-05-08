@@ -7,8 +7,12 @@ package step
 type XcodeBuildForSimulatorBuilder struct{ *Builder }
 
 // XcodeBuildForSimulator creates a xcode-build-for-simulator step builder (v3).
-func XcodeBuildForSimulator() *XcodeBuildForSimulatorBuilder {
-	return &XcodeBuildForSimulatorBuilder{Builder: From("xcode-build-for-simulator", "3")}
+func XcodeBuildForSimulator(version ...string) *XcodeBuildForSimulatorBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeBuildForSimulatorBuilder{Builder: From("xcode-build-for-simulator", v)}
 }
 
 // WithProjectPath sets project path.

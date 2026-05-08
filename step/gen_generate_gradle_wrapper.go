@@ -7,8 +7,12 @@ package step
 type GenerateGradleWrapperBuilder struct{ *Builder }
 
 // GenerateGradleWrapper creates a generate-gradle-wrapper step builder (v0).
-func GenerateGradleWrapper() *GenerateGradleWrapperBuilder {
-	return &GenerateGradleWrapperBuilder{Builder: From("generate-gradle-wrapper", "0")}
+func GenerateGradleWrapper(version ...string) *GenerateGradleWrapperBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenerateGradleWrapperBuilder{Builder: From("generate-gradle-wrapper", v)}
 }
 
 // WithProjectRootDir sets project root directory.

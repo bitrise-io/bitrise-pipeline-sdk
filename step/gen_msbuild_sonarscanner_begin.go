@@ -7,8 +7,12 @@ package step
 type MsbuildSonarscannerBeginBuilder struct{ *Builder }
 
 // MsbuildSonarscannerBegin creates a msbuild-sonarscanner-begin step builder (v0).
-func MsbuildSonarscannerBegin() *MsbuildSonarscannerBeginBuilder {
-	return &MsbuildSonarscannerBeginBuilder{Builder: From("msbuild-sonarscanner-begin", "0")}
+func MsbuildSonarscannerBegin(version ...string) *MsbuildSonarscannerBeginBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MsbuildSonarscannerBeginBuilder{Builder: From("msbuild-sonarscanner-begin", v)}
 }
 
 // WithScannerVersion sets sonarScanner for MSBuild CLI Version.

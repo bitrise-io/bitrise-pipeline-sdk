@@ -7,8 +7,12 @@ package step
 type TestfairyDeployBuilder struct{ *Builder }
 
 // TestfairyDeploy creates a testfairy-deploy step builder (v2).
-func TestfairyDeploy() *TestfairyDeployBuilder {
-	return &TestfairyDeployBuilder{Builder: From("testfairy-deploy", "2")}
+func TestfairyDeploy(version ...string) *TestfairyDeployBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TestfairyDeployBuilder{Builder: From("testfairy-deploy", v)}
 }
 
 // WithApiKey sets testFairy API key.

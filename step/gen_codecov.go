@@ -7,8 +7,12 @@ package step
 type CodecovBuilder struct{ *Builder }
 
 // Codecov creates a codecov step builder (v4).
-func Codecov() *CodecovBuilder {
-	return &CodecovBuilder{Builder: From("codecov", "4")}
+func Codecov(version ...string) *CodecovBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CodecovBuilder{Builder: From("codecov", v)}
 }
 
 // WithCCBINARY sets binary.

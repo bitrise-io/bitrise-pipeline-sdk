@@ -7,8 +7,12 @@ package step
 type JasmineRunnerBuilder struct{ *Builder }
 
 // JasmineRunner creates a jasmine-runner step builder (v0).
-func JasmineRunner() *JasmineRunnerBuilder {
-	return &JasmineRunnerBuilder{Builder: From("jasmine-runner", "0")}
+func JasmineRunner(version ...string) *JasmineRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &JasmineRunnerBuilder{Builder: From("jasmine-runner", v)}
 }
 
 // WithWorkdir sets working directory.

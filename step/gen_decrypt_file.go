@@ -7,8 +7,12 @@ package step
 type DecryptFileBuilder struct{ *Builder }
 
 // DecryptFile creates a decrypt-file step builder (v0).
-func DecryptFile() *DecryptFileBuilder {
-	return &DecryptFileBuilder{Builder: From("decrypt-file", "0")}
+func DecryptFile(version ...string) *DecryptFileBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DecryptFileBuilder{Builder: From("decrypt-file", v)}
 }
 
 // WithDecryptPassphrase sets passphrase for file decryption.

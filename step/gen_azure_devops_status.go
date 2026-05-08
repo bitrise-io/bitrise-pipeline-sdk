@@ -7,8 +7,12 @@ package step
 type AzureDevopsStatusBuilder struct{ *Builder }
 
 // AzureDevopsStatus creates a azure-devops-status step builder (v1).
-func AzureDevopsStatus() *AzureDevopsStatusBuilder {
-	return &AzureDevopsStatusBuilder{Builder: From("azure-devops-status", "1")}
+func AzureDevopsStatus(version ...string) *AzureDevopsStatusBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AzureDevopsStatusBuilder{Builder: From("azure-devops-status", v)}
 }
 
 // WithDevopsUser sets azure DevOps user name.

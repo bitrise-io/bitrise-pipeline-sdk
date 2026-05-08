@@ -7,8 +7,12 @@ package step
 type XcodebuildBuilder struct{ *Builder }
 
 // Xcodebuild creates a xcodebuild step builder (v0).
-func Xcodebuild() *XcodebuildBuilder {
-	return &XcodebuildBuilder{Builder: From("xcodebuild", "0")}
+func Xcodebuild(version ...string) *XcodebuildBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodebuildBuilder{Builder: From("xcodebuild", v)}
 }
 
 // WithXcodebuildWorkspace sets -workspace.

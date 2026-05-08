@@ -7,8 +7,12 @@ package step
 type GenymotionSaasInstallGmsaasCliBuilder struct{ *Builder }
 
 // GenymotionSaasInstallGmsaasCli creates a genymotion-saas-install-gmsaas-cli step builder (v0).
-func GenymotionSaasInstallGmsaasCli() *GenymotionSaasInstallGmsaasCliBuilder {
-	return &GenymotionSaasInstallGmsaasCliBuilder{Builder: From("genymotion-saas-install-gmsaas-cli", "0")}
+func GenymotionSaasInstallGmsaasCli(version ...string) *GenymotionSaasInstallGmsaasCliBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenymotionSaasInstallGmsaasCliBuilder{Builder: From("genymotion-saas-install-gmsaas-cli", v)}
 }
 
 // WithApiToken sets genymotion Cloud SaaS API Token.

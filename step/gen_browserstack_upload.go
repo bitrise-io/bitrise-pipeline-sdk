@@ -7,8 +7,12 @@ package step
 type BrowserstackUploadBuilder struct{ *Builder }
 
 // BrowserstackUpload creates a browserstack-upload step builder (v0).
-func BrowserstackUpload() *BrowserstackUploadBuilder {
-	return &BrowserstackUploadBuilder{Builder: From("browserstack-upload", "0")}
+func BrowserstackUpload(version ...string) *BrowserstackUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BrowserstackUploadBuilder{Builder: From("browserstack-upload", v)}
 }
 
 // WithUploadPath sets a Bitrise generated APK or IPA path.

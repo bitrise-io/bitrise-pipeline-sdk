@@ -7,8 +7,12 @@ package step
 type SmartQaBuilder struct{ *Builder }
 
 // SmartQa creates a smart-qa step builder (v0).
-func SmartQa() *SmartQaBuilder {
-	return &SmartQaBuilder{Builder: From("smart-qa", "0")}
+func SmartQa(version ...string) *SmartQaBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SmartQaBuilder{Builder: From("smart-qa", v)}
 }
 
 // WithBuildPath sets build Path.

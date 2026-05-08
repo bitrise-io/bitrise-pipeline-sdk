@@ -7,8 +7,12 @@ package step
 type ExportIosToLingohubBuilder struct{ *Builder }
 
 // ExportIosToLingohub creates a export-ios-to-lingohub step builder (v0).
-func ExportIosToLingohub() *ExportIosToLingohubBuilder {
-	return &ExportIosToLingohubBuilder{Builder: From("export-ios-to-lingohub", "0")}
+func ExportIosToLingohub(version ...string) *ExportIosToLingohubBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ExportIosToLingohubBuilder{Builder: From("export-ios-to-lingohub", v)}
 }
 
 // WithLingohubIosAccount sets account.

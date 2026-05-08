@@ -7,8 +7,12 @@ package step
 type AuthenticateWithGcpBuilder struct{ *Builder }
 
 // AuthenticateWithGcp creates a authenticate-with-gcp step builder (v0).
-func AuthenticateWithGcp() *AuthenticateWithGcpBuilder {
-	return &AuthenticateWithGcpBuilder{Builder: From("authenticate-with-gcp", "0")}
+func AuthenticateWithGcp(version ...string) *AuthenticateWithGcpBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AuthenticateWithGcpBuilder{Builder: From("authenticate-with-gcp", v)}
 }
 
 // WithServiceAccountKey sets service account key.

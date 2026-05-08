@@ -7,8 +7,12 @@ package step
 type BitriseStepMultikeySaveCacheBuilder struct{ *Builder }
 
 // BitriseStepMultikeySaveCache creates a bitrise-step-multikey-save-cache step builder (v0).
-func BitriseStepMultikeySaveCache() *BitriseStepMultikeySaveCacheBuilder {
-	return &BitriseStepMultikeySaveCacheBuilder{Builder: From("bitrise-step-multikey-save-cache", "0")}
+func BitriseStepMultikeySaveCache(version ...string) *BitriseStepMultikeySaveCacheBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepMultikeySaveCacheBuilder{Builder: From("bitrise-step-multikey-save-cache", v)}
 }
 
 // WithKeyPathPairs sets cache key -> path list pairs.

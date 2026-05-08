@@ -7,8 +7,12 @@ package step
 type ReactNativeBundleBuilder struct{ *Builder }
 
 // ReactNativeBundle creates a react-native-bundle step builder (v1).
-func ReactNativeBundle() *ReactNativeBundleBuilder {
-	return &ReactNativeBundleBuilder{Builder: From("react-native-bundle", "1")}
+func ReactNativeBundle(version ...string) *ReactNativeBundleBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ReactNativeBundleBuilder{Builder: From("react-native-bundle", v)}
 }
 
 // WithBinaryPath sets custom React Native binary location.

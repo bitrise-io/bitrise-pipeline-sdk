@@ -7,8 +7,12 @@ package step
 type AppcenterDeployAndroidBuilder struct{ *Builder }
 
 // AppcenterDeployAndroid creates a appcenter-deploy-android step builder (v2).
-func AppcenterDeployAndroid() *AppcenterDeployAndroidBuilder {
-	return &AppcenterDeployAndroidBuilder{Builder: From("appcenter-deploy-android", "2")}
+func AppcenterDeployAndroid(version ...string) *AppcenterDeployAndroidBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterDeployAndroidBuilder{Builder: From("appcenter-deploy-android", v)}
 }
 
 // WithAppPath sets aPP path.

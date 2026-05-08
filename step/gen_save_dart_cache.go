@@ -7,8 +7,12 @@ package step
 type SaveDartCacheBuilder struct{ *Builder }
 
 // SaveDartCache creates a save-dart-cache step builder (v1).
-func SaveDartCache() *SaveDartCacheBuilder {
-	return &SaveDartCacheBuilder{Builder: From("save-dart-cache", "1")}
+func SaveDartCache(version ...string) *SaveDartCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveDartCacheBuilder{Builder: From("save-dart-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

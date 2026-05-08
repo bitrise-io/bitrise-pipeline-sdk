@@ -7,8 +7,12 @@ package step
 type GithubReleaseBuilder struct{ *Builder }
 
 // GithubRelease creates a github-release step builder (v0).
-func GithubRelease() *GithubReleaseBuilder {
-	return &GithubReleaseBuilder{Builder: From("github-release", "0")}
+func GithubRelease(version ...string) *GithubReleaseBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GithubReleaseBuilder{Builder: From("github-release", v)}
 }
 
 // WithApiToken sets personal API token.

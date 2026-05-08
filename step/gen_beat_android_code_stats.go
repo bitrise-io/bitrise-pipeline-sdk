@@ -7,8 +7,12 @@ package step
 type BeatAndroidCodeStatsBuilder struct{ *Builder }
 
 // BeatAndroidCodeStats creates a beat-android-code-stats step builder (v0).
-func BeatAndroidCodeStats() *BeatAndroidCodeStatsBuilder {
-	return &BeatAndroidCodeStatsBuilder{Builder: From("beat-android-code-stats", "0")}
+func BeatAndroidCodeStats(version ...string) *BeatAndroidCodeStatsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BeatAndroidCodeStatsBuilder{Builder: From("beat-android-code-stats", v)}
 }
 
 // WithProjectLocation sets project Location.

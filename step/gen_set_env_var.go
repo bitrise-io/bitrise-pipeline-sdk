@@ -7,8 +7,12 @@ package step
 type SetEnvVarBuilder struct{ *Builder }
 
 // SetEnvVar creates a set-env-var step builder (v0).
-func SetEnvVar() *SetEnvVarBuilder {
-	return &SetEnvVarBuilder{Builder: From("set-env-var", "0")}
+func SetEnvVar(version ...string) *SetEnvVarBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetEnvVarBuilder{Builder: From("set-env-var", v)}
 }
 
 // WithValue sets value for copy into Environment variables.

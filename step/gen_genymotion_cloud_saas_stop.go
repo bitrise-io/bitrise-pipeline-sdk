@@ -7,8 +7,12 @@ package step
 type GenymotionCloudSaasStopBuilder struct{ *Builder }
 
 // GenymotionCloudSaasStop creates a genymotion-cloud-saas-stop step builder (v0).
-func GenymotionCloudSaasStop() *GenymotionCloudSaasStopBuilder {
-	return &GenymotionCloudSaasStopBuilder{Builder: From("genymotion-cloud-saas-stop", "0")}
+func GenymotionCloudSaasStop(version ...string) *GenymotionCloudSaasStopBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenymotionCloudSaasStopBuilder{Builder: From("genymotion-cloud-saas-stop", v)}
 }
 
 // WithInstanceUuid sets instance UUID.

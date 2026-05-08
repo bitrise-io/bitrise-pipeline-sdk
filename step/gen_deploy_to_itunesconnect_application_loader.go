@@ -7,8 +7,12 @@ package step
 type DeployToItunesconnectApplicationLoaderBuilder struct{ *Builder }
 
 // DeployToItunesconnectApplicationLoader creates a deploy-to-itunesconnect-application-loader step builder (v2).
-func DeployToItunesconnectApplicationLoader() *DeployToItunesconnectApplicationLoaderBuilder {
-	return &DeployToItunesconnectApplicationLoaderBuilder{Builder: From("deploy-to-itunesconnect-application-loader", "2")}
+func DeployToItunesconnectApplicationLoader(version ...string) *DeployToItunesconnectApplicationLoaderBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeployToItunesconnectApplicationLoaderBuilder{Builder: From("deploy-to-itunesconnect-application-loader", v)}
 }
 
 // WithConnection sets bitrise Apple Developer Connection.

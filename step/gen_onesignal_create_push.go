@@ -7,8 +7,12 @@ package step
 type OnesignalCreatePushBuilder struct{ *Builder }
 
 // OnesignalCreatePush creates a onesignal-create-push step builder (v0).
-func OnesignalCreatePush() *OnesignalCreatePushBuilder {
-	return &OnesignalCreatePushBuilder{Builder: From("onesignal-create-push", "0")}
+func OnesignalCreatePush(version ...string) *OnesignalCreatePushBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &OnesignalCreatePushBuilder{Builder: From("onesignal-create-push", v)}
 }
 
 // WithOnesignalRestApiKey sets "OneSignal Rest API KEY".

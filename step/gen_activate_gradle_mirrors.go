@@ -7,8 +7,12 @@ package step
 type ActivateGradleMirrorsBuilder struct{ *Builder }
 
 // ActivateGradleMirrors creates a activate-gradle-mirrors step builder (v0).
-func ActivateGradleMirrors() *ActivateGradleMirrorsBuilder {
-	return &ActivateGradleMirrorsBuilder{Builder: From("activate-gradle-mirrors", "0")}
+func ActivateGradleMirrors(version ...string) *ActivateGradleMirrorsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateGradleMirrorsBuilder{Builder: From("activate-gradle-mirrors", v)}
 }
 
 // WithVerbose sets verbose logging.

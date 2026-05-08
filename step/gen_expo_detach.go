@@ -7,8 +7,12 @@ package step
 type ExpoDetachBuilder struct{ *Builder }
 
 // ExpoDetach creates a expo-detach step builder (v1).
-func ExpoDetach() *ExpoDetachBuilder {
-	return &ExpoDetachBuilder{Builder: From("expo-detach", "1")}
+func ExpoDetach(version ...string) *ExpoDetachBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ExpoDetachBuilder{Builder: From("expo-detach", v)}
 }
 
 // WithProjectPath sets working directory.

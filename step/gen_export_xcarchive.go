@@ -7,8 +7,12 @@ package step
 type ExportXcarchiveBuilder struct{ *Builder }
 
 // ExportXcarchive creates a export-xcarchive step builder (v4).
-func ExportXcarchive() *ExportXcarchiveBuilder {
-	return &ExportXcarchiveBuilder{Builder: From("export-xcarchive", "4")}
+func ExportXcarchive(version ...string) *ExportXcarchiveBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ExportXcarchiveBuilder{Builder: From("export-xcarchive", v)}
 }
 
 // WithArchivePath sets archive path.

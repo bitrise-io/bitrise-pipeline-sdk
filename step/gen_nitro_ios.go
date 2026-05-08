@@ -7,8 +7,12 @@ package step
 type NitroIosBuilder struct{ *Builder }
 
 // NitroIos creates a nitro-ios step builder (v4).
-func NitroIos() *NitroIosBuilder {
-	return &NitroIosBuilder{Builder: From("nitro-ios", "4")}
+func NitroIos(version ...string) *NitroIosBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &NitroIosBuilder{Builder: From("nitro-ios", v)}
 }
 
 // WithApiKey sets nitro API key.

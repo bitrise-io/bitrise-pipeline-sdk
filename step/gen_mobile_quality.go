@@ -11,8 +11,12 @@ type MobileQualityBuilder struct{ *Builder }
 // MobileQuality creates a mobile-quality step builder (v1).
 //
 // Deprecated: This step is deprecated. Now it was split to use each feature separately (eg. Mobile apps permissions monitoring [monitoring-apps-permissions step])
-func MobileQuality() *MobileQualityBuilder {
-	return &MobileQualityBuilder{Builder: From("mobile-quality", "1")}
+func MobileQuality(version ...string) *MobileQualityBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MobileQualityBuilder{Builder: From("mobile-quality", v)}
 }
 
 // WithCheckAndroid sets check Android.

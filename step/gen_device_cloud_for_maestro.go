@@ -7,8 +7,12 @@ package step
 type DeviceCloudForMaestroBuilder struct{ *Builder }
 
 // DeviceCloudForMaestro creates a device-cloud-for-maestro step builder (v1).
-func DeviceCloudForMaestro() *DeviceCloudForMaestroBuilder {
-	return &DeviceCloudForMaestroBuilder{Builder: From("device-cloud-for-maestro", "1")}
+func DeviceCloudForMaestro(version ...string) *DeviceCloudForMaestroBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeviceCloudForMaestroBuilder{Builder: From("device-cloud-for-maestro", v)}
 }
 
 // WithApiKey sets device Cloud API Key.

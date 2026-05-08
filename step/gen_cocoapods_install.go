@@ -7,8 +7,12 @@ package step
 type CocoapodsInstallBuilder struct{ *Builder }
 
 // CocoapodsInstall creates a cocoapods-install step builder (v3).
-func CocoapodsInstall() *CocoapodsInstallBuilder {
-	return &CocoapodsInstallBuilder{Builder: From("cocoapods-install", "3")}
+func CocoapodsInstall(version ...string) *CocoapodsInstallBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CocoapodsInstallBuilder{Builder: From("cocoapods-install", v)}
 }
 
 // WithCommand sets cocoaPods command.

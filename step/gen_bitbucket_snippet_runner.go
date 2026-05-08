@@ -7,8 +7,12 @@ package step
 type BitbucketSnippetRunnerBuilder struct{ *Builder }
 
 // BitbucketSnippetRunner creates a bitbucket-snippet-runner step builder (v1).
-func BitbucketSnippetRunner() *BitbucketSnippetRunnerBuilder {
-	return &BitbucketSnippetRunnerBuilder{Builder: From("bitbucket-snippet-runner", "1")}
+func BitbucketSnippetRunner(version ...string) *BitbucketSnippetRunnerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitbucketSnippetRunnerBuilder{Builder: From("bitbucket-snippet-runner", v)}
 }
 
 // WithScriptUrl sets snippet URL.

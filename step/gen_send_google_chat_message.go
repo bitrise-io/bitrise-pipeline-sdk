@@ -7,8 +7,12 @@ package step
 type SendGoogleChatMessageBuilder struct{ *Builder }
 
 // SendGoogleChatMessage creates a send-google-chat-message step builder (v1).
-func SendGoogleChatMessage() *SendGoogleChatMessageBuilder {
-	return &SendGoogleChatMessageBuilder{Builder: From("send-google-chat-message", "1")}
+func SendGoogleChatMessage(version ...string) *SendGoogleChatMessageBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SendGoogleChatMessageBuilder{Builder: From("send-google-chat-message", v)}
 }
 
 // WithGoogleChatWebhookUrl sets google Chat Webhook URL.

@@ -7,8 +7,12 @@ package step
 type HockeyappDeployAndroidBuilder struct{ *Builder }
 
 // HockeyappDeployAndroid creates a hockeyapp-deploy-android step builder (v1).
-func HockeyappDeployAndroid() *HockeyappDeployAndroidBuilder {
-	return &HockeyappDeployAndroidBuilder{Builder: From("hockeyapp-deploy-android", "1")}
+func HockeyappDeployAndroid(version ...string) *HockeyappDeployAndroidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &HockeyappDeployAndroidBuilder{Builder: From("hockeyapp-deploy-android", v)}
 }
 
 // WithApkPath sets apk file path(s).

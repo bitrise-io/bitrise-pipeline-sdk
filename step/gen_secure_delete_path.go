@@ -7,8 +7,12 @@ package step
 type SecureDeletePathBuilder struct{ *Builder }
 
 // SecureDeletePath creates a secure-delete-path step builder (v2).
-func SecureDeletePath() *SecureDeletePathBuilder {
-	return &SecureDeletePathBuilder{Builder: From("secure-delete-path", "2")}
+func SecureDeletePath(version ...string) *SecureDeletePathBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SecureDeletePathBuilder{Builder: From("secure-delete-path", v)}
 }
 
 // WithPath sets file or Folder path to delete..

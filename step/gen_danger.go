@@ -7,8 +7,12 @@ package step
 type DangerBuilder struct{ *Builder }
 
 // Danger creates a danger step builder (v2).
-func Danger() *DangerBuilder {
-	return &DangerBuilder{Builder: From("danger", "2")}
+func Danger(version ...string) *DangerBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DangerBuilder{Builder: From("danger", v)}
 }
 
 // WithRepositoryUrl sets repository URL of your project.

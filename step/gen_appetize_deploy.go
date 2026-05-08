@@ -7,8 +7,12 @@ package step
 type AppetizeDeployBuilder struct{ *Builder }
 
 // AppetizeDeploy creates a appetize-deploy step builder (v0).
-func AppetizeDeploy() *AppetizeDeployBuilder {
-	return &AppetizeDeployBuilder{Builder: From("appetize-deploy", "0")}
+func AppetizeDeploy(version ...string) *AppetizeDeployBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppetizeDeployBuilder{Builder: From("appetize-deploy", v)}
 }
 
 // WithAppPath sets application path.

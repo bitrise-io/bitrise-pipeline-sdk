@@ -7,8 +7,12 @@ package step
 type TestfairyDeployAndroidBuilder struct{ *Builder }
 
 // TestfairyDeployAndroid creates a testfairy-deploy-android step builder (v1).
-func TestfairyDeployAndroid() *TestfairyDeployAndroidBuilder {
-	return &TestfairyDeployAndroidBuilder{Builder: From("testfairy-deploy-android", "1")}
+func TestfairyDeployAndroid(version ...string) *TestfairyDeployAndroidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TestfairyDeployAndroidBuilder{Builder: From("testfairy-deploy-android", v)}
 }
 
 // WithApiKey sets testFairy API key.

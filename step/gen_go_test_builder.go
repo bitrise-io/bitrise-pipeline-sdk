@@ -7,8 +7,12 @@ package step
 type GoTestBuilder struct{ *Builder }
 
 // GoTest creates a go-test step builder (v1).
-func GoTest() *GoTestBuilder {
-	return &GoTestBuilder{Builder: From("go-test", "1")}
+func GoTest(version ...string) *GoTestBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GoTestBuilder{Builder: From("go-test", v)}
 }
 
 // WithPackages sets go test target packages.

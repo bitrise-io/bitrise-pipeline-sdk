@@ -7,8 +7,12 @@ package step
 type AppiumServerBuilder struct{ *Builder }
 
 // AppiumServer creates a appium-server step builder (v0).
-func AppiumServer() *AppiumServerBuilder {
-	return &AppiumServerBuilder{Builder: From("appium-server", "0")}
+func AppiumServer(version ...string) *AppiumServerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppiumServerBuilder{Builder: From("appium-server", v)}
 }
 
 // WithAppiumVersion sets appium Version.

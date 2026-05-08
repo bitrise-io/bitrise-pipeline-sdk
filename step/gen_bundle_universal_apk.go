@@ -7,8 +7,12 @@ package step
 type BundleUniversalApkBuilder struct{ *Builder }
 
 // BundleUniversalApk creates a bundle-universal-apk step builder (v0).
-func BundleUniversalApk() *BundleUniversalApkBuilder {
-	return &BundleUniversalApkBuilder{Builder: From("bundle-universal-apk", "0")}
+func BundleUniversalApk(version ...string) *BundleUniversalApkBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BundleUniversalApkBuilder{Builder: From("bundle-universal-apk", v)}
 }
 
 // WithAabPath sets build artifact path..

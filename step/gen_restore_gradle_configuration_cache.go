@@ -7,8 +7,12 @@ package step
 type RestoreGradleConfigurationCacheBuilder struct{ *Builder }
 
 // RestoreGradleConfigurationCache creates a restore-gradle-configuration-cache step builder (v1).
-func RestoreGradleConfigurationCache() *RestoreGradleConfigurationCacheBuilder {
-	return &RestoreGradleConfigurationCacheBuilder{Builder: From("restore-gradle-configuration-cache", "1")}
+func RestoreGradleConfigurationCache(version ...string) *RestoreGradleConfigurationCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreGradleConfigurationCacheBuilder{Builder: From("restore-gradle-configuration-cache", v)}
 }
 
 // WithKeyOverride sets cache key override.

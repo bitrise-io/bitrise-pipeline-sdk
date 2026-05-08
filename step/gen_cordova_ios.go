@@ -7,8 +7,12 @@ package step
 type CordovaIosBuilder struct{ *Builder }
 
 // CordovaIos creates a cordova-ios step builder (v0).
-func CordovaIos() *CordovaIosBuilder {
-	return &CordovaIosBuilder{Builder: From("cordova-ios", "0")}
+func CordovaIos(version ...string) *CordovaIosBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CordovaIosBuilder{Builder: From("cordova-ios", v)}
 }
 
 // WithCordovaDir sets the directory of the Cordova application..

@@ -7,8 +7,12 @@ package step
 type FlutterBuildBuilder struct{ *Builder }
 
 // FlutterBuild creates a flutter-build step builder (v0).
-func FlutterBuild() *FlutterBuildBuilder {
-	return &FlutterBuildBuilder{Builder: From("flutter-build", "0")}
+func FlutterBuild(version ...string) *FlutterBuildBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlutterBuildBuilder{Builder: From("flutter-build", v)}
 }
 
 // WithProjectLocation sets project Location.

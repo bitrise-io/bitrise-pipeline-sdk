@@ -7,8 +7,12 @@ package step
 type BundlerBuilder struct{ *Builder }
 
 // Bundler creates a bundler step builder (v0).
-func Bundler() *BundlerBuilder {
-	return &BundlerBuilder{Builder: From("bundler", "0")}
+func Bundler(version ...string) *BundlerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BundlerBuilder{Builder: From("bundler", v)}
 }
 
 // WithBundleInstallJobs sets the maximum number of parallel download and install jobs..

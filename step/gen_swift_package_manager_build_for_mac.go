@@ -7,8 +7,12 @@ package step
 type SwiftPackageManagerBuildForMacBuilder struct{ *Builder }
 
 // SwiftPackageManagerBuildForMac creates a swift-package-manager-build-for-mac step builder (v0).
-func SwiftPackageManagerBuildForMac() *SwiftPackageManagerBuildForMacBuilder {
-	return &SwiftPackageManagerBuildForMacBuilder{Builder: From("swift-package-manager-build-for-mac", "0")}
+func SwiftPackageManagerBuildForMac(version ...string) *SwiftPackageManagerBuildForMacBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SwiftPackageManagerBuildForMacBuilder{Builder: From("swift-package-manager-build-for-mac", v)}
 }
 
 // WithBuildPath sets build path.

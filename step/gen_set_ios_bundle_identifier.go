@@ -7,8 +7,12 @@ package step
 type SetIosBundleIdentifierBuilder struct{ *Builder }
 
 // SetIosBundleIdentifier creates a set-ios-bundle-identifier step builder (v1).
-func SetIosBundleIdentifier() *SetIosBundleIdentifierBuilder {
-	return &SetIosBundleIdentifierBuilder{Builder: From("set-ios-bundle-identifier", "1")}
+func SetIosBundleIdentifier(version ...string) *SetIosBundleIdentifierBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetIosBundleIdentifierBuilder{Builder: From("set-ios-bundle-identifier", v)}
 }
 
 // WithInfoPlistFile sets info.plist file path.

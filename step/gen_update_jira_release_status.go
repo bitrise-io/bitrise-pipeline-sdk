@@ -7,8 +7,12 @@ package step
 type UpdateJiraReleaseStatusBuilder struct{ *Builder }
 
 // UpdateJiraReleaseStatus creates a update-jira-release-status step builder (v0).
-func UpdateJiraReleaseStatus() *UpdateJiraReleaseStatusBuilder {
-	return &UpdateJiraReleaseStatusBuilder{Builder: From("update-jira-release-status", "0")}
+func UpdateJiraReleaseStatus(version ...string) *UpdateJiraReleaseStatusBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UpdateJiraReleaseStatusBuilder{Builder: From("update-jira-release-status", v)}
 }
 
 // WithJiraUsername sets jira Username.

@@ -7,8 +7,12 @@ package step
 type GolintBuilder struct{ *Builder }
 
 // Golint creates a golint step builder (v0).
-func Golint() *GolintBuilder {
-	return &GolintBuilder{Builder: From("golint", "0")}
+func Golint(version ...string) *GolintBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GolintBuilder{Builder: From("golint", v)}
 }
 
 // WithPackages sets golint target packages.

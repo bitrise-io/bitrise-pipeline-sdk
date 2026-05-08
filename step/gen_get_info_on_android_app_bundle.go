@@ -7,8 +7,12 @@ package step
 type GetInfoOnAndroidAppBundleBuilder struct{ *Builder }
 
 // GetInfoOnAndroidAppBundle creates a get-info-on-android-app-bundle step builder (v0).
-func GetInfoOnAndroidAppBundle() *GetInfoOnAndroidAppBundleBuilder {
-	return &GetInfoOnAndroidAppBundleBuilder{Builder: From("get-info-on-android-app-bundle", "0")}
+func GetInfoOnAndroidAppBundle(version ...string) *GetInfoOnAndroidAppBundleBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GetInfoOnAndroidAppBundleBuilder{Builder: From("get-info-on-android-app-bundle", v)}
 }
 
 // WithAabPath sets build artifact path..

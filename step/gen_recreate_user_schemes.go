@@ -7,8 +7,12 @@ package step
 type RecreateUserSchemesBuilder struct{ *Builder }
 
 // RecreateUserSchemes creates a recreate-user-schemes step builder (v1).
-func RecreateUserSchemes() *RecreateUserSchemesBuilder {
-	return &RecreateUserSchemesBuilder{Builder: From("recreate-user-schemes", "1")}
+func RecreateUserSchemes(version ...string) *RecreateUserSchemesBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RecreateUserSchemesBuilder{Builder: From("recreate-user-schemes", v)}
 }
 
 // WithProjectPath sets project or Workspace path.

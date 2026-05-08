@@ -7,8 +7,12 @@ package step
 type XamarinIosTestBuilder struct{ *Builder }
 
 // XamarinIosTest creates a xamarin-ios-test step builder (v2).
-func XamarinIosTest() *XamarinIosTestBuilder {
-	return &XamarinIosTestBuilder{Builder: From("xamarin-ios-test", "2")}
+func XamarinIosTest(version ...string) *XamarinIosTestBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinIosTestBuilder{Builder: From("xamarin-ios-test", v)}
 }
 
 // WithSimulatorDevice sets device.

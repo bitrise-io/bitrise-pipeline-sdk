@@ -7,8 +7,12 @@ package step
 type AndroidSdkAddOnInstallerBuilder struct{ *Builder }
 
 // AndroidSdkAddOnInstaller creates a android-sdk-add-on-installer step builder (v0).
-func AndroidSdkAddOnInstaller() *AndroidSdkAddOnInstallerBuilder {
-	return &AndroidSdkAddOnInstallerBuilder{Builder: From("android-sdk-add-on-installer", "0")}
+func AndroidSdkAddOnInstaller(version ...string) *AndroidSdkAddOnInstallerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidSdkAddOnInstallerBuilder{Builder: From("android-sdk-add-on-installer", v)}
 }
 
 // WithAndroidSdkPath sets path to the Android SDK folders in the machine.

@@ -7,8 +7,12 @@ package step
 type GitTagProjectVersionAndBuildNumberBuilder struct{ *Builder }
 
 // GitTagProjectVersionAndBuildNumber creates a git-tag-project-version-and-build-number step builder (v1).
-func GitTagProjectVersionAndBuildNumber() *GitTagProjectVersionAndBuildNumberBuilder {
-	return &GitTagProjectVersionAndBuildNumberBuilder{Builder: From("git-tag-project-version-and-build-number", "1")}
+func GitTagProjectVersionAndBuildNumber(version ...string) *GitTagProjectVersionAndBuildNumberBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GitTagProjectVersionAndBuildNumberBuilder{Builder: From("git-tag-project-version-and-build-number", v)}
 }
 
 // WithBitriseTagXcodeprojPath sets path to the 'xcodeproj'.

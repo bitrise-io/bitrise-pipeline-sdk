@@ -7,8 +7,12 @@ package step
 type CordovaArchiveBuilder struct{ *Builder }
 
 // CordovaArchive creates a cordova-archive step builder (v3).
-func CordovaArchive() *CordovaArchiveBuilder {
-	return &CordovaArchiveBuilder{Builder: From("cordova-archive", "3")}
+func CordovaArchive(version ...string) *CordovaArchiveBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CordovaArchiveBuilder{Builder: From("cordova-archive", v)}
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.

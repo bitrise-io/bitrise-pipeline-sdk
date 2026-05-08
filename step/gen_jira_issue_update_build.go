@@ -7,8 +7,12 @@ package step
 type JiraIssueUpdateBuildBuilder struct{ *Builder }
 
 // JiraIssueUpdateBuild creates a jira-issue-update-build step builder (v0).
-func JiraIssueUpdateBuild() *JiraIssueUpdateBuildBuilder {
-	return &JiraIssueUpdateBuildBuilder{Builder: From("jira-issue-update-build", "0")}
+func JiraIssueUpdateBuild(version ...string) *JiraIssueUpdateBuildBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &JiraIssueUpdateBuildBuilder{Builder: From("jira-issue-update-build", v)}
 }
 
 // WithAppVersion sets app version.

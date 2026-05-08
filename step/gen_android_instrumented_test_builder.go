@@ -7,8 +7,12 @@ package step
 type AndroidInstrumentedTestBuilder struct{ *Builder }
 
 // AndroidInstrumentedTest creates a android-instrumented-test step builder (v0).
-func AndroidInstrumentedTest() *AndroidInstrumentedTestBuilder {
-	return &AndroidInstrumentedTestBuilder{Builder: From("android-instrumented-test", "0")}
+func AndroidInstrumentedTest(version ...string) *AndroidInstrumentedTestBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidInstrumentedTestBuilder{Builder: From("android-instrumented-test", v)}
 }
 
 // WithMainApkPath sets main APK path.

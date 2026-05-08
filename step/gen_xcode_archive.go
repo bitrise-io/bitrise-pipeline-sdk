@@ -7,8 +7,12 @@ package step
 type XcodeArchiveBuilder struct{ *Builder }
 
 // XcodeArchive creates a xcode-archive step builder (v6).
-func XcodeArchive() *XcodeArchiveBuilder {
-	return &XcodeArchiveBuilder{Builder: From("xcode-archive", "6")}
+func XcodeArchive(version ...string) *XcodeArchiveBuilder {
+	v := "6"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeArchiveBuilder{Builder: From("xcode-archive", v)}
 }
 
 // WithProjectPath sets project path.

@@ -7,8 +7,12 @@ package step
 type FastlaneBuilder struct{ *Builder }
 
 // Fastlane creates a fastlane step builder (v3).
-func Fastlane() *FastlaneBuilder {
-	return &FastlaneBuilder{Builder: From("fastlane", "3")}
+func Fastlane(version ...string) *FastlaneBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FastlaneBuilder{Builder: From("fastlane", v)}
 }
 
 // WithLane sets fastlane lane.

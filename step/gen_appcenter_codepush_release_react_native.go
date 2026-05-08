@@ -7,8 +7,12 @@ package step
 type AppcenterCodepushReleaseReactNativeBuilder struct{ *Builder }
 
 // AppcenterCodepushReleaseReactNative creates a appcenter-codepush-release-react-native step builder (v0).
-func AppcenterCodepushReleaseReactNative() *AppcenterCodepushReleaseReactNativeBuilder {
-	return &AppcenterCodepushReleaseReactNativeBuilder{Builder: From("appcenter-codepush-release-react-native", "0")}
+func AppcenterCodepushReleaseReactNative(version ...string) *AppcenterCodepushReleaseReactNativeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterCodepushReleaseReactNativeBuilder{Builder: From("appcenter-codepush-release-react-native", v)}
 }
 
 // WithReactNativeProjectRoot sets react Native Project Root.

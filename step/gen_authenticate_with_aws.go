@@ -7,8 +7,12 @@ package step
 type AuthenticateWithAwsBuilder struct{ *Builder }
 
 // AuthenticateWithAws creates a authenticate-with-aws step builder (v0).
-func AuthenticateWithAws() *AuthenticateWithAwsBuilder {
-	return &AuthenticateWithAwsBuilder{Builder: From("authenticate-with-aws", "0")}
+func AuthenticateWithAws(version ...string) *AuthenticateWithAwsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AuthenticateWithAwsBuilder{Builder: From("authenticate-with-aws", v)}
 }
 
 // WithAudience sets token audience.

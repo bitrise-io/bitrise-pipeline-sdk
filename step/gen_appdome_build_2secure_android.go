@@ -7,8 +7,12 @@ package step
 type AppdomeBuild2secureAndroidBuilder struct{ *Builder }
 
 // AppdomeBuild2secureAndroid creates a appdome-build-2secure-android step builder (v3).
-func AppdomeBuild2secureAndroid() *AppdomeBuild2secureAndroidBuilder {
-	return &AppdomeBuild2secureAndroidBuilder{Builder: From("appdome-build-2secure-android", "3")}
+func AppdomeBuild2secureAndroid(version ...string) *AppdomeBuild2secureAndroidBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppdomeBuild2secureAndroidBuilder{Builder: From("appdome-build-2secure-android", v)}
 }
 
 // WithAppLocation sets app file URL or EnvVar.

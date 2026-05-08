@@ -7,8 +7,12 @@ package step
 type NunitRunnerBuilder struct{ *Builder }
 
 // NunitRunner creates a nunit-runner step builder (v1).
-func NunitRunner() *NunitRunnerBuilder {
-	return &NunitRunnerBuilder{Builder: From("nunit-runner", "1")}
+func NunitRunner(version ...string) *NunitRunnerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &NunitRunnerBuilder{Builder: From("nunit-runner", v)}
 }
 
 // WithXamarinSolution sets path to Xamarin Solution.

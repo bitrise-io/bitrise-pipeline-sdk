@@ -7,8 +7,12 @@ package step
 type IonicPrepareBuilder struct{ *Builder }
 
 // IonicPrepare creates a ionic-prepare step builder (v1).
-func IonicPrepare() *IonicPrepareBuilder {
-	return &IonicPrepareBuilder{Builder: From("ionic-prepare", "1")}
+func IonicPrepare(version ...string) *IonicPrepareBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &IonicPrepareBuilder{Builder: From("ionic-prepare", v)}
 }
 
 // WithPlatform sets platform.

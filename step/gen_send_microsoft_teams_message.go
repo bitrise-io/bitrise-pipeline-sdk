@@ -7,8 +7,12 @@ package step
 type SendMicrosoftTeamsMessageBuilder struct{ *Builder }
 
 // SendMicrosoftTeamsMessage creates a send-microsoft-teams-message step builder (v0).
-func SendMicrosoftTeamsMessage() *SendMicrosoftTeamsMessageBuilder {
-	return &SendMicrosoftTeamsMessageBuilder{Builder: From("send-microsoft-teams-message", "0")}
+func SendMicrosoftTeamsMessage(version ...string) *SendMicrosoftTeamsMessageBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SendMicrosoftTeamsMessageBuilder{Builder: From("send-microsoft-teams-message", v)}
 }
 
 // WithIsDebugMode sets debug mode?.

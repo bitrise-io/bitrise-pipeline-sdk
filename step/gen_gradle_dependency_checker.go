@@ -7,8 +7,12 @@ package step
 type GradleDependencyCheckerBuilder struct{ *Builder }
 
 // GradleDependencyChecker creates a gradle-dependency-checker step builder (v1).
-func GradleDependencyChecker() *GradleDependencyCheckerBuilder {
-	return &GradleDependencyCheckerBuilder{Builder: From("gradle-dependency-checker", "1")}
+func GradleDependencyChecker(version ...string) *GradleDependencyCheckerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GradleDependencyCheckerBuilder{Builder: From("gradle-dependency-checker", v)}
 }
 
 // WithSourceRootPath sets android Source Code Directory path; For react-native project, please use './android'.

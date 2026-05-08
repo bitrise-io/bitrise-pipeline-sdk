@@ -7,8 +7,12 @@ package step
 type AppdomeBuild2secureIosBuilder struct{ *Builder }
 
 // AppdomeBuild2secureIos creates a appdome-build-2secure-ios step builder (v3).
-func AppdomeBuild2secureIos() *AppdomeBuild2secureIosBuilder {
-	return &AppdomeBuild2secureIosBuilder{Builder: From("appdome-build-2secure-ios", "3")}
+func AppdomeBuild2secureIos(version ...string) *AppdomeBuild2secureIosBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppdomeBuild2secureIosBuilder{Builder: From("appdome-build-2secure-ios", v)}
 }
 
 // WithAppLocation sets app file URL or EnvVar.

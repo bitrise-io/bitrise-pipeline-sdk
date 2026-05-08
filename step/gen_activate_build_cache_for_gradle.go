@@ -7,8 +7,12 @@ package step
 type ActivateBuildCacheForGradleBuilder struct{ *Builder }
 
 // ActivateBuildCacheForGradle creates a activate-build-cache-for-gradle step builder (v2).
-func ActivateBuildCacheForGradle() *ActivateBuildCacheForGradleBuilder {
-	return &ActivateBuildCacheForGradleBuilder{Builder: From("activate-build-cache-for-gradle", "2")}
+func ActivateBuildCacheForGradle(version ...string) *ActivateBuildCacheForGradleBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateBuildCacheForGradleBuilder{Builder: From("activate-build-cache-for-gradle", v)}
 }
 
 // WithPush sets push new cache entries.

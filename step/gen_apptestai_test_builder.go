@@ -7,8 +7,12 @@ package step
 type ApptestaiTestBuilder struct{ *Builder }
 
 // ApptestaiTest creates a apptestai-test step builder (v0).
-func ApptestaiTest() *ApptestaiTestBuilder {
-	return &ApptestaiTestBuilder{Builder: From("apptestai-test", "0")}
+func ApptestaiTest(version ...string) *ApptestaiTestBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ApptestaiTestBuilder{Builder: From("apptestai-test", v)}
 }
 
 // WithAccessKey sets access key to use for apptest.ai test..

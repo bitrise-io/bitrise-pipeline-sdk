@@ -11,8 +11,12 @@ type AmazonS3UploadBuilder struct{ *Builder }
 // AmazonS3Upload creates a amazon-s3-upload step builder (v3).
 //
 // Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
-func AmazonS3Upload() *AmazonS3UploadBuilder {
-	return &AmazonS3UploadBuilder{Builder: From("amazon-s3-upload", "3")}
+func AmazonS3Upload(version ...string) *AmazonS3UploadBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AmazonS3UploadBuilder{Builder: From("amazon-s3-upload", v)}
 }
 
 // WithAccessKeyId sets aWS Access Key.

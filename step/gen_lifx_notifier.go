@@ -7,8 +7,12 @@ package step
 type LifxNotifierBuilder struct{ *Builder }
 
 // LifxNotifier creates a lifx-notifier step builder (v1).
-func LifxNotifier() *LifxNotifierBuilder {
-	return &LifxNotifierBuilder{Builder: From("lifx-notifier", "1")}
+func LifxNotifier(version ...string) *LifxNotifierBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &LifxNotifierBuilder{Builder: From("lifx-notifier", v)}
 }
 
 // WithAuthToken sets authentication token.

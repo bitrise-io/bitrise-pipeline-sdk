@@ -7,8 +7,12 @@ package step
 type IonicArchiveBuilder struct{ *Builder }
 
 // IonicArchive creates a ionic-archive step builder (v2).
-func IonicArchive() *IonicArchiveBuilder {
-	return &IonicArchiveBuilder{Builder: From("ionic-archive", "2")}
+func IonicArchive(version ...string) *IonicArchiveBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &IonicArchiveBuilder{Builder: From("ionic-archive", v)}
 }
 
 // WithPlatform sets platform to use in ionic-cli commands.

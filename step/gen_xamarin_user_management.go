@@ -11,8 +11,12 @@ type XamarinUserManagementBuilder struct{ *Builder }
 // XamarinUserManagement creates a xamarin-user-management step builder (v1).
 //
 // Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
-func XamarinUserManagement() *XamarinUserManagementBuilder {
-	return &XamarinUserManagementBuilder{Builder: From("xamarin-user-management", "1")}
+func XamarinUserManagement(version ...string) *XamarinUserManagementBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinUserManagementBuilder{Builder: From("xamarin-user-management", v)}
 }
 
 // WithBuildSlug sets bitrise build slug.

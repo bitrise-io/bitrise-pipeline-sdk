@@ -11,8 +11,12 @@ type AddTraceSdkAndroidBuilder struct{ *Builder }
 // AddTraceSdkAndroid creates a add-trace-sdk-android step builder (v0).
 //
 // Deprecated: This step is deprecated as it is not supported anymore.
-func AddTraceSdkAndroid() *AddTraceSdkAndroidBuilder {
-	return &AddTraceSdkAndroidBuilder{Builder: From("add-trace-sdk-android", "0")}
+func AddTraceSdkAndroid(version ...string) *AddTraceSdkAndroidBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AddTraceSdkAndroidBuilder{Builder: From("add-trace-sdk-android", v)}
 }
 
 // WithProjectLocation sets path of the root project.

@@ -7,8 +7,12 @@ package step
 type SaveNpmCacheBuilder struct{ *Builder }
 
 // SaveNpmCache creates a save-npm-cache step builder (v1).
-func SaveNpmCache() *SaveNpmCacheBuilder {
-	return &SaveNpmCacheBuilder{Builder: From("save-npm-cache", "1")}
+func SaveNpmCache(version ...string) *SaveNpmCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveNpmCacheBuilder{Builder: From("save-npm-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

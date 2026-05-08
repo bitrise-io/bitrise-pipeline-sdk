@@ -7,8 +7,12 @@ package step
 type CreateZipBuilder struct{ *Builder }
 
 // CreateZip creates a create-zip step builder (v0).
-func CreateZip() *CreateZipBuilder {
-	return &CreateZipBuilder{Builder: From("create-zip", "0")}
+func CreateZip(version ...string) *CreateZipBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateZipBuilder{Builder: From("create-zip", v)}
 }
 
 // WithSourcePath sets source directory path.

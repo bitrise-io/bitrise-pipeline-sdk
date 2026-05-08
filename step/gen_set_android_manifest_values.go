@@ -7,8 +7,12 @@ package step
 type SetAndroidManifestValuesBuilder struct{ *Builder }
 
 // SetAndroidManifestValues creates a set-android-manifest-values step builder (v1).
-func SetAndroidManifestValues() *SetAndroidManifestValuesBuilder {
-	return &SetAndroidManifestValuesBuilder{Builder: From("set-android-manifest-values", "1")}
+func SetAndroidManifestValues(version ...string) *SetAndroidManifestValuesBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetAndroidManifestValuesBuilder{Builder: From("set-android-manifest-values", v)}
 }
 
 // WithAndroidManifestPath sets android Manifest Path.

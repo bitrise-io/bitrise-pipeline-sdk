@@ -7,8 +7,12 @@ package step
 type AppcenterDeployIosBuilder struct{ *Builder }
 
 // AppcenterDeployIos creates a appcenter-deploy-ios step builder (v2).
-func AppcenterDeployIos() *AppcenterDeployIosBuilder {
-	return &AppcenterDeployIosBuilder{Builder: From("appcenter-deploy-ios", "2")}
+func AppcenterDeployIos(version ...string) *AppcenterDeployIosBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterDeployIosBuilder{Builder: From("appcenter-deploy-ios", v)}
 }
 
 // WithIpaPath sets iPA path.

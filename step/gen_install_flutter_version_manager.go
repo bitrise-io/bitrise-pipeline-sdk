@@ -7,6 +7,10 @@ package step
 type InstallFlutterVersionManagerBuilder struct{ *Builder }
 
 // InstallFlutterVersionManager creates a install-flutter-version-manager step builder (v2).
-func InstallFlutterVersionManager() *InstallFlutterVersionManagerBuilder {
-	return &InstallFlutterVersionManagerBuilder{Builder: From("install-flutter-version-manager", "2")}
+func InstallFlutterVersionManager(version ...string) *InstallFlutterVersionManagerBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstallFlutterVersionManagerBuilder{Builder: From("install-flutter-version-manager", v)}
 }

@@ -7,8 +7,12 @@ package step
 type AwsS3UploadBuilder struct{ *Builder }
 
 // AwsS3Upload creates a aws-s3-upload step builder (v0).
-func AwsS3Upload() *AwsS3UploadBuilder {
-	return &AwsS3UploadBuilder{Builder: From("aws-s3-upload", "0")}
+func AwsS3Upload(version ...string) *AwsS3UploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AwsS3UploadBuilder{Builder: From("aws-s3-upload", v)}
 }
 
 // WithPath sets path.

@@ -7,8 +7,12 @@ package step
 type SaveGradleCacheBuilder struct{ *Builder }
 
 // SaveGradleCache creates a save-gradle-cache step builder (v1).
-func SaveGradleCache() *SaveGradleCacheBuilder {
-	return &SaveGradleCacheBuilder{Builder: From("save-gradle-cache", "1")}
+func SaveGradleCache(version ...string) *SaveGradleCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveGradleCacheBuilder{Builder: From("save-gradle-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

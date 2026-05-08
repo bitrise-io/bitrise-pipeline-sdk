@@ -7,8 +7,12 @@ package step
 type AndroidBuildBuilder struct{ *Builder }
 
 // AndroidBuild creates a android-build step builder (v1).
-func AndroidBuild() *AndroidBuildBuilder {
-	return &AndroidBuildBuilder{Builder: From("android-build", "1")}
+func AndroidBuild(version ...string) *AndroidBuildBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidBuildBuilder{Builder: From("android-build", v)}
 }
 
 // WithProjectLocation sets project Location.

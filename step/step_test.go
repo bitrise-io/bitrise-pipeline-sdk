@@ -118,3 +118,34 @@ func TestTypedBuilder_GenericMethodChain(t *testing.T) {
 		Build()
 	assert.Contains(t, item, "xcode-test@6")
 }
+
+// --- Version override -------------------------------------------------------
+
+func TestTypedBuilder_DefaultVersion(t *testing.T) {
+	// Calling the constructor with no argument uses the baked-in default.
+	assert.Contains(t, step.GitClone().Build(), "git-clone@8")
+	assert.Contains(t, step.Script().Build(), "script@1")
+	assert.Contains(t, step.XcodeTest().Build(), "xcode-test@6")
+}
+
+func TestTypedBuilder_ExplicitVersion(t *testing.T) {
+	// Passing a version string selects a different major version.
+	assert.Contains(t, step.GitClone("7").Build(), "git-clone@7")
+	assert.Contains(t, step.Script("2").Build(), "script@2")
+	assert.Contains(t, step.XcodeTest("5").Build(), "xcode-test@5")
+}
+
+func TestTypedBuilder_VersionOverride_PreservesTypedMethods(t *testing.T) {
+	// The typed input methods must still be callable after a version override —
+	// the constructor returns *TypedBuilder, not *Builder.
+	item := step.XcodeTest("5").
+		WithScheme("MyApp").
+		WithProjectPath("App.xcworkspace").
+		Build()
+	assert.Contains(t, item, "xcode-test@5")
+}
+
+func TestTypedBuilder_EmptyStringUsesDefault(t *testing.T) {
+	// An explicit empty string should fall back to the default version.
+	assert.Contains(t, step.GitClone("").Build(), "git-clone@8")
+}

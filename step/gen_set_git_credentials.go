@@ -7,8 +7,12 @@ package step
 type SetGitCredentialsBuilder struct{ *Builder }
 
 // SetGitCredentials creates a set-git-credentials step builder (v1).
-func SetGitCredentials() *SetGitCredentialsBuilder {
-	return &SetGitCredentialsBuilder{Builder: From("set-git-credentials", "1")}
+func SetGitCredentials(version ...string) *SetGitCredentialsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetGitCredentialsBuilder{Builder: From("set-git-credentials", v)}
 }
 
 // WithGitUserName sets git Username.

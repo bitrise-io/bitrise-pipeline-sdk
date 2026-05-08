@@ -7,8 +7,12 @@ package step
 type XcodeBuildVersionBuilder struct{ *Builder }
 
 // XcodeBuildVersion creates a xcode-build-version step builder (v0).
-func XcodeBuildVersion() *XcodeBuildVersionBuilder {
-	return &XcodeBuildVersionBuilder{Builder: From("xcode-build-version", "0")}
+func XcodeBuildVersion(version ...string) *XcodeBuildVersionBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeBuildVersionBuilder{Builder: From("xcode-build-version", v)}
 }
 
 // WithProjectPath sets path to the 'xcodeproj'.

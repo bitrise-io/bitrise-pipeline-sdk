@@ -7,8 +7,12 @@ package step
 type BitriseStepQyrusMobilityTestRunnerAndroidBuilder struct{ *Builder }
 
 // BitriseStepQyrusMobilityTestRunnerAndroid creates a bitrise-step-qyrus-mobility-test-runner-android step builder (v0).
-func BitriseStepQyrusMobilityTestRunnerAndroid() *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
-	return &BitriseStepQyrusMobilityTestRunnerAndroidBuilder{Builder: From("bitrise-step-qyrus-mobility-test-runner-android", "0")}
+func BitriseStepQyrusMobilityTestRunnerAndroid(version ...string) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepQyrusMobilityTestRunnerAndroidBuilder{Builder: From("bitrise-step-qyrus-mobility-test-runner-android", v)}
 }
 
 // WithEnableDebug sets debug mode.

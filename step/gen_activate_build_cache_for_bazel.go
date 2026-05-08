@@ -7,8 +7,12 @@ package step
 type ActivateBuildCacheForBazelBuilder struct{ *Builder }
 
 // ActivateBuildCacheForBazel creates a activate-build-cache-for-bazel step builder (v1).
-func ActivateBuildCacheForBazel() *ActivateBuildCacheForBazelBuilder {
-	return &ActivateBuildCacheForBazelBuilder{Builder: From("activate-build-cache-for-bazel", "1")}
+func ActivateBuildCacheForBazel(version ...string) *ActivateBuildCacheForBazelBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateBuildCacheForBazelBuilder{Builder: From("activate-build-cache-for-bazel", v)}
 }
 
 // WithEnableRbe sets enable Bazel RBE.

@@ -7,8 +7,12 @@ package step
 type CachePushBuilder struct{ *Builder }
 
 // CachePush creates a cache-push step builder (v2).
-func CachePush() *CachePushBuilder {
-	return &CachePushBuilder{Builder: From("cache-push", "2")}
+func CachePush(version ...string) *CachePushBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CachePushBuilder{Builder: From("cache-push", v)}
 }
 
 // WithCachePaths sets cache paths.

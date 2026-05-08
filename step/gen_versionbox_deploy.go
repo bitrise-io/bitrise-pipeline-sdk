@@ -7,8 +7,12 @@ package step
 type VersionboxDeployBuilder struct{ *Builder }
 
 // VersionboxDeploy creates a versionbox-deploy step builder (v0).
-func VersionboxDeploy() *VersionboxDeployBuilder {
-	return &VersionboxDeployBuilder{Builder: From("versionbox-deploy", "0")}
+func VersionboxDeploy(version ...string) *VersionboxDeployBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VersionboxDeployBuilder{Builder: From("versionbox-deploy", v)}
 }
 
 // WithVbAppKey sets versionBox Application Key.

@@ -7,8 +7,12 @@ package step
 type AuthenticateHostWithNetrcBuilder struct{ *Builder }
 
 // AuthenticateHostWithNetrc creates a authenticate-host-with-netrc step builder (v0).
-func AuthenticateHostWithNetrc() *AuthenticateHostWithNetrcBuilder {
-	return &AuthenticateHostWithNetrcBuilder{Builder: From("authenticate-host-with-netrc", "0")}
+func AuthenticateHostWithNetrc(version ...string) *AuthenticateHostWithNetrcBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AuthenticateHostWithNetrcBuilder{Builder: From("authenticate-host-with-netrc", v)}
 }
 
 // WithHost sets host.

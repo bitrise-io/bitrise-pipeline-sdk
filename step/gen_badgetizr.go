@@ -7,8 +7,12 @@ package step
 type BadgetizrBuilder struct{ *Builder }
 
 // Badgetizr creates a badgetizr step builder (v3).
-func Badgetizr() *BadgetizrBuilder {
-	return &BadgetizrBuilder{Builder: From("badgetizr", "3")}
+func Badgetizr(version ...string) *BadgetizrBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BadgetizrBuilder{Builder: From("badgetizr", v)}
 }
 
 // WithPrId sets pull/Merge Request ID.

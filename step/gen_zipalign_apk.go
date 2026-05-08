@@ -7,8 +7,12 @@ package step
 type ZipalignApkBuilder struct{ *Builder }
 
 // ZipalignApk creates a zipalign-apk step builder (v0).
-func ZipalignApk() *ZipalignApkBuilder {
-	return &ZipalignApkBuilder{Builder: From("zipalign-apk", "0")}
+func ZipalignApk(version ...string) *ZipalignApkBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ZipalignApkBuilder{Builder: From("zipalign-apk", v)}
 }
 
 // WithBitriseUnalignedApkPath sets unaligned APK Path.

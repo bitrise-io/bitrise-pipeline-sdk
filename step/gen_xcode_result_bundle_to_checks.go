@@ -7,8 +7,12 @@ package step
 type XcodeResultBundleToChecksBuilder struct{ *Builder }
 
 // XcodeResultBundleToChecks creates a xcode-result-bundle-to-checks step builder (v1).
-func XcodeResultBundleToChecks() *XcodeResultBundleToChecksBuilder {
-	return &XcodeResultBundleToChecksBuilder{Builder: From("xcode-result-bundle-to-checks", "1")}
+func XcodeResultBundleToChecks(version ...string) *XcodeResultBundleToChecksBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeResultBundleToChecksBuilder{Builder: From("xcode-result-bundle-to-checks", v)}
 }
 
 // WithXcresultPath sets result bundle path.

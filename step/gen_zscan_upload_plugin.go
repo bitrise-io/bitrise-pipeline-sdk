@@ -7,8 +7,12 @@ package step
 type ZscanUploadPluginBuilder struct{ *Builder }
 
 // ZscanUploadPlugin creates a zscan-upload-plugin step builder (v1).
-func ZscanUploadPlugin() *ZscanUploadPluginBuilder {
-	return &ZscanUploadPluginBuilder{Builder: From("zscan-upload-plugin", "1")}
+func ZscanUploadPlugin(version ...string) *ZscanUploadPluginBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ZscanUploadPluginBuilder{Builder: From("zscan-upload-plugin", v)}
 }
 
 // WithEndpoint sets endpoint.

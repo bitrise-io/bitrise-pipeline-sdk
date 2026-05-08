@@ -7,6 +7,10 @@ package step
 type TranslizedBuilder struct{ *Builder }
 
 // Translized creates a translized step builder (v1).
-func Translized() *TranslizedBuilder {
-	return &TranslizedBuilder{Builder: From("translized", "1")}
+func Translized(version ...string) *TranslizedBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TranslizedBuilder{Builder: From("translized", v)}
 }

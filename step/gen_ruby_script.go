@@ -7,8 +7,12 @@ package step
 type RubyScriptBuilder struct{ *Builder }
 
 // RubyScript creates a ruby-script step builder (v2).
-func RubyScript() *RubyScriptBuilder {
-	return &RubyScriptBuilder{Builder: From("ruby-script", "2")}
+func RubyScript(version ...string) *RubyScriptBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RubyScriptBuilder{Builder: From("ruby-script", v)}
 }
 
 // WithGemfileContent sets gemfile's content.

@@ -7,8 +7,12 @@ package step
 type SlackBuilder struct{ *Builder }
 
 // Slack creates a slack step builder (v4).
-func Slack() *SlackBuilder {
-	return &SlackBuilder{Builder: From("slack", "4")}
+func Slack(version ...string) *SlackBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SlackBuilder{Builder: From("slack", v)}
 }
 
 // WithIsDebugMode sets debug mode?.

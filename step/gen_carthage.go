@@ -7,8 +7,12 @@ package step
 type CarthageBuilder struct{ *Builder }
 
 // Carthage creates a carthage step builder (v3).
-func Carthage() *CarthageBuilder {
-	return &CarthageBuilder{Builder: From("carthage", "3")}
+func Carthage(version ...string) *CarthageBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CarthageBuilder{Builder: From("carthage", v)}
 }
 
 // WithCarthageCommand sets carthage command to run.

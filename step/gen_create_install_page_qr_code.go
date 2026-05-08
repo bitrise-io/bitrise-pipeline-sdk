@@ -7,8 +7,12 @@ package step
 type CreateInstallPageQrCodeBuilder struct{ *Builder }
 
 // CreateInstallPageQrCode creates a create-install-page-qr-code step builder (v1).
-func CreateInstallPageQrCode() *CreateInstallPageQrCodeBuilder {
-	return &CreateInstallPageQrCodeBuilder{Builder: From("create-install-page-qr-code", "1")}
+func CreateInstallPageQrCode(version ...string) *CreateInstallPageQrCodeBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateInstallPageQrCodeBuilder{Builder: From("create-install-page-qr-code", v)}
 }
 
 // WithPublicInstallPageUrl sets public install page URL.

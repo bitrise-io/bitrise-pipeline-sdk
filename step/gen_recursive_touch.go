@@ -11,8 +11,12 @@ type RecursiveTouchBuilder struct{ *Builder }
 // RecursiveTouch creates a recursive-touch step builder (v0).
 //
 // Deprecated: This step is deprecated as it is not reliable in daily development.
-func RecursiveTouch() *RecursiveTouchBuilder {
-	return &RecursiveTouchBuilder{Builder: From("recursive-touch", "0")}
+func RecursiveTouch(version ...string) *RecursiveTouchBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RecursiveTouchBuilder{Builder: From("recursive-touch", v)}
 }
 
 // WithDirectoryPath sets path.

@@ -7,8 +7,12 @@ package step
 type RestoreSpmCacheBuilder struct{ *Builder }
 
 // RestoreSpmCache creates a restore-spm-cache step builder (v3).
-func RestoreSpmCache() *RestoreSpmCacheBuilder {
-	return &RestoreSpmCacheBuilder{Builder: From("restore-spm-cache", "3")}
+func RestoreSpmCache(version ...string) *RestoreSpmCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreSpmCacheBuilder{Builder: From("restore-spm-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

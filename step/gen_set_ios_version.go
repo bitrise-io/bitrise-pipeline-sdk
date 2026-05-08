@@ -7,8 +7,12 @@ package step
 type SetIosVersionBuilder struct{ *Builder }
 
 // SetIosVersion creates a set-ios-version step builder (v2).
-func SetIosVersion() *SetIosVersionBuilder {
-	return &SetIosVersionBuilder{Builder: From("set-ios-version", "2")}
+func SetIosVersion(version ...string) *SetIosVersionBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetIosVersionBuilder{Builder: From("set-ios-version", v)}
 }
 
 // WithInfoPlistFile sets info.plist file path.

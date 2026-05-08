@@ -7,8 +7,12 @@ package step
 type AuthenticateWithBitbucketOauthBuilder struct{ *Builder }
 
 // AuthenticateWithBitbucketOauth creates a authenticate-with-bitbucket-oauth step builder (v0).
-func AuthenticateWithBitbucketOauth() *AuthenticateWithBitbucketOauthBuilder {
-	return &AuthenticateWithBitbucketOauthBuilder{Builder: From("authenticate-with-bitbucket-oauth", "0")}
+func AuthenticateWithBitbucketOauth(version ...string) *AuthenticateWithBitbucketOauthBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AuthenticateWithBitbucketOauthBuilder{Builder: From("authenticate-with-bitbucket-oauth", v)}
 }
 
 // WithUsername sets bitbucket username.

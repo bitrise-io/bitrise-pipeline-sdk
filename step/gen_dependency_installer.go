@@ -7,8 +7,12 @@ package step
 type DependencyInstallerBuilder struct{ *Builder }
 
 // DependencyInstaller creates a dependency-installer step builder (v1).
-func DependencyInstaller() *DependencyInstallerBuilder {
-	return &DependencyInstallerBuilder{Builder: From("dependency-installer", "1")}
+func DependencyInstaller(version ...string) *DependencyInstallerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DependencyInstallerBuilder{Builder: From("dependency-installer", v)}
 }
 
 // WithToolVersionFile sets tool Version File Path.

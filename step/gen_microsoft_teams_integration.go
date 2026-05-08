@@ -7,8 +7,12 @@ package step
 type MicrosoftTeamsIntegrationBuilder struct{ *Builder }
 
 // MicrosoftTeamsIntegration creates a microsoft-teams-integration step builder (v2).
-func MicrosoftTeamsIntegration() *MicrosoftTeamsIntegrationBuilder {
-	return &MicrosoftTeamsIntegrationBuilder{Builder: From("microsoft-teams-integration", "2")}
+func MicrosoftTeamsIntegration(version ...string) *MicrosoftTeamsIntegrationBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MicrosoftTeamsIntegrationBuilder{Builder: From("microsoft-teams-integration", v)}
 }
 
 // WithCardTitle sets card Title.

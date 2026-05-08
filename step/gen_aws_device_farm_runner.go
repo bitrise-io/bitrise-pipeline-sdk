@@ -7,8 +7,12 @@ package step
 type AwsDeviceFarmRunnerBuilder struct{ *Builder }
 
 // AwsDeviceFarmRunner creates a aws-device-farm-runner step builder (v0).
-func AwsDeviceFarmRunner() *AwsDeviceFarmRunnerBuilder {
-	return &AwsDeviceFarmRunnerBuilder{Builder: From("aws-device-farm-runner", "0")}
+func AwsDeviceFarmRunner(version ...string) *AwsDeviceFarmRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AwsDeviceFarmRunnerBuilder{Builder: From("aws-device-farm-runner", v)}
 }
 
 // WithAccessKeyId sets aWS Access Key.

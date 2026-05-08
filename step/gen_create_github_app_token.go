@@ -7,8 +7,12 @@ package step
 type CreateGithubAppTokenBuilder struct{ *Builder }
 
 // CreateGithubAppToken creates a create-github-app-token step builder (v1).
-func CreateGithubAppToken() *CreateGithubAppTokenBuilder {
-	return &CreateGithubAppTokenBuilder{Builder: From("create-github-app-token", "1")}
+func CreateGithubAppToken(version ...string) *CreateGithubAppTokenBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateGithubAppTokenBuilder{Builder: From("create-github-app-token", v)}
 }
 
 // WithGithubRepository sets gitHub repository name.

@@ -7,8 +7,12 @@ package step
 type MusselBuilder struct{ *Builder }
 
 // Mussel creates a mussel step builder (v1).
-func Mussel() *MusselBuilder {
-	return &MusselBuilder{Builder: From("mussel", "1")}
+func Mussel(version ...string) *MusselBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MusselBuilder{Builder: From("mussel", v)}
 }
 
 // WithMusselVersion sets mussel server version.

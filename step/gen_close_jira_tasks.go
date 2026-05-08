@@ -7,8 +7,12 @@ package step
 type CloseJiraTasksBuilder struct{ *Builder }
 
 // CloseJiraTasks creates a close-jira-tasks step builder (v1).
-func CloseJiraTasks() *CloseJiraTasksBuilder {
-	return &CloseJiraTasksBuilder{Builder: From("close-jira-tasks", "1")}
+func CloseJiraTasks(version ...string) *CloseJiraTasksBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CloseJiraTasksBuilder{Builder: From("close-jira-tasks", v)}
 }
 
 // WithJiraProjectName sets jira project name.

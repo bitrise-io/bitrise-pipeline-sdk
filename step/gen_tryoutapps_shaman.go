@@ -7,8 +7,12 @@ package step
 type TryoutappsShamanBuilder struct{ *Builder }
 
 // TryoutappsShaman creates a tryoutapps-shaman step builder (v1).
-func TryoutappsShaman() *TryoutappsShamanBuilder {
-	return &TryoutappsShamanBuilder{Builder: From("tryoutapps-shaman", "1")}
+func TryoutappsShaman(version ...string) *TryoutappsShamanBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TryoutappsShamanBuilder{Builder: From("tryoutapps-shaman", v)}
 }
 
 // WithShamanToken sets token used for authentication with TryoutApps.

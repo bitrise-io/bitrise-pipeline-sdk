@@ -7,8 +7,12 @@ package step
 type TelegramNotifyBuilder struct{ *Builder }
 
 // TelegramNotify creates a telegram-notify step builder (v2).
-func TelegramNotify() *TelegramNotifyBuilder {
-	return &TelegramNotifyBuilder{Builder: From("telegram-notify", "2")}
+func TelegramNotify(version ...string) *TelegramNotifyBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TelegramNotifyBuilder{Builder: From("telegram-notify", v)}
 }
 
 // WithLinkPreviewsEnabled sets enable Link Previews.

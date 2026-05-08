@@ -11,8 +11,12 @@ type StampAppiconWithVersionNumberBuilder struct{ *Builder }
 // StampAppiconWithVersionNumber creates a stamp-appicon-with-version-number step builder (v1).
 //
 // Deprecated: This step is a duplicate of "bitrise-step-stamp-appicon-with-version-number". Please use that step ID instead.
-func StampAppiconWithVersionNumber() *StampAppiconWithVersionNumberBuilder {
-	return &StampAppiconWithVersionNumberBuilder{Builder: From("stamp-appicon-with-version-number", "1")}
+func StampAppiconWithVersionNumber(version ...string) *StampAppiconWithVersionNumberBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &StampAppiconWithVersionNumberBuilder{Builder: From("stamp-appicon-with-version-number", v)}
 }
 
 // WithStampPathToIcons sets path to icons of the project.

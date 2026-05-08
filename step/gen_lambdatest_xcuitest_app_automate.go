@@ -7,8 +7,12 @@ package step
 type LambdatestXcuitestAppAutomateBuilder struct{ *Builder }
 
 // LambdatestXcuitestAppAutomate creates a lambdatest-xcuitest-app-automate step builder (v1).
-func LambdatestXcuitestAppAutomate() *LambdatestXcuitestAppAutomateBuilder {
-	return &LambdatestXcuitestAppAutomateBuilder{Builder: From("lambdatest-xcuitest-app-automate", "1")}
+func LambdatestXcuitestAppAutomate(version ...string) *LambdatestXcuitestAppAutomateBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &LambdatestXcuitestAppAutomateBuilder{Builder: From("lambdatest-xcuitest-app-automate", v)}
 }
 
 // WithAppIpaPath sets app ipa path.

@@ -7,8 +7,12 @@ package step
 type WaitForAndroidEmulatorBuilder struct{ *Builder }
 
 // WaitForAndroidEmulator creates a wait-for-android-emulator step builder (v1).
-func WaitForAndroidEmulator() *WaitForAndroidEmulatorBuilder {
-	return &WaitForAndroidEmulatorBuilder{Builder: From("wait-for-android-emulator", "1")}
+func WaitForAndroidEmulator(version ...string) *WaitForAndroidEmulatorBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &WaitForAndroidEmulatorBuilder{Builder: From("wait-for-android-emulator", v)}
 }
 
 // WithEmulatorSerial sets emulator serial.

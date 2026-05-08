@@ -11,8 +11,12 @@ type AndroidScreenrecordStopBuilder struct{ *Builder }
 // AndroidScreenrecordStop creates a android-screenrecord-stop step builder (v0).
 //
 // Deprecated: This step is deprecated, android emulators no longer support screen recording
-func AndroidScreenrecordStop() *AndroidScreenrecordStopBuilder {
-	return &AndroidScreenrecordStopBuilder{Builder: From("android-screenrecord-stop", "0")}
+func AndroidScreenrecordStop(version ...string) *AndroidScreenrecordStopBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidScreenrecordStopBuilder{Builder: From("android-screenrecord-stop", v)}
 }
 
 // WithRecordId sets record ID.

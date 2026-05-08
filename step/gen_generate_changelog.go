@@ -7,8 +7,12 @@ package step
 type GenerateChangelogBuilder struct{ *Builder }
 
 // GenerateChangelog creates a generate-changelog step builder (v0).
-func GenerateChangelog() *GenerateChangelogBuilder {
-	return &GenerateChangelogBuilder{Builder: From("generate-changelog", "0")}
+func GenerateChangelog(version ...string) *GenerateChangelogBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenerateChangelogBuilder{Builder: From("generate-changelog", v)}
 }
 
 // WithChangelogPth sets changelog path.

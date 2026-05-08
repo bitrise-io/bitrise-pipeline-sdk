@@ -7,8 +7,12 @@ package step
 type ChangeValueBuilder struct{ *Builder }
 
 // ChangeValue creates a change-value step builder (v2).
-func ChangeValue() *ChangeValueBuilder {
-	return &ChangeValueBuilder{Builder: From("change-value", "2")}
+func ChangeValue(version ...string) *ChangeValueBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ChangeValueBuilder{Builder: From("change-value", v)}
 }
 
 // WithFile sets file path.

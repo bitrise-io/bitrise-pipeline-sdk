@@ -7,8 +7,12 @@ package step
 type RestoreCocoapodsCacheBuilder struct{ *Builder }
 
 // RestoreCocoapodsCache creates a restore-cocoapods-cache step builder (v3).
-func RestoreCocoapodsCache() *RestoreCocoapodsCacheBuilder {
-	return &RestoreCocoapodsCacheBuilder{Builder: From("restore-cocoapods-cache", "3")}
+func RestoreCocoapodsCache(version ...string) *RestoreCocoapodsCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreCocoapodsCacheBuilder{Builder: From("restore-cocoapods-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

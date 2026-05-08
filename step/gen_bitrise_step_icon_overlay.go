@@ -7,8 +7,12 @@ package step
 type BitriseStepIconOverlayBuilder struct{ *Builder }
 
 // BitriseStepIconOverlay creates a bitrise-step-icon-overlay step builder (v2).
-func BitriseStepIconOverlay() *BitriseStepIconOverlayBuilder {
-	return &BitriseStepIconOverlayBuilder{Builder: From("bitrise-step-icon-overlay", "2")}
+func BitriseStepIconOverlay(version ...string) *BitriseStepIconOverlayBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepIconOverlayBuilder{Builder: From("bitrise-step-icon-overlay", v)}
 }
 
 // WithIconsbundleName sets icon bundle name.

@@ -7,8 +7,12 @@ package step
 type GooglePlayDeployBuilder struct{ *Builder }
 
 // GooglePlayDeploy creates a google-play-deploy step builder (v3).
-func GooglePlayDeploy() *GooglePlayDeployBuilder {
-	return &GooglePlayDeployBuilder{Builder: From("google-play-deploy", "3")}
+func GooglePlayDeploy(version ...string) *GooglePlayDeployBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GooglePlayDeployBuilder{Builder: From("google-play-deploy", v)}
 }
 
 // WithServiceAccountJsonKeyPath sets service Account JSON key file path.

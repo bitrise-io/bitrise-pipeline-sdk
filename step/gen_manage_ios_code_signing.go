@@ -7,8 +7,12 @@ package step
 type ManageIosCodeSigningBuilder struct{ *Builder }
 
 // ManageIosCodeSigning creates a manage-ios-code-signing step builder (v2).
-func ManageIosCodeSigning() *ManageIosCodeSigningBuilder {
-	return &ManageIosCodeSigningBuilder{Builder: From("manage-ios-code-signing", "2")}
+func ManageIosCodeSigning(version ...string) *ManageIosCodeSigningBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ManageIosCodeSigningBuilder{Builder: From("manage-ios-code-signing", v)}
 }
 
 // WithAppleServiceConnection sets apple service connection method.

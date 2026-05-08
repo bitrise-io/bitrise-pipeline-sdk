@@ -7,8 +7,12 @@ package step
 type HerokuDeployBuilder struct{ *Builder }
 
 // HerokuDeploy creates a heroku-deploy step builder (v0).
-func HerokuDeploy() *HerokuDeployBuilder {
-	return &HerokuDeployBuilder{Builder: From("heroku-deploy", "0")}
+func HerokuDeploy(version ...string) *HerokuDeployBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &HerokuDeployBuilder{Builder: From("heroku-deploy", v)}
 }
 
 // WithHerokuApiToken sets heroku API Token.

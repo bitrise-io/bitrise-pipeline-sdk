@@ -7,8 +7,12 @@ package step
 type ScriptBuilder struct{ *Builder }
 
 // Script creates a script step builder (v1).
-func Script() *ScriptBuilder {
-	return &ScriptBuilder{Builder: From("script", "1")}
+func Script(version ...string) *ScriptBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ScriptBuilder{Builder: From("script", v)}
 }
 
 // WithContent sets script content.

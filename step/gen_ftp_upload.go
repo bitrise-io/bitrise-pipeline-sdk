@@ -7,8 +7,12 @@ package step
 type FtpUploadBuilder struct{ *Builder }
 
 // FtpUpload creates a ftp-upload step builder (v2).
-func FtpUpload() *FtpUploadBuilder {
-	return &FtpUploadBuilder{Builder: From("ftp-upload", "2")}
+func FtpUpload(version ...string) *FtpUploadBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FtpUploadBuilder{Builder: From("ftp-upload", v)}
 }
 
 // WithHostname sets host (for example, `ftp.someserver.com:21`).

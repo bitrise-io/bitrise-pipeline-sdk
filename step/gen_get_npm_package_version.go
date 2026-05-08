@@ -7,8 +7,12 @@ package step
 type GetNpmPackageVersionBuilder struct{ *Builder }
 
 // GetNpmPackageVersion creates a get-npm-package-version step builder (v1).
-func GetNpmPackageVersion() *GetNpmPackageVersionBuilder {
-	return &GetNpmPackageVersionBuilder{Builder: From("get-npm-package-version", "1")}
+func GetNpmPackageVersion(version ...string) *GetNpmPackageVersionBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GetNpmPackageVersionBuilder{Builder: From("get-npm-package-version", v)}
 }
 
 // WithPackageJsonPath sets path of package.json.

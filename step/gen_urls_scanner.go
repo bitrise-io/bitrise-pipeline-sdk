@@ -7,8 +7,12 @@ package step
 type UrlsScannerBuilder struct{ *Builder }
 
 // UrlsScanner creates a urls-scanner step builder (v1).
-func UrlsScanner() *UrlsScannerBuilder {
-	return &UrlsScannerBuilder{Builder: From("urls-scanner", "1")}
+func UrlsScanner(version ...string) *UrlsScannerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UrlsScannerBuilder{Builder: From("urls-scanner", v)}
 }
 
 // WithSslLabsScan sets analyze HTTPS URLs with SSLLabs.

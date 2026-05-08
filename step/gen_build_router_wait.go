@@ -7,8 +7,12 @@ package step
 type BuildRouterWaitBuilder struct{ *Builder }
 
 // BuildRouterWait creates a build-router-wait step builder (v0).
-func BuildRouterWait() *BuildRouterWaitBuilder {
-	return &BuildRouterWaitBuilder{Builder: From("build-router-wait", "0")}
+func BuildRouterWait(version ...string) *BuildRouterWaitBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BuildRouterWaitBuilder{Builder: From("build-router-wait", v)}
 }
 
 // WithAccessToken sets bitrise Access Token.

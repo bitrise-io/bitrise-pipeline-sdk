@@ -11,6 +11,10 @@ type ActivateBuildCacheForTuistBuilder struct{ *Builder }
 // ActivateBuildCacheForTuist creates a activate-build-cache-for-tuist step builder (v1).
 //
 // Deprecated: This step is deprecated. For more information please see: https://bitrise.io/blog/post/tuist-bitrise-build-cache-update
-func ActivateBuildCacheForTuist() *ActivateBuildCacheForTuistBuilder {
-	return &ActivateBuildCacheForTuistBuilder{Builder: From("activate-build-cache-for-tuist", "1")}
+func ActivateBuildCacheForTuist(version ...string) *ActivateBuildCacheForTuistBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateBuildCacheForTuistBuilder{Builder: From("activate-build-cache-for-tuist", v)}
 }

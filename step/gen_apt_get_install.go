@@ -7,8 +7,12 @@ package step
 type AptGetInstallBuilder struct{ *Builder }
 
 // AptGetInstall creates a apt-get-install step builder (v0).
-func AptGetInstall() *AptGetInstallBuilder {
-	return &AptGetInstallBuilder{Builder: From("apt-get-install", "0")}
+func AptGetInstall(version ...string) *AptGetInstallBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AptGetInstallBuilder{Builder: From("apt-get-install", v)}
 }
 
 // WithPackages sets name of the packages to install/upgrade, separated with spaces.

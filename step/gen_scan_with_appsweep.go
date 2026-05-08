@@ -7,8 +7,12 @@ package step
 type ScanWithAppsweepBuilder struct{ *Builder }
 
 // ScanWithAppsweep creates a scan-with-appsweep step builder (v3).
-func ScanWithAppsweep() *ScanWithAppsweepBuilder {
-	return &ScanWithAppsweepBuilder{Builder: From("scan-with-appsweep", "3")}
+func ScanWithAppsweep(version ...string) *ScanWithAppsweepBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ScanWithAppsweepBuilder{Builder: From("scan-with-appsweep", v)}
 }
 
 // WithAppsweepApiKey sets appSweep API key.

@@ -11,8 +11,12 @@ type VersionPreReleaseInfoBuilder struct{ *Builder }
 // VersionPreReleaseInfo creates a version-pre-release-info step builder (v1).
 //
 // Deprecated: This step is a duplicate of "bitrise-step-version-pre-release-info". Please use that step ID instead.
-func VersionPreReleaseInfo() *VersionPreReleaseInfoBuilder {
-	return &VersionPreReleaseInfoBuilder{Builder: From("version-pre-release-info", "1")}
+func VersionPreReleaseInfo(version ...string) *VersionPreReleaseInfoBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VersionPreReleaseInfoBuilder{Builder: From("version-pre-release-info", v)}
 }
 
 // WithVersionNumber sets version number.

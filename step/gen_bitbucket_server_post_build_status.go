@@ -7,8 +7,12 @@ package step
 type BitbucketServerPostBuildStatusBuilder struct{ *Builder }
 
 // BitbucketServerPostBuildStatus creates a bitbucket-server-post-build-status step builder (v0).
-func BitbucketServerPostBuildStatus() *BitbucketServerPostBuildStatusBuilder {
-	return &BitbucketServerPostBuildStatusBuilder{Builder: From("bitbucket-server-post-build-status", "0")}
+func BitbucketServerPostBuildStatus(version ...string) *BitbucketServerPostBuildStatusBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitbucketServerPostBuildStatusBuilder{Builder: From("bitbucket-server-post-build-status", v)}
 }
 
 // WithDomain sets bitbucket Server domain name.

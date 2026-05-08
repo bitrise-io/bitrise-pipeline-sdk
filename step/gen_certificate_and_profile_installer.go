@@ -7,8 +7,12 @@ package step
 type CertificateAndProfileInstallerBuilder struct{ *Builder }
 
 // CertificateAndProfileInstaller creates a certificate-and-profile-installer step builder (v1).
-func CertificateAndProfileInstaller() *CertificateAndProfileInstallerBuilder {
-	return &CertificateAndProfileInstallerBuilder{Builder: From("certificate-and-profile-installer", "1")}
+func CertificateAndProfileInstaller(version ...string) *CertificateAndProfileInstallerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CertificateAndProfileInstallerBuilder{Builder: From("certificate-and-profile-installer", v)}
 }
 
 // WithCertificateUrl sets certificate URL.

@@ -7,8 +7,12 @@ package step
 type AppsDecompilerBuilder struct{ *Builder }
 
 // AppsDecompiler creates a apps-decompiler step builder (v1).
-func AppsDecompiler() *AppsDecompilerBuilder {
-	return &AppsDecompilerBuilder{Builder: From("apps-decompiler", "1")}
+func AppsDecompiler(version ...string) *AppsDecompilerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppsDecompilerBuilder{Builder: From("apps-decompiler", v)}
 }
 
 // WithDecompileAndroid sets decompile Android APK.

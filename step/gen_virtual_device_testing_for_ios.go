@@ -7,8 +7,12 @@ package step
 type VirtualDeviceTestingForIosBuilder struct{ *Builder }
 
 // VirtualDeviceTestingForIos creates a virtual-device-testing-for-ios step builder (v1).
-func VirtualDeviceTestingForIos() *VirtualDeviceTestingForIosBuilder {
-	return &VirtualDeviceTestingForIosBuilder{Builder: From("virtual-device-testing-for-ios", "1")}
+func VirtualDeviceTestingForIos(version ...string) *VirtualDeviceTestingForIosBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VirtualDeviceTestingForIosBuilder{Builder: From("virtual-device-testing-for-ios", v)}
 }
 
 // WithZipPath sets zip path.

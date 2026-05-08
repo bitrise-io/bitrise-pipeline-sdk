@@ -7,8 +7,12 @@ package step
 type GitCloneBuilder struct{ *Builder }
 
 // GitClone creates a git-clone step builder (v8).
-func GitClone() *GitCloneBuilder {
-	return &GitCloneBuilder{Builder: From("git-clone", "8")}
+func GitClone(version ...string) *GitCloneBuilder {
+	v := "8"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GitCloneBuilder{Builder: From("git-clone", v)}
 }
 
 // WithMergePr sets checkout merged PR state.

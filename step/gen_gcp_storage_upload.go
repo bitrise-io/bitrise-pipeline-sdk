@@ -7,8 +7,12 @@ package step
 type GcpStorageUploadBuilder struct{ *Builder }
 
 // GcpStorageUpload creates a gcp-storage-upload step builder (v0).
-func GcpStorageUpload() *GcpStorageUploadBuilder {
-	return &GcpStorageUploadBuilder{Builder: From("gcp-storage-upload", "0")}
+func GcpStorageUpload(version ...string) *GcpStorageUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GcpStorageUploadBuilder{Builder: From("gcp-storage-upload", v)}
 }
 
 // WithPath sets path.

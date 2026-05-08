@@ -11,8 +11,12 @@ type StartAndroidEmulatorBuilder struct{ *Builder }
 // StartAndroidEmulator creates a start-android-emulator step builder (v1).
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
-func StartAndroidEmulator() *StartAndroidEmulatorBuilder {
-	return &StartAndroidEmulatorBuilder{Builder: From("start-android-emulator", "1")}
+func StartAndroidEmulator(version ...string) *StartAndroidEmulatorBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &StartAndroidEmulatorBuilder{Builder: From("start-android-emulator", v)}
 }
 
 // WithEmulatorName sets emulator to boot.

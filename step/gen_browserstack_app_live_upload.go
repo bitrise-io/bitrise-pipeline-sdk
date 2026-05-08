@@ -7,8 +7,12 @@ package step
 type BrowserstackAppLiveUploadBuilder struct{ *Builder }
 
 // BrowserstackAppLiveUpload creates a browserstack-app-live-upload step builder (v1).
-func BrowserstackAppLiveUpload() *BrowserstackAppLiveUploadBuilder {
-	return &BrowserstackAppLiveUploadBuilder{Builder: From("browserstack-app-live-upload", "1")}
+func BrowserstackAppLiveUpload(version ...string) *BrowserstackAppLiveUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BrowserstackAppLiveUploadBuilder{Builder: From("browserstack-app-live-upload", v)}
 }
 
 // WithApkIpaFilepath sets location of the IPA or APK.

@@ -7,8 +7,12 @@ package step
 type IosAutoProvisionAppstoreconnectBuilder struct{ *Builder }
 
 // IosAutoProvisionAppstoreconnect creates a ios-auto-provision-appstoreconnect step builder (v2).
-func IosAutoProvisionAppstoreconnect() *IosAutoProvisionAppstoreconnectBuilder {
-	return &IosAutoProvisionAppstoreconnectBuilder{Builder: From("ios-auto-provision-appstoreconnect", "2")}
+func IosAutoProvisionAppstoreconnect(version ...string) *IosAutoProvisionAppstoreconnectBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &IosAutoProvisionAppstoreconnectBuilder{Builder: From("ios-auto-provision-appstoreconnect", v)}
 }
 
 // WithConnection sets bitrise Apple Developer Connection.

@@ -7,8 +7,12 @@ package step
 type PebbleBuildBuilder struct{ *Builder }
 
 // PebbleBuild creates a pebble-build step builder (v1).
-func PebbleBuild() *PebbleBuildBuilder {
-	return &PebbleBuildBuilder{Builder: From("pebble-build", "1")}
+func PebbleBuild(version ...string) *PebbleBuildBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PebbleBuildBuilder{Builder: From("pebble-build", v)}
 }
 
 // WithProjectPath sets pebble project path.

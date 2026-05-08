@@ -11,8 +11,12 @@ type XctestHtmlReportBuilder struct{ *Builder }
 // XctestHtmlReport creates a xctest-html-report step builder (v1).
 //
 // Deprecated: This step is no longer maintained. To generate HTML reports from xcresult files use the new official Bitrise step: "Generate Xcode test report html" (https://devcenter.bitrise.io/en/testing/testing-ios-apps/viewing-xcode-test-results-in-rich-html-format.html).
-func XctestHtmlReport() *XctestHtmlReportBuilder {
-	return &XctestHtmlReportBuilder{Builder: From("xctest-html-report", "1")}
+func XctestHtmlReport(version ...string) *XctestHtmlReportBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XctestHtmlReportBuilder{Builder: From("xctest-html-report", v)}
 }
 
 // WithGithubAccessToken sets github Personal Access Token.

@@ -7,8 +7,12 @@ package step
 type LambdatestEspressoAppAutomateBuilder struct{ *Builder }
 
 // LambdatestEspressoAppAutomate creates a lambdatest-espresso-app-automate step builder (v1).
-func LambdatestEspressoAppAutomate() *LambdatestEspressoAppAutomateBuilder {
-	return &LambdatestEspressoAppAutomateBuilder{Builder: From("lambdatest-espresso-app-automate", "1")}
+func LambdatestEspressoAppAutomate(version ...string) *LambdatestEspressoAppAutomateBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &LambdatestEspressoAppAutomateBuilder{Builder: From("lambdatest-espresso-app-automate", v)}
 }
 
 // WithAppApkPath sets app apk path.

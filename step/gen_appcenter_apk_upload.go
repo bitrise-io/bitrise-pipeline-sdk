@@ -7,8 +7,12 @@ package step
 type AppcenterApkUploadBuilder struct{ *Builder }
 
 // AppcenterApkUpload creates a appcenter-apk-upload step builder (v0).
-func AppcenterApkUpload() *AppcenterApkUploadBuilder {
-	return &AppcenterApkUploadBuilder{Builder: From("appcenter-apk-upload", "0")}
+func AppcenterApkUpload(version ...string) *AppcenterApkUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterApkUploadBuilder{Builder: From("appcenter-apk-upload", v)}
 }
 
 // WithAppId sets appCenter Release Note.

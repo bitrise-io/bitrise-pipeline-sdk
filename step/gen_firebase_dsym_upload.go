@@ -7,8 +7,12 @@ package step
 type FirebaseDsymUploadBuilder struct{ *Builder }
 
 // FirebaseDsymUpload creates a firebase-dsym-upload step builder (v2).
-func FirebaseDsymUpload() *FirebaseDsymUploadBuilder {
-	return &FirebaseDsymUploadBuilder{Builder: From("firebase-dsym-upload", "2")}
+func FirebaseDsymUpload(version ...string) *FirebaseDsymUploadBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FirebaseDsymUploadBuilder{Builder: From("firebase-dsym-upload", v)}
 }
 
 // WithFduFabricLocation sets location of FirebaseCrashlytics.

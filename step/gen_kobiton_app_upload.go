@@ -7,8 +7,12 @@ package step
 type KobitonAppUploadBuilder struct{ *Builder }
 
 // KobitonAppUpload creates a kobiton-app-upload step builder (v1).
-func KobitonAppUpload() *KobitonAppUploadBuilder {
-	return &KobitonAppUploadBuilder{Builder: From("kobiton-app-upload", "1")}
+func KobitonAppUpload(version ...string) *KobitonAppUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &KobitonAppUploadBuilder{Builder: From("kobiton-app-upload", v)}
 }
 
 // WithKobitonAppName sets app Name.

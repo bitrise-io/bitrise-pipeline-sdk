@@ -7,8 +7,12 @@ package step
 type XamarinComponentsRestoreBuilder struct{ *Builder }
 
 // XamarinComponentsRestore creates a xamarin-components-restore step builder (v0).
-func XamarinComponentsRestore() *XamarinComponentsRestoreBuilder {
-	return &XamarinComponentsRestoreBuilder{Builder: From("xamarin-components-restore", "0")}
+func XamarinComponentsRestore(version ...string) *XamarinComponentsRestoreBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinComponentsRestoreBuilder{Builder: From("xamarin-components-restore", v)}
 }
 
 // WithXamarinSolution sets path to Xamarin solution.

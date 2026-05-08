@@ -7,8 +7,12 @@ package step
 type ActivateBuildCacheForReactNativeBuilder struct{ *Builder }
 
 // ActivateBuildCacheForReactNative creates a activate-build-cache-for-react-native step builder (v0).
-func ActivateBuildCacheForReactNative() *ActivateBuildCacheForReactNativeBuilder {
-	return &ActivateBuildCacheForReactNativeBuilder{Builder: From("activate-build-cache-for-react-native", "0")}
+func ActivateBuildCacheForReactNative(version ...string) *ActivateBuildCacheForReactNativeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateBuildCacheForReactNativeBuilder{Builder: From("activate-build-cache-for-react-native", v)}
 }
 
 // WithXcodeCacheEnabled sets enable Xcode cache.

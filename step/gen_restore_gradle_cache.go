@@ -7,8 +7,12 @@ package step
 type RestoreGradleCacheBuilder struct{ *Builder }
 
 // RestoreGradleCache creates a restore-gradle-cache step builder (v3).
-func RestoreGradleCache() *RestoreGradleCacheBuilder {
-	return &RestoreGradleCacheBuilder{Builder: From("restore-gradle-cache", "3")}
+func RestoreGradleCache(version ...string) *RestoreGradleCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreGradleCacheBuilder{Builder: From("restore-gradle-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

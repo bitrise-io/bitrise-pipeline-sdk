@@ -7,8 +7,12 @@ package step
 type XcodeProjectInfoBuilder struct{ *Builder }
 
 // XcodeProjectInfo creates a xcode-project-info step builder (v2).
-func XcodeProjectInfo() *XcodeProjectInfoBuilder {
-	return &XcodeProjectInfoBuilder{Builder: From("xcode-project-info", "2")}
+func XcodeProjectInfo(version ...string) *XcodeProjectInfoBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeProjectInfoBuilder{Builder: From("xcode-project-info", v)}
 }
 
 // WithInfoPlistPath sets relative path from Source directory to Info.plist file.

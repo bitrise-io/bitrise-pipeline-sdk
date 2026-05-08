@@ -7,8 +7,12 @@ package step
 type MicrosoftTeamsAdaptiveCardBuilder struct{ *Builder }
 
 // MicrosoftTeamsAdaptiveCard creates a microsoft-teams-adaptive-card step builder (v1).
-func MicrosoftTeamsAdaptiveCard() *MicrosoftTeamsAdaptiveCardBuilder {
-	return &MicrosoftTeamsAdaptiveCardBuilder{Builder: From("microsoft-teams-adaptive-card", "1")}
+func MicrosoftTeamsAdaptiveCard(version ...string) *MicrosoftTeamsAdaptiveCardBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MicrosoftTeamsAdaptiveCardBuilder{Builder: From("microsoft-teams-adaptive-card", v)}
 }
 
 // WithIsDebugMode sets debug mode?.

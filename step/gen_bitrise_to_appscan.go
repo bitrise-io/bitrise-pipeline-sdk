@@ -7,8 +7,12 @@ package step
 type BitriseToAppscanBuilder struct{ *Builder }
 
 // BitriseToAppscan creates a bitrise-to-appscan step builder (v0).
-func BitriseToAppscan() *BitriseToAppscanBuilder {
-	return &BitriseToAppscanBuilder{Builder: From("bitrise-to-appscan", "0")}
+func BitriseToAppscan(version ...string) *BitriseToAppscanBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseToAppscanBuilder{Builder: From("bitrise-to-appscan", v)}
 }
 
 // WithAppPath sets path to the applications IPA/PATH..

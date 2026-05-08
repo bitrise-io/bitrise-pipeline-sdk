@@ -7,8 +7,12 @@ package step
 type BuildStatusChangeBuilder struct{ *Builder }
 
 // BuildStatusChange creates a build-status-change step builder (v0).
-func BuildStatusChange() *BuildStatusChangeBuilder {
-	return &BuildStatusChangeBuilder{Builder: From("build-status-change", "0")}
+func BuildStatusChange(version ...string) *BuildStatusChangeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BuildStatusChangeBuilder{Builder: From("build-status-change", v)}
 }
 
 // WithAccessToken sets bitrise Access Token.

@@ -7,8 +7,12 @@ package step
 type GeckoboardDashboardBuildResultBuilder struct{ *Builder }
 
 // GeckoboardDashboardBuildResult creates a geckoboard-dashboard-build-result step builder (v0).
-func GeckoboardDashboardBuildResult() *GeckoboardDashboardBuildResultBuilder {
-	return &GeckoboardDashboardBuildResultBuilder{Builder: From("geckoboard-dashboard-build-result", "0")}
+func GeckoboardDashboardBuildResult(version ...string) *GeckoboardDashboardBuildResultBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GeckoboardDashboardBuildResultBuilder{Builder: From("geckoboard-dashboard-build-result", v)}
 }
 
 // WithGeckoboardApiKey sets geckoboard API key.

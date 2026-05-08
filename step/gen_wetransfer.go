@@ -11,8 +11,12 @@ type WetransferBuilder struct{ *Builder }
 // Wetransfer creates a wetransfer step builder (v0).
 //
 // Deprecated: This step is deprecated. The wetransfer API does not work anymore.
-func Wetransfer() *WetransferBuilder {
-	return &WetransferBuilder{Builder: From("wetransfer", "0")}
+func Wetransfer(version ...string) *WetransferBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &WetransferBuilder{Builder: From("wetransfer", v)}
 }
 
 // WithWtuMailsender sets email of the sender.

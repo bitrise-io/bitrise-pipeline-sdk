@@ -11,8 +11,12 @@ type DeployToItunesconnectShenzhenBuilder struct{ *Builder }
 // DeployToItunesconnectShenzhen creates a deploy-to-itunesconnect-shenzhen step builder (v2).
 //
 // Deprecated: This step is deprecated, use [Deploy to App Store Connect - Application Loader](https://github.com/bitrise-steplib/steps-deploy-to-itunesconnect-application-loader) step instead.
-func DeployToItunesconnectShenzhen() *DeployToItunesconnectShenzhenBuilder {
-	return &DeployToItunesconnectShenzhenBuilder{Builder: From("deploy-to-itunesconnect-shenzhen", "2")}
+func DeployToItunesconnectShenzhen(version ...string) *DeployToItunesconnectShenzhenBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeployToItunesconnectShenzhenBuilder{Builder: From("deploy-to-itunesconnect-shenzhen", v)}
 }
 
 // WithIpaPath sets iPA path.

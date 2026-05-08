@@ -7,8 +7,12 @@ package step
 type MonitoringAppsLogsBuilder struct{ *Builder }
 
 // MonitoringAppsLogs creates a monitoring-apps-logs step builder (v1).
-func MonitoringAppsLogs() *MonitoringAppsLogsBuilder {
-	return &MonitoringAppsLogsBuilder{Builder: From("monitoring-apps-logs", "1")}
+func MonitoringAppsLogs(version ...string) *MonitoringAppsLogsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MonitoringAppsLogsBuilder{Builder: From("monitoring-apps-logs", v)}
 }
 
 // WithCheckAndroid sets check Android logs.

@@ -7,8 +7,12 @@ package step
 type VeracodeSecurityBuilder struct{ *Builder }
 
 // VeracodeSecurity creates a veracode-security step builder (v1).
-func VeracodeSecurity() *VeracodeSecurityBuilder {
-	return &VeracodeSecurityBuilder{Builder: From("veracode-security", "1")}
+func VeracodeSecurity(version ...string) *VeracodeSecurityBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VeracodeSecurityBuilder{Builder: From("veracode-security", v)}
 }
 
 // WithVeracodeApiId sets veracode API Credentials ID.

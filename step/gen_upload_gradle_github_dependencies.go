@@ -7,8 +7,12 @@ package step
 type UploadGradleGithubDependenciesBuilder struct{ *Builder }
 
 // UploadGradleGithubDependencies creates a upload-gradle-github-dependencies step builder (v0).
-func UploadGradleGithubDependencies() *UploadGradleGithubDependenciesBuilder {
-	return &UploadGradleGithubDependenciesBuilder{Builder: From("upload-gradle-github-dependencies", "0")}
+func UploadGradleGithubDependencies(version ...string) *UploadGradleGithubDependenciesBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UploadGradleGithubDependenciesBuilder{Builder: From("upload-gradle-github-dependencies", v)}
 }
 
 // WithGradlewPath sets gradlew file path.

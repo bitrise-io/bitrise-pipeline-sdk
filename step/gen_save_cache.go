@@ -7,8 +7,12 @@ package step
 type SaveCacheBuilder struct{ *Builder }
 
 // SaveCache creates a save-cache step builder (v1).
-func SaveCache() *SaveCacheBuilder {
-	return &SaveCacheBuilder{Builder: From("save-cache", "1")}
+func SaveCache(version ...string) *SaveCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveCacheBuilder{Builder: From("save-cache", v)}
 }
 
 // WithKey sets cache key.

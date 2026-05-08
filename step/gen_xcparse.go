@@ -7,8 +7,12 @@ package step
 type XcparseBuilder struct{ *Builder }
 
 // Xcparse creates a xcparse step builder (v0).
-func Xcparse() *XcparseBuilder {
-	return &XcparseBuilder{Builder: From("xcparse", "0")}
+func Xcparse(version ...string) *XcparseBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcparseBuilder{Builder: From("xcparse", v)}
 }
 
 // WithXcresultPath sets xcresult path.

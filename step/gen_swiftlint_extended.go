@@ -7,8 +7,12 @@ package step
 type SwiftlintExtendedBuilder struct{ *Builder }
 
 // SwiftlintExtended creates a swiftlint-extended step builder (v1).
-func SwiftlintExtended() *SwiftlintExtendedBuilder {
-	return &SwiftlintExtendedBuilder{Builder: From("swiftlint-extended", "1")}
+func SwiftlintExtended(version ...string) *SwiftlintExtendedBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SwiftlintExtendedBuilder{Builder: From("swiftlint-extended", v)}
 }
 
 // WithLintingPath sets select the path where Swiftlint should lint.

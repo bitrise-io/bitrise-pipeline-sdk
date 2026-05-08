@@ -7,8 +7,12 @@ package step
 type SnykBuilder struct{ *Builder }
 
 // Snyk creates a snyk step builder (v1).
-func Snyk() *SnykBuilder {
-	return &SnykBuilder{Builder: From("snyk", "1")}
+func Snyk(version ...string) *SnykBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SnykBuilder{Builder: From("snyk", v)}
 }
 
 // WithAuthToken sets auth Token.

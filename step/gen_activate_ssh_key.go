@@ -7,8 +7,12 @@ package step
 type ActivateSshKeyBuilder struct{ *Builder }
 
 // ActivateSshKey creates a activate-ssh-key step builder (v4).
-func ActivateSshKey() *ActivateSshKeyBuilder {
-	return &ActivateSshKeyBuilder{Builder: From("activate-ssh-key", "4")}
+func ActivateSshKey(version ...string) *ActivateSshKeyBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateSshKeyBuilder{Builder: From("activate-ssh-key", v)}
 }
 
 // WithSshRsaPrivateKey sets sSH private key content.

@@ -7,8 +7,12 @@ package step
 type OpenstfDisconnectBuilder struct{ *Builder }
 
 // OpenstfDisconnect creates a openstf-disconnect step builder (v0).
-func OpenstfDisconnect() *OpenstfDisconnectBuilder {
-	return &OpenstfDisconnectBuilder{Builder: From("openstf-disconnect", "0")}
+func OpenstfDisconnect(version ...string) *OpenstfDisconnectBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &OpenstfDisconnectBuilder{Builder: From("openstf-disconnect", v)}
 }
 
 // WithStfHostUrl sets sTF Host URL.

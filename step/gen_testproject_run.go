@@ -7,8 +7,12 @@ package step
 type TestprojectRunBuilder struct{ *Builder }
 
 // TestprojectRun creates a testproject-run step builder (v0).
-func TestprojectRun() *TestprojectRunBuilder {
-	return &TestprojectRunBuilder{Builder: From("testproject-run", "0")}
+func TestprojectRun(version ...string) *TestprojectRunBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TestprojectRunBuilder{Builder: From("testproject-run", v)}
 }
 
 // WithTestprojectApiKey sets testProject API key.

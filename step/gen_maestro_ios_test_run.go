@@ -7,8 +7,12 @@ package step
 type MaestroIosTestRunBuilder struct{ *Builder }
 
 // MaestroIosTestRun creates a maestro-ios-test-run step builder (v0).
-func MaestroIosTestRun() *MaestroIosTestRunBuilder {
-	return &MaestroIosTestRunBuilder{Builder: From("maestro-ios-test-run", "0")}
+func MaestroIosTestRun(version ...string) *MaestroIosTestRunBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MaestroIosTestRunBuilder{Builder: From("maestro-ios-test-run", v)}
 }
 
 // WithAppFile sets app File.

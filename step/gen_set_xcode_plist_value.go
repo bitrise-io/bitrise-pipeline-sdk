@@ -7,8 +7,12 @@ package step
 type SetXcodePlistValueBuilder struct{ *Builder }
 
 // SetXcodePlistValue creates a set-xcode-plist-value step builder (v1).
-func SetXcodePlistValue() *SetXcodePlistValueBuilder {
-	return &SetXcodePlistValueBuilder{Builder: From("set-xcode-plist-value", "1")}
+func SetXcodePlistValue(version ...string) *SetXcodePlistValueBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetXcodePlistValueBuilder{Builder: From("set-xcode-plist-value", v)}
 }
 
 // WithPlistPath sets info.plist file path.

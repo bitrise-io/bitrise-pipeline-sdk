@@ -7,8 +7,12 @@ package step
 type IpaInfoBuilder struct{ *Builder }
 
 // IpaInfo creates a ipa-info step builder (v1).
-func IpaInfo() *IpaInfoBuilder {
-	return &IpaInfoBuilder{Builder: From("ipa-info", "1")}
+func IpaInfo(version ...string) *IpaInfoBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &IpaInfoBuilder{Builder: From("ipa-info", v)}
 }
 
 // WithIpaPath sets iPA file path.

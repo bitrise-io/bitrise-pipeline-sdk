@@ -7,8 +7,12 @@ package step
 type EmailWithMailgunBuilder struct{ *Builder }
 
 // EmailWithMailgun creates a email-with-mailgun step builder (v2).
-func EmailWithMailgun() *EmailWithMailgunBuilder {
-	return &EmailWithMailgunBuilder{Builder: From("email-with-mailgun", "2")}
+func EmailWithMailgun(version ...string) *EmailWithMailgunBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &EmailWithMailgunBuilder{Builder: From("email-with-mailgun", v)}
 }
 
 // WithApiKey sets mailgun API Key.

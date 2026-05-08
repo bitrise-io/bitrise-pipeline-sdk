@@ -7,8 +7,12 @@ package step
 type BrewInstallBuilder struct{ *Builder }
 
 // BrewInstall creates a brew-install step builder (v1).
-func BrewInstall() *BrewInstallBuilder {
-	return &BrewInstallBuilder{Builder: From("brew-install", "1")}
+func BrewInstall(version ...string) *BrewInstallBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BrewInstallBuilder{Builder: From("brew-install", v)}
 }
 
 // WithPackages sets formulas to install.

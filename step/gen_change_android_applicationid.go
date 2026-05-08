@@ -7,8 +7,12 @@ package step
 type ChangeAndroidApplicationidBuilder struct{ *Builder }
 
 // ChangeAndroidApplicationid creates a change-android-applicationid step builder (v1).
-func ChangeAndroidApplicationid() *ChangeAndroidApplicationidBuilder {
-	return &ChangeAndroidApplicationidBuilder{Builder: From("change-android-applicationid", "1")}
+func ChangeAndroidApplicationid(version ...string) *ChangeAndroidApplicationidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ChangeAndroidApplicationidBuilder{Builder: From("change-android-applicationid", v)}
 }
 
 // WithBuildGradlePath sets path to the build.gradle file.

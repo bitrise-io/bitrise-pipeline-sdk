@@ -7,8 +7,12 @@ package step
 type RustupInstallBuilder struct{ *Builder }
 
 // RustupInstall creates a rustup-install step builder (v0).
-func RustupInstall() *RustupInstallBuilder {
-	return &RustupInstallBuilder{Builder: From("rustup-install", "0")}
+func RustupInstall(version ...string) *RustupInstallBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RustupInstallBuilder{Builder: From("rustup-install", v)}
 }
 
 // WithRustVersion sets rust version.

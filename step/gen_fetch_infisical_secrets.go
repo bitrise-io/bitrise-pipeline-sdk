@@ -7,8 +7,12 @@ package step
 type FetchInfisicalSecretsBuilder struct{ *Builder }
 
 // FetchInfisicalSecrets creates a fetch-infisical-secrets step builder (v1).
-func FetchInfisicalSecrets() *FetchInfisicalSecretsBuilder {
-	return &FetchInfisicalSecretsBuilder{Builder: From("fetch-infisical-secrets", "1")}
+func FetchInfisicalSecrets(version ...string) *FetchInfisicalSecretsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FetchInfisicalSecretsBuilder{Builder: From("fetch-infisical-secrets", v)}
 }
 
 // WithInfisicalClient sets infisical Client ID.

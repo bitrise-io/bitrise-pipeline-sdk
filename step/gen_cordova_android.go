@@ -7,8 +7,12 @@ package step
 type CordovaAndroidBuilder struct{ *Builder }
 
 // CordovaAndroid creates a cordova-android step builder (v0).
-func CordovaAndroid() *CordovaAndroidBuilder {
-	return &CordovaAndroidBuilder{Builder: From("cordova-android", "0")}
+func CordovaAndroid(version ...string) *CordovaAndroidBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CordovaAndroidBuilder{Builder: From("cordova-android", v)}
 }
 
 // WithCordovaCommand sets cordova command to run..

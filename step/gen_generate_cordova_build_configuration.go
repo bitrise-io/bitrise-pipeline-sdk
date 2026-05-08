@@ -7,8 +7,12 @@ package step
 type GenerateCordovaBuildConfigurationBuilder struct{ *Builder }
 
 // GenerateCordovaBuildConfiguration creates a generate-cordova-build-configuration step builder (v0).
-func GenerateCordovaBuildConfiguration() *GenerateCordovaBuildConfigurationBuilder {
-	return &GenerateCordovaBuildConfigurationBuilder{Builder: From("generate-cordova-build-configuration", "0")}
+func GenerateCordovaBuildConfiguration(version ...string) *GenerateCordovaBuildConfigurationBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenerateCordovaBuildConfigurationBuilder{Builder: From("generate-cordova-build-configuration", v)}
 }
 
 // WithConfiguration sets build configuration.

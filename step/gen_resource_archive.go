@@ -7,8 +7,12 @@ package step
 type ResourceArchiveBuilder struct{ *Builder }
 
 // ResourceArchive creates a resource-archive step builder (v2).
-func ResourceArchive() *ResourceArchiveBuilder {
-	return &ResourceArchiveBuilder{Builder: From("resource-archive", "2")}
+func ResourceArchive(version ...string) *ResourceArchiveBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ResourceArchiveBuilder{Builder: From("resource-archive", v)}
 }
 
 // WithArchiveUrl sets resource path.

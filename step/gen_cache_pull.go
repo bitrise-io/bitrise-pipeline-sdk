@@ -7,8 +7,12 @@ package step
 type CachePullBuilder struct{ *Builder }
 
 // CachePull creates a cache-pull step builder (v2).
-func CachePull() *CachePullBuilder {
-	return &CachePullBuilder{Builder: From("cache-pull", "2")}
+func CachePull(version ...string) *CachePullBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CachePullBuilder{Builder: From("cache-pull", v)}
 }
 
 // WithWorkdir sets working directory path.

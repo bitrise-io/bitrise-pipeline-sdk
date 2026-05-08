@@ -7,8 +7,12 @@ package step
 type FastlaneMatchBuilder struct{ *Builder }
 
 // FastlaneMatch creates a fastlane-match step builder (v0).
-func FastlaneMatch() *FastlaneMatchBuilder {
-	return &FastlaneMatchBuilder{Builder: From("fastlane-match", "0")}
+func FastlaneMatch(version ...string) *FastlaneMatchBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FastlaneMatchBuilder{Builder: From("fastlane-match", v)}
 }
 
 // WithGitUrl sets match git url.

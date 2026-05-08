@@ -7,8 +7,12 @@ package step
 type XamarinAndroidTestBuilder struct{ *Builder }
 
 // XamarinAndroidTest creates a xamarin-android-test step builder (v1).
-func XamarinAndroidTest() *XamarinAndroidTestBuilder {
-	return &XamarinAndroidTestBuilder{Builder: From("xamarin-android-test", "1")}
+func XamarinAndroidTest(version ...string) *XamarinAndroidTestBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinAndroidTestBuilder{Builder: From("xamarin-android-test", v)}
 }
 
 // WithEmulatorSerial sets emulator serial to boot.

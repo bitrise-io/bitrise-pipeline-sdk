@@ -7,6 +7,10 @@ package step
 type RandomQuoteBuilder struct{ *Builder }
 
 // RandomQuote creates a random-quote step builder (v3).
-func RandomQuote() *RandomQuoteBuilder {
-	return &RandomQuoteBuilder{Builder: From("random-quote", "3")}
+func RandomQuote(version ...string) *RandomQuoteBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RandomQuoteBuilder{Builder: From("random-quote", v)}
 }

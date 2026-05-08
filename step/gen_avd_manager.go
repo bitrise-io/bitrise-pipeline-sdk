@@ -7,8 +7,12 @@ package step
 type AvdManagerBuilder struct{ *Builder }
 
 // AvdManager creates a avd-manager step builder (v2).
-func AvdManager() *AvdManagerBuilder {
-	return &AvdManagerBuilder{Builder: From("avd-manager", "2")}
+func AvdManager(version ...string) *AvdManagerBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AvdManagerBuilder{Builder: From("avd-manager", v)}
 }
 
 // WithProfile sets device Profile ID.

@@ -7,8 +7,12 @@ package step
 type TestlioUploadBuilder struct{ *Builder }
 
 // TestlioUpload creates a testlio-upload step builder (v0).
-func TestlioUpload() *TestlioUploadBuilder {
-	return &TestlioUploadBuilder{Builder: From("testlio-upload", "0")}
+func TestlioUpload(version ...string) *TestlioUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TestlioUploadBuilder{Builder: From("testlio-upload", v)}
 }
 
 // WithIpaPath sets iPA path.

@@ -7,8 +7,12 @@ package step
 type XcodeCreateDevicePairBuilder struct{ *Builder }
 
 // XcodeCreateDevicePair creates a xcode-create-device-pair step builder (v1).
-func XcodeCreateDevicePair() *XcodeCreateDevicePairBuilder {
-	return &XcodeCreateDevicePairBuilder{Builder: From("xcode-create-device-pair", "1")}
+func XcodeCreateDevicePair(version ...string) *XcodeCreateDevicePairBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeCreateDevicePairBuilder{Builder: From("xcode-create-device-pair", v)}
 }
 
 // WithIphoneDevice sets iPhone device name.

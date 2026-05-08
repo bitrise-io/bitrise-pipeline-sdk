@@ -7,8 +7,12 @@ package step
 type GenymotionCloudSaasStartBuilder struct{ *Builder }
 
 // GenymotionCloudSaasStart creates a genymotion-cloud-saas-start step builder (v0).
-func GenymotionCloudSaasStart() *GenymotionCloudSaasStartBuilder {
-	return &GenymotionCloudSaasStartBuilder{Builder: From("genymotion-cloud-saas-start", "0")}
+func GenymotionCloudSaasStart(version ...string) *GenymotionCloudSaasStartBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenymotionCloudSaasStartBuilder{Builder: From("genymotion-cloud-saas-start", v)}
 }
 
 // WithApiToken sets genymotion Cloud SaaS API Token.

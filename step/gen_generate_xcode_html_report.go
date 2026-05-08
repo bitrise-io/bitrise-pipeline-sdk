@@ -7,8 +7,12 @@ package step
 type GenerateXcodeHtmlReportBuilder struct{ *Builder }
 
 // GenerateXcodeHtmlReport creates a generate-xcode-html-report step builder (v1).
-func GenerateXcodeHtmlReport() *GenerateXcodeHtmlReportBuilder {
-	return &GenerateXcodeHtmlReportBuilder{Builder: From("generate-xcode-html-report", "1")}
+func GenerateXcodeHtmlReport(version ...string) *GenerateXcodeHtmlReportBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenerateXcodeHtmlReportBuilder{Builder: From("generate-xcode-html-report", v)}
 }
 
 // WithXcresultPatterns sets xcresult file paths.

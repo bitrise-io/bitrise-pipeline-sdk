@@ -7,6 +7,10 @@ package step
 type GitCommitChangelogBuilder struct{ *Builder }
 
 // GitCommitChangelog creates a git-commit-changelog step builder (v1).
-func GitCommitChangelog() *GitCommitChangelogBuilder {
-	return &GitCommitChangelogBuilder{Builder: From("git-commit-changelog", "1")}
+func GitCommitChangelog(version ...string) *GitCommitChangelogBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GitCommitChangelogBuilder{Builder: From("git-commit-changelog", v)}
 }

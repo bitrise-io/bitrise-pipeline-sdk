@@ -7,8 +7,12 @@ package step
 type ActivateBuildCacheForXcodeBuilder struct{ *Builder }
 
 // ActivateBuildCacheForXcode creates a activate-build-cache-for-xcode step builder (v0).
-func ActivateBuildCacheForXcode() *ActivateBuildCacheForXcodeBuilder {
-	return &ActivateBuildCacheForXcodeBuilder{Builder: From("activate-build-cache-for-xcode", "0")}
+func ActivateBuildCacheForXcode(version ...string) *ActivateBuildCacheForXcodeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ActivateBuildCacheForXcodeBuilder{Builder: From("activate-build-cache-for-xcode", v)}
 }
 
 // WithVerbose sets verbose logging.

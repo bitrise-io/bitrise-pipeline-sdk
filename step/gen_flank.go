@@ -7,8 +7,12 @@ package step
 type FlankBuilder struct{ *Builder }
 
 // Flank creates a flank step builder (v0).
-func Flank() *FlankBuilder {
-	return &FlankBuilder{Builder: From("flank", "0")}
+func Flank(version ...string) *FlankBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlankBuilder{Builder: From("flank", v)}
 }
 
 // WithGoogleServiceAccountJson sets google Service Account JSON.

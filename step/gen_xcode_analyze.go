@@ -7,8 +7,12 @@ package step
 type XcodeAnalyzeBuilder struct{ *Builder }
 
 // XcodeAnalyze creates a xcode-analyze step builder (v2).
-func XcodeAnalyze() *XcodeAnalyzeBuilder {
-	return &XcodeAnalyzeBuilder{Builder: From("xcode-analyze", "2")}
+func XcodeAnalyze(version ...string) *XcodeAnalyzeBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeAnalyzeBuilder{Builder: From("xcode-analyze", v)}
 }
 
 // WithWorkdir sets working directory.

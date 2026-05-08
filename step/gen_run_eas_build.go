@@ -7,8 +7,12 @@ package step
 type RunEasBuildBuilder struct{ *Builder }
 
 // RunEasBuild creates a run-eas-build step builder (v0).
-func RunEasBuild() *RunEasBuildBuilder {
-	return &RunEasBuildBuilder{Builder: From("run-eas-build", "0")}
+func RunEasBuild(version ...string) *RunEasBuildBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RunEasBuildBuilder{Builder: From("run-eas-build", v)}
 }
 
 // WithAccessToken sets access Token.

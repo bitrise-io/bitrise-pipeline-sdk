@@ -7,8 +7,12 @@ package step
 type OpenstfConnectBuilder struct{ *Builder }
 
 // OpenstfConnect creates a openstf-connect step builder (v0).
-func OpenstfConnect() *OpenstfConnectBuilder {
-	return &OpenstfConnectBuilder{Builder: From("openstf-connect", "0")}
+func OpenstfConnect(version ...string) *OpenstfConnectBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &OpenstfConnectBuilder{Builder: From("openstf-connect", v)}
 }
 
 // WithStfHostUrl sets sTF Host URL.

@@ -7,8 +7,12 @@ package step
 type XcodeStartSimulatorBuilder struct{ *Builder }
 
 // XcodeStartSimulator creates a xcode-start-simulator step builder (v0).
-func XcodeStartSimulator() *XcodeStartSimulatorBuilder {
-	return &XcodeStartSimulatorBuilder{Builder: From("xcode-start-simulator", "0")}
+func XcodeStartSimulator(version ...string) *XcodeStartSimulatorBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeStartSimulatorBuilder{Builder: From("xcode-start-simulator", v)}
 }
 
 // WithDestination sets device destination specifier.

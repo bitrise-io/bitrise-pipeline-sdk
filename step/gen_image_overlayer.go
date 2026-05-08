@@ -7,8 +7,12 @@ package step
 type ImageOverlayerBuilder struct{ *Builder }
 
 // ImageOverlayer creates a image-overlayer step builder (v1).
-func ImageOverlayer() *ImageOverlayerBuilder {
-	return &ImageOverlayerBuilder{Builder: From("image-overlayer", "1")}
+func ImageOverlayer(version ...string) *ImageOverlayerBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ImageOverlayerBuilder{Builder: From("image-overlayer", v)}
 }
 
 // WithSourceImage sets source image or folder path.

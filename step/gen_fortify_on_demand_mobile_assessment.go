@@ -7,8 +7,12 @@ package step
 type FortifyOnDemandMobileAssessmentBuilder struct{ *Builder }
 
 // FortifyOnDemandMobileAssessment creates a fortify-on-demand-mobile-assessment step builder (v0).
-func FortifyOnDemandMobileAssessment() *FortifyOnDemandMobileAssessmentBuilder {
-	return &FortifyOnDemandMobileAssessmentBuilder{Builder: From("fortify-on-demand-mobile-assessment", "0")}
+func FortifyOnDemandMobileAssessment(version ...string) *FortifyOnDemandMobileAssessmentBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FortifyOnDemandMobileAssessmentBuilder{Builder: From("fortify-on-demand-mobile-assessment", v)}
 }
 
 // WithClientId sets client ID.

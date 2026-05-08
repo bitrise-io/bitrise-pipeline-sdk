@@ -7,8 +7,12 @@ package step
 type CakebuildBuilder struct{ *Builder }
 
 // Cakebuild creates a cakebuild step builder (v1).
-func Cakebuild() *CakebuildBuilder {
-	return &CakebuildBuilder{Builder: From("cakebuild", "1")}
+func Cakebuild(version ...string) *CakebuildBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CakebuildBuilder{Builder: From("cakebuild", v)}
 }
 
 // WithScript sets script.

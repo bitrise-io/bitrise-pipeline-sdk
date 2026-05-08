@@ -7,8 +7,12 @@ package step
 type AndroidUnitTestBuilder struct{ *Builder }
 
 // AndroidUnitTest creates a android-unit-test step builder (v1).
-func AndroidUnitTest() *AndroidUnitTestBuilder {
-	return &AndroidUnitTestBuilder{Builder: From("android-unit-test", "1")}
+func AndroidUnitTest(version ...string) *AndroidUnitTestBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidUnitTestBuilder{Builder: From("android-unit-test", v)}
 }
 
 // WithProjectLocation sets project Location.

@@ -7,8 +7,12 @@ package step
 type RaygunBuilder struct{ *Builder }
 
 // Raygun creates a raygun step builder (v1).
-func Raygun() *RaygunBuilder {
-	return &RaygunBuilder{Builder: From("raygun", "1")}
+func Raygun(version ...string) *RaygunBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RaygunBuilder{Builder: From("raygun", v)}
 }
 
 // WithRaygunApiKey sets aPI Key for Raygun. This is a Base64 encode of your username:password..

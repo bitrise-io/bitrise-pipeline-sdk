@@ -103,11 +103,19 @@ package step
 // Deprecated: {{.DeprecateNotes}}{{end}}
 type {{.TypeName}}Builder struct{ *Builder }
 
-// {{.TypeName}} creates a {{.StepID}} step builder (v{{.MajorVersion}}).{{if .DeprecateNotes}}
+// {{.TypeName}} creates a {{.StepID}} step builder (v{{.MajorVersion}} by default).
+// Pass an explicit major version to override the default:
+//
+//	step.{{.TypeName}}("{{.MajorVersion}}")  // explicit default
+//	step.{{.TypeName}}("1")                  // older major{{if .DeprecateNotes}}
 //
 // Deprecated: {{.DeprecateNotes}}{{end}}
-func {{.TypeName}}() *{{.TypeName}}Builder {
-	return &{{.TypeName}}Builder{Builder: From("{{.StepID}}", "{{.MajorVersion}}")}
+func {{.TypeName}}(version ...string) *{{.TypeName}}Builder {
+	v := "{{.MajorVersion}}"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &{{.TypeName}}Builder{Builder: From("{{.StepID}}", v)}
 }
 {{range .Inputs}}
 // {{.Comment}}

@@ -7,8 +7,12 @@ package step
 type RestoreCacheBuilder struct{ *Builder }
 
 // RestoreCache creates a restore-cache step builder (v3).
-func RestoreCache() *RestoreCacheBuilder {
-	return &RestoreCacheBuilder{Builder: From("restore-cache", "3")}
+func RestoreCache(version ...string) *RestoreCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreCacheBuilder{Builder: From("restore-cache", v)}
 }
 
 // WithKey sets cache keys.

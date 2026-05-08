@@ -11,8 +11,12 @@ type BuildNumberAdjustBuilder struct{ *Builder }
 // BuildNumberAdjust creates a build-number-adjust step builder (v1).
 //
 // Deprecated: This community step is no longer available as a GitHub repo.
-func BuildNumberAdjust() *BuildNumberAdjustBuilder {
-	return &BuildNumberAdjustBuilder{Builder: From("build-number-adjust", "1")}
+func BuildNumberAdjust(version ...string) *BuildNumberAdjustBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BuildNumberAdjustBuilder{Builder: From("build-number-adjust", v)}
 }
 
 // WithChange sets change Build Number.

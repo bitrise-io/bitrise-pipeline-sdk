@@ -7,8 +7,12 @@ package step
 type SwiftformatBuilder struct{ *Builder }
 
 // Swiftformat creates a swiftformat step builder (v0).
-func Swiftformat() *SwiftformatBuilder {
-	return &SwiftformatBuilder{Builder: From("swiftformat", "0")}
+func Swiftformat(version ...string) *SwiftformatBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SwiftformatBuilder{Builder: From("swiftformat", v)}
 }
 
 // WithFormattingPath sets select the path where SwiftFormat should lint.

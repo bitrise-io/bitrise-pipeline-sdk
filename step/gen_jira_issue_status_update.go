@@ -7,8 +7,12 @@ package step
 type JiraIssueStatusUpdateBuilder struct{ *Builder }
 
 // JiraIssueStatusUpdate creates a jira-issue-status-update step builder (v0).
-func JiraIssueStatusUpdate() *JiraIssueStatusUpdateBuilder {
-	return &JiraIssueStatusUpdateBuilder{Builder: From("jira-issue-status-update", "0")}
+func JiraIssueStatusUpdate(version ...string) *JiraIssueStatusUpdateBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &JiraIssueStatusUpdateBuilder{Builder: From("jira-issue-status-update", v)}
 }
 
 // WithBaseUrl sets jIRA base URL..

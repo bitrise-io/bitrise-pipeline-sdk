@@ -7,8 +7,12 @@ package step
 type EmbraceSymbolUploadBuilder struct{ *Builder }
 
 // EmbraceSymbolUpload creates a embrace-symbol-upload step builder (v1).
-func EmbraceSymbolUpload() *EmbraceSymbolUploadBuilder {
-	return &EmbraceSymbolUploadBuilder{Builder: From("embrace-symbol-upload", "1")}
+func EmbraceSymbolUpload(version ...string) *EmbraceSymbolUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &EmbraceSymbolUploadBuilder{Builder: From("embrace-symbol-upload", v)}
 }
 
 // WithEmbraceApp sets embrace App ID.

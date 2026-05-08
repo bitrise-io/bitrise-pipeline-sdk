@@ -7,8 +7,12 @@ package step
 type BitriseStepMultikeyRestoreCacheBuilder struct{ *Builder }
 
 // BitriseStepMultikeyRestoreCache creates a bitrise-step-multikey-restore-cache step builder (v0).
-func BitriseStepMultikeyRestoreCache() *BitriseStepMultikeyRestoreCacheBuilder {
-	return &BitriseStepMultikeyRestoreCacheBuilder{Builder: From("bitrise-step-multikey-restore-cache", "0")}
+func BitriseStepMultikeyRestoreCache(version ...string) *BitriseStepMultikeyRestoreCacheBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepMultikeyRestoreCacheBuilder{Builder: From("bitrise-step-multikey-restore-cache", v)}
 }
 
 // WithKeys sets cache keys.

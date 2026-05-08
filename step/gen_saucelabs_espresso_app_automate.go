@@ -7,8 +7,12 @@ package step
 type SaucelabsEspressoAppAutomateBuilder struct{ *Builder }
 
 // SaucelabsEspressoAppAutomate creates a saucelabs-espresso-app-automate step builder (v0).
-func SaucelabsEspressoAppAutomate() *SaucelabsEspressoAppAutomateBuilder {
-	return &SaucelabsEspressoAppAutomateBuilder{Builder: From("saucelabs-espresso-app-automate", "0")}
+func SaucelabsEspressoAppAutomate(version ...string) *SaucelabsEspressoAppAutomateBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaucelabsEspressoAppAutomateBuilder{Builder: From("saucelabs-espresso-app-automate", v)}
 }
 
 // WithAppApkPath sets app apk path.

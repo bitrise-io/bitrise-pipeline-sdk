@@ -7,8 +7,12 @@ package step
 type YarnBuilder struct{ *Builder }
 
 // Yarn creates a yarn step builder (v2).
-func Yarn() *YarnBuilder {
-	return &YarnBuilder{Builder: From("yarn", "2")}
+func Yarn(version ...string) *YarnBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &YarnBuilder{Builder: From("yarn", v)}
 }
 
 // WithWorkdir sets working directory.

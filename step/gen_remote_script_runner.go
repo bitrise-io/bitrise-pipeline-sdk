@@ -7,8 +7,12 @@ package step
 type RemoteScriptRunnerBuilder struct{ *Builder }
 
 // RemoteScriptRunner creates a remote-script-runner step builder (v2).
-func RemoteScriptRunner() *RemoteScriptRunnerBuilder {
-	return &RemoteScriptRunnerBuilder{Builder: From("remote-script-runner", "2")}
+func RemoteScriptRunner(version ...string) *RemoteScriptRunnerBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RemoteScriptRunnerBuilder{Builder: From("remote-script-runner", v)}
 }
 
 // WithScriptUrl sets script URL.

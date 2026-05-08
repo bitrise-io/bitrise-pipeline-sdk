@@ -7,8 +7,12 @@ package step
 type FlutterAnalyzeBuilder struct{ *Builder }
 
 // FlutterAnalyze creates a flutter-analyze step builder (v0).
-func FlutterAnalyze() *FlutterAnalyzeBuilder {
-	return &FlutterAnalyzeBuilder{Builder: From("flutter-analyze", "0")}
+func FlutterAnalyze(version ...string) *FlutterAnalyzeBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlutterAnalyzeBuilder{Builder: From("flutter-analyze", v)}
 }
 
 // WithProjectLocation sets project Location.

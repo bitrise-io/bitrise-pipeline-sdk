@@ -7,8 +7,12 @@ package step
 type BitriseStepEscheckerBuilder struct{ *Builder }
 
 // BitriseStepEschecker creates a bitrise-step-eschecker step builder (v0).
-func BitriseStepEschecker() *BitriseStepEscheckerBuilder {
-	return &BitriseStepEscheckerBuilder{Builder: From("bitrise-step-eschecker", "0")}
+func BitriseStepEschecker(version ...string) *BitriseStepEscheckerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepEscheckerBuilder{Builder: From("bitrise-step-eschecker", v)}
 }
 
 // WithUploadPath sets a Bitrise generated APK or IPA path.

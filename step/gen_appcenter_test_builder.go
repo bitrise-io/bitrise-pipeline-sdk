@@ -7,8 +7,12 @@ package step
 type AppcenterTestBuilder struct{ *Builder }
 
 // AppcenterTest creates a appcenter-test step builder (v0).
-func AppcenterTest() *AppcenterTestBuilder {
-	return &AppcenterTestBuilder{Builder: From("appcenter-test", "0")}
+func AppcenterTest(version ...string) *AppcenterTestBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterTestBuilder{Builder: From("appcenter-test", v)}
 }
 
 // WithToken sets aPI token.

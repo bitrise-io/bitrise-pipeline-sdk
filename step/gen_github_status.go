@@ -7,8 +7,12 @@ package step
 type GithubStatusBuilder struct{ *Builder }
 
 // GithubStatus creates a github-status step builder (v3).
-func GithubStatus() *GithubStatusBuilder {
-	return &GithubStatusBuilder{Builder: From("github-status", "3")}
+func GithubStatus(version ...string) *GithubStatusBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GithubStatusBuilder{Builder: From("github-status", v)}
 }
 
 // WithAuthToken sets gitHub auth token.

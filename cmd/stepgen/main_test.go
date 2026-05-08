@@ -390,7 +390,8 @@ inputs:
 	content := string(data)
 	assert.Contains(t, content, "// Step: script (1.2.3)")
 	assert.Contains(t, content, "type ScriptBuilder struct")
-	assert.Contains(t, content, "func Script()")
+	assert.Contains(t, content, "func Script(version ...string) *ScriptBuilder {")
+	assert.Contains(t, content, `v := "1"`)
 	assert.Contains(t, content, "func (b *ScriptBuilder) WithContent(")
 }
 

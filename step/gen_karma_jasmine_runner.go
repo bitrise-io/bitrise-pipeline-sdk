@@ -7,8 +7,12 @@ package step
 type KarmaJasmineRunnerBuilder struct{ *Builder }
 
 // KarmaJasmineRunner creates a karma-jasmine-runner step builder (v0).
-func KarmaJasmineRunner() *KarmaJasmineRunnerBuilder {
-	return &KarmaJasmineRunnerBuilder{Builder: From("karma-jasmine-runner", "0")}
+func KarmaJasmineRunner(version ...string) *KarmaJasmineRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &KarmaJasmineRunnerBuilder{Builder: From("karma-jasmine-runner", v)}
 }
 
 // WithWorkdir sets working directory.

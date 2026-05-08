@@ -7,8 +7,12 @@ package step
 type SignApkBuilder struct{ *Builder }
 
 // SignApk creates a sign-apk step builder (v2).
-func SignApk() *SignApkBuilder {
-	return &SignApkBuilder{Builder: From("sign-apk", "2")}
+func SignApk(version ...string) *SignApkBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SignApkBuilder{Builder: From("sign-apk", v)}
 }
 
 // WithAndroidApp sets app file path..

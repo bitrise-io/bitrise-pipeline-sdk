@@ -7,8 +7,12 @@ package step
 type MonitoringAppsSizesBuilder struct{ *Builder }
 
 // MonitoringAppsSizes creates a monitoring-apps-sizes step builder (v1).
-func MonitoringAppsSizes() *MonitoringAppsSizesBuilder {
-	return &MonitoringAppsSizesBuilder{Builder: From("monitoring-apps-sizes", "1")}
+func MonitoringAppsSizes(version ...string) *MonitoringAppsSizesBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MonitoringAppsSizesBuilder{Builder: From("monitoring-apps-sizes", v)}
 }
 
 // WithCheckAndroid sets check Android.

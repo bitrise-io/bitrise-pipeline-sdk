@@ -7,8 +7,12 @@ package step
 type BitriseStepNowsecureAutoAnalysisBuilder struct{ *Builder }
 
 // BitriseStepNowsecureAutoAnalysis creates a bitrise-step-nowsecure-auto-analysis step builder (v0).
-func BitriseStepNowsecureAutoAnalysis() *BitriseStepNowsecureAutoAnalysisBuilder {
-	return &BitriseStepNowsecureAutoAnalysisBuilder{Builder: From("bitrise-step-nowsecure-auto-analysis", "0")}
+func BitriseStepNowsecureAutoAnalysis(version ...string) *BitriseStepNowsecureAutoAnalysisBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepNowsecureAutoAnalysisBuilder{Builder: From("bitrise-step-nowsecure-auto-analysis", v)}
 }
 
 // WithUploadPath sets a Bitrise generated APK or IPA path.

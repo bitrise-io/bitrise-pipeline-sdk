@@ -7,8 +7,12 @@ package step
 type PerfectoUploadBuilder struct{ *Builder }
 
 // PerfectoUpload creates a perfecto-upload step builder (v1).
-func PerfectoUpload() *PerfectoUploadBuilder {
-	return &PerfectoUploadBuilder{Builder: From("perfecto-upload", "1")}
+func PerfectoUpload(version ...string) *PerfectoUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PerfectoUploadBuilder{Builder: From("perfecto-upload", v)}
 }
 
 // WithUploadPath sets a Bitrise generated APK or IPA path.

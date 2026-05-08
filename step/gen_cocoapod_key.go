@@ -7,8 +7,12 @@ package step
 type CocoapodKeyBuilder struct{ *Builder }
 
 // CocoapodKey creates a cocoapod-key step builder (v2).
-func CocoapodKey() *CocoapodKeyBuilder {
-	return &CocoapodKeyBuilder{Builder: From("cocoapod-key", "2")}
+func CocoapodKey(version ...string) *CocoapodKeyBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CocoapodKeyBuilder{Builder: From("cocoapod-key", v)}
 }
 
 // WithProjectName sets project name.

@@ -7,8 +7,12 @@ package step
 type MonkopAndroidBuilder struct{ *Builder }
 
 // MonkopAndroid creates a monkop-android step builder (v1).
-func MonkopAndroid() *MonkopAndroidBuilder {
-	return &MonkopAndroidBuilder{Builder: From("monkop-android", "1")}
+func MonkopAndroid(version ...string) *MonkopAndroidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MonkopAndroidBuilder{Builder: From("monkop-android", v)}
 }
 
 // WithApkPath sets aPK file path.

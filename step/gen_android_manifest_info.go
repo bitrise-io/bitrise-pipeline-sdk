@@ -7,8 +7,12 @@ package step
 type AndroidManifestInfoBuilder struct{ *Builder }
 
 // AndroidManifestInfo creates a android-manifest-info step builder (v1).
-func AndroidManifestInfo() *AndroidManifestInfoBuilder {
-	return &AndroidManifestInfoBuilder{Builder: From("android-manifest-info", "1")}
+func AndroidManifestInfo(version ...string) *AndroidManifestInfoBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidManifestInfoBuilder{Builder: From("android-manifest-info", v)}
 }
 
 // WithManifestFile sets androidManifest.xml file path.

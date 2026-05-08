@@ -7,8 +7,12 @@ package step
 type BrowserstackBitriseXcuiStepBuilder struct{ *Builder }
 
 // BrowserstackBitriseXcuiStep creates a browserstack-bitrise-xcui-step step builder (v1).
-func BrowserstackBitriseXcuiStep() *BrowserstackBitriseXcuiStepBuilder {
-	return &BrowserstackBitriseXcuiStepBuilder{Builder: From("browserstack-bitrise-xcui-step", "1")}
+func BrowserstackBitriseXcuiStep(version ...string) *BrowserstackBitriseXcuiStepBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BrowserstackBitriseXcuiStepBuilder{Builder: From("browserstack-bitrise-xcui-step", v)}
 }
 
 // WithBrowserstackUsername sets browserStack username.

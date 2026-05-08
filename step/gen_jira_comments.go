@@ -7,8 +7,12 @@ package step
 type JiraCommentsBuilder struct{ *Builder }
 
 // JiraComments creates a jira-comments step builder (v0).
-func JiraComments() *JiraCommentsBuilder {
-	return &JiraCommentsBuilder{Builder: From("jira-comments", "0")}
+func JiraComments(version ...string) *JiraCommentsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &JiraCommentsBuilder{Builder: From("jira-comments", v)}
 }
 
 // WithProjectPrefix sets jira project prefix.

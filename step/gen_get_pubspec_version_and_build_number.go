@@ -7,8 +7,12 @@ package step
 type GetPubspecVersionAndBuildNumberBuilder struct{ *Builder }
 
 // GetPubspecVersionAndBuildNumber creates a get-pubspec-version-and-build-number step builder (v1).
-func GetPubspecVersionAndBuildNumber() *GetPubspecVersionAndBuildNumberBuilder {
-	return &GetPubspecVersionAndBuildNumberBuilder{Builder: From("get-pubspec-version-and-build-number", "1")}
+func GetPubspecVersionAndBuildNumber(version ...string) *GetPubspecVersionAndBuildNumberBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GetPubspecVersionAndBuildNumberBuilder{Builder: From("get-pubspec-version-and-build-number", v)}
 }
 
 // WithPubspecPath sets path to pubspec.yaml.

@@ -7,8 +7,12 @@ package step
 type BitriseRunBuilder struct{ *Builder }
 
 // BitriseRun creates a bitrise-run step builder (v0).
-func BitriseRun() *BitriseRunBuilder {
-	return &BitriseRunBuilder{Builder: From("bitrise-run", "0")}
+func BitriseRun(version ...string) *BitriseRunBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseRunBuilder{Builder: From("bitrise-run", v)}
 }
 
 // WithWorkflowId sets workflow ID.

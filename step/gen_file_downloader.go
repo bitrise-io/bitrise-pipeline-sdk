@@ -7,8 +7,12 @@ package step
 type FileDownloaderBuilder struct{ *Builder }
 
 // FileDownloader creates a file-downloader step builder (v1).
-func FileDownloader() *FileDownloaderBuilder {
-	return &FileDownloaderBuilder{Builder: From("file-downloader", "1")}
+func FileDownloader(version ...string) *FileDownloaderBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FileDownloaderBuilder{Builder: From("file-downloader", v)}
 }
 
 // WithSource sets download source URL.

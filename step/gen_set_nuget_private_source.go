@@ -7,8 +7,12 @@ package step
 type SetNugetPrivateSourceBuilder struct{ *Builder }
 
 // SetNugetPrivateSource creates a set-nuget-private-source step builder (v1).
-func SetNugetPrivateSource() *SetNugetPrivateSourceBuilder {
-	return &SetNugetPrivateSourceBuilder{Builder: From("set-nuget-private-source", "1")}
+func SetNugetPrivateSource(version ...string) *SetNugetPrivateSourceBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetNugetPrivateSourceBuilder{Builder: From("set-nuget-private-source", v)}
 }
 
 // WithNugetSourceName sets nuGet private source name.

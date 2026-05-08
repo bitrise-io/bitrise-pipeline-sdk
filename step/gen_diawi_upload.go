@@ -7,8 +7,12 @@ package step
 type DiawiUploadBuilder struct{ *Builder }
 
 // DiawiUpload creates a diawi-upload step builder (v0).
-func DiawiUpload() *DiawiUploadBuilder {
-	return &DiawiUploadBuilder{Builder: From("diawi-upload", "0")}
+func DiawiUpload(version ...string) *DiawiUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DiawiUploadBuilder{Builder: From("diawi-upload", v)}
 }
 
 // WithApiToken sets aPI token.

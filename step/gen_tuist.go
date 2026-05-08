@@ -7,8 +7,12 @@ package step
 type TuistBuilder struct{ *Builder }
 
 // Tuist creates a tuist step builder (v0).
-func Tuist() *TuistBuilder {
-	return &TuistBuilder{Builder: From("tuist", "0")}
+func Tuist(version ...string) *TuistBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TuistBuilder{Builder: From("tuist", v)}
 }
 
 // WithCommand sets command.

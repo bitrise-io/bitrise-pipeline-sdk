@@ -7,8 +7,12 @@ package step
 type UpdateGitopsRepositoryBuilder struct{ *Builder }
 
 // UpdateGitopsRepository creates a update-gitops-repository step builder (v3).
-func UpdateGitopsRepository() *UpdateGitopsRepositoryBuilder {
-	return &UpdateGitopsRepositoryBuilder{Builder: From("update-gitops-repository", "3")}
+func UpdateGitopsRepository(version ...string) *UpdateGitopsRepositoryBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UpdateGitopsRepositoryBuilder{Builder: From("update-gitops-repository", v)}
 }
 
 // WithDeployRepositoryUrl sets github HTTPS URL of the repository to deploy to.

@@ -7,8 +7,12 @@ package step
 type InstallrappDeployBuilder struct{ *Builder }
 
 // InstallrappDeploy creates a installrapp-deploy step builder (v1).
-func InstallrappDeploy() *InstallrappDeployBuilder {
-	return &InstallrappDeployBuilder{Builder: From("installrapp-deploy", "1")}
+func InstallrappDeploy(version ...string) *InstallrappDeployBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &InstallrappDeployBuilder{Builder: From("installrapp-deploy", v)}
 }
 
 // WithIpaPath sets iPA file path.

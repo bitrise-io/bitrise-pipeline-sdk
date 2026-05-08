@@ -7,8 +7,12 @@ package step
 type NugetRestoreBuilder struct{ *Builder }
 
 // NugetRestore creates a nuget-restore step builder (v1).
-func NugetRestore() *NugetRestoreBuilder {
-	return &NugetRestoreBuilder{Builder: From("nuget-restore", "1")}
+func NugetRestore(version ...string) *NugetRestoreBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &NugetRestoreBuilder{Builder: From("nuget-restore", v)}
 }
 
 // WithXamarinSolution sets path to Xamarin solution.

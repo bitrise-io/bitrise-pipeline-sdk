@@ -7,8 +7,12 @@ package step
 type SaveCocoapodsCacheBuilder struct{ *Builder }
 
 // SaveCocoapodsCache creates a save-cocoapods-cache step builder (v1).
-func SaveCocoapodsCache() *SaveCocoapodsCacheBuilder {
-	return &SaveCocoapodsCacheBuilder{Builder: From("save-cocoapods-cache", "1")}
+func SaveCocoapodsCache(version ...string) *SaveCocoapodsCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveCocoapodsCacheBuilder{Builder: From("save-cocoapods-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

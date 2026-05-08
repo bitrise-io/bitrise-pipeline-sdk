@@ -7,8 +7,12 @@ package step
 type S3CachePushBuilder struct{ *Builder }
 
 // S3CachePush creates a s3-cache-push step builder (v0).
-func S3CachePush() *S3CachePushBuilder {
-	return &S3CachePushBuilder{Builder: From("s3-cache-push", "0")}
+func S3CachePush(version ...string) *S3CachePushBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &S3CachePushBuilder{Builder: From("s3-cache-push", v)}
 }
 
 // WithCacheAwsAccessKeyId sets aWS_ACCESS_KEY_ID.

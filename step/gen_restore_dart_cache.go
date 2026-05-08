@@ -7,8 +7,12 @@ package step
 type RestoreDartCacheBuilder struct{ *Builder }
 
 // RestoreDartCache creates a restore-dart-cache step builder (v3).
-func RestoreDartCache() *RestoreDartCacheBuilder {
-	return &RestoreDartCacheBuilder{Builder: From("restore-dart-cache", "3")}
+func RestoreDartCache(version ...string) *RestoreDartCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreDartCacheBuilder{Builder: From("restore-dart-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

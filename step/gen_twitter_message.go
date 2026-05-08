@@ -7,8 +7,12 @@ package step
 type TwitterMessageBuilder struct{ *Builder }
 
 // TwitterMessage creates a twitter-message step builder (v1).
-func TwitterMessage() *TwitterMessageBuilder {
-	return &TwitterMessageBuilder{Builder: From("twitter-message", "1")}
+func TwitterMessage(version ...string) *TwitterMessageBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TwitterMessageBuilder{Builder: From("twitter-message", v)}
 }
 
 // WithTwConsumerKey sets consumer Key (API Key).

@@ -7,8 +7,12 @@ package step
 type PullIntermediateFilesBuilder struct{ *Builder }
 
 // PullIntermediateFiles creates a pull-intermediate-files step builder (v1).
-func PullIntermediateFiles() *PullIntermediateFilesBuilder {
-	return &PullIntermediateFilesBuilder{Builder: From("pull-intermediate-files", "1")}
+func PullIntermediateFiles(version ...string) *PullIntermediateFilesBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PullIntermediateFilesBuilder{Builder: From("pull-intermediate-files", v)}
 }
 
 // WithArtifactSources sets intermediate file source.

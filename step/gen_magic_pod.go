@@ -7,8 +7,12 @@ package step
 type MagicPodBuilder struct{ *Builder }
 
 // MagicPod creates a magic-pod step builder (v1).
-func MagicPod() *MagicPodBuilder {
-	return &MagicPodBuilder{Builder: From("magic-pod", "1")}
+func MagicPod(version ...string) *MagicPodBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MagicPodBuilder{Builder: From("magic-pod", v)}
 }
 
 // WithMagicpodApiToken sets magicPod API token.

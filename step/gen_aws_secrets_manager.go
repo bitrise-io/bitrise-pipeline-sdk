@@ -7,8 +7,12 @@ package step
 type AwsSecretsManagerBuilder struct{ *Builder }
 
 // AwsSecretsManager creates a aws-secrets-manager step builder (v2).
-func AwsSecretsManager() *AwsSecretsManagerBuilder {
-	return &AwsSecretsManagerBuilder{Builder: From("aws-secrets-manager", "2")}
+func AwsSecretsManager(version ...string) *AwsSecretsManagerBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AwsSecretsManagerBuilder{Builder: From("aws-secrets-manager", v)}
 }
 
 // WithAwsAccessKeyId sets aWS access key ID.

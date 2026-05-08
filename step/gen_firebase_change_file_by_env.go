@@ -7,8 +7,12 @@ package step
 type FirebaseChangeFileByEnvBuilder struct{ *Builder }
 
 // FirebaseChangeFileByEnv creates a firebase-change-file-by-env step builder (v0).
-func FirebaseChangeFileByEnv() *FirebaseChangeFileByEnvBuilder {
-	return &FirebaseChangeFileByEnvBuilder{Builder: From("firebase-change-file-by-env", "0")}
+func FirebaseChangeFileByEnv(version ...string) *FirebaseChangeFileByEnvBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FirebaseChangeFileByEnvBuilder{Builder: From("firebase-change-file-by-env", v)}
 }
 
 // WithPrincipalBranch sets principal branch for production.

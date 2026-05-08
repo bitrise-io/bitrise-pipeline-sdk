@@ -7,8 +7,12 @@ package step
 type SofyUploadBuilder struct{ *Builder }
 
 // SofyUpload creates a sofy-upload step builder (v0).
-func SofyUpload() *SofyUploadBuilder {
-	return &SofyUploadBuilder{Builder: From("sofy-upload", "0")}
+func SofyUpload(version ...string) *SofyUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SofyUploadBuilder{Builder: From("sofy-upload", v)}
 }
 
 // WithBuildPath sets build Path.

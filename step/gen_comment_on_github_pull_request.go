@@ -7,8 +7,12 @@ package step
 type CommentOnGithubPullRequestBuilder struct{ *Builder }
 
 // CommentOnGithubPullRequest creates a comment-on-github-pull-request step builder (v0).
-func CommentOnGithubPullRequest() *CommentOnGithubPullRequestBuilder {
-	return &CommentOnGithubPullRequestBuilder{Builder: From("comment-on-github-pull-request", "0")}
+func CommentOnGithubPullRequest(version ...string) *CommentOnGithubPullRequestBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CommentOnGithubPullRequestBuilder{Builder: From("comment-on-github-pull-request", v)}
 }
 
 // WithPersonalAccessToken sets gitHub personal access token.

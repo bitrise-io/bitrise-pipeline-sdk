@@ -7,8 +7,12 @@ package step
 type BitriseStepXctestCoberturaXmlBuilder struct{ *Builder }
 
 // BitriseStepXctestCoberturaXml creates a bitrise-step-xctest-cobertura-xml step builder (v1).
-func BitriseStepXctestCoberturaXml() *BitriseStepXctestCoberturaXmlBuilder {
-	return &BitriseStepXctestCoberturaXmlBuilder{Builder: From("bitrise-step-xctest-cobertura-xml", "1")}
+func BitriseStepXctestCoberturaXml(version ...string) *BitriseStepXctestCoberturaXmlBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepXctestCoberturaXmlBuilder{Builder: From("bitrise-step-xctest-cobertura-xml", v)}
 }
 
 // WithPathToXcresult sets path to XCTest result bundle.

@@ -7,8 +7,12 @@ package step
 type FirebaseAppDistributionBuilder struct{ *Builder }
 
 // FirebaseAppDistribution creates a firebase-app-distribution step builder (v0).
-func FirebaseAppDistribution() *FirebaseAppDistributionBuilder {
-	return &FirebaseAppDistributionBuilder{Builder: From("firebase-app-distribution", "0")}
+func FirebaseAppDistribution(version ...string) *FirebaseAppDistributionBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FirebaseAppDistributionBuilder{Builder: From("firebase-app-distribution", v)}
 }
 
 // WithFirebaseToken sets firebase Token.

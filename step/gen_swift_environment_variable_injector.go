@@ -7,8 +7,12 @@ package step
 type SwiftEnvironmentVariableInjectorBuilder struct{ *Builder }
 
 // SwiftEnvironmentVariableInjector creates a swift-environment-variable-injector step builder (v0).
-func SwiftEnvironmentVariableInjector() *SwiftEnvironmentVariableInjectorBuilder {
-	return &SwiftEnvironmentVariableInjectorBuilder{Builder: From("swift-environment-variable-injector", "0")}
+func SwiftEnvironmentVariableInjector(version ...string) *SwiftEnvironmentVariableInjectorBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SwiftEnvironmentVariableInjectorBuilder{Builder: From("swift-environment-variable-injector", v)}
 }
 
 // WithVariableInjectorVersion sets swift Variable Injector Version.

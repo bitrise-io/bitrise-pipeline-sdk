@@ -7,8 +7,12 @@ package step
 type UpdateJiraIssueFieldBuilder struct{ *Builder }
 
 // UpdateJiraIssueField creates a update-jira-issue-field step builder (v1).
-func UpdateJiraIssueField() *UpdateJiraIssueFieldBuilder {
-	return &UpdateJiraIssueFieldBuilder{Builder: From("update-jira-issue-field", "1")}
+func UpdateJiraIssueField(version ...string) *UpdateJiraIssueFieldBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UpdateJiraIssueFieldBuilder{Builder: From("update-jira-issue-field", v)}
 }
 
 // WithJiraUsername sets jIRA username.

@@ -7,8 +7,12 @@ package step
 type SaveSpmCacheBuilder struct{ *Builder }
 
 // SaveSpmCache creates a save-spm-cache step builder (v1).
-func SaveSpmCache() *SaveSpmCacheBuilder {
-	return &SaveSpmCacheBuilder{Builder: From("save-spm-cache", "1")}
+func SaveSpmCache(version ...string) *SaveSpmCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveSpmCacheBuilder{Builder: From("save-spm-cache", v)}
 }
 
 // WithDerivedDataPath sets derived Data Path.

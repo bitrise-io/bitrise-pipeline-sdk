@@ -7,8 +7,12 @@ package step
 type GradleCoverallsBuilder struct{ *Builder }
 
 // GradleCoveralls creates a gradle-coveralls step builder (v1).
-func GradleCoveralls() *GradleCoverallsBuilder {
-	return &GradleCoverallsBuilder{Builder: From("gradle-coveralls", "1")}
+func GradleCoveralls(version ...string) *GradleCoverallsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GradleCoverallsBuilder{Builder: From("gradle-coveralls", v)}
 }
 
 // WithGradlewFilePath sets path for the gradlew file.

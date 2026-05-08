@@ -7,8 +7,12 @@ package step
 type MaestroCloudUploadBuilder struct{ *Builder }
 
 // MaestroCloudUpload creates a maestro-cloud-upload step builder (v1).
-func MaestroCloudUpload() *MaestroCloudUploadBuilder {
-	return &MaestroCloudUploadBuilder{Builder: From("maestro-cloud-upload", "1")}
+func MaestroCloudUpload(version ...string) *MaestroCloudUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MaestroCloudUploadBuilder{Builder: From("maestro-cloud-upload", v)}
 }
 
 // WithApiKey sets aPI Key.

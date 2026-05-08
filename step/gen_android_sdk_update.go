@@ -7,8 +7,12 @@ package step
 type AndroidSdkUpdateBuilder struct{ *Builder }
 
 // AndroidSdkUpdate creates a android-sdk-update step builder (v1).
-func AndroidSdkUpdate() *AndroidSdkUpdateBuilder {
-	return &AndroidSdkUpdateBuilder{Builder: From("android-sdk-update", "1")}
+func AndroidSdkUpdate(version ...string) *AndroidSdkUpdateBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidSdkUpdateBuilder{Builder: From("android-sdk-update", v)}
 }
 
 // WithTools sets update Android SDK Tools.

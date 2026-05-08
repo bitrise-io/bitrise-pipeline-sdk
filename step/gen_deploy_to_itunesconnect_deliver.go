@@ -7,8 +7,12 @@ package step
 type DeployToItunesconnectDeliverBuilder struct{ *Builder }
 
 // DeployToItunesconnectDeliver creates a deploy-to-itunesconnect-deliver step builder (v2).
-func DeployToItunesconnectDeliver() *DeployToItunesconnectDeliverBuilder {
-	return &DeployToItunesconnectDeliverBuilder{Builder: From("deploy-to-itunesconnect-deliver", "2")}
+func DeployToItunesconnectDeliver(version ...string) *DeployToItunesconnectDeliverBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeployToItunesconnectDeliverBuilder{Builder: From("deploy-to-itunesconnect-deliver", v)}
 }
 
 // WithConnection sets bitrise Apple Developer Connection.

@@ -7,8 +7,12 @@ package step
 type HockeyappDeployBuilder struct{ *Builder }
 
 // HockeyappDeploy creates a hockeyapp-deploy step builder (v2).
-func HockeyappDeploy() *HockeyappDeployBuilder {
-	return &HockeyappDeployBuilder{Builder: From("hockeyapp-deploy", "2")}
+func HockeyappDeploy(version ...string) *HockeyappDeployBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &HockeyappDeployBuilder{Builder: From("hockeyapp-deploy", v)}
 }
 
 // WithIpaPath sets iPA file path.

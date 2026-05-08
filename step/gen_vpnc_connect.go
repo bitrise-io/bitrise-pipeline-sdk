@@ -7,8 +7,12 @@ package step
 type VpncConnectBuilder struct{ *Builder }
 
 // VpncConnect creates a vpnc-connect step builder (v1).
-func VpncConnect() *VpncConnectBuilder {
-	return &VpncConnectBuilder{Builder: From("vpnc-connect", "1")}
+func VpncConnect(version ...string) *VpncConnectBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &VpncConnectBuilder{Builder: From("vpnc-connect", v)}
 }
 
 // WithCommandlineOptions sets commandline options.

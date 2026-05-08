@@ -7,8 +7,12 @@ package step
 type TheappspajamasServiceAccountKeyInstallerBuilder struct{ *Builder }
 
 // TheappspajamasServiceAccountKeyInstaller creates a theappspajamas-service-account-key-installer step builder (v0).
-func TheappspajamasServiceAccountKeyInstaller() *TheappspajamasServiceAccountKeyInstallerBuilder {
-	return &TheappspajamasServiceAccountKeyInstallerBuilder{Builder: From("theappspajamas-service-account-key-installer", "0")}
+func TheappspajamasServiceAccountKeyInstaller(version ...string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TheappspajamasServiceAccountKeyInstallerBuilder{Builder: From("theappspajamas-service-account-key-installer", v)}
 }
 
 // WithServiceAccountKey sets theAppsPajamas Service Account Key.

@@ -7,8 +7,12 @@ package step
 type PostJiraCommentWithBuildDetailsBuilder struct{ *Builder }
 
 // PostJiraCommentWithBuildDetails creates a post-jira-comment-with-build-details step builder (v1).
-func PostJiraCommentWithBuildDetails() *PostJiraCommentWithBuildDetailsBuilder {
-	return &PostJiraCommentWithBuildDetailsBuilder{Builder: From("post-jira-comment-with-build-details", "1")}
+func PostJiraCommentWithBuildDetails(version ...string) *PostJiraCommentWithBuildDetailsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &PostJiraCommentWithBuildDetailsBuilder{Builder: From("post-jira-comment-with-build-details", v)}
 }
 
 // WithUserName sets jira user name.

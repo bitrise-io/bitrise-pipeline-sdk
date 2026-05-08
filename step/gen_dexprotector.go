@@ -7,8 +7,12 @@ package step
 type DexprotectorBuilder struct{ *Builder }
 
 // Dexprotector creates a dexprotector step builder (v1).
-func Dexprotector() *DexprotectorBuilder {
-	return &DexprotectorBuilder{Builder: From("dexprotector", "1")}
+func Dexprotector(version ...string) *DexprotectorBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DexprotectorBuilder{Builder: From("dexprotector", v)}
 }
 
 // WithAppFile sets path to the app file to be protected.

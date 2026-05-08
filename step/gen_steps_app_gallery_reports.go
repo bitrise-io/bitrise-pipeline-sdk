@@ -7,8 +7,12 @@ package step
 type StepsAppGalleryReportsBuilder struct{ *Builder }
 
 // StepsAppGalleryReports creates a steps-app-gallery-reports step builder (v0).
-func StepsAppGalleryReports() *StepsAppGalleryReportsBuilder {
-	return &StepsAppGalleryReportsBuilder{Builder: From("steps-app-gallery-reports", "0")}
+func StepsAppGalleryReports(version ...string) *StepsAppGalleryReportsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &StepsAppGalleryReportsBuilder{Builder: From("steps-app-gallery-reports", v)}
 }
 
 // WithHuaweiAppId sets app ID.

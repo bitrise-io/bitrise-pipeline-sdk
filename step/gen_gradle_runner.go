@@ -7,8 +7,12 @@ package step
 type GradleRunnerBuilder struct{ *Builder }
 
 // GradleRunner creates a gradle-runner step builder (v5).
-func GradleRunner() *GradleRunnerBuilder {
-	return &GradleRunnerBuilder{Builder: From("gradle-runner", "5")}
+func GradleRunner(version ...string) *GradleRunnerBuilder {
+	v := "5"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GradleRunnerBuilder{Builder: From("gradle-runner", v)}
 }
 
 // WithBuildRootDirectory sets build root directory.

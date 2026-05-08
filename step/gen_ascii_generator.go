@@ -7,8 +7,12 @@ package step
 type AsciiGeneratorBuilder struct{ *Builder }
 
 // AsciiGenerator creates a ascii-generator step builder (v1).
-func AsciiGenerator() *AsciiGeneratorBuilder {
-	return &AsciiGeneratorBuilder{Builder: From("ascii-generator", "1")}
+func AsciiGenerator(version ...string) *AsciiGeneratorBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AsciiGeneratorBuilder{Builder: From("ascii-generator", v)}
 }
 
 // WithAddonUrl sets uRL of the ASCII generator addon.

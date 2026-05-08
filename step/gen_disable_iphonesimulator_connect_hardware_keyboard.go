@@ -7,8 +7,12 @@ package step
 type DisableIphonesimulatorConnectHardwareKeyboardBuilder struct{ *Builder }
 
 // DisableIphonesimulatorConnectHardwareKeyboard creates a disable-iphonesimulator-connect-hardware-keyboard step builder (v0).
-func DisableIphonesimulatorConnectHardwareKeyboard() *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
-	return &DisableIphonesimulatorConnectHardwareKeyboardBuilder{Builder: From("disable-iphonesimulator-connect-hardware-keyboard", "0")}
+func DisableIphonesimulatorConnectHardwareKeyboard(version ...string) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DisableIphonesimulatorConnectHardwareKeyboardBuilder{Builder: From("disable-iphonesimulator-connect-hardware-keyboard", v)}
 }
 
 // WithIphonesimulatorPreferencesPth sets iphonesimulator preferences path.

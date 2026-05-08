@@ -7,8 +7,12 @@ package step
 type KobitonExecuteTestBuilder struct{ *Builder }
 
 // KobitonExecuteTest creates a kobiton-execute-test step builder (v2).
-func KobitonExecuteTest() *KobitonExecuteTestBuilder {
-	return &KobitonExecuteTestBuilder{Builder: From("kobiton-execute-test", "2")}
+func KobitonExecuteTest(version ...string) *KobitonExecuteTestBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &KobitonExecuteTestBuilder{Builder: From("kobiton-execute-test", v)}
 }
 
 // WithKobiUsernameInput sets kobiton Username.

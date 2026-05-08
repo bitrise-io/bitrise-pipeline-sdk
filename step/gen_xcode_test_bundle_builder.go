@@ -7,8 +7,12 @@ package step
 type XcodeTestBundleBuilderBuilder struct{ *Builder }
 
 // XcodeTestBundleBuilder creates a xcode-test-bundle-builder step builder (v0).
-func XcodeTestBundleBuilder() *XcodeTestBundleBuilderBuilder {
-	return &XcodeTestBundleBuilderBuilder{Builder: From("xcode-test-bundle-builder", "0")}
+func XcodeTestBundleBuilder(version ...string) *XcodeTestBundleBuilderBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodeTestBundleBuilderBuilder{Builder: From("xcode-test-bundle-builder", v)}
 }
 
 // WithWorkdir sets working directory.

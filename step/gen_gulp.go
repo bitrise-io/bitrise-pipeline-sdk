@@ -7,8 +7,12 @@ package step
 type GulpBuilder struct{ *Builder }
 
 // Gulp creates a gulp step builder (v0).
-func Gulp() *GulpBuilder {
-	return &GulpBuilder{Builder: From("gulp", "0")}
+func Gulp(version ...string) *GulpBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GulpBuilder{Builder: From("gulp", v)}
 }
 
 // WithWorkdir sets working directory.

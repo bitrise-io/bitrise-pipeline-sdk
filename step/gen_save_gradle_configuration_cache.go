@@ -7,8 +7,12 @@ package step
 type SaveGradleConfigurationCacheBuilder struct{ *Builder }
 
 // SaveGradleConfigurationCache creates a save-gradle-configuration-cache step builder (v1).
-func SaveGradleConfigurationCache() *SaveGradleConfigurationCacheBuilder {
-	return &SaveGradleConfigurationCacheBuilder{Builder: From("save-gradle-configuration-cache", "1")}
+func SaveGradleConfigurationCache(version ...string) *SaveGradleConfigurationCacheBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SaveGradleConfigurationCacheBuilder{Builder: From("save-gradle-configuration-cache", v)}
 }
 
 // WithKeyOverride sets cache key override.

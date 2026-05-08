@@ -7,8 +7,12 @@ package step
 type OpenVpnBuilder struct{ *Builder }
 
 // OpenVpn creates a open-vpn step builder (v0).
-func OpenVpn() *OpenVpnBuilder {
-	return &OpenVpnBuilder{Builder: From("open-vpn", "0")}
+func OpenVpn(version ...string) *OpenVpnBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &OpenVpnBuilder{Builder: From("open-vpn", v)}
 }
 
 // WithHost sets host.

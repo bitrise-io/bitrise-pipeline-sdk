@@ -7,8 +7,12 @@ package step
 type AndroidDetektBuilder struct{ *Builder }
 
 // AndroidDetekt creates a android-detekt step builder (v0).
-func AndroidDetekt() *AndroidDetektBuilder {
-	return &AndroidDetektBuilder{Builder: From("android-detekt", "0")}
+func AndroidDetekt(version ...string) *AndroidDetektBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidDetektBuilder{Builder: From("android-detekt", v)}
 }
 
 // WithProjectLocation sets project Location.

@@ -7,8 +7,12 @@ package step
 type RestoreS3CacheBuilder struct{ *Builder }
 
 // RestoreS3Cache creates a restore-s3-cache step builder (v0).
-func RestoreS3Cache() *RestoreS3CacheBuilder {
-	return &RestoreS3CacheBuilder{Builder: From("restore-s3-cache", "0")}
+func RestoreS3Cache(version ...string) *RestoreS3CacheBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreS3CacheBuilder{Builder: From("restore-s3-cache", v)}
 }
 
 // WithKey sets cache keys.

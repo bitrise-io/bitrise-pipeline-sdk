@@ -7,8 +7,12 @@ package step
 type CreateGithubPullRequestBuilder struct{ *Builder }
 
 // CreateGithubPullRequest creates a create-github-pull-request step builder (v0).
-func CreateGithubPullRequest() *CreateGithubPullRequestBuilder {
-	return &CreateGithubPullRequestBuilder{Builder: From("create-github-pull-request", "0")}
+func CreateGithubPullRequest(version ...string) *CreateGithubPullRequestBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateGithubPullRequestBuilder{Builder: From("create-github-pull-request", v)}
 }
 
 // WithFromBranch sets from Branch.

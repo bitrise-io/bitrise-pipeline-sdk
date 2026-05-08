@@ -7,8 +7,12 @@ package step
 type ScriptRunnerBuilder struct{ *Builder }
 
 // ScriptRunner creates a script-runner step builder (v0).
-func ScriptRunner() *ScriptRunnerBuilder {
-	return &ScriptRunnerBuilder{Builder: From("script-runner", "0")}
+func ScriptRunner(version ...string) *ScriptRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ScriptRunnerBuilder{Builder: From("script-runner", v)}
 }
 
 // WithFilePath sets script location.

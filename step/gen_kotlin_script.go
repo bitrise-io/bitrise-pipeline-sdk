@@ -7,8 +7,12 @@ package step
 type KotlinScriptBuilder struct{ *Builder }
 
 // KotlinScript creates a kotlin-script step builder (v1).
-func KotlinScript() *KotlinScriptBuilder {
-	return &KotlinScriptBuilder{Builder: From("kotlin-script", "1")}
+func KotlinScript(version ...string) *KotlinScriptBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &KotlinScriptBuilder{Builder: From("kotlin-script", v)}
 }
 
 // WithKotlinContent sets the Kotlin script.

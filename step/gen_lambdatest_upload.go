@@ -7,8 +7,12 @@ package step
 type LambdatestUploadBuilder struct{ *Builder }
 
 // LambdatestUpload creates a lambdatest-upload step builder (v4).
-func LambdatestUpload() *LambdatestUploadBuilder {
-	return &LambdatestUploadBuilder{Builder: From("lambdatest-upload", "4")}
+func LambdatestUpload(version ...string) *LambdatestUploadBuilder {
+	v := "4"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &LambdatestUploadBuilder{Builder: From("lambdatest-upload", v)}
 }
 
 // WithUploadPath sets a Bitrise generated APK or IPA path.

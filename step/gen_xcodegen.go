@@ -7,8 +7,12 @@ package step
 type XcodegenBuilder struct{ *Builder }
 
 // Xcodegen creates a xcodegen step builder (v0).
-func Xcodegen() *XcodegenBuilder {
-	return &XcodegenBuilder{Builder: From("xcodegen", "0")}
+func Xcodegen(version ...string) *XcodegenBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XcodegenBuilder{Builder: From("xcodegen", v)}
 }
 
 // WithSpecPath sets the path to the project spec file.

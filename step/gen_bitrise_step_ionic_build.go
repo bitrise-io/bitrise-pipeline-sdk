@@ -7,8 +7,12 @@ package step
 type BitriseStepIonicBuildBuilder struct{ *Builder }
 
 // BitriseStepIonicBuild creates a bitrise-step-ionic-build step builder (v0).
-func BitriseStepIonicBuild() *BitriseStepIonicBuildBuilder {
-	return &BitriseStepIonicBuildBuilder{Builder: From("bitrise-step-ionic-build", "0")}
+func BitriseStepIonicBuild(version ...string) *BitriseStepIonicBuildBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepIonicBuildBuilder{Builder: From("bitrise-step-ionic-build", v)}
 }
 
 // WithProductionMode sets production Configuration.

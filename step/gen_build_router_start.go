@@ -7,8 +7,12 @@ package step
 type BuildRouterStartBuilder struct{ *Builder }
 
 // BuildRouterStart creates a build-router-start step builder (v0).
-func BuildRouterStart() *BuildRouterStartBuilder {
-	return &BuildRouterStartBuilder{Builder: From("build-router-start", "0")}
+func BuildRouterStart(version ...string) *BuildRouterStartBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BuildRouterStartBuilder{Builder: From("build-router-start", v)}
 }
 
 // WithAccessToken sets bitrise Access Token.

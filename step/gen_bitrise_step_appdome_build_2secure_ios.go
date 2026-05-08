@@ -11,8 +11,12 @@ type BitriseStepAppdomeBuild2secureIosBuilder struct{ *Builder }
 // BitriseStepAppdomeBuild2secureIos creates a bitrise-step-appdome-build-2secure-ios step builder (v1).
 //
 // Deprecated: This step is deprecated as it was replaced by appdome-build-2secure-ios, and it is no longer maintained.
-func BitriseStepAppdomeBuild2secureIos() *BitriseStepAppdomeBuild2secureIosBuilder {
-	return &BitriseStepAppdomeBuild2secureIosBuilder{Builder: From("bitrise-step-appdome-build-2secure-ios", "1")}
+func BitriseStepAppdomeBuild2secureIos(version ...string) *BitriseStepAppdomeBuild2secureIosBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BitriseStepAppdomeBuild2secureIosBuilder{Builder: From("bitrise-step-appdome-build-2secure-ios", v)}
 }
 
 // WithAppLocation sets app file URL.

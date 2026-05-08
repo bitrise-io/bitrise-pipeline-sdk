@@ -7,8 +7,12 @@ package step
 type TestprojectUploadBuilder struct{ *Builder }
 
 // TestprojectUpload creates a testproject-upload step builder (v0).
-func TestprojectUpload() *TestprojectUploadBuilder {
-	return &TestprojectUploadBuilder{Builder: From("testproject-upload", "0")}
+func TestprojectUpload(version ...string) *TestprojectUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TestprojectUploadBuilder{Builder: From("testproject-upload", v)}
 }
 
 // WithTestprojectApiKey sets testProject API key.

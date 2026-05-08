@@ -11,8 +11,12 @@ type AndroidScreenrecordStartBuilder struct{ *Builder }
 // AndroidScreenrecordStart creates a android-screenrecord-start step builder (v0).
 //
 // Deprecated: This step is deprecated, android emulators no longer support screen recording
-func AndroidScreenrecordStart() *AndroidScreenrecordStartBuilder {
-	return &AndroidScreenrecordStartBuilder{Builder: From("android-screenrecord-start", "0")}
+func AndroidScreenrecordStart(version ...string) *AndroidScreenrecordStartBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidScreenrecordStartBuilder{Builder: From("android-screenrecord-start", v)}
 }
 
 // WithRecordId sets record ID.

@@ -7,8 +7,12 @@ package step
 type AutifyTestRunBuilder struct{ *Builder }
 
 // AutifyTestRun creates a autify-test-run step builder (v1).
-func AutifyTestRun() *AutifyTestRunBuilder {
-	return &AutifyTestRunBuilder{Builder: From("autify-test-run", "1")}
+func AutifyTestRun(version ...string) *AutifyTestRunBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AutifyTestRunBuilder{Builder: From("autify-test-run", v)}
 }
 
 // WithAccessToken sets access token of Autify for Mobile.

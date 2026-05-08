@@ -7,8 +7,12 @@ package step
 type DeploygateUploadAppBitriseStepBuilder struct{ *Builder }
 
 // DeploygateUploadAppBitriseStep creates a deploygate--upload-app-bitrise-step step builder (v1).
-func DeploygateUploadAppBitriseStep() *DeploygateUploadAppBitriseStepBuilder {
-	return &DeploygateUploadAppBitriseStepBuilder{Builder: From("deploygate--upload-app-bitrise-step", "1")}
+func DeploygateUploadAppBitriseStep(version ...string) *DeploygateUploadAppBitriseStepBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DeploygateUploadAppBitriseStepBuilder{Builder: From("deploygate--upload-app-bitrise-step", v)}
 }
 
 // WithApiKey sets deployGate: API Key.

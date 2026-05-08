@@ -7,8 +7,12 @@ package step
 type AppCenterLaunchTestAndroidBuilder struct{ *Builder }
 
 // AppCenterLaunchTestAndroid creates a app-center-launch-test-android step builder (v1).
-func AppCenterLaunchTestAndroid() *AppCenterLaunchTestAndroidBuilder {
-	return &AppCenterLaunchTestAndroidBuilder{Builder: From("app-center-launch-test-android", "1")}
+func AppCenterLaunchTestAndroid(version ...string) *AppCenterLaunchTestAndroidBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppCenterLaunchTestAndroidBuilder{Builder: From("app-center-launch-test-android", v)}
 }
 
 // WithAppPath sets app path.

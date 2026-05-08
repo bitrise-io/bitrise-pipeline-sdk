@@ -7,8 +7,12 @@ package step
 type ReleaseNotesExtractorBuilder struct{ *Builder }
 
 // ReleaseNotesExtractor creates a release-notes-extractor step builder (v0).
-func ReleaseNotesExtractor() *ReleaseNotesExtractorBuilder {
-	return &ReleaseNotesExtractorBuilder{Builder: From("release-notes-extractor", "0")}
+func ReleaseNotesExtractor(version ...string) *ReleaseNotesExtractorBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ReleaseNotesExtractorBuilder{Builder: From("release-notes-extractor", v)}
 }
 
 // WithChangelogFilePath sets changelog file path.

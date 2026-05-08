@@ -7,8 +7,12 @@ package step
 type StepsChatworkMessageBuilder struct{ *Builder }
 
 // StepsChatworkMessage creates a steps-chatwork-message step builder (v0).
-func StepsChatworkMessage() *StepsChatworkMessageBuilder {
-	return &StepsChatworkMessageBuilder{Builder: From("steps-chatwork-message", "0")}
+func StepsChatworkMessage(version ...string) *StepsChatworkMessageBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &StepsChatworkMessageBuilder{Builder: From("steps-chatwork-message", v)}
 }
 
 // WithApiToken sets chatwork API Token.

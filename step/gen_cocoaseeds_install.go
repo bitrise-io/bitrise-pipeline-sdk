@@ -7,8 +7,12 @@ package step
 type CocoaseedsInstallBuilder struct{ *Builder }
 
 // CocoaseedsInstall creates a cocoaseeds-install step builder (v1).
-func CocoaseedsInstall() *CocoaseedsInstallBuilder {
-	return &CocoaseedsInstallBuilder{Builder: From("cocoaseeds-install", "1")}
+func CocoaseedsInstall(version ...string) *CocoaseedsInstallBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CocoaseedsInstallBuilder{Builder: From("cocoaseeds-install", v)}
 }
 
 // WithSourceRootPath sets source Code Directory path..

@@ -7,8 +7,12 @@ package step
 type GitlabStatusBuilder struct{ *Builder }
 
 // GitlabStatus creates a gitlab-status step builder (v0).
-func GitlabStatus() *GitlabStatusBuilder {
-	return &GitlabStatusBuilder{Builder: From("gitlab-status", "0")}
+func GitlabStatus(version ...string) *GitlabStatusBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GitlabStatusBuilder{Builder: From("gitlab-status", v)}
 }
 
 // WithApiBaseUrl sets gitLab API base url.

@@ -7,6 +7,10 @@ package step
 type TimestampBuilder struct{ *Builder }
 
 // Timestamp creates a timestamp step builder (v0).
-func Timestamp() *TimestampBuilder {
-	return &TimestampBuilder{Builder: From("timestamp", "0")}
+func Timestamp(version ...string) *TimestampBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TimestampBuilder{Builder: From("timestamp", v)}
 }

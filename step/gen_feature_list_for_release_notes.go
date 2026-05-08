@@ -7,8 +7,12 @@ package step
 type FeatureListForReleaseNotesBuilder struct{ *Builder }
 
 // FeatureListForReleaseNotes creates a feature-list-for-release-notes step builder (v0).
-func FeatureListForReleaseNotes() *FeatureListForReleaseNotesBuilder {
-	return &FeatureListForReleaseNotesBuilder{Builder: From("feature-list-for-release-notes", "0")}
+func FeatureListForReleaseNotes(version ...string) *FeatureListForReleaseNotesBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FeatureListForReleaseNotesBuilder{Builder: From("feature-list-for-release-notes", v)}
 }
 
 // WithBacklogDefaultUrl sets default URL for the backlog system.

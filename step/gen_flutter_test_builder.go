@@ -7,8 +7,12 @@ package step
 type FlutterTestBuilder struct{ *Builder }
 
 // FlutterTest creates a flutter-test step builder (v1).
-func FlutterTest() *FlutterTestBuilder {
-	return &FlutterTestBuilder{Builder: From("flutter-test", "1")}
+func FlutterTest(version ...string) *FlutterTestBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlutterTestBuilder{Builder: From("flutter-test", v)}
 }
 
 // WithProjectLocation sets project Location.

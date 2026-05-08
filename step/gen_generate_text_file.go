@@ -7,8 +7,12 @@ package step
 type GenerateTextFileBuilder struct{ *Builder }
 
 // GenerateTextFile creates a generate-text-file step builder (v0).
-func GenerateTextFile() *GenerateTextFileBuilder {
-	return &GenerateTextFileBuilder{Builder: From("generate-text-file", "0")}
+func GenerateTextFile(version ...string) *GenerateTextFileBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GenerateTextFileBuilder{Builder: From("generate-text-file", v)}
 }
 
 // WithFileName sets file Name.

@@ -7,8 +7,12 @@ package step
 type CodeSigningSettingPatchBuilder struct{ *Builder }
 
 // CodeSigningSettingPatch creates a code-signing-setting-patch step builder (v1).
-func CodeSigningSettingPatch() *CodeSigningSettingPatchBuilder {
-	return &CodeSigningSettingPatchBuilder{Builder: From("code-signing-setting-patch", "1")}
+func CodeSigningSettingPatch(version ...string) *CodeSigningSettingPatchBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CodeSigningSettingPatchBuilder{Builder: From("code-signing-setting-patch", v)}
 }
 
 // WithXcodeXcodeprojFile sets xcode project.xcodeproj Path.

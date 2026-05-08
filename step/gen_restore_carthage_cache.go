@@ -7,8 +7,12 @@ package step
 type RestoreCarthageCacheBuilder struct{ *Builder }
 
 // RestoreCarthageCache creates a restore-carthage-cache step builder (v3).
-func RestoreCarthageCache() *RestoreCarthageCacheBuilder {
-	return &RestoreCarthageCacheBuilder{Builder: From("restore-carthage-cache", "3")}
+func RestoreCarthageCache(version ...string) *RestoreCarthageCacheBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RestoreCarthageCacheBuilder{Builder: From("restore-carthage-cache", v)}
 }
 
 // WithVerbose sets verbose logging.

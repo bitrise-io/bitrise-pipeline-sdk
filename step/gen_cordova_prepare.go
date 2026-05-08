@@ -7,8 +7,12 @@ package step
 type CordovaPrepareBuilder struct{ *Builder }
 
 // CordovaPrepare creates a cordova-prepare step builder (v1).
-func CordovaPrepare() *CordovaPrepareBuilder {
-	return &CordovaPrepareBuilder{Builder: From("cordova-prepare", "1")}
+func CordovaPrepare(version ...string) *CordovaPrepareBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CordovaPrepareBuilder{Builder: From("cordova-prepare", v)}
 }
 
 // WithPlatform sets platform to use in cordova-cli commands.

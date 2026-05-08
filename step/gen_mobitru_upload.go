@@ -7,8 +7,12 @@ package step
 type MobitruUploadBuilder struct{ *Builder }
 
 // MobitruUpload creates a mobitru-upload step builder (v1).
-func MobitruUpload() *MobitruUploadBuilder {
-	return &MobitruUploadBuilder{Builder: From("mobitru-upload", "1")}
+func MobitruUpload(version ...string) *MobitruUploadBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MobitruUploadBuilder{Builder: From("mobitru-upload", v)}
 }
 
 // WithUploadFilepath sets location of the APK or IPA file.

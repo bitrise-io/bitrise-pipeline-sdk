@@ -7,8 +7,12 @@ package step
 type FindJiraIssueBuilder struct{ *Builder }
 
 // FindJiraIssue creates a find-jira-issue step builder (v0).
-func FindJiraIssue() *FindJiraIssueBuilder {
-	return &FindJiraIssueBuilder{Builder: From("find-jira-issue", "0")}
+func FindJiraIssue(version ...string) *FindJiraIssueBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FindJiraIssueBuilder{Builder: From("find-jira-issue", v)}
 }
 
 // WithFindIssueContent sets text Content.

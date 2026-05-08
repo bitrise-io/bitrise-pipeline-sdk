@@ -7,8 +7,12 @@ package step
 type ApispotterTestRunnerBuilder struct{ *Builder }
 
 // ApispotterTestRunner creates a apispotter-test-runner step builder (v0).
-func ApispotterTestRunner() *ApispotterTestRunnerBuilder {
-	return &ApispotterTestRunnerBuilder{Builder: From("apispotter-test-runner", "0")}
+func ApispotterTestRunner(version ...string) *ApispotterTestRunnerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ApispotterTestRunnerBuilder{Builder: From("apispotter-test-runner", v)}
 }
 
 // WithApispotterApiToken sets apiSpotter User API Token.

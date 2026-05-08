@@ -7,8 +7,12 @@ package step
 type RevopushCommandLineInterfaceBuilder struct{ *Builder }
 
 // RevopushCommandLineInterface creates a revopush-command-line-interface step builder (v0).
-func RevopushCommandLineInterface() *RevopushCommandLineInterfaceBuilder {
-	return &RevopushCommandLineInterfaceBuilder{Builder: From("revopush-command-line-interface", "0")}
+func RevopushCommandLineInterface(version ...string) *RevopushCommandLineInterfaceBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &RevopushCommandLineInterfaceBuilder{Builder: From("revopush-command-line-interface", v)}
 }
 
 // WithWorkdir sets working directory.

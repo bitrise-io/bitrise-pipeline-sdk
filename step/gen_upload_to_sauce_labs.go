@@ -7,8 +7,12 @@ package step
 type UploadToSauceLabsBuilder struct{ *Builder }
 
 // UploadToSauceLabs creates a upload-to-sauce-labs step builder (v0).
-func UploadToSauceLabs() *UploadToSauceLabsBuilder {
-	return &UploadToSauceLabsBuilder{Builder: From("upload-to-sauce-labs", "0")}
+func UploadToSauceLabs(version ...string) *UploadToSauceLabsBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &UploadToSauceLabsBuilder{Builder: From("upload-to-sauce-labs", v)}
 }
 
 // WithSauceUsername sets sauce Labs username.

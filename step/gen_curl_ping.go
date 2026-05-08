@@ -7,8 +7,12 @@ package step
 type CurlPingBuilder struct{ *Builder }
 
 // CurlPing creates a curl-ping step builder (v2).
-func CurlPing() *CurlPingBuilder {
-	return &CurlPingBuilder{Builder: From("curl-ping", "2")}
+func CurlPing(version ...string) *CurlPingBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CurlPingBuilder{Builder: From("curl-ping", v)}
 }
 
 // WithPingUrl sets full URL.

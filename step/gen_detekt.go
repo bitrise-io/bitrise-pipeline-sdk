@@ -7,8 +7,12 @@ package step
 type DetektBuilder struct{ *Builder }
 
 // Detekt creates a detekt step builder (v1).
-func Detekt() *DetektBuilder {
-	return &DetektBuilder{Builder: From("detekt", "1")}
+func Detekt(version ...string) *DetektBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &DetektBuilder{Builder: From("detekt", v)}
 }
 
 // WithPathToAnalyze sets path to analyze.

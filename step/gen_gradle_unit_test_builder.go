@@ -7,8 +7,12 @@ package step
 type GradleUnitTestBuilder struct{ *Builder }
 
 // GradleUnitTest creates a gradle-unit-test step builder (v2).
-func GradleUnitTest() *GradleUnitTestBuilder {
-	return &GradleUnitTestBuilder{Builder: From("gradle-unit-test", "2")}
+func GradleUnitTest(version ...string) *GradleUnitTestBuilder {
+	v := "2"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GradleUnitTestBuilder{Builder: From("gradle-unit-test", v)}
 }
 
 // WithProjectRootDir sets project root directory.

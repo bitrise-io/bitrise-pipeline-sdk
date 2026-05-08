@@ -7,8 +7,12 @@ package step
 type S3CachePullBuilder struct{ *Builder }
 
 // S3CachePull creates a s3-cache-pull step builder (v0).
-func S3CachePull() *S3CachePullBuilder {
-	return &S3CachePullBuilder{Builder: From("s3-cache-pull", "0")}
+func S3CachePull(version ...string) *S3CachePullBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &S3CachePullBuilder{Builder: From("s3-cache-pull", v)}
 }
 
 // WithCacheAwsAccessKeyId sets aWS_ACCESS_KEY_ID.

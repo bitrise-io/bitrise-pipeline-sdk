@@ -7,8 +7,12 @@ package step
 type GooglePlayRolloutUpdateBuilder struct{ *Builder }
 
 // GooglePlayRolloutUpdate creates a google-play-rollout-update step builder (v0).
-func GooglePlayRolloutUpdate() *GooglePlayRolloutUpdateBuilder {
-	return &GooglePlayRolloutUpdateBuilder{Builder: From("google-play-rollout-update", "0")}
+func GooglePlayRolloutUpdate(version ...string) *GooglePlayRolloutUpdateBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &GooglePlayRolloutUpdateBuilder{Builder: From("google-play-rollout-update", v)}
 }
 
 // WithServiceAccountJsonKeyPath sets service Account JSON key file path.

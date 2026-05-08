@@ -11,8 +11,12 @@ type CreateAndroidEmulatorBuilder struct{ *Builder }
 // CreateAndroidEmulator creates a create-android-emulator step builder (v1).
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
-func CreateAndroidEmulator() *CreateAndroidEmulatorBuilder {
-	return &CreateAndroidEmulatorBuilder{Builder: From("create-android-emulator", "1")}
+func CreateAndroidEmulator(version ...string) *CreateAndroidEmulatorBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateAndroidEmulatorBuilder{Builder: From("create-android-emulator", v)}
 }
 
 // WithName sets name of the new AVD.

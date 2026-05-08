@@ -7,8 +7,12 @@ package step
 type AndroidBuildForUiTestingBuilder struct{ *Builder }
 
 // AndroidBuildForUiTesting creates a android-build-for-ui-testing step builder (v0).
-func AndroidBuildForUiTesting() *AndroidBuildForUiTestingBuilder {
-	return &AndroidBuildForUiTestingBuilder{Builder: From("android-build-for-ui-testing", "0")}
+func AndroidBuildForUiTesting(version ...string) *AndroidBuildForUiTestingBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidBuildForUiTestingBuilder{Builder: From("android-build-for-ui-testing", v)}
 }
 
 // WithProjectLocation sets project Location.

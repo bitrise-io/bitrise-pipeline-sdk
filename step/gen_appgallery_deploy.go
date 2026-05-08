@@ -7,8 +7,12 @@ package step
 type AppgalleryDeployBuilder struct{ *Builder }
 
 // AppgalleryDeploy creates a appgallery-deploy step builder (v1).
-func AppgalleryDeploy() *AppgalleryDeployBuilder {
-	return &AppgalleryDeployBuilder{Builder: From("appgallery-deploy", "1")}
+func AppgalleryDeploy(version ...string) *AppgalleryDeployBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppgalleryDeployBuilder{Builder: From("appgallery-deploy", v)}
 }
 
 // WithFilePath sets file path.

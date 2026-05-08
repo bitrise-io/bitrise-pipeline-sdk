@@ -7,8 +7,12 @@ package step
 type ExportXcarchiveMacBuilder struct{ *Builder }
 
 // ExportXcarchiveMac creates a export-xcarchive-mac step builder (v1).
-func ExportXcarchiveMac() *ExportXcarchiveMacBuilder {
-	return &ExportXcarchiveMacBuilder{Builder: From("export-xcarchive-mac", "1")}
+func ExportXcarchiveMac(version ...string) *ExportXcarchiveMacBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ExportXcarchiveMacBuilder{Builder: From("export-xcarchive-mac", v)}
 }
 
 // WithArchivePath sets macOS archive path.

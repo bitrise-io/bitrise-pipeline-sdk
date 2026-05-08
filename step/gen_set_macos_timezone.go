@@ -7,8 +7,12 @@ package step
 type SetMacosTimezoneBuilder struct{ *Builder }
 
 // SetMacosTimezone creates a set-macos-timezone step builder (v0).
-func SetMacosTimezone() *SetMacosTimezoneBuilder {
-	return &SetMacosTimezoneBuilder{Builder: From("set-macos-timezone", "0")}
+func SetMacosTimezone(version ...string) *SetMacosTimezoneBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetMacosTimezoneBuilder{Builder: From("set-macos-timezone", v)}
 }
 
 // WithTimezone sets time Zone.

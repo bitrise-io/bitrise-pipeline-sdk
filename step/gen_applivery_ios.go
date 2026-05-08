@@ -7,8 +7,12 @@ package step
 type AppliveryIosBuilder struct{ *Builder }
 
 // AppliveryIos creates a applivery-ios step builder (v1).
-func AppliveryIos() *AppliveryIosBuilder {
-	return &AppliveryIosBuilder{Builder: From("applivery-ios", "1")}
+func AppliveryIos(version ...string) *AppliveryIosBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppliveryIosBuilder{Builder: From("applivery-ios", v)}
 }
 
 // WithIpaPath sets iPA file path.

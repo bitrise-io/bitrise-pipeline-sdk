@@ -7,8 +7,12 @@ package step
 type SetIosInfoPlistUnifiedBuilder struct{ *Builder }
 
 // SetIosInfoPlistUnified creates a set-ios-info-plist-unified step builder (v1).
-func SetIosInfoPlistUnified() *SetIosInfoPlistUnifiedBuilder {
-	return &SetIosInfoPlistUnifiedBuilder{Builder: From("set-ios-info-plist-unified", "1")}
+func SetIosInfoPlistUnified(version ...string) *SetIosInfoPlistUnifiedBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetIosInfoPlistUnifiedBuilder{Builder: From("set-ios-info-plist-unified", v)}
 }
 
 // WithInfoPlistFile sets info.plist file path.

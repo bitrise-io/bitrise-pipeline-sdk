@@ -7,8 +7,12 @@ package step
 type XamarinArchiveBuilder struct{ *Builder }
 
 // XamarinArchive creates a xamarin-archive step builder (v1).
-func XamarinArchive() *XamarinArchiveBuilder {
-	return &XamarinArchiveBuilder{Builder: From("xamarin-archive", "1")}
+func XamarinArchive(version ...string) *XamarinArchiveBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &XamarinArchiveBuilder{Builder: From("xamarin-archive", v)}
 }
 
 // WithXamarinSolution sets path to the Xamarin Solution file.

@@ -7,8 +7,12 @@ package step
 type CreateNewAppStoreReleaseBuilder struct{ *Builder }
 
 // CreateNewAppStoreRelease creates a create-new-app-store-release step builder (v1).
-func CreateNewAppStoreRelease() *CreateNewAppStoreReleaseBuilder {
-	return &CreateNewAppStoreReleaseBuilder{Builder: From("create-new-app-store-release", "1")}
+func CreateNewAppStoreRelease(version ...string) *CreateNewAppStoreReleaseBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateNewAppStoreReleaseBuilder{Builder: From("create-new-app-store-release", v)}
 }
 
 // WithBundleId sets bundle identifier.

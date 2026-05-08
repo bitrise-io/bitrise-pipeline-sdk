@@ -7,8 +7,12 @@ package step
 type CreateANewReleaseInJiraBuilder struct{ *Builder }
 
 // CreateANewReleaseInJira creates a create-a-new-release-in-jira step builder (v1).
-func CreateANewReleaseInJira() *CreateANewReleaseInJiraBuilder {
-	return &CreateANewReleaseInJiraBuilder{Builder: From("create-a-new-release-in-jira", "1")}
+func CreateANewReleaseInJira(version ...string) *CreateANewReleaseInJiraBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CreateANewReleaseInJiraBuilder{Builder: From("create-a-new-release-in-jira", v)}
 }
 
 // WithProjectPrefix sets jira project prefix.

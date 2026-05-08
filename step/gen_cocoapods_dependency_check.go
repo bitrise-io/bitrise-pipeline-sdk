@@ -7,8 +7,12 @@ package step
 type CocoapodsDependencyCheckBuilder struct{ *Builder }
 
 // CocoapodsDependencyCheck creates a cocoapods-dependency-check step builder (v0).
-func CocoapodsDependencyCheck() *CocoapodsDependencyCheckBuilder {
-	return &CocoapodsDependencyCheckBuilder{Builder: From("cocoapods-dependency-check", "0")}
+func CocoapodsDependencyCheck(version ...string) *CocoapodsDependencyCheckBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &CocoapodsDependencyCheckBuilder{Builder: From("cocoapods-dependency-check", v)}
 }
 
 // WithSourceRootPath sets source Code Directory path.

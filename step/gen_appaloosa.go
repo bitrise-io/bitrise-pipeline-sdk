@@ -7,8 +7,12 @@ package step
 type AppaloosaBuilder struct{ *Builder }
 
 // Appaloosa creates a appaloosa step builder (v1).
-func Appaloosa() *AppaloosaBuilder {
-	return &AppaloosaBuilder{Builder: From("appaloosa", "1")}
+func Appaloosa(version ...string) *AppaloosaBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppaloosaBuilder{Builder: From("appaloosa", v)}
 }
 
 // WithBitriseIpaPath sets bINARY PATH.

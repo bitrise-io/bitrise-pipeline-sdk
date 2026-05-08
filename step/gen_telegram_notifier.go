@@ -7,8 +7,12 @@ package step
 type TelegramNotifierBuilder struct{ *Builder }
 
 // TelegramNotifier creates a telegram-notifier step builder (v1).
-func TelegramNotifier() *TelegramNotifierBuilder {
-	return &TelegramNotifierBuilder{Builder: From("telegram-notifier", "1")}
+func TelegramNotifier(version ...string) *TelegramNotifierBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TelegramNotifierBuilder{Builder: From("telegram-notifier", v)}
 }
 
 // WithTELEGRAMBOTTOKEN sets telegram Bot Token.

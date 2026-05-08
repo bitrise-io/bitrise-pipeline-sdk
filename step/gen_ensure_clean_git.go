@@ -7,8 +7,12 @@ package step
 type EnsureCleanGitBuilder struct{ *Builder }
 
 // EnsureCleanGit creates a ensure-clean-git step builder (v0).
-func EnsureCleanGit() *EnsureCleanGitBuilder {
-	return &EnsureCleanGitBuilder{Builder: From("ensure-clean-git", "0")}
+func EnsureCleanGit(version ...string) *EnsureCleanGitBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &EnsureCleanGitBuilder{Builder: From("ensure-clean-git", v)}
 }
 
 // WithDirToCheck sets the directory to check if contains any uncommitted changes.

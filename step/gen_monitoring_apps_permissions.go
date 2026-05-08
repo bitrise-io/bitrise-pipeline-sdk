@@ -7,8 +7,12 @@ package step
 type MonitoringAppsPermissionsBuilder struct{ *Builder }
 
 // MonitoringAppsPermissions creates a monitoring-apps-permissions step builder (v1).
-func MonitoringAppsPermissions() *MonitoringAppsPermissionsBuilder {
-	return &MonitoringAppsPermissionsBuilder{Builder: From("monitoring-apps-permissions", "1")}
+func MonitoringAppsPermissions(version ...string) *MonitoringAppsPermissionsBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &MonitoringAppsPermissionsBuilder{Builder: From("monitoring-apps-permissions", v)}
 }
 
 // WithCheckAndroid sets check Android.

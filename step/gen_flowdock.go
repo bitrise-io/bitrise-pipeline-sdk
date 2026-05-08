@@ -7,8 +7,12 @@ package step
 type FlowdockBuilder struct{ *Builder }
 
 // Flowdock creates a flowdock step builder (v0).
-func Flowdock() *FlowdockBuilder {
-	return &FlowdockBuilder{Builder: From("flowdock", "0")}
+func Flowdock(version ...string) *FlowdockBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &FlowdockBuilder{Builder: From("flowdock", v)}
 }
 
 // WithFlowdockSourceToken sets flowdock Source Token.

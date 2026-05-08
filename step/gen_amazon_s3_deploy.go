@@ -11,8 +11,12 @@ type AmazonS3DeployBuilder struct{ *Builder }
 // AmazonS3Deploy creates a amazon-s3-deploy step builder (v3).
 //
 // Deprecated: This step is deprecated. Please use the build distribution feature: https://docs.bitrise.io/en/release-management/build-distribution/distributing-builds-to-testers.html
-func AmazonS3Deploy() *AmazonS3DeployBuilder {
-	return &AmazonS3DeployBuilder{Builder: From("amazon-s3-deploy", "3")}
+func AmazonS3Deploy(version ...string) *AmazonS3DeployBuilder {
+	v := "3"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AmazonS3DeployBuilder{Builder: From("amazon-s3-deploy", v)}
 }
 
 // WithIpaPath sets iPA path.

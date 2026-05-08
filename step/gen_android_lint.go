@@ -7,8 +7,12 @@ package step
 type AndroidLintBuilder struct{ *Builder }
 
 // AndroidLint creates a android-lint step builder (v0).
-func AndroidLint() *AndroidLintBuilder {
-	return &AndroidLintBuilder{Builder: From("android-lint", "0")}
+func AndroidLint(version ...string) *AndroidLintBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AndroidLintBuilder{Builder: From("android-lint", v)}
 }
 
 // WithProjectLocation sets project Location.

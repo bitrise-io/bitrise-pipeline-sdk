@@ -7,8 +7,12 @@ package step
 type SetAndroidApplicationAttributesBuilder struct{ *Builder }
 
 // SetAndroidApplicationAttributes creates a set-android-application-attributes step builder (v0).
-func SetAndroidApplicationAttributes() *SetAndroidApplicationAttributesBuilder {
-	return &SetAndroidApplicationAttributesBuilder{Builder: From("set-android-application-attributes", "0")}
+func SetAndroidApplicationAttributes(version ...string) *SetAndroidApplicationAttributesBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &SetAndroidApplicationAttributesBuilder{Builder: From("set-android-application-attributes", v)}
 }
 
 // WithManifestFile sets androidManifest.xml file path.

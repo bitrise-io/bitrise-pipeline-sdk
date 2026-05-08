@@ -7,8 +7,12 @@ package step
 type OversecuredBuilder struct{ *Builder }
 
 // Oversecured creates a oversecured step builder (v1).
-func Oversecured() *OversecuredBuilder {
-	return &OversecuredBuilder{Builder: From("oversecured", "1")}
+func Oversecured(version ...string) *OversecuredBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &OversecuredBuilder{Builder: From("oversecured", v)}
 }
 
 // WithAccessToken sets aPI Key.

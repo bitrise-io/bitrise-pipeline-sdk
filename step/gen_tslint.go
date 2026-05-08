@@ -7,8 +7,12 @@ package step
 type TslintBuilder struct{ *Builder }
 
 // Tslint creates a tslint step builder (v0).
-func Tslint() *TslintBuilder {
-	return &TslintBuilder{Builder: From("tslint", "0")}
+func Tslint(version ...string) *TslintBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &TslintBuilder{Builder: From("tslint", v)}
 }
 
 // WithWorkdir sets working directory.

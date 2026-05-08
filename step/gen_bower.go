@@ -7,8 +7,12 @@ package step
 type BowerBuilder struct{ *Builder }
 
 // Bower creates a bower step builder (v0).
-func Bower() *BowerBuilder {
-	return &BowerBuilder{Builder: From("bower", "0")}
+func Bower(version ...string) *BowerBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &BowerBuilder{Builder: From("bower", v)}
 }
 
 // WithWorkdir sets working directory.

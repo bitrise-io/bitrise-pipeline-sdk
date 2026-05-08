@@ -7,8 +7,12 @@ package step
 type ChangeAndroidVersioncodeAndVersionnameBuilder struct{ *Builder }
 
 // ChangeAndroidVersioncodeAndVersionname creates a change-android-versioncode-and-versionname step builder (v1).
-func ChangeAndroidVersioncodeAndVersionname() *ChangeAndroidVersioncodeAndVersionnameBuilder {
-	return &ChangeAndroidVersioncodeAndVersionnameBuilder{Builder: From("change-android-versioncode-and-versionname", "1")}
+func ChangeAndroidVersioncodeAndVersionname(version ...string) *ChangeAndroidVersioncodeAndVersionnameBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ChangeAndroidVersioncodeAndVersionnameBuilder{Builder: From("change-android-versioncode-and-versionname", v)}
 }
 
 // WithBuildGradlePath sets path to the build.gradle file.

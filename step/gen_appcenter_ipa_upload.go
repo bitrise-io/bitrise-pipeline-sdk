@@ -7,8 +7,12 @@ package step
 type AppcenterIpaUploadBuilder struct{ *Builder }
 
 // AppcenterIpaUpload creates a appcenter-ipa-upload step builder (v0).
-func AppcenterIpaUpload() *AppcenterIpaUploadBuilder {
-	return &AppcenterIpaUploadBuilder{Builder: From("appcenter-ipa-upload", "0")}
+func AppcenterIpaUpload(version ...string) *AppcenterIpaUploadBuilder {
+	v := "0"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &AppcenterIpaUploadBuilder{Builder: From("appcenter-ipa-upload", v)}
 }
 
 // WithAppId sets application Identifier.

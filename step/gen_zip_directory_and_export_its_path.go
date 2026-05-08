@@ -7,8 +7,12 @@ package step
 type ZipDirectoryAndExportItsPathBuilder struct{ *Builder }
 
 // ZipDirectoryAndExportItsPath creates a zip-directory-and-export-its-path step builder (v1).
-func ZipDirectoryAndExportItsPath() *ZipDirectoryAndExportItsPathBuilder {
-	return &ZipDirectoryAndExportItsPathBuilder{Builder: From("zip-directory-and-export-its-path", "1")}
+func ZipDirectoryAndExportItsPath(version ...string) *ZipDirectoryAndExportItsPathBuilder {
+	v := "1"
+	if len(version) > 0 && version[0] != "" {
+		v = version[0]
+	}
+	return &ZipDirectoryAndExportItsPathBuilder{Builder: From("zip-directory-and-export-its-path", v)}
 }
 
 // WithDirectoryToZip sets path to the directory to zip..
