@@ -90,3 +90,16 @@ func (b *AvdManagerV0Builder) WithEmulatorAbi(value string) *AvdManagerV0Builder
 	b.Builder.WithInput("emulator_abi", value)
 	return b
 }
+
+// avdManagerV0Outputs holds the names of environment variables published
+// by the avd-manager step (v0) at run time.
+type avdManagerV0Outputs struct {
+	// BitriseEmulatorSerial is the "Emulator serial" output env var.
+	BitriseEmulatorSerial string
+}
+
+// AvdManagerV0Outputs provides typed access to the environment variable names
+// that avd-manager (v0) exports after a successful run.
+var AvdManagerV0Outputs = avdManagerV0Outputs{
+	BitriseEmulatorSerial: "BITRISE_EMULATOR_SERIAL",
+}

@@ -24,3 +24,16 @@ func (b *GetNpmPackageVersionBuilder) WithPackageJsonPath(value string) *GetNpmP
 	b.Builder.WithInput("package_json_path", value)
 	return b
 }
+
+// getNpmPackageVersionOutputs holds the names of environment variables published
+// by the get-npm-package-version step (v1) at run time.
+type getNpmPackageVersionOutputs struct {
+	// NpmPackageVersion is the "npm package version" output env var.
+	NpmPackageVersion string
+}
+
+// GetNpmPackageVersionOutputs provides typed access to the environment variable names
+// that get-npm-package-version (v1) exports after a successful run.
+var GetNpmPackageVersionOutputs = getNpmPackageVersionOutputs{
+	NpmPackageVersion: "NPM_PACKAGE_VERSION",
+}

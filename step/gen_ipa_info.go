@@ -24,3 +24,37 @@ func (b *IpaInfoBuilder) WithIpaPath(value string) *IpaInfoBuilder {
 	b.Builder.WithInput("ipa_path", value)
 	return b
 }
+
+// ipaInfoOutputs holds the names of environment variables published
+// by the ipa-info step (v1) at run time.
+type ipaInfoOutputs struct {
+	// IosIpaPackageName is the "iOS application package name" output env var.
+	IosIpaPackageName string
+	// IosIpaFileSize is the "iOS IPA file size" output env var.
+	IosIpaFileSize string
+	// IosAppName is the "iOS application name" output env var.
+	IosAppName string
+	// IosAppDisplayName is the "iOS application display name" output env var.
+	IosAppDisplayName string
+	// IosAppVersionName is the "iOS application version name" output env var.
+	IosAppVersionName string
+	// IosAppVersionCode is the "iOS application version code" output env var.
+	IosAppVersionCode string
+	// IosIconPath is the "File path to icon" output env var.
+	IosIconPath string
+	// IosAppProfileName is the "iOS application profile name" output env var.
+	IosAppProfileName string
+}
+
+// IpaInfoOutputs provides typed access to the environment variable names
+// that ipa-info (v1) exports after a successful run.
+var IpaInfoOutputs = ipaInfoOutputs{
+	IosIpaPackageName: "IOS_IPA_PACKAGE_NAME",
+	IosIpaFileSize:    "IOS_IPA_FILE_SIZE",
+	IosAppName:        "IOS_APP_NAME",
+	IosAppDisplayName: "IOS_APP_DISPLAY_NAME",
+	IosAppVersionName: "IOS_APP_VERSION_NAME",
+	IosAppVersionCode: "IOS_APP_VERSION_CODE",
+	IosIconPath:       "IOS_ICON_PATH",
+	IosAppProfileName: "IOS_APP_PROFILE_NAME",
+}

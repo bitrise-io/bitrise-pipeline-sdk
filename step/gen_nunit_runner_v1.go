@@ -54,3 +54,19 @@ func (b *NunitRunnerV1Builder) WithBuildTool(value string) *NunitRunnerV1Builder
 	b.Builder.WithInput("build_tool", value)
 	return b
 }
+
+// nunitRunnerV1Outputs holds the names of environment variables published
+// by the nunit-runner step (v1) at run time.
+type nunitRunnerV1Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// NunitRunnerV1Outputs provides typed access to the environment variable names
+// that nunit-runner (v1) exports after a successful run.
+var NunitRunnerV1Outputs = nunitRunnerV1Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

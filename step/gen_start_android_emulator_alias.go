@@ -17,3 +17,8 @@ type StartAndroidEmulatorBuilder = StartAndroidEmulatorV1Builder
 func StartAndroidEmulator(version ...string) *StartAndroidEmulatorV1Builder {
 	return StartAndroidEmulatorV1(version...)
 }
+
+// StartAndroidEmulatorOutputs provides typed access to the environment variable names
+// published by start-android-emulator at the latest major version (v1).
+// For outputs of a specific major version use StartAndroidEmulatorV{N}Outputs directly.
+var StartAndroidEmulatorOutputs = StartAndroidEmulatorV1Outputs

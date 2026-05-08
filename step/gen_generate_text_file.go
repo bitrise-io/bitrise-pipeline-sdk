@@ -30,3 +30,16 @@ func (b *GenerateTextFileBuilder) WithFileContent(value string) *GenerateTextFil
 	b.Builder.WithInput("file_content", value)
 	return b
 }
+
+// generateTextFileOutputs holds the names of environment variables published
+// by the generate-text-file step (v0) at run time.
+type generateTextFileOutputs struct {
+	// GeneratedTextFilePath is the "Path to the generated text file" output env var.
+	GeneratedTextFilePath string
+}
+
+// GenerateTextFileOutputs provides typed access to the environment variable names
+// that generate-text-file (v0) exports after a successful run.
+var GenerateTextFileOutputs = generateTextFileOutputs{
+	GeneratedTextFilePath: "GENERATED_TEXT_FILE_PATH",
+}

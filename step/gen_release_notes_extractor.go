@@ -30,3 +30,19 @@ func (b *ReleaseNotesExtractorBuilder) WithTrimMarkdownOutput(value string) *Rel
 	b.Builder.WithInput("trim_markdown_output", value)
 	return b
 }
+
+// releaseNotesExtractorOutputs holds the names of environment variables published
+// by the release-notes-extractor step (v0) at run time.
+type releaseNotesExtractorOutputs struct {
+	// ExtractedReleaseNotes is the "Release notes" output env var.
+	ExtractedReleaseNotes string
+	// ExtractedVersionName is the "Version name" output env var.
+	ExtractedVersionName string
+}
+
+// ReleaseNotesExtractorOutputs provides typed access to the environment variable names
+// that release-notes-extractor (v0) exports after a successful run.
+var ReleaseNotesExtractorOutputs = releaseNotesExtractorOutputs{
+	ExtractedReleaseNotes: "EXTRACTED_RELEASE_NOTES",
+	ExtractedVersionName:  "EXTRACTED_VERSION_NAME",
+}

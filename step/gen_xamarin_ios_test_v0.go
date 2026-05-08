@@ -70,3 +70,19 @@ func (b *XamarinIosTestV0Builder) WithSimulatorOsVersion(value string) *XamarinI
 	b.Builder.WithInput("simulator_os_version", value)
 	return b
 }
+
+// xamarinIosTestV0Outputs holds the names of environment variables published
+// by the xamarin-ios-test step (v0) at run time.
+type xamarinIosTestV0Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// XamarinIosTestV0Outputs provides typed access to the environment variable names
+// that xamarin-ios-test (v0) exports after a successful run.
+var XamarinIosTestV0Outputs = xamarinIosTestV0Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

@@ -17,3 +17,8 @@ type CreateAndroidEmulatorBuilder = CreateAndroidEmulatorV1Builder
 func CreateAndroidEmulator(version ...string) *CreateAndroidEmulatorV1Builder {
 	return CreateAndroidEmulatorV1(version...)
 }
+
+// CreateAndroidEmulatorOutputs provides typed access to the environment variable names
+// published by create-android-emulator at the latest major version (v1).
+// For outputs of a specific major version use CreateAndroidEmulatorV{N}Outputs directly.
+var CreateAndroidEmulatorOutputs = CreateAndroidEmulatorV1Outputs

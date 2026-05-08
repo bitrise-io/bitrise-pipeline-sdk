@@ -54,3 +54,16 @@ func (b *AwsDeviceFarmFileDeployBuilder) WithUploadType(value string) *AwsDevice
 	b.Builder.WithInput("upload_type", value)
 	return b
 }
+
+// awsDeviceFarmFileDeployOutputs holds the names of environment variables published
+// by the aws-device-farm-file-deploy step (v0) at run time.
+type awsDeviceFarmFileDeployOutputs struct {
+	// BitriseDevicefarmUploadArn is the "Upload ARN" output env var.
+	BitriseDevicefarmUploadArn string
+}
+
+// AwsDeviceFarmFileDeployOutputs provides typed access to the environment variable names
+// that aws-device-farm-file-deploy (v0) exports after a successful run.
+var AwsDeviceFarmFileDeployOutputs = awsDeviceFarmFileDeployOutputs{
+	BitriseDevicefarmUploadArn: "BITRISE_DEVICEFARM_UPLOAD_ARN",
+}

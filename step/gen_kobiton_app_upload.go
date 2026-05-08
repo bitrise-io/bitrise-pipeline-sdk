@@ -60,3 +60,22 @@ func (b *KobitonAppUploadBuilder) WithKobitonApiKey(value string) *KobitonAppUpl
 	b.Builder.WithInput("kobiton_api_key", value)
 	return b
 }
+
+// kobitonAppUploadOutputs holds the names of environment variables published
+// by the kobiton-app-upload step (v1) at run time.
+type kobitonAppUploadOutputs struct {
+	// KobitonAppId is the "App ID" output env var.
+	KobitonAppId string
+	// KobitonUploadUrl is the "Upload URL" output env var.
+	KobitonUploadUrl string
+	// KobitonAppPath is the "App Path" output env var.
+	KobitonAppPath string
+}
+
+// KobitonAppUploadOutputs provides typed access to the environment variable names
+// that kobiton-app-upload (v1) exports after a successful run.
+var KobitonAppUploadOutputs = kobitonAppUploadOutputs{
+	KobitonAppId:     "KOBITON_APP_ID",
+	KobitonUploadUrl: "KOBITON_UPLOAD_URL",
+	KobitonAppPath:   "KOBITON_APP_PATH",
+}

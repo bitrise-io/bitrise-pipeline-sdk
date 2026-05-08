@@ -13,3 +13,8 @@ type WaldoUploadBuilder = WaldoUploadV2Builder
 func WaldoUpload(version ...string) *WaldoUploadV2Builder {
 	return WaldoUploadV2(version...)
 }
+
+// WaldoUploadOutputs provides typed access to the environment variable names
+// published by waldo-upload at the latest major version (v2).
+// For outputs of a specific major version use WaldoUploadV{N}Outputs directly.
+var WaldoUploadOutputs = WaldoUploadV2Outputs

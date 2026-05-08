@@ -36,3 +36,16 @@ func (b *CreateGithubAppTokenBuilder) WithPrivateKeyPath(value string) *CreateGi
 	b.Builder.WithInput("private_key_path", value)
 	return b
 }
+
+// createGithubAppTokenOutputs holds the names of environment variables published
+// by the create-github-app-token step (v1) at run time.
+type createGithubAppTokenOutputs struct {
+	// GithubAppToken is the "Token" output env var.
+	GithubAppToken string
+}
+
+// CreateGithubAppTokenOutputs provides typed access to the environment variable names
+// that create-github-app-token (v1) exports after a successful run.
+var CreateGithubAppTokenOutputs = createGithubAppTokenOutputs{
+	GithubAppToken: "GITHUB_APP_TOKEN",
+}

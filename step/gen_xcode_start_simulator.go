@@ -42,3 +42,19 @@ func (b *XcodeStartSimulatorBuilder) WithReset(value string) *XcodeStartSimulato
 	b.Builder.WithInput("reset", value)
 	return b
 }
+
+// xcodeStartSimulatorOutputs holds the names of environment variables published
+// by the xcode-start-simulator step (v0) at run time.
+type xcodeStartSimulatorOutputs struct {
+	// BitriseSimulatorStatus is the "The status of the simulator, will be set to `booted`, `failed` or `hanged`." output env var.
+	BitriseSimulatorStatus string
+	// BitriseXcodeDestination is the "Device destination specifier" output env var.
+	BitriseXcodeDestination string
+}
+
+// XcodeStartSimulatorOutputs provides typed access to the environment variable names
+// that xcode-start-simulator (v0) exports after a successful run.
+var XcodeStartSimulatorOutputs = xcodeStartSimulatorOutputs{
+	BitriseSimulatorStatus:  "BITRISE_SIMULATOR_STATUS",
+	BitriseXcodeDestination: "BITRISE_XCODE_DESTINATION",
+}

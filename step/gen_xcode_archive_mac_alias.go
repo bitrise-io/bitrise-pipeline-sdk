@@ -13,3 +13,8 @@ type XcodeArchiveMacBuilder = XcodeArchiveMacV1Builder
 func XcodeArchiveMac(version ...string) *XcodeArchiveMacV1Builder {
 	return XcodeArchiveMacV1(version...)
 }
+
+// XcodeArchiveMacOutputs provides typed access to the environment variable names
+// published by xcode-archive-mac at the latest major version (v1).
+// For outputs of a specific major version use XcodeArchiveMacV{N}Outputs directly.
+var XcodeArchiveMacOutputs = XcodeArchiveMacV1Outputs

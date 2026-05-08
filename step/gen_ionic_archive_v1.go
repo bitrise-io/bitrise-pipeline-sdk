@@ -96,3 +96,34 @@ func (b *IonicArchiveV1Builder) WithWorkdir(value string) *IonicArchiveV1Builder
 	b.Builder.WithInput("workdir", value)
 	return b
 }
+
+// ionicArchiveV1Outputs holds the names of environment variables published
+// by the ionic-archive step (v1) at run time.
+type ionicArchiveV1Outputs struct {
+	// BitriseIpaPath is the "The created ios .ipa file's path" output env var.
+	BitriseIpaPath string
+	// BitriseAppDirPath is the "The created ios .app dir's path" output env var.
+	BitriseAppDirPath string
+	// BitriseAppPath is the "The created ios .app.zip file's path" output env var.
+	BitriseAppPath string
+	// BitriseDsymDirPath is the "The created ios .dSYM dir's path" output env var.
+	BitriseDsymDirPath string
+	// BitriseDsymPath is the "The created ios .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseApkPath is the "The created android .apk file's path" output env var.
+	BitriseApkPath string
+	// BitriseApkPathList is the "The created android .apk file paths (separated via |)" output env var.
+	BitriseApkPathList string
+}
+
+// IonicArchiveV1Outputs provides typed access to the environment variable names
+// that ionic-archive (v1) exports after a successful run.
+var IonicArchiveV1Outputs = ionicArchiveV1Outputs{
+	BitriseIpaPath:     "BITRISE_IPA_PATH",
+	BitriseAppDirPath:  "BITRISE_APP_DIR_PATH",
+	BitriseAppPath:     "BITRISE_APP_PATH",
+	BitriseDsymDirPath: "BITRISE_DSYM_DIR_PATH",
+	BitriseDsymPath:    "BITRISE_DSYM_PATH",
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseApkPathList: "BITRISE_APK_PATH_LIST",
+}

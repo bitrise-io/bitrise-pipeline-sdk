@@ -17,3 +17,8 @@ type XamarinAndroidTestBuilder = XamarinAndroidTestV1Builder
 func XamarinAndroidTest(version ...string) *XamarinAndroidTestV1Builder {
 	return XamarinAndroidTestV1(version...)
 }
+
+// XamarinAndroidTestOutputs provides typed access to the environment variable names
+// published by xamarin-android-test at the latest major version (v1).
+// For outputs of a specific major version use XamarinAndroidTestV{N}Outputs directly.
+var XamarinAndroidTestOutputs = XamarinAndroidTestV1Outputs

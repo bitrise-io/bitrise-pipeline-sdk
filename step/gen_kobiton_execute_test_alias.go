@@ -13,3 +13,8 @@ type KobitonExecuteTestBuilder = KobitonExecuteTestV2Builder
 func KobitonExecuteTest(version ...string) *KobitonExecuteTestV2Builder {
 	return KobitonExecuteTestV2(version...)
 }
+
+// KobitonExecuteTestOutputs provides typed access to the environment variable names
+// published by kobiton-execute-test at the latest major version (v2).
+// For outputs of a specific major version use KobitonExecuteTestV{N}Outputs directly.
+var KobitonExecuteTestOutputs = KobitonExecuteTestV2Outputs

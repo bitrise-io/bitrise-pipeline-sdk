@@ -13,3 +13,8 @@ type XcodeAnalyzeBuilder = XcodeAnalyzeV2Builder
 func XcodeAnalyze(version ...string) *XcodeAnalyzeV2Builder {
 	return XcodeAnalyzeV2(version...)
 }
+
+// XcodeAnalyzeOutputs provides typed access to the environment variable names
+// published by xcode-analyze at the latest major version (v2).
+// For outputs of a specific major version use XcodeAnalyzeV{N}Outputs directly.
+var XcodeAnalyzeOutputs = XcodeAnalyzeV2Outputs

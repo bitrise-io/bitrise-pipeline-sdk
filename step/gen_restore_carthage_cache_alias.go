@@ -13,3 +13,8 @@ type RestoreCarthageCacheBuilder = RestoreCarthageCacheV3Builder
 func RestoreCarthageCache(version ...string) *RestoreCarthageCacheV3Builder {
 	return RestoreCarthageCacheV3(version...)
 }
+
+// RestoreCarthageCacheOutputs provides typed access to the environment variable names
+// published by restore-carthage-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreCarthageCacheV{N}Outputs directly.
+var RestoreCarthageCacheOutputs = RestoreCarthageCacheV3Outputs

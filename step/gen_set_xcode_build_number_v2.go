@@ -66,3 +66,16 @@ func (b *SetXcodeBuildNumberV2Builder) WithVerbose(value string) *SetXcodeBuildN
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// setXcodeBuildNumberV2Outputs holds the names of environment variables published
+// by the set-xcode-build-number step (v2) at run time.
+type setXcodeBuildNumberV2Outputs struct {
+	// XcodeBundleVersion is the "Xcode Bundle Version" output env var.
+	XcodeBundleVersion string
+}
+
+// SetXcodeBuildNumberV2Outputs provides typed access to the environment variable names
+// that set-xcode-build-number (v2) exports after a successful run.
+var SetXcodeBuildNumberV2Outputs = setXcodeBuildNumberV2Outputs{
+	XcodeBundleVersion: "XCODE_BUNDLE_VERSION",
+}

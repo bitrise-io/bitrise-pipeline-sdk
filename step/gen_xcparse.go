@@ -162,3 +162,28 @@ func (b *XcparseBuilder) WithVerbose(value string) *XcparseBuilder {
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// xcparseOutputs holds the names of environment variables published
+// by the xcparse step (v0) at run time.
+type xcparseOutputs struct {
+	// XcparseAttachmentsPath is the "The full test attachments zip path" output env var.
+	XcparseAttachmentsPath string
+	// XcparseCodeCoveragePath is the "The full test code coverage zip path" output env var.
+	XcparseCodeCoveragePath string
+	// XcparseLogsPath is the "The full test logs zip path" output env var.
+	XcparseLogsPath string
+	// XcparseScreenshotsPath is the "The full test screenshots zip path" output env var.
+	XcparseScreenshotsPath string
+	// XcparseVersion is the "xcparse version" output env var.
+	XcparseVersion string
+}
+
+// XcparseOutputs provides typed access to the environment variable names
+// that xcparse (v0) exports after a successful run.
+var XcparseOutputs = xcparseOutputs{
+	XcparseAttachmentsPath:  "XCPARSE_ATTACHMENTS_PATH",
+	XcparseCodeCoveragePath: "XCPARSE_CODE_COVERAGE_PATH",
+	XcparseLogsPath:         "XCPARSE_LOGS_PATH",
+	XcparseScreenshotsPath:  "XCPARSE_SCREENSHOTS_PATH",
+	XcparseVersion:          "XCPARSE_VERSION",
+}

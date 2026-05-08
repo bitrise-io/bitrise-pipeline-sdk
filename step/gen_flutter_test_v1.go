@@ -48,3 +48,19 @@ func (b *FlutterTestV1Builder) WithTestsPathPattern(value string) *FlutterTestV1
 	b.Builder.WithInput("tests_path_pattern", value)
 	return b
 }
+
+// flutterTestV1Outputs holds the names of environment variables published
+// by the flutter-test step (v1) at run time.
+type flutterTestV1Outputs struct {
+	// BitriseFlutterCoveragePath is the "The path of the generated `lcov.info`" output env var.
+	BitriseFlutterCoveragePath string
+	// BitriseFlutterTestresultPath is the "The path of the generated json test report" output env var.
+	BitriseFlutterTestresultPath string
+}
+
+// FlutterTestV1Outputs provides typed access to the environment variable names
+// that flutter-test (v1) exports after a successful run.
+var FlutterTestV1Outputs = flutterTestV1Outputs{
+	BitriseFlutterCoveragePath:   "BITRISE_FLUTTER_COVERAGE_PATH",
+	BitriseFlutterTestresultPath: "BITRISE_FLUTTER_TESTRESULT_PATH",
+}

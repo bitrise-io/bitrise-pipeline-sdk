@@ -54,3 +54,16 @@ func (b *AppetizeDeployBuilder) WithVerbose(value string) *AppetizeDeployBuilder
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// appetizeDeployOutputs holds the names of environment variables published
+// by the appetize-deploy step (v0) at run time.
+type appetizeDeployOutputs struct {
+	// AppetizeAppUrl is the "Public URL for the app" output env var.
+	AppetizeAppUrl string
+}
+
+// AppetizeDeployOutputs provides typed access to the environment variable names
+// that appetize-deploy (v0) exports after a successful run.
+var AppetizeDeployOutputs = appetizeDeployOutputs{
+	AppetizeAppUrl: "APPETIZE_APP_URL",
+}

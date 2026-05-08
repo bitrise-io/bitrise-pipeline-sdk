@@ -66,3 +66,22 @@ func (b *AuthenticateWithAwsBuilder) WithVerbose(value string) *AuthenticateWith
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// authenticateWithAwsOutputs holds the names of environment variables published
+// by the authenticate-with-aws step (v0) at run time.
+type authenticateWithAwsOutputs struct {
+	// AwsAccessKeyId is the "AWS Access Key ID" output env var.
+	AwsAccessKeyId string
+	// AwsSecretAccessKey is the "AWS Secret Access Key" output env var.
+	AwsSecretAccessKey string
+	// AwsSessionToken is the "AWS Session Token" output env var.
+	AwsSessionToken string
+}
+
+// AuthenticateWithAwsOutputs provides typed access to the environment variable names
+// that authenticate-with-aws (v0) exports after a successful run.
+var AuthenticateWithAwsOutputs = authenticateWithAwsOutputs{
+	AwsAccessKeyId:     "AWS_ACCESS_KEY_ID",
+	AwsSecretAccessKey: "AWS_SECRET_ACCESS_KEY",
+	AwsSessionToken:    "AWS_SESSION_TOKEN",
+}

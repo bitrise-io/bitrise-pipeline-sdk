@@ -24,3 +24,16 @@ func (b *GoListV0Builder) WithExclude(value string) *GoListV0Builder {
 	b.Builder.WithInput("exclude", value)
 	return b
 }
+
+// goListV0Outputs holds the names of environment variables published
+// by the go-list step (v0) at run time.
+type goListV0Outputs struct {
+	// BitriseGoPackages is the "List of go packages." output env var.
+	BitriseGoPackages string
+}
+
+// GoListV0Outputs provides typed access to the environment variable names
+// that go-list (v0) exports after a successful run.
+var GoListV0Outputs = goListV0Outputs{
+	BitriseGoPackages: "BITRISE_GO_PACKAGES",
+}

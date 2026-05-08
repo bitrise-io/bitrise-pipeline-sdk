@@ -17,3 +17,8 @@ type AppcenterDeployAndroidBuilder = AppcenterDeployAndroidV2Builder
 func AppcenterDeployAndroid(version ...string) *AppcenterDeployAndroidV2Builder {
 	return AppcenterDeployAndroidV2(version...)
 }
+
+// AppcenterDeployAndroidOutputs provides typed access to the environment variable names
+// published by appcenter-deploy-android at the latest major version (v2).
+// For outputs of a specific major version use AppcenterDeployAndroidV{N}Outputs directly.
+var AppcenterDeployAndroidOutputs = AppcenterDeployAndroidV2Outputs

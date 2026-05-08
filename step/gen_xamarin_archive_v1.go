@@ -76,3 +76,52 @@ func (b *XamarinArchiveV1Builder) WithMacosBuildCommandCustomOptions(value strin
 	b.Builder.WithInput("macos_build_command_custom_options", value)
 	return b
 }
+
+// xamarinArchiveV1Outputs holds the names of environment variables published
+// by the xamarin-archive step (v1) at run time.
+type xamarinArchiveV1Outputs struct {
+	// BitriseApkPath is the "The created Android .apk file's path" output env var.
+	BitriseApkPath string
+	// BitriseAabPath is the "The created Android .aab file's path" output env var.
+	BitriseAabPath string
+	// BitriseXcarchivePath is the "The created iOS .xcarchive file's path" output env var.
+	BitriseXcarchivePath string
+	// BitriseIpaPath is the "The created iOS .ipa file's path" output env var.
+	BitriseIpaPath string
+	// BitriseDsymPath is the "The created iOS .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseAppPath is the "The create iOS .app file's path" output env var.
+	BitriseAppPath string
+	// BitriseTvosXcarchivePath is the "The created tvOS .xcarchive file's path" output env var.
+	BitriseTvosXcarchivePath string
+	// BitriseTvosIpaPath is the "The created tvOS .ipa file's path" output env var.
+	BitriseTvosIpaPath string
+	// BitriseTvosDsymPath is the "The created tvOS .dSYM file's path" output env var.
+	BitriseTvosDsymPath string
+	// BitriseTvosAppPath is the "The create tvOS .app file's path" output env var.
+	BitriseTvosAppPath string
+	// BitriseMacosXcarchivePath is the "The created macOS .xcarchive file's path" output env var.
+	BitriseMacosXcarchivePath string
+	// BitriseMacosAppPath is the "The created macOS .app file's path" output env var.
+	BitriseMacosAppPath string
+	// BitriseMacosPkgPath is the "The created macOS .pkg file's path" output env var.
+	BitriseMacosPkgPath string
+}
+
+// XamarinArchiveV1Outputs provides typed access to the environment variable names
+// that xamarin-archive (v1) exports after a successful run.
+var XamarinArchiveV1Outputs = xamarinArchiveV1Outputs{
+	BitriseApkPath:            "BITRISE_APK_PATH",
+	BitriseAabPath:            "BITRISE_AAB_PATH",
+	BitriseXcarchivePath:      "BITRISE_XCARCHIVE_PATH",
+	BitriseIpaPath:            "BITRISE_IPA_PATH",
+	BitriseDsymPath:           "BITRISE_DSYM_PATH",
+	BitriseAppPath:            "BITRISE_APP_PATH",
+	BitriseTvosXcarchivePath:  "BITRISE_TVOS_XCARCHIVE_PATH",
+	BitriseTvosIpaPath:        "BITRISE_TVOS_IPA_PATH",
+	BitriseTvosDsymPath:       "BITRISE_TVOS_DSYM_PATH",
+	BitriseTvosAppPath:        "BITRISE_TVOS_APP_PATH",
+	BitriseMacosXcarchivePath: "BITRISE_MACOS_XCARCHIVE_PATH",
+	BitriseMacosAppPath:       "BITRISE_MACOS_APP_PATH",
+	BitriseMacosPkgPath:       "BITRISE_MACOS_PKG_PATH",
+}

@@ -72,3 +72,22 @@ func (b *ExportXcarchiveMacV0Builder) WithLegacyExportOutputFormat(value string)
 	b.Builder.WithInput("legacy_export_output_format", value)
 	return b
 }
+
+// exportXcarchiveMacV0Outputs holds the names of environment variables published
+// by the export-xcarchive-mac step (v0) at run time.
+type exportXcarchiveMacV0Outputs struct {
+	// BitriseAppPath is the "The created macOS .app file's path" output env var.
+	BitriseAppPath string
+	// BitrisePkgPath is the "The created macOS .pkg file's path" output env var.
+	BitrisePkgPath string
+	// BitriseIdedistributionLogsPath is the "Path to the xcdistributionlogs zip" output env var.
+	BitriseIdedistributionLogsPath string
+}
+
+// ExportXcarchiveMacV0Outputs provides typed access to the environment variable names
+// that export-xcarchive-mac (v0) exports after a successful run.
+var ExportXcarchiveMacV0Outputs = exportXcarchiveMacV0Outputs{
+	BitriseAppPath:                 "BITRISE_APP_PATH",
+	BitrisePkgPath:                 "BITRISE_PKG_PATH",
+	BitriseIdedistributionLogsPath: "BITRISE_IDEDISTRIBUTION_LOGS_PATH",
+}

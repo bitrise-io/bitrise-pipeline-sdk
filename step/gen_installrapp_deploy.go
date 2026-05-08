@@ -48,3 +48,22 @@ func (b *InstallrappDeployBuilder) WithAdd(value string) *InstallrappDeployBuild
 	b.Builder.WithInput("add", value)
 	return b
 }
+
+// installrappDeployOutputs holds the names of environment variables published
+// by the installrapp-deploy step (v1) at run time.
+type installrappDeployOutputs struct {
+	// InstallrappDeployStatus is the "Deployment result: 'success' or 'failed'" output env var.
+	InstallrappDeployStatus string
+	// InstallrappDeployBuildUrl is the "URL of the InstallrApp build" output env var.
+	InstallrappDeployBuildUrl string
+	// InstallrappDeployJson is the "Raw JSON response of the InstallrApp deploy" output env var.
+	InstallrappDeployJson string
+}
+
+// InstallrappDeployOutputs provides typed access to the environment variable names
+// that installrapp-deploy (v1) exports after a successful run.
+var InstallrappDeployOutputs = installrappDeployOutputs{
+	InstallrappDeployStatus:   "INSTALLRAPP_DEPLOY_STATUS",
+	InstallrappDeployBuildUrl: "INSTALLRAPP_DEPLOY_BUILD_URL",
+	InstallrappDeployJson:     "INSTALLRAPP_DEPLOY_JSON",
+}

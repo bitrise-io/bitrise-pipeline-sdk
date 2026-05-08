@@ -54,3 +54,16 @@ func (b *VirtualDeviceTestingForIosV0Builder) WithApiToken(value string) *Virtua
 	b.Builder.WithInput("api_token", value)
 	return b
 }
+
+// virtualDeviceTestingForIosV0Outputs holds the names of environment variables published
+// by the virtual-device-testing-for-ios step (v0) at run time.
+type virtualDeviceTestingForIosV0Outputs struct {
+	// VdtestingDownloadedFilesDir is the "Downloaded files directory" output env var.
+	VdtestingDownloadedFilesDir string
+}
+
+// VirtualDeviceTestingForIosV0Outputs provides typed access to the environment variable names
+// that virtual-device-testing-for-ios (v0) exports after a successful run.
+var VirtualDeviceTestingForIosV0Outputs = virtualDeviceTestingForIosV0Outputs{
+	VdtestingDownloadedFilesDir: "VDTESTING_DOWNLOADED_FILES_DIR",
+}

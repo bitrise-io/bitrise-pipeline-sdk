@@ -36,3 +36,16 @@ func (b *RestoreDartCacheV3Builder) WithTimeout(value string) *RestoreDartCacheV
 	b.Builder.WithInput("timeout", value)
 	return b
 }
+
+// restoreDartCacheV3Outputs holds the names of environment variables published
+// by the restore-dart-cache step (v3) at run time.
+type restoreDartCacheV3Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreDartCacheV3Outputs provides typed access to the environment variable names
+// that restore-dart-cache (v3) exports after a successful run.
+var RestoreDartCacheV3Outputs = restoreDartCacheV3Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

@@ -24,3 +24,16 @@ func (b *RestoreNpmCacheV1Builder) WithVerbose(value string) *RestoreNpmCacheV1B
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// restoreNpmCacheV1Outputs holds the names of environment variables published
+// by the restore-npm-cache step (v1) at run time.
+type restoreNpmCacheV1Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreNpmCacheV1Outputs provides typed access to the environment variable names
+// that restore-npm-cache (v1) exports after a successful run.
+var RestoreNpmCacheV1Outputs = restoreNpmCacheV1Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

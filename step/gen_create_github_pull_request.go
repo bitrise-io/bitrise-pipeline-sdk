@@ -54,3 +54,16 @@ func (b *CreateGithubPullRequestBuilder) WithRepoName(value string) *CreateGithu
 	b.Builder.WithInput("repo_name", value)
 	return b
 }
+
+// createGithubPullRequestOutputs holds the names of environment variables published
+// by the create-github-pull-request step (v0) at run time.
+type createGithubPullRequestOutputs struct {
+	// PrHtmlUrl is the "Pull Request URL" output env var.
+	PrHtmlUrl string
+}
+
+// CreateGithubPullRequestOutputs provides typed access to the environment variable names
+// that create-github-pull-request (v0) exports after a successful run.
+var CreateGithubPullRequestOutputs = createGithubPullRequestOutputs{
+	PrHtmlUrl: "PR_HTML_URL",
+}

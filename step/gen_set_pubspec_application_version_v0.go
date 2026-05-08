@@ -36,3 +36,22 @@ func (b *SetPubspecApplicationVersionV0Builder) WithApplicationVersion(value str
 	b.Builder.WithInput("application_version", value)
 	return b
 }
+
+// setPubspecApplicationVersionV0Outputs holds the names of environment variables published
+// by the set-pubspec-application-version step (v0) at run time.
+type setPubspecApplicationVersionV0Outputs struct {
+	// DartPubspecAppVersion is the "Flutter / Dart pubspec application version which was new set or already set as input." output env var.
+	DartPubspecAppVersion string
+	// DartPubspecAppBuildNumber is the "Flutter / Dart pubspec application build number which was set as input." output env var.
+	DartPubspecAppBuildNumber string
+	// DartPubspecAppVersionString is the "Flutter / Dart pubspec application version string with version+buildnumber which is set in pubspec.yaml." output env var.
+	DartPubspecAppVersionString string
+}
+
+// SetPubspecApplicationVersionV0Outputs provides typed access to the environment variable names
+// that set-pubspec-application-version (v0) exports after a successful run.
+var SetPubspecApplicationVersionV0Outputs = setPubspecApplicationVersionV0Outputs{
+	DartPubspecAppVersion:       "DART_PUBSPEC_APP_VERSION",
+	DartPubspecAppBuildNumber:   "DART_PUBSPEC_APP_BUILD_NUMBER",
+	DartPubspecAppVersionString: "DART_PUBSPEC_APP_VERSION_STRING",
+}

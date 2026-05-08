@@ -40,3 +40,16 @@ func (b *CachePullV0Builder) WithCacheApiUrl(value string) *CachePullV0Builder {
 	b.Builder.WithInput("cache_api_url", value)
 	return b
 }
+
+// cachePullV0Outputs holds the names of environment variables published
+// by the cache-pull step (v0) at run time.
+type cachePullV0Outputs struct {
+	// BitriseCacheInfoPath is the "Bitrise Cache-Info (JSON) file path" output env var.
+	BitriseCacheInfoPath string
+}
+
+// CachePullV0Outputs provides typed access to the environment variable names
+// that cache-pull (v0) exports after a successful run.
+var CachePullV0Outputs = cachePullV0Outputs{
+	BitriseCacheInfoPath: "BITRISE_CACHE_INFO_PATH",
+}

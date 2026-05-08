@@ -90,3 +90,22 @@ func (b *FirebaseAppDistributionBuilder) WithIsDebug(value string) *FirebaseAppD
 	b.Builder.WithInput("is_debug", value)
 	return b
 }
+
+// firebaseAppDistributionOutputs holds the names of environment variables published
+// by the firebase-app-distribution step (v0) at run time.
+type firebaseAppDistributionOutputs struct {
+	// FirebaseBitriseConsoleUrl is the "Firebase Console URL" output env var.
+	FirebaseBitriseConsoleUrl string
+	// FirebaseBitriseAppDistributionUrl is the "Firebase App Distribution URL" output env var.
+	FirebaseBitriseAppDistributionUrl string
+	// FirebaseBitriseAppDistributionReleaseId is the "Firebase App Distribution Release ID" output env var.
+	FirebaseBitriseAppDistributionReleaseId string
+}
+
+// FirebaseAppDistributionOutputs provides typed access to the environment variable names
+// that firebase-app-distribution (v0) exports after a successful run.
+var FirebaseAppDistributionOutputs = firebaseAppDistributionOutputs{
+	FirebaseBitriseConsoleUrl:               "FIREBASE_BITRISE_CONSOLE_URL",
+	FirebaseBitriseAppDistributionUrl:       "FIREBASE_BITRISE_APP_DISTRIBUTION_URL",
+	FirebaseBitriseAppDistributionReleaseId: "FIREBASE_BITRISE_APP_DISTRIBUTION_RELEASE_ID",
+}

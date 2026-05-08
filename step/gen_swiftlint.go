@@ -54,3 +54,19 @@ func (b *SwiftlintBuilder) WithQuiet(value string) *SwiftlintBuilder {
 	b.Builder.WithInput("quiet", value)
 	return b
 }
+
+// swiftlintOutputs holds the names of environment variables published
+// by the swiftlint step (v0) at run time.
+type swiftlintOutputs struct {
+	// SwiftlintReport is the "A Swiftlint report" output env var.
+	SwiftlintReport string
+	// SwiftlintReportPath is the "A Swiftlint report path" output env var.
+	SwiftlintReportPath string
+}
+
+// SwiftlintOutputs provides typed access to the environment variable names
+// that swiftlint (v0) exports after a successful run.
+var SwiftlintOutputs = swiftlintOutputs{
+	SwiftlintReport:     "SWIFTLINT_REPORT",
+	SwiftlintReportPath: "SWIFTLINT_REPORT_PATH",
+}

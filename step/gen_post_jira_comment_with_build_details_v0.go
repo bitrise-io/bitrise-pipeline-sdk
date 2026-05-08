@@ -60,3 +60,16 @@ func (b *PostJiraCommentWithBuildDetailsV0Builder) WithJiraUrl(value string) *Po
 	b.Builder.WithInput("jira_url", value)
 	return b
 }
+
+// postJiraCommentWithBuildDetailsV0Outputs holds the names of environment variables published
+// by the post-jira-comment-with-build-details step (v0) at run time.
+type postJiraCommentWithBuildDetailsV0Outputs struct {
+	// JiraIssueKey is the "JIRA issue key" output env var.
+	JiraIssueKey string
+}
+
+// PostJiraCommentWithBuildDetailsV0Outputs provides typed access to the environment variable names
+// that post-jira-comment-with-build-details (v0) exports after a successful run.
+var PostJiraCommentWithBuildDetailsV0Outputs = postJiraCommentWithBuildDetailsV0Outputs{
+	JiraIssueKey: "JIRA_ISSUE_KEY",
+}

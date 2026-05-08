@@ -66,3 +66,19 @@ func (b *AuthenticateWithGcpBuilder) WithVerbose(value string) *AuthenticateWith
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// authenticateWithGcpOutputs holds the names of environment variables published
+// by the authenticate-with-gcp step (v0) at run time.
+type authenticateWithGcpOutputs struct {
+	// GoogleAuthToken is the "Google auth token" output env var.
+	GoogleAuthToken string
+	// GoogleApplicationCredentials is the "Google credentials path" output env var.
+	GoogleApplicationCredentials string
+}
+
+// AuthenticateWithGcpOutputs provides typed access to the environment variable names
+// that authenticate-with-gcp (v0) exports after a successful run.
+var AuthenticateWithGcpOutputs = authenticateWithGcpOutputs{
+	GoogleAuthToken:              "GOOGLE_AUTH_TOKEN",
+	GoogleApplicationCredentials: "GOOGLE_APPLICATION_CREDENTIALS",
+}

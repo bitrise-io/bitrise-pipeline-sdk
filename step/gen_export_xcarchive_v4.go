@@ -150,3 +150,22 @@ func (b *ExportXcarchiveV4Builder) WithVerboseLog(value string) *ExportXcarchive
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// exportXcarchiveV4Outputs holds the names of environment variables published
+// by the export-xcarchive step (v4) at run time.
+type exportXcarchiveV4Outputs struct {
+	// BitriseIpaPath is the "iOS or tvOS IPA" output env var.
+	BitriseIpaPath string
+	// BitriseDsymPath is the "The created iOS or tvOS .dSYM zip file's path." output env var.
+	BitriseDsymPath string
+	// BitriseIdedistributionLogsPath is the "xcdistributionlogs" output env var.
+	BitriseIdedistributionLogsPath string
+}
+
+// ExportXcarchiveV4Outputs provides typed access to the environment variable names
+// that export-xcarchive (v4) exports after a successful run.
+var ExportXcarchiveV4Outputs = exportXcarchiveV4Outputs{
+	BitriseIpaPath:                 "BITRISE_IPA_PATH",
+	BitriseDsymPath:                "BITRISE_DSYM_PATH",
+	BitriseIdedistributionLogsPath: "BITRISE_IDEDISTRIBUTION_LOGS_PATH",
+}

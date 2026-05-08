@@ -186,3 +186,19 @@ func (b *VirtualDeviceTestingForAndroidV1Builder) WithQuarantinedTests(value str
 	b.Builder.WithInput("quarantined_tests", value)
 	return b
 }
+
+// virtualDeviceTestingForAndroidV1Outputs holds the names of environment variables published
+// by the virtual-device-testing-for-android step (v1) at run time.
+type virtualDeviceTestingForAndroidV1Outputs struct {
+	// VdtestingDownloadedFilesDir is the "Downloaded files directory" output env var.
+	VdtestingDownloadedFilesDir string
+	// BitriseFlakyTestCases is the "List of flaky test cases" output env var.
+	BitriseFlakyTestCases string
+}
+
+// VirtualDeviceTestingForAndroidV1Outputs provides typed access to the environment variable names
+// that virtual-device-testing-for-android (v1) exports after a successful run.
+var VirtualDeviceTestingForAndroidV1Outputs = virtualDeviceTestingForAndroidV1Outputs{
+	VdtestingDownloadedFilesDir: "VDTESTING_DOWNLOADED_FILES_DIR",
+	BitriseFlakyTestCases:       "BITRISE_FLAKY_TEST_CASES",
+}

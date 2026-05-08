@@ -13,3 +13,8 @@ type SetPubspecApplicationVersionBuilder = SetPubspecApplicationVersionV1Builder
 func SetPubspecApplicationVersion(version ...string) *SetPubspecApplicationVersionV1Builder {
 	return SetPubspecApplicationVersionV1(version...)
 }
+
+// SetPubspecApplicationVersionOutputs provides typed access to the environment variable names
+// published by set-pubspec-application-version at the latest major version (v1).
+// For outputs of a specific major version use SetPubspecApplicationVersionV{N}Outputs directly.
+var SetPubspecApplicationVersionOutputs = SetPubspecApplicationVersionV1Outputs

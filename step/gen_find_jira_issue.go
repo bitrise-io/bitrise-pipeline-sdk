@@ -24,3 +24,16 @@ func (b *FindJiraIssueBuilder) WithFindIssueContent(value string) *FindJiraIssue
 	b.Builder.WithInput("find_issue_content", value)
 	return b
 }
+
+// findJiraIssueOutputs holds the names of environment variables published
+// by the find-jira-issue step (v0) at run time.
+type findJiraIssueOutputs struct {
+	// JiraIssueList is the "Jira Issue(s)" output env var.
+	JiraIssueList string
+}
+
+// FindJiraIssueOutputs provides typed access to the environment variable names
+// that find-jira-issue (v0) exports after a successful run.
+var FindJiraIssueOutputs = findJiraIssueOutputs{
+	JiraIssueList: "JIRA_ISSUE_LIST",
+}

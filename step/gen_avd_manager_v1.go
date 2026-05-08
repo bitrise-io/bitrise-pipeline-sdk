@@ -78,3 +78,16 @@ func (b *AvdManagerV1Builder) WithHeadlessMode(value string) *AvdManagerV1Builde
 	b.Builder.WithInput("headless_mode", value)
 	return b
 }
+
+// avdManagerV1Outputs holds the names of environment variables published
+// by the avd-manager step (v1) at run time.
+type avdManagerV1Outputs struct {
+	// BitriseEmulatorSerial is the "Emulator serial" output env var.
+	BitriseEmulatorSerial string
+}
+
+// AvdManagerV1Outputs provides typed access to the environment variable names
+// that avd-manager (v1) exports after a successful run.
+var AvdManagerV1Outputs = avdManagerV1Outputs{
+	BitriseEmulatorSerial: "BITRISE_EMULATOR_SERIAL",
+}

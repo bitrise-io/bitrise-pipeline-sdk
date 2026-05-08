@@ -144,3 +144,25 @@ func (b *StepsAppGalleryReportsBuilder) WithShowDebugLogs(value string) *StepsAp
 	b.Builder.WithInput("show_debug_logs", value)
 	return b
 }
+
+// stepsAppGalleryReportsOutputs holds the names of environment variables published
+// by the steps-app-gallery-reports step (v0) at run time.
+type stepsAppGalleryReportsOutputs struct {
+	// DownloadInstallationReportLink is the "Download and Installation Report Link" output env var.
+	DownloadInstallationReportLink string
+	// InAppPaymentReportReportLink is the "In-App Payment Report Link" output env var.
+	InAppPaymentReportReportLink string
+	// PaidDownloadReportLink is the "Paid Download Report Link" output env var.
+	PaidDownloadReportLink string
+	// InstallationFailureDataReportLink is the "Installation Failure Data Report Link" output env var.
+	InstallationFailureDataReportLink string
+}
+
+// StepsAppGalleryReportsOutputs provides typed access to the environment variable names
+// that steps-app-gallery-reports (v0) exports after a successful run.
+var StepsAppGalleryReportsOutputs = stepsAppGalleryReportsOutputs{
+	DownloadInstallationReportLink:    "DOWNLOAD_INSTALLATION_REPORT_LINK",
+	InAppPaymentReportReportLink:      "IN_APP_PAYMENT_REPORT_REPORT_LINK",
+	PaidDownloadReportLink:            "PAID_DOWNLOAD_REPORT_LINK",
+	InstallationFailureDataReportLink: "INSTALLATION_FAILURE_DATA_REPORT_LINK",
+}

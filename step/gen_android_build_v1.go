@@ -54,3 +54,28 @@ func (b *AndroidBuildV1Builder) WithArguments(value string) *AndroidBuildV1Build
 	b.Builder.WithInput("arguments", value)
 	return b
 }
+
+// androidBuildV1Outputs holds the names of environment variables published
+// by the android-build step (v1) at run time.
+type androidBuildV1Outputs struct {
+	// BitriseApkPath is the "Path of the generated APK" output env var.
+	BitriseApkPath string
+	// BitriseApkPathList is the "List of the generated APK paths" output env var.
+	BitriseApkPathList string
+	// BitriseAabPath is the "Path of the generated AAB" output env var.
+	BitriseAabPath string
+	// BitriseAabPathList is the "List of the generated AAB paths" output env var.
+	BitriseAabPathList string
+	// BitriseMappingPath is the "Path of the generated mapping.txt" output env var.
+	BitriseMappingPath string
+}
+
+// AndroidBuildV1Outputs provides typed access to the environment variable names
+// that android-build (v1) exports after a successful run.
+var AndroidBuildV1Outputs = androidBuildV1Outputs{
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseApkPathList: "BITRISE_APK_PATH_LIST",
+	BitriseAabPath:     "BITRISE_AAB_PATH",
+	BitriseAabPathList: "BITRISE_AAB_PATH_LIST",
+	BitriseMappingPath: "BITRISE_MAPPING_PATH",
+}

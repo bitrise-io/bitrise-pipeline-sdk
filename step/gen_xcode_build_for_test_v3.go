@@ -174,3 +174,25 @@ func (b *XcodeBuildForTestV3Builder) WithCompressionLevel(value string) *XcodeBu
 	b.Builder.WithInput("compression_level", value)
 	return b
 }
+
+// xcodeBuildForTestV3Outputs holds the names of environment variables published
+// by the xcode-build-for-test step (v3) at run time.
+type xcodeBuildForTestV3Outputs struct {
+	// BitriseTestBundlePath is the "Test Bundle directory" output env var.
+	BitriseTestBundlePath string
+	// BitriseTestBundleZipPath is the "Zipped Test Bundle directory" output env var.
+	BitriseTestBundleZipPath string
+	// BitriseXctestrunFilePath is the "xctestrun file path" output env var.
+	BitriseXctestrunFilePath string
+	// BitriseXcodeRawResultTextPath is the "`xcodebuild build-for-testing` command log file path" output env var.
+	BitriseXcodeRawResultTextPath string
+}
+
+// XcodeBuildForTestV3Outputs provides typed access to the environment variable names
+// that xcode-build-for-test (v3) exports after a successful run.
+var XcodeBuildForTestV3Outputs = xcodeBuildForTestV3Outputs{
+	BitriseTestBundlePath:         "BITRISE_TEST_BUNDLE_PATH",
+	BitriseTestBundleZipPath:      "BITRISE_TEST_BUNDLE_ZIP_PATH",
+	BitriseXctestrunFilePath:      "BITRISE_XCTESTRUN_FILE_PATH",
+	BitriseXcodeRawResultTextPath: "BITRISE_XCODE_RAW_RESULT_TEXT_PATH",
+}

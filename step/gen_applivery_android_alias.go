@@ -13,3 +13,8 @@ type AppliveryAndroidBuilder = AppliveryAndroidV1Builder
 func AppliveryAndroid(version ...string) *AppliveryAndroidV1Builder {
 	return AppliveryAndroidV1(version...)
 }
+
+// AppliveryAndroidOutputs provides typed access to the environment variable names
+// published by applivery-android at the latest major version (v1).
+// For outputs of a specific major version use AppliveryAndroidV{N}Outputs directly.
+var AppliveryAndroidOutputs = AppliveryAndroidV1Outputs

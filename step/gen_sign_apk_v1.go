@@ -90,3 +90,31 @@ func (b *SignApkV1Builder) WithApkPath(value string) *SignApkV1Builder {
 	b.Builder.WithInput("apk_path", value)
 	return b
 }
+
+// signApkV1Outputs holds the names of environment variables published
+// by the sign-apk step (v1) at run time.
+type signApkV1Outputs struct {
+	// BitriseSignedApkPath is the "Path of the signed APK" output env var.
+	BitriseSignedApkPath string
+	// BitriseSignedApkPathList is the "List of the signed APK paths" output env var.
+	BitriseSignedApkPathList string
+	// BitriseSignedAabPath is the "Path of the signed AAB" output env var.
+	BitriseSignedAabPath string
+	// BitriseSignedAabPathList is the "List of the signed AAB paths" output env var.
+	BitriseSignedAabPathList string
+	// BitriseApkPath is the "Path of the signed APK" output env var.
+	BitriseApkPath string
+	// BitriseAabPath is the "Path of the signed AAB" output env var.
+	BitriseAabPath string
+}
+
+// SignApkV1Outputs provides typed access to the environment variable names
+// that sign-apk (v1) exports after a successful run.
+var SignApkV1Outputs = signApkV1Outputs{
+	BitriseSignedApkPath:     "BITRISE_SIGNED_APK_PATH",
+	BitriseSignedApkPathList: "BITRISE_SIGNED_APK_PATH_LIST",
+	BitriseSignedAabPath:     "BITRISE_SIGNED_AAB_PATH",
+	BitriseSignedAabPathList: "BITRISE_SIGNED_AAB_PATH_LIST",
+	BitriseApkPath:           "BITRISE_APK_PATH",
+	BitriseAabPath:           "BITRISE_AAB_PATH",
+}

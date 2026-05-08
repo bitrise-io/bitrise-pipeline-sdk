@@ -54,3 +54,16 @@ func (b *OpenVpnBuilder) WithClientKey(value string) *OpenVpnBuilder {
 	b.Builder.WithInput("client_key", value)
 	return b
 }
+
+// openVpnOutputs holds the names of environment variables published
+// by the open-vpn step (v0) at run time.
+type openVpnOutputs struct {
+	// OpenvpnLogPath is the "Output log file path" output env var.
+	OpenvpnLogPath string
+}
+
+// OpenVpnOutputs provides typed access to the environment variable names
+// that open-vpn (v0) exports after a successful run.
+var OpenVpnOutputs = openVpnOutputs{
+	OpenvpnLogPath: "OPENVPN_LOG_PATH",
+}

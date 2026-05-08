@@ -13,3 +13,8 @@ type CordovaArchiveBuilder = CordovaArchiveV3Builder
 func CordovaArchive(version ...string) *CordovaArchiveV3Builder {
 	return CordovaArchiveV3(version...)
 }
+
+// CordovaArchiveOutputs provides typed access to the environment variable names
+// published by cordova-archive at the latest major version (v3).
+// For outputs of a specific major version use CordovaArchiveV{N}Outputs directly.
+var CordovaArchiveOutputs = CordovaArchiveV3Outputs

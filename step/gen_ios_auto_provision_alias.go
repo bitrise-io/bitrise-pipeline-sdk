@@ -17,3 +17,8 @@ type IosAutoProvisionBuilder = IosAutoProvisionV2Builder
 func IosAutoProvision(version ...string) *IosAutoProvisionV2Builder {
 	return IosAutoProvisionV2(version...)
 }
+
+// IosAutoProvisionOutputs provides typed access to the environment variable names
+// published by ios-auto-provision at the latest major version (v2).
+// For outputs of a specific major version use IosAutoProvisionV{N}Outputs directly.
+var IosAutoProvisionOutputs = IosAutoProvisionV2Outputs

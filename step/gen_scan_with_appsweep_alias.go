@@ -13,3 +13,8 @@ type ScanWithAppsweepBuilder = ScanWithAppsweepV3Builder
 func ScanWithAppsweep(version ...string) *ScanWithAppsweepV3Builder {
 	return ScanWithAppsweepV3(version...)
 }
+
+// ScanWithAppsweepOutputs provides typed access to the environment variable names
+// published by scan-with-appsweep at the latest major version (v3).
+// For outputs of a specific major version use ScanWithAppsweepV{N}Outputs directly.
+var ScanWithAppsweepOutputs = ScanWithAppsweepV3Outputs

@@ -72,3 +72,16 @@ func (b *XcodeTestMacBuilder) WithWorkdir(value string) *XcodeTestMacBuilder {
 	b.Builder.WithInput("workdir", value)
 	return b
 }
+
+// xcodeTestMacOutputs holds the names of environment variables published
+// by the xcode-test-mac step (v1) at run time.
+type xcodeTestMacOutputs struct {
+	// BitriseXcodeTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXcodeTestResult string
+}
+
+// XcodeTestMacOutputs provides typed access to the environment variable names
+// that xcode-test-mac (v1) exports after a successful run.
+var XcodeTestMacOutputs = xcodeTestMacOutputs{
+	BitriseXcodeTestResult: "BITRISE_XCODE_TEST_RESULT",
+}

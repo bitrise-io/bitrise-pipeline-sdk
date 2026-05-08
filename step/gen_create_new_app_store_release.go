@@ -94,3 +94,16 @@ func (b *CreateNewAppStoreReleaseBuilder) WithVerbose(value string) *CreateNewAp
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// createNewAppStoreReleaseOutputs holds the names of environment variables published
+// by the create-new-app-store-release step (v1) at run time.
+type createNewAppStoreReleaseOutputs struct {
+	// BitriseReleaseSlug is the "Release slug" output env var.
+	BitriseReleaseSlug string
+}
+
+// CreateNewAppStoreReleaseOutputs provides typed access to the environment variable names
+// that create-new-app-store-release (v1) exports after a successful run.
+var CreateNewAppStoreReleaseOutputs = createNewAppStoreReleaseOutputs{
+	BitriseReleaseSlug: "BITRISE_RELEASE_SLUG",
+}

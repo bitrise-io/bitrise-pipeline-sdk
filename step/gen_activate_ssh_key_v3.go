@@ -36,3 +36,16 @@ func (b *ActivateSshKeyV3Builder) WithIsRemoveOtherIdentities(value string) *Act
 	b.Builder.WithInput("is_remove_other_identities", value)
 	return b
 }
+
+// activateSshKeyV3Outputs holds the names of environment variables published
+// by the activate-ssh-key step (v3) at run time.
+type activateSshKeyV3Outputs struct {
+	// SshAuthSock is the "SSH Auth Socket info, in case the ssh-agent was started by this step" output env var.
+	SshAuthSock string
+}
+
+// ActivateSshKeyV3Outputs provides typed access to the environment variable names
+// that activate-ssh-key (v3) exports after a successful run.
+var ActivateSshKeyV3Outputs = activateSshKeyV3Outputs{
+	SshAuthSock: "SSH_AUTH_SOCK",
+}

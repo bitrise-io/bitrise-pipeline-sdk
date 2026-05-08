@@ -60,3 +60,16 @@ func (b *RestoreS3CacheBuilder) WithAwsSecretAccessKey(value string) *RestoreS3C
 	b.Builder.WithInput("aws_secret_access_key", value)
 	return b
 }
+
+// restoreS3CacheOutputs holds the names of environment variables published
+// by the restore-s3-cache step (v0) at run time.
+type restoreS3CacheOutputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreS3CacheOutputs provides typed access to the environment variable names
+// that restore-s3-cache (v0) exports after a successful run.
+var RestoreS3CacheOutputs = restoreS3CacheOutputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

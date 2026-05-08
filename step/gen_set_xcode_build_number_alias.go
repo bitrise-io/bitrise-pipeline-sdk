@@ -13,3 +13,8 @@ type SetXcodeBuildNumberBuilder = SetXcodeBuildNumberV2Builder
 func SetXcodeBuildNumber(version ...string) *SetXcodeBuildNumberV2Builder {
 	return SetXcodeBuildNumberV2(version...)
 }
+
+// SetXcodeBuildNumberOutputs provides typed access to the environment variable names
+// published by set-xcode-build-number at the latest major version (v2).
+// For outputs of a specific major version use SetXcodeBuildNumberV{N}Outputs directly.
+var SetXcodeBuildNumberOutputs = SetXcodeBuildNumberV2Outputs

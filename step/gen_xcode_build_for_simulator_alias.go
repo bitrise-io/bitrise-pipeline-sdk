@@ -13,3 +13,8 @@ type XcodeBuildForSimulatorBuilder = XcodeBuildForSimulatorV3Builder
 func XcodeBuildForSimulator(version ...string) *XcodeBuildForSimulatorV3Builder {
 	return XcodeBuildForSimulatorV3(version...)
 }
+
+// XcodeBuildForSimulatorOutputs provides typed access to the environment variable names
+// published by xcode-build-for-simulator at the latest major version (v3).
+// For outputs of a specific major version use XcodeBuildForSimulatorV{N}Outputs directly.
+var XcodeBuildForSimulatorOutputs = XcodeBuildForSimulatorV3Outputs

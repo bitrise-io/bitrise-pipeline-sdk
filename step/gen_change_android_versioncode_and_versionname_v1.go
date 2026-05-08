@@ -42,3 +42,19 @@ func (b *ChangeAndroidVersioncodeAndVersionnameV1Builder) WithVersionCodeOffset(
 	b.Builder.WithInput("version_code_offset", value)
 	return b
 }
+
+// changeAndroidVersioncodeAndVersionnameV1Outputs holds the names of environment variables published
+// by the change-android-versioncode-and-versionname step (v1) at run time.
+type changeAndroidVersioncodeAndVersionnameV1Outputs struct {
+	// AndroidVersionName is the "Final Android versionName in build.gradle file" output env var.
+	AndroidVersionName string
+	// AndroidVersionCode is the "Final Android versionCode in build.gradle file" output env var.
+	AndroidVersionCode string
+}
+
+// ChangeAndroidVersioncodeAndVersionnameV1Outputs provides typed access to the environment variable names
+// that change-android-versioncode-and-versionname (v1) exports after a successful run.
+var ChangeAndroidVersioncodeAndVersionnameV1Outputs = changeAndroidVersioncodeAndVersionnameV1Outputs{
+	AndroidVersionName: "ANDROID_VERSION_NAME",
+	AndroidVersionCode: "ANDROID_VERSION_CODE",
+}

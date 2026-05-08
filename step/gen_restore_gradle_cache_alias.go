@@ -13,3 +13,8 @@ type RestoreGradleCacheBuilder = RestoreGradleCacheV3Builder
 func RestoreGradleCache(version ...string) *RestoreGradleCacheV3Builder {
 	return RestoreGradleCacheV3(version...)
 }
+
+// RestoreGradleCacheOutputs provides typed access to the environment variable names
+// published by restore-gradle-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreGradleCacheV{N}Outputs directly.
+var RestoreGradleCacheOutputs = RestoreGradleCacheV3Outputs

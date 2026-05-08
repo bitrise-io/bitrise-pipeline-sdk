@@ -88,3 +88,22 @@ func (b *XamarinTestCloudForIosV2Builder) WithBuildTool(value string) *XamarinTe
 	b.Builder.WithInput("build_tool", value)
 	return b
 }
+
+// xamarinTestCloudForIosV2Outputs holds the names of environment variables published
+// by the xamarin-test-cloud-for-ios step (v2) at run time.
+type xamarinTestCloudForIosV2Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+	// BitriseXamarinTestToRunId is the "Test to run ID." output env var.
+	BitriseXamarinTestToRunId string
+}
+
+// XamarinTestCloudForIosV2Outputs provides typed access to the environment variable names
+// that xamarin-test-cloud-for-ios (v2) exports after a successful run.
+var XamarinTestCloudForIosV2Outputs = xamarinTestCloudForIosV2Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+	BitriseXamarinTestToRunId:         "BITRISE_XAMARIN_TEST_TO_RUN_ID",
+}

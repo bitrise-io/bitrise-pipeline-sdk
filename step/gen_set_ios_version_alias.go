@@ -13,3 +13,8 @@ type SetIosVersionBuilder = SetIosVersionV2Builder
 func SetIosVersion(version ...string) *SetIosVersionV2Builder {
 	return SetIosVersionV2(version...)
 }
+
+// SetIosVersionOutputs provides typed access to the environment variable names
+// published by set-ios-version at the latest major version (v2).
+// For outputs of a specific major version use SetIosVersionV{N}Outputs directly.
+var SetIosVersionOutputs = SetIosVersionV2Outputs

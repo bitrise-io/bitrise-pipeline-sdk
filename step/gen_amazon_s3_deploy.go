@@ -82,3 +82,28 @@ func (b *AmazonS3DeployBuilder) WithFileAccessLevel(value string) *AmazonS3Deplo
 	b.Builder.WithInput("file_access_level", value)
 	return b
 }
+
+// amazonS3DeployOutputs holds the names of environment variables published
+// by the amazon-s3-deploy step (v3) at run time.
+type amazonS3DeployOutputs struct {
+	// S3DeployStepUrlIpa is the "Amazon S3 Deploy IPA URL" output env var.
+	S3DeployStepUrlIpa string
+	// S3DeployStepUrlDsym is the "Amazon S3 Deploy DSYM URL" output env var.
+	S3DeployStepUrlDsym string
+	// S3DeployStepUrlPlist is the "Amazon S3 Deploy .plist URL" output env var.
+	S3DeployStepUrlPlist string
+	// S3DeployStepStatus is the "Amazon S3 Deploy result ('success' or 'failed')" output env var.
+	S3DeployStepStatus string
+	// S3DeployStepEmailReadyUrl is the "Amazon S3 Deploy .plist URL" output env var.
+	S3DeployStepEmailReadyUrl string
+}
+
+// AmazonS3DeployOutputs provides typed access to the environment variable names
+// that amazon-s3-deploy (v3) exports after a successful run.
+var AmazonS3DeployOutputs = amazonS3DeployOutputs{
+	S3DeployStepUrlIpa:        "S3_DEPLOY_STEP_URL_IPA",
+	S3DeployStepUrlDsym:       "S3_DEPLOY_STEP_URL_DSYM",
+	S3DeployStepUrlPlist:      "S3_DEPLOY_STEP_URL_PLIST",
+	S3DeployStepStatus:        "S3_DEPLOY_STEP_STATUS",
+	S3DeployStepEmailReadyUrl: "S3_DEPLOY_STEP_EMAIL_READY_URL",
+}

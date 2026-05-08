@@ -126,3 +126,34 @@ func (b *XcodeTestV6Builder) WithQuarantinedTests(value string) *XcodeTestV6Buil
 	b.Builder.WithInput("quarantined_tests", value)
 	return b
 }
+
+// xcodeTestV6Outputs holds the names of environment variables published
+// by the xcode-test step (v6) at run time.
+type xcodeTestV6Outputs struct {
+	// BitriseXcodeTestResult is the "Test result" output env var.
+	BitriseXcodeTestResult string
+	// BitriseXcresultPath is the "The path of the generated `.xcresult`" output env var.
+	BitriseXcresultPath string
+	// BitriseXcresultZipPath is the "The path of the zipped `.xcresult`" output env var.
+	BitriseXcresultZipPath string
+	// BitriseXcodeTestAttachmentsPath is the "The full, test attachments zip path" output env var.
+	BitriseXcodeTestAttachmentsPath string
+	// BitriseXcodebuildBuildLogPath is the "xcodebuild build command log file path" output env var.
+	BitriseXcodebuildBuildLogPath string
+	// BitriseXcodebuildTestLogPath is the "xcodebuild test command log file path" output env var.
+	BitriseXcodebuildTestLogPath string
+	// BitriseFlakyTestCases is the "List of flaky test cases" output env var.
+	BitriseFlakyTestCases string
+}
+
+// XcodeTestV6Outputs provides typed access to the environment variable names
+// that xcode-test (v6) exports after a successful run.
+var XcodeTestV6Outputs = xcodeTestV6Outputs{
+	BitriseXcodeTestResult:          "BITRISE_XCODE_TEST_RESULT",
+	BitriseXcresultPath:             "BITRISE_XCRESULT_PATH",
+	BitriseXcresultZipPath:          "BITRISE_XCRESULT_ZIP_PATH",
+	BitriseXcodeTestAttachmentsPath: "BITRISE_XCODE_TEST_ATTACHMENTS_PATH",
+	BitriseXcodebuildBuildLogPath:   "BITRISE_XCODEBUILD_BUILD_LOG_PATH",
+	BitriseXcodebuildTestLogPath:    "BITRISE_XCODEBUILD_TEST_LOG_PATH",
+	BitriseFlakyTestCases:           "BITRISE_FLAKY_TEST_CASES",
+}

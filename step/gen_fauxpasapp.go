@@ -72,3 +72,16 @@ func (b *FauxpasappBuilder) WithFauxpasDebugMode(value string) *FauxpasappBuilde
 	b.Builder.WithInput("fauxpas_debug_mode", value)
 	return b
 }
+
+// fauxpasappOutputs holds the names of environment variables published
+// by the fauxpasapp step (v0) at run time.
+type fauxpasappOutputs struct {
+	// FauxpasJsonOutputFile is the "Faux Pas JSON Output" output env var.
+	FauxpasJsonOutputFile string
+}
+
+// FauxpasappOutputs provides typed access to the environment variable names
+// that fauxpasapp (v0) exports after a successful run.
+var FauxpasappOutputs = fauxpasappOutputs{
+	FauxpasJsonOutputFile: "FAUXPAS_JSON_OUTPUT_FILE",
+}

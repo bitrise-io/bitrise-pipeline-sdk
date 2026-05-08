@@ -96,3 +96,16 @@ func (b *LambdatestEspressoAppAutomateBuilder) WithLambdatestVideo(value string)
 	b.Builder.WithInput("lambdatest_video", value)
 	return b
 }
+
+// lambdatestEspressoAppAutomateOutputs holds the names of environment variables published
+// by the lambdatest-espresso-app-automate step (v1) at run time.
+type lambdatestEspressoAppAutomateOutputs struct {
+	// LambdatestBuildId is the "Build ID" output env var.
+	LambdatestBuildId string
+}
+
+// LambdatestEspressoAppAutomateOutputs provides typed access to the environment variable names
+// that lambdatest-espresso-app-automate (v1) exports after a successful run.
+var LambdatestEspressoAppAutomateOutputs = lambdatestEspressoAppAutomateOutputs{
+	LambdatestBuildId: "LAMBDATEST_BUILD_ID",
+}

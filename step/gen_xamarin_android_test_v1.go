@@ -58,3 +58,19 @@ func (b *XamarinAndroidTestV1Builder) WithBuildTool(value string) *XamarinAndroi
 	b.Builder.WithInput("build_tool", value)
 	return b
 }
+
+// xamarinAndroidTestV1Outputs holds the names of environment variables published
+// by the xamarin-android-test step (v1) at run time.
+type xamarinAndroidTestV1Outputs struct {
+	// BitriseXamarinTestResult is the "Result of the tests. 'succeeded' or 'failed'." output env var.
+	BitriseXamarinTestResult string
+	// BitriseXamarinTestFullResultsText is the "Result of the tests." output env var.
+	BitriseXamarinTestFullResultsText string
+}
+
+// XamarinAndroidTestV1Outputs provides typed access to the environment variable names
+// that xamarin-android-test (v1) exports after a successful run.
+var XamarinAndroidTestV1Outputs = xamarinAndroidTestV1Outputs{
+	BitriseXamarinTestResult:          "BITRISE_XAMARIN_TEST_RESULT",
+	BitriseXamarinTestFullResultsText: "BITRISE_XAMARIN_TEST_FULL_RESULTS_TEXT",
+}

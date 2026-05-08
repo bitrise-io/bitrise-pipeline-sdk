@@ -54,3 +54,16 @@ func (b *OpenstfConnectBuilder) WithAdbKeyPub(value string) *OpenstfConnectBuild
 	b.Builder.WithInput("adb_key_pub", value)
 	return b
 }
+
+// openstfConnectOutputs holds the names of environment variables published
+// by the openstf-connect step (v0) at run time.
+type openstfConnectOutputs struct {
+	// StfDeviceSerialList is the "Connected devices serials" output env var.
+	StfDeviceSerialList string
+}
+
+// OpenstfConnectOutputs provides typed access to the environment variable names
+// that openstf-connect (v0) exports after a successful run.
+var OpenstfConnectOutputs = openstfConnectOutputs{
+	StfDeviceSerialList: "STF_DEVICE_SERIAL_LIST",
+}

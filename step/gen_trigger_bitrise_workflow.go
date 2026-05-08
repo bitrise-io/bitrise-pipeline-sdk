@@ -108,3 +108,25 @@ func (b *TriggerBitriseWorkflowBuilder) WithBranchDestRepoOwner(value string) *T
 	b.Builder.WithInput("branch_dest_repo_owner", value)
 	return b
 }
+
+// triggerBitriseWorkflowOutputs holds the names of environment variables published
+// by the trigger-bitrise-workflow step (v0) at run time.
+type triggerBitriseWorkflowOutputs struct {
+	// TriggeredBuildSlug is the "Triggered build slug" output env var.
+	TriggeredBuildSlug string
+	// TriggeredBuildNumber is the "Triggered build number" output env var.
+	TriggeredBuildNumber string
+	// TriggeredBuildUrl is the "Triggered build URL" output env var.
+	TriggeredBuildUrl string
+	// TriggeredWorkflowId is the "Triggered workflow ID" output env var.
+	TriggeredWorkflowId string
+}
+
+// TriggerBitriseWorkflowOutputs provides typed access to the environment variable names
+// that trigger-bitrise-workflow (v0) exports after a successful run.
+var TriggerBitriseWorkflowOutputs = triggerBitriseWorkflowOutputs{
+	TriggeredBuildSlug:   "TRIGGERED_BUILD_SLUG",
+	TriggeredBuildNumber: "TRIGGERED_BUILD_NUMBER",
+	TriggeredBuildUrl:    "TRIGGERED_BUILD_URL",
+	TriggeredWorkflowId:  "TRIGGERED_WORKFLOW_ID",
+}

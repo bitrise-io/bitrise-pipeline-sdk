@@ -132,3 +132,28 @@ func (b *XcodeArchiveMacV1Builder) WithVerboseLog(value string) *XcodeArchiveMac
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// xcodeArchiveMacV1Outputs holds the names of environment variables published
+// by the xcode-archive-mac step (v1) at run time.
+type xcodeArchiveMacV1Outputs struct {
+	// BitriseExportedFilePath is the "Exported file path" output env var.
+	BitriseExportedFilePath string
+	// BitriseAppPath is the "`.app` path" output env var.
+	BitriseAppPath string
+	// BitriseDsymPath is the "`.dSYM` ZIP path" output env var.
+	BitriseDsymPath string
+	// BitriseXcarchivePath is the "`.xcarchive` ZIP path" output env var.
+	BitriseXcarchivePath string
+	// BitriseMacosXcarchivePath is the "`.xcarchive` path" output env var.
+	BitriseMacosXcarchivePath string
+}
+
+// XcodeArchiveMacV1Outputs provides typed access to the environment variable names
+// that xcode-archive-mac (v1) exports after a successful run.
+var XcodeArchiveMacV1Outputs = xcodeArchiveMacV1Outputs{
+	BitriseExportedFilePath:   "BITRISE_EXPORTED_FILE_PATH",
+	BitriseAppPath:            "BITRISE_APP_PATH",
+	BitriseDsymPath:           "BITRISE_DSYM_PATH",
+	BitriseXcarchivePath:      "BITRISE_XCARCHIVE_PATH",
+	BitriseMacosXcarchivePath: "BITRISE_MACOS_XCARCHIVE_PATH",
+}

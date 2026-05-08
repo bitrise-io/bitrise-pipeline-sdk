@@ -48,3 +48,19 @@ func (b *RepeatoTestRunnerBuilder) WithLogLevel(value string) *RepeatoTestRunner
 	b.Builder.WithInput("log_level", value)
 	return b
 }
+
+// repeatoTestRunnerOutputs holds the names of environment variables published
+// by the repeato-test-runner step (v0) at run time.
+type repeatoTestRunnerOutputs struct {
+	// RepeatoReport is the "Repeato Batch Report Zip File" output env var.
+	RepeatoReport string
+	// RepeatoJunitReport is the "Repeato JUnit XML File" output env var.
+	RepeatoJunitReport string
+}
+
+// RepeatoTestRunnerOutputs provides typed access to the environment variable names
+// that repeato-test-runner (v0) exports after a successful run.
+var RepeatoTestRunnerOutputs = repeatoTestRunnerOutputs{
+	RepeatoReport:      "REPEATO_REPORT",
+	RepeatoJunitReport: "REPEATO_JUNIT_REPORT",
+}

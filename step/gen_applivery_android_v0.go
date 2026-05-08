@@ -72,3 +72,16 @@ func (b *AppliveryAndroidV0Builder) WithVersionName(value string) *AppliveryAndr
 	b.Builder.WithInput("versionName", value)
 	return b
 }
+
+// appliveryAndroidV0Outputs holds the names of environment variables published
+// by the applivery-android step (v0) at run time.
+type appliveryAndroidV0Outputs struct {
+	// AppliveryDeployStatus is the "Deployment result: 'success' or 'failed'" output env var.
+	AppliveryDeployStatus string
+}
+
+// AppliveryAndroidV0Outputs provides typed access to the environment variable names
+// that applivery-android (v0) exports after a successful run.
+var AppliveryAndroidV0Outputs = appliveryAndroidV0Outputs{
+	AppliveryDeployStatus: "APPLIVERY_DEPLOY_STATUS",
+}

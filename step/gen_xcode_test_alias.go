@@ -13,3 +13,8 @@ type XcodeTestBuilder = XcodeTestV6Builder
 func XcodeTest(version ...string) *XcodeTestV6Builder {
 	return XcodeTestV6(version...)
 }
+
+// XcodeTestOutputs provides typed access to the environment variable names
+// published by xcode-test at the latest major version (v6).
+// For outputs of a specific major version use XcodeTestV{N}Outputs directly.
+var XcodeTestOutputs = XcodeTestV6Outputs

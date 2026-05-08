@@ -24,3 +24,31 @@ func (b *ApkInfoBuilder) WithApkPath(value string) *ApkInfoBuilder {
 	b.Builder.WithInput("apk_path", value)
 	return b
 }
+
+// apkInfoOutputs holds the names of environment variables published
+// by the apk-info step (v1) at run time.
+type apkInfoOutputs struct {
+	// AndroidAppPackageName is the "Android application package name" output env var.
+	AndroidAppPackageName string
+	// AndroidApkFileSize is the "Android APK file size" output env var.
+	AndroidApkFileSize string
+	// AndroidAppName is the "Android application name" output env var.
+	AndroidAppName string
+	// AndroidAppVersionName is the "Android application version name" output env var.
+	AndroidAppVersionName string
+	// AndroidAppVersionCode is the "Android application version code" output env var.
+	AndroidAppVersionCode string
+	// AndroidIconPath is the "File path to icon" output env var.
+	AndroidIconPath string
+}
+
+// ApkInfoOutputs provides typed access to the environment variable names
+// that apk-info (v1) exports after a successful run.
+var ApkInfoOutputs = apkInfoOutputs{
+	AndroidAppPackageName: "ANDROID_APP_PACKAGE_NAME",
+	AndroidApkFileSize:    "ANDROID_APK_FILE_SIZE",
+	AndroidAppName:        "ANDROID_APP_NAME",
+	AndroidAppVersionName: "ANDROID_APP_VERSION_NAME",
+	AndroidAppVersionCode: "ANDROID_APP_VERSION_CODE",
+	AndroidIconPath:       "ANDROID_ICON_PATH",
+}

@@ -13,3 +13,8 @@ type ManageIosCodeSigningBuilder = ManageIosCodeSigningV2Builder
 func ManageIosCodeSigning(version ...string) *ManageIosCodeSigningV2Builder {
 	return ManageIosCodeSigningV2(version...)
 }
+
+// ManageIosCodeSigningOutputs provides typed access to the environment variable names
+// published by manage-ios-code-signing at the latest major version (v2).
+// For outputs of a specific major version use ManageIosCodeSigningV{N}Outputs directly.
+var ManageIosCodeSigningOutputs = ManageIosCodeSigningV2Outputs

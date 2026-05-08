@@ -184,3 +184,31 @@ func (b *MagicpodUiTestBuilder) WithBaseUrl(value string) *MagicpodUiTestBuilder
 	b.Builder.WithInput("base_url", value)
 	return b
 }
+
+// magicpodUiTestOutputs holds the names of environment variables published
+// by the magicpod-ui-test step (v0) at run time.
+type magicpodUiTestOutputs struct {
+	// MagicPodTestStatus is the "MAGIC_POD_TEST_STATUS" output env var.
+	MagicPodTestStatus string
+	// MagicPodTestPassedCount is the "MAGIC_POD_TEST_PASSED_COUNT" output env var.
+	MagicPodTestPassedCount string
+	// MagicPodTestFailedCount is the "MAGIC_POD_TEST_FAILED_COUNT" output env var.
+	MagicPodTestFailedCount string
+	// MagicPodTestUnresolvedCount is the "MAGIC_POD_TEST_UNRESOLVED_COUNT" output env var.
+	MagicPodTestUnresolvedCount string
+	// MagicPodTestTotalCount is the "MAGIC_POD_TEST_TOTAL_COUNT" output env var.
+	MagicPodTestTotalCount string
+	// MagicPodTestUrl is the "MAGIC_POD_TEST_URL" output env var.
+	MagicPodTestUrl string
+}
+
+// MagicpodUiTestOutputs provides typed access to the environment variable names
+// that magicpod-ui-test (v0) exports after a successful run.
+var MagicpodUiTestOutputs = magicpodUiTestOutputs{
+	MagicPodTestStatus:          "MAGIC_POD_TEST_STATUS",
+	MagicPodTestPassedCount:     "MAGIC_POD_TEST_PASSED_COUNT",
+	MagicPodTestFailedCount:     "MAGIC_POD_TEST_FAILED_COUNT",
+	MagicPodTestUnresolvedCount: "MAGIC_POD_TEST_UNRESOLVED_COUNT",
+	MagicPodTestTotalCount:      "MAGIC_POD_TEST_TOTAL_COUNT",
+	MagicPodTestUrl:             "MAGIC_POD_TEST_URL",
+}

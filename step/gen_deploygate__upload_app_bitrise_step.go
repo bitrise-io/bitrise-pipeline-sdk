@@ -66,3 +66,16 @@ func (b *DeploygateUploadAppBitriseStepBuilder) WithDisableNotify(value string) 
 	b.Builder.WithInput("disable_notify", value)
 	return b
 }
+
+// deploygateUploadAppBitriseStepOutputs holds the names of environment variables published
+// by the deploygate--upload-app-bitrise-step step (v1) at run time.
+type deploygateUploadAppBitriseStepOutputs struct {
+	// DeploygateUploadAppStepResultJson is the "DeployGate: API result json" output env var.
+	DeploygateUploadAppStepResultJson string
+}
+
+// DeploygateUploadAppBitriseStepOutputs provides typed access to the environment variable names
+// that deploygate--upload-app-bitrise-step (v1) exports after a successful run.
+var DeploygateUploadAppBitriseStepOutputs = deploygateUploadAppBitriseStepOutputs{
+	DeploygateUploadAppStepResultJson: "DEPLOYGATE_UPLOAD_APP_STEP_RESULT_JSON",
+}

@@ -18,3 +18,19 @@ func GitLastCommitDate(version ...string) *GitLastCommitDateBuilder {
 	}
 	return &GitLastCommitDateBuilder{Builder: From("git-last-commit-date", v)}
 }
+
+// gitLastCommitDateOutputs holds the names of environment variables published
+// by the git-last-commit-date step (v1) at run time.
+type gitLastCommitDateOutputs struct {
+	// LastCommitDate is the "Last commit date" output env var.
+	LastCommitDate string
+	// LastCommitDateNumbers is the "Last commit date numbers" output env var.
+	LastCommitDateNumbers string
+}
+
+// GitLastCommitDateOutputs provides typed access to the environment variable names
+// that git-last-commit-date (v1) exports after a successful run.
+var GitLastCommitDateOutputs = gitLastCommitDateOutputs{
+	LastCommitDate:        "LAST_COMMIT_DATE",
+	LastCommitDateNumbers: "LAST_COMMIT_DATE_NUMBERS",
+}

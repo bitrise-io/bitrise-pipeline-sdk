@@ -13,3 +13,8 @@ type AppdomeBuild2secureAndroidBuilder = AppdomeBuild2secureAndroidV3Builder
 func AppdomeBuild2secureAndroid(version ...string) *AppdomeBuild2secureAndroidV3Builder {
 	return AppdomeBuild2secureAndroidV3(version...)
 }
+
+// AppdomeBuild2secureAndroidOutputs provides typed access to the environment variable names
+// published by appdome-build-2secure-android at the latest major version (v3).
+// For outputs of a specific major version use AppdomeBuild2secureAndroidV{N}Outputs directly.
+var AppdomeBuild2secureAndroidOutputs = AppdomeBuild2secureAndroidV3Outputs

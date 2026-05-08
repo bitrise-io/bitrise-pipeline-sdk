@@ -13,3 +13,8 @@ type GradleRunnerBuilder = GradleRunnerV5Builder
 func GradleRunner(version ...string) *GradleRunnerV5Builder {
 	return GradleRunnerV5(version...)
 }
+
+// GradleRunnerOutputs provides typed access to the environment variable names
+// published by gradle-runner at the latest major version (v5).
+// For outputs of a specific major version use GradleRunnerV{N}Outputs directly.
+var GradleRunnerOutputs = GradleRunnerV5Outputs

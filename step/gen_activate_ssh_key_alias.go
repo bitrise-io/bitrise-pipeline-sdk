@@ -13,3 +13,8 @@ type ActivateSshKeyBuilder = ActivateSshKeyV4Builder
 func ActivateSshKey(version ...string) *ActivateSshKeyV4Builder {
 	return ActivateSshKeyV4(version...)
 }
+
+// ActivateSshKeyOutputs provides typed access to the environment variable names
+// published by activate-ssh-key at the latest major version (v4).
+// For outputs of a specific major version use ActivateSshKeyV{N}Outputs directly.
+var ActivateSshKeyOutputs = ActivateSshKeyV4Outputs

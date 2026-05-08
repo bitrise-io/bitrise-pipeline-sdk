@@ -24,3 +24,16 @@ func (b *RestoreSpmCacheV1Builder) WithVerbose(value string) *RestoreSpmCacheV1B
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// restoreSpmCacheV1Outputs holds the names of environment variables published
+// by the restore-spm-cache step (v1) at run time.
+type restoreSpmCacheV1Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreSpmCacheV1Outputs provides typed access to the environment variable names
+// that restore-spm-cache (v1) exports after a successful run.
+var RestoreSpmCacheV1Outputs = restoreSpmCacheV1Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

@@ -132,3 +132,19 @@ func (b *AwsDeviceFarmRunnerBuilder) WithRunFailOnWarning(value string) *AwsDevi
 	b.Builder.WithInput("run_fail_on_warning", value)
 	return b
 }
+
+// awsDeviceFarmRunnerOutputs holds the names of environment variables published
+// by the aws-device-farm-runner step (v0) at run time.
+type awsDeviceFarmRunnerOutputs struct {
+	// BitriseDevicefarmResultsRaw is the "The full output from the device farm run" output env var.
+	BitriseDevicefarmResultsRaw string
+	// BitriseDevicefarmResultsSummary is the "A human-readable summary of the results." output env var.
+	BitriseDevicefarmResultsSummary string
+}
+
+// AwsDeviceFarmRunnerOutputs provides typed access to the environment variable names
+// that aws-device-farm-runner (v0) exports after a successful run.
+var AwsDeviceFarmRunnerOutputs = awsDeviceFarmRunnerOutputs{
+	BitriseDevicefarmResultsRaw:     "BITRISE_DEVICEFARM_RESULTS_RAW",
+	BitriseDevicefarmResultsSummary: "BITRISE_DEVICEFARM_RESULTS_SUMMARY",
+}

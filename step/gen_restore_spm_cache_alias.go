@@ -13,3 +13,8 @@ type RestoreSpmCacheBuilder = RestoreSpmCacheV3Builder
 func RestoreSpmCache(version ...string) *RestoreSpmCacheV3Builder {
 	return RestoreSpmCacheV3(version...)
 }
+
+// RestoreSpmCacheOutputs provides typed access to the environment variable names
+// published by restore-spm-cache at the latest major version (v3).
+// For outputs of a specific major version use RestoreSpmCacheV{N}Outputs directly.
+var RestoreSpmCacheOutputs = RestoreSpmCacheV3Outputs

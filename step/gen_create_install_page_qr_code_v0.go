@@ -30,3 +30,16 @@ func (b *CreateInstallPageQrCodeV0Builder) WithQrCodeSize(value string) *CreateI
 	b.Builder.WithInput("qr_code_size", value)
 	return b
 }
+
+// createInstallPageQrCodeV0Outputs holds the names of environment variables published
+// by the create-install-page-qr-code step (v0) at run time.
+type createInstallPageQrCodeV0Outputs struct {
+	// BitrisePublicInstallPageQrCodeImageUrl is the "Public Install Page QR Code Image URL" output env var.
+	BitrisePublicInstallPageQrCodeImageUrl string
+}
+
+// CreateInstallPageQrCodeV0Outputs provides typed access to the environment variable names
+// that create-install-page-qr-code (v0) exports after a successful run.
+var CreateInstallPageQrCodeV0Outputs = createInstallPageQrCodeV0Outputs{
+	BitrisePublicInstallPageQrCodeImageUrl: "BITRISE_PUBLIC_INSTALL_PAGE_QR_CODE_IMAGE_URL",
+}

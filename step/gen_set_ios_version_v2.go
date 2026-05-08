@@ -48,3 +48,19 @@ func (b *SetIosVersionV2Builder) WithAppendVersion(value string) *SetIosVersionV
 	b.Builder.WithInput("append_version", value)
 	return b
 }
+
+// setIosVersionV2Outputs holds the names of environment variables published
+// by the set-ios-version step (v2) at run time.
+type setIosVersionV2Outputs struct {
+	// AppVersion is the "Version (CFBundleShortVersionString from Info.plist)" output env var.
+	AppVersion string
+	// AppBuild is the "Build (CFBundleVersion from Info.plist)" output env var.
+	AppBuild string
+}
+
+// SetIosVersionV2Outputs provides typed access to the environment variable names
+// that set-ios-version (v2) exports after a successful run.
+var SetIosVersionV2Outputs = setIosVersionV2Outputs{
+	AppVersion: "APP_VERSION",
+	AppBuild:   "APP_BUILD",
+}

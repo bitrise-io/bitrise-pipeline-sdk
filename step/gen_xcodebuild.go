@@ -60,3 +60,16 @@ func (b *XcodebuildBuilder) WithXcodebuildOutputFormatter(value string) *Xcodebu
 	b.Builder.WithInput("xcodebuild_output_formatter", value)
 	return b
 }
+
+// xcodebuildOutputs holds the names of environment variables published
+// by the xcodebuild step (v0) at run time.
+type xcodebuildOutputs struct {
+	// XcresultBundlePath is the "Result Bundle Path" output env var.
+	XcresultBundlePath string
+}
+
+// XcodebuildOutputs provides typed access to the environment variable names
+// that xcodebuild (v0) exports after a successful run.
+var XcodebuildOutputs = xcodebuildOutputs{
+	XcresultBundlePath: "XCRESULT_BUNDLE_PATH",
+}

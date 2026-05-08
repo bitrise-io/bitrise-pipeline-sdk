@@ -66,3 +66,28 @@ func (b *AndroidBuildV0Builder) WithApkPathPattern(value string) *AndroidBuildV0
 	b.Builder.WithInput("apk_path_pattern", value)
 	return b
 }
+
+// androidBuildV0Outputs holds the names of environment variables published
+// by the android-build step (v0) at run time.
+type androidBuildV0Outputs struct {
+	// BitriseApkPath is the "Path of the generated APK" output env var.
+	BitriseApkPath string
+	// BitriseApkPathList is the "List of the generated APK paths" output env var.
+	BitriseApkPathList string
+	// BitriseAabPath is the "Path of the generated AAB" output env var.
+	BitriseAabPath string
+	// BitriseAabPathList is the "List of the generated AAB paths" output env var.
+	BitriseAabPathList string
+	// BitriseMappingPath is the "Path of the generated mapping.txt" output env var.
+	BitriseMappingPath string
+}
+
+// AndroidBuildV0Outputs provides typed access to the environment variable names
+// that android-build (v0) exports after a successful run.
+var AndroidBuildV0Outputs = androidBuildV0Outputs{
+	BitriseApkPath:     "BITRISE_APK_PATH",
+	BitriseApkPathList: "BITRISE_APK_PATH_LIST",
+	BitriseAabPath:     "BITRISE_AAB_PATH",
+	BitriseAabPathList: "BITRISE_AAB_PATH_LIST",
+	BitriseMappingPath: "BITRISE_MAPPING_PATH",
+}

@@ -13,3 +13,8 @@ type InstallFlutterVersionManagerBuilder = InstallFlutterVersionManagerV2Builder
 func InstallFlutterVersionManager(version ...string) *InstallFlutterVersionManagerV2Builder {
 	return InstallFlutterVersionManagerV2(version...)
 }
+
+// InstallFlutterVersionManagerOutputs provides typed access to the environment variable names
+// published by install-flutter-version-manager at the latest major version (v2).
+// For outputs of a specific major version use InstallFlutterVersionManagerV{N}Outputs directly.
+var InstallFlutterVersionManagerOutputs = InstallFlutterVersionManagerV2Outputs

@@ -13,3 +13,8 @@ type GitCloneBuilder = GitCloneV8Builder
 func GitClone(version ...string) *GitCloneV8Builder {
 	return GitCloneV8(version...)
 }
+
+// GitCloneOutputs provides typed access to the environment variable names
+// published by git-clone at the latest major version (v8).
+// For outputs of a specific major version use GitCloneV{N}Outputs directly.
+var GitCloneOutputs = GitCloneV8Outputs

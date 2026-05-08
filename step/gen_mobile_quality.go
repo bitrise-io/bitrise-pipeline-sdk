@@ -94,3 +94,25 @@ func (b *MobileQualityBuilder) WithAlertThreshold(value string) *MobileQualityBu
 	b.Builder.WithInput("alert_threshold", value)
 	return b
 }
+
+// mobileQualityOutputs holds the names of environment variables published
+// by the mobile-quality step (v1) at run time.
+type mobileQualityOutputs struct {
+	// IosPermissionCount is the "Current build's ios permission count" output env var.
+	IosPermissionCount string
+	// NewIpaSize is the "Current build's ios IPA size (MB)" output env var.
+	NewIpaSize string
+	// AndroidPermissionCount is the "Current build's android permission count" output env var.
+	AndroidPermissionCount string
+	// NewApkSize is the "Current build's android APK size (MB)" output env var.
+	NewApkSize string
+}
+
+// MobileQualityOutputs provides typed access to the environment variable names
+// that mobile-quality (v1) exports after a successful run.
+var MobileQualityOutputs = mobileQualityOutputs{
+	IosPermissionCount:     "IOS_PERMISSION_COUNT",
+	NewIpaSize:             "NEW_IPA_SIZE",
+	AndroidPermissionCount: "ANDROID_PERMISSION_COUNT",
+	NewApkSize:             "NEW_APK_SIZE",
+}

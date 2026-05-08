@@ -192,3 +192,31 @@ func (b *NitroAndroidBuilder) WithFailSafe(value string) *NitroAndroidBuilder {
 	b.Builder.WithInput("fail_safe", value)
 	return b
 }
+
+// nitroAndroidOutputs holds the names of environment variables published
+// by the nitro-android step (v4) at run time.
+type nitroAndroidOutputs struct {
+	// NitroBuildStatus is the "Build status" output env var.
+	NitroBuildStatus string
+	// NitroOutputDir is the "Output directory" output env var.
+	NitroOutputDir string
+	// NitroLogsPath is the "Build log location" output env var.
+	NitroLogsPath string
+	// NitroSummaryPath is the "Summary location" output env var.
+	NitroSummaryPath string
+	// NitroAppPath is the "Build application package location" output env var.
+	NitroAppPath string
+	// NitroDeployPath is the "Build application package location" output env var.
+	NitroDeployPath string
+}
+
+// NitroAndroidOutputs provides typed access to the environment variable names
+// that nitro-android (v4) exports after a successful run.
+var NitroAndroidOutputs = nitroAndroidOutputs{
+	NitroBuildStatus: "NITRO_BUILD_STATUS",
+	NitroOutputDir:   "NITRO_OUTPUT_DIR",
+	NitroLogsPath:    "NITRO_LOGS_PATH",
+	NitroSummaryPath: "NITRO_SUMMARY_PATH",
+	NitroAppPath:     "NITRO_APP_PATH",
+	NitroDeployPath:  "NITRO_DEPLOY_PATH",
+}

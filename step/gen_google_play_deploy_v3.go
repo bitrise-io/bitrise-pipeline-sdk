@@ -108,3 +108,16 @@ func (b *GooglePlayDeployV3Builder) WithVerboseLog(value string) *GooglePlayDepl
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// googlePlayDeployV3Outputs holds the names of environment variables published
+// by the google-play-deploy step (v3) at run time.
+type googlePlayDeployV3Outputs struct {
+	// FailureReason is the "Error upload reason" output env var.
+	FailureReason string
+}
+
+// GooglePlayDeployV3Outputs provides typed access to the environment variable names
+// that google-play-deploy (v3) exports after a successful run.
+var GooglePlayDeployV3Outputs = googlePlayDeployV3Outputs{
+	FailureReason: "FAILURE_REASON",
+}

@@ -24,3 +24,22 @@ func (b *GetPubspecVersionAndBuildNumberBuilder) WithPubspecPath(value string) *
 	b.Builder.WithInput("pubspec_path", value)
 	return b
 }
+
+// getPubspecVersionAndBuildNumberOutputs holds the names of environment variables published
+// by the get-pubspec-version-and-build-number step (v1) at run time.
+type getPubspecVersionAndBuildNumberOutputs struct {
+	// PubspecVersion is the "Value of the `version` attribute in the pubspec.yml" output env var.
+	PubspecVersion string
+	// PubspecVersionName is the "Part before the `+` in the `PUBSPEC_VERSION`" output env var.
+	PubspecVersionName string
+	// PubspecBuildNumber is the "Part after the `+` in the `PUBSPEC_VERSION`" output env var.
+	PubspecBuildNumber string
+}
+
+// GetPubspecVersionAndBuildNumberOutputs provides typed access to the environment variable names
+// that get-pubspec-version-and-build-number (v1) exports after a successful run.
+var GetPubspecVersionAndBuildNumberOutputs = getPubspecVersionAndBuildNumberOutputs{
+	PubspecVersion:     "PUBSPEC_VERSION",
+	PubspecVersionName: "PUBSPEC_VERSION_NAME",
+	PubspecBuildNumber: "PUBSPEC_BUILD_NUMBER",
+}

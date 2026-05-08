@@ -18,3 +18,16 @@ func RandomQuote(version ...string) *RandomQuoteBuilder {
 	}
 	return &RandomQuoteBuilder{Builder: From("random-quote", v)}
 }
+
+// randomQuoteOutputs holds the names of environment variables published
+// by the random-quote step (v3) at run time.
+type randomQuoteOutputs struct {
+	// RandomQuote is the "the quote" output env var.
+	RandomQuote string
+}
+
+// RandomQuoteOutputs provides typed access to the environment variable names
+// that random-quote (v3) exports after a successful run.
+var RandomQuoteOutputs = randomQuoteOutputs{
+	RandomQuote: "RANDOM_QUOTE",
+}

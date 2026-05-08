@@ -13,3 +13,8 @@ type CalabashAndroidUitestBuilder = CalabashAndroidUitestV1Builder
 func CalabashAndroidUitest(version ...string) *CalabashAndroidUitestV1Builder {
 	return CalabashAndroidUitestV1(version...)
 }
+
+// CalabashAndroidUitestOutputs provides typed access to the environment variable names
+// published by calabash-android-uitest at the latest major version (v1).
+// For outputs of a specific major version use CalabashAndroidUitestV{N}Outputs directly.
+var CalabashAndroidUitestOutputs = CalabashAndroidUitestV1Outputs

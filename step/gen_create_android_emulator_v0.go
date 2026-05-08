@@ -40,3 +40,16 @@ func (b *CreateAndroidEmulatorV0Builder) WithAbi(value string) *CreateAndroidEmu
 	b.Builder.WithInput("abi", value)
 	return b
 }
+
+// createAndroidEmulatorV0Outputs holds the names of environment variables published
+// by the create-android-emulator step (v0) at run time.
+type createAndroidEmulatorV0Outputs struct {
+	// BitriseEmulatorName is the "Name of the new AVD" output env var.
+	BitriseEmulatorName string
+}
+
+// CreateAndroidEmulatorV0Outputs provides typed access to the environment variable names
+// that create-android-emulator (v0) exports after a successful run.
+var CreateAndroidEmulatorV0Outputs = createAndroidEmulatorV0Outputs{
+	BitriseEmulatorName: "BITRISE_EMULATOR_NAME",
+}

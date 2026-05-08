@@ -52,3 +52,19 @@ func (b *XctestHtmlReportV0Builder) WithVerbose(value string) *XctestHtmlReportV
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// xctestHtmlReportV0Outputs holds the names of environment variables published
+// by the xctest-html-report step (v0) at run time.
+type xctestHtmlReportV0Outputs struct {
+	// XcHtmlReport is the "The path of the generated `HTML report`. Which was exported to the output\\_dir ( $BITRISE\\_DEPLOY\\_DIR by default )" output env var.
+	XcHtmlReport string
+	// XcJunitReport is the "The path of the generated `JUnit report`. Which was exported to the output\\_dir ( $BITRISE\\_DEPLOY\\_DIR by default )" output env var.
+	XcJunitReport string
+}
+
+// XctestHtmlReportV0Outputs provides typed access to the environment variable names
+// that xctest-html-report (v0) exports after a successful run.
+var XctestHtmlReportV0Outputs = xctestHtmlReportV0Outputs{
+	XcHtmlReport:  "XC_HTML_REPORT",
+	XcJunitReport: "XC_JUNIT_REPORT",
+}

@@ -17,3 +17,8 @@ type XamarinTestCloudForCalabashAndroidBuilder = XamarinTestCloudForCalabashAndr
 func XamarinTestCloudForCalabashAndroid(version ...string) *XamarinTestCloudForCalabashAndroidV1Builder {
 	return XamarinTestCloudForCalabashAndroidV1(version...)
 }
+
+// XamarinTestCloudForCalabashAndroidOutputs provides typed access to the environment variable names
+// published by xamarin-test-cloud-for-calabash-android at the latest major version (v1).
+// For outputs of a specific major version use XamarinTestCloudForCalabashAndroidV{N}Outputs directly.
+var XamarinTestCloudForCalabashAndroidOutputs = XamarinTestCloudForCalabashAndroidV1Outputs

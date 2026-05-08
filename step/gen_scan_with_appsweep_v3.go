@@ -60,3 +60,16 @@ func (b *ScanWithAppsweepV3Builder) WithAndroidProjectLocation(value string) *Sc
 	b.Builder.WithInput("android_project_location", value)
 	return b
 }
+
+// scanWithAppsweepV3Outputs holds the names of environment variables published
+// by the scan-with-appsweep step (v3) at run time.
+type scanWithAppsweepV3Outputs struct {
+	// AppsweepUploadUrl is the "AppSweep upload URL" output env var.
+	AppsweepUploadUrl string
+}
+
+// ScanWithAppsweepV3Outputs provides typed access to the environment variable names
+// that scan-with-appsweep (v3) exports after a successful run.
+var ScanWithAppsweepV3Outputs = scanWithAppsweepV3Outputs{
+	AppsweepUploadUrl: "APPSWEEP_UPLOAD_URL",
+}

@@ -54,3 +54,16 @@ func (b *XcodeTestBundleBuilderBuilder) WithOutputDir(value string) *XcodeTestBu
 	b.Builder.WithInput("output_dir", value)
 	return b
 }
+
+// xcodeTestBundleBuilderOutputs holds the names of environment variables published
+// by the xcode-test-bundle-builder step (v0) at run time.
+type xcodeTestBundleBuilderOutputs struct {
+	// TestBundleIpaPath is the "The created .ipa file's path" output env var.
+	TestBundleIpaPath string
+}
+
+// XcodeTestBundleBuilderOutputs provides typed access to the environment variable names
+// that xcode-test-bundle-builder (v0) exports after a successful run.
+var XcodeTestBundleBuilderOutputs = xcodeTestBundleBuilderOutputs{
+	TestBundleIpaPath: "TEST_BUNDLE_IPA_PATH",
+}

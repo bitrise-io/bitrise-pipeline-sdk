@@ -42,3 +42,22 @@ func (b *PagerdutyBuilder) WithSeverity(value string) *PagerdutyBuilder {
 	b.Builder.WithInput("severity", value)
 	return b
 }
+
+// pagerdutyOutputs holds the names of environment variables published
+// by the pagerduty step (v0) at run time.
+type pagerdutyOutputs struct {
+	// PagerdutyEventMessage is the "PagerDuty event creation message" output env var.
+	PagerdutyEventMessage string
+	// PagerdutyIncidentKey is the "PagerDuty event creation incident_key" output env var.
+	PagerdutyIncidentKey string
+	// PagerdutyDedupKey is the "PagerDuty event creation dedup_key" output env var.
+	PagerdutyDedupKey string
+}
+
+// PagerdutyOutputs provides typed access to the environment variable names
+// that pagerduty (v0) exports after a successful run.
+var PagerdutyOutputs = pagerdutyOutputs{
+	PagerdutyEventMessage: "PAGERDUTY_EVENT_MESSAGE",
+	PagerdutyIncidentKey:  "PAGERDUTY_INCIDENT_KEY",
+	PagerdutyDedupKey:     "PAGERDUTY_DEDUP_KEY",
+}

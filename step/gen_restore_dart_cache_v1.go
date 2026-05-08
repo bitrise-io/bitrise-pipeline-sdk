@@ -24,3 +24,16 @@ func (b *RestoreDartCacheV1Builder) WithVerbose(value string) *RestoreDartCacheV
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// restoreDartCacheV1Outputs holds the names of environment variables published
+// by the restore-dart-cache step (v1) at run time.
+type restoreDartCacheV1Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreDartCacheV1Outputs provides typed access to the environment variable names
+// that restore-dart-cache (v1) exports after a successful run.
+var RestoreDartCacheV1Outputs = restoreDartCacheV1Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

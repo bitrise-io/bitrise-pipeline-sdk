@@ -108,3 +108,22 @@ func (b *XcodeBuildForSimulatorV0Builder) WithVerboseLog(value string) *XcodeBui
 	b.Builder.WithInput("verbose_log", value)
 	return b
 }
+
+// xcodeBuildForSimulatorV0Outputs holds the names of environment variables published
+// by the xcode-build-for-simulator step (v0) at run time.
+type xcodeBuildForSimulatorV0Outputs struct {
+	// BitriseAppDirPath is the "Generated (and copied) app directory" output env var.
+	BitriseAppDirPath string
+	// BitriseAppDirPathList is the "List of the generated app paths" output env var.
+	BitriseAppDirPathList string
+	// BitriseXcodeBuildRawResultTextPath is the "Full raw build output filepath" output env var.
+	BitriseXcodeBuildRawResultTextPath string
+}
+
+// XcodeBuildForSimulatorV0Outputs provides typed access to the environment variable names
+// that xcode-build-for-simulator (v0) exports after a successful run.
+var XcodeBuildForSimulatorV0Outputs = xcodeBuildForSimulatorV0Outputs{
+	BitriseAppDirPath:                  "BITRISE_APP_DIR_PATH",
+	BitriseAppDirPathList:              "BITRISE_APP_DIR_PATH_LIST",
+	BitriseXcodeBuildRawResultTextPath: "BITRISE_XCODE_BUILD_RAW_RESULT_TEXT_PATH",
+}

@@ -40,3 +40,19 @@ func (b *VersionExtractorAndroidBuilder) WithVariant(value string) *VersionExtra
 	b.Builder.WithInput("variant", value)
 	return b
 }
+
+// versionExtractorAndroidOutputs holds the names of environment variables published
+// by the version-extractor-android step (v0) at run time.
+type versionExtractorAndroidOutputs struct {
+	// ExtractedAndroidVersionName is the "Extracted versionName value" output env var.
+	ExtractedAndroidVersionName string
+	// ExtractedAndroidVersionCode is the "Extracted versionCode value" output env var.
+	ExtractedAndroidVersionCode string
+}
+
+// VersionExtractorAndroidOutputs provides typed access to the environment variable names
+// that version-extractor-android (v0) exports after a successful run.
+var VersionExtractorAndroidOutputs = versionExtractorAndroidOutputs{
+	ExtractedAndroidVersionName: "EXTRACTED_ANDROID_VERSION_NAME",
+	ExtractedAndroidVersionCode: "EXTRACTED_ANDROID_VERSION_CODE",
+}

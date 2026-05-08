@@ -17,3 +17,8 @@ type XamarinIosTestBuilder = XamarinIosTestV2Builder
 func XamarinIosTest(version ...string) *XamarinIosTestV2Builder {
 	return XamarinIosTestV2(version...)
 }
+
+// XamarinIosTestOutputs provides typed access to the environment variable names
+// published by xamarin-ios-test at the latest major version (v2).
+// For outputs of a specific major version use XamarinIosTestV{N}Outputs directly.
+var XamarinIosTestOutputs = XamarinIosTestV2Outputs

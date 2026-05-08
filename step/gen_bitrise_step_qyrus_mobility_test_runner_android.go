@@ -90,3 +90,16 @@ func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithDevicePoolName(va
 	b.Builder.WithInput("device_pool_name", value)
 	return b
 }
+
+// bitriseStepQyrusMobilityTestRunnerAndroidOutputs holds the names of environment variables published
+// by the bitrise-step-qyrus-mobility-test-runner-android step (v0) at run time.
+type bitriseStepQyrusMobilityTestRunnerAndroidOutputs struct {
+	// QyrusTestReportUrl is the "Qyrus report download url" output env var.
+	QyrusTestReportUrl string
+}
+
+// BitriseStepQyrusMobilityTestRunnerAndroidOutputs provides typed access to the environment variable names
+// that bitrise-step-qyrus-mobility-test-runner-android (v0) exports after a successful run.
+var BitriseStepQyrusMobilityTestRunnerAndroidOutputs = bitriseStepQyrusMobilityTestRunnerAndroidOutputs{
+	QyrusTestReportUrl: "QYRUS_TEST_REPORT_URL",
+}

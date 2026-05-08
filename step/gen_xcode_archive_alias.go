@@ -13,3 +13,8 @@ type XcodeArchiveBuilder = XcodeArchiveV6Builder
 func XcodeArchive(version ...string) *XcodeArchiveV6Builder {
 	return XcodeArchiveV6(version...)
 }
+
+// XcodeArchiveOutputs provides typed access to the environment variable names
+// published by xcode-archive at the latest major version (v6).
+// For outputs of a specific major version use XcodeArchiveV{N}Outputs directly.
+var XcodeArchiveOutputs = XcodeArchiveV6Outputs

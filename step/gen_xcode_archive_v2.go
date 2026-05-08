@@ -162,3 +162,37 @@ func (b *XcodeArchiveV2Builder) WithUseDeprecatedExport(value string) *XcodeArch
 	b.Builder.WithInput("use_deprecated_export", value)
 	return b
 }
+
+// xcodeArchiveV2Outputs holds the names of environment variables published
+// by the xcode-archive step (v2) at run time.
+type xcodeArchiveV2Outputs struct {
+	// BitriseIpaPath is the "The created .ipa file's path" output env var.
+	BitriseIpaPath string
+	// BitriseAppDirPath is the "The generated .app directory" output env var.
+	BitriseAppDirPath string
+	// BitriseDsymDirPath is the "The created .dSYM dir's path" output env var.
+	BitriseDsymDirPath string
+	// BitriseDsymPath is the "The created .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+	// BitriseXcarchivePath is the "The created .xcarchive file's path" output env var.
+	BitriseXcarchivePath string
+	// BitriseXcarchiveZipPath is the "The created .xcarchive.zip file's path" output env var.
+	BitriseXcarchiveZipPath string
+	// BitriseXcodeArchiveRawResultTextPath is the "The full, raw archive output file path" output env var.
+	BitriseXcodeArchiveRawResultTextPath string
+	// BitriseIdedistributionLogsPath is the "Path to the xcdistributionlogs" output env var.
+	BitriseIdedistributionLogsPath string
+}
+
+// XcodeArchiveV2Outputs provides typed access to the environment variable names
+// that xcode-archive (v2) exports after a successful run.
+var XcodeArchiveV2Outputs = xcodeArchiveV2Outputs{
+	BitriseIpaPath:                       "BITRISE_IPA_PATH",
+	BitriseAppDirPath:                    "BITRISE_APP_DIR_PATH",
+	BitriseDsymDirPath:                   "BITRISE_DSYM_DIR_PATH",
+	BitriseDsymPath:                      "BITRISE_DSYM_PATH",
+	BitriseXcarchivePath:                 "BITRISE_XCARCHIVE_PATH",
+	BitriseXcarchiveZipPath:              "BITRISE_XCARCHIVE_ZIP_PATH",
+	BitriseXcodeArchiveRawResultTextPath: "BITRISE_XCODE_ARCHIVE_RAW_RESULT_TEXT_PATH",
+	BitriseIdedistributionLogsPath:       "BITRISE_IDEDISTRIBUTION_LOGS_PATH",
+}

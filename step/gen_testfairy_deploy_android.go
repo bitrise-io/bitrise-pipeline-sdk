@@ -72,3 +72,16 @@ func (b *TestfairyDeployAndroidBuilder) WithComment(value string) *TestfairyDepl
 	b.Builder.WithInput("comment", value)
 	return b
 }
+
+// testfairyDeployAndroidOutputs holds the names of environment variables published
+// by the testfairy-deploy-android step (v1) at run time.
+type testfairyDeployAndroidOutputs struct {
+	// TestfairyPublicInstallPageUrlAndroid is the "Public Install Page URL" output env var.
+	TestfairyPublicInstallPageUrlAndroid string
+}
+
+// TestfairyDeployAndroidOutputs provides typed access to the environment variable names
+// that testfairy-deploy-android (v1) exports after a successful run.
+var TestfairyDeployAndroidOutputs = testfairyDeployAndroidOutputs{
+	TestfairyPublicInstallPageUrlAndroid: "TESTFAIRY_PUBLIC_INSTALL_PAGE_URL_ANDROID",
+}

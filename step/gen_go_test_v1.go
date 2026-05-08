@@ -24,3 +24,16 @@ func (b *GoTestV1Builder) WithPackages(value string) *GoTestV1Builder {
 	b.Builder.WithInput("packages", value)
 	return b
 }
+
+// goTestV1Outputs holds the names of environment variables published
+// by the go-test step (v1) at run time.
+type goTestV1Outputs struct {
+	// GoCodeCoverageReportPath is the "Code coverage report file path" output env var.
+	GoCodeCoverageReportPath string
+}
+
+// GoTestV1Outputs provides typed access to the environment variable names
+// that go-test (v1) exports after a successful run.
+var GoTestV1Outputs = goTestV1Outputs{
+	GoCodeCoverageReportPath: "GO_CODE_COVERAGE_REPORT_PATH",
+}

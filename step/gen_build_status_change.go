@@ -30,3 +30,19 @@ func (b *BuildStatusChangeBuilder) WithVerbose(value string) *BuildStatusChangeB
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// buildStatusChangeOutputs holds the names of environment variables published
+// by the build-status-change step (v0) at run time.
+type buildStatusChangeOutputs struct {
+	// BuildStatusChanged is the "Build Status Changed" output env var.
+	BuildStatusChanged string
+	// PreviousBuildStatus is the "Previous Build Status" output env var.
+	PreviousBuildStatus string
+}
+
+// BuildStatusChangeOutputs provides typed access to the environment variable names
+// that build-status-change (v0) exports after a successful run.
+var BuildStatusChangeOutputs = buildStatusChangeOutputs{
+	BuildStatusChanged:  "BUILD_STATUS_CHANGED",
+	PreviousBuildStatus: "PREVIOUS_BUILD_STATUS",
+}

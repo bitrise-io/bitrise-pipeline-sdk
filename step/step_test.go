@@ -149,3 +149,28 @@ func TestTypedBuilder_EmptyStringUsesDefault(t *testing.T) {
 	// An explicit empty string should fall back to the default version.
 	assert.Contains(t, step.GitClone("").Build(), "git-clone@8")
 }
+
+// --- Typed outputs -----------------------------------------------------------
+
+func TestOutputs_GitClone(t *testing.T) {
+	// The unversioned alias points to the latest major (v8).
+	assert.Equal(t, "GIT_CLONE_COMMIT_HASH", step.GitCloneOutputs.GitCloneCommitHash)
+	assert.Equal(t, "GIT_CLONE_COMMIT_MESSAGE_SUBJECT", step.GitCloneOutputs.GitCloneCommitMessageSubject)
+	// The versioned var is also accessible directly.
+	assert.Equal(t, "GIT_CLONE_COMMIT_HASH", step.GitCloneV8Outputs.GitCloneCommitHash)
+}
+
+func TestOutputs_XcodeArchive(t *testing.T) {
+	assert.Equal(t, "BITRISE_IPA_PATH", step.XcodeArchiveOutputs.BitriseIpaPath)
+	assert.Equal(t, "BITRISE_DSYM_PATH", step.XcodeArchiveOutputs.BitriseDsymPath)
+	assert.Equal(t, "BITRISE_XCARCHIVE_PATH", step.XcodeArchiveOutputs.BitriseXcarchivePath)
+}
+
+func TestOutputs_DeployToBitriseIo(t *testing.T) {
+	assert.Equal(t, "BITRISE_PUBLIC_INSTALL_PAGE_URL", step.DeployToBitriseIoOutputs.BitrisePublicInstallPageUrl)
+}
+
+func TestOutputs_VersionedVsAlias(t *testing.T) {
+	// The unversioned alias and the latest versioned var hold the same values.
+	assert.Equal(t, step.XcodeArchiveV6Outputs.BitriseIpaPath, step.XcodeArchiveOutputs.BitriseIpaPath)
+}

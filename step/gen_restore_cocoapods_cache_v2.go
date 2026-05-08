@@ -30,3 +30,16 @@ func (b *RestoreCocoapodsCacheV2Builder) WithRetries(value string) *RestoreCocoa
 	b.Builder.WithInput("retries", value)
 	return b
 }
+
+// restoreCocoapodsCacheV2Outputs holds the names of environment variables published
+// by the restore-cocoapods-cache step (v2) at run time.
+type restoreCocoapodsCacheV2Outputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// RestoreCocoapodsCacheV2Outputs provides typed access to the environment variable names
+// that restore-cocoapods-cache (v2) exports after a successful run.
+var RestoreCocoapodsCacheV2Outputs = restoreCocoapodsCacheV2Outputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

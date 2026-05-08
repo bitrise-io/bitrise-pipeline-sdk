@@ -24,3 +24,28 @@ func (b *AndroidManifestInfoBuilder) WithManifestFile(value string) *AndroidMani
 	b.Builder.WithInput("manifest_file", value)
 	return b
 }
+
+// androidManifestInfoOutputs holds the names of environment variables published
+// by the android-manifest-info step (v1) at run time.
+type androidManifestInfoOutputs struct {
+	// AmiVersionCode is the "Version Code (versionCode from AndroidManifest.xml)" output env var.
+	AmiVersionCode string
+	// AmiVersionName is the "Version Name (versionName from AndroidManifest.xml)" output env var.
+	AmiVersionName string
+	// AmiPackageName is the "Package Name (package from AndroidManifest.xml)" output env var.
+	AmiPackageName string
+	// AmiMinSdkVersion is the "Minimum SDK Version (minSdkVersion from AndroidManifest.xml)" output env var.
+	AmiMinSdkVersion string
+	// AmiTargetSdkVersion is the "Target SDK Version (targetSdkVersion from AndroidManifest.xml)" output env var.
+	AmiTargetSdkVersion string
+}
+
+// AndroidManifestInfoOutputs provides typed access to the environment variable names
+// that android-manifest-info (v1) exports after a successful run.
+var AndroidManifestInfoOutputs = androidManifestInfoOutputs{
+	AmiVersionCode:      "AMI_VERSION_CODE",
+	AmiVersionName:      "AMI_VERSION_NAME",
+	AmiPackageName:      "AMI_PACKAGE_NAME",
+	AmiMinSdkVersion:    "AMI_MIN_SDK_VERSION",
+	AmiTargetSdkVersion: "AMI_TARGET_SDK_VERSION",
+}

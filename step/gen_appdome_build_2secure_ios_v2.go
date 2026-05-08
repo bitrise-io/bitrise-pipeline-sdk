@@ -72,3 +72,22 @@ func (b *AppdomeBuild2secureIosV2Builder) WithBuildToTest(value string) *Appdome
 	b.Builder.WithInput("build_to_test", value)
 	return b
 }
+
+// appdomeBuild2secureIosV2Outputs holds the names of environment variables published
+// by the appdome-build-2secure-ios step (v2) at run time.
+type appdomeBuild2secureIosV2Outputs struct {
+	// AppdomeSecuredIpaPath is the "Secured .ipa file path" output env var.
+	AppdomeSecuredIpaPath string
+	// AppdomePrivateSignScriptPath is the ".sh sign script file path" output env var.
+	AppdomePrivateSignScriptPath string
+	// AppdomeCertificatePath is the "Certified Secure Certificate .pdf file path" output env var.
+	AppdomeCertificatePath string
+}
+
+// AppdomeBuild2secureIosV2Outputs provides typed access to the environment variable names
+// that appdome-build-2secure-ios (v2) exports after a successful run.
+var AppdomeBuild2secureIosV2Outputs = appdomeBuild2secureIosV2Outputs{
+	AppdomeSecuredIpaPath:        "APPDOME_SECURED_IPA_PATH",
+	AppdomePrivateSignScriptPath: "APPDOME_PRIVATE_SIGN_SCRIPT_PATH",
+	AppdomeCertificatePath:       "APPDOME_CERTIFICATE_PATH",
+}

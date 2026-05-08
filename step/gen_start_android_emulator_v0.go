@@ -34,3 +34,16 @@ func (b *StartAndroidEmulatorV0Builder) WithAndroidHome(value string) *StartAndr
 	b.Builder.WithInput("android_home", value)
 	return b
 }
+
+// startAndroidEmulatorV0Outputs holds the names of environment variables published
+// by the start-android-emulator step (v0) at run time.
+type startAndroidEmulatorV0Outputs struct {
+	// BitriseEmulatorSerial is the "Emulator serial" output env var.
+	BitriseEmulatorSerial string
+}
+
+// StartAndroidEmulatorV0Outputs provides typed access to the environment variable names
+// that start-android-emulator (v0) exports after a successful run.
+var StartAndroidEmulatorV0Outputs = startAndroidEmulatorV0Outputs{
+	BitriseEmulatorSerial: "BITRISE_EMULATOR_SERIAL",
+}

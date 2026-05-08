@@ -66,3 +66,19 @@ func (b *XcodeArchiveMacV0Builder) WithOutputTool(value string) *XcodeArchiveMac
 	b.Builder.WithInput("output_tool", value)
 	return b
 }
+
+// xcodeArchiveMacV0Outputs holds the names of environment variables published
+// by the xcode-archive-mac step (v0) at run time.
+type xcodeArchiveMacV0Outputs struct {
+	// BitriseAppPath is the "The created .app file's path" output env var.
+	BitriseAppPath string
+	// BitriseDsymPath is the "The created .dSYM.zip file's path" output env var.
+	BitriseDsymPath string
+}
+
+// XcodeArchiveMacV0Outputs provides typed access to the environment variable names
+// that xcode-archive-mac (v0) exports after a successful run.
+var XcodeArchiveMacV0Outputs = xcodeArchiveMacV0Outputs{
+	BitriseAppPath:  "BITRISE_APP_PATH",
+	BitriseDsymPath: "BITRISE_DSYM_PATH",
+}

@@ -13,3 +13,8 @@ type AutifyUploadBuilder = AutifyUploadV1Builder
 func AutifyUpload(version ...string) *AutifyUploadV1Builder {
 	return AutifyUploadV1(version...)
 }
+
+// AutifyUploadOutputs provides typed access to the environment variable names
+// published by autify-upload at the latest major version (v1).
+// For outputs of a specific major version use AutifyUploadV{N}Outputs directly.
+var AutifyUploadOutputs = AutifyUploadV1Outputs

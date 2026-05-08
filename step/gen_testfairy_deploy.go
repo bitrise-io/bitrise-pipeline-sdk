@@ -78,3 +78,16 @@ func (b *TestfairyDeployBuilder) WithComment(value string) *TestfairyDeployBuild
 	b.Builder.WithInput("comment", value)
 	return b
 }
+
+// testfairyDeployOutputs holds the names of environment variables published
+// by the testfairy-deploy step (v2) at run time.
+type testfairyDeployOutputs struct {
+	// TestfairyPublicInstallPageUrl is the "Public Install Page URL" output env var.
+	TestfairyPublicInstallPageUrl string
+}
+
+// TestfairyDeployOutputs provides typed access to the environment variable names
+// that testfairy-deploy (v2) exports after a successful run.
+var TestfairyDeployOutputs = testfairyDeployOutputs{
+	TestfairyPublicInstallPageUrl: "TESTFAIRY_PUBLIC_INSTALL_PAGE_URL",
+}

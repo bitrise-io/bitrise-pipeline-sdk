@@ -90,3 +90,16 @@ func (b *UpdateGitopsRepositoryV3Builder) WithDelimiter(value string) *UpdateGit
 	b.Builder.WithInput("delimiter", value)
 	return b
 }
+
+// updateGitopsRepositoryV3Outputs holds the names of environment variables published
+// by the update-gitops-repository step (v3) at run time.
+type updateGitopsRepositoryV3Outputs struct {
+	// PrUrl is the "URL of opened pull request" output env var.
+	PrUrl string
+}
+
+// UpdateGitopsRepositoryV3Outputs provides typed access to the environment variable names
+// that update-gitops-repository (v3) exports after a successful run.
+var UpdateGitopsRepositoryV3Outputs = updateGitopsRepositoryV3Outputs{
+	PrUrl: "PR_URL",
+}

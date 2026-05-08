@@ -30,3 +30,16 @@ func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithBitriseSourceDir(v
 	b.Builder.WithInput("bitrise_source_dir", value)
 	return b
 }
+
+// theappspajamasServiceAccountKeyInstallerOutputs holds the names of environment variables published
+// by the theappspajamas-service-account-key-installer step (v0) at run time.
+type theappspajamasServiceAccountKeyInstallerOutputs struct {
+	// TapSecurityPath is the "The path tapsecurity.json was installed at" output env var.
+	TapSecurityPath string
+}
+
+// TheappspajamasServiceAccountKeyInstallerOutputs provides typed access to the environment variable names
+// that theappspajamas-service-account-key-installer (v0) exports after a successful run.
+var TheappspajamasServiceAccountKeyInstallerOutputs = theappspajamasServiceAccountKeyInstallerOutputs{
+	TapSecurityPath: "TAP_SECURITY_PATH",
+}

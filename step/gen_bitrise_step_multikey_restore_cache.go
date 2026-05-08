@@ -36,3 +36,16 @@ func (b *BitriseStepMultikeyRestoreCacheBuilder) WithRetries(value string) *Bitr
 	b.Builder.WithInput("retries", value)
 	return b
 }
+
+// bitriseStepMultikeyRestoreCacheOutputs holds the names of environment variables published
+// by the bitrise-step-multikey-restore-cache step (v0) at run time.
+type bitriseStepMultikeyRestoreCacheOutputs struct {
+	// BitriseCacheHit is the "Cache hit" output env var.
+	BitriseCacheHit string
+}
+
+// BitriseStepMultikeyRestoreCacheOutputs provides typed access to the environment variable names
+// that bitrise-step-multikey-restore-cache (v0) exports after a successful run.
+var BitriseStepMultikeyRestoreCacheOutputs = bitriseStepMultikeyRestoreCacheOutputs{
+	BitriseCacheHit: "BITRISE_CACHE_HIT",
+}

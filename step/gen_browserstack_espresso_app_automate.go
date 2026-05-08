@@ -120,3 +120,16 @@ func (b *BrowserstackEspressoAppAutomateBuilder) WithCallbackUrl(value string) *
 	b.Builder.WithInput("callback_url", value)
 	return b
 }
+
+// browserstackEspressoAppAutomateOutputs holds the names of environment variables published
+// by the browserstack-espresso-app-automate step (v0) at run time.
+type browserstackEspressoAppAutomateOutputs struct {
+	// BuildId is the "Build ID" output env var.
+	BuildId string
+}
+
+// BrowserstackEspressoAppAutomateOutputs provides typed access to the environment variable names
+// that browserstack-espresso-app-automate (v0) exports after a successful run.
+var BrowserstackEspressoAppAutomateOutputs = browserstackEspressoAppAutomateOutputs{
+	BuildId: "BUILD_ID",
+}

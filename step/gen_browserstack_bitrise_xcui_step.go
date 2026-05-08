@@ -126,3 +126,19 @@ func (b *BrowserstackBitriseXcuiStepBuilder) WithApiParams(value string) *Browse
 	b.Builder.WithInput("api_params", value)
 	return b
 }
+
+// browserstackBitriseXcuiStepOutputs holds the names of environment variables published
+// by the browserstack-bitrise-xcui-step step (v1) at run time.
+type browserstackBitriseXcuiStepOutputs struct {
+	// BrowserstackBuildUrl is the "BrowserStack Dashboard url" output env var.
+	BrowserstackBuildUrl string
+	// BrowserstackBuildStatus is the "BrowserStack Build Status" output env var.
+	BrowserstackBuildStatus string
+}
+
+// BrowserstackBitriseXcuiStepOutputs provides typed access to the environment variable names
+// that browserstack-bitrise-xcui-step (v1) exports after a successful run.
+var BrowserstackBitriseXcuiStepOutputs = browserstackBitriseXcuiStepOutputs{
+	BrowserstackBuildUrl:    "BROWSERSTACK_BUILD_URL",
+	BrowserstackBuildStatus: "BROWSERSTACK_BUILD_STATUS",
+}

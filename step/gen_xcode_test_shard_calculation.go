@@ -54,3 +54,16 @@ func (b *XcodeTestShardCalculationBuilder) WithVerbose(value string) *XcodeTestS
 	b.Builder.WithInput("verbose", value)
 	return b
 }
+
+// xcodeTestShardCalculationOutputs holds the names of environment variables published
+// by the xcode-test-shard-calculation step (v0) at run time.
+type xcodeTestShardCalculationOutputs struct {
+	// BitriseTestShardsPath is the "Test shards location" output env var.
+	BitriseTestShardsPath string
+}
+
+// XcodeTestShardCalculationOutputs provides typed access to the environment variable names
+// that xcode-test-shard-calculation (v0) exports after a successful run.
+var XcodeTestShardCalculationOutputs = xcodeTestShardCalculationOutputs{
+	BitriseTestShardsPath: "BITRISE_TEST_SHARDS_PATH",
+}

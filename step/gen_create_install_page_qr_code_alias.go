@@ -13,3 +13,8 @@ type CreateInstallPageQrCodeBuilder = CreateInstallPageQrCodeV1Builder
 func CreateInstallPageQrCode(version ...string) *CreateInstallPageQrCodeV1Builder {
 	return CreateInstallPageQrCodeV1(version...)
 }
+
+// CreateInstallPageQrCodeOutputs provides typed access to the environment variable names
+// published by create-install-page-qr-code at the latest major version (v1).
+// For outputs of a specific major version use CreateInstallPageQrCodeV{N}Outputs directly.
+var CreateInstallPageQrCodeOutputs = CreateInstallPageQrCodeV1Outputs

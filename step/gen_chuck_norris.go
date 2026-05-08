@@ -30,3 +30,16 @@ func (b *ChuckNorrisBuilder) WithApiBaseUrl(value string) *ChuckNorrisBuilder {
 	b.Builder.WithInput("api_base_url", value)
 	return b
 }
+
+// chuckNorrisOutputs holds the names of environment variables published
+// by the chuck-norris step (v1) at run time.
+type chuckNorrisOutputs struct {
+	// ChuckNorrisJoke is the "Random Chuck Norris joke text" output env var.
+	ChuckNorrisJoke string
+}
+
+// ChuckNorrisOutputs provides typed access to the environment variable names
+// that chuck-norris (v1) exports after a successful run.
+var ChuckNorrisOutputs = chuckNorrisOutputs{
+	ChuckNorrisJoke: "CHUCK_NORRIS_JOKE",
+}
