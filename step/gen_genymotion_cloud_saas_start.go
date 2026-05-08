@@ -6,7 +6,11 @@ package step
 // GenymotionCloudSaasStartBuilder builds a genymotion-cloud-saas-start step with typed input methods.
 type GenymotionCloudSaasStartBuilder struct{ *Builder }
 
-// GenymotionCloudSaasStart creates a genymotion-cloud-saas-start step builder (v0).
+// GenymotionCloudSaasStart creates a genymotion-cloud-saas-start step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenymotionCloudSaasStart("0")  // explicit default
+//	step.GenymotionCloudSaasStart("1")                  // older major
 func GenymotionCloudSaasStart(version ...string) *GenymotionCloudSaasStartBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

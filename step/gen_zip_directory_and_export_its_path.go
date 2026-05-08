@@ -6,7 +6,11 @@ package step
 // ZipDirectoryAndExportItsPathBuilder builds a zip-directory-and-export-its-path step with typed input methods.
 type ZipDirectoryAndExportItsPathBuilder struct{ *Builder }
 
-// ZipDirectoryAndExportItsPath creates a zip-directory-and-export-its-path step builder (v1).
+// ZipDirectoryAndExportItsPath creates a zip-directory-and-export-its-path step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ZipDirectoryAndExportItsPath("1")  // explicit default
+//	step.ZipDirectoryAndExportItsPath("1")                  // older major
 func ZipDirectoryAndExportItsPath(version ...string) *ZipDirectoryAndExportItsPathBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

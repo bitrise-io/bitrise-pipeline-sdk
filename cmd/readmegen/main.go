@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 )
@@ -30,6 +31,12 @@ const (
 	markerStart = "<!-- step-table-start -->"
 	markerEnd   = "<!-- step-table-end -->"
 )
+
+// versionedFileRe matches generated per-major versioned builder files
+// (e.g. gen_xcode_test_v6.go).  These files define TypeNameVNBuilder and
+// should be excluded from the README table; the alias file provides the
+// canonical unversioned entry for such steps.
+var versionedFileRe = regexp.MustCompile(`_v\d+\.go$`)
 
 func main() {
 	stepDir := flag.String("step-dir", "step", "directory containing gen_*.go builder files")
@@ -68,6 +75,12 @@ func collectBuilders(dir string) ([]builderEntry, error) {
 
 	var entries []builderEntry
 	for _, p := range paths {
+		// Skip per-major versioned files (gen_*_v{N}.go).  The alias file
+		// (gen_*_alias.go) provides the canonical table entry for multi-major
+		// steps and is processed normally below.
+		if versionedFileRe.MatchString(p) {
+			continue
+		}
 		entry, deprecated, err := parseBuilderFile(p)
 		if err != nil {
 			return nil, fmt.Errorf("parse %s: %w", p, err)
@@ -121,10 +134,12 @@ func parseBuilderFile(path string) (entry builderEntry, deprecated bool, err err
 		if strings.HasPrefix(line, "// Deprecated:") {
 			deprecated = true
 		}
-		if strings.HasPrefix(line, "func ") && strings.Contains(line, "() *") {
-			// e.g. "func GitClone() *GitCloneBuilder {"
-			name, ok := parseConstructorName(line)
-			if ok && funcName == "" {
+		// Match both legacy zero-arg constructors and the current variadic form:
+		//   func GitClone() *GitCloneBuilder {
+		//   func GitClone(version ...string) *GitCloneBuilder {
+		//   func GitClone(version ...string) *GitCloneV8Builder {  (alias file)
+		if strings.HasPrefix(line, "func ") && funcName == "" {
+			if name, ok := parseConstructorName(line); ok {
 				funcName = name
 			}
 		}
@@ -153,16 +168,27 @@ func parseStepID(line string) (string, error) {
 	return strings.TrimSpace(line[:i]), nil
 }
 
-// parseConstructorName extracts the function name from a line like:
+// parseConstructorName extracts the function name from a constructor line.
+// It recognises both the legacy zero-arg form and the current variadic form:
 //
 //	func GitClone() *GitCloneBuilder {
+//	func GitClone(version ...string) *GitCloneBuilder {
+//	func GitClone(version ...string) *GitCloneV8Builder {
+//
+// It deliberately does NOT match receiver methods such as:
+//
+//	func (b *GitCloneBuilder) WithBranch(...) ...
 func parseConstructorName(line string) (string, bool) {
 	line = strings.TrimPrefix(line, "func ")
-	i := strings.Index(line, "()")
-	if i < 0 {
-		return "", false
+	// Variadic constructor (post-patchgen and alias files).
+	if i := strings.Index(line, "(version ...string)"); i >= 0 {
+		return line[:i], true
 	}
-	return line[:i], true
+	// Legacy zero-arg constructor.
+	if i := strings.Index(line, "()"); i >= 0 {
+		return line[:i], true
+	}
+	return "", false
 }
 
 // updateReadme replaces the content between the step-table markers in the

@@ -6,7 +6,11 @@ package step
 // FabricCrashlyticsBetaDeployBuilder builds a fabric-crashlytics-beta-deploy step with typed input methods.
 type FabricCrashlyticsBetaDeployBuilder struct{ *Builder }
 
-// FabricCrashlyticsBetaDeploy creates a fabric-crashlytics-beta-deploy step builder (v2).
+// FabricCrashlyticsBetaDeploy creates a fabric-crashlytics-beta-deploy step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FabricCrashlyticsBetaDeploy("2")  // explicit default
+//	step.FabricCrashlyticsBetaDeploy("1")                  // older major
 func FabricCrashlyticsBetaDeploy(version ...string) *FabricCrashlyticsBetaDeployBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

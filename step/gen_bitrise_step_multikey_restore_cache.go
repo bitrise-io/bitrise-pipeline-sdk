@@ -6,7 +6,11 @@ package step
 // BitriseStepMultikeyRestoreCacheBuilder builds a bitrise-step-multikey-restore-cache step with typed input methods.
 type BitriseStepMultikeyRestoreCacheBuilder struct{ *Builder }
 
-// BitriseStepMultikeyRestoreCache creates a bitrise-step-multikey-restore-cache step builder (v0).
+// BitriseStepMultikeyRestoreCache creates a bitrise-step-multikey-restore-cache step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepMultikeyRestoreCache("0")  // explicit default
+//	step.BitriseStepMultikeyRestoreCache("1")                  // older major
 func BitriseStepMultikeyRestoreCache(version ...string) *BitriseStepMultikeyRestoreCacheBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

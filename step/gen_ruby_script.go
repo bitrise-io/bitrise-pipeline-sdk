@@ -6,7 +6,11 @@ package step
 // RubyScriptBuilder builds a ruby-script step with typed input methods.
 type RubyScriptBuilder struct{ *Builder }
 
-// RubyScript creates a ruby-script step builder (v2).
+// RubyScript creates a ruby-script step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RubyScript("2")  // explicit default
+//	step.RubyScript("1")                  // older major
 func RubyScript(version ...string) *RubyScriptBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // SetXcodePlistValueBuilder builds a set-xcode-plist-value step with typed input methods.
 type SetXcodePlistValueBuilder struct{ *Builder }
 
-// SetXcodePlistValue creates a set-xcode-plist-value step builder (v1).
+// SetXcodePlistValue creates a set-xcode-plist-value step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetXcodePlistValue("1")  // explicit default
+//	step.SetXcodePlistValue("1")                  // older major
 func SetXcodePlistValue(version ...string) *SetXcodePlistValueBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // OpenstfConnectBuilder builds a openstf-connect step with typed input methods.
 type OpenstfConnectBuilder struct{ *Builder }
 
-// OpenstfConnect creates a openstf-connect step builder (v0).
+// OpenstfConnect creates a openstf-connect step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.OpenstfConnect("0")  // explicit default
+//	step.OpenstfConnect("1")                  // older major
 func OpenstfConnect(version ...string) *OpenstfConnectBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

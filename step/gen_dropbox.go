@@ -6,7 +6,11 @@ package step
 // DropboxBuilder builds a dropbox step with typed input methods.
 type DropboxBuilder struct{ *Builder }
 
-// Dropbox creates a dropbox step builder (v1).
+// Dropbox creates a dropbox step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Dropbox("1")  // explicit default
+//	step.Dropbox("1")                  // older major
 func Dropbox(version ...string) *DropboxBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

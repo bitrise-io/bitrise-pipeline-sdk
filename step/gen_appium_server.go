@@ -6,7 +6,11 @@ package step
 // AppiumServerBuilder builds a appium-server step with typed input methods.
 type AppiumServerBuilder struct{ *Builder }
 
-// AppiumServer creates a appium-server step builder (v0).
+// AppiumServer creates a appium-server step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppiumServer("0")  // explicit default
+//	step.AppiumServer("1")                  // older major
 func AppiumServer(version ...string) *AppiumServerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

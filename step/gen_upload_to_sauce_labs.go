@@ -6,7 +6,11 @@ package step
 // UploadToSauceLabsBuilder builds a upload-to-sauce-labs step with typed input methods.
 type UploadToSauceLabsBuilder struct{ *Builder }
 
-// UploadToSauceLabs creates a upload-to-sauce-labs step builder (v0).
+// UploadToSauceLabs creates a upload-to-sauce-labs step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.UploadToSauceLabs("0")  // explicit default
+//	step.UploadToSauceLabs("1")                  // older major
 func UploadToSauceLabs(version ...string) *UploadToSauceLabsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

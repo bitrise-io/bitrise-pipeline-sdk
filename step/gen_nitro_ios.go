@@ -6,7 +6,11 @@ package step
 // NitroIosBuilder builds a nitro-ios step with typed input methods.
 type NitroIosBuilder struct{ *Builder }
 
-// NitroIos creates a nitro-ios step builder (v4).
+// NitroIos creates a nitro-ios step builder (v4 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.NitroIos("4")  // explicit default
+//	step.NitroIos("1")                  // older major
 func NitroIos(version ...string) *NitroIosBuilder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

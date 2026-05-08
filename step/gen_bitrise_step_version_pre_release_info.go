@@ -6,7 +6,11 @@ package step
 // BitriseStepVersionPreReleaseInfoBuilder builds a bitrise-step-version-pre-release-info step with typed input methods.
 type BitriseStepVersionPreReleaseInfoBuilder struct{ *Builder }
 
-// BitriseStepVersionPreReleaseInfo creates a bitrise-step-version-pre-release-info step builder (v1).
+// BitriseStepVersionPreReleaseInfo creates a bitrise-step-version-pre-release-info step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepVersionPreReleaseInfo("1")  // explicit default
+//	step.BitriseStepVersionPreReleaseInfo("1")                  // older major
 func BitriseStepVersionPreReleaseInfo(version ...string) *BitriseStepVersionPreReleaseInfoBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

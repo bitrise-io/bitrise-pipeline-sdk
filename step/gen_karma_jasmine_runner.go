@@ -6,7 +6,11 @@ package step
 // KarmaJasmineRunnerBuilder builds a karma-jasmine-runner step with typed input methods.
 type KarmaJasmineRunnerBuilder struct{ *Builder }
 
-// KarmaJasmineRunner creates a karma-jasmine-runner step builder (v0).
+// KarmaJasmineRunner creates a karma-jasmine-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.KarmaJasmineRunner("0")  // explicit default
+//	step.KarmaJasmineRunner("1")                  // older major
 func KarmaJasmineRunner(version ...string) *KarmaJasmineRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

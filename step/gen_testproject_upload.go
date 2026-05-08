@@ -6,7 +6,11 @@ package step
 // TestprojectUploadBuilder builds a testproject-upload step with typed input methods.
 type TestprojectUploadBuilder struct{ *Builder }
 
-// TestprojectUpload creates a testproject-upload step builder (v0).
+// TestprojectUpload creates a testproject-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TestprojectUpload("0")  // explicit default
+//	step.TestprojectUpload("1")                  // older major
 func TestprojectUpload(version ...string) *TestprojectUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // GeckoboardDashboardBuildResultBuilder builds a geckoboard-dashboard-build-result step with typed input methods.
 type GeckoboardDashboardBuildResultBuilder struct{ *Builder }
 
-// GeckoboardDashboardBuildResult creates a geckoboard-dashboard-build-result step builder (v0).
+// GeckoboardDashboardBuildResult creates a geckoboard-dashboard-build-result step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GeckoboardDashboardBuildResult("0")  // explicit default
+//	step.GeckoboardDashboardBuildResult("1")                  // older major
 func GeckoboardDashboardBuildResult(version ...string) *GeckoboardDashboardBuildResultBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // MaestroIosTestRunBuilder builds a maestro-ios-test-run step with typed input methods.
 type MaestroIosTestRunBuilder struct{ *Builder }
 
-// MaestroIosTestRun creates a maestro-ios-test-run step builder (v0).
+// MaestroIosTestRun creates a maestro-ios-test-run step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MaestroIosTestRun("0")  // explicit default
+//	step.MaestroIosTestRun("1")                  // older major
 func MaestroIosTestRun(version ...string) *MaestroIosTestRunBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

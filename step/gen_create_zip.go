@@ -6,7 +6,11 @@ package step
 // CreateZipBuilder builds a create-zip step with typed input methods.
 type CreateZipBuilder struct{ *Builder }
 
-// CreateZip creates a create-zip step builder (v0).
+// CreateZip creates a create-zip step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CreateZip("0")  // explicit default
+//	step.CreateZip("1")                  // older major
 func CreateZip(version ...string) *CreateZipBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

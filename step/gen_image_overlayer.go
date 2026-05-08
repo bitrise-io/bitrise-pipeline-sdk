@@ -6,7 +6,11 @@ package step
 // ImageOverlayerBuilder builds a image-overlayer step with typed input methods.
 type ImageOverlayerBuilder struct{ *Builder }
 
-// ImageOverlayer creates a image-overlayer step builder (v1).
+// ImageOverlayer creates a image-overlayer step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ImageOverlayer("1")  // explicit default
+//	step.ImageOverlayer("1")                  // older major
 func ImageOverlayer(version ...string) *ImageOverlayerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

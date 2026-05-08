@@ -6,7 +6,11 @@ package step
 // RestoreS3CacheBuilder builds a restore-s3-cache step with typed input methods.
 type RestoreS3CacheBuilder struct{ *Builder }
 
-// RestoreS3Cache creates a restore-s3-cache step builder (v0).
+// RestoreS3Cache creates a restore-s3-cache step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RestoreS3Cache("0")  // explicit default
+//	step.RestoreS3Cache("1")                  // older major
 func RestoreS3Cache(version ...string) *RestoreS3CacheBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

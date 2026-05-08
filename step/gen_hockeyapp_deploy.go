@@ -6,7 +6,11 @@ package step
 // HockeyappDeployBuilder builds a hockeyapp-deploy step with typed input methods.
 type HockeyappDeployBuilder struct{ *Builder }
 
-// HockeyappDeploy creates a hockeyapp-deploy step builder (v2).
+// HockeyappDeploy creates a hockeyapp-deploy step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.HockeyappDeploy("2")  // explicit default
+//	step.HockeyappDeploy("1")                  // older major
 func HockeyappDeploy(version ...string) *HockeyappDeployBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

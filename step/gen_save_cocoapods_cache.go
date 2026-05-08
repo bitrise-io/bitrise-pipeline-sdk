@@ -6,7 +6,11 @@ package step
 // SaveCocoapodsCacheBuilder builds a save-cocoapods-cache step with typed input methods.
 type SaveCocoapodsCacheBuilder struct{ *Builder }
 
-// SaveCocoapodsCache creates a save-cocoapods-cache step builder (v1).
+// SaveCocoapodsCache creates a save-cocoapods-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveCocoapodsCache("1")  // explicit default
+//	step.SaveCocoapodsCache("1")                  // older major
 func SaveCocoapodsCache(version ...string) *SaveCocoapodsCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

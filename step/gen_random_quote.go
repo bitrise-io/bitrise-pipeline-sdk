@@ -6,7 +6,11 @@ package step
 // RandomQuoteBuilder builds a random-quote step with typed input methods.
 type RandomQuoteBuilder struct{ *Builder }
 
-// RandomQuote creates a random-quote step builder (v3).
+// RandomQuote creates a random-quote step builder (v3 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RandomQuote("3")  // explicit default
+//	step.RandomQuote("1")                  // older major
 func RandomQuote(version ...string) *RandomQuoteBuilder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

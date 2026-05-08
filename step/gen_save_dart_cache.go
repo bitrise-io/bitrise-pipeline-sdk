@@ -6,7 +6,11 @@ package step
 // SaveDartCacheBuilder builds a save-dart-cache step with typed input methods.
 type SaveDartCacheBuilder struct{ *Builder }
 
-// SaveDartCache creates a save-dart-cache step builder (v1).
+// SaveDartCache creates a save-dart-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveDartCache("1")  // explicit default
+//	step.SaveDartCache("1")                  // older major
 func SaveDartCache(version ...string) *SaveDartCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

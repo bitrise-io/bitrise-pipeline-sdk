@@ -6,7 +6,11 @@ package step
 // BitriseRunBuilder builds a bitrise-run step with typed input methods.
 type BitriseRunBuilder struct{ *Builder }
 
-// BitriseRun creates a bitrise-run step builder (v0).
+// BitriseRun creates a bitrise-run step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseRun("0")  // explicit default
+//	step.BitriseRun("1")                  // older major
 func BitriseRun(version ...string) *BitriseRunBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

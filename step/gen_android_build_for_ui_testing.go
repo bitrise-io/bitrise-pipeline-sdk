@@ -6,7 +6,11 @@ package step
 // AndroidBuildForUiTestingBuilder builds a android-build-for-ui-testing step with typed input methods.
 type AndroidBuildForUiTestingBuilder struct{ *Builder }
 
-// AndroidBuildForUiTesting creates a android-build-for-ui-testing step builder (v0).
+// AndroidBuildForUiTesting creates a android-build-for-ui-testing step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidBuildForUiTesting("0")  // explicit default
+//	step.AndroidBuildForUiTesting("1")                  // older major
 func AndroidBuildForUiTesting(version ...string) *AndroidBuildForUiTestingBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

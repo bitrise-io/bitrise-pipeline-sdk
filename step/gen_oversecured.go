@@ -6,7 +6,11 @@ package step
 // OversecuredBuilder builds a oversecured step with typed input methods.
 type OversecuredBuilder struct{ *Builder }
 
-// Oversecured creates a oversecured step builder (v1).
+// Oversecured creates a oversecured step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Oversecured("1")  // explicit default
+//	step.Oversecured("1")                  // older major
 func Oversecured(version ...string) *OversecuredBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

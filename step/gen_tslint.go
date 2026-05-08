@@ -6,7 +6,11 @@ package step
 // TslintBuilder builds a tslint step with typed input methods.
 type TslintBuilder struct{ *Builder }
 
-// Tslint creates a tslint step builder (v0).
+// Tslint creates a tslint step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Tslint("0")  // explicit default
+//	step.Tslint("1")                  // older major
 func Tslint(version ...string) *TslintBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

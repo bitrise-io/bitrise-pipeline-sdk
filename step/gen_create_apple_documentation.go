@@ -6,7 +6,11 @@ package step
 // CreateAppleDocumentationBuilder builds a create-apple-documentation step with typed input methods.
 type CreateAppleDocumentationBuilder struct{ *Builder }
 
-// CreateAppleDocumentation creates a create-apple-documentation step builder (v1).
+// CreateAppleDocumentation creates a create-apple-documentation step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CreateAppleDocumentation("1")  // explicit default
+//	step.CreateAppleDocumentation("1")                  // older major
 func CreateAppleDocumentation(version ...string) *CreateAppleDocumentationBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // GitCommitChangelogBuilder builds a git-commit-changelog step with typed input methods.
 type GitCommitChangelogBuilder struct{ *Builder }
 
-// GitCommitChangelog creates a git-commit-changelog step builder (v1).
+// GitCommitChangelog creates a git-commit-changelog step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GitCommitChangelog("1")  // explicit default
+//	step.GitCommitChangelog("1")                  // older major
 func GitCommitChangelog(version ...string) *GitCommitChangelogBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

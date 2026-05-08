@@ -6,7 +6,11 @@ package step
 // BitriseSnykScanBuilder builds a bitrise-snyk-scan step with typed input methods.
 type BitriseSnykScanBuilder struct{ *Builder }
 
-// BitriseSnykScan creates a bitrise-snyk-scan step builder (v0).
+// BitriseSnykScan creates a bitrise-snyk-scan step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseSnykScan("0")  // explicit default
+//	step.BitriseSnykScan("1")                  // older major
 func BitriseSnykScan(version ...string) *BitriseSnykScanBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

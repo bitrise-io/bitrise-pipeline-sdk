@@ -6,7 +6,11 @@ package step
 // ConfigcatFeatureFlagSyncBuilder builds a configcat-feature-flag-sync step with typed input methods.
 type ConfigcatFeatureFlagSyncBuilder struct{ *Builder }
 
-// ConfigcatFeatureFlagSync creates a configcat-feature-flag-sync step builder (v0).
+// ConfigcatFeatureFlagSync creates a configcat-feature-flag-sync step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ConfigcatFeatureFlagSync("0")  // explicit default
+//	step.ConfigcatFeatureFlagSync("1")                  // older major
 func ConfigcatFeatureFlagSync(version ...string) *ConfigcatFeatureFlagSyncBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

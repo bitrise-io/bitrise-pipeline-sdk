@@ -6,7 +6,11 @@ package step
 // GetAppBuilder builds a get-app step with typed input methods.
 type GetAppBuilder struct{ *Builder }
 
-// GetApp creates a get-app step builder (v0).
+// GetApp creates a get-app step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GetApp("0")  // explicit default
+//	step.GetApp("1")                  // older major
 func GetApp(version ...string) *GetAppBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // SetIosInfoPlistUnifiedBuilder builds a set-ios-info-plist-unified step with typed input methods.
 type SetIosInfoPlistUnifiedBuilder struct{ *Builder }
 
-// SetIosInfoPlistUnified creates a set-ios-info-plist-unified step builder (v1).
+// SetIosInfoPlistUnified creates a set-ios-info-plist-unified step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetIosInfoPlistUnified("1")  // explicit default
+//	step.SetIosInfoPlistUnified("1")                  // older major
 func SetIosInfoPlistUnified(version ...string) *SetIosInfoPlistUnifiedBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

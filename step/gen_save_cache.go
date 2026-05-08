@@ -6,7 +6,11 @@ package step
 // SaveCacheBuilder builds a save-cache step with typed input methods.
 type SaveCacheBuilder struct{ *Builder }
 
-// SaveCache creates a save-cache step builder (v1).
+// SaveCache creates a save-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveCache("1")  // explicit default
+//	step.SaveCache("1")                  // older major
 func SaveCache(version ...string) *SaveCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

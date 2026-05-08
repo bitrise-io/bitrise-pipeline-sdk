@@ -6,7 +6,11 @@ package step
 // CreateGithubAppTokenBuilder builds a create-github-app-token step with typed input methods.
 type CreateGithubAppTokenBuilder struct{ *Builder }
 
-// CreateGithubAppToken creates a create-github-app-token step builder (v1).
+// CreateGithubAppToken creates a create-github-app-token step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CreateGithubAppToken("1")  // explicit default
+//	step.CreateGithubAppToken("1")                  // older major
 func CreateGithubAppToken(version ...string) *CreateGithubAppTokenBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

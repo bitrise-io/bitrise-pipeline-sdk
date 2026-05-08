@@ -6,7 +6,11 @@ package step
 // BrowserstackAppLiveUploadBuilder builds a browserstack-app-live-upload step with typed input methods.
 type BrowserstackAppLiveUploadBuilder struct{ *Builder }
 
-// BrowserstackAppLiveUpload creates a browserstack-app-live-upload step builder (v1).
+// BrowserstackAppLiveUpload creates a browserstack-app-live-upload step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BrowserstackAppLiveUpload("1")  // explicit default
+//	step.BrowserstackAppLiveUpload("1")                  // older major
 func BrowserstackAppLiveUpload(version ...string) *BrowserstackAppLiveUploadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

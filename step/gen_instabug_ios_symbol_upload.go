@@ -6,7 +6,11 @@ package step
 // InstabugIosSymbolUploadBuilder builds a instabug-ios-symbol-upload step with typed input methods.
 type InstabugIosSymbolUploadBuilder struct{ *Builder }
 
-// InstabugIosSymbolUpload creates a instabug-ios-symbol-upload step builder (v1).
+// InstabugIosSymbolUpload creates a instabug-ios-symbol-upload step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.InstabugIosSymbolUpload("1")  // explicit default
+//	step.InstabugIosSymbolUpload("1")                  // older major
 func InstabugIosSymbolUpload(version ...string) *InstabugIosSymbolUploadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // BitriseStepStampAppiconWithVersionNumberBuilder builds a bitrise-step-stamp-appicon-with-version-number step with typed input methods.
 type BitriseStepStampAppiconWithVersionNumberBuilder struct{ *Builder }
 
-// BitriseStepStampAppiconWithVersionNumber creates a bitrise-step-stamp-appicon-with-version-number step builder (v1).
+// BitriseStepStampAppiconWithVersionNumber creates a bitrise-step-stamp-appicon-with-version-number step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepStampAppiconWithVersionNumber("1")  // explicit default
+//	step.BitriseStepStampAppiconWithVersionNumber("1")                  // older major
 func BitriseStepStampAppiconWithVersionNumber(version ...string) *BitriseStepStampAppiconWithVersionNumberBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

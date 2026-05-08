@@ -6,7 +6,11 @@ package step
 // ZipalignApkBuilder builds a zipalign-apk step with typed input methods.
 type ZipalignApkBuilder struct{ *Builder }
 
-// ZipalignApk creates a zipalign-apk step builder (v0).
+// ZipalignApk creates a zipalign-apk step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ZipalignApk("0")  // explicit default
+//	step.ZipalignApk("1")                  // older major
 func ZipalignApk(version ...string) *ZipalignApkBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

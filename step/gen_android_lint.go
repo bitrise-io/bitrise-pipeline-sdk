@@ -6,7 +6,11 @@ package step
 // AndroidLintBuilder builds a android-lint step with typed input methods.
 type AndroidLintBuilder struct{ *Builder }
 
-// AndroidLint creates a android-lint step builder (v0).
+// AndroidLint creates a android-lint step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidLint("0")  // explicit default
+//	step.AndroidLint("1")                  // older major
 func AndroidLint(version ...string) *AndroidLintBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

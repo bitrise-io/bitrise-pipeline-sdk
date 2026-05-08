@@ -6,7 +6,11 @@ package step
 // SendMicrosoftTeamsMessageBuilder builds a send-microsoft-teams-message step with typed input methods.
 type SendMicrosoftTeamsMessageBuilder struct{ *Builder }
 
-// SendMicrosoftTeamsMessage creates a send-microsoft-teams-message step builder (v0).
+// SendMicrosoftTeamsMessage creates a send-microsoft-teams-message step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SendMicrosoftTeamsMessage("0")  // explicit default
+//	step.SendMicrosoftTeamsMessage("1")                  // older major
 func SendMicrosoftTeamsMessage(version ...string) *SendMicrosoftTeamsMessageBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

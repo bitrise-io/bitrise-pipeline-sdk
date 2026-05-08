@@ -6,7 +6,11 @@ package step
 // BitriseStepAppledocBuilder builds a bitrise-step-appledoc step with typed input methods.
 type BitriseStepAppledocBuilder struct{ *Builder }
 
-// BitriseStepAppledoc creates a bitrise-step-appledoc step builder (v1).
+// BitriseStepAppledoc creates a bitrise-step-appledoc step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepAppledoc("1")  // explicit default
+//	step.BitriseStepAppledoc("1")                  // older major
 func BitriseStepAppledoc(version ...string) *BitriseStepAppledocBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

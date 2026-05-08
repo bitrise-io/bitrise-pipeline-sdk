@@ -6,7 +6,11 @@ package step
 // LambdatestXcuitestAppAutomateBuilder builds a lambdatest-xcuitest-app-automate step with typed input methods.
 type LambdatestXcuitestAppAutomateBuilder struct{ *Builder }
 
-// LambdatestXcuitestAppAutomate creates a lambdatest-xcuitest-app-automate step builder (v1).
+// LambdatestXcuitestAppAutomate creates a lambdatest-xcuitest-app-automate step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.LambdatestXcuitestAppAutomate("1")  // explicit default
+//	step.LambdatestXcuitestAppAutomate("1")                  // older major
 func LambdatestXcuitestAppAutomate(version ...string) *LambdatestXcuitestAppAutomateBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

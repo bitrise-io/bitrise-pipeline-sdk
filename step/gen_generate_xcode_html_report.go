@@ -6,7 +6,11 @@ package step
 // GenerateXcodeHtmlReportBuilder builds a generate-xcode-html-report step with typed input methods.
 type GenerateXcodeHtmlReportBuilder struct{ *Builder }
 
-// GenerateXcodeHtmlReport creates a generate-xcode-html-report step builder (v1).
+// GenerateXcodeHtmlReport creates a generate-xcode-html-report step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenerateXcodeHtmlReport("1")  // explicit default
+//	step.GenerateXcodeHtmlReport("1")                  // older major
 func GenerateXcodeHtmlReport(version ...string) *GenerateXcodeHtmlReportBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

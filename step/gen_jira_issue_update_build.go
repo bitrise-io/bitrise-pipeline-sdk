@@ -6,7 +6,11 @@ package step
 // JiraIssueUpdateBuildBuilder builds a jira-issue-update-build step with typed input methods.
 type JiraIssueUpdateBuildBuilder struct{ *Builder }
 
-// JiraIssueUpdateBuild creates a jira-issue-update-build step builder (v0).
+// JiraIssueUpdateBuild creates a jira-issue-update-build step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.JiraIssueUpdateBuild("0")  // explicit default
+//	step.JiraIssueUpdateBuild("1")                  // older major
 func JiraIssueUpdateBuild(version ...string) *JiraIssueUpdateBuildBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

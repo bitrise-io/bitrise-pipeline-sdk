@@ -6,7 +6,11 @@ package step
 // XcodeTestWithoutBuildingBuilder builds a xcode-test-without-building step with typed input methods.
 type XcodeTestWithoutBuildingBuilder struct{ *Builder }
 
-// XcodeTestWithoutBuilding creates a xcode-test-without-building step builder (v0).
+// XcodeTestWithoutBuilding creates a xcode-test-without-building step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeTestWithoutBuilding("0")  // explicit default
+//	step.XcodeTestWithoutBuilding("1")                  // older major
 func XcodeTestWithoutBuilding(version ...string) *XcodeTestWithoutBuildingBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

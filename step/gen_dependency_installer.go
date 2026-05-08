@@ -6,7 +6,11 @@ package step
 // DependencyInstallerBuilder builds a dependency-installer step with typed input methods.
 type DependencyInstallerBuilder struct{ *Builder }
 
-// DependencyInstaller creates a dependency-installer step builder (v1).
+// DependencyInstaller creates a dependency-installer step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DependencyInstaller("1")  // explicit default
+//	step.DependencyInstaller("1")                  // older major
 func DependencyInstaller(version ...string) *DependencyInstallerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

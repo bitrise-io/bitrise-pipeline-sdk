@@ -6,7 +6,11 @@ package step
 // PullIntermediateFilesBuilder builds a pull-intermediate-files step with typed input methods.
 type PullIntermediateFilesBuilder struct{ *Builder }
 
-// PullIntermediateFiles creates a pull-intermediate-files step builder (v1).
+// PullIntermediateFiles creates a pull-intermediate-files step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.PullIntermediateFiles("1")  // explicit default
+//	step.PullIntermediateFiles("1")                  // older major
 func PullIntermediateFiles(version ...string) *PullIntermediateFilesBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

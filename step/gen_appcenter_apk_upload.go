@@ -4,9 +4,17 @@
 package step
 
 // AppcenterApkUploadBuilder builds a appcenter-apk-upload step with typed input methods.
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 type AppcenterApkUploadBuilder struct{ *Builder }
 
-// AppcenterApkUpload creates a appcenter-apk-upload step builder (v0).
+// AppcenterApkUpload creates a appcenter-apk-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppcenterApkUpload("0")  // explicit default
+//	step.AppcenterApkUpload("1")                  // older major
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 func AppcenterApkUpload(version ...string) *AppcenterApkUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

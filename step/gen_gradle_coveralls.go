@@ -6,7 +6,11 @@ package step
 // GradleCoverallsBuilder builds a gradle-coveralls step with typed input methods.
 type GradleCoverallsBuilder struct{ *Builder }
 
-// GradleCoveralls creates a gradle-coveralls step builder (v1).
+// GradleCoveralls creates a gradle-coveralls step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GradleCoveralls("1")  // explicit default
+//	step.GradleCoveralls("1")                  // older major
 func GradleCoveralls(version ...string) *GradleCoverallsBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

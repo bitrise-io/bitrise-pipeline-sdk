@@ -6,7 +6,11 @@ package step
 // MonitoringAppsPermissionsBuilder builds a monitoring-apps-permissions step with typed input methods.
 type MonitoringAppsPermissionsBuilder struct{ *Builder }
 
-// MonitoringAppsPermissions creates a monitoring-apps-permissions step builder (v1).
+// MonitoringAppsPermissions creates a monitoring-apps-permissions step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MonitoringAppsPermissions("1")  // explicit default
+//	step.MonitoringAppsPermissions("1")                  // older major
 func MonitoringAppsPermissions(version ...string) *MonitoringAppsPermissionsBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

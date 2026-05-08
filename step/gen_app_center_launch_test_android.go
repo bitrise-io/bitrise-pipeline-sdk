@@ -6,7 +6,11 @@ package step
 // AppCenterLaunchTestAndroidBuilder builds a app-center-launch-test-android step with typed input methods.
 type AppCenterLaunchTestAndroidBuilder struct{ *Builder }
 
-// AppCenterLaunchTestAndroid creates a app-center-launch-test-android step builder (v1).
+// AppCenterLaunchTestAndroid creates a app-center-launch-test-android step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppCenterLaunchTestAndroid("1")  // explicit default
+//	step.AppCenterLaunchTestAndroid("1")                  // older major
 func AppCenterLaunchTestAndroid(version ...string) *AppCenterLaunchTestAndroidBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

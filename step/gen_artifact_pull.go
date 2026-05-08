@@ -4,9 +4,17 @@
 package step
 
 // ArtifactPullBuilder builds a artifact-pull step with typed input methods.
+//
+// Deprecated: This Step is deprecated, please use the [Pull Intermediate Files](https://github.com/bitrise-steplib/bitrise-step-pull-intermediate-files) Step instead. More info and a migration guide can be found [here](https://github.com/bitrise-steplib/bitrise-step-pull-intermediate-files/releases/tag/1.0.0).
 type ArtifactPullBuilder struct{ *Builder }
 
-// ArtifactPull creates a artifact-pull step builder (v1).
+// ArtifactPull creates a artifact-pull step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ArtifactPull("1")  // explicit default
+//	step.ArtifactPull("1")                  // older major
+//
+// Deprecated: This Step is deprecated, please use the [Pull Intermediate Files](https://github.com/bitrise-steplib/bitrise-step-pull-intermediate-files) Step instead. More info and a migration guide can be found [here](https://github.com/bitrise-steplib/bitrise-step-pull-intermediate-files/releases/tag/1.0.0).
 func ArtifactPull(version ...string) *ArtifactPullBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // ActivateBuildCacheForReactNativeBuilder builds a activate-build-cache-for-react-native step with typed input methods.
 type ActivateBuildCacheForReactNativeBuilder struct{ *Builder }
 
-// ActivateBuildCacheForReactNative creates a activate-build-cache-for-react-native step builder (v0).
+// ActivateBuildCacheForReactNative creates a activate-build-cache-for-react-native step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ActivateBuildCacheForReactNative("0")  // explicit default
+//	step.ActivateBuildCacheForReactNative("1")                  // older major
 func ActivateBuildCacheForReactNative(version ...string) *ActivateBuildCacheForReactNativeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

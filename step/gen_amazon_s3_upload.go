@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
 type AmazonS3UploadBuilder struct{ *Builder }
 
-// AmazonS3Upload creates a amazon-s3-upload step builder (v3).
+// AmazonS3Upload creates a amazon-s3-upload step builder (v3 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AmazonS3Upload("3")  // explicit default
+//	step.AmazonS3Upload("1")                  // older major
 //
 // Deprecated: This step is deprecated. Please use the new official Amazon S3 step: https://bitrise.io/integrations/steps/aws-s3-upload
 func AmazonS3Upload(version ...string) *AmazonS3UploadBuilder {

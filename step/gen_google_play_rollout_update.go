@@ -6,7 +6,11 @@ package step
 // GooglePlayRolloutUpdateBuilder builds a google-play-rollout-update step with typed input methods.
 type GooglePlayRolloutUpdateBuilder struct{ *Builder }
 
-// GooglePlayRolloutUpdate creates a google-play-rollout-update step builder (v0).
+// GooglePlayRolloutUpdate creates a google-play-rollout-update step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GooglePlayRolloutUpdate("0")  // explicit default
+//	step.GooglePlayRolloutUpdate("1")                  // older major
 func GooglePlayRolloutUpdate(version ...string) *GooglePlayRolloutUpdateBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

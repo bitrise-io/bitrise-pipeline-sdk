@@ -6,7 +6,11 @@ package step
 // BeatAndroidCodeStatsBuilder builds a beat-android-code-stats step with typed input methods.
 type BeatAndroidCodeStatsBuilder struct{ *Builder }
 
-// BeatAndroidCodeStats creates a beat-android-code-stats step builder (v0).
+// BeatAndroidCodeStats creates a beat-android-code-stats step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BeatAndroidCodeStats("0")  // explicit default
+//	step.BeatAndroidCodeStats("1")                  // older major
 func BeatAndroidCodeStats(version ...string) *BeatAndroidCodeStatsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

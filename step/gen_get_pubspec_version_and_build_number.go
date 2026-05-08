@@ -6,7 +6,11 @@ package step
 // GetPubspecVersionAndBuildNumberBuilder builds a get-pubspec-version-and-build-number step with typed input methods.
 type GetPubspecVersionAndBuildNumberBuilder struct{ *Builder }
 
-// GetPubspecVersionAndBuildNumber creates a get-pubspec-version-and-build-number step builder (v1).
+// GetPubspecVersionAndBuildNumber creates a get-pubspec-version-and-build-number step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GetPubspecVersionAndBuildNumber("1")  // explicit default
+//	step.GetPubspecVersionAndBuildNumber("1")                  // older major
 func GetPubspecVersionAndBuildNumber(version ...string) *GetPubspecVersionAndBuildNumberBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // AppGalleryDeployBuilder builds a app-gallery-deploy step with typed input methods.
 type AppGalleryDeployBuilder struct{ *Builder }
 
-// AppGalleryDeploy creates a app-gallery-deploy step builder (v1).
+// AppGalleryDeploy creates a app-gallery-deploy step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppGalleryDeploy("1")  // explicit default
+//	step.AppGalleryDeploy("1")                  // older major
 func AppGalleryDeploy(version ...string) *AppGalleryDeployBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

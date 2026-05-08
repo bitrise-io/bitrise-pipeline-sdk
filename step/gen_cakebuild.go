@@ -6,7 +6,11 @@ package step
 // CakebuildBuilder builds a cakebuild step with typed input methods.
 type CakebuildBuilder struct{ *Builder }
 
-// Cakebuild creates a cakebuild step builder (v1).
+// Cakebuild creates a cakebuild step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Cakebuild("1")  // explicit default
+//	step.Cakebuild("1")                  // older major
 func Cakebuild(version ...string) *CakebuildBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

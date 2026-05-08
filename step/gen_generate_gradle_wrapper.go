@@ -6,7 +6,11 @@ package step
 // GenerateGradleWrapperBuilder builds a generate-gradle-wrapper step with typed input methods.
 type GenerateGradleWrapperBuilder struct{ *Builder }
 
-// GenerateGradleWrapper creates a generate-gradle-wrapper step builder (v0).
+// GenerateGradleWrapper creates a generate-gradle-wrapper step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenerateGradleWrapper("0")  // explicit default
+//	step.GenerateGradleWrapper("1")                  // older major
 func GenerateGradleWrapper(version ...string) *GenerateGradleWrapperBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

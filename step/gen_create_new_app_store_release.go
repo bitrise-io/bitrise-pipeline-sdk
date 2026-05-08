@@ -4,9 +4,17 @@
 package step
 
 // CreateNewAppStoreReleaseBuilder builds a create-new-app-store-release step with typed input methods.
+//
+// Deprecated: This step is no longer supported. You can get similar results with one of our new features: create release bash script in Release Management API recipes. It can be used from a terminal or copied into a script step in Bitrise CI. [More info](https://github.com/bitrise-io/release-management-recipes)
 type CreateNewAppStoreReleaseBuilder struct{ *Builder }
 
-// CreateNewAppStoreRelease creates a create-new-app-store-release step builder (v1).
+// CreateNewAppStoreRelease creates a create-new-app-store-release step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CreateNewAppStoreRelease("1")  // explicit default
+//	step.CreateNewAppStoreRelease("1")                  // older major
+//
+// Deprecated: This step is no longer supported. You can get similar results with one of our new features: create release bash script in Release Management API recipes. It can be used from a terminal or copied into a script step in Bitrise CI. [More info](https://github.com/bitrise-io/release-management-recipes)
 func CreateNewAppStoreRelease(version ...string) *CreateNewAppStoreReleaseBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

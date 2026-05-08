@@ -6,7 +6,11 @@ package step
 // S3CachePullBuilder builds a s3-cache-pull step with typed input methods.
 type S3CachePullBuilder struct{ *Builder }
 
-// S3CachePull creates a s3-cache-pull step builder (v0).
+// S3CachePull creates a s3-cache-pull step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.S3CachePull("0")  // explicit default
+//	step.S3CachePull("1")                  // older major
 func S3CachePull(version ...string) *S3CachePullBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

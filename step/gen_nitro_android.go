@@ -6,7 +6,11 @@ package step
 // NitroAndroidBuilder builds a nitro-android step with typed input methods.
 type NitroAndroidBuilder struct{ *Builder }
 
-// NitroAndroid creates a nitro-android step builder (v4).
+// NitroAndroid creates a nitro-android step builder (v4 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.NitroAndroid("4")  // explicit default
+//	step.NitroAndroid("1")                  // older major
 func NitroAndroid(version ...string) *NitroAndroidBuilder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

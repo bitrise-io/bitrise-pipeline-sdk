@@ -6,7 +6,11 @@ package step
 // DeployToItunesconnectDeliverBuilder builds a deploy-to-itunesconnect-deliver step with typed input methods.
 type DeployToItunesconnectDeliverBuilder struct{ *Builder }
 
-// DeployToItunesconnectDeliver creates a deploy-to-itunesconnect-deliver step builder (v2).
+// DeployToItunesconnectDeliver creates a deploy-to-itunesconnect-deliver step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DeployToItunesconnectDeliver("2")  // explicit default
+//	step.DeployToItunesconnectDeliver("1")                  // older major
 func DeployToItunesconnectDeliver(version ...string) *DeployToItunesconnectDeliverBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

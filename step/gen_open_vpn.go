@@ -6,7 +6,11 @@ package step
 // OpenVpnBuilder builds a open-vpn step with typed input methods.
 type OpenVpnBuilder struct{ *Builder }
 
-// OpenVpn creates a open-vpn step builder (v0).
+// OpenVpn creates a open-vpn step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.OpenVpn("0")  // explicit default
+//	step.OpenVpn("1")                  // older major
 func OpenVpn(version ...string) *OpenVpnBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

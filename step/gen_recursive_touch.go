@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated as it is not reliable in daily development.
 type RecursiveTouchBuilder struct{ *Builder }
 
-// RecursiveTouch creates a recursive-touch step builder (v0).
+// RecursiveTouch creates a recursive-touch step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RecursiveTouch("0")  // explicit default
+//	step.RecursiveTouch("1")                  // older major
 //
 // Deprecated: This step is deprecated as it is not reliable in daily development.
 func RecursiveTouch(version ...string) *RecursiveTouchBuilder {

@@ -6,7 +6,11 @@ package step
 // ActivateBuildCacheForBazelBuilder builds a activate-build-cache-for-bazel step with typed input methods.
 type ActivateBuildCacheForBazelBuilder struct{ *Builder }
 
-// ActivateBuildCacheForBazel creates a activate-build-cache-for-bazel step builder (v1).
+// ActivateBuildCacheForBazel creates a activate-build-cache-for-bazel step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ActivateBuildCacheForBazel("1")  // explicit default
+//	step.ActivateBuildCacheForBazel("1")                  // older major
 func ActivateBuildCacheForBazel(version ...string) *ActivateBuildCacheForBazelBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

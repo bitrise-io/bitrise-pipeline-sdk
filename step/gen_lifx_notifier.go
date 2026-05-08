@@ -6,7 +6,11 @@ package step
 // LifxNotifierBuilder builds a lifx-notifier step with typed input methods.
 type LifxNotifierBuilder struct{ *Builder }
 
-// LifxNotifier creates a lifx-notifier step builder (v1).
+// LifxNotifier creates a lifx-notifier step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.LifxNotifier("1")  // explicit default
+//	step.LifxNotifier("1")                  // older major
 func LifxNotifier(version ...string) *LifxNotifierBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

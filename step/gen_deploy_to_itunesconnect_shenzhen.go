@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated, use [Deploy to App Store Connect - Application Loader](https://github.com/bitrise-steplib/steps-deploy-to-itunesconnect-application-loader) step instead.
 type DeployToItunesconnectShenzhenBuilder struct{ *Builder }
 
-// DeployToItunesconnectShenzhen creates a deploy-to-itunesconnect-shenzhen step builder (v2).
+// DeployToItunesconnectShenzhen creates a deploy-to-itunesconnect-shenzhen step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DeployToItunesconnectShenzhen("2")  // explicit default
+//	step.DeployToItunesconnectShenzhen("1")                  // older major
 //
 // Deprecated: This step is deprecated, use [Deploy to App Store Connect - Application Loader](https://github.com/bitrise-steplib/steps-deploy-to-itunesconnect-application-loader) step instead.
 func DeployToItunesconnectShenzhen(version ...string) *DeployToItunesconnectShenzhenBuilder {

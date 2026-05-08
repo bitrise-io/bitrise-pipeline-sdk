@@ -6,7 +6,11 @@ package step
 // HerokuDeployBuilder builds a heroku-deploy step with typed input methods.
 type HerokuDeployBuilder struct{ *Builder }
 
-// HerokuDeploy creates a heroku-deploy step builder (v0).
+// HerokuDeploy creates a heroku-deploy step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.HerokuDeploy("0")  // explicit default
+//	step.HerokuDeploy("1")                  // older major
 func HerokuDeploy(version ...string) *HerokuDeployBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

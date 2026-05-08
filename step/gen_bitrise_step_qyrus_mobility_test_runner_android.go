@@ -6,7 +6,11 @@ package step
 // BitriseStepQyrusMobilityTestRunnerAndroidBuilder builds a bitrise-step-qyrus-mobility-test-runner-android step with typed input methods.
 type BitriseStepQyrusMobilityTestRunnerAndroidBuilder struct{ *Builder }
 
-// BitriseStepQyrusMobilityTestRunnerAndroid creates a bitrise-step-qyrus-mobility-test-runner-android step builder (v0).
+// BitriseStepQyrusMobilityTestRunnerAndroid creates a bitrise-step-qyrus-mobility-test-runner-android step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepQyrusMobilityTestRunnerAndroid("0")  // explicit default
+//	step.BitriseStepQyrusMobilityTestRunnerAndroid("1")                  // older major
 func BitriseStepQyrusMobilityTestRunnerAndroid(version ...string) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

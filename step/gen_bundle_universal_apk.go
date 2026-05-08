@@ -6,7 +6,11 @@ package step
 // BundleUniversalApkBuilder builds a bundle-universal-apk step with typed input methods.
 type BundleUniversalApkBuilder struct{ *Builder }
 
-// BundleUniversalApk creates a bundle-universal-apk step builder (v0).
+// BundleUniversalApk creates a bundle-universal-apk step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BundleUniversalApk("0")  // explicit default
+//	step.BundleUniversalApk("1")                  // older major
 func BundleUniversalApk(version ...string) *BundleUniversalApkBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

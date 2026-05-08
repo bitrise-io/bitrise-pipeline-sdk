@@ -6,7 +6,11 @@ package step
 // ExportIosToLingohubBuilder builds a export-ios-to-lingohub step with typed input methods.
 type ExportIosToLingohubBuilder struct{ *Builder }
 
-// ExportIosToLingohub creates a export-ios-to-lingohub step builder (v0).
+// ExportIosToLingohub creates a export-ios-to-lingohub step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ExportIosToLingohub("0")  // explicit default
+//	step.ExportIosToLingohub("1")                  // older major
 func ExportIosToLingohub(version ...string) *ExportIosToLingohubBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

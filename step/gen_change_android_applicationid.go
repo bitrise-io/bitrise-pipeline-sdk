@@ -6,7 +6,11 @@ package step
 // ChangeAndroidApplicationidBuilder builds a change-android-applicationid step with typed input methods.
 type ChangeAndroidApplicationidBuilder struct{ *Builder }
 
-// ChangeAndroidApplicationid creates a change-android-applicationid step builder (v1).
+// ChangeAndroidApplicationid creates a change-android-applicationid step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ChangeAndroidApplicationid("1")  // explicit default
+//	step.ChangeAndroidApplicationid("1")                  // older major
 func ChangeAndroidApplicationid(version ...string) *ChangeAndroidApplicationidBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

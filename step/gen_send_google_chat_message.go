@@ -6,7 +6,11 @@ package step
 // SendGoogleChatMessageBuilder builds a send-google-chat-message step with typed input methods.
 type SendGoogleChatMessageBuilder struct{ *Builder }
 
-// SendGoogleChatMessage creates a send-google-chat-message step builder (v1).
+// SendGoogleChatMessage creates a send-google-chat-message step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SendGoogleChatMessage("1")  // explicit default
+//	step.SendGoogleChatMessage("1")                  // older major
 func SendGoogleChatMessage(version ...string) *SendGoogleChatMessageBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

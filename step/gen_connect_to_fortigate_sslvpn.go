@@ -6,7 +6,11 @@ package step
 // ConnectToFortigateSslvpnBuilder builds a connect-to-fortigate-sslvpn step with typed input methods.
 type ConnectToFortigateSslvpnBuilder struct{ *Builder }
 
-// ConnectToFortigateSslvpn creates a connect-to-fortigate-sslvpn step builder (v1).
+// ConnectToFortigateSslvpn creates a connect-to-fortigate-sslvpn step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ConnectToFortigateSslvpn("1")  // explicit default
+//	step.ConnectToFortigateSslvpn("1")                  // older major
 func ConnectToFortigateSslvpn(version ...string) *ConnectToFortigateSslvpnBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

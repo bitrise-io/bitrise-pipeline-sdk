@@ -6,7 +6,11 @@ package step
 // FastlaneMatchBuilder builds a fastlane-match step with typed input methods.
 type FastlaneMatchBuilder struct{ *Builder }
 
-// FastlaneMatch creates a fastlane-match step builder (v0).
+// FastlaneMatch creates a fastlane-match step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FastlaneMatch("0")  // explicit default
+//	step.FastlaneMatch("1")                  // older major
 func FastlaneMatch(version ...string) *FastlaneMatchBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

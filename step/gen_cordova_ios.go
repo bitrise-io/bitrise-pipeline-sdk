@@ -6,7 +6,11 @@ package step
 // CordovaIosBuilder builds a cordova-ios step with typed input methods.
 type CordovaIosBuilder struct{ *Builder }
 
-// CordovaIos creates a cordova-ios step builder (v0).
+// CordovaIos creates a cordova-ios step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CordovaIos("0")  // explicit default
+//	step.CordovaIos("1")                  // older major
 func CordovaIos(version ...string) *CordovaIosBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

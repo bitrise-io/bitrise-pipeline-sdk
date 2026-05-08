@@ -6,7 +6,11 @@ package step
 // LocoBuilder builds a loco step with typed input methods.
 type LocoBuilder struct{ *Builder }
 
-// Loco creates a loco step builder (v0).
+// Loco creates a loco step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Loco("0")  // explicit default
+//	step.Loco("1")                  // older major
 func Loco(version ...string) *LocoBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

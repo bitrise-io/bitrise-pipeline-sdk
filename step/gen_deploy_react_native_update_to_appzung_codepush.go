@@ -6,7 +6,11 @@ package step
 // DeployReactNativeUpdateToAppzungCodepushBuilder builds a deploy-react-native-update-to-appzung-codepush step with typed input methods.
 type DeployReactNativeUpdateToAppzungCodepushBuilder struct{ *Builder }
 
-// DeployReactNativeUpdateToAppzungCodepush creates a deploy-react-native-update-to-appzung-codepush step builder (v1).
+// DeployReactNativeUpdateToAppzungCodepush creates a deploy-react-native-update-to-appzung-codepush step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DeployReactNativeUpdateToAppzungCodepush("1")  // explicit default
+//	step.DeployReactNativeUpdateToAppzungCodepush("1")                  // older major
 func DeployReactNativeUpdateToAppzungCodepush(version ...string) *DeployReactNativeUpdateToAppzungCodepushBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // DeploygateUploadAppBitriseStepBuilder builds a deploygate--upload-app-bitrise-step step with typed input methods.
 type DeploygateUploadAppBitriseStepBuilder struct{ *Builder }
 
-// DeploygateUploadAppBitriseStep creates a deploygate--upload-app-bitrise-step step builder (v1).
+// DeploygateUploadAppBitriseStep creates a deploygate--upload-app-bitrise-step step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DeploygateUploadAppBitriseStep("1")  // explicit default
+//	step.DeploygateUploadAppBitriseStep("1")                  // older major
 func DeploygateUploadAppBitriseStep(version ...string) *DeploygateUploadAppBitriseStepBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

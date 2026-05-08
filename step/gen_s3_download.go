@@ -6,7 +6,11 @@ package step
 // S3DownloadBuilder builds a s3-download step with typed input methods.
 type S3DownloadBuilder struct{ *Builder }
 
-// S3Download creates a s3-download step builder (v1).
+// S3Download creates a s3-download step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.S3Download("1")  // explicit default
+//	step.S3Download("1")                  // older major
 func S3Download(version ...string) *S3DownloadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

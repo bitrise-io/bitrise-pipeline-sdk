@@ -4,9 +4,17 @@
 package step
 
 // AppcenterAppReleaseBuilder builds a appcenter-app-release step with typed input methods.
+//
+// Deprecated: This step is no longer maintained by its author.  It's recommended to use the new AppCenter steps created and maintained by Bitrise: - For iOS, use the [AppCenter iOS Deploy](https://github.com/bitrise-steplib/steps-appcenter-deploy-ios) Step instead - For Android, use the [AppCenter Android Deploy](https://github.com/bitrise-steplib/steps-appcenter-deploy-android) Step instead
 type AppcenterAppReleaseBuilder struct{ *Builder }
 
-// AppcenterAppRelease creates a appcenter-app-release step builder (v1).
+// AppcenterAppRelease creates a appcenter-app-release step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppcenterAppRelease("1")  // explicit default
+//	step.AppcenterAppRelease("1")                  // older major
+//
+// Deprecated: This step is no longer maintained by its author.  It's recommended to use the new AppCenter steps created and maintained by Bitrise: - For iOS, use the [AppCenter iOS Deploy](https://github.com/bitrise-steplib/steps-appcenter-deploy-ios) Step instead - For Android, use the [AppCenter Android Deploy](https://github.com/bitrise-steplib/steps-appcenter-deploy-android) Step instead
 func AppcenterAppRelease(version ...string) *AppcenterAppReleaseBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated. Now it was split to use each feature separately (eg. Mobile apps permissions monitoring [monitoring-apps-permissions step])
 type MobileQualityBuilder struct{ *Builder }
 
-// MobileQuality creates a mobile-quality step builder (v1).
+// MobileQuality creates a mobile-quality step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MobileQuality("1")  // explicit default
+//	step.MobileQuality("1")                  // older major
 //
 // Deprecated: This step is deprecated. Now it was split to use each feature separately (eg. Mobile apps permissions monitoring [monitoring-apps-permissions step])
 func MobileQuality(version ...string) *MobileQualityBuilder {

@@ -6,7 +6,11 @@ package step
 // CloseJiraTasksBuilder builds a close-jira-tasks step with typed input methods.
 type CloseJiraTasksBuilder struct{ *Builder }
 
-// CloseJiraTasks creates a close-jira-tasks step builder (v1).
+// CloseJiraTasks creates a close-jira-tasks step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CloseJiraTasks("1")  // explicit default
+//	step.CloseJiraTasks("1")                  // older major
 func CloseJiraTasks(version ...string) *CloseJiraTasksBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

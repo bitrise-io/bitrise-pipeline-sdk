@@ -6,7 +6,11 @@ package step
 // XcodeBuildVersionBuilder builds a xcode-build-version step with typed input methods.
 type XcodeBuildVersionBuilder struct{ *Builder }
 
-// XcodeBuildVersion creates a xcode-build-version step builder (v0).
+// XcodeBuildVersion creates a xcode-build-version step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeBuildVersion("0")  // explicit default
+//	step.XcodeBuildVersion("1")                  // older major
 func XcodeBuildVersion(version ...string) *XcodeBuildVersionBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

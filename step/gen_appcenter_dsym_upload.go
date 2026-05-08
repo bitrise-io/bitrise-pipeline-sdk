@@ -4,9 +4,17 @@
 package step
 
 // AppcenterDsymUploadBuilder builds a appcenter-dsym-upload step with typed input methods.
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 type AppcenterDsymUploadBuilder struct{ *Builder }
 
-// AppcenterDsymUpload creates a appcenter-dsym-upload step builder (v0).
+// AppcenterDsymUpload creates a appcenter-dsym-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppcenterDsymUpload("0")  // explicit default
+//	step.AppcenterDsymUpload("1")                  // older major
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 func AppcenterDsymUpload(version ...string) *AppcenterDsymUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // AndroidManifestInfoBuilder builds a android-manifest-info step with typed input methods.
 type AndroidManifestInfoBuilder struct{ *Builder }
 
-// AndroidManifestInfo creates a android-manifest-info step builder (v1).
+// AndroidManifestInfo creates a android-manifest-info step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidManifestInfo("1")  // explicit default
+//	step.AndroidManifestInfo("1")                  // older major
 func AndroidManifestInfo(version ...string) *AndroidManifestInfoBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

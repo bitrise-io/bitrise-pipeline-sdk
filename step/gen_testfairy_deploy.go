@@ -6,7 +6,11 @@ package step
 // TestfairyDeployBuilder builds a testfairy-deploy step with typed input methods.
 type TestfairyDeployBuilder struct{ *Builder }
 
-// TestfairyDeploy creates a testfairy-deploy step builder (v2).
+// TestfairyDeploy creates a testfairy-deploy step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TestfairyDeploy("2")  // explicit default
+//	step.TestfairyDeploy("1")                  // older major
 func TestfairyDeploy(version ...string) *TestfairyDeployBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

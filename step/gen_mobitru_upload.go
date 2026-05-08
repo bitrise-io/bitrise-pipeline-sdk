@@ -6,7 +6,11 @@ package step
 // MobitruUploadBuilder builds a mobitru-upload step with typed input methods.
 type MobitruUploadBuilder struct{ *Builder }
 
-// MobitruUpload creates a mobitru-upload step builder (v1).
+// MobitruUpload creates a mobitru-upload step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MobitruUpload("1")  // explicit default
+//	step.MobitruUpload("1")                  // older major
 func MobitruUpload(version ...string) *MobitruUploadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

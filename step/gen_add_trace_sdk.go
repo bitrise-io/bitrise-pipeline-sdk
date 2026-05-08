@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated as it is not supported anymore.
 type AddTraceSdkBuilder struct{ *Builder }
 
-// AddTraceSdk creates a add-trace-sdk step builder (v1).
+// AddTraceSdk creates a add-trace-sdk step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AddTraceSdk("1")  // explicit default
+//	step.AddTraceSdk("1")                  // older major
 //
 // Deprecated: This step is deprecated as it is not supported anymore.
 func AddTraceSdk(version ...string) *AddTraceSdkBuilder {

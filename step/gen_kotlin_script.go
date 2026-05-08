@@ -6,7 +6,11 @@ package step
 // KotlinScriptBuilder builds a kotlin-script step with typed input methods.
 type KotlinScriptBuilder struct{ *Builder }
 
-// KotlinScript creates a kotlin-script step builder (v1).
+// KotlinScript creates a kotlin-script step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.KotlinScript("1")  // explicit default
+//	step.KotlinScript("1")                  // older major
 func KotlinScript(version ...string) *KotlinScriptBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // AuthenticateWithAwsBuilder builds a authenticate-with-aws step with typed input methods.
 type AuthenticateWithAwsBuilder struct{ *Builder }
 
-// AuthenticateWithAws creates a authenticate-with-aws step builder (v0).
+// AuthenticateWithAws creates a authenticate-with-aws step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AuthenticateWithAws("0")  // explicit default
+//	step.AuthenticateWithAws("1")                  // older major
 func AuthenticateWithAws(version ...string) *AuthenticateWithAwsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

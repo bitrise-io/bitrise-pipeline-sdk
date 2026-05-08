@@ -4,9 +4,17 @@
 package step
 
 // XamarinComponentsRestoreBuilder builds a xamarin-components-restore step with typed input methods.
+//
+// Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 type XamarinComponentsRestoreBuilder struct{ *Builder }
 
-// XamarinComponentsRestore creates a xamarin-components-restore step builder (v0).
+// XamarinComponentsRestore creates a xamarin-components-restore step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XamarinComponentsRestore("0")  // explicit default
+//	step.XamarinComponentsRestore("1")                  // older major
+//
+// Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 func XamarinComponentsRestore(version ...string) *XamarinComponentsRestoreBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

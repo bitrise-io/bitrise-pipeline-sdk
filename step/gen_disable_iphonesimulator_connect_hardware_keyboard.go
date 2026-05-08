@@ -6,7 +6,11 @@ package step
 // DisableIphonesimulatorConnectHardwareKeyboardBuilder builds a disable-iphonesimulator-connect-hardware-keyboard step with typed input methods.
 type DisableIphonesimulatorConnectHardwareKeyboardBuilder struct{ *Builder }
 
-// DisableIphonesimulatorConnectHardwareKeyboard creates a disable-iphonesimulator-connect-hardware-keyboard step builder (v0).
+// DisableIphonesimulatorConnectHardwareKeyboard creates a disable-iphonesimulator-connect-hardware-keyboard step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DisableIphonesimulatorConnectHardwareKeyboard("0")  // explicit default
+//	step.DisableIphonesimulatorConnectHardwareKeyboard("1")                  // older major
 func DisableIphonesimulatorConnectHardwareKeyboard(version ...string) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

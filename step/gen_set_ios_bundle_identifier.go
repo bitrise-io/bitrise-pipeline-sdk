@@ -6,7 +6,11 @@ package step
 // SetIosBundleIdentifierBuilder builds a set-ios-bundle-identifier step with typed input methods.
 type SetIosBundleIdentifierBuilder struct{ *Builder }
 
-// SetIosBundleIdentifier creates a set-ios-bundle-identifier step builder (v1).
+// SetIosBundleIdentifier creates a set-ios-bundle-identifier step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetIosBundleIdentifier("1")  // explicit default
+//	step.SetIosBundleIdentifier("1")                  // older major
 func SetIosBundleIdentifier(version ...string) *SetIosBundleIdentifierBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

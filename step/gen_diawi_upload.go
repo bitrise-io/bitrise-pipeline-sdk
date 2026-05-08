@@ -6,7 +6,11 @@ package step
 // DiawiUploadBuilder builds a diawi-upload step with typed input methods.
 type DiawiUploadBuilder struct{ *Builder }
 
-// DiawiUpload creates a diawi-upload step builder (v0).
+// DiawiUpload creates a diawi-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DiawiUpload("0")  // explicit default
+//	step.DiawiUpload("1")                  // older major
 func DiawiUpload(version ...string) *DiawiUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

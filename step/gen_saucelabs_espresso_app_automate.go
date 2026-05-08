@@ -6,7 +6,11 @@ package step
 // SaucelabsEspressoAppAutomateBuilder builds a saucelabs-espresso-app-automate step with typed input methods.
 type SaucelabsEspressoAppAutomateBuilder struct{ *Builder }
 
-// SaucelabsEspressoAppAutomate creates a saucelabs-espresso-app-automate step builder (v0).
+// SaucelabsEspressoAppAutomate creates a saucelabs-espresso-app-automate step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaucelabsEspressoAppAutomate("0")  // explicit default
+//	step.SaucelabsEspressoAppAutomate("1")                  // older major
 func SaucelabsEspressoAppAutomate(version ...string) *SaucelabsEspressoAppAutomateBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

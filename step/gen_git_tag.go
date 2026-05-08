@@ -6,7 +6,11 @@ package step
 // GitTagBuilder builds a git-tag step with typed input methods.
 type GitTagBuilder struct{ *Builder }
 
-// GitTag creates a git-tag step builder (v1).
+// GitTag creates a git-tag step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GitTag("1")  // explicit default
+//	step.GitTag("1")                  // older major
 func GitTag(version ...string) *GitTagBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // GenerateTextFileBuilder builds a generate-text-file step with typed input methods.
 type GenerateTextFileBuilder struct{ *Builder }
 
-// GenerateTextFile creates a generate-text-file step builder (v0).
+// GenerateTextFile creates a generate-text-file step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenerateTextFile("0")  // explicit default
+//	step.GenerateTextFile("1")                  // older major
 func GenerateTextFile(version ...string) *GenerateTextFileBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

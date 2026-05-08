@@ -6,7 +6,11 @@ package step
 // TestlioUploadBuilder builds a testlio-upload step with typed input methods.
 type TestlioUploadBuilder struct{ *Builder }
 
-// TestlioUpload creates a testlio-upload step builder (v0).
+// TestlioUpload creates a testlio-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TestlioUpload("0")  // explicit default
+//	step.TestlioUpload("1")                  // older major
 func TestlioUpload(version ...string) *TestlioUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

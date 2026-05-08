@@ -6,7 +6,11 @@ package step
 // DetektBuilder builds a detekt step with typed input methods.
 type DetektBuilder struct{ *Builder }
 
-// Detekt creates a detekt step builder (v1).
+// Detekt creates a detekt step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Detekt("1")  // explicit default
+//	step.Detekt("1")                  // older major
 func Detekt(version ...string) *DetektBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // BrowserstackEspressoAppAutomateBuilder builds a browserstack-espresso-app-automate step with typed input methods.
 type BrowserstackEspressoAppAutomateBuilder struct{ *Builder }
 
-// BrowserstackEspressoAppAutomate creates a browserstack-espresso-app-automate step builder (v0).
+// BrowserstackEspressoAppAutomate creates a browserstack-espresso-app-automate step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BrowserstackEspressoAppAutomate("0")  // explicit default
+//	step.BrowserstackEspressoAppAutomate("1")                  // older major
 func BrowserstackEspressoAppAutomate(version ...string) *BrowserstackEspressoAppAutomateBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

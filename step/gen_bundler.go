@@ -6,7 +6,11 @@ package step
 // BundlerBuilder builds a bundler step with typed input methods.
 type BundlerBuilder struct{ *Builder }
 
-// Bundler creates a bundler step builder (v0).
+// Bundler creates a bundler step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Bundler("0")  // explicit default
+//	step.Bundler("1")                  // older major
 func Bundler(version ...string) *BundlerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

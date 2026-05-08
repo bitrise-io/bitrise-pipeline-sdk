@@ -6,7 +6,11 @@ package step
 // TestfairyDeployAndroidBuilder builds a testfairy-deploy-android step with typed input methods.
 type TestfairyDeployAndroidBuilder struct{ *Builder }
 
-// TestfairyDeployAndroid creates a testfairy-deploy-android step builder (v1).
+// TestfairyDeployAndroid creates a testfairy-deploy-android step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TestfairyDeployAndroid("1")  // explicit default
+//	step.TestfairyDeployAndroid("1")                  // older major
 func TestfairyDeployAndroid(version ...string) *TestfairyDeployAndroidBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

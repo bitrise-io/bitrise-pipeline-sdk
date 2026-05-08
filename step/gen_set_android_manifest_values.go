@@ -6,7 +6,11 @@ package step
 // SetAndroidManifestValuesBuilder builds a set-android-manifest-values step with typed input methods.
 type SetAndroidManifestValuesBuilder struct{ *Builder }
 
-// SetAndroidManifestValues creates a set-android-manifest-values step builder (v1).
+// SetAndroidManifestValues creates a set-android-manifest-values step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetAndroidManifestValues("1")  // explicit default
+//	step.SetAndroidManifestValues("1")                  // older major
 func SetAndroidManifestValues(version ...string) *SetAndroidManifestValuesBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

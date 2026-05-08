@@ -6,7 +6,11 @@ package step
 // BowerBuilder builds a bower step with typed input methods.
 type BowerBuilder struct{ *Builder }
 
-// Bower creates a bower step builder (v0).
+// Bower creates a bower step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Bower("0")  // explicit default
+//	step.Bower("1")                  // older major
 func Bower(version ...string) *BowerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

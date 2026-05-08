@@ -6,7 +6,11 @@ package step
 // ApkInfoBuilder builds a apk-info step with typed input methods.
 type ApkInfoBuilder struct{ *Builder }
 
-// ApkInfo creates a apk-info step builder (v1).
+// ApkInfo creates a apk-info step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ApkInfo("1")  // explicit default
+//	step.ApkInfo("1")                  // older major
 func ApkInfo(version ...string) *ApkInfoBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -4,9 +4,17 @@
 package step
 
 // AppcenterIpaUploadBuilder builds a appcenter-ipa-upload step with typed input methods.
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 type AppcenterIpaUploadBuilder struct{ *Builder }
 
-// AppcenterIpaUpload creates a appcenter-ipa-upload step builder (v0).
+// AppcenterIpaUpload creates a appcenter-ipa-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppcenterIpaUpload("0")  // explicit default
+//	step.AppcenterIpaUpload("1")                  // older major
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 func AppcenterIpaUpload(version ...string) *AppcenterIpaUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

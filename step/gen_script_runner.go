@@ -6,7 +6,11 @@ package step
 // ScriptRunnerBuilder builds a script-runner step with typed input methods.
 type ScriptRunnerBuilder struct{ *Builder }
 
-// ScriptRunner creates a script-runner step builder (v0).
+// ScriptRunner creates a script-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ScriptRunner("0")  // explicit default
+//	step.ScriptRunner("1")                  // older major
 func ScriptRunner(version ...string) *ScriptRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

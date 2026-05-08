@@ -6,7 +6,11 @@ package step
 // GitTagProjectVersionAndBuildNumberBuilder builds a git-tag-project-version-and-build-number step with typed input methods.
 type GitTagProjectVersionAndBuildNumberBuilder struct{ *Builder }
 
-// GitTagProjectVersionAndBuildNumber creates a git-tag-project-version-and-build-number step builder (v1).
+// GitTagProjectVersionAndBuildNumber creates a git-tag-project-version-and-build-number step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GitTagProjectVersionAndBuildNumber("1")  // explicit default
+//	step.GitTagProjectVersionAndBuildNumber("1")                  // older major
 func GitTagProjectVersionAndBuildNumber(version ...string) *GitTagProjectVersionAndBuildNumberBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

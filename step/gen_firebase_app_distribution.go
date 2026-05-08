@@ -6,7 +6,11 @@ package step
 // FirebaseAppDistributionBuilder builds a firebase-app-distribution step with typed input methods.
 type FirebaseAppDistributionBuilder struct{ *Builder }
 
-// FirebaseAppDistribution creates a firebase-app-distribution step builder (v0).
+// FirebaseAppDistribution creates a firebase-app-distribution step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FirebaseAppDistribution("0")  // explicit default
+//	step.FirebaseAppDistribution("1")                  // older major
 func FirebaseAppDistribution(version ...string) *FirebaseAppDistributionBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

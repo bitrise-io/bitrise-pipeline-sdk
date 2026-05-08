@@ -6,7 +6,11 @@ package step
 // SaveGradleConfigurationCacheBuilder builds a save-gradle-configuration-cache step with typed input methods.
 type SaveGradleConfigurationCacheBuilder struct{ *Builder }
 
-// SaveGradleConfigurationCache creates a save-gradle-configuration-cache step builder (v1).
+// SaveGradleConfigurationCache creates a save-gradle-configuration-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveGradleConfigurationCache("1")  // explicit default
+//	step.SaveGradleConfigurationCache("1")                  // older major
 func SaveGradleConfigurationCache(version ...string) *SaveGradleConfigurationCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

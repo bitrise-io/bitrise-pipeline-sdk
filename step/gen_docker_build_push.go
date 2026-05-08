@@ -6,7 +6,11 @@ package step
 // DockerBuildPushBuilder builds a docker-build-push step with typed input methods.
 type DockerBuildPushBuilder struct{ *Builder }
 
-// DockerBuildPush creates a docker-build-push step builder (v1).
+// DockerBuildPush creates a docker-build-push step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DockerBuildPush("1")  // explicit default
+//	step.DockerBuildPush("1")                  // older major
 func DockerBuildPush(version ...string) *DockerBuildPushBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

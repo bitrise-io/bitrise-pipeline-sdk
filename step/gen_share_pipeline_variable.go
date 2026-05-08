@@ -6,7 +6,11 @@ package step
 // SharePipelineVariableBuilder builds a share-pipeline-variable step with typed input methods.
 type SharePipelineVariableBuilder struct{ *Builder }
 
-// SharePipelineVariable creates a share-pipeline-variable step builder (v1).
+// SharePipelineVariable creates a share-pipeline-variable step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SharePipelineVariable("1")  // explicit default
+//	step.SharePipelineVariable("1")                  // older major
 func SharePipelineVariable(version ...string) *SharePipelineVariableBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

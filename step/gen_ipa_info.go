@@ -6,7 +6,11 @@ package step
 // IpaInfoBuilder builds a ipa-info step with typed input methods.
 type IpaInfoBuilder struct{ *Builder }
 
-// IpaInfo creates a ipa-info step builder (v1).
+// IpaInfo creates a ipa-info step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.IpaInfo("1")  // explicit default
+//	step.IpaInfo("1")                  // older major
 func IpaInfo(version ...string) *IpaInfoBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

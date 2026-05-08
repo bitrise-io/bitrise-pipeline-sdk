@@ -6,7 +6,11 @@ package step
 // FetchInfisicalSecretsBuilder builds a fetch-infisical-secrets step with typed input methods.
 type FetchInfisicalSecretsBuilder struct{ *Builder }
 
-// FetchInfisicalSecrets creates a fetch-infisical-secrets step builder (v1).
+// FetchInfisicalSecrets creates a fetch-infisical-secrets step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FetchInfisicalSecrets("1")  // explicit default
+//	step.FetchInfisicalSecrets("1")                  // older major
 func FetchInfisicalSecrets(version ...string) *FetchInfisicalSecretsBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

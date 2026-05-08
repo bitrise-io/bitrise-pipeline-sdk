@@ -6,7 +6,11 @@ package step
 // FlutterBuilder builds a flutter step with typed input methods.
 type FlutterBuilder struct{ *Builder }
 
-// Flutter creates a flutter step builder (v0).
+// Flutter creates a flutter step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Flutter("0")  // explicit default
+//	step.Flutter("1")                  // older major
 func Flutter(version ...string) *FlutterBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

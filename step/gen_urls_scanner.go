@@ -6,7 +6,11 @@ package step
 // UrlsScannerBuilder builds a urls-scanner step with typed input methods.
 type UrlsScannerBuilder struct{ *Builder }
 
-// UrlsScanner creates a urls-scanner step builder (v1).
+// UrlsScanner creates a urls-scanner step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.UrlsScanner("1")  // explicit default
+//	step.UrlsScanner("1")                  // older major
 func UrlsScanner(version ...string) *UrlsScannerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

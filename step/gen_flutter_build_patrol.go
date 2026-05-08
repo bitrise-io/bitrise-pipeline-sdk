@@ -6,7 +6,11 @@ package step
 // FlutterBuildPatrolBuilder builds a flutter-build-patrol step with typed input methods.
 type FlutterBuildPatrolBuilder struct{ *Builder }
 
-// FlutterBuildPatrol creates a flutter-build-patrol step builder (v0).
+// FlutterBuildPatrol creates a flutter-build-patrol step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FlutterBuildPatrol("0")  // explicit default
+//	step.FlutterBuildPatrol("1")                  // older major
 func FlutterBuildPatrol(version ...string) *FlutterBuildPatrolBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

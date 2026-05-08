@@ -6,7 +6,11 @@ package step
 // BuildRouterWaitBuilder builds a build-router-wait step with typed input methods.
 type BuildRouterWaitBuilder struct{ *Builder }
 
-// BuildRouterWait creates a build-router-wait step builder (v0).
+// BuildRouterWait creates a build-router-wait step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BuildRouterWait("0")  // explicit default
+//	step.BuildRouterWait("1")                  // older major
 func BuildRouterWait(version ...string) *BuildRouterWaitBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

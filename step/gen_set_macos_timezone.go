@@ -6,7 +6,11 @@ package step
 // SetMacosTimezoneBuilder builds a set-macos-timezone step with typed input methods.
 type SetMacosTimezoneBuilder struct{ *Builder }
 
-// SetMacosTimezone creates a set-macos-timezone step builder (v0).
+// SetMacosTimezone creates a set-macos-timezone step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetMacosTimezone("0")  // explicit default
+//	step.SetMacosTimezone("1")                  // older major
 func SetMacosTimezone(version ...string) *SetMacosTimezoneBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

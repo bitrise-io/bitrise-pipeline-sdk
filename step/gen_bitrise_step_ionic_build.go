@@ -6,7 +6,11 @@ package step
 // BitriseStepIonicBuildBuilder builds a bitrise-step-ionic-build step with typed input methods.
 type BitriseStepIonicBuildBuilder struct{ *Builder }
 
-// BitriseStepIonicBuild creates a bitrise-step-ionic-build step builder (v0).
+// BitriseStepIonicBuild creates a bitrise-step-ionic-build step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepIonicBuild("0")  // explicit default
+//	step.BitriseStepIonicBuild("1")                  // older major
 func BitriseStepIonicBuild(version ...string) *BitriseStepIonicBuildBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

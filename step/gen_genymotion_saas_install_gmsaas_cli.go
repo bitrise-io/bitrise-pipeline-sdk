@@ -6,7 +6,11 @@ package step
 // GenymotionSaasInstallGmsaasCliBuilder builds a genymotion-saas-install-gmsaas-cli step with typed input methods.
 type GenymotionSaasInstallGmsaasCliBuilder struct{ *Builder }
 
-// GenymotionSaasInstallGmsaasCli creates a genymotion-saas-install-gmsaas-cli step builder (v0).
+// GenymotionSaasInstallGmsaasCli creates a genymotion-saas-install-gmsaas-cli step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenymotionSaasInstallGmsaasCli("0")  // explicit default
+//	step.GenymotionSaasInstallGmsaasCli("1")                  // older major
 func GenymotionSaasInstallGmsaasCli(version ...string) *GenymotionSaasInstallGmsaasCliBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

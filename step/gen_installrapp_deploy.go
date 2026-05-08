@@ -6,7 +6,11 @@ package step
 // InstallrappDeployBuilder builds a installrapp-deploy step with typed input methods.
 type InstallrappDeployBuilder struct{ *Builder }
 
-// InstallrappDeploy creates a installrapp-deploy step builder (v1).
+// InstallrappDeploy creates a installrapp-deploy step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.InstallrappDeploy("1")  // explicit default
+//	step.InstallrappDeploy("1")                  // older major
 func InstallrappDeploy(version ...string) *InstallrappDeployBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // SaveCarthageCacheBuilder builds a save-carthage-cache step with typed input methods.
 type SaveCarthageCacheBuilder struct{ *Builder }
 
-// SaveCarthageCache creates a save-carthage-cache step builder (v1).
+// SaveCarthageCache creates a save-carthage-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveCarthageCache("1")  // explicit default
+//	step.SaveCarthageCache("1")                  // older major
 func SaveCarthageCache(version ...string) *SaveCarthageCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

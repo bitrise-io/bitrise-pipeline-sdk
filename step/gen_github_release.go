@@ -6,7 +6,11 @@ package step
 // GithubReleaseBuilder builds a github-release step with typed input methods.
 type GithubReleaseBuilder struct{ *Builder }
 
-// GithubRelease creates a github-release step builder (v0).
+// GithubRelease creates a github-release step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GithubRelease("0")  // explicit default
+//	step.GithubRelease("1")                  // older major
 func GithubRelease(version ...string) *GithubReleaseBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

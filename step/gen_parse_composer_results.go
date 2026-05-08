@@ -6,7 +6,11 @@ package step
 // ParseComposerResultsBuilder builds a parse-composer-results step with typed input methods.
 type ParseComposerResultsBuilder struct{ *Builder }
 
-// ParseComposerResults creates a parse-composer-results step builder (v0).
+// ParseComposerResults creates a parse-composer-results step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ParseComposerResults("0")  // explicit default
+//	step.ParseComposerResults("1")                  // older major
 func ParseComposerResults(version ...string) *ParseComposerResultsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

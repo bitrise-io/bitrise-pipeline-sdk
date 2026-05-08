@@ -6,7 +6,11 @@ package step
 // AuthenticateHostWithNetrcBuilder builds a authenticate-host-with-netrc step with typed input methods.
 type AuthenticateHostWithNetrcBuilder struct{ *Builder }
 
-// AuthenticateHostWithNetrc creates a authenticate-host-with-netrc step builder (v0).
+// AuthenticateHostWithNetrc creates a authenticate-host-with-netrc step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AuthenticateHostWithNetrc("0")  // explicit default
+//	step.AuthenticateHostWithNetrc("1")                  // older major
 func AuthenticateHostWithNetrc(version ...string) *AuthenticateHostWithNetrcBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // UpdateJiraIssueFieldBuilder builds a update-jira-issue-field step with typed input methods.
 type UpdateJiraIssueFieldBuilder struct{ *Builder }
 
-// UpdateJiraIssueField creates a update-jira-issue-field step builder (v1).
+// UpdateJiraIssueField creates a update-jira-issue-field step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.UpdateJiraIssueField("1")  // explicit default
+//	step.UpdateJiraIssueField("1")                  // older major
 func UpdateJiraIssueField(version ...string) *UpdateJiraIssueFieldBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

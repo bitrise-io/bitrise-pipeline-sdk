@@ -6,7 +6,11 @@ package step
 // PebbleBuildBuilder builds a pebble-build step with typed input methods.
 type PebbleBuildBuilder struct{ *Builder }
 
-// PebbleBuild creates a pebble-build step builder (v1).
+// PebbleBuild creates a pebble-build step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.PebbleBuild("1")  // explicit default
+//	step.PebbleBuild("1")                  // older major
 func PebbleBuild(version ...string) *PebbleBuildBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

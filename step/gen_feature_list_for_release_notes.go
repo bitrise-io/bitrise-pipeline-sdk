@@ -6,7 +6,11 @@ package step
 // FeatureListForReleaseNotesBuilder builds a feature-list-for-release-notes step with typed input methods.
 type FeatureListForReleaseNotesBuilder struct{ *Builder }
 
-// FeatureListForReleaseNotes creates a feature-list-for-release-notes step builder (v0).
+// FeatureListForReleaseNotes creates a feature-list-for-release-notes step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FeatureListForReleaseNotes("0")  // explicit default
+//	step.FeatureListForReleaseNotes("1")                  // older major
 func FeatureListForReleaseNotes(version ...string) *FeatureListForReleaseNotesBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

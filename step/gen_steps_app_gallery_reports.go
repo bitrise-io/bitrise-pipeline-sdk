@@ -6,7 +6,11 @@ package step
 // StepsAppGalleryReportsBuilder builds a steps-app-gallery-reports step with typed input methods.
 type StepsAppGalleryReportsBuilder struct{ *Builder }
 
-// StepsAppGalleryReports creates a steps-app-gallery-reports step builder (v0).
+// StepsAppGalleryReports creates a steps-app-gallery-reports step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.StepsAppGalleryReports("0")  // explicit default
+//	step.StepsAppGalleryReports("1")                  // older major
 func StepsAppGalleryReports(version ...string) *StepsAppGalleryReportsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // AndroidSdkUpdateBuilder builds a android-sdk-update step with typed input methods.
 type AndroidSdkUpdateBuilder struct{ *Builder }
 
-// AndroidSdkUpdate creates a android-sdk-update step builder (v1).
+// AndroidSdkUpdate creates a android-sdk-update step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidSdkUpdate("1")  // explicit default
+//	step.AndroidSdkUpdate("1")                  // older major
 func AndroidSdkUpdate(version ...string) *AndroidSdkUpdateBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // MicrosoftTeamsAdaptiveCardBuilder builds a microsoft-teams-adaptive-card step with typed input methods.
 type MicrosoftTeamsAdaptiveCardBuilder struct{ *Builder }
 
-// MicrosoftTeamsAdaptiveCard creates a microsoft-teams-adaptive-card step builder (v1).
+// MicrosoftTeamsAdaptiveCard creates a microsoft-teams-adaptive-card step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MicrosoftTeamsAdaptiveCard("1")  // explicit default
+//	step.MicrosoftTeamsAdaptiveCard("1")                  // older major
 func MicrosoftTeamsAdaptiveCard(version ...string) *MicrosoftTeamsAdaptiveCardBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

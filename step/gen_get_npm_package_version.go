@@ -6,7 +6,11 @@ package step
 // GetNpmPackageVersionBuilder builds a get-npm-package-version step with typed input methods.
 type GetNpmPackageVersionBuilder struct{ *Builder }
 
-// GetNpmPackageVersion creates a get-npm-package-version step builder (v1).
+// GetNpmPackageVersion creates a get-npm-package-version step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GetNpmPackageVersion("1")  // explicit default
+//	step.GetNpmPackageVersion("1")                  // older major
 func GetNpmPackageVersion(version ...string) *GetNpmPackageVersionBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

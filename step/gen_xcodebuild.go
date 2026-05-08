@@ -6,7 +6,11 @@ package step
 // XcodebuildBuilder builds a xcodebuild step with typed input methods.
 type XcodebuildBuilder struct{ *Builder }
 
-// Xcodebuild creates a xcodebuild step builder (v0).
+// Xcodebuild creates a xcodebuild step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Xcodebuild("0")  // explicit default
+//	step.Xcodebuild("1")                  // older major
 func Xcodebuild(version ...string) *XcodebuildBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

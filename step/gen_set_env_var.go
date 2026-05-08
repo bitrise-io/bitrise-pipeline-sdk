@@ -6,7 +6,11 @@ package step
 // SetEnvVarBuilder builds a set-env-var step with typed input methods.
 type SetEnvVarBuilder struct{ *Builder }
 
-// SetEnvVar creates a set-env-var step builder (v0).
+// SetEnvVar creates a set-env-var step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetEnvVar("0")  // explicit default
+//	step.SetEnvVar("1")                  // older major
 func SetEnvVar(version ...string) *SetEnvVarBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

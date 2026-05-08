@@ -6,7 +6,11 @@ package step
 // MonitoringAppsLogsBuilder builds a monitoring-apps-logs step with typed input methods.
 type MonitoringAppsLogsBuilder struct{ *Builder }
 
-// MonitoringAppsLogs creates a monitoring-apps-logs step builder (v1).
+// MonitoringAppsLogs creates a monitoring-apps-logs step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MonitoringAppsLogs("1")  // explicit default
+//	step.MonitoringAppsLogs("1")                  // older major
 func MonitoringAppsLogs(version ...string) *MonitoringAppsLogsBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

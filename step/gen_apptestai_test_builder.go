@@ -6,7 +6,11 @@ package step
 // ApptestaiTestBuilder builds a apptestai-test step with typed input methods.
 type ApptestaiTestBuilder struct{ *Builder }
 
-// ApptestaiTest creates a apptestai-test step builder (v0).
+// ApptestaiTest creates a apptestai-test step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ApptestaiTest("0")  // explicit default
+//	step.ApptestaiTest("1")                  // older major
 func ApptestaiTest(version ...string) *ApptestaiTestBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

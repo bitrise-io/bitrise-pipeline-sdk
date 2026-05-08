@@ -6,7 +6,11 @@ package step
 // BuildStatusChangeBuilder builds a build-status-change step with typed input methods.
 type BuildStatusChangeBuilder struct{ *Builder }
 
-// BuildStatusChange creates a build-status-change step builder (v0).
+// BuildStatusChange creates a build-status-change step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BuildStatusChange("0")  // explicit default
+//	step.BuildStatusChange("1")                  // older major
 func BuildStatusChange(version ...string) *BuildStatusChangeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

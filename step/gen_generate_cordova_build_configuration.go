@@ -6,7 +6,11 @@ package step
 // GenerateCordovaBuildConfigurationBuilder builds a generate-cordova-build-configuration step with typed input methods.
 type GenerateCordovaBuildConfigurationBuilder struct{ *Builder }
 
-// GenerateCordovaBuildConfiguration creates a generate-cordova-build-configuration step builder (v0).
+// GenerateCordovaBuildConfiguration creates a generate-cordova-build-configuration step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenerateCordovaBuildConfiguration("0")  // explicit default
+//	step.GenerateCordovaBuildConfiguration("1")                  // older major
 func GenerateCordovaBuildConfiguration(version ...string) *GenerateCordovaBuildConfigurationBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

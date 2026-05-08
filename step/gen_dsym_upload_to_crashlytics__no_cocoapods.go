@@ -6,7 +6,11 @@ package step
 // DsymUploadToCrashlyticsNoCocoapodsBuilder builds a dsym-upload-to-crashlytics--no-cocoapods step with typed input methods.
 type DsymUploadToCrashlyticsNoCocoapodsBuilder struct{ *Builder }
 
-// DsymUploadToCrashlyticsNoCocoapods creates a dsym-upload-to-crashlytics--no-cocoapods step builder (v0).
+// DsymUploadToCrashlyticsNoCocoapods creates a dsym-upload-to-crashlytics--no-cocoapods step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DsymUploadToCrashlyticsNoCocoapods("0")  // explicit default
+//	step.DsymUploadToCrashlyticsNoCocoapods("1")                  // older major
 func DsymUploadToCrashlyticsNoCocoapods(version ...string) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

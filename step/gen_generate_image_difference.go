@@ -6,7 +6,11 @@ package step
 // GenerateImageDifferenceBuilder builds a generate-image-difference step with typed input methods.
 type GenerateImageDifferenceBuilder struct{ *Builder }
 
-// GenerateImageDifference creates a generate-image-difference step builder (v0).
+// GenerateImageDifference creates a generate-image-difference step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenerateImageDifference("0")  // explicit default
+//	step.GenerateImageDifference("1")                  // older major
 func GenerateImageDifference(version ...string) *GenerateImageDifferenceBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

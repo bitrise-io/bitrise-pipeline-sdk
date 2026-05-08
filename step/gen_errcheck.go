@@ -6,7 +6,11 @@ package step
 // ErrcheckBuilder builds a errcheck step with typed input methods.
 type ErrcheckBuilder struct{ *Builder }
 
-// Errcheck creates a errcheck step builder (v0).
+// Errcheck creates a errcheck step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Errcheck("0")  // explicit default
+//	step.Errcheck("1")                  // older major
 func Errcheck(version ...string) *ErrcheckBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

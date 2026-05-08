@@ -6,7 +6,11 @@ package step
 // DeployToUpdraftBuilder builds a deploy-to-updraft step with typed input methods.
 type DeployToUpdraftBuilder struct{ *Builder }
 
-// DeployToUpdraft creates a deploy-to-updraft step builder (v0).
+// DeployToUpdraft creates a deploy-to-updraft step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DeployToUpdraft("0")  // explicit default
+//	step.DeployToUpdraft("1")                  // older major
 func DeployToUpdraft(version ...string) *DeployToUpdraftBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

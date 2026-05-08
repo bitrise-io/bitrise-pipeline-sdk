@@ -6,7 +6,11 @@ package step
 // FindJiraIssueBuilder builds a find-jira-issue step with typed input methods.
 type FindJiraIssueBuilder struct{ *Builder }
 
-// FindJiraIssue creates a find-jira-issue step builder (v0).
+// FindJiraIssue creates a find-jira-issue step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FindJiraIssue("0")  // explicit default
+//	step.FindJiraIssue("1")                  // older major
 func FindJiraIssue(version ...string) *FindJiraIssueBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

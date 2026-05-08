@@ -6,7 +6,11 @@ package step
 // GithubScriptRunnerBuilder builds a github-script-runner step with typed input methods.
 type GithubScriptRunnerBuilder struct{ *Builder }
 
-// GithubScriptRunner creates a github-script-runner step builder (v0).
+// GithubScriptRunner creates a github-script-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GithubScriptRunner("0")  // explicit default
+//	step.GithubScriptRunner("1")                  // older major
 func GithubScriptRunner(version ...string) *GithubScriptRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

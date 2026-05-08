@@ -6,7 +6,11 @@ package step
 // GetIdentityTokenBuilder builds a get-identity-token step with typed input methods.
 type GetIdentityTokenBuilder struct{ *Builder }
 
-// GetIdentityToken creates a get-identity-token step builder (v0).
+// GetIdentityToken creates a get-identity-token step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GetIdentityToken("0")  // explicit default
+//	step.GetIdentityToken("1")                  // older major
 func GetIdentityToken(version ...string) *GetIdentityTokenBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

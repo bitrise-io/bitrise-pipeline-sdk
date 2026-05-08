@@ -6,7 +6,11 @@ package step
 // GetFlutterVersionBuilder builds a get-flutter-version step with typed input methods.
 type GetFlutterVersionBuilder struct{ *Builder }
 
-// GetFlutterVersion creates a get-flutter-version step builder (v0).
+// GetFlutterVersion creates a get-flutter-version step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GetFlutterVersion("0")  // explicit default
+//	step.GetFlutterVersion("1")                  // older major
 func GetFlutterVersion(version ...string) *GetFlutterVersionBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

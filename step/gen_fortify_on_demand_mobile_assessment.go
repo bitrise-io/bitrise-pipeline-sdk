@@ -6,7 +6,11 @@ package step
 // FortifyOnDemandMobileAssessmentBuilder builds a fortify-on-demand-mobile-assessment step with typed input methods.
 type FortifyOnDemandMobileAssessmentBuilder struct{ *Builder }
 
-// FortifyOnDemandMobileAssessment creates a fortify-on-demand-mobile-assessment step builder (v0).
+// FortifyOnDemandMobileAssessment creates a fortify-on-demand-mobile-assessment step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FortifyOnDemandMobileAssessment("0")  // explicit default
+//	step.FortifyOnDemandMobileAssessment("1")                  // older major
 func FortifyOnDemandMobileAssessment(version ...string) *FortifyOnDemandMobileAssessmentBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

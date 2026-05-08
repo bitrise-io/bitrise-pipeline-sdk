@@ -6,7 +6,11 @@ package step
 // BitbucketServerPostBuildStatusBuilder builds a bitbucket-server-post-build-status step with typed input methods.
 type BitbucketServerPostBuildStatusBuilder struct{ *Builder }
 
-// BitbucketServerPostBuildStatus creates a bitbucket-server-post-build-status step builder (v0).
+// BitbucketServerPostBuildStatus creates a bitbucket-server-post-build-status step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitbucketServerPostBuildStatus("0")  // explicit default
+//	step.BitbucketServerPostBuildStatus("1")                  // older major
 func BitbucketServerPostBuildStatus(version ...string) *BitbucketServerPostBuildStatusBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

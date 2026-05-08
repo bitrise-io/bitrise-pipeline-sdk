@@ -6,7 +6,11 @@ package step
 // AppRayMobileSecurityBuilder builds a app-ray-mobile-security step with typed input methods.
 type AppRayMobileSecurityBuilder struct{ *Builder }
 
-// AppRayMobileSecurity creates a app-ray-mobile-security step builder (v1).
+// AppRayMobileSecurity creates a app-ray-mobile-security step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppRayMobileSecurity("1")  // explicit default
+//	step.AppRayMobileSecurity("1")                  // older major
 func AppRayMobileSecurity(version ...string) *AppRayMobileSecurityBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

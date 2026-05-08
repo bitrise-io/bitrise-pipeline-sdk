@@ -6,7 +6,11 @@ package step
 // ActivateBuildCacheForXcodeBuilder builds a activate-build-cache-for-xcode step with typed input methods.
 type ActivateBuildCacheForXcodeBuilder struct{ *Builder }
 
-// ActivateBuildCacheForXcode creates a activate-build-cache-for-xcode step builder (v0).
+// ActivateBuildCacheForXcode creates a activate-build-cache-for-xcode step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ActivateBuildCacheForXcode("0")  // explicit default
+//	step.ActivateBuildCacheForXcode("1")                  // older major
 func ActivateBuildCacheForXcode(version ...string) *ActivateBuildCacheForXcodeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

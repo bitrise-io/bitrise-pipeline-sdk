@@ -6,7 +6,11 @@ package step
 // BitriseStepNowsecureAutoAnalysisBuilder builds a bitrise-step-nowsecure-auto-analysis step with typed input methods.
 type BitriseStepNowsecureAutoAnalysisBuilder struct{ *Builder }
 
-// BitriseStepNowsecureAutoAnalysis creates a bitrise-step-nowsecure-auto-analysis step builder (v0).
+// BitriseStepNowsecureAutoAnalysis creates a bitrise-step-nowsecure-auto-analysis step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepNowsecureAutoAnalysis("0")  // explicit default
+//	step.BitriseStepNowsecureAutoAnalysis("1")                  // older major
 func BitriseStepNowsecureAutoAnalysis(version ...string) *BitriseStepNowsecureAutoAnalysisBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

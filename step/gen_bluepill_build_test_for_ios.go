@@ -6,7 +6,11 @@ package step
 // BluepillBuildTestForIosBuilder builds a bluepill-build-test-for-ios step with typed input methods.
 type BluepillBuildTestForIosBuilder struct{ *Builder }
 
-// BluepillBuildTestForIos creates a bluepill-build-test-for-ios step builder (v0).
+// BluepillBuildTestForIos creates a bluepill-build-test-for-ios step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BluepillBuildTestForIos("0")  // explicit default
+//	step.BluepillBuildTestForIos("1")                  // older major
 func BluepillBuildTestForIos(version ...string) *BluepillBuildTestForIosBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

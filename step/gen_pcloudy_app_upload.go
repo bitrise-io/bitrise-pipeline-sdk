@@ -6,7 +6,11 @@ package step
 // PcloudyAppUploadBuilder builds a pcloudy-app-upload step with typed input methods.
 type PcloudyAppUploadBuilder struct{ *Builder }
 
-// PcloudyAppUpload creates a pcloudy-app-upload step builder (v0).
+// PcloudyAppUpload creates a pcloudy-app-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.PcloudyAppUpload("0")  // explicit default
+//	step.PcloudyAppUpload("1")                  // older major
 func PcloudyAppUpload(version ...string) *PcloudyAppUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

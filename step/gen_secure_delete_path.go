@@ -6,7 +6,11 @@ package step
 // SecureDeletePathBuilder builds a secure-delete-path step with typed input methods.
 type SecureDeletePathBuilder struct{ *Builder }
 
-// SecureDeletePath creates a secure-delete-path step builder (v2).
+// SecureDeletePath creates a secure-delete-path step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SecureDeletePath("2")  // explicit default
+//	step.SecureDeletePath("1")                  // older major
 func SecureDeletePath(version ...string) *SecureDeletePathBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

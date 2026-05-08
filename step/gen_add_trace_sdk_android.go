@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated as it is not supported anymore.
 type AddTraceSdkAndroidBuilder struct{ *Builder }
 
-// AddTraceSdkAndroid creates a add-trace-sdk-android step builder (v0).
+// AddTraceSdkAndroid creates a add-trace-sdk-android step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AddTraceSdkAndroid("0")  // explicit default
+//	step.AddTraceSdkAndroid("1")                  // older major
 //
 // Deprecated: This step is deprecated as it is not supported anymore.
 func AddTraceSdkAndroid(version ...string) *AddTraceSdkAndroidBuilder {

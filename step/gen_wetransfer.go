@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated. The wetransfer API does not work anymore.
 type WetransferBuilder struct{ *Builder }
 
-// Wetransfer creates a wetransfer step builder (v0).
+// Wetransfer creates a wetransfer step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Wetransfer("0")  // explicit default
+//	step.Wetransfer("1")                  // older major
 //
 // Deprecated: This step is deprecated. The wetransfer API does not work anymore.
 func Wetransfer(version ...string) *WetransferBuilder {

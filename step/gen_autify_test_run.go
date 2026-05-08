@@ -6,7 +6,11 @@ package step
 // AutifyTestRunBuilder builds a autify-test-run step with typed input methods.
 type AutifyTestRunBuilder struct{ *Builder }
 
-// AutifyTestRun creates a autify-test-run step builder (v1).
+// AutifyTestRun creates a autify-test-run step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AutifyTestRun("1")  // explicit default
+//	step.AutifyTestRun("1")                  // older major
 func AutifyTestRun(version ...string) *AutifyTestRunBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

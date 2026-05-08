@@ -6,7 +6,11 @@ package step
 // AwsS3UploadBuilder builds a aws-s3-upload step with typed input methods.
 type AwsS3UploadBuilder struct{ *Builder }
 
-// AwsS3Upload creates a aws-s3-upload step builder (v0).
+// AwsS3Upload creates a aws-s3-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AwsS3Upload("0")  // explicit default
+//	step.AwsS3Upload("1")                  // older major
 func AwsS3Upload(version ...string) *AwsS3UploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

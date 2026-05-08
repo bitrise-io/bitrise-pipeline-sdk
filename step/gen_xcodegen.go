@@ -6,7 +6,11 @@ package step
 // XcodegenBuilder builds a xcodegen step with typed input methods.
 type XcodegenBuilder struct{ *Builder }
 
-// Xcodegen creates a xcodegen step builder (v0).
+// Xcodegen creates a xcodegen step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Xcodegen("0")  // explicit default
+//	step.Xcodegen("1")                  // older major
 func Xcodegen(version ...string) *XcodegenBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

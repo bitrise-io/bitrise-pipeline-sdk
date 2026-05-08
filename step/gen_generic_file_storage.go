@@ -6,7 +6,11 @@ package step
 // GenericFileStorageBuilder builds a generic-file-storage step with typed input methods.
 type GenericFileStorageBuilder struct{ *Builder }
 
-// GenericFileStorage creates a generic-file-storage step builder (v0).
+// GenericFileStorage creates a generic-file-storage step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenericFileStorage("0")  // explicit default
+//	step.GenericFileStorage("1")                  // older major
 func GenericFileStorage(version ...string) *GenericFileStorageBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

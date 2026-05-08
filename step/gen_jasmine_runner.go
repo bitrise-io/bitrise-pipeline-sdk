@@ -6,7 +6,11 @@ package step
 // JasmineRunnerBuilder builds a jasmine-runner step with typed input methods.
 type JasmineRunnerBuilder struct{ *Builder }
 
-// JasmineRunner creates a jasmine-runner step builder (v0).
+// JasmineRunner creates a jasmine-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.JasmineRunner("0")  // explicit default
+//	step.JasmineRunner("1")                  // older major
 func JasmineRunner(version ...string) *JasmineRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

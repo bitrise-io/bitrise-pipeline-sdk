@@ -6,7 +6,11 @@ package step
 // FlutterAnalyzeBuilder builds a flutter-analyze step with typed input methods.
 type FlutterAnalyzeBuilder struct{ *Builder }
 
-// FlutterAnalyze creates a flutter-analyze step builder (v0).
+// FlutterAnalyze creates a flutter-analyze step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FlutterAnalyze("0")  // explicit default
+//	step.FlutterAnalyze("1")                  // older major
 func FlutterAnalyze(version ...string) *FlutterAnalyzeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

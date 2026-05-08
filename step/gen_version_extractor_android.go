@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is no longer maintained by its author.
 type VersionExtractorAndroidBuilder struct{ *Builder }
 
-// VersionExtractorAndroid creates a version-extractor-android step builder (v0).
+// VersionExtractorAndroid creates a version-extractor-android step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.VersionExtractorAndroid("0")  // explicit default
+//	step.VersionExtractorAndroid("1")                  // older major
 //
 // Deprecated: This step is no longer maintained by its author.
 func VersionExtractorAndroid(version ...string) *VersionExtractorAndroidBuilder {

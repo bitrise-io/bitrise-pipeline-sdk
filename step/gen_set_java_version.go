@@ -6,7 +6,11 @@ package step
 // SetJavaVersionBuilder builds a set-java-version step with typed input methods.
 type SetJavaVersionBuilder struct{ *Builder }
 
-// SetJavaVersion creates a set-java-version step builder (v1).
+// SetJavaVersion creates a set-java-version step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetJavaVersion("1")  // explicit default
+//	step.SetJavaVersion("1")                  // older major
 func SetJavaVersion(version ...string) *SetJavaVersionBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

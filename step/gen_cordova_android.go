@@ -6,7 +6,11 @@ package step
 // CordovaAndroidBuilder builds a cordova-android step with typed input methods.
 type CordovaAndroidBuilder struct{ *Builder }
 
-// CordovaAndroid creates a cordova-android step builder (v0).
+// CordovaAndroid creates a cordova-android step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CordovaAndroid("0")  // explicit default
+//	step.CordovaAndroid("1")                  // older major
 func CordovaAndroid(version ...string) *CordovaAndroidBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // MsbuildSonarscannerEndBuilder builds a msbuild-sonarscanner-end step with typed input methods.
 type MsbuildSonarscannerEndBuilder struct{ *Builder }
 
-// MsbuildSonarscannerEnd creates a msbuild-sonarscanner-end step builder (v0).
+// MsbuildSonarscannerEnd creates a msbuild-sonarscanner-end step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MsbuildSonarscannerEnd("0")  // explicit default
+//	step.MsbuildSonarscannerEnd("1")                  // older major
 func MsbuildSonarscannerEnd(version ...string) *MsbuildSonarscannerEndBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

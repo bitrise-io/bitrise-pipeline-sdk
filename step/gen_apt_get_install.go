@@ -6,7 +6,11 @@ package step
 // AptGetInstallBuilder builds a apt-get-install step with typed input methods.
 type AptGetInstallBuilder struct{ *Builder }
 
-// AptGetInstall creates a apt-get-install step builder (v0).
+// AptGetInstall creates a apt-get-install step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AptGetInstall("0")  // explicit default
+//	step.AptGetInstall("1")                  // older major
 func AptGetInstall(version ...string) *AptGetInstallBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

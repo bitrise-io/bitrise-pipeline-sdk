@@ -6,7 +6,11 @@ package step
 // CordovaConfigBuilder builds a cordova-config step with typed input methods.
 type CordovaConfigBuilder struct{ *Builder }
 
-// CordovaConfig creates a cordova-config step builder (v0).
+// CordovaConfig creates a cordova-config step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CordovaConfig("0")  // explicit default
+//	step.CordovaConfig("1")                  // older major
 func CordovaConfig(version ...string) *CordovaConfigBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

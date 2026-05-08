@@ -6,7 +6,11 @@ package step
 // SonarqubeScannerBuilder builds a sonarqube-scanner step with typed input methods.
 type SonarqubeScannerBuilder struct{ *Builder }
 
-// SonarqubeScanner creates a sonarqube-scanner step builder (v1).
+// SonarqubeScanner creates a sonarqube-scanner step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SonarqubeScanner("1")  // explicit default
+//	step.SonarqubeScanner("1")                  // older major
 func SonarqubeScanner(version ...string) *SonarqubeScannerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

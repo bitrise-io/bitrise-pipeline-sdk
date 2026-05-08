@@ -6,7 +6,11 @@ package step
 // CertificateAndProfileInstallerBuilder builds a certificate-and-profile-installer step with typed input methods.
 type CertificateAndProfileInstallerBuilder struct{ *Builder }
 
-// CertificateAndProfileInstaller creates a certificate-and-profile-installer step builder (v1).
+// CertificateAndProfileInstaller creates a certificate-and-profile-installer step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CertificateAndProfileInstaller("1")  // explicit default
+//	step.CertificateAndProfileInstaller("1")                  // older major
 func CertificateAndProfileInstaller(version ...string) *CertificateAndProfileInstallerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

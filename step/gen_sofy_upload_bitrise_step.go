@@ -6,7 +6,11 @@ package step
 // SofyUploadBitriseStepBuilder builds a sofy-upload-bitrise-step step with typed input methods.
 type SofyUploadBitriseStepBuilder struct{ *Builder }
 
-// SofyUploadBitriseStep creates a sofy-upload-bitrise-step step builder (v0).
+// SofyUploadBitriseStep creates a sofy-upload-bitrise-step step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SofyUploadBitriseStep("0")  // explicit default
+//	step.SofyUploadBitriseStep("1")                  // older major
 func SofyUploadBitriseStep(version ...string) *SofyUploadBitriseStepBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

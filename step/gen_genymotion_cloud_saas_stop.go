@@ -6,7 +6,11 @@ package step
 // GenymotionCloudSaasStopBuilder builds a genymotion-cloud-saas-stop step with typed input methods.
 type GenymotionCloudSaasStopBuilder struct{ *Builder }
 
-// GenymotionCloudSaasStop creates a genymotion-cloud-saas-stop step builder (v0).
+// GenymotionCloudSaasStop creates a genymotion-cloud-saas-stop step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenymotionCloudSaasStop("0")  // explicit default
+//	step.GenymotionCloudSaasStop("1")                  // older major
 func GenymotionCloudSaasStop(version ...string) *GenymotionCloudSaasStopBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

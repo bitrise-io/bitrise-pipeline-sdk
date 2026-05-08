@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated. For more information please see: https://bitrise.io/blog/post/tuist-bitrise-build-cache-update
 type ActivateBuildCacheForTuistBuilder struct{ *Builder }
 
-// ActivateBuildCacheForTuist creates a activate-build-cache-for-tuist step builder (v1).
+// ActivateBuildCacheForTuist creates a activate-build-cache-for-tuist step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ActivateBuildCacheForTuist("1")  // explicit default
+//	step.ActivateBuildCacheForTuist("1")                  // older major
 //
 // Deprecated: This step is deprecated. For more information please see: https://bitrise.io/blog/post/tuist-bitrise-build-cache-update
 func ActivateBuildCacheForTuist(version ...string) *ActivateBuildCacheForTuistBuilder {

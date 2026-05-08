@@ -6,7 +6,11 @@ package step
 // SetAndroidManifestPackageNameBuilder builds a set-android-manifest-package-name step with typed input methods.
 type SetAndroidManifestPackageNameBuilder struct{ *Builder }
 
-// SetAndroidManifestPackageName creates a set-android-manifest-package-name step builder (v0).
+// SetAndroidManifestPackageName creates a set-android-manifest-package-name step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetAndroidManifestPackageName("0")  // explicit default
+//	step.SetAndroidManifestPackageName("1")                  // older major
 func SetAndroidManifestPackageName(version ...string) *SetAndroidManifestPackageNameBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

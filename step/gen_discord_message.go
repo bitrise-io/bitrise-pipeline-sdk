@@ -6,7 +6,11 @@ package step
 // DiscordMessageBuilder builds a discord-message step with typed input methods.
 type DiscordMessageBuilder struct{ *Builder }
 
-// DiscordMessage creates a discord-message step builder (v0).
+// DiscordMessage creates a discord-message step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DiscordMessage("0")  // explicit default
+//	step.DiscordMessage("1")                  // older major
 func DiscordMessage(version ...string) *DiscordMessageBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

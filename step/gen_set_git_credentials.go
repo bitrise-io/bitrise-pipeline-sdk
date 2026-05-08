@@ -6,7 +6,11 @@ package step
 // SetGitCredentialsBuilder builds a set-git-credentials step with typed input methods.
 type SetGitCredentialsBuilder struct{ *Builder }
 
-// SetGitCredentials creates a set-git-credentials step builder (v1).
+// SetGitCredentials creates a set-git-credentials step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetGitCredentials("1")  // explicit default
+//	step.SetGitCredentials("1")                  // older major
 func SetGitCredentials(version ...string) *SetGitCredentialsBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

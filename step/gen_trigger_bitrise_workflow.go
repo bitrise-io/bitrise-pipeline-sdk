@@ -6,7 +6,11 @@ package step
 // TriggerBitriseWorkflowBuilder builds a trigger-bitrise-workflow step with typed input methods.
 type TriggerBitriseWorkflowBuilder struct{ *Builder }
 
-// TriggerBitriseWorkflow creates a trigger-bitrise-workflow step builder (v0).
+// TriggerBitriseWorkflow creates a trigger-bitrise-workflow step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TriggerBitriseWorkflow("0")  // explicit default
+//	step.TriggerBitriseWorkflow("1")                  // older major
 func TriggerBitriseWorkflow(version ...string) *TriggerBitriseWorkflowBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

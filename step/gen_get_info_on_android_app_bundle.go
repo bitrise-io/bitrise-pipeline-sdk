@@ -6,7 +6,11 @@ package step
 // GetInfoOnAndroidAppBundleBuilder builds a get-info-on-android-app-bundle step with typed input methods.
 type GetInfoOnAndroidAppBundleBuilder struct{ *Builder }
 
-// GetInfoOnAndroidAppBundle creates a get-info-on-android-app-bundle step builder (v0).
+// GetInfoOnAndroidAppBundle creates a get-info-on-android-app-bundle step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GetInfoOnAndroidAppBundle("0")  // explicit default
+//	step.GetInfoOnAndroidAppBundle("1")                  // older major
 func GetInfoOnAndroidAppBundle(version ...string) *GetInfoOnAndroidAppBundleBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

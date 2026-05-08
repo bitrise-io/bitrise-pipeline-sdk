@@ -6,7 +6,11 @@ package step
 // JiraCommentsBuilder builds a jira-comments step with typed input methods.
 type JiraCommentsBuilder struct{ *Builder }
 
-// JiraComments creates a jira-comments step builder (v0).
+// JiraComments creates a jira-comments step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.JiraComments("0")  // explicit default
+//	step.JiraComments("1")                  // older major
 func JiraComments(version ...string) *JiraCommentsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

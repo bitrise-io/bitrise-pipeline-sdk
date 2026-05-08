@@ -6,7 +6,11 @@ package step
 // SetGemHomeBuilder builds a set-gem-home step with typed input methods.
 type SetGemHomeBuilder struct{ *Builder }
 
-// SetGemHome creates a set-gem-home step builder (v0).
+// SetGemHome creates a set-gem-home step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetGemHome("0")  // explicit default
+//	step.SetGemHome("1")                  // older major
 func SetGemHome(version ...string) *SetGemHomeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

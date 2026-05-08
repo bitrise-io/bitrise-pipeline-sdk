@@ -6,7 +6,11 @@ package step
 // AwsDeviceFarmRunnerBuilder builds a aws-device-farm-runner step with typed input methods.
 type AwsDeviceFarmRunnerBuilder struct{ *Builder }
 
-// AwsDeviceFarmRunner creates a aws-device-farm-runner step builder (v0).
+// AwsDeviceFarmRunner creates a aws-device-farm-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AwsDeviceFarmRunner("0")  // explicit default
+//	step.AwsDeviceFarmRunner("1")                  // older major
 func AwsDeviceFarmRunner(version ...string) *AwsDeviceFarmRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

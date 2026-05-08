@@ -6,7 +6,11 @@ package step
 // GradleDependencyCheckerBuilder builds a gradle-dependency-checker step with typed input methods.
 type GradleDependencyCheckerBuilder struct{ *Builder }
 
-// GradleDependencyChecker creates a gradle-dependency-checker step builder (v1).
+// GradleDependencyChecker creates a gradle-dependency-checker step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GradleDependencyChecker("1")  // explicit default
+//	step.GradleDependencyChecker("1")                  // older major
 func GradleDependencyChecker(version ...string) *GradleDependencyCheckerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // SaveS3CacheBuilder builds a save-s3-cache step with typed input methods.
 type SaveS3CacheBuilder struct{ *Builder }
 
-// SaveS3Cache creates a save-s3-cache step builder (v0).
+// SaveS3Cache creates a save-s3-cache step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveS3Cache("0")  // explicit default
+//	step.SaveS3Cache("1")                  // older major
 func SaveS3Cache(version ...string) *SaveS3CacheBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

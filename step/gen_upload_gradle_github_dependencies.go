@@ -6,7 +6,11 @@ package step
 // UploadGradleGithubDependenciesBuilder builds a upload-gradle-github-dependencies step with typed input methods.
 type UploadGradleGithubDependenciesBuilder struct{ *Builder }
 
-// UploadGradleGithubDependencies creates a upload-gradle-github-dependencies step builder (v0).
+// UploadGradleGithubDependencies creates a upload-gradle-github-dependencies step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.UploadGradleGithubDependencies("0")  // explicit default
+//	step.UploadGradleGithubDependencies("1")                  // older major
 func UploadGradleGithubDependencies(version ...string) *UploadGradleGithubDependenciesBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

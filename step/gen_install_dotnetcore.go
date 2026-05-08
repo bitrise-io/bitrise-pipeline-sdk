@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated as it is no longer maintained.
 type InstallDotnetcoreBuilder struct{ *Builder }
 
-// InstallDotnetcore creates a install-dotnetcore step builder (v1).
+// InstallDotnetcore creates a install-dotnetcore step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.InstallDotnetcore("1")  // explicit default
+//	step.InstallDotnetcore("1")                  // older major
 //
 // Deprecated: This step is deprecated as it is no longer maintained.
 func InstallDotnetcore(version ...string) *InstallDotnetcoreBuilder {

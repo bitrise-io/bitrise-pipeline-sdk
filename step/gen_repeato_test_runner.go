@@ -6,7 +6,11 @@ package step
 // RepeatoTestRunnerBuilder builds a repeato-test-runner step with typed input methods.
 type RepeatoTestRunnerBuilder struct{ *Builder }
 
-// RepeatoTestRunner creates a repeato-test-runner step builder (v0).
+// RepeatoTestRunner creates a repeato-test-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RepeatoTestRunner("0")  // explicit default
+//	step.RepeatoTestRunner("1")                  // older major
 func RepeatoTestRunner(version ...string) *RepeatoTestRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // CheckCertificateBuilder builds a check-certificate step with typed input methods.
 type CheckCertificateBuilder struct{ *Builder }
 
-// CheckCertificate creates a check-certificate step builder (v1).
+// CheckCertificate creates a check-certificate step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CheckCertificate("1")  // explicit default
+//	step.CheckCertificate("1")                  // older major
 func CheckCertificate(version ...string) *CheckCertificateBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

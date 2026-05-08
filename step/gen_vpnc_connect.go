@@ -6,7 +6,11 @@ package step
 // VpncConnectBuilder builds a vpnc-connect step with typed input methods.
 type VpncConnectBuilder struct{ *Builder }
 
-// VpncConnect creates a vpnc-connect step builder (v1).
+// VpncConnect creates a vpnc-connect step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.VpncConnect("1")  // explicit default
+//	step.VpncConnect("1")                  // older major
 func VpncConnect(version ...string) *VpncConnectBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

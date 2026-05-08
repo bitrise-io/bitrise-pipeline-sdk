@@ -6,7 +6,11 @@ package step
 // EmbraceSymbolUploadBuilder builds a embrace-symbol-upload step with typed input methods.
 type EmbraceSymbolUploadBuilder struct{ *Builder }
 
-// EmbraceSymbolUpload creates a embrace-symbol-upload step builder (v1).
+// EmbraceSymbolUpload creates a embrace-symbol-upload step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.EmbraceSymbolUpload("1")  // explicit default
+//	step.EmbraceSymbolUpload("1")                  // older major
 func EmbraceSymbolUpload(version ...string) *EmbraceSymbolUploadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // TuistBuilder builds a tuist step with typed input methods.
 type TuistBuilder struct{ *Builder }
 
-// Tuist creates a tuist step builder (v0).
+// Tuist creates a tuist step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Tuist("0")  // explicit default
+//	step.Tuist("1")                  // older major
 func Tuist(version ...string) *TuistBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

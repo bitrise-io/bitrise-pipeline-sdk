@@ -6,7 +6,11 @@ package step
 // MusselBuilder builds a mussel step with typed input methods.
 type MusselBuilder struct{ *Builder }
 
-// Mussel creates a mussel step builder (v1).
+// Mussel creates a mussel step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Mussel("1")  // explicit default
+//	step.Mussel("1")                  // older major
 func Mussel(version ...string) *MusselBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

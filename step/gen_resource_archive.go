@@ -6,7 +6,11 @@ package step
 // ResourceArchiveBuilder builds a resource-archive step with typed input methods.
 type ResourceArchiveBuilder struct{ *Builder }
 
-// ResourceArchive creates a resource-archive step builder (v2).
+// ResourceArchive creates a resource-archive step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ResourceArchive("2")  // explicit default
+//	step.ResourceArchive("1")                  // older major
 func ResourceArchive(version ...string) *ResourceArchiveBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

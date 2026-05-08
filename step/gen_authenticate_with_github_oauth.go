@@ -6,7 +6,11 @@ package step
 // AuthenticateWithGithubOauthBuilder builds a authenticate-with-github-oauth step with typed input methods.
 type AuthenticateWithGithubOauthBuilder struct{ *Builder }
 
-// AuthenticateWithGithubOauth creates a authenticate-with-github-oauth step builder (v0).
+// AuthenticateWithGithubOauth creates a authenticate-with-github-oauth step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AuthenticateWithGithubOauth("0")  // explicit default
+//	step.AuthenticateWithGithubOauth("1")                  // older major
 func AuthenticateWithGithubOauth(version ...string) *AuthenticateWithGithubOauthBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

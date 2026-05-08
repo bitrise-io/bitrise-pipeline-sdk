@@ -6,7 +6,11 @@ package step
 // S3CachePushBuilder builds a s3-cache-push step with typed input methods.
 type S3CachePushBuilder struct{ *Builder }
 
-// S3CachePush creates a s3-cache-push step builder (v0).
+// S3CachePush creates a s3-cache-push step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.S3CachePush("0")  // explicit default
+//	step.S3CachePush("1")                  // older major
 func S3CachePush(version ...string) *S3CachePushBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

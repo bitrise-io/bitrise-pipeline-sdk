@@ -6,7 +6,11 @@ package step
 // EnsureCleanGitBuilder builds a ensure-clean-git step with typed input methods.
 type EnsureCleanGitBuilder struct{ *Builder }
 
-// EnsureCleanGit creates a ensure-clean-git step builder (v0).
+// EnsureCleanGit creates a ensure-clean-git step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.EnsureCleanGit("0")  // explicit default
+//	step.EnsureCleanGit("1")                  // older major
 func EnsureCleanGit(version ...string) *EnsureCleanGitBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

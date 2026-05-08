@@ -6,7 +6,11 @@ package step
 // XcodeCreateDevicePairBuilder builds a xcode-create-device-pair step with typed input methods.
 type XcodeCreateDevicePairBuilder struct{ *Builder }
 
-// XcodeCreateDevicePair creates a xcode-create-device-pair step builder (v1).
+// XcodeCreateDevicePair creates a xcode-create-device-pair step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeCreateDevicePair("1")  // explicit default
+//	step.XcodeCreateDevicePair("1")                  // older major
 func XcodeCreateDevicePair(version ...string) *XcodeCreateDevicePairBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // InstallBundlerBuilder builds a install-bundler step with typed input methods.
 type InstallBundlerBuilder struct{ *Builder }
 
-// InstallBundler creates a install-bundler step builder (v1).
+// InstallBundler creates a install-bundler step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.InstallBundler("1")  // explicit default
+//	step.InstallBundler("1")                  // older major
 func InstallBundler(version ...string) *InstallBundlerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

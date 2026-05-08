@@ -6,7 +6,11 @@ package step
 // FtpUploadBuilder builds a ftp-upload step with typed input methods.
 type FtpUploadBuilder struct{ *Builder }
 
-// FtpUpload creates a ftp-upload step builder (v2).
+// FtpUpload creates a ftp-upload step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FtpUpload("2")  // explicit default
+//	step.FtpUpload("1")                  // older major
 func FtpUpload(version ...string) *FtpUploadBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

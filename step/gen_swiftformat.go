@@ -6,7 +6,11 @@ package step
 // SwiftformatBuilder builds a swiftformat step with typed input methods.
 type SwiftformatBuilder struct{ *Builder }
 
-// Swiftformat creates a swiftformat step builder (v0).
+// Swiftformat creates a swiftformat step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Swiftformat("0")  // explicit default
+//	step.Swiftformat("1")                  // older major
 func Swiftformat(version ...string) *SwiftformatBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

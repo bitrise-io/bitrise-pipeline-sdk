@@ -6,7 +6,11 @@ package step
 // ZscanUploadPluginBuilder builds a zscan-upload-plugin step with typed input methods.
 type ZscanUploadPluginBuilder struct{ *Builder }
 
-// ZscanUploadPlugin creates a zscan-upload-plugin step builder (v1).
+// ZscanUploadPlugin creates a zscan-upload-plugin step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ZscanUploadPlugin("1")  // explicit default
+//	step.ZscanUploadPlugin("1")                  // older major
 func ZscanUploadPlugin(version ...string) *ZscanUploadPluginBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

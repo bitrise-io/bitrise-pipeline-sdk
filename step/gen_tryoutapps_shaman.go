@@ -6,7 +6,11 @@ package step
 // TryoutappsShamanBuilder builds a tryoutapps-shaman step with typed input methods.
 type TryoutappsShamanBuilder struct{ *Builder }
 
-// TryoutappsShaman creates a tryoutapps-shaman step builder (v1).
+// TryoutappsShaman creates a tryoutapps-shaman step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TryoutappsShaman("1")  // explicit default
+//	step.TryoutappsShaman("1")                  // older major
 func TryoutappsShaman(version ...string) *TryoutappsShamanBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

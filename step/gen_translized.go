@@ -6,7 +6,11 @@ package step
 // TranslizedBuilder builds a translized step with typed input methods.
 type TranslizedBuilder struct{ *Builder }
 
-// Translized creates a translized step builder (v1).
+// Translized creates a translized step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Translized("1")  // explicit default
+//	step.Translized("1")                  // older major
 func Translized(version ...string) *TranslizedBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

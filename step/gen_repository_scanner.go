@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner) instead.
 type RepositoryScannerBuilder struct{ *Builder }
 
-// RepositoryScanner creates a repository-scanner step builder (v1).
+// RepositoryScanner creates a repository-scanner step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RepositoryScanner("1")  // explicit default
+//	step.RepositoryScanner("1")                  // older major
 //
 // Deprecated: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner) instead.
 func RepositoryScanner(version ...string) *RepositoryScannerBuilder {

@@ -6,7 +6,11 @@ package step
 // SwiftEnvironmentVariableInjectorBuilder builds a swift-environment-variable-injector step with typed input methods.
 type SwiftEnvironmentVariableInjectorBuilder struct{ *Builder }
 
-// SwiftEnvironmentVariableInjector creates a swift-environment-variable-injector step builder (v0).
+// SwiftEnvironmentVariableInjector creates a swift-environment-variable-injector step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SwiftEnvironmentVariableInjector("0")  // explicit default
+//	step.SwiftEnvironmentVariableInjector("1")                  // older major
 func SwiftEnvironmentVariableInjector(version ...string) *SwiftEnvironmentVariableInjectorBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

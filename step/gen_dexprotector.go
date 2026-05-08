@@ -6,7 +6,11 @@ package step
 // DexprotectorBuilder builds a dexprotector step with typed input methods.
 type DexprotectorBuilder struct{ *Builder }
 
-// Dexprotector creates a dexprotector step builder (v1).
+// Dexprotector creates a dexprotector step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Dexprotector("1")  // explicit default
+//	step.Dexprotector("1")                  // older major
 func Dexprotector(version ...string) *DexprotectorBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

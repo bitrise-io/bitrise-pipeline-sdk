@@ -6,7 +6,11 @@ package step
 // SwiftlintExtendedBuilder builds a swiftlint-extended step with typed input methods.
 type SwiftlintExtendedBuilder struct{ *Builder }
 
-// SwiftlintExtended creates a swiftlint-extended step builder (v1).
+// SwiftlintExtended creates a swiftlint-extended step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SwiftlintExtended("1")  // explicit default
+//	step.SwiftlintExtended("1")                  // older major
 func SwiftlintExtended(version ...string) *SwiftlintExtendedBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

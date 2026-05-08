@@ -6,7 +6,11 @@ package step
 // StepsChatworkMessageBuilder builds a steps-chatwork-message step with typed input methods.
 type StepsChatworkMessageBuilder struct{ *Builder }
 
-// StepsChatworkMessage creates a steps-chatwork-message step builder (v0).
+// StepsChatworkMessage creates a steps-chatwork-message step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.StepsChatworkMessage("0")  // explicit default
+//	step.StepsChatworkMessage("1")                  // older major
 func StepsChatworkMessage(version ...string) *StepsChatworkMessageBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

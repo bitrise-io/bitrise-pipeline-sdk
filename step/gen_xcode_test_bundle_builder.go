@@ -6,7 +6,11 @@ package step
 // XcodeTestBundleBuilderBuilder builds a xcode-test-bundle-builder step with typed input methods.
 type XcodeTestBundleBuilderBuilder struct{ *Builder }
 
-// XcodeTestBundleBuilder creates a xcode-test-bundle-builder step builder (v0).
+// XcodeTestBundleBuilder creates a xcode-test-bundle-builder step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeTestBundleBuilder("0")  // explicit default
+//	step.XcodeTestBundleBuilder("1")                  // older major
 func XcodeTestBundleBuilder(version ...string) *XcodeTestBundleBuilderBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // EmailWithMailgunBuilder builds a email-with-mailgun step with typed input methods.
 type EmailWithMailgunBuilder struct{ *Builder }
 
-// EmailWithMailgun creates a email-with-mailgun step builder (v2).
+// EmailWithMailgun creates a email-with-mailgun step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.EmailWithMailgun("2")  // explicit default
+//	step.EmailWithMailgun("1")                  // older major
 func EmailWithMailgun(version ...string) *EmailWithMailgunBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // OnesignalCreatePushBuilder builds a onesignal-create-push step with typed input methods.
 type OnesignalCreatePushBuilder struct{ *Builder }
 
-// OnesignalCreatePush creates a onesignal-create-push step builder (v0).
+// OnesignalCreatePush creates a onesignal-create-push step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.OnesignalCreatePush("0")  // explicit default
+//	step.OnesignalCreatePush("1")                  // older major
 func OnesignalCreatePush(version ...string) *OnesignalCreatePushBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

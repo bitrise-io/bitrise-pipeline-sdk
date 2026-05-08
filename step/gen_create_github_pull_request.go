@@ -6,7 +6,11 @@ package step
 // CreateGithubPullRequestBuilder builds a create-github-pull-request step with typed input methods.
 type CreateGithubPullRequestBuilder struct{ *Builder }
 
-// CreateGithubPullRequest creates a create-github-pull-request step builder (v0).
+// CreateGithubPullRequest creates a create-github-pull-request step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CreateGithubPullRequest("0")  // explicit default
+//	step.CreateGithubPullRequest("1")                  // older major
 func CreateGithubPullRequest(version ...string) *CreateGithubPullRequestBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

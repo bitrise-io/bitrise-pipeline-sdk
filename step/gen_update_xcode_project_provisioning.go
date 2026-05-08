@@ -6,7 +6,11 @@ package step
 // UpdateXcodeProjectProvisioningBuilder builds a update-xcode-project-provisioning step with typed input methods.
 type UpdateXcodeProjectProvisioningBuilder struct{ *Builder }
 
-// UpdateXcodeProjectProvisioning creates a update-xcode-project-provisioning step builder (v1).
+// UpdateXcodeProjectProvisioning creates a update-xcode-project-provisioning step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.UpdateXcodeProjectProvisioning("1")  // explicit default
+//	step.UpdateXcodeProjectProvisioning("1")                  // older major
 func UpdateXcodeProjectProvisioning(version ...string) *UpdateXcodeProjectProvisioningBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

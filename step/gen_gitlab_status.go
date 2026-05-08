@@ -6,7 +6,11 @@ package step
 // GitlabStatusBuilder builds a gitlab-status step with typed input methods.
 type GitlabStatusBuilder struct{ *Builder }
 
-// GitlabStatus creates a gitlab-status step builder (v0).
+// GitlabStatus creates a gitlab-status step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GitlabStatus("0")  // explicit default
+//	step.GitlabStatus("1")                  // older major
 func GitlabStatus(version ...string) *GitlabStatusBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

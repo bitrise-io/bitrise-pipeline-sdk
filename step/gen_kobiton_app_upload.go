@@ -6,7 +6,11 @@ package step
 // KobitonAppUploadBuilder builds a kobiton-app-upload step with typed input methods.
 type KobitonAppUploadBuilder struct{ *Builder }
 
-// KobitonAppUpload creates a kobiton-app-upload step builder (v1).
+// KobitonAppUpload creates a kobiton-app-upload step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.KobitonAppUpload("1")  // explicit default
+//	step.KobitonAppUpload("1")                  // older major
 func KobitonAppUpload(version ...string) *KobitonAppUploadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

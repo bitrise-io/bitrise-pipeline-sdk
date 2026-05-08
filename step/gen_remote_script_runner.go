@@ -6,7 +6,11 @@ package step
 // RemoteScriptRunnerBuilder builds a remote-script-runner step with typed input methods.
 type RemoteScriptRunnerBuilder struct{ *Builder }
 
-// RemoteScriptRunner creates a remote-script-runner step builder (v2).
+// RemoteScriptRunner creates a remote-script-runner step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RemoteScriptRunner("2")  // explicit default
+//	step.RemoteScriptRunner("1")                  // older major
 func RemoteScriptRunner(version ...string) *RemoteScriptRunnerBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

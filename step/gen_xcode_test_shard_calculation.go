@@ -6,7 +6,11 @@ package step
 // XcodeTestShardCalculationBuilder builds a xcode-test-shard-calculation step with typed input methods.
 type XcodeTestShardCalculationBuilder struct{ *Builder }
 
-// XcodeTestShardCalculation creates a xcode-test-shard-calculation step builder (v0).
+// XcodeTestShardCalculation creates a xcode-test-shard-calculation step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeTestShardCalculation("0")  // explicit default
+//	step.XcodeTestShardCalculation("1")                  // older major
 func XcodeTestShardCalculation(version ...string) *XcodeTestShardCalculationBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

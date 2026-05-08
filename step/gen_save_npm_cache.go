@@ -6,7 +6,11 @@ package step
 // SaveNpmCacheBuilder builds a save-npm-cache step with typed input methods.
 type SaveNpmCacheBuilder struct{ *Builder }
 
-// SaveNpmCache creates a save-npm-cache step builder (v1).
+// SaveNpmCache creates a save-npm-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveNpmCache("1")  // explicit default
+//	step.SaveNpmCache("1")                  // older major
 func SaveNpmCache(version ...string) *SaveNpmCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // SetAndroidApplicationAttributesBuilder builds a set-android-application-attributes step with typed input methods.
 type SetAndroidApplicationAttributesBuilder struct{ *Builder }
 
-// SetAndroidApplicationAttributes creates a set-android-application-attributes step builder (v0).
+// SetAndroidApplicationAttributes creates a set-android-application-attributes step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetAndroidApplicationAttributes("0")  // explicit default
+//	step.SetAndroidApplicationAttributes("1")                  // older major
 func SetAndroidApplicationAttributes(version ...string) *SetAndroidApplicationAttributesBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

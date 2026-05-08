@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated as it was replaced by appdome-build-2secure-ios, and it is no longer maintained.
 type BitriseStepAppdomeBuild2secureIosBuilder struct{ *Builder }
 
-// BitriseStepAppdomeBuild2secureIos creates a bitrise-step-appdome-build-2secure-ios step builder (v1).
+// BitriseStepAppdomeBuild2secureIos creates a bitrise-step-appdome-build-2secure-ios step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepAppdomeBuild2secureIos("1")  // explicit default
+//	step.BitriseStepAppdomeBuild2secureIos("1")                  // older major
 //
 // Deprecated: This step is deprecated as it was replaced by appdome-build-2secure-ios, and it is no longer maintained.
 func BitriseStepAppdomeBuild2secureIos(version ...string) *BitriseStepAppdomeBuild2secureIosBuilder {

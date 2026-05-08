@@ -6,7 +6,11 @@ package step
 // AzureDevopsStatusBuilder builds a azure-devops-status step with typed input methods.
 type AzureDevopsStatusBuilder struct{ *Builder }
 
-// AzureDevopsStatus creates a azure-devops-status step builder (v1).
+// AzureDevopsStatus creates a azure-devops-status step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AzureDevopsStatus("1")  // explicit default
+//	step.AzureDevopsStatus("1")                  // older major
 func AzureDevopsStatus(version ...string) *AzureDevopsStatusBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

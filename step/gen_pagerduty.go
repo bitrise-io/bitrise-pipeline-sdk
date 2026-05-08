@@ -6,7 +6,11 @@ package step
 // PagerdutyBuilder builds a pagerduty step with typed input methods.
 type PagerdutyBuilder struct{ *Builder }
 
-// Pagerduty creates a pagerduty step builder (v0).
+// Pagerduty creates a pagerduty step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Pagerduty("0")  // explicit default
+//	step.Pagerduty("1")                  // older major
 func Pagerduty(version ...string) *PagerdutyBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

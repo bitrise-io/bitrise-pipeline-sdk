@@ -6,7 +6,11 @@ package step
 // TimestampBuilder builds a timestamp step with typed input methods.
 type TimestampBuilder struct{ *Builder }
 
-// Timestamp creates a timestamp step builder (v0).
+// Timestamp creates a timestamp step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Timestamp("0")  // explicit default
+//	step.Timestamp("1")                  // older major
 func Timestamp(version ...string) *TimestampBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

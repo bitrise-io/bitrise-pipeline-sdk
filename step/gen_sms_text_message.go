@@ -6,7 +6,11 @@ package step
 // SmsTextMessageBuilder builds a sms-text-message step with typed input methods.
 type SmsTextMessageBuilder struct{ *Builder }
 
-// SmsTextMessage creates a sms-text-message step builder (v2).
+// SmsTextMessage creates a sms-text-message step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SmsTextMessage("2")  // explicit default
+//	step.SmsTextMessage("1")                  // older major
 func SmsTextMessage(version ...string) *SmsTextMessageBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // ReleaseNotesExtractorBuilder builds a release-notes-extractor step with typed input methods.
 type ReleaseNotesExtractorBuilder struct{ *Builder }
 
-// ReleaseNotesExtractor creates a release-notes-extractor step builder (v0).
+// ReleaseNotesExtractor creates a release-notes-extractor step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ReleaseNotesExtractor("0")  // explicit default
+//	step.ReleaseNotesExtractor("1")                  // older major
 func ReleaseNotesExtractor(version ...string) *ReleaseNotesExtractorBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

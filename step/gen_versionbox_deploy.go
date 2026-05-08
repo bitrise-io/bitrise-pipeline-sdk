@@ -6,7 +6,11 @@ package step
 // VersionboxDeployBuilder builds a versionbox-deploy step with typed input methods.
 type VersionboxDeployBuilder struct{ *Builder }
 
-// VersionboxDeploy creates a versionbox-deploy step builder (v0).
+// VersionboxDeploy creates a versionbox-deploy step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.VersionboxDeploy("0")  // explicit default
+//	step.VersionboxDeploy("1")                  // older major
 func VersionboxDeploy(version ...string) *VersionboxDeployBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

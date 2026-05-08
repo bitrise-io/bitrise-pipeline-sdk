@@ -6,7 +6,11 @@ package step
 // AwsDeviceFarmFileDeployBuilder builds a aws-device-farm-file-deploy step with typed input methods.
 type AwsDeviceFarmFileDeployBuilder struct{ *Builder }
 
-// AwsDeviceFarmFileDeploy creates a aws-device-farm-file-deploy step builder (v0).
+// AwsDeviceFarmFileDeploy creates a aws-device-farm-file-deploy step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AwsDeviceFarmFileDeploy("0")  // explicit default
+//	step.AwsDeviceFarmFileDeploy("1")                  // older major
 func AwsDeviceFarmFileDeploy(version ...string) *AwsDeviceFarmFileDeployBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

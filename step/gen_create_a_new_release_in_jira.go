@@ -6,7 +6,11 @@ package step
 // CreateANewReleaseInJiraBuilder builds a create-a-new-release-in-jira step with typed input methods.
 type CreateANewReleaseInJiraBuilder struct{ *Builder }
 
-// CreateANewReleaseInJira creates a create-a-new-release-in-jira step builder (v1).
+// CreateANewReleaseInJira creates a create-a-new-release-in-jira step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CreateANewReleaseInJira("1")  // explicit default
+//	step.CreateANewReleaseInJira("1")                  // older major
 func CreateANewReleaseInJira(version ...string) *CreateANewReleaseInJiraBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

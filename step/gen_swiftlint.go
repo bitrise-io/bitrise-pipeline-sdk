@@ -6,7 +6,11 @@ package step
 // SwiftlintBuilder builds a swiftlint step with typed input methods.
 type SwiftlintBuilder struct{ *Builder }
 
-// Swiftlint creates a swiftlint step builder (v0).
+// Swiftlint creates a swiftlint step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Swiftlint("0")  // explicit default
+//	step.Swiftlint("1")                  // older major
 func Swiftlint(version ...string) *SwiftlintBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

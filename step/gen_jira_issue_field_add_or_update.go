@@ -6,7 +6,11 @@ package step
 // JiraIssueFieldAddOrUpdateBuilder builds a jira-issue-field-add-or-update step with typed input methods.
 type JiraIssueFieldAddOrUpdateBuilder struct{ *Builder }
 
-// JiraIssueFieldAddOrUpdate creates a jira-issue-field-add-or-update step builder (v0).
+// JiraIssueFieldAddOrUpdate creates a jira-issue-field-add-or-update step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.JiraIssueFieldAddOrUpdate("0")  // explicit default
+//	step.JiraIssueFieldAddOrUpdate("1")                  // older major
 func JiraIssueFieldAddOrUpdate(version ...string) *JiraIssueFieldAddOrUpdateBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

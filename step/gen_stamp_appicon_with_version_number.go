@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is a duplicate of "bitrise-step-stamp-appicon-with-version-number". Please use that step ID instead.
 type StampAppiconWithVersionNumberBuilder struct{ *Builder }
 
-// StampAppiconWithVersionNumber creates a stamp-appicon-with-version-number step builder (v1).
+// StampAppiconWithVersionNumber creates a stamp-appicon-with-version-number step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.StampAppiconWithVersionNumber("1")  // explicit default
+//	step.StampAppiconWithVersionNumber("1")                  // older major
 //
 // Deprecated: This step is a duplicate of "bitrise-step-stamp-appicon-with-version-number". Please use that step ID instead.
 func StampAppiconWithVersionNumber(version ...string) *StampAppiconWithVersionNumberBuilder {

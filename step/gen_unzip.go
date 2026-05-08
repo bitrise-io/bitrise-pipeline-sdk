@@ -6,7 +6,11 @@ package step
 // UnzipBuilder builds a unzip step with typed input methods.
 type UnzipBuilder struct{ *Builder }
 
-// Unzip creates a unzip step builder (v0).
+// Unzip creates a unzip step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Unzip("0")  // explicit default
+//	step.Unzip("1")                  // older major
 func Unzip(version ...string) *UnzipBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

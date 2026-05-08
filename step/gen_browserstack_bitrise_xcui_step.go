@@ -6,7 +6,11 @@ package step
 // BrowserstackBitriseXcuiStepBuilder builds a browserstack-bitrise-xcui-step step with typed input methods.
 type BrowserstackBitriseXcuiStepBuilder struct{ *Builder }
 
-// BrowserstackBitriseXcuiStep creates a browserstack-bitrise-xcui-step step builder (v1).
+// BrowserstackBitriseXcuiStep creates a browserstack-bitrise-xcui-step step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BrowserstackBitriseXcuiStep("1")  // explicit default
+//	step.BrowserstackBitriseXcuiStep("1")                  // older major
 func BrowserstackBitriseXcuiStep(version ...string) *BrowserstackBitriseXcuiStepBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // DecryptFileBuilder builds a decrypt-file step with typed input methods.
 type DecryptFileBuilder struct{ *Builder }
 
-// DecryptFile creates a decrypt-file step builder (v0).
+// DecryptFile creates a decrypt-file step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DecryptFile("0")  // explicit default
+//	step.DecryptFile("1")                  // older major
 func DecryptFile(version ...string) *DecryptFileBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

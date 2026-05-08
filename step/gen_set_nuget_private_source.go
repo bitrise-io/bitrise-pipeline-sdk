@@ -6,7 +6,11 @@ package step
 // SetNugetPrivateSourceBuilder builds a set-nuget-private-source step with typed input methods.
 type SetNugetPrivateSourceBuilder struct{ *Builder }
 
-// SetNugetPrivateSource creates a set-nuget-private-source step builder (v1).
+// SetNugetPrivateSource creates a set-nuget-private-source step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetNugetPrivateSource("1")  // explicit default
+//	step.SetNugetPrivateSource("1")                  // older major
 func SetNugetPrivateSource(version ...string) *SetNugetPrivateSourceBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

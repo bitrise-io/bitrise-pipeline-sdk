@@ -6,7 +6,11 @@ package step
 // CommentOnGithubPullRequestBuilder builds a comment-on-github-pull-request step with typed input methods.
 type CommentOnGithubPullRequestBuilder struct{ *Builder }
 
-// CommentOnGithubPullRequest creates a comment-on-github-pull-request step builder (v0).
+// CommentOnGithubPullRequest creates a comment-on-github-pull-request step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CommentOnGithubPullRequest("0")  // explicit default
+//	step.CommentOnGithubPullRequest("1")                  // older major
 func CommentOnGithubPullRequest(version ...string) *CommentOnGithubPullRequestBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

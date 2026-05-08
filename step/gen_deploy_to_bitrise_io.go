@@ -6,7 +6,11 @@ package step
 // DeployToBitriseIoBuilder builds a deploy-to-bitrise-io step with typed input methods.
 type DeployToBitriseIoBuilder struct{ *Builder }
 
-// DeployToBitriseIo creates a deploy-to-bitrise-io step builder (v2).
+// DeployToBitriseIo creates a deploy-to-bitrise-io step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.DeployToBitriseIo("2")  // explicit default
+//	step.DeployToBitriseIo("1")                  // older major
 func DeployToBitriseIo(version ...string) *DeployToBitriseIoBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

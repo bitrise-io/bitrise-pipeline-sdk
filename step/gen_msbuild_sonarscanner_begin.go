@@ -6,7 +6,11 @@ package step
 // MsbuildSonarscannerBeginBuilder builds a msbuild-sonarscanner-begin step with typed input methods.
 type MsbuildSonarscannerBeginBuilder struct{ *Builder }
 
-// MsbuildSonarscannerBegin creates a msbuild-sonarscanner-begin step builder (v0).
+// MsbuildSonarscannerBegin creates a msbuild-sonarscanner-begin step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MsbuildSonarscannerBegin("0")  // explicit default
+//	step.MsbuildSonarscannerBegin("1")                  // older major
 func MsbuildSonarscannerBegin(version ...string) *MsbuildSonarscannerBeginBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

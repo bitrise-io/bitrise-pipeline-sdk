@@ -6,7 +6,11 @@ package step
 // AsciiGeneratorBuilder builds a ascii-generator step with typed input methods.
 type AsciiGeneratorBuilder struct{ *Builder }
 
-// AsciiGenerator creates a ascii-generator step builder (v1).
+// AsciiGenerator creates a ascii-generator step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AsciiGenerator("1")  // explicit default
+//	step.AsciiGenerator("1")                  // older major
 func AsciiGenerator(version ...string) *AsciiGeneratorBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

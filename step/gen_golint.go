@@ -6,7 +6,11 @@ package step
 // GolintBuilder builds a golint step with typed input methods.
 type GolintBuilder struct{ *Builder }
 
-// Golint creates a golint step builder (v0).
+// Golint creates a golint step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Golint("0")  // explicit default
+//	step.Golint("1")                  // older major
 func Golint(version ...string) *GolintBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

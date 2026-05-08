@@ -6,7 +6,11 @@ package step
 // XcodeTestMacBuilder builds a xcode-test-mac step with typed input methods.
 type XcodeTestMacBuilder struct{ *Builder }
 
-// XcodeTestMac creates a xcode-test-mac step builder (v1).
+// XcodeTestMac creates a xcode-test-mac step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeTestMac("1")  // explicit default
+//	step.XcodeTestMac("1")                  // older major
 func XcodeTestMac(version ...string) *XcodeTestMacBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

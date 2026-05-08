@@ -6,7 +6,11 @@ package step
 // UpdateJiraReleaseStatusBuilder builds a update-jira-release-status step with typed input methods.
 type UpdateJiraReleaseStatusBuilder struct{ *Builder }
 
-// UpdateJiraReleaseStatus creates a update-jira-release-status step builder (v0).
+// UpdateJiraReleaseStatus creates a update-jira-release-status step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.UpdateJiraReleaseStatus("0")  // explicit default
+//	step.UpdateJiraReleaseStatus("1")                  // older major
 func UpdateJiraReleaseStatus(version ...string) *UpdateJiraReleaseStatusBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

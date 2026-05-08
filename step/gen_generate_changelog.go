@@ -6,7 +6,11 @@ package step
 // GenerateChangelogBuilder builds a generate-changelog step with typed input methods.
 type GenerateChangelogBuilder struct{ *Builder }
 
-// GenerateChangelog creates a generate-changelog step builder (v0).
+// GenerateChangelog creates a generate-changelog step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GenerateChangelog("0")  // explicit default
+//	step.GenerateChangelog("1")                  // older major
 func GenerateChangelog(version ...string) *GenerateChangelogBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // VeracodeSecurityBuilder builds a veracode-security step with typed input methods.
 type VeracodeSecurityBuilder struct{ *Builder }
 
-// VeracodeSecurity creates a veracode-security step builder (v1).
+// VeracodeSecurity creates a veracode-security step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.VeracodeSecurity("1")  // explicit default
+//	step.VeracodeSecurity("1")                  // older major
 func VeracodeSecurity(version ...string) *VeracodeSecurityBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

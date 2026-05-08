@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated, Push Notifications are no longer supported by Parse server.
 type PushNotificationWithParseBuilder struct{ *Builder }
 
-// PushNotificationWithParse creates a push-notification-with-parse step builder (v2).
+// PushNotificationWithParse creates a push-notification-with-parse step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.PushNotificationWithParse("2")  // explicit default
+//	step.PushNotificationWithParse("1")                  // older major
 //
 // Deprecated: This step is deprecated, Push Notifications are no longer supported by Parse server.
 func PushNotificationWithParse(version ...string) *PushNotificationWithParseBuilder {

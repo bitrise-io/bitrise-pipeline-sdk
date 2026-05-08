@@ -6,7 +6,11 @@ package step
 // GitLastCommitDateBuilder builds a git-last-commit-date step with typed input methods.
 type GitLastCommitDateBuilder struct{ *Builder }
 
-// GitLastCommitDate creates a git-last-commit-date step builder (v1).
+// GitLastCommitDate creates a git-last-commit-date step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GitLastCommitDate("1")  // explicit default
+//	step.GitLastCommitDate("1")                  // older major
 func GitLastCommitDate(version ...string) *GitLastCommitDateBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

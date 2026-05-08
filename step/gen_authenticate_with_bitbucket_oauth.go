@@ -6,7 +6,11 @@ package step
 // AuthenticateWithBitbucketOauthBuilder builds a authenticate-with-bitbucket-oauth step with typed input methods.
 type AuthenticateWithBitbucketOauthBuilder struct{ *Builder }
 
-// AuthenticateWithBitbucketOauth creates a authenticate-with-bitbucket-oauth step builder (v0).
+// AuthenticateWithBitbucketOauth creates a authenticate-with-bitbucket-oauth step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AuthenticateWithBitbucketOauth("0")  // explicit default
+//	step.AuthenticateWithBitbucketOauth("1")                  // older major
 func AuthenticateWithBitbucketOauth(version ...string) *AuthenticateWithBitbucketOauthBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

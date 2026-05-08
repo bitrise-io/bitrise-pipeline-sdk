@@ -6,7 +6,11 @@ package step
 // FauxpasappBuilder builds a fauxpasapp step with typed input methods.
 type FauxpasappBuilder struct{ *Builder }
 
-// Fauxpasapp creates a fauxpasapp step builder (v0).
+// Fauxpasapp creates a fauxpasapp step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Fauxpasapp("0")  // explicit default
+//	step.Fauxpasapp("1")                  // older major
 func Fauxpasapp(version ...string) *FauxpasappBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

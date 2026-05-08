@@ -6,7 +6,11 @@ package step
 // SwiftPackageManagerTestForMacBuilder builds a swift-package-manager-test-for-mac step with typed input methods.
 type SwiftPackageManagerTestForMacBuilder struct{ *Builder }
 
-// SwiftPackageManagerTestForMac creates a swift-package-manager-test-for-mac step builder (v0).
+// SwiftPackageManagerTestForMac creates a swift-package-manager-test-for-mac step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SwiftPackageManagerTestForMac("0")  // explicit default
+//	step.SwiftPackageManagerTestForMac("1")                  // older major
 func SwiftPackageManagerTestForMac(version ...string) *SwiftPackageManagerTestForMacBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // InstabugAndroidMappingFileUploadBuilder builds a instabug-android-mapping-file-upload step with typed input methods.
 type InstabugAndroidMappingFileUploadBuilder struct{ *Builder }
 
-// InstabugAndroidMappingFileUpload creates a instabug-android-mapping-file-upload step builder (v1).
+// InstabugAndroidMappingFileUpload creates a instabug-android-mapping-file-upload step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.InstabugAndroidMappingFileUpload("1")  // explicit default
+//	step.InstabugAndroidMappingFileUpload("1")                  // older major
 func InstabugAndroidMappingFileUpload(version ...string) *InstabugAndroidMappingFileUploadBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

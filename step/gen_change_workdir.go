@@ -6,7 +6,11 @@ package step
 // ChangeWorkdirBuilder builds a change-workdir step with typed input methods.
 type ChangeWorkdirBuilder struct{ *Builder }
 
-// ChangeWorkdir creates a change-workdir step builder (v1).
+// ChangeWorkdir creates a change-workdir step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ChangeWorkdir("1")  // explicit default
+//	step.ChangeWorkdir("1")                  // older major
 func ChangeWorkdir(version ...string) *ChangeWorkdirBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

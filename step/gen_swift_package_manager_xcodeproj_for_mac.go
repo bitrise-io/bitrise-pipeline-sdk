@@ -6,7 +6,11 @@ package step
 // SwiftPackageManagerXcodeprojForMacBuilder builds a swift-package-manager-xcodeproj-for-mac step with typed input methods.
 type SwiftPackageManagerXcodeprojForMacBuilder struct{ *Builder }
 
-// SwiftPackageManagerXcodeprojForMac creates a swift-package-manager-xcodeproj-for-mac step builder (v0).
+// SwiftPackageManagerXcodeprojForMac creates a swift-package-manager-xcodeproj-for-mac step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SwiftPackageManagerXcodeprojForMac("0")  // explicit default
+//	step.SwiftPackageManagerXcodeprojForMac("1")                  // older major
 func SwiftPackageManagerXcodeprojForMac(version ...string) *SwiftPackageManagerXcodeprojForMacBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

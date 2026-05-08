@@ -6,7 +6,11 @@ package step
 // CocoaseedsInstallBuilder builds a cocoaseeds-install step with typed input methods.
 type CocoaseedsInstallBuilder struct{ *Builder }
 
-// CocoaseedsInstall creates a cocoaseeds-install step builder (v1).
+// CocoaseedsInstall creates a cocoaseeds-install step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CocoaseedsInstall("1")  // explicit default
+//	step.CocoaseedsInstall("1")                  // older major
 func CocoaseedsInstall(version ...string) *CocoaseedsInstallBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

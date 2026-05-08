@@ -4,9 +4,17 @@
 package step
 
 // AppcenterCodepushReleaseReactNativeBuilder builds a appcenter-codepush-release-react-native step with typed input methods.
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 type AppcenterCodepushReleaseReactNativeBuilder struct{ *Builder }
 
-// AppcenterCodepushReleaseReactNative creates a appcenter-codepush-release-react-native step builder (v0).
+// AppcenterCodepushReleaseReactNative creates a appcenter-codepush-release-react-native step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppcenterCodepushReleaseReactNative("0")  // explicit default
+//	step.AppcenterCodepushReleaseReactNative("1")                  // older major
+//
+// Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 func AppcenterCodepushReleaseReactNative(version ...string) *AppcenterCodepushReleaseReactNativeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

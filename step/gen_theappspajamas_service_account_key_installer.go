@@ -6,7 +6,11 @@ package step
 // TheappspajamasServiceAccountKeyInstallerBuilder builds a theappspajamas-service-account-key-installer step with typed input methods.
 type TheappspajamasServiceAccountKeyInstallerBuilder struct{ *Builder }
 
-// TheappspajamasServiceAccountKeyInstaller creates a theappspajamas-service-account-key-installer step builder (v0).
+// TheappspajamasServiceAccountKeyInstaller creates a theappspajamas-service-account-key-installer step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TheappspajamasServiceAccountKeyInstaller("0")  // explicit default
+//	step.TheappspajamasServiceAccountKeyInstaller("1")                  // older major
 func TheappspajamasServiceAccountKeyInstaller(version ...string) *TheappspajamasServiceAccountKeyInstallerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

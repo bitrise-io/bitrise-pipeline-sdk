@@ -6,7 +6,11 @@ package step
 // ActivateGradleMirrorsBuilder builds a activate-gradle-mirrors step with typed input methods.
 type ActivateGradleMirrorsBuilder struct{ *Builder }
 
-// ActivateGradleMirrors creates a activate-gradle-mirrors step builder (v0).
+// ActivateGradleMirrors creates a activate-gradle-mirrors step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ActivateGradleMirrors("0")  // explicit default
+//	step.ActivateGradleMirrors("1")                  // older major
 func ActivateGradleMirrors(version ...string) *ActivateGradleMirrorsBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

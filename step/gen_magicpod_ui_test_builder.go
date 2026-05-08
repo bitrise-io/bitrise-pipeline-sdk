@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated. Please use magic-pod step instead.
 type MagicpodUiTestBuilder struct{ *Builder }
 
-// MagicpodUiTest creates a magicpod-ui-test step builder (v0).
+// MagicpodUiTest creates a magicpod-ui-test step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.MagicpodUiTest("0")  // explicit default
+//	step.MagicpodUiTest("1")                  // older major
 //
 // Deprecated: This step is deprecated. Please use magic-pod step instead.
 func MagicpodUiTest(version ...string) *MagicpodUiTestBuilder {

@@ -6,7 +6,11 @@ package step
 // BrowserstackUploadBuilder builds a browserstack-upload step with typed input methods.
 type BrowserstackUploadBuilder struct{ *Builder }
 
-// BrowserstackUpload creates a browserstack-upload step builder (v0).
+// BrowserstackUpload creates a browserstack-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BrowserstackUpload("0")  // explicit default
+//	step.BrowserstackUpload("1")                  // older major
 func BrowserstackUpload(version ...string) *BrowserstackUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

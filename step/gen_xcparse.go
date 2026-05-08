@@ -6,7 +6,11 @@ package step
 // XcparseBuilder builds a xcparse step with typed input methods.
 type XcparseBuilder struct{ *Builder }
 
-// Xcparse creates a xcparse step builder (v0).
+// Xcparse creates a xcparse step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Xcparse("0")  // explicit default
+//	step.Xcparse("1")                  // older major
 func Xcparse(version ...string) *XcparseBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // TestprojectRunBuilder builds a testproject-run step with typed input methods.
 type TestprojectRunBuilder struct{ *Builder }
 
-// TestprojectRun creates a testproject-run step builder (v0).
+// TestprojectRun creates a testproject-run step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TestprojectRun("0")  // explicit default
+//	step.TestprojectRun("1")                  // older major
 func TestprojectRun(version ...string) *TestprojectRunBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

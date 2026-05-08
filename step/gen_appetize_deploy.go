@@ -6,7 +6,11 @@ package step
 // AppetizeDeployBuilder builds a appetize-deploy step with typed input methods.
 type AppetizeDeployBuilder struct{ *Builder }
 
-// AppetizeDeploy creates a appetize-deploy step builder (v0).
+// AppetizeDeploy creates a appetize-deploy step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppetizeDeploy("0")  // explicit default
+//	step.AppetizeDeploy("1")                  // older major
 func AppetizeDeploy(version ...string) *AppetizeDeployBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

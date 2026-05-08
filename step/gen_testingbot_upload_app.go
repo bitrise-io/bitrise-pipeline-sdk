@@ -6,7 +6,11 @@ package step
 // TestingbotUploadAppBuilder builds a testingbot-upload-app step with typed input methods.
 type TestingbotUploadAppBuilder struct{ *Builder }
 
-// TestingbotUploadApp creates a testingbot-upload-app step builder (v0).
+// TestingbotUploadApp creates a testingbot-upload-app step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.TestingbotUploadApp("0")  // explicit default
+//	step.TestingbotUploadApp("1")                  // older major
 func TestingbotUploadApp(version ...string) *TestingbotUploadAppBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

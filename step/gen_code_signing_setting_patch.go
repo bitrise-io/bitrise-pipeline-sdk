@@ -6,7 +6,11 @@ package step
 // CodeSigningSettingPatchBuilder builds a code-signing-setting-patch step with typed input methods.
 type CodeSigningSettingPatchBuilder struct{ *Builder }
 
-// CodeSigningSettingPatch creates a code-signing-setting-patch step builder (v1).
+// CodeSigningSettingPatch creates a code-signing-setting-patch step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CodeSigningSettingPatch("1")  // explicit default
+//	step.CodeSigningSettingPatch("1")                  // older major
 func CodeSigningSettingPatch(version ...string) *CodeSigningSettingPatchBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

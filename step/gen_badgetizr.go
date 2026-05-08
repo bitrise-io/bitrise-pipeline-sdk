@@ -6,7 +6,11 @@ package step
 // BadgetizrBuilder builds a badgetizr step with typed input methods.
 type BadgetizrBuilder struct{ *Builder }
 
-// Badgetizr creates a badgetizr step builder (v3).
+// Badgetizr creates a badgetizr step builder (v3 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Badgetizr("3")  // explicit default
+//	step.Badgetizr("1")                  // older major
 func Badgetizr(version ...string) *BadgetizrBuilder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

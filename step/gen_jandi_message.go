@@ -6,7 +6,11 @@ package step
 // JandiMessageBuilder builds a jandi-message step with typed input methods.
 type JandiMessageBuilder struct{ *Builder }
 
-// JandiMessage creates a jandi-message step builder (v0).
+// JandiMessage creates a jandi-message step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.JandiMessage("0")  // explicit default
+//	step.JandiMessage("1")                  // older major
 func JandiMessage(version ...string) *JandiMessageBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

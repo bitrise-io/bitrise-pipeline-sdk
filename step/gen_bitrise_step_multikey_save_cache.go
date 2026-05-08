@@ -6,7 +6,11 @@ package step
 // BitriseStepMultikeySaveCacheBuilder builds a bitrise-step-multikey-save-cache step with typed input methods.
 type BitriseStepMultikeySaveCacheBuilder struct{ *Builder }
 
-// BitriseStepMultikeySaveCache creates a bitrise-step-multikey-save-cache step builder (v0).
+// BitriseStepMultikeySaveCache creates a bitrise-step-multikey-save-cache step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepMultikeySaveCache("0")  // explicit default
+//	step.BitriseStepMultikeySaveCache("1")                  // older major
 func BitriseStepMultikeySaveCache(version ...string) *BitriseStepMultikeySaveCacheBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

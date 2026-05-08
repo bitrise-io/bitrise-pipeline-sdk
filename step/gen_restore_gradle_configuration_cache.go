@@ -6,7 +6,11 @@ package step
 // RestoreGradleConfigurationCacheBuilder builds a restore-gradle-configuration-cache step with typed input methods.
 type RestoreGradleConfigurationCacheBuilder struct{ *Builder }
 
-// RestoreGradleConfigurationCache creates a restore-gradle-configuration-cache step builder (v1).
+// RestoreGradleConfigurationCache creates a restore-gradle-configuration-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RestoreGradleConfigurationCache("1")  // explicit default
+//	step.RestoreGradleConfigurationCache("1")                  // older major
 func RestoreGradleConfigurationCache(version ...string) *RestoreGradleConfigurationCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

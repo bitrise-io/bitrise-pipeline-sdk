@@ -6,7 +6,11 @@ package step
 // XcodeResultBundleToChecksBuilder builds a xcode-result-bundle-to-checks step with typed input methods.
 type XcodeResultBundleToChecksBuilder struct{ *Builder }
 
-// XcodeResultBundleToChecks creates a xcode-result-bundle-to-checks step builder (v1).
+// XcodeResultBundleToChecks creates a xcode-result-bundle-to-checks step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeResultBundleToChecks("1")  // explicit default
+//	step.XcodeResultBundleToChecks("1")                  // older major
 func XcodeResultBundleToChecks(version ...string) *XcodeResultBundleToChecksBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

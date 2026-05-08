@@ -6,7 +6,11 @@ package step
 // FlankBuilder builds a flank step with typed input methods.
 type FlankBuilder struct{ *Builder }
 
-// Flank creates a flank step builder (v0).
+// Flank creates a flank step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Flank("0")  // explicit default
+//	step.Flank("1")                  // older major
 func Flank(version ...string) *FlankBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

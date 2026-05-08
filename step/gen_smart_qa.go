@@ -6,7 +6,11 @@ package step
 // SmartQaBuilder builds a smart-qa step with typed input methods.
 type SmartQaBuilder struct{ *Builder }
 
-// SmartQa creates a smart-qa step builder (v0).
+// SmartQa creates a smart-qa step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SmartQa("0")  // explicit default
+//	step.SmartQa("1")                  // older major
 func SmartQa(version ...string) *SmartQaBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // AndroidInstrumentedTestBuilder builds a android-instrumented-test step with typed input methods.
 type AndroidInstrumentedTestBuilder struct{ *Builder }
 
-// AndroidInstrumentedTest creates a android-instrumented-test step builder (v0).
+// AndroidInstrumentedTest creates a android-instrumented-test step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidInstrumentedTest("0")  // explicit default
+//	step.AndroidInstrumentedTest("1")                  // older major
 func AndroidInstrumentedTest(version ...string) *AndroidInstrumentedTestBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

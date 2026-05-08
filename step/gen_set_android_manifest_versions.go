@@ -6,7 +6,11 @@ package step
 // SetAndroidManifestVersionsBuilder builds a set-android-manifest-versions step with typed input methods.
 type SetAndroidManifestVersionsBuilder struct{ *Builder }
 
-// SetAndroidManifestVersions creates a set-android-manifest-versions step builder (v1).
+// SetAndroidManifestVersions creates a set-android-manifest-versions step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SetAndroidManifestVersions("1")  // explicit default
+//	step.SetAndroidManifestVersions("1")                  // older major
 func SetAndroidManifestVersions(version ...string) *SetAndroidManifestVersionsBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

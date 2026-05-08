@@ -6,7 +6,11 @@ package step
 // AndroidSdkAddOnInstallerBuilder builds a android-sdk-add-on-installer step with typed input methods.
 type AndroidSdkAddOnInstallerBuilder struct{ *Builder }
 
-// AndroidSdkAddOnInstaller creates a android-sdk-add-on-installer step builder (v0).
+// AndroidSdkAddOnInstaller creates a android-sdk-add-on-installer step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidSdkAddOnInstaller("0")  // explicit default
+//	step.AndroidSdkAddOnInstaller("1")                  // older major
 func AndroidSdkAddOnInstaller(version ...string) *AndroidSdkAddOnInstallerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

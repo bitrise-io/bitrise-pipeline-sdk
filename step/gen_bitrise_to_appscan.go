@@ -6,7 +6,11 @@ package step
 // BitriseToAppscanBuilder builds a bitrise-to-appscan step with typed input methods.
 type BitriseToAppscanBuilder struct{ *Builder }
 
-// BitriseToAppscan creates a bitrise-to-appscan step builder (v0).
+// BitriseToAppscan creates a bitrise-to-appscan step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseToAppscan("0")  // explicit default
+//	step.BitriseToAppscan("1")                  // older major
 func BitriseToAppscan(version ...string) *BitriseToAppscanBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

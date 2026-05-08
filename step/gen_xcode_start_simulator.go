@@ -6,7 +6,11 @@ package step
 // XcodeStartSimulatorBuilder builds a xcode-start-simulator step with typed input methods.
 type XcodeStartSimulatorBuilder struct{ *Builder }
 
-// XcodeStartSimulator creates a xcode-start-simulator step builder (v0).
+// XcodeStartSimulator creates a xcode-start-simulator step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.XcodeStartSimulator("0")  // explicit default
+//	step.XcodeStartSimulator("1")                  // older major
 func XcodeStartSimulator(version ...string) *XcodeStartSimulatorBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // BitriseStepEscheckerBuilder builds a bitrise-step-eschecker step with typed input methods.
 type BitriseStepEscheckerBuilder struct{ *Builder }
 
-// BitriseStepEschecker creates a bitrise-step-eschecker step builder (v0).
+// BitriseStepEschecker creates a bitrise-step-eschecker step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepEschecker("0")  // explicit default
+//	step.BitriseStepEschecker("1")                  // older major
 func BitriseStepEschecker(version ...string) *BitriseStepEscheckerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

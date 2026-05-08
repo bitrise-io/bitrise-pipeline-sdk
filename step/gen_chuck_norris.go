@@ -6,7 +6,11 @@ package step
 // ChuckNorrisBuilder builds a chuck-norris step with typed input methods.
 type ChuckNorrisBuilder struct{ *Builder }
 
-// ChuckNorris creates a chuck-norris step builder (v1).
+// ChuckNorris creates a chuck-norris step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ChuckNorris("1")  // explicit default
+//	step.ChuckNorris("1")                  // older major
 func ChuckNorris(version ...string) *ChuckNorrisBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

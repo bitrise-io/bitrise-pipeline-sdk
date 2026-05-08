@@ -6,7 +6,11 @@ package step
 // RaygunBuilder builds a raygun step with typed input methods.
 type RaygunBuilder struct{ *Builder }
 
-// Raygun creates a raygun step builder (v1).
+// Raygun creates a raygun step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Raygun("1")  // explicit default
+//	step.Raygun("1")                  // older major
 func Raygun(version ...string) *RaygunBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

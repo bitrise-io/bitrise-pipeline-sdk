@@ -6,7 +6,11 @@ package step
 // BuildRouterStartBuilder builds a build-router-start step with typed input methods.
 type BuildRouterStartBuilder struct{ *Builder }
 
-// BuildRouterStart creates a build-router-start step builder (v0).
+// BuildRouterStart creates a build-router-start step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BuildRouterStart("0")  // explicit default
+//	step.BuildRouterStart("1")                  // older major
 func BuildRouterStart(version ...string) *BuildRouterStartBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

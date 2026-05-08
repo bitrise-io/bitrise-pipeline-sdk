@@ -6,7 +6,11 @@ package step
 // AppsDecompilerBuilder builds a apps-decompiler step with typed input methods.
 type AppsDecompilerBuilder struct{ *Builder }
 
-// AppsDecompiler creates a apps-decompiler step builder (v1).
+// AppsDecompiler creates a apps-decompiler step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AppsDecompiler("1")  // explicit default
+//	step.AppsDecompiler("1")                  // older major
 func AppsDecompiler(version ...string) *AppsDecompilerBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

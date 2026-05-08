@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated. Please use the build distribution feature: https://docs.bitrise.io/en/release-management/build-distribution/distributing-builds-to-testers.html
 type AmazonS3DeployBuilder struct{ *Builder }
 
-// AmazonS3Deploy creates a amazon-s3-deploy step builder (v3).
+// AmazonS3Deploy creates a amazon-s3-deploy step builder (v3 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AmazonS3Deploy("3")  // explicit default
+//	step.AmazonS3Deploy("1")                  // older major
 //
 // Deprecated: This step is deprecated. Please use the build distribution feature: https://docs.bitrise.io/en/release-management/build-distribution/distributing-builds-to-testers.html
 func AmazonS3Deploy(version ...string) *AmazonS3DeployBuilder {

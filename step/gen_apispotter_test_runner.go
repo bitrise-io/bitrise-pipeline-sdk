@@ -6,7 +6,11 @@ package step
 // ApispotterTestRunnerBuilder builds a apispotter-test-runner step with typed input methods.
 type ApispotterTestRunnerBuilder struct{ *Builder }
 
-// ApispotterTestRunner creates a apispotter-test-runner step builder (v0).
+// ApispotterTestRunner creates a apispotter-test-runner step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.ApispotterTestRunner("0")  // explicit default
+//	step.ApispotterTestRunner("1")                  // older major
 func ApispotterTestRunner(version ...string) *ApispotterTestRunnerBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

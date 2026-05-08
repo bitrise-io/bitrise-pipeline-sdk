@@ -6,7 +6,11 @@ package step
 // CurlPingBuilder builds a curl-ping step with typed input methods.
 type CurlPingBuilder struct{ *Builder }
 
-// CurlPing creates a curl-ping step builder (v2).
+// CurlPing creates a curl-ping step builder (v2 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CurlPing("2")  // explicit default
+//	step.CurlPing("1")                  // older major
 func CurlPing(version ...string) *CurlPingBuilder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // RevopushCommandLineInterfaceBuilder builds a revopush-command-line-interface step with typed input methods.
 type RevopushCommandLineInterfaceBuilder struct{ *Builder }
 
-// RevopushCommandLineInterface creates a revopush-command-line-interface step builder (v0).
+// RevopushCommandLineInterface creates a revopush-command-line-interface step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RevopushCommandLineInterface("0")  // explicit default
+//	step.RevopushCommandLineInterface("1")                  // older major
 func RevopushCommandLineInterface(version ...string) *RevopushCommandLineInterfaceBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

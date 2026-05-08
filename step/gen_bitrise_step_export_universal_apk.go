@@ -6,7 +6,11 @@ package step
 // BitriseStepExportUniversalApkBuilder builds a bitrise-step-export-universal-apk step with typed input methods.
 type BitriseStepExportUniversalApkBuilder struct{ *Builder }
 
-// BitriseStepExportUniversalApk creates a bitrise-step-export-universal-apk step builder (v0).
+// BitriseStepExportUniversalApk creates a bitrise-step-export-universal-apk step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BitriseStepExportUniversalApk("0")  // explicit default
+//	step.BitriseStepExportUniversalApk("1")                  // older major
 func BitriseStepExportUniversalApk(version ...string) *BitriseStepExportUniversalApkBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // CocoapodsDependencyCheckBuilder builds a cocoapods-dependency-check step with typed input methods.
 type CocoapodsDependencyCheckBuilder struct{ *Builder }
 
-// CocoapodsDependencyCheck creates a cocoapods-dependency-check step builder (v0).
+// CocoapodsDependencyCheck creates a cocoapods-dependency-check step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.CocoapodsDependencyCheck("0")  // explicit default
+//	step.CocoapodsDependencyCheck("1")                  // older major
 func CocoapodsDependencyCheck(version ...string) *CocoapodsDependencyCheckBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // AppaloosaBuilder builds a appaloosa step with typed input methods.
 type AppaloosaBuilder struct{ *Builder }
 
-// Appaloosa creates a appaloosa step builder (v1).
+// Appaloosa creates a appaloosa step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Appaloosa("1")  // explicit default
+//	step.Appaloosa("1")                  // older major
 func Appaloosa(version ...string) *AppaloosaBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

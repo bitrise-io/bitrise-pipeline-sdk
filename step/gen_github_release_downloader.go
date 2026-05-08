@@ -6,7 +6,11 @@ package step
 // GithubReleaseDownloaderBuilder builds a github-release-downloader step with typed input methods.
 type GithubReleaseDownloaderBuilder struct{ *Builder }
 
-// GithubReleaseDownloader creates a github-release-downloader step builder (v0).
+// GithubReleaseDownloader creates a github-release-downloader step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GithubReleaseDownloader("0")  // explicit default
+//	step.GithubReleaseDownloader("1")                  // older major
 func GithubReleaseDownloader(version ...string) *GithubReleaseDownloaderBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

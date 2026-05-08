@@ -8,7 +8,11 @@ package step
 // Deprecated: This community step is no longer available as a GitHub repo.
 type BuildNumberAdjustBuilder struct{ *Builder }
 
-// BuildNumberAdjust creates a build-number-adjust step builder (v1).
+// BuildNumberAdjust creates a build-number-adjust step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BuildNumberAdjust("1")  // explicit default
+//	step.BuildNumberAdjust("1")                  // older major
 //
 // Deprecated: This community step is no longer available as a GitHub repo.
 func BuildNumberAdjust(version ...string) *BuildNumberAdjustBuilder {

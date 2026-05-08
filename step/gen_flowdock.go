@@ -6,7 +6,11 @@ package step
 // FlowdockBuilder builds a flowdock step with typed input methods.
 type FlowdockBuilder struct{ *Builder }
 
-// Flowdock creates a flowdock step builder (v0).
+// Flowdock creates a flowdock step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Flowdock("0")  // explicit default
+//	step.Flowdock("1")                  // older major
 func Flowdock(version ...string) *FlowdockBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

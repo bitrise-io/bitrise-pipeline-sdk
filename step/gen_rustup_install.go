@@ -6,7 +6,11 @@ package step
 // RustupInstallBuilder builds a rustup-install step with typed input methods.
 type RustupInstallBuilder struct{ *Builder }
 
-// RustupInstall creates a rustup-install step builder (v0).
+// RustupInstall creates a rustup-install step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RustupInstall("0")  // explicit default
+//	step.RustupInstall("1")                  // older major
 func RustupInstall(version ...string) *RustupInstallBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

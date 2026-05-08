@@ -6,7 +6,11 @@ package step
 // FirebaseChangeFileByEnvBuilder builds a firebase-change-file-by-env step with typed input methods.
 type FirebaseChangeFileByEnvBuilder struct{ *Builder }
 
-// FirebaseChangeFileByEnv creates a firebase-change-file-by-env step builder (v0).
+// FirebaseChangeFileByEnv creates a firebase-change-file-by-env step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.FirebaseChangeFileByEnv("0")  // explicit default
+//	step.FirebaseChangeFileByEnv("1")                  // older major
 func FirebaseChangeFileByEnv(version ...string) *FirebaseChangeFileByEnvBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is deprecated, android emulators no longer support screen recording
 type AndroidScreenrecordStartBuilder struct{ *Builder }
 
-// AndroidScreenrecordStart creates a android-screenrecord-start step builder (v0).
+// AndroidScreenrecordStart creates a android-screenrecord-start step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidScreenrecordStart("0")  // explicit default
+//	step.AndroidScreenrecordStart("1")                  // older major
 //
 // Deprecated: This step is deprecated, android emulators no longer support screen recording
 func AndroidScreenrecordStart(version ...string) *AndroidScreenrecordStartBuilder {

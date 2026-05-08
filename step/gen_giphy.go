@@ -6,7 +6,11 @@ package step
 // GiphyBuilder builds a giphy step with typed input methods.
 type GiphyBuilder struct{ *Builder }
 
-// Giphy creates a giphy step builder (v0).
+// Giphy creates a giphy step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Giphy("0")  // explicit default
+//	step.Giphy("1")                  // older major
 func Giphy(version ...string) *GiphyBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

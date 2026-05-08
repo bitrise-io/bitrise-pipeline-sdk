@@ -6,7 +6,11 @@ package step
 // LambdatestEspressoAppAutomateBuilder builds a lambdatest-espresso-app-automate step with typed input methods.
 type LambdatestEspressoAppAutomateBuilder struct{ *Builder }
 
-// LambdatestEspressoAppAutomate creates a lambdatest-espresso-app-automate step builder (v1).
+// LambdatestEspressoAppAutomate creates a lambdatest-espresso-app-automate step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.LambdatestEspressoAppAutomate("1")  // explicit default
+//	step.LambdatestEspressoAppAutomate("1")                  // older major
 func LambdatestEspressoAppAutomate(version ...string) *LambdatestEspressoAppAutomateBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

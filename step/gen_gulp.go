@@ -6,7 +6,11 @@ package step
 // GulpBuilder builds a gulp step with typed input methods.
 type GulpBuilder struct{ *Builder }
 
-// Gulp creates a gulp step builder (v0).
+// Gulp creates a gulp step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.Gulp("0")  // explicit default
+//	step.Gulp("1")                  // older major
 func Gulp(version ...string) *GulpBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

@@ -6,7 +6,11 @@ package step
 // RunEasBuildBuilder builds a run-eas-build step with typed input methods.
 type RunEasBuildBuilder struct{ *Builder }
 
-// RunEasBuild creates a run-eas-build step builder (v0).
+// RunEasBuild creates a run-eas-build step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.RunEasBuild("0")  // explicit default
+//	step.RunEasBuild("1")                  // older major
 func RunEasBuild(version ...string) *RunEasBuildBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

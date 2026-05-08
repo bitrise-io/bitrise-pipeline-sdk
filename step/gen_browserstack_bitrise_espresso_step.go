@@ -6,7 +6,11 @@ package step
 // BrowserstackBitriseEspressoStepBuilder builds a browserstack-bitrise-espresso-step step with typed input methods.
 type BrowserstackBitriseEspressoStepBuilder struct{ *Builder }
 
-// BrowserstackBitriseEspressoStep creates a browserstack-bitrise-espresso-step step builder (v1).
+// BrowserstackBitriseEspressoStep creates a browserstack-bitrise-espresso-step step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.BrowserstackBitriseEspressoStep("1")  // explicit default
+//	step.BrowserstackBitriseEspressoStep("1")                  // older major
 func BrowserstackBitriseEspressoStep(version ...string) *BrowserstackBitriseEspressoStepBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

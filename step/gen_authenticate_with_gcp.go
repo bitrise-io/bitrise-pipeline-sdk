@@ -6,7 +6,11 @@ package step
 // AuthenticateWithGcpBuilder builds a authenticate-with-gcp step with typed input methods.
 type AuthenticateWithGcpBuilder struct{ *Builder }
 
-// AuthenticateWithGcp creates a authenticate-with-gcp step builder (v0).
+// AuthenticateWithGcp creates a authenticate-with-gcp step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AuthenticateWithGcp("0")  // explicit default
+//	step.AuthenticateWithGcp("1")                  // older major
 func AuthenticateWithGcp(version ...string) *AuthenticateWithGcpBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

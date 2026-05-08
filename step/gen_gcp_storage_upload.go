@@ -6,7 +6,11 @@ package step
 // GcpStorageUploadBuilder builds a gcp-storage-upload step with typed input methods.
 type GcpStorageUploadBuilder struct{ *Builder }
 
-// GcpStorageUpload creates a gcp-storage-upload step builder (v0).
+// GcpStorageUpload creates a gcp-storage-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.GcpStorageUpload("0")  // explicit default
+//	step.GcpStorageUpload("1")                  // older major
 func GcpStorageUpload(version ...string) *GcpStorageUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

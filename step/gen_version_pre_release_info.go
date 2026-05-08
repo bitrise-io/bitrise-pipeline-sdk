@@ -8,7 +8,11 @@ package step
 // Deprecated: This step is a duplicate of "bitrise-step-version-pre-release-info". Please use that step ID instead.
 type VersionPreReleaseInfoBuilder struct{ *Builder }
 
-// VersionPreReleaseInfo creates a version-pre-release-info step builder (v1).
+// VersionPreReleaseInfo creates a version-pre-release-info step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.VersionPreReleaseInfo("1")  // explicit default
+//	step.VersionPreReleaseInfo("1")                  // older major
 //
 // Deprecated: This step is a duplicate of "bitrise-step-version-pre-release-info". Please use that step ID instead.
 func VersionPreReleaseInfo(version ...string) *VersionPreReleaseInfoBuilder {

@@ -6,7 +6,11 @@ package step
 // SaveSpmCacheBuilder builds a save-spm-cache step with typed input methods.
 type SaveSpmCacheBuilder struct{ *Builder }
 
-// SaveSpmCache creates a save-spm-cache step builder (v1).
+// SaveSpmCache creates a save-spm-cache step builder (v1 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SaveSpmCache("1")  // explicit default
+//	step.SaveSpmCache("1")                  // older major
 func SaveSpmCache(version ...string) *SaveSpmCacheBuilder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

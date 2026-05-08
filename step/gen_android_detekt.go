@@ -6,7 +6,11 @@ package step
 // AndroidDetektBuilder builds a android-detekt step with typed input methods.
 type AndroidDetektBuilder struct{ *Builder }
 
-// AndroidDetekt creates a android-detekt step builder (v0).
+// AndroidDetekt creates a android-detekt step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.AndroidDetekt("0")  // explicit default
+//	step.AndroidDetekt("1")                  // older major
 func AndroidDetekt(version ...string) *AndroidDetektBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

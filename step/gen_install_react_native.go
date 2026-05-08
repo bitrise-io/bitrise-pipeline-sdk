@@ -6,7 +6,11 @@ package step
 // InstallReactNativeBuilder builds a install-react-native step with typed input methods.
 type InstallReactNativeBuilder struct{ *Builder }
 
-// InstallReactNative creates a install-react-native step builder (v0).
+// InstallReactNative creates a install-react-native step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.InstallReactNative("0")  // explicit default
+//	step.InstallReactNative("1")                  // older major
 func InstallReactNative(version ...string) *InstallReactNativeBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

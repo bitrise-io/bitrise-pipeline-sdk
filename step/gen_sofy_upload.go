@@ -6,7 +6,11 @@ package step
 // SofyUploadBuilder builds a sofy-upload step with typed input methods.
 type SofyUploadBuilder struct{ *Builder }
 
-// SofyUpload creates a sofy-upload step builder (v0).
+// SofyUpload creates a sofy-upload step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.SofyUpload("0")  // explicit default
+//	step.SofyUpload("1")                  // older major
 func SofyUpload(version ...string) *SofyUploadBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {

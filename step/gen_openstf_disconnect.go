@@ -6,7 +6,11 @@ package step
 // OpenstfDisconnectBuilder builds a openstf-disconnect step with typed input methods.
 type OpenstfDisconnectBuilder struct{ *Builder }
 
-// OpenstfDisconnect creates a openstf-disconnect step builder (v0).
+// OpenstfDisconnect creates a openstf-disconnect step builder (v0 by default).
+// Pass an explicit major version to override the default:
+//
+//	step.OpenstfDisconnect("0")  // explicit default
+//	step.OpenstfDisconnect("1")                  // older major
 func OpenstfDisconnect(version ...string) *OpenstfDisconnectBuilder {
 	v := "0"
 	if len(version) > 0 && version[0] != "" {
