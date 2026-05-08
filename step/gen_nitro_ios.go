@@ -273,6 +273,54 @@ func (b *NitroIosBuilder) WithFailSafe(value string) *NitroIosBuilder {
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *NitroIosBuilder) WithRunIf(expr string) *NitroIosBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *NitroIosBuilder) WithIsAlwaysRun(v bool) *NitroIosBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *NitroIosBuilder) WithIsSkippable(v bool) *NitroIosBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *NitroIosBuilder) WithTitle(title string) *NitroIosBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *NitroIosBuilder) WithTimeout(seconds int) *NitroIosBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *NitroIosBuilder) WithNoOutputTimeout(seconds int) *NitroIosBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *NitroIosBuilder) WithExecutionContainer(containerID string) *NitroIosBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *NitroIosBuilder) WithServiceContainers(containerIDs ...string) *NitroIosBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // nitroIosOutputs holds the names of environment variables published
 // by the nitro-ios step (v4) at run time.
 type nitroIosOutputs struct {

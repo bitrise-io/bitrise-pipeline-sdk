@@ -58,6 +58,54 @@ func (b *RepeatoTestRunnerBuilder) WithLogLevel(value RepeatoTestRunnerLogLevel)
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RepeatoTestRunnerBuilder) WithRunIf(expr string) *RepeatoTestRunnerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RepeatoTestRunnerBuilder) WithIsAlwaysRun(v bool) *RepeatoTestRunnerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RepeatoTestRunnerBuilder) WithIsSkippable(v bool) *RepeatoTestRunnerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RepeatoTestRunnerBuilder) WithTitle(title string) *RepeatoTestRunnerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RepeatoTestRunnerBuilder) WithTimeout(seconds int) *RepeatoTestRunnerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RepeatoTestRunnerBuilder) WithNoOutputTimeout(seconds int) *RepeatoTestRunnerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RepeatoTestRunnerBuilder) WithExecutionContainer(containerID string) *RepeatoTestRunnerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RepeatoTestRunnerBuilder) WithServiceContainers(containerIDs ...string) *RepeatoTestRunnerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // repeatoTestRunnerOutputs holds the names of environment variables published
 // by the repeato-test-runner step (v0) at run time.
 type repeatoTestRunnerOutputs struct {

@@ -49,6 +49,54 @@ func (b *InstallrappDeployBuilder) WithAdd(value string) *InstallrappDeployBuild
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *InstallrappDeployBuilder) WithRunIf(expr string) *InstallrappDeployBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *InstallrappDeployBuilder) WithIsAlwaysRun(v bool) *InstallrappDeployBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *InstallrappDeployBuilder) WithIsSkippable(v bool) *InstallrappDeployBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *InstallrappDeployBuilder) WithTitle(title string) *InstallrappDeployBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *InstallrappDeployBuilder) WithTimeout(seconds int) *InstallrappDeployBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *InstallrappDeployBuilder) WithNoOutputTimeout(seconds int) *InstallrappDeployBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *InstallrappDeployBuilder) WithExecutionContainer(containerID string) *InstallrappDeployBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *InstallrappDeployBuilder) WithServiceContainers(containerIDs ...string) *InstallrappDeployBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // installrappDeployOutputs holds the names of environment variables published
 // by the installrapp-deploy step (v1) at run time.
 type installrappDeployOutputs struct {

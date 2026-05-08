@@ -43,6 +43,54 @@ func (b *BitriseStepEscheckerBuilder) WithEscheckerCampaignId(value string) *Bit
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *BitriseStepEscheckerBuilder) WithRunIf(expr string) *BitriseStepEscheckerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BitriseStepEscheckerBuilder) WithIsAlwaysRun(v bool) *BitriseStepEscheckerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BitriseStepEscheckerBuilder) WithIsSkippable(v bool) *BitriseStepEscheckerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BitriseStepEscheckerBuilder) WithTitle(title string) *BitriseStepEscheckerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BitriseStepEscheckerBuilder) WithTimeout(seconds int) *BitriseStepEscheckerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BitriseStepEscheckerBuilder) WithNoOutputTimeout(seconds int) *BitriseStepEscheckerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BitriseStepEscheckerBuilder) WithExecutionContainer(containerID string) *BitriseStepEscheckerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BitriseStepEscheckerBuilder) WithServiceContainers(containerIDs ...string) *BitriseStepEscheckerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // bitriseStepEscheckerOutputs holds the names of environment variables published
 // by the bitrise-step-eschecker step (v0) at run time.
 type bitriseStepEscheckerOutputs struct {

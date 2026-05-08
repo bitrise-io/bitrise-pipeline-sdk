@@ -123,6 +123,54 @@ func (b *AppdomeBuild2secureAndroidV2Builder) WithBuildToTest(value AppdomeBuild
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithRunIf(expr string) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithIsAlwaysRun(v bool) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithIsSkippable(v bool) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithTitle(title string) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithTimeout(seconds int) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithNoOutputTimeout(seconds int) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithExecutionContainer(containerID string) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithServiceContainers(containerIDs ...string) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // appdomeBuild2secureAndroidV2Outputs holds the names of environment variables published
 // by the appdome-build-2secure-android step (v2) at run time.
 type appdomeBuild2secureAndroidV2Outputs struct {

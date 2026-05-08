@@ -64,6 +64,54 @@ func (b *AndroidBuildForUiTestingBuilder) WithArguments(value string) *AndroidBu
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AndroidBuildForUiTestingBuilder) WithRunIf(expr string) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AndroidBuildForUiTestingBuilder) WithIsAlwaysRun(v bool) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AndroidBuildForUiTestingBuilder) WithIsSkippable(v bool) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AndroidBuildForUiTestingBuilder) WithTitle(title string) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AndroidBuildForUiTestingBuilder) WithTimeout(seconds int) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AndroidBuildForUiTestingBuilder) WithNoOutputTimeout(seconds int) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AndroidBuildForUiTestingBuilder) WithExecutionContainer(containerID string) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AndroidBuildForUiTestingBuilder) WithServiceContainers(containerIDs ...string) *AndroidBuildForUiTestingBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // androidBuildForUiTestingOutputs holds the names of environment variables published
 // by the android-build-for-ui-testing step (v0) at run time.
 type androidBuildForUiTestingOutputs struct {

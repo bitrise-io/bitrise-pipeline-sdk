@@ -107,3 +107,51 @@ func (b *SaveS3CacheBuilder) WithAwsSecretAccessKey(value string) *SaveS3CacheBu
 	b.Builder.WithInput("aws_secret_access_key", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SaveS3CacheBuilder) WithRunIf(expr string) *SaveS3CacheBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SaveS3CacheBuilder) WithIsAlwaysRun(v bool) *SaveS3CacheBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SaveS3CacheBuilder) WithIsSkippable(v bool) *SaveS3CacheBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SaveS3CacheBuilder) WithTitle(title string) *SaveS3CacheBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SaveS3CacheBuilder) WithTimeout(seconds int) *SaveS3CacheBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SaveS3CacheBuilder) WithNoOutputTimeout(seconds int) *SaveS3CacheBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SaveS3CacheBuilder) WithExecutionContainer(containerID string) *SaveS3CacheBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SaveS3CacheBuilder) WithServiceContainers(containerIDs ...string) *SaveS3CacheBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

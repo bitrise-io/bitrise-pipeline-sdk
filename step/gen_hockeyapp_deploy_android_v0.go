@@ -130,6 +130,54 @@ func (b *HockeyappDeployAndroidV0Builder) WithRepositoryUrl(value string) *Hocke
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *HockeyappDeployAndroidV0Builder) WithRunIf(expr string) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *HockeyappDeployAndroidV0Builder) WithIsAlwaysRun(v bool) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *HockeyappDeployAndroidV0Builder) WithIsSkippable(v bool) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *HockeyappDeployAndroidV0Builder) WithTitle(title string) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *HockeyappDeployAndroidV0Builder) WithTimeout(seconds int) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *HockeyappDeployAndroidV0Builder) WithNoOutputTimeout(seconds int) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *HockeyappDeployAndroidV0Builder) WithExecutionContainer(containerID string) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *HockeyappDeployAndroidV0Builder) WithServiceContainers(containerIDs ...string) *HockeyappDeployAndroidV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // hockeyappDeployAndroidV0Outputs holds the names of environment variables published
 // by the hockeyapp-deploy-android step (v0) at run time.
 type hockeyappDeployAndroidV0Outputs struct {

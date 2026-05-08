@@ -106,6 +106,54 @@ func (b *GradleRunnerV2Builder) WithApkFileExcludeFilter(value string) *GradleRu
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GradleRunnerV2Builder) WithRunIf(expr string) *GradleRunnerV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GradleRunnerV2Builder) WithIsAlwaysRun(v bool) *GradleRunnerV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GradleRunnerV2Builder) WithIsSkippable(v bool) *GradleRunnerV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GradleRunnerV2Builder) WithTitle(title string) *GradleRunnerV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GradleRunnerV2Builder) WithTimeout(seconds int) *GradleRunnerV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GradleRunnerV2Builder) WithNoOutputTimeout(seconds int) *GradleRunnerV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GradleRunnerV2Builder) WithExecutionContainer(containerID string) *GradleRunnerV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GradleRunnerV2Builder) WithServiceContainers(containerIDs ...string) *GradleRunnerV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // gradleRunnerV2Outputs holds the names of environment variables published
 // by the gradle-runner step (v2) at run time.
 type gradleRunnerV2Outputs struct {

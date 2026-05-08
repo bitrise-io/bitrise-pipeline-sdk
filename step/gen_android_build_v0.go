@@ -84,6 +84,54 @@ func (b *AndroidBuildV0Builder) WithApkPathPattern(value string) *AndroidBuildV0
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AndroidBuildV0Builder) WithRunIf(expr string) *AndroidBuildV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AndroidBuildV0Builder) WithIsAlwaysRun(v bool) *AndroidBuildV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AndroidBuildV0Builder) WithIsSkippable(v bool) *AndroidBuildV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AndroidBuildV0Builder) WithTitle(title string) *AndroidBuildV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AndroidBuildV0Builder) WithTimeout(seconds int) *AndroidBuildV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AndroidBuildV0Builder) WithNoOutputTimeout(seconds int) *AndroidBuildV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AndroidBuildV0Builder) WithExecutionContainer(containerID string) *AndroidBuildV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AndroidBuildV0Builder) WithServiceContainers(containerIDs ...string) *AndroidBuildV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // androidBuildV0Outputs holds the names of environment variables published
 // by the android-build step (v0) at run time.
 type androidBuildV0Outputs struct {

@@ -28,3 +28,51 @@ func (b *XamarinComponentsRestoreBuilder) WithXamarinSolution(value string) *Xam
 	b.Builder.WithInput("xamarin_solution", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *XamarinComponentsRestoreBuilder) WithRunIf(expr string) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XamarinComponentsRestoreBuilder) WithIsAlwaysRun(v bool) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XamarinComponentsRestoreBuilder) WithIsSkippable(v bool) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XamarinComponentsRestoreBuilder) WithTitle(title string) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XamarinComponentsRestoreBuilder) WithTimeout(seconds int) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XamarinComponentsRestoreBuilder) WithNoOutputTimeout(seconds int) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XamarinComponentsRestoreBuilder) WithExecutionContainer(containerID string) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XamarinComponentsRestoreBuilder) WithServiceContainers(containerIDs ...string) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

@@ -87,3 +87,51 @@ func (b *FirebaseChangeFileByEnvBuilder) WithGoogleServicesFileIosDev(value stri
 	b.Builder.WithInput("google_services_file_ios_dev", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *FirebaseChangeFileByEnvBuilder) WithRunIf(expr string) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *FirebaseChangeFileByEnvBuilder) WithIsAlwaysRun(v bool) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *FirebaseChangeFileByEnvBuilder) WithIsSkippable(v bool) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *FirebaseChangeFileByEnvBuilder) WithTitle(title string) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *FirebaseChangeFileByEnvBuilder) WithTimeout(seconds int) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *FirebaseChangeFileByEnvBuilder) WithNoOutputTimeout(seconds int) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *FirebaseChangeFileByEnvBuilder) WithExecutionContainer(containerID string) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *FirebaseChangeFileByEnvBuilder) WithServiceContainers(containerIDs ...string) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

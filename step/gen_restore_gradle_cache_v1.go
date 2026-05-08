@@ -33,6 +33,54 @@ func (b *RestoreGradleCacheV1Builder) WithVerbose(value RestoreGradleCacheV1Verb
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RestoreGradleCacheV1Builder) WithRunIf(expr string) *RestoreGradleCacheV1Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RestoreGradleCacheV1Builder) WithIsAlwaysRun(v bool) *RestoreGradleCacheV1Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RestoreGradleCacheV1Builder) WithIsSkippable(v bool) *RestoreGradleCacheV1Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RestoreGradleCacheV1Builder) WithTitle(title string) *RestoreGradleCacheV1Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RestoreGradleCacheV1Builder) WithTimeout(seconds int) *RestoreGradleCacheV1Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RestoreGradleCacheV1Builder) WithNoOutputTimeout(seconds int) *RestoreGradleCacheV1Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RestoreGradleCacheV1Builder) WithExecutionContainer(containerID string) *RestoreGradleCacheV1Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RestoreGradleCacheV1Builder) WithServiceContainers(containerIDs ...string) *RestoreGradleCacheV1Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // restoreGradleCacheV1Outputs holds the names of environment variables published
 // by the restore-gradle-cache step (v1) at run time.
 type restoreGradleCacheV1Outputs struct {

@@ -64,3 +64,51 @@ func (b *YarnV0Builder) WithVerboseLog(value YarnV0VerboseLog) *YarnV0Builder {
 	b.Builder.WithInput("verbose_log", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *YarnV0Builder) WithRunIf(expr string) *YarnV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *YarnV0Builder) WithIsAlwaysRun(v bool) *YarnV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *YarnV0Builder) WithIsSkippable(v bool) *YarnV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *YarnV0Builder) WithTitle(title string) *YarnV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *YarnV0Builder) WithTimeout(seconds int) *YarnV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *YarnV0Builder) WithNoOutputTimeout(seconds int) *YarnV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *YarnV0Builder) WithExecutionContainer(containerID string) *YarnV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *YarnV0Builder) WithServiceContainers(containerIDs ...string) *YarnV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

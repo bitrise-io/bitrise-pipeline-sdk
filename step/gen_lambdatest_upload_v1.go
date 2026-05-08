@@ -43,6 +43,54 @@ func (b *LambdatestUploadV1Builder) WithCustomId(value string) *LambdatestUpload
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *LambdatestUploadV1Builder) WithRunIf(expr string) *LambdatestUploadV1Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *LambdatestUploadV1Builder) WithIsAlwaysRun(v bool) *LambdatestUploadV1Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *LambdatestUploadV1Builder) WithIsSkippable(v bool) *LambdatestUploadV1Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *LambdatestUploadV1Builder) WithTitle(title string) *LambdatestUploadV1Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *LambdatestUploadV1Builder) WithTimeout(seconds int) *LambdatestUploadV1Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *LambdatestUploadV1Builder) WithNoOutputTimeout(seconds int) *LambdatestUploadV1Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *LambdatestUploadV1Builder) WithExecutionContainer(containerID string) *LambdatestUploadV1Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *LambdatestUploadV1Builder) WithServiceContainers(containerIDs ...string) *LambdatestUploadV1Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // lambdatestUploadV1Outputs holds the names of environment variables published
 // by the lambdatest-upload step (v1) at run time.
 type lambdatestUploadV1Outputs struct {

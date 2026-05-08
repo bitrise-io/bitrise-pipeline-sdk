@@ -63,6 +63,54 @@ func (b *UpdateJiraReleaseStatusBuilder) WithReleaseDate(value string) *UpdateJi
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *UpdateJiraReleaseStatusBuilder) WithRunIf(expr string) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *UpdateJiraReleaseStatusBuilder) WithIsAlwaysRun(v bool) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *UpdateJiraReleaseStatusBuilder) WithIsSkippable(v bool) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *UpdateJiraReleaseStatusBuilder) WithTitle(title string) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *UpdateJiraReleaseStatusBuilder) WithTimeout(seconds int) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *UpdateJiraReleaseStatusBuilder) WithNoOutputTimeout(seconds int) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *UpdateJiraReleaseStatusBuilder) WithExecutionContainer(containerID string) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *UpdateJiraReleaseStatusBuilder) WithServiceContainers(containerIDs ...string) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // updateJiraReleaseStatusOutputs holds the names of environment variables published
 // by the update-jira-release-status step (v0) at run time.
 type updateJiraReleaseStatusOutputs struct {

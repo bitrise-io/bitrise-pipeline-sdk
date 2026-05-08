@@ -109,14 +109,27 @@ func TestFastlane(t *testing.T) {
 }
 
 func TestTypedBuilder_GenericMethodChain(t *testing.T) {
-	// Verify that generic *Builder methods are accessible from typed builders
-	// via embedding promotion, and the step still builds correctly.
+	// Generic methods return the concrete typed builder, so typed input
+	// methods remain callable in any order in the chain.
 	item := step.XcodeTest().
-		WithScheme("MyApp").
-		WithTitle("Run Tests").  // promoted *Builder method
-		WithIsSkippable(true).   // promoted *Builder method
+		WithTitle("Run Tests").   // generic — must return *XcodeTestV6Builder
+		WithIsSkippable(true).    // generic — must return *XcodeTestV6Builder
+		WithScheme("MyApp").      // typed input — only accessible via *XcodeTestV6Builder
 		Build()
 	assert.Contains(t, item, "xcode-test@6")
+}
+
+func TestTypedBuilder_GenericMethodsReturnConcreteType(t *testing.T) {
+	// Compile-time assertions: each generic method must return the concrete
+	// typed builder, not *Builder.
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithTitle("t")
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithRunIf("true")
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithIsAlwaysRun(true)
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithIsSkippable(true)
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithTimeout(300)
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithNoOutputTimeout(60)
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithExecutionContainer("c")
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithServiceContainers("db")
 }
 
 // --- Version override -------------------------------------------------------

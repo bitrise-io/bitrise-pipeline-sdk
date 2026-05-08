@@ -25,6 +25,54 @@ func (b *ZipalignApkBuilder) WithBitriseUnalignedApkPath(value string) *Zipalign
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ZipalignApkBuilder) WithRunIf(expr string) *ZipalignApkBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ZipalignApkBuilder) WithIsAlwaysRun(v bool) *ZipalignApkBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ZipalignApkBuilder) WithIsSkippable(v bool) *ZipalignApkBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ZipalignApkBuilder) WithTitle(title string) *ZipalignApkBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ZipalignApkBuilder) WithTimeout(seconds int) *ZipalignApkBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ZipalignApkBuilder) WithNoOutputTimeout(seconds int) *ZipalignApkBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ZipalignApkBuilder) WithExecutionContainer(containerID string) *ZipalignApkBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ZipalignApkBuilder) WithServiceContainers(containerIDs ...string) *ZipalignApkBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // zipalignApkOutputs holds the names of environment variables published
 // by the zipalign-apk step (v0) at run time.
 type zipalignApkOutputs struct {

@@ -119,6 +119,54 @@ func (b *UpdateGitopsRepositoryV2Builder) WithFiles(value string) *UpdateGitopsR
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *UpdateGitopsRepositoryV2Builder) WithRunIf(expr string) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *UpdateGitopsRepositoryV2Builder) WithIsAlwaysRun(v bool) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *UpdateGitopsRepositoryV2Builder) WithIsSkippable(v bool) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *UpdateGitopsRepositoryV2Builder) WithTitle(title string) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *UpdateGitopsRepositoryV2Builder) WithTimeout(seconds int) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *UpdateGitopsRepositoryV2Builder) WithNoOutputTimeout(seconds int) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *UpdateGitopsRepositoryV2Builder) WithExecutionContainer(containerID string) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *UpdateGitopsRepositoryV2Builder) WithServiceContainers(containerIDs ...string) *UpdateGitopsRepositoryV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // updateGitopsRepositoryV2Outputs holds the names of environment variables published
 // by the update-gitops-repository step (v2) at run time.
 type updateGitopsRepositoryV2Outputs struct {

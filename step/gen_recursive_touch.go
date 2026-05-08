@@ -34,3 +34,51 @@ func (b *RecursiveTouchBuilder) WithTouchTime(value string) *RecursiveTouchBuild
 	b.Builder.WithInput("touch_time", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *RecursiveTouchBuilder) WithRunIf(expr string) *RecursiveTouchBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RecursiveTouchBuilder) WithIsAlwaysRun(v bool) *RecursiveTouchBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RecursiveTouchBuilder) WithIsSkippable(v bool) *RecursiveTouchBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RecursiveTouchBuilder) WithTitle(title string) *RecursiveTouchBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RecursiveTouchBuilder) WithTimeout(seconds int) *RecursiveTouchBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RecursiveTouchBuilder) WithNoOutputTimeout(seconds int) *RecursiveTouchBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RecursiveTouchBuilder) WithExecutionContainer(containerID string) *RecursiveTouchBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RecursiveTouchBuilder) WithServiceContainers(containerIDs ...string) *RecursiveTouchBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

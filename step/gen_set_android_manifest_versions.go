@@ -42,3 +42,51 @@ func (b *SetAndroidManifestVersionsBuilder) WithVersionName(value string) *SetAn
 	b.Builder.WithInput("version_name", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SetAndroidManifestVersionsBuilder) WithRunIf(expr string) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SetAndroidManifestVersionsBuilder) WithIsAlwaysRun(v bool) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SetAndroidManifestVersionsBuilder) WithIsSkippable(v bool) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SetAndroidManifestVersionsBuilder) WithTitle(title string) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SetAndroidManifestVersionsBuilder) WithTimeout(seconds int) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SetAndroidManifestVersionsBuilder) WithNoOutputTimeout(seconds int) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SetAndroidManifestVersionsBuilder) WithExecutionContainer(containerID string) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SetAndroidManifestVersionsBuilder) WithServiceContainers(containerIDs ...string) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

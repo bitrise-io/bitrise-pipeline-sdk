@@ -51,6 +51,54 @@ func (b *ScanWithAppsweepV1Builder) WithGradlePluginVersion(value string) *ScanW
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ScanWithAppsweepV1Builder) WithRunIf(expr string) *ScanWithAppsweepV1Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ScanWithAppsweepV1Builder) WithIsAlwaysRun(v bool) *ScanWithAppsweepV1Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ScanWithAppsweepV1Builder) WithIsSkippable(v bool) *ScanWithAppsweepV1Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ScanWithAppsweepV1Builder) WithTitle(title string) *ScanWithAppsweepV1Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ScanWithAppsweepV1Builder) WithTimeout(seconds int) *ScanWithAppsweepV1Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ScanWithAppsweepV1Builder) WithNoOutputTimeout(seconds int) *ScanWithAppsweepV1Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ScanWithAppsweepV1Builder) WithExecutionContainer(containerID string) *ScanWithAppsweepV1Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ScanWithAppsweepV1Builder) WithServiceContainers(containerIDs ...string) *ScanWithAppsweepV1Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // scanWithAppsweepV1Outputs holds the names of environment variables published
 // by the scan-with-appsweep step (v1) at run time.
 type scanWithAppsweepV1Outputs struct {

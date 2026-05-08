@@ -44,3 +44,51 @@ func (b *GitTagBuilder) WithPush(value GitTagPush) *GitTagBuilder {
 	b.Builder.WithInput("push", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *GitTagBuilder) WithRunIf(expr string) *GitTagBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GitTagBuilder) WithIsAlwaysRun(v bool) *GitTagBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GitTagBuilder) WithIsSkippable(v bool) *GitTagBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GitTagBuilder) WithTitle(title string) *GitTagBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GitTagBuilder) WithTimeout(seconds int) *GitTagBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GitTagBuilder) WithNoOutputTimeout(seconds int) *GitTagBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GitTagBuilder) WithExecutionContainer(containerID string) *GitTagBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GitTagBuilder) WithServiceContainers(containerIDs ...string) *GitTagBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

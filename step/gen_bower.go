@@ -50,3 +50,51 @@ func (b *BowerBuilder) WithIsDebug(value BowerIsDebug) *BowerBuilder {
 	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *BowerBuilder) WithRunIf(expr string) *BowerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BowerBuilder) WithIsAlwaysRun(v bool) *BowerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BowerBuilder) WithIsSkippable(v bool) *BowerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BowerBuilder) WithTitle(title string) *BowerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BowerBuilder) WithTimeout(seconds int) *BowerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BowerBuilder) WithNoOutputTimeout(seconds int) *BowerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BowerBuilder) WithExecutionContainer(containerID string) *BowerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BowerBuilder) WithServiceContainers(containerIDs ...string) *BowerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

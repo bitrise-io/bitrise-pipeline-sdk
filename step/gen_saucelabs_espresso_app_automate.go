@@ -62,3 +62,51 @@ func (b *SaucelabsEspressoAppAutomateBuilder) WithSaucelabsDataCenter(value Sauc
 	b.Builder.WithInput("saucelabs_data_center", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithRunIf(expr string) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithIsAlwaysRun(v bool) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithIsSkippable(v bool) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithTitle(title string) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithTimeout(seconds int) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithNoOutputTimeout(seconds int) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithExecutionContainer(containerID string) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithServiceContainers(containerIDs ...string) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

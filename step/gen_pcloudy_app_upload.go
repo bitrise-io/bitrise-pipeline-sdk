@@ -43,6 +43,54 @@ func (b *PcloudyAppUploadBuilder) WithPcloudyAccessKey(value string) *PcloudyApp
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *PcloudyAppUploadBuilder) WithRunIf(expr string) *PcloudyAppUploadBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *PcloudyAppUploadBuilder) WithIsAlwaysRun(v bool) *PcloudyAppUploadBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *PcloudyAppUploadBuilder) WithIsSkippable(v bool) *PcloudyAppUploadBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *PcloudyAppUploadBuilder) WithTitle(title string) *PcloudyAppUploadBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *PcloudyAppUploadBuilder) WithTimeout(seconds int) *PcloudyAppUploadBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *PcloudyAppUploadBuilder) WithNoOutputTimeout(seconds int) *PcloudyAppUploadBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *PcloudyAppUploadBuilder) WithExecutionContainer(containerID string) *PcloudyAppUploadBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *PcloudyAppUploadBuilder) WithServiceContainers(containerIDs ...string) *PcloudyAppUploadBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // pcloudyAppUploadOutputs holds the names of environment variables published
 // by the pcloudy-app-upload step (v0) at run time.
 type pcloudyAppUploadOutputs struct {

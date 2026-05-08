@@ -38,3 +38,51 @@ func (b *ChangeWorkdirBuilder) WithIsCreatePath(value ChangeWorkdirIsCreatePath)
 	b.Builder.WithInput("is_create_path", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *ChangeWorkdirBuilder) WithRunIf(expr string) *ChangeWorkdirBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ChangeWorkdirBuilder) WithIsAlwaysRun(v bool) *ChangeWorkdirBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ChangeWorkdirBuilder) WithIsSkippable(v bool) *ChangeWorkdirBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ChangeWorkdirBuilder) WithTitle(title string) *ChangeWorkdirBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ChangeWorkdirBuilder) WithTimeout(seconds int) *ChangeWorkdirBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ChangeWorkdirBuilder) WithNoOutputTimeout(seconds int) *ChangeWorkdirBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ChangeWorkdirBuilder) WithExecutionContainer(containerID string) *ChangeWorkdirBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ChangeWorkdirBuilder) WithServiceContainers(containerIDs ...string) *ChangeWorkdirBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

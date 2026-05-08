@@ -58,3 +58,51 @@ func (b *CocoapodsInstallV3Builder) WithVerbose(value CocoapodsInstallV3Verbose)
 	b.Builder.WithInput("verbose", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *CocoapodsInstallV3Builder) WithRunIf(expr string) *CocoapodsInstallV3Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *CocoapodsInstallV3Builder) WithIsAlwaysRun(v bool) *CocoapodsInstallV3Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *CocoapodsInstallV3Builder) WithIsSkippable(v bool) *CocoapodsInstallV3Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *CocoapodsInstallV3Builder) WithTitle(title string) *CocoapodsInstallV3Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *CocoapodsInstallV3Builder) WithTimeout(seconds int) *CocoapodsInstallV3Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *CocoapodsInstallV3Builder) WithNoOutputTimeout(seconds int) *CocoapodsInstallV3Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *CocoapodsInstallV3Builder) WithExecutionContainer(containerID string) *CocoapodsInstallV3Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *CocoapodsInstallV3Builder) WithServiceContainers(containerIDs ...string) *CocoapodsInstallV3Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

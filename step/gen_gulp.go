@@ -50,3 +50,51 @@ func (b *GulpBuilder) WithIsDebug(value GulpIsDebug) *GulpBuilder {
 	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *GulpBuilder) WithRunIf(expr string) *GulpBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GulpBuilder) WithIsAlwaysRun(v bool) *GulpBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GulpBuilder) WithIsSkippable(v bool) *GulpBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GulpBuilder) WithTitle(title string) *GulpBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GulpBuilder) WithTimeout(seconds int) *GulpBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GulpBuilder) WithNoOutputTimeout(seconds int) *GulpBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GulpBuilder) WithExecutionContainer(containerID string) *GulpBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GulpBuilder) WithServiceContainers(containerIDs ...string) *GulpBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

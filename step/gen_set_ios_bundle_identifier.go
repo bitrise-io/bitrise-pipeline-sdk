@@ -30,3 +30,51 @@ func (b *SetIosBundleIdentifierBuilder) WithBundleIdentifier(value string) *SetI
 	b.Builder.WithInput("bundle_identifier", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SetIosBundleIdentifierBuilder) WithRunIf(expr string) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SetIosBundleIdentifierBuilder) WithIsAlwaysRun(v bool) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SetIosBundleIdentifierBuilder) WithIsSkippable(v bool) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SetIosBundleIdentifierBuilder) WithTitle(title string) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SetIosBundleIdentifierBuilder) WithTimeout(seconds int) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SetIosBundleIdentifierBuilder) WithNoOutputTimeout(seconds int) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SetIosBundleIdentifierBuilder) WithExecutionContainer(containerID string) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SetIosBundleIdentifierBuilder) WithServiceContainers(containerIDs ...string) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

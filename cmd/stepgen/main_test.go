@@ -986,6 +986,53 @@ inputs:
 	assert.Contains(t, string(aliasData), "type MyStepMethod = MyStepV2Method")
 }
 
+// ---- generic forwarding methods --------------------------------------------
+
+func TestGenerateStep_WritesGenericForwardingMethods(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"script": {"1.0.0"}},
+		stepYML:  map[string][]byte{"script/1.0.0": minimalStepYML("Script")},
+	}
+
+	_, err := generateStep("script", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	data, _ := os.ReadFile(filepath.Join(outputDir, "gen_script.go"))
+	content := string(data)
+
+	// Every generic *Builder method must have a forwarding method that returns
+	// the concrete typed builder.
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithRunIf(expr string) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithIsAlwaysRun(v bool) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithIsSkippable(v bool) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithTitle(title string) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithTimeout(seconds int) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithNoOutputTimeout(seconds int) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithExecutionContainer(containerID string) *ScriptBuilder {")
+	assert.Contains(t, content, "func (b *ScriptBuilder) WithServiceContainers(containerIDs ...string) *ScriptBuilder {")
+}
+
+func TestGenerateStep_MultiMajor_WritesGenericForwardingMethods(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{"my-step": {"1.0.0", "2.0.0"}},
+		stepYML: map[string][]byte{
+			"my-step/1.0.0": minimalStepYML("My Step"),
+			"my-step/2.0.0": minimalStepYML("My Step"),
+		},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	v2Data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_v2.go"))
+	v2Content := string(v2Data)
+
+	assert.Contains(t, v2Content, "func (b *MyStepV2Builder) WithRunIf(expr string) *MyStepV2Builder {")
+	assert.Contains(t, v2Content, "func (b *MyStepV2Builder) WithTitle(title string) *MyStepV2Builder {")
+}
+
 // ---- deleteDeprecatedFiles --------------------------------------------------
 
 func TestDeleteDeprecatedFiles(t *testing.T) {

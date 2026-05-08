@@ -89,6 +89,37 @@ type inputDef struct {
 	Options      []valueOption // populated when EnumTypeName is set
 }
 
+// forwardingMethodDef describes one generic *Builder forwarding method to
+// emit on a typed builder so callers can chain generic and typed calls without
+// losing the concrete return type.
+type forwardingMethodDef struct {
+	Name    string // e.g. "WithTitle"
+	Params  string // parameter list including surrounding parens, e.g. "(title string)"
+	Call    string // body expression, e.g. "b.Builder.WithTitle(title)"
+	Comment string // godoc line for the generated method
+}
+
+// genericBuilderMethods is the canonical list of *Builder methods that every
+// typed builder must forward so the typed chain is never broken.
+var genericBuilderMethods = []forwardingMethodDef{
+	{Name: "WithRunIf", Params: "(expr string)", Call: "b.Builder.WithRunIf(expr)",
+		Comment: "WithRunIf overrides the run_if expression for this step."},
+	{Name: "WithIsAlwaysRun", Params: "(v bool)", Call: "b.Builder.WithIsAlwaysRun(v)",
+		Comment: "WithIsAlwaysRun configures whether this step runs even when a previous step failed."},
+	{Name: "WithIsSkippable", Params: "(v bool)", Call: "b.Builder.WithIsSkippable(v)",
+		Comment: "WithIsSkippable marks this step as skippable so a failure does not fail the build."},
+	{Name: "WithTitle", Params: "(title string)", Call: "b.Builder.WithTitle(title)",
+		Comment: "WithTitle overrides the step title shown in the build log."},
+	{Name: "WithTimeout", Params: "(seconds int)", Call: "b.Builder.WithTimeout(seconds)",
+		Comment: "WithTimeout sets the maximum execution time in seconds. 0 disables the timeout."},
+	{Name: "WithNoOutputTimeout", Params: "(seconds int)", Call: "b.Builder.WithNoOutputTimeout(seconds)",
+		Comment: "WithNoOutputTimeout sets the maximum time the step may run without producing output."},
+	{Name: "WithExecutionContainer", Params: "(containerID string)", Call: "b.Builder.WithExecutionContainer(containerID)",
+		Comment: "WithExecutionContainer pins this step to run inside the named container."},
+	{Name: "WithServiceContainers", Params: "(containerIDs ...string)", Call: "b.Builder.WithServiceContainers(containerIDs...)",
+		Comment: "WithServiceContainers attaches one or more named service containers to this step."},
+}
+
 type outputDef struct {
 	Key       string // the env var name, e.g. "GIT_CLONE_COMMIT_HASH"
 	FieldName string // Go struct field name, e.g. "GitCloneCommitHash"
@@ -96,15 +127,16 @@ type outputDef struct {
 }
 
 type stepDef struct {
-	StepID          string
-	Version         string
-	MajorVersion    string
-	Title           string
-	TypeName        string
-	OutputsTypeName string // unexported struct type name for the outputs var
-	DeprecateNotes  string // non-empty when the step is deprecated
-	Inputs          []inputDef
-	Outputs         []outputDef
+	StepID             string
+	Version            string
+	MajorVersion       string
+	Title              string
+	TypeName           string
+	OutputsTypeName    string              // unexported struct type name for the outputs var
+	DeprecateNotes     string              // non-empty when the step is deprecated
+	Inputs             []inputDef
+	Outputs            []outputDef
+	ForwardingMethods  []forwardingMethodDef // generic *Builder methods that don't clash with typed inputs
 }
 
 // enumTypePair holds an unversioned type alias name alongside its versioned
@@ -172,6 +204,12 @@ func {{.TypeName}}(version ...string) *{{.TypeName}}Builder {
 // {{.Comment}}
 func (b *{{$.TypeName}}Builder) With{{.MethodName}}(value {{if .EnumTypeName}}{{.EnumTypeName}}{{else}}string{{end}}) *{{$.TypeName}}Builder {
 	b.Builder.WithInput("{{.Key}}", {{if .EnumTypeName}}string(value){{else}}value{{end}})
+	return b
+}
+{{end}}{{range .ForwardingMethods}}
+// {{.Comment}}
+func (b *{{$.TypeName}}Builder) {{.Name}}{{.Params}} *{{$.TypeName}}Builder {
+	{{.Call}}
 	return b
 }
 {{end}}{{if .Outputs}}
@@ -1098,6 +1136,18 @@ func parseStepYML(stepID, version string, data []byte) (*stepDef, error) {
 			in.Comment = fmt.Sprintf("With%s sets the %s input.", in.MethodName, key)
 		}
 		def.Inputs = append(def.Inputs, in)
+	}
+
+	// Build the list of generic *Builder forwarding methods, skipping any whose
+	// name collides with an already-generated typed input method.
+	inputMethodSet := make(map[string]bool, len(def.Inputs))
+	for _, inp := range def.Inputs {
+		inputMethodSet["With"+inp.MethodName] = true
+	}
+	for _, m := range genericBuilderMethods {
+		if !inputMethodSet[m.Name] {
+			def.ForwardingMethods = append(def.ForwardingMethods, m)
+		}
 	}
 
 	// Parse outputs — same map structure as inputs, but keys are UPPER_SNAKE_CASE

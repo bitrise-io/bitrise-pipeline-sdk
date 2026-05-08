@@ -57,6 +57,54 @@ func (b *XcodeCreateDevicePairBuilder) WithDeleteBlockingPairs(value XcodeCreate
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *XcodeCreateDevicePairBuilder) WithRunIf(expr string) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XcodeCreateDevicePairBuilder) WithIsAlwaysRun(v bool) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XcodeCreateDevicePairBuilder) WithIsSkippable(v bool) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XcodeCreateDevicePairBuilder) WithTitle(title string) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XcodeCreateDevicePairBuilder) WithTimeout(seconds int) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XcodeCreateDevicePairBuilder) WithNoOutputTimeout(seconds int) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XcodeCreateDevicePairBuilder) WithExecutionContainer(containerID string) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XcodeCreateDevicePairBuilder) WithServiceContainers(containerIDs ...string) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // xcodeCreateDevicePairOutputs holds the names of environment variables published
 // by the xcode-create-device-pair step (v1) at run time.
 type xcodeCreateDevicePairOutputs struct {

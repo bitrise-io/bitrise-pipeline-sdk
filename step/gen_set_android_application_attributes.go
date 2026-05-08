@@ -36,3 +36,51 @@ func (b *SetAndroidApplicationAttributesBuilder) WithAppIcon(value string) *SetA
 	b.Builder.WithInput("app_icon", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SetAndroidApplicationAttributesBuilder) WithRunIf(expr string) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SetAndroidApplicationAttributesBuilder) WithIsAlwaysRun(v bool) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SetAndroidApplicationAttributesBuilder) WithIsSkippable(v bool) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SetAndroidApplicationAttributesBuilder) WithTitle(title string) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SetAndroidApplicationAttributesBuilder) WithTimeout(seconds int) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SetAndroidApplicationAttributesBuilder) WithNoOutputTimeout(seconds int) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SetAndroidApplicationAttributesBuilder) WithExecutionContainer(containerID string) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SetAndroidApplicationAttributesBuilder) WithServiceContainers(containerIDs ...string) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

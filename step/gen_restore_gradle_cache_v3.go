@@ -45,6 +45,48 @@ func (b *RestoreGradleCacheV3Builder) WithRetries(value string) *RestoreGradleCa
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RestoreGradleCacheV3Builder) WithRunIf(expr string) *RestoreGradleCacheV3Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RestoreGradleCacheV3Builder) WithIsAlwaysRun(v bool) *RestoreGradleCacheV3Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RestoreGradleCacheV3Builder) WithIsSkippable(v bool) *RestoreGradleCacheV3Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RestoreGradleCacheV3Builder) WithTitle(title string) *RestoreGradleCacheV3Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RestoreGradleCacheV3Builder) WithNoOutputTimeout(seconds int) *RestoreGradleCacheV3Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RestoreGradleCacheV3Builder) WithExecutionContainer(containerID string) *RestoreGradleCacheV3Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RestoreGradleCacheV3Builder) WithServiceContainers(containerIDs ...string) *RestoreGradleCacheV3Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // restoreGradleCacheV3Outputs holds the names of environment variables published
 // by the restore-gradle-cache step (v3) at run time.
 type restoreGradleCacheV3Outputs struct {

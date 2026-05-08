@@ -49,6 +49,54 @@ func (b *CachePullV1Builder) WithCacheApiUrl(value string) *CachePullV1Builder {
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *CachePullV1Builder) WithRunIf(expr string) *CachePullV1Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *CachePullV1Builder) WithIsAlwaysRun(v bool) *CachePullV1Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *CachePullV1Builder) WithIsSkippable(v bool) *CachePullV1Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *CachePullV1Builder) WithTitle(title string) *CachePullV1Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *CachePullV1Builder) WithTimeout(seconds int) *CachePullV1Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *CachePullV1Builder) WithNoOutputTimeout(seconds int) *CachePullV1Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *CachePullV1Builder) WithExecutionContainer(containerID string) *CachePullV1Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *CachePullV1Builder) WithServiceContainers(containerIDs ...string) *CachePullV1Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // cachePullV1Outputs holds the names of environment variables published
 // by the cache-pull step (v1) at run time.
 type cachePullV1Outputs struct {

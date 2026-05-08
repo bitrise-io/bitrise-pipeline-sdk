@@ -98,3 +98,51 @@ func (b *JandiMessageBuilder) WithAttachmentAreaImageUrlOnError(value string) *J
 	b.Builder.WithInput("attachment_area_image_url_on_error", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *JandiMessageBuilder) WithRunIf(expr string) *JandiMessageBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *JandiMessageBuilder) WithIsAlwaysRun(v bool) *JandiMessageBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *JandiMessageBuilder) WithIsSkippable(v bool) *JandiMessageBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *JandiMessageBuilder) WithTitle(title string) *JandiMessageBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *JandiMessageBuilder) WithTimeout(seconds int) *JandiMessageBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *JandiMessageBuilder) WithNoOutputTimeout(seconds int) *JandiMessageBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *JandiMessageBuilder) WithExecutionContainer(containerID string) *JandiMessageBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *JandiMessageBuilder) WithServiceContainers(containerIDs ...string) *JandiMessageBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

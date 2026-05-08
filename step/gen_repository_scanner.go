@@ -40,3 +40,51 @@ func (b *RepositoryScannerBuilder) WithScanResultSubmitApiToken(value string) *R
 	b.Builder.WithInput("scan_result_submit_api_token", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *RepositoryScannerBuilder) WithRunIf(expr string) *RepositoryScannerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RepositoryScannerBuilder) WithIsAlwaysRun(v bool) *RepositoryScannerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RepositoryScannerBuilder) WithIsSkippable(v bool) *RepositoryScannerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RepositoryScannerBuilder) WithTitle(title string) *RepositoryScannerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RepositoryScannerBuilder) WithTimeout(seconds int) *RepositoryScannerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RepositoryScannerBuilder) WithNoOutputTimeout(seconds int) *RepositoryScannerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RepositoryScannerBuilder) WithExecutionContainer(containerID string) *RepositoryScannerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RepositoryScannerBuilder) WithServiceContainers(containerIDs ...string) *RepositoryScannerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

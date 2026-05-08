@@ -25,6 +25,54 @@ func (b *AndroidManifestInfoBuilder) WithManifestFile(value string) *AndroidMani
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AndroidManifestInfoBuilder) WithRunIf(expr string) *AndroidManifestInfoBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AndroidManifestInfoBuilder) WithIsAlwaysRun(v bool) *AndroidManifestInfoBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AndroidManifestInfoBuilder) WithIsSkippable(v bool) *AndroidManifestInfoBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AndroidManifestInfoBuilder) WithTitle(title string) *AndroidManifestInfoBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AndroidManifestInfoBuilder) WithTimeout(seconds int) *AndroidManifestInfoBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AndroidManifestInfoBuilder) WithNoOutputTimeout(seconds int) *AndroidManifestInfoBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AndroidManifestInfoBuilder) WithExecutionContainer(containerID string) *AndroidManifestInfoBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AndroidManifestInfoBuilder) WithServiceContainers(containerIDs ...string) *AndroidManifestInfoBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // androidManifestInfoOutputs holds the names of environment variables published
 // by the android-manifest-info step (v1) at run time.
 type androidManifestInfoOutputs struct {

@@ -25,6 +25,54 @@ func (b *FindJiraIssueBuilder) WithFindIssueContent(value string) *FindJiraIssue
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *FindJiraIssueBuilder) WithRunIf(expr string) *FindJiraIssueBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *FindJiraIssueBuilder) WithIsAlwaysRun(v bool) *FindJiraIssueBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *FindJiraIssueBuilder) WithIsSkippable(v bool) *FindJiraIssueBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *FindJiraIssueBuilder) WithTitle(title string) *FindJiraIssueBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *FindJiraIssueBuilder) WithTimeout(seconds int) *FindJiraIssueBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *FindJiraIssueBuilder) WithNoOutputTimeout(seconds int) *FindJiraIssueBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *FindJiraIssueBuilder) WithExecutionContainer(containerID string) *FindJiraIssueBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *FindJiraIssueBuilder) WithServiceContainers(containerIDs ...string) *FindJiraIssueBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // findJiraIssueOutputs holds the names of environment variables published
 // by the find-jira-issue step (v0) at run time.
 type findJiraIssueOutputs struct {

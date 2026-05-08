@@ -86,6 +86,54 @@ func (b *FlutterBuildPatrolBuilder) WithIsVerboseMode(value FlutterBuildPatrolIs
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *FlutterBuildPatrolBuilder) WithRunIf(expr string) *FlutterBuildPatrolBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *FlutterBuildPatrolBuilder) WithIsAlwaysRun(v bool) *FlutterBuildPatrolBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *FlutterBuildPatrolBuilder) WithIsSkippable(v bool) *FlutterBuildPatrolBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *FlutterBuildPatrolBuilder) WithTitle(title string) *FlutterBuildPatrolBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *FlutterBuildPatrolBuilder) WithTimeout(seconds int) *FlutterBuildPatrolBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *FlutterBuildPatrolBuilder) WithNoOutputTimeout(seconds int) *FlutterBuildPatrolBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *FlutterBuildPatrolBuilder) WithExecutionContainer(containerID string) *FlutterBuildPatrolBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *FlutterBuildPatrolBuilder) WithServiceContainers(containerIDs ...string) *FlutterBuildPatrolBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // flutterBuildPatrolOutputs holds the names of environment variables published
 // by the flutter-build-patrol step (v0) at run time.
 type flutterBuildPatrolOutputs struct {

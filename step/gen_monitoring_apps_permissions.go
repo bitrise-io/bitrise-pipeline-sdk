@@ -71,6 +71,54 @@ func (b *MonitoringAppsPermissionsBuilder) WithIosPermissionCount(value string) 
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *MonitoringAppsPermissionsBuilder) WithRunIf(expr string) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *MonitoringAppsPermissionsBuilder) WithIsAlwaysRun(v bool) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *MonitoringAppsPermissionsBuilder) WithIsSkippable(v bool) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *MonitoringAppsPermissionsBuilder) WithTitle(title string) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *MonitoringAppsPermissionsBuilder) WithTimeout(seconds int) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *MonitoringAppsPermissionsBuilder) WithNoOutputTimeout(seconds int) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *MonitoringAppsPermissionsBuilder) WithExecutionContainer(containerID string) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *MonitoringAppsPermissionsBuilder) WithServiceContainers(containerIDs ...string) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // monitoringAppsPermissionsOutputs holds the names of environment variables published
 // by the monitoring-apps-permissions step (v1) at run time.
 type monitoringAppsPermissionsOutputs struct {

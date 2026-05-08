@@ -36,3 +36,51 @@ func (b *RubyScriptBuilder) WithScriptRunDir(value string) *RubyScriptBuilder {
 	b.Builder.WithInput("script_run_dir", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *RubyScriptBuilder) WithRunIf(expr string) *RubyScriptBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RubyScriptBuilder) WithIsAlwaysRun(v bool) *RubyScriptBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RubyScriptBuilder) WithIsSkippable(v bool) *RubyScriptBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RubyScriptBuilder) WithTitle(title string) *RubyScriptBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RubyScriptBuilder) WithTimeout(seconds int) *RubyScriptBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RubyScriptBuilder) WithNoOutputTimeout(seconds int) *RubyScriptBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RubyScriptBuilder) WithExecutionContainer(containerID string) *RubyScriptBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RubyScriptBuilder) WithServiceContainers(containerIDs ...string) *RubyScriptBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

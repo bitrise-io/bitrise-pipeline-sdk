@@ -25,6 +25,54 @@ func (b *ApkInfoBuilder) WithApkPath(value string) *ApkInfoBuilder {
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ApkInfoBuilder) WithRunIf(expr string) *ApkInfoBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ApkInfoBuilder) WithIsAlwaysRun(v bool) *ApkInfoBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ApkInfoBuilder) WithIsSkippable(v bool) *ApkInfoBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ApkInfoBuilder) WithTitle(title string) *ApkInfoBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ApkInfoBuilder) WithTimeout(seconds int) *ApkInfoBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ApkInfoBuilder) WithNoOutputTimeout(seconds int) *ApkInfoBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ApkInfoBuilder) WithExecutionContainer(containerID string) *ApkInfoBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ApkInfoBuilder) WithServiceContainers(containerIDs ...string) *ApkInfoBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // apkInfoOutputs holds the names of environment variables published
 // by the apk-info step (v1) at run time.
 type apkInfoOutputs struct {

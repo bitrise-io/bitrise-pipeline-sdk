@@ -102,3 +102,51 @@ func (b *ActivateBuildCacheForXcodeBuilder) WithCacheSkipFlags(value ActivateBui
 	b.Builder.WithInput("cache_skip_flags", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *ActivateBuildCacheForXcodeBuilder) WithRunIf(expr string) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ActivateBuildCacheForXcodeBuilder) WithIsAlwaysRun(v bool) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ActivateBuildCacheForXcodeBuilder) WithIsSkippable(v bool) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ActivateBuildCacheForXcodeBuilder) WithTitle(title string) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ActivateBuildCacheForXcodeBuilder) WithTimeout(seconds int) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ActivateBuildCacheForXcodeBuilder) WithNoOutputTimeout(seconds int) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ActivateBuildCacheForXcodeBuilder) WithExecutionContainer(containerID string) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ActivateBuildCacheForXcodeBuilder) WithServiceContainers(containerIDs ...string) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

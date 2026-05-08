@@ -36,3 +36,51 @@ func (b *EmbraceSymbolUploadBuilder) WithDsymPath(value string) *EmbraceSymbolUp
 	b.Builder.WithInput("dsym_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *EmbraceSymbolUploadBuilder) WithRunIf(expr string) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *EmbraceSymbolUploadBuilder) WithIsAlwaysRun(v bool) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *EmbraceSymbolUploadBuilder) WithIsSkippable(v bool) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *EmbraceSymbolUploadBuilder) WithTitle(title string) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *EmbraceSymbolUploadBuilder) WithTimeout(seconds int) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *EmbraceSymbolUploadBuilder) WithNoOutputTimeout(seconds int) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *EmbraceSymbolUploadBuilder) WithExecutionContainer(containerID string) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *EmbraceSymbolUploadBuilder) WithServiceContainers(containerIDs ...string) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

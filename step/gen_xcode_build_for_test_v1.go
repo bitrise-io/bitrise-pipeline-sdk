@@ -168,6 +168,54 @@ func (b *XcodeBuildForTestV1Builder) WithVerboseLog(value XcodeBuildForTestV1Ver
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *XcodeBuildForTestV1Builder) WithRunIf(expr string) *XcodeBuildForTestV1Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XcodeBuildForTestV1Builder) WithIsAlwaysRun(v bool) *XcodeBuildForTestV1Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XcodeBuildForTestV1Builder) WithIsSkippable(v bool) *XcodeBuildForTestV1Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XcodeBuildForTestV1Builder) WithTitle(title string) *XcodeBuildForTestV1Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XcodeBuildForTestV1Builder) WithTimeout(seconds int) *XcodeBuildForTestV1Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XcodeBuildForTestV1Builder) WithNoOutputTimeout(seconds int) *XcodeBuildForTestV1Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XcodeBuildForTestV1Builder) WithExecutionContainer(containerID string) *XcodeBuildForTestV1Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XcodeBuildForTestV1Builder) WithServiceContainers(containerIDs ...string) *XcodeBuildForTestV1Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // xcodeBuildForTestV1Outputs holds the names of environment variables published
 // by the xcode-build-for-test step (v1) at run time.
 type xcodeBuildForTestV1Outputs struct {

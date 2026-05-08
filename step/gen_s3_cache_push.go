@@ -87,3 +87,51 @@ func (b *S3CachePushBuilder) WithCachePath(value string) *S3CachePushBuilder {
 	b.Builder.WithInput("cache_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *S3CachePushBuilder) WithRunIf(expr string) *S3CachePushBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *S3CachePushBuilder) WithIsAlwaysRun(v bool) *S3CachePushBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *S3CachePushBuilder) WithIsSkippable(v bool) *S3CachePushBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *S3CachePushBuilder) WithTitle(title string) *S3CachePushBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *S3CachePushBuilder) WithTimeout(seconds int) *S3CachePushBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *S3CachePushBuilder) WithNoOutputTimeout(seconds int) *S3CachePushBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *S3CachePushBuilder) WithExecutionContainer(containerID string) *S3CachePushBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *S3CachePushBuilder) WithServiceContainers(containerIDs ...string) *S3CachePushBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

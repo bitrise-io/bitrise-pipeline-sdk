@@ -70,3 +70,51 @@ func (b *XamarinUserManagementV0Builder) WithXamarinAndroidLicense(value Xamarin
 	b.Builder.WithInput("xamarin_android_license", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *XamarinUserManagementV0Builder) WithRunIf(expr string) *XamarinUserManagementV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XamarinUserManagementV0Builder) WithIsAlwaysRun(v bool) *XamarinUserManagementV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XamarinUserManagementV0Builder) WithIsSkippable(v bool) *XamarinUserManagementV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XamarinUserManagementV0Builder) WithTitle(title string) *XamarinUserManagementV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XamarinUserManagementV0Builder) WithTimeout(seconds int) *XamarinUserManagementV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XamarinUserManagementV0Builder) WithNoOutputTimeout(seconds int) *XamarinUserManagementV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XamarinUserManagementV0Builder) WithExecutionContainer(containerID string) *XamarinUserManagementV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XamarinUserManagementV0Builder) WithServiceContainers(containerIDs ...string) *XamarinUserManagementV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

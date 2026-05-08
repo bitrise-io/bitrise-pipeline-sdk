@@ -60,3 +60,51 @@ func (b *TryoutappsShamanBuilder) WithGemfilePath(value string) *TryoutappsShama
 	b.Builder.WithInput("gemfile_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *TryoutappsShamanBuilder) WithRunIf(expr string) *TryoutappsShamanBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *TryoutappsShamanBuilder) WithIsAlwaysRun(v bool) *TryoutappsShamanBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *TryoutappsShamanBuilder) WithIsSkippable(v bool) *TryoutappsShamanBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *TryoutappsShamanBuilder) WithTitle(title string) *TryoutappsShamanBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *TryoutappsShamanBuilder) WithTimeout(seconds int) *TryoutappsShamanBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *TryoutappsShamanBuilder) WithNoOutputTimeout(seconds int) *TryoutappsShamanBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *TryoutappsShamanBuilder) WithExecutionContainer(containerID string) *TryoutappsShamanBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *TryoutappsShamanBuilder) WithServiceContainers(containerIDs ...string) *TryoutappsShamanBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

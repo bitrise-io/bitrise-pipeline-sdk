@@ -191,6 +191,54 @@ func (b *BrowserstackBitriseXcuiStepBuilder) WithApiParams(value string) *Browse
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithRunIf(expr string) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithIsAlwaysRun(v bool) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithIsSkippable(v bool) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithTitle(title string) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithTimeout(seconds int) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithNoOutputTimeout(seconds int) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithExecutionContainer(containerID string) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithServiceContainers(containerIDs ...string) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // browserstackBitriseXcuiStepOutputs holds the names of environment variables published
 // by the browserstack-bitrise-xcui-step step (v1) at run time.
 type browserstackBitriseXcuiStepOutputs struct {

@@ -55,6 +55,54 @@ func (b *GenymotionCloudSaasStartBuilder) WithGmsaasVersion(value string) *Genym
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GenymotionCloudSaasStartBuilder) WithRunIf(expr string) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GenymotionCloudSaasStartBuilder) WithIsAlwaysRun(v bool) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GenymotionCloudSaasStartBuilder) WithIsSkippable(v bool) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GenymotionCloudSaasStartBuilder) WithTitle(title string) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GenymotionCloudSaasStartBuilder) WithTimeout(seconds int) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GenymotionCloudSaasStartBuilder) WithNoOutputTimeout(seconds int) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GenymotionCloudSaasStartBuilder) WithExecutionContainer(containerID string) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GenymotionCloudSaasStartBuilder) WithServiceContainers(containerIDs ...string) *GenymotionCloudSaasStartBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // genymotionCloudSaasStartOutputs holds the names of environment variables published
 // by the genymotion-cloud-saas-start step (v0) at run time.
 type genymotionCloudSaasStartOutputs struct {

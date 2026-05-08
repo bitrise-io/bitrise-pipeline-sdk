@@ -37,6 +37,54 @@ func (b *BitriseStepXctestCoberturaXmlBuilder) WithPathToSourceDir(value string)
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithRunIf(expr string) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithIsAlwaysRun(v bool) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithIsSkippable(v bool) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithTitle(title string) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithTimeout(seconds int) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithNoOutputTimeout(seconds int) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithExecutionContainer(containerID string) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithServiceContainers(containerIDs ...string) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // bitriseStepXctestCoberturaXmlOutputs holds the names of environment variables published
 // by the bitrise-step-xctest-cobertura-xml step (v1) at run time.
 type bitriseStepXctestCoberturaXmlOutputs struct {

@@ -224,6 +224,54 @@ func (b *AwsDeviceFarmRunnerBuilder) WithRunFailOnWarning(value AwsDeviceFarmRun
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AwsDeviceFarmRunnerBuilder) WithRunIf(expr string) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AwsDeviceFarmRunnerBuilder) WithIsAlwaysRun(v bool) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AwsDeviceFarmRunnerBuilder) WithIsSkippable(v bool) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AwsDeviceFarmRunnerBuilder) WithTitle(title string) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AwsDeviceFarmRunnerBuilder) WithTimeout(seconds int) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AwsDeviceFarmRunnerBuilder) WithNoOutputTimeout(seconds int) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AwsDeviceFarmRunnerBuilder) WithExecutionContainer(containerID string) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AwsDeviceFarmRunnerBuilder) WithServiceContainers(containerIDs ...string) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // awsDeviceFarmRunnerOutputs holds the names of environment variables published
 // by the aws-device-farm-runner step (v0) at run time.
 type awsDeviceFarmRunnerOutputs struct {

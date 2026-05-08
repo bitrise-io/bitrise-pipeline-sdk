@@ -42,3 +42,51 @@ func (b *GeckoboardDashboardBuildResultBuilder) WithBuildStatus(value string) *G
 	b.Builder.WithInput("build_status", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *GeckoboardDashboardBuildResultBuilder) WithRunIf(expr string) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GeckoboardDashboardBuildResultBuilder) WithIsAlwaysRun(v bool) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GeckoboardDashboardBuildResultBuilder) WithIsSkippable(v bool) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GeckoboardDashboardBuildResultBuilder) WithTitle(title string) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GeckoboardDashboardBuildResultBuilder) WithTimeout(seconds int) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GeckoboardDashboardBuildResultBuilder) WithNoOutputTimeout(seconds int) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GeckoboardDashboardBuildResultBuilder) WithExecutionContainer(containerID string) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GeckoboardDashboardBuildResultBuilder) WithServiceContainers(containerIDs ...string) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

@@ -31,6 +31,54 @@ func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithBitriseSourceDir(v
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithRunIf(expr string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithIsAlwaysRun(v bool) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithIsSkippable(v bool) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithTitle(title string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithTimeout(seconds int) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithNoOutputTimeout(seconds int) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithExecutionContainer(containerID string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithServiceContainers(containerIDs ...string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // theappspajamasServiceAccountKeyInstallerOutputs holds the names of environment variables published
 // by the theappspajamas-service-account-key-installer step (v0) at run time.
 type theappspajamasServiceAccountKeyInstallerOutputs struct {

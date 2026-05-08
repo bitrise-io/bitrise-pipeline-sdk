@@ -64,3 +64,51 @@ func (b *AppsDecompilerBuilder) WithIosIpaPath(value string) *AppsDecompilerBuil
 	b.Builder.WithInput("ios_ipa_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *AppsDecompilerBuilder) WithRunIf(expr string) *AppsDecompilerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AppsDecompilerBuilder) WithIsAlwaysRun(v bool) *AppsDecompilerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AppsDecompilerBuilder) WithIsSkippable(v bool) *AppsDecompilerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AppsDecompilerBuilder) WithTitle(title string) *AppsDecompilerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AppsDecompilerBuilder) WithTimeout(seconds int) *AppsDecompilerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AppsDecompilerBuilder) WithNoOutputTimeout(seconds int) *AppsDecompilerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AppsDecompilerBuilder) WithExecutionContainer(containerID string) *AppsDecompilerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AppsDecompilerBuilder) WithServiceContainers(containerIDs ...string) *AppsDecompilerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

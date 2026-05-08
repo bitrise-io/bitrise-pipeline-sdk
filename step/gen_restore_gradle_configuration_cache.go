@@ -38,3 +38,51 @@ func (b *RestoreGradleConfigurationCacheBuilder) WithVerbose(value RestoreGradle
 	b.Builder.WithInput("verbose", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *RestoreGradleConfigurationCacheBuilder) WithRunIf(expr string) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RestoreGradleConfigurationCacheBuilder) WithIsAlwaysRun(v bool) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RestoreGradleConfigurationCacheBuilder) WithIsSkippable(v bool) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RestoreGradleConfigurationCacheBuilder) WithTitle(title string) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RestoreGradleConfigurationCacheBuilder) WithTimeout(seconds int) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RestoreGradleConfigurationCacheBuilder) WithNoOutputTimeout(seconds int) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RestoreGradleConfigurationCacheBuilder) WithExecutionContainer(containerID string) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RestoreGradleConfigurationCacheBuilder) WithServiceContainers(containerIDs ...string) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

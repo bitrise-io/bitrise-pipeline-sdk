@@ -30,3 +30,51 @@ func (b *DataTheoremMobileSecureV0Builder) WithDtApiUploadKey(value string) *Dat
 	b.Builder.WithInput("dt_api_upload_key", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *DataTheoremMobileSecureV0Builder) WithRunIf(expr string) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *DataTheoremMobileSecureV0Builder) WithIsAlwaysRun(v bool) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *DataTheoremMobileSecureV0Builder) WithIsSkippable(v bool) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *DataTheoremMobileSecureV0Builder) WithTitle(title string) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *DataTheoremMobileSecureV0Builder) WithTimeout(seconds int) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *DataTheoremMobileSecureV0Builder) WithNoOutputTimeout(seconds int) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *DataTheoremMobileSecureV0Builder) WithExecutionContainer(containerID string) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *DataTheoremMobileSecureV0Builder) WithServiceContainers(containerIDs ...string) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

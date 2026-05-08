@@ -31,6 +31,54 @@ func (b *GenerateGradleWrapperBuilder) WithGradleVersion(value string) *Generate
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GenerateGradleWrapperBuilder) WithRunIf(expr string) *GenerateGradleWrapperBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GenerateGradleWrapperBuilder) WithIsAlwaysRun(v bool) *GenerateGradleWrapperBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GenerateGradleWrapperBuilder) WithIsSkippable(v bool) *GenerateGradleWrapperBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GenerateGradleWrapperBuilder) WithTitle(title string) *GenerateGradleWrapperBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GenerateGradleWrapperBuilder) WithTimeout(seconds int) *GenerateGradleWrapperBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GenerateGradleWrapperBuilder) WithNoOutputTimeout(seconds int) *GenerateGradleWrapperBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GenerateGradleWrapperBuilder) WithExecutionContainer(containerID string) *GenerateGradleWrapperBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GenerateGradleWrapperBuilder) WithServiceContainers(containerIDs ...string) *GenerateGradleWrapperBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // generateGradleWrapperOutputs holds the names of environment variables published
 // by the generate-gradle-wrapper step (v0) at run time.
 type generateGradleWrapperOutputs struct {

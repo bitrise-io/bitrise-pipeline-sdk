@@ -51,6 +51,54 @@ func (b *FlutterTestV0Builder) WithAdditionalParams(value string) *FlutterTestV0
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *FlutterTestV0Builder) WithRunIf(expr string) *FlutterTestV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *FlutterTestV0Builder) WithIsAlwaysRun(v bool) *FlutterTestV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *FlutterTestV0Builder) WithIsSkippable(v bool) *FlutterTestV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *FlutterTestV0Builder) WithTitle(title string) *FlutterTestV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *FlutterTestV0Builder) WithTimeout(seconds int) *FlutterTestV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *FlutterTestV0Builder) WithNoOutputTimeout(seconds int) *FlutterTestV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *FlutterTestV0Builder) WithExecutionContainer(containerID string) *FlutterTestV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *FlutterTestV0Builder) WithServiceContainers(containerIDs ...string) *FlutterTestV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // flutterTestV0Outputs holds the names of environment variables published
 // by the flutter-test step (v0) at run time.
 type flutterTestV0Outputs struct {

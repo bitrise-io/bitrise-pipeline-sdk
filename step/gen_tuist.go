@@ -24,3 +24,51 @@ func (b *TuistBuilder) WithCommand(value string) *TuistBuilder {
 	b.Builder.WithInput("command", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *TuistBuilder) WithRunIf(expr string) *TuistBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *TuistBuilder) WithIsAlwaysRun(v bool) *TuistBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *TuistBuilder) WithIsSkippable(v bool) *TuistBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *TuistBuilder) WithTitle(title string) *TuistBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *TuistBuilder) WithTimeout(seconds int) *TuistBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *TuistBuilder) WithNoOutputTimeout(seconds int) *TuistBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *TuistBuilder) WithExecutionContainer(containerID string) *TuistBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *TuistBuilder) WithServiceContainers(containerIDs ...string) *TuistBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

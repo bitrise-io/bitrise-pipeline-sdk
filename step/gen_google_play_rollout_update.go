@@ -36,3 +36,51 @@ func (b *GooglePlayRolloutUpdateBuilder) WithPackageName(value string) *GooglePl
 	b.Builder.WithInput("package_name", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *GooglePlayRolloutUpdateBuilder) WithRunIf(expr string) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GooglePlayRolloutUpdateBuilder) WithIsAlwaysRun(v bool) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GooglePlayRolloutUpdateBuilder) WithIsSkippable(v bool) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GooglePlayRolloutUpdateBuilder) WithTitle(title string) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GooglePlayRolloutUpdateBuilder) WithTimeout(seconds int) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GooglePlayRolloutUpdateBuilder) WithNoOutputTimeout(seconds int) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GooglePlayRolloutUpdateBuilder) WithExecutionContainer(containerID string) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GooglePlayRolloutUpdateBuilder) WithServiceContainers(containerIDs ...string) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

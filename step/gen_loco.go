@@ -393,3 +393,51 @@ func (b *LocoBuilder) WithExportPath(value string) *LocoBuilder {
 	b.Builder.WithInput("export_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *LocoBuilder) WithRunIf(expr string) *LocoBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *LocoBuilder) WithIsAlwaysRun(v bool) *LocoBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *LocoBuilder) WithIsSkippable(v bool) *LocoBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *LocoBuilder) WithTitle(title string) *LocoBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *LocoBuilder) WithTimeout(seconds int) *LocoBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *LocoBuilder) WithNoOutputTimeout(seconds int) *LocoBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *LocoBuilder) WithExecutionContainer(containerID string) *LocoBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *LocoBuilder) WithServiceContainers(containerIDs ...string) *LocoBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

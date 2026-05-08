@@ -67,6 +67,54 @@ func (b *RustupInstallBuilder) WithShowExportedEnvs(value RustupInstallShowExpor
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RustupInstallBuilder) WithRunIf(expr string) *RustupInstallBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RustupInstallBuilder) WithIsAlwaysRun(v bool) *RustupInstallBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RustupInstallBuilder) WithIsSkippable(v bool) *RustupInstallBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RustupInstallBuilder) WithTitle(title string) *RustupInstallBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RustupInstallBuilder) WithTimeout(seconds int) *RustupInstallBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RustupInstallBuilder) WithNoOutputTimeout(seconds int) *RustupInstallBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RustupInstallBuilder) WithExecutionContainer(containerID string) *RustupInstallBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RustupInstallBuilder) WithServiceContainers(containerIDs ...string) *RustupInstallBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // rustupInstallOutputs holds the names of environment variables published
 // by the rustup-install step (v0) at run time.
 type rustupInstallOutputs struct {

@@ -39,6 +39,54 @@ func (b *RestoreDartCacheV2Builder) WithRetries(value string) *RestoreDartCacheV
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RestoreDartCacheV2Builder) WithRunIf(expr string) *RestoreDartCacheV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RestoreDartCacheV2Builder) WithIsAlwaysRun(v bool) *RestoreDartCacheV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RestoreDartCacheV2Builder) WithIsSkippable(v bool) *RestoreDartCacheV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RestoreDartCacheV2Builder) WithTitle(title string) *RestoreDartCacheV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RestoreDartCacheV2Builder) WithTimeout(seconds int) *RestoreDartCacheV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RestoreDartCacheV2Builder) WithNoOutputTimeout(seconds int) *RestoreDartCacheV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RestoreDartCacheV2Builder) WithExecutionContainer(containerID string) *RestoreDartCacheV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RestoreDartCacheV2Builder) WithServiceContainers(containerIDs ...string) *RestoreDartCacheV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // restoreDartCacheV2Outputs holds the names of environment variables published
 // by the restore-dart-cache step (v2) at run time.
 type restoreDartCacheV2Outputs struct {

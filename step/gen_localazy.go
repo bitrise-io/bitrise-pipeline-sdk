@@ -60,3 +60,51 @@ func (b *LocalazyBuilder) WithCustomCommand(value string) *LocalazyBuilder {
 	b.Builder.WithInput("custom_command", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *LocalazyBuilder) WithRunIf(expr string) *LocalazyBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *LocalazyBuilder) WithIsAlwaysRun(v bool) *LocalazyBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *LocalazyBuilder) WithIsSkippable(v bool) *LocalazyBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *LocalazyBuilder) WithTitle(title string) *LocalazyBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *LocalazyBuilder) WithTimeout(seconds int) *LocalazyBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *LocalazyBuilder) WithNoOutputTimeout(seconds int) *LocalazyBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *LocalazyBuilder) WithExecutionContainer(containerID string) *LocalazyBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *LocalazyBuilder) WithServiceContainers(containerIDs ...string) *LocalazyBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

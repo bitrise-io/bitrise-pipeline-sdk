@@ -205,6 +205,54 @@ func (b *GitCloneV8Builder) WithBuildApiToken(value string) *GitCloneV8Builder {
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GitCloneV8Builder) WithRunIf(expr string) *GitCloneV8Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GitCloneV8Builder) WithIsAlwaysRun(v bool) *GitCloneV8Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GitCloneV8Builder) WithIsSkippable(v bool) *GitCloneV8Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GitCloneV8Builder) WithTitle(title string) *GitCloneV8Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GitCloneV8Builder) WithTimeout(seconds int) *GitCloneV8Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GitCloneV8Builder) WithNoOutputTimeout(seconds int) *GitCloneV8Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GitCloneV8Builder) WithExecutionContainer(containerID string) *GitCloneV8Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GitCloneV8Builder) WithServiceContainers(containerIDs ...string) *GitCloneV8Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // gitCloneV8Outputs holds the names of environment variables published
 // by the git-clone step (v8) at run time.
 type gitCloneV8Outputs struct {

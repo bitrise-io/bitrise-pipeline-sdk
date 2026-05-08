@@ -31,6 +31,54 @@ func (b *GiphyBuilder) WithApiKey(value string) *GiphyBuilder {
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GiphyBuilder) WithRunIf(expr string) *GiphyBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GiphyBuilder) WithIsAlwaysRun(v bool) *GiphyBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GiphyBuilder) WithIsSkippable(v bool) *GiphyBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GiphyBuilder) WithTitle(title string) *GiphyBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GiphyBuilder) WithTimeout(seconds int) *GiphyBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GiphyBuilder) WithNoOutputTimeout(seconds int) *GiphyBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GiphyBuilder) WithExecutionContainer(containerID string) *GiphyBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GiphyBuilder) WithServiceContainers(containerIDs ...string) *GiphyBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // giphyOutputs holds the names of environment variables published
 // by the giphy step (v0) at run time.
 type giphyOutputs struct {

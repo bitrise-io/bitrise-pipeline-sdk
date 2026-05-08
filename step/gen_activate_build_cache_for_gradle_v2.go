@@ -75,3 +75,51 @@ func (b *ActivateBuildCacheForGradleV2Builder) WithVerbose(value ActivateBuildCa
 	b.Builder.WithInput("verbose", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *ActivateBuildCacheForGradleV2Builder) WithRunIf(expr string) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ActivateBuildCacheForGradleV2Builder) WithIsAlwaysRun(v bool) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ActivateBuildCacheForGradleV2Builder) WithIsSkippable(v bool) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ActivateBuildCacheForGradleV2Builder) WithTitle(title string) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ActivateBuildCacheForGradleV2Builder) WithTimeout(seconds int) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ActivateBuildCacheForGradleV2Builder) WithNoOutputTimeout(seconds int) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ActivateBuildCacheForGradleV2Builder) WithExecutionContainer(containerID string) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ActivateBuildCacheForGradleV2Builder) WithServiceContainers(containerIDs ...string) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

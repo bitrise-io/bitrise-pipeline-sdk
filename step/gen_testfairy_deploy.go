@@ -104,6 +104,54 @@ func (b *TestfairyDeployBuilder) WithComment(value string) *TestfairyDeployBuild
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *TestfairyDeployBuilder) WithRunIf(expr string) *TestfairyDeployBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *TestfairyDeployBuilder) WithIsAlwaysRun(v bool) *TestfairyDeployBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *TestfairyDeployBuilder) WithIsSkippable(v bool) *TestfairyDeployBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *TestfairyDeployBuilder) WithTitle(title string) *TestfairyDeployBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *TestfairyDeployBuilder) WithTimeout(seconds int) *TestfairyDeployBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *TestfairyDeployBuilder) WithNoOutputTimeout(seconds int) *TestfairyDeployBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *TestfairyDeployBuilder) WithExecutionContainer(containerID string) *TestfairyDeployBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *TestfairyDeployBuilder) WithServiceContainers(containerIDs ...string) *TestfairyDeployBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // testfairyDeployOutputs holds the names of environment variables published
 // by the testfairy-deploy step (v2) at run time.
 type testfairyDeployOutputs struct {

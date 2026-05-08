@@ -46,3 +46,51 @@ func (b *AppcenterIpaUploadBuilder) WithBuildMessage(value string) *AppcenterIpa
 	b.Builder.WithInput("build_message", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *AppcenterIpaUploadBuilder) WithRunIf(expr string) *AppcenterIpaUploadBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AppcenterIpaUploadBuilder) WithIsAlwaysRun(v bool) *AppcenterIpaUploadBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AppcenterIpaUploadBuilder) WithIsSkippable(v bool) *AppcenterIpaUploadBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AppcenterIpaUploadBuilder) WithTitle(title string) *AppcenterIpaUploadBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AppcenterIpaUploadBuilder) WithTimeout(seconds int) *AppcenterIpaUploadBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AppcenterIpaUploadBuilder) WithNoOutputTimeout(seconds int) *AppcenterIpaUploadBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AppcenterIpaUploadBuilder) WithExecutionContainer(containerID string) *AppcenterIpaUploadBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AppcenterIpaUploadBuilder) WithServiceContainers(containerIDs ...string) *AppcenterIpaUploadBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

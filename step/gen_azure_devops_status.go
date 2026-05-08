@@ -91,3 +91,51 @@ func (b *AzureDevopsStatusBuilder) WithDevopsContextGenre(value string) *AzureDe
 	b.Builder.WithInput("devops_context_genre", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *AzureDevopsStatusBuilder) WithRunIf(expr string) *AzureDevopsStatusBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AzureDevopsStatusBuilder) WithIsAlwaysRun(v bool) *AzureDevopsStatusBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AzureDevopsStatusBuilder) WithIsSkippable(v bool) *AzureDevopsStatusBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AzureDevopsStatusBuilder) WithTitle(title string) *AzureDevopsStatusBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AzureDevopsStatusBuilder) WithTimeout(seconds int) *AzureDevopsStatusBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AzureDevopsStatusBuilder) WithNoOutputTimeout(seconds int) *AzureDevopsStatusBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AzureDevopsStatusBuilder) WithExecutionContainer(containerID string) *AzureDevopsStatusBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AzureDevopsStatusBuilder) WithServiceContainers(containerIDs ...string) *AzureDevopsStatusBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

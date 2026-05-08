@@ -110,6 +110,54 @@ func (b *ExportXcarchiveV3Builder) WithVerboseLog(value ExportXcarchiveV3Verbose
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ExportXcarchiveV3Builder) WithRunIf(expr string) *ExportXcarchiveV3Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ExportXcarchiveV3Builder) WithIsAlwaysRun(v bool) *ExportXcarchiveV3Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ExportXcarchiveV3Builder) WithIsSkippable(v bool) *ExportXcarchiveV3Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ExportXcarchiveV3Builder) WithTitle(title string) *ExportXcarchiveV3Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ExportXcarchiveV3Builder) WithTimeout(seconds int) *ExportXcarchiveV3Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ExportXcarchiveV3Builder) WithNoOutputTimeout(seconds int) *ExportXcarchiveV3Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ExportXcarchiveV3Builder) WithExecutionContainer(containerID string) *ExportXcarchiveV3Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ExportXcarchiveV3Builder) WithServiceContainers(containerIDs ...string) *ExportXcarchiveV3Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // exportXcarchiveV3Outputs holds the names of environment variables published
 // by the export-xcarchive step (v3) at run time.
 type exportXcarchiveV3Outputs struct {

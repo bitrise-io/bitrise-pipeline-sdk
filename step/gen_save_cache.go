@@ -70,3 +70,51 @@ func (b *SaveCacheBuilder) WithIsKeyUnique(value SaveCacheIsKeyUnique) *SaveCach
 	b.Builder.WithInput("is_key_unique", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SaveCacheBuilder) WithRunIf(expr string) *SaveCacheBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SaveCacheBuilder) WithIsAlwaysRun(v bool) *SaveCacheBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SaveCacheBuilder) WithIsSkippable(v bool) *SaveCacheBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SaveCacheBuilder) WithTitle(title string) *SaveCacheBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SaveCacheBuilder) WithTimeout(seconds int) *SaveCacheBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SaveCacheBuilder) WithNoOutputTimeout(seconds int) *SaveCacheBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SaveCacheBuilder) WithExecutionContainer(containerID string) *SaveCacheBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SaveCacheBuilder) WithServiceContainers(containerIDs ...string) *SaveCacheBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

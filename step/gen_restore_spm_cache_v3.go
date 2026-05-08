@@ -45,6 +45,48 @@ func (b *RestoreSpmCacheV3Builder) WithRetries(value string) *RestoreSpmCacheV3B
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RestoreSpmCacheV3Builder) WithRunIf(expr string) *RestoreSpmCacheV3Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RestoreSpmCacheV3Builder) WithIsAlwaysRun(v bool) *RestoreSpmCacheV3Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RestoreSpmCacheV3Builder) WithIsSkippable(v bool) *RestoreSpmCacheV3Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RestoreSpmCacheV3Builder) WithTitle(title string) *RestoreSpmCacheV3Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RestoreSpmCacheV3Builder) WithNoOutputTimeout(seconds int) *RestoreSpmCacheV3Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RestoreSpmCacheV3Builder) WithExecutionContainer(containerID string) *RestoreSpmCacheV3Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RestoreSpmCacheV3Builder) WithServiceContainers(containerIDs ...string) *RestoreSpmCacheV3Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // restoreSpmCacheV3Outputs holds the names of environment variables published
 // by the restore-spm-cache step (v3) at run time.
 type restoreSpmCacheV3Outputs struct {

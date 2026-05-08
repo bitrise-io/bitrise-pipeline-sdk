@@ -42,3 +42,51 @@ func (b *SharePipelineVariableBuilder) WithBuildApiToken(value string) *SharePip
 	b.Builder.WithInput("build_api_token", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SharePipelineVariableBuilder) WithRunIf(expr string) *SharePipelineVariableBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SharePipelineVariableBuilder) WithIsAlwaysRun(v bool) *SharePipelineVariableBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SharePipelineVariableBuilder) WithIsSkippable(v bool) *SharePipelineVariableBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SharePipelineVariableBuilder) WithTitle(title string) *SharePipelineVariableBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SharePipelineVariableBuilder) WithTimeout(seconds int) *SharePipelineVariableBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SharePipelineVariableBuilder) WithNoOutputTimeout(seconds int) *SharePipelineVariableBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SharePipelineVariableBuilder) WithExecutionContainer(containerID string) *SharePipelineVariableBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SharePipelineVariableBuilder) WithServiceContainers(containerIDs ...string) *SharePipelineVariableBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

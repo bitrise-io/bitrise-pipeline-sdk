@@ -121,6 +121,54 @@ func (b *UploadGradleGithubDependenciesBuilder) WithGithubRepo(value string) *Up
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *UploadGradleGithubDependenciesBuilder) WithRunIf(expr string) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *UploadGradleGithubDependenciesBuilder) WithIsAlwaysRun(v bool) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *UploadGradleGithubDependenciesBuilder) WithIsSkippable(v bool) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *UploadGradleGithubDependenciesBuilder) WithTitle(title string) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *UploadGradleGithubDependenciesBuilder) WithTimeout(seconds int) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *UploadGradleGithubDependenciesBuilder) WithNoOutputTimeout(seconds int) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *UploadGradleGithubDependenciesBuilder) WithExecutionContainer(containerID string) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *UploadGradleGithubDependenciesBuilder) WithServiceContainers(containerIDs ...string) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // uploadGradleGithubDependenciesOutputs holds the names of environment variables published
 // by the upload-gradle-github-dependencies step (v0) at run time.
 type uploadGradleGithubDependenciesOutputs struct {

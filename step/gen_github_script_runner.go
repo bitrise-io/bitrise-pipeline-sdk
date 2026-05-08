@@ -44,3 +44,51 @@ func (b *GithubScriptRunnerBuilder) WithGithubAccessToken(value string) *GithubS
 	b.Builder.WithInput("github_access_token", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *GithubScriptRunnerBuilder) WithRunIf(expr string) *GithubScriptRunnerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GithubScriptRunnerBuilder) WithIsAlwaysRun(v bool) *GithubScriptRunnerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GithubScriptRunnerBuilder) WithIsSkippable(v bool) *GithubScriptRunnerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GithubScriptRunnerBuilder) WithTitle(title string) *GithubScriptRunnerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GithubScriptRunnerBuilder) WithTimeout(seconds int) *GithubScriptRunnerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GithubScriptRunnerBuilder) WithNoOutputTimeout(seconds int) *GithubScriptRunnerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GithubScriptRunnerBuilder) WithExecutionContainer(containerID string) *GithubScriptRunnerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GithubScriptRunnerBuilder) WithServiceContainers(containerIDs ...string) *GithubScriptRunnerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

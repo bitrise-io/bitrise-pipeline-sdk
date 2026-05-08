@@ -45,6 +45,54 @@ func (b *ApispotterTestRunnerBuilder) WithAbortBuild(value ApispotterTestRunnerA
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ApispotterTestRunnerBuilder) WithRunIf(expr string) *ApispotterTestRunnerBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ApispotterTestRunnerBuilder) WithIsAlwaysRun(v bool) *ApispotterTestRunnerBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ApispotterTestRunnerBuilder) WithIsSkippable(v bool) *ApispotterTestRunnerBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ApispotterTestRunnerBuilder) WithTitle(title string) *ApispotterTestRunnerBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ApispotterTestRunnerBuilder) WithTimeout(seconds int) *ApispotterTestRunnerBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ApispotterTestRunnerBuilder) WithNoOutputTimeout(seconds int) *ApispotterTestRunnerBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ApispotterTestRunnerBuilder) WithExecutionContainer(containerID string) *ApispotterTestRunnerBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ApispotterTestRunnerBuilder) WithServiceContainers(containerIDs ...string) *ApispotterTestRunnerBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // apispotterTestRunnerOutputs holds the names of environment variables published
 // by the apispotter-test-runner step (v0) at run time.
 type apispotterTestRunnerOutputs struct {

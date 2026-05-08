@@ -19,6 +19,54 @@ func GitLastCommitDate(version ...string) *GitLastCommitDateBuilder {
 	return &GitLastCommitDateBuilder{Builder: From("git-last-commit-date", v)}
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GitLastCommitDateBuilder) WithRunIf(expr string) *GitLastCommitDateBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GitLastCommitDateBuilder) WithIsAlwaysRun(v bool) *GitLastCommitDateBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GitLastCommitDateBuilder) WithIsSkippable(v bool) *GitLastCommitDateBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GitLastCommitDateBuilder) WithTitle(title string) *GitLastCommitDateBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GitLastCommitDateBuilder) WithTimeout(seconds int) *GitLastCommitDateBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GitLastCommitDateBuilder) WithNoOutputTimeout(seconds int) *GitLastCommitDateBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GitLastCommitDateBuilder) WithExecutionContainer(containerID string) *GitLastCommitDateBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GitLastCommitDateBuilder) WithServiceContainers(containerIDs ...string) *GitLastCommitDateBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // gitLastCommitDateOutputs holds the names of environment variables published
 // by the git-last-commit-date step (v1) at run time.
 type gitLastCommitDateOutputs struct {

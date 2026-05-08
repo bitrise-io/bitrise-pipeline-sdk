@@ -129,6 +129,54 @@ func (b *LambdatestXcuitestAppAutomateBuilder) WithLambdatestVideo(value Lambdat
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithRunIf(expr string) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithIsAlwaysRun(v bool) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithIsSkippable(v bool) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithTitle(title string) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithTimeout(seconds int) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithNoOutputTimeout(seconds int) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithExecutionContainer(containerID string) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithServiceContainers(containerIDs ...string) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // lambdatestXcuitestAppAutomateOutputs holds the names of environment variables published
 // by the lambdatest-xcuitest-app-automate step (v1) at run time.
 type lambdatestXcuitestAppAutomateOutputs struct {

@@ -79,6 +79,54 @@ func (b *XamarinTestCloudForCalabashIosV0Builder) WithOtherParameters(value stri
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithRunIf(expr string) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithIsAlwaysRun(v bool) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithIsSkippable(v bool) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithTitle(title string) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithTimeout(seconds int) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithNoOutputTimeout(seconds int) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithExecutionContainer(containerID string) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithServiceContainers(containerIDs ...string) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // xamarinTestCloudForCalabashIosV0Outputs holds the names of environment variables published
 // by the xamarin-test-cloud-for-calabash-ios step (v0) at run time.
 type xamarinTestCloudForCalabashIosV0Outputs struct {

@@ -41,6 +41,54 @@ func (b *BuildNumberAdjustBuilder) WithDecrease(value string) *BuildNumberAdjust
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *BuildNumberAdjustBuilder) WithRunIf(expr string) *BuildNumberAdjustBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BuildNumberAdjustBuilder) WithIsAlwaysRun(v bool) *BuildNumberAdjustBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BuildNumberAdjustBuilder) WithIsSkippable(v bool) *BuildNumberAdjustBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BuildNumberAdjustBuilder) WithTitle(title string) *BuildNumberAdjustBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BuildNumberAdjustBuilder) WithTimeout(seconds int) *BuildNumberAdjustBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BuildNumberAdjustBuilder) WithNoOutputTimeout(seconds int) *BuildNumberAdjustBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BuildNumberAdjustBuilder) WithExecutionContainer(containerID string) *BuildNumberAdjustBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BuildNumberAdjustBuilder) WithServiceContainers(containerIDs ...string) *BuildNumberAdjustBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // buildNumberAdjustOutputs holds the names of environment variables published
 // by the build-number-adjust step (v1) at run time.
 type buildNumberAdjustOutputs struct {

@@ -224,6 +224,54 @@ func (b *XcodeBuildForTestV3Builder) WithCompressionLevel(value string) *XcodeBu
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *XcodeBuildForTestV3Builder) WithRunIf(expr string) *XcodeBuildForTestV3Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XcodeBuildForTestV3Builder) WithIsAlwaysRun(v bool) *XcodeBuildForTestV3Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XcodeBuildForTestV3Builder) WithIsSkippable(v bool) *XcodeBuildForTestV3Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XcodeBuildForTestV3Builder) WithTitle(title string) *XcodeBuildForTestV3Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XcodeBuildForTestV3Builder) WithTimeout(seconds int) *XcodeBuildForTestV3Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XcodeBuildForTestV3Builder) WithNoOutputTimeout(seconds int) *XcodeBuildForTestV3Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XcodeBuildForTestV3Builder) WithExecutionContainer(containerID string) *XcodeBuildForTestV3Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XcodeBuildForTestV3Builder) WithServiceContainers(containerIDs ...string) *XcodeBuildForTestV3Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // xcodeBuildForTestV3Outputs holds the names of environment variables published
 // by the xcode-build-for-test step (v3) at run time.
 type xcodeBuildForTestV3Outputs struct {

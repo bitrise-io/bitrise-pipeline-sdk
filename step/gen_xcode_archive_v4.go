@@ -282,6 +282,54 @@ func (b *XcodeArchiveV4Builder) WithVerboseLog(value XcodeArchiveV4VerboseLog) *
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *XcodeArchiveV4Builder) WithRunIf(expr string) *XcodeArchiveV4Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XcodeArchiveV4Builder) WithIsAlwaysRun(v bool) *XcodeArchiveV4Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XcodeArchiveV4Builder) WithIsSkippable(v bool) *XcodeArchiveV4Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XcodeArchiveV4Builder) WithTitle(title string) *XcodeArchiveV4Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XcodeArchiveV4Builder) WithTimeout(seconds int) *XcodeArchiveV4Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XcodeArchiveV4Builder) WithNoOutputTimeout(seconds int) *XcodeArchiveV4Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XcodeArchiveV4Builder) WithExecutionContainer(containerID string) *XcodeArchiveV4Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XcodeArchiveV4Builder) WithServiceContainers(containerIDs ...string) *XcodeArchiveV4Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // xcodeArchiveV4Outputs holds the names of environment variables published
 // by the xcode-archive step (v4) at run time.
 type xcodeArchiveV4Outputs struct {

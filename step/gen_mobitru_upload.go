@@ -63,6 +63,54 @@ func (b *MobitruUploadBuilder) WithArtifactAlias(value string) *MobitruUploadBui
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *MobitruUploadBuilder) WithRunIf(expr string) *MobitruUploadBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *MobitruUploadBuilder) WithIsAlwaysRun(v bool) *MobitruUploadBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *MobitruUploadBuilder) WithIsSkippable(v bool) *MobitruUploadBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *MobitruUploadBuilder) WithTitle(title string) *MobitruUploadBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *MobitruUploadBuilder) WithTimeout(seconds int) *MobitruUploadBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *MobitruUploadBuilder) WithNoOutputTimeout(seconds int) *MobitruUploadBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *MobitruUploadBuilder) WithExecutionContainer(containerID string) *MobitruUploadBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *MobitruUploadBuilder) WithServiceContainers(containerIDs ...string) *MobitruUploadBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // mobitruUploadOutputs holds the names of environment variables published
 // by the mobitru-upload step (v1) at run time.
 type mobitruUploadOutputs struct {

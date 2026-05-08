@@ -112,3 +112,51 @@ func (b *IosAutoProvisionV0Builder) WithBuildApiToken(value string) *IosAutoProv
 	b.Builder.WithInput("build_api_token", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *IosAutoProvisionV0Builder) WithRunIf(expr string) *IosAutoProvisionV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *IosAutoProvisionV0Builder) WithIsAlwaysRun(v bool) *IosAutoProvisionV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *IosAutoProvisionV0Builder) WithIsSkippable(v bool) *IosAutoProvisionV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *IosAutoProvisionV0Builder) WithTitle(title string) *IosAutoProvisionV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *IosAutoProvisionV0Builder) WithTimeout(seconds int) *IosAutoProvisionV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *IosAutoProvisionV0Builder) WithNoOutputTimeout(seconds int) *IosAutoProvisionV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *IosAutoProvisionV0Builder) WithExecutionContainer(containerID string) *IosAutoProvisionV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *IosAutoProvisionV0Builder) WithServiceContainers(containerIDs ...string) *IosAutoProvisionV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

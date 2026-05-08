@@ -24,3 +24,51 @@ func (b *GoTestV0Builder) WithPackages(value string) *GoTestV0Builder {
 	b.Builder.WithInput("packages", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *GoTestV0Builder) WithRunIf(expr string) *GoTestV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GoTestV0Builder) WithIsAlwaysRun(v bool) *GoTestV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GoTestV0Builder) WithIsSkippable(v bool) *GoTestV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GoTestV0Builder) WithTitle(title string) *GoTestV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GoTestV0Builder) WithTimeout(seconds int) *GoTestV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GoTestV0Builder) WithNoOutputTimeout(seconds int) *GoTestV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GoTestV0Builder) WithExecutionContainer(containerID string) *GoTestV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GoTestV0Builder) WithServiceContainers(containerIDs ...string) *GoTestV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

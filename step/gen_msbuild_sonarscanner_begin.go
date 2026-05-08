@@ -81,6 +81,54 @@ func (b *MsbuildSonarscannerBeginBuilder) WithIsDebug(value MsbuildSonarscannerB
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *MsbuildSonarscannerBeginBuilder) WithRunIf(expr string) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *MsbuildSonarscannerBeginBuilder) WithIsAlwaysRun(v bool) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *MsbuildSonarscannerBeginBuilder) WithIsSkippable(v bool) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *MsbuildSonarscannerBeginBuilder) WithTitle(title string) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *MsbuildSonarscannerBeginBuilder) WithTimeout(seconds int) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *MsbuildSonarscannerBeginBuilder) WithNoOutputTimeout(seconds int) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *MsbuildSonarscannerBeginBuilder) WithExecutionContainer(containerID string) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *MsbuildSonarscannerBeginBuilder) WithServiceContainers(containerIDs ...string) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // msbuildSonarscannerBeginOutputs holds the names of environment variables published
 // by the msbuild-sonarscanner-begin step (v0) at run time.
 type msbuildSonarscannerBeginOutputs struct {

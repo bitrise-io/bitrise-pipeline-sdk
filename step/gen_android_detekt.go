@@ -57,3 +57,51 @@ func (b *AndroidDetektBuilder) WithArguments(value string) *AndroidDetektBuilder
 	b.Builder.WithInput("arguments", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *AndroidDetektBuilder) WithRunIf(expr string) *AndroidDetektBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AndroidDetektBuilder) WithIsAlwaysRun(v bool) *AndroidDetektBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AndroidDetektBuilder) WithIsSkippable(v bool) *AndroidDetektBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AndroidDetektBuilder) WithTitle(title string) *AndroidDetektBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AndroidDetektBuilder) WithTimeout(seconds int) *AndroidDetektBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AndroidDetektBuilder) WithNoOutputTimeout(seconds int) *AndroidDetektBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AndroidDetektBuilder) WithExecutionContainer(containerID string) *AndroidDetektBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AndroidDetektBuilder) WithServiceContainers(containerIDs ...string) *AndroidDetektBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

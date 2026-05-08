@@ -30,3 +30,51 @@ func (b *BitriseRunBuilder) WithBitriseConfigPath(value string) *BitriseRunBuild
 	b.Builder.WithInput("bitrise_config_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *BitriseRunBuilder) WithRunIf(expr string) *BitriseRunBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BitriseRunBuilder) WithIsAlwaysRun(v bool) *BitriseRunBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BitriseRunBuilder) WithIsSkippable(v bool) *BitriseRunBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BitriseRunBuilder) WithTitle(title string) *BitriseRunBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BitriseRunBuilder) WithTimeout(seconds int) *BitriseRunBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BitriseRunBuilder) WithNoOutputTimeout(seconds int) *BitriseRunBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BitriseRunBuilder) WithExecutionContainer(containerID string) *BitriseRunBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BitriseRunBuilder) WithServiceContainers(containerIDs ...string) *BitriseRunBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

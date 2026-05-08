@@ -130,6 +130,54 @@ func (b *HockeyappDeployBuilder) WithRepositoryUrl(value string) *HockeyappDeplo
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *HockeyappDeployBuilder) WithRunIf(expr string) *HockeyappDeployBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *HockeyappDeployBuilder) WithIsAlwaysRun(v bool) *HockeyappDeployBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *HockeyappDeployBuilder) WithIsSkippable(v bool) *HockeyappDeployBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *HockeyappDeployBuilder) WithTitle(title string) *HockeyappDeployBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *HockeyappDeployBuilder) WithTimeout(seconds int) *HockeyappDeployBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *HockeyappDeployBuilder) WithNoOutputTimeout(seconds int) *HockeyappDeployBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *HockeyappDeployBuilder) WithExecutionContainer(containerID string) *HockeyappDeployBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *HockeyappDeployBuilder) WithServiceContainers(containerIDs ...string) *HockeyappDeployBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // hockeyappDeployOutputs holds the names of environment variables published
 // by the hockeyapp-deploy step (v2) at run time.
 type hockeyappDeployOutputs struct {

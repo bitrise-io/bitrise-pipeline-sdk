@@ -30,3 +30,51 @@ func (b *SetEnvVarBuilder) WithDestinationKeys(value string) *SetEnvVarBuilder {
 	b.Builder.WithInput("destination_keys", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *SetEnvVarBuilder) WithRunIf(expr string) *SetEnvVarBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *SetEnvVarBuilder) WithIsAlwaysRun(v bool) *SetEnvVarBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *SetEnvVarBuilder) WithIsSkippable(v bool) *SetEnvVarBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *SetEnvVarBuilder) WithTitle(title string) *SetEnvVarBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *SetEnvVarBuilder) WithTimeout(seconds int) *SetEnvVarBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *SetEnvVarBuilder) WithNoOutputTimeout(seconds int) *SetEnvVarBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *SetEnvVarBuilder) WithExecutionContainer(containerID string) *SetEnvVarBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *SetEnvVarBuilder) WithServiceContainers(containerIDs ...string) *SetEnvVarBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

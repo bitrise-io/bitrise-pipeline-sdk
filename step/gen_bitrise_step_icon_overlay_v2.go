@@ -42,3 +42,51 @@ func (b *BitriseStepIconOverlayV2Builder) WithFont(value string) *BitriseStepIco
 	b.Builder.WithInput("font", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *BitriseStepIconOverlayV2Builder) WithRunIf(expr string) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BitriseStepIconOverlayV2Builder) WithIsAlwaysRun(v bool) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BitriseStepIconOverlayV2Builder) WithIsSkippable(v bool) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BitriseStepIconOverlayV2Builder) WithTitle(title string) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BitriseStepIconOverlayV2Builder) WithTimeout(seconds int) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BitriseStepIconOverlayV2Builder) WithNoOutputTimeout(seconds int) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BitriseStepIconOverlayV2Builder) WithExecutionContainer(containerID string) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BitriseStepIconOverlayV2Builder) WithServiceContainers(containerIDs ...string) *BitriseStepIconOverlayV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

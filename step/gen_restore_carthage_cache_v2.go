@@ -39,6 +39,54 @@ func (b *RestoreCarthageCacheV2Builder) WithRetries(value string) *RestoreCartha
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *RestoreCarthageCacheV2Builder) WithRunIf(expr string) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RestoreCarthageCacheV2Builder) WithIsAlwaysRun(v bool) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RestoreCarthageCacheV2Builder) WithIsSkippable(v bool) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RestoreCarthageCacheV2Builder) WithTitle(title string) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RestoreCarthageCacheV2Builder) WithTimeout(seconds int) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RestoreCarthageCacheV2Builder) WithNoOutputTimeout(seconds int) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RestoreCarthageCacheV2Builder) WithExecutionContainer(containerID string) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RestoreCarthageCacheV2Builder) WithServiceContainers(containerIDs ...string) *RestoreCarthageCacheV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // restoreCarthageCacheV2Outputs holds the names of environment variables published
 // by the restore-carthage-cache step (v2) at run time.
 type restoreCarthageCacheV2Outputs struct {

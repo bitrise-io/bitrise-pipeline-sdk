@@ -60,3 +60,51 @@ func (b *BitriseToAppscanBuilder) WithPresenceId(value string) *BitriseToAppscan
 	b.Builder.WithInput("presence_id", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *BitriseToAppscanBuilder) WithRunIf(expr string) *BitriseToAppscanBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BitriseToAppscanBuilder) WithIsAlwaysRun(v bool) *BitriseToAppscanBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BitriseToAppscanBuilder) WithIsSkippable(v bool) *BitriseToAppscanBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BitriseToAppscanBuilder) WithTitle(title string) *BitriseToAppscanBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BitriseToAppscanBuilder) WithTimeout(seconds int) *BitriseToAppscanBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BitriseToAppscanBuilder) WithNoOutputTimeout(seconds int) *BitriseToAppscanBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BitriseToAppscanBuilder) WithExecutionContainer(containerID string) *BitriseToAppscanBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BitriseToAppscanBuilder) WithServiceContainers(containerIDs ...string) *BitriseToAppscanBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

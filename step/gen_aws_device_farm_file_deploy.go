@@ -55,6 +55,54 @@ func (b *AwsDeviceFarmFileDeployBuilder) WithUploadType(value string) *AwsDevice
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AwsDeviceFarmFileDeployBuilder) WithRunIf(expr string) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AwsDeviceFarmFileDeployBuilder) WithIsAlwaysRun(v bool) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AwsDeviceFarmFileDeployBuilder) WithIsSkippable(v bool) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AwsDeviceFarmFileDeployBuilder) WithTitle(title string) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AwsDeviceFarmFileDeployBuilder) WithTimeout(seconds int) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AwsDeviceFarmFileDeployBuilder) WithNoOutputTimeout(seconds int) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AwsDeviceFarmFileDeployBuilder) WithExecutionContainer(containerID string) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AwsDeviceFarmFileDeployBuilder) WithServiceContainers(containerIDs ...string) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // awsDeviceFarmFileDeployOutputs holds the names of environment variables published
 // by the aws-device-farm-file-deploy step (v0) at run time.
 type awsDeviceFarmFileDeployOutputs struct {

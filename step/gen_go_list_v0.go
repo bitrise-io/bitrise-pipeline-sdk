@@ -25,6 +25,54 @@ func (b *GoListV0Builder) WithExclude(value string) *GoListV0Builder {
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GoListV0Builder) WithRunIf(expr string) *GoListV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GoListV0Builder) WithIsAlwaysRun(v bool) *GoListV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GoListV0Builder) WithIsSkippable(v bool) *GoListV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GoListV0Builder) WithTitle(title string) *GoListV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GoListV0Builder) WithTimeout(seconds int) *GoListV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GoListV0Builder) WithNoOutputTimeout(seconds int) *GoListV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GoListV0Builder) WithExecutionContainer(containerID string) *GoListV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GoListV0Builder) WithServiceContainers(containerIDs ...string) *GoListV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // goListV0Outputs holds the names of environment variables published
 // by the go-list step (v0) at run time.
 type goListV0Outputs struct {

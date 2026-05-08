@@ -39,6 +39,54 @@ func (b *ReleaseNotesExtractorBuilder) WithTrimMarkdownOutput(value ReleaseNotes
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ReleaseNotesExtractorBuilder) WithRunIf(expr string) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ReleaseNotesExtractorBuilder) WithIsAlwaysRun(v bool) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ReleaseNotesExtractorBuilder) WithIsSkippable(v bool) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ReleaseNotesExtractorBuilder) WithTitle(title string) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ReleaseNotesExtractorBuilder) WithTimeout(seconds int) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ReleaseNotesExtractorBuilder) WithNoOutputTimeout(seconds int) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ReleaseNotesExtractorBuilder) WithExecutionContainer(containerID string) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ReleaseNotesExtractorBuilder) WithServiceContainers(containerIDs ...string) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // releaseNotesExtractorOutputs holds the names of environment variables published
 // by the release-notes-extractor step (v0) at run time.
 type releaseNotesExtractorOutputs struct {

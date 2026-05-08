@@ -75,6 +75,48 @@ func (b *AutifyTestRunBuilder) WithAutifyCliInstallerUrl(value string) *AutifyTe
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AutifyTestRunBuilder) WithRunIf(expr string) *AutifyTestRunBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AutifyTestRunBuilder) WithIsAlwaysRun(v bool) *AutifyTestRunBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AutifyTestRunBuilder) WithIsSkippable(v bool) *AutifyTestRunBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AutifyTestRunBuilder) WithTitle(title string) *AutifyTestRunBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AutifyTestRunBuilder) WithNoOutputTimeout(seconds int) *AutifyTestRunBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AutifyTestRunBuilder) WithExecutionContainer(containerID string) *AutifyTestRunBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AutifyTestRunBuilder) WithServiceContainers(containerIDs ...string) *AutifyTestRunBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // autifyTestRunOutputs holds the names of environment variables published
 // by the autify-test-run step (v1) at run time.
 type autifyTestRunOutputs struct {

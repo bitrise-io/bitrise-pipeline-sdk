@@ -145,6 +145,54 @@ func (b *XcodeAnalyzeV2Builder) WithVerboseLog(value XcodeAnalyzeV2VerboseLog) *
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *XcodeAnalyzeV2Builder) WithRunIf(expr string) *XcodeAnalyzeV2Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XcodeAnalyzeV2Builder) WithIsAlwaysRun(v bool) *XcodeAnalyzeV2Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XcodeAnalyzeV2Builder) WithIsSkippable(v bool) *XcodeAnalyzeV2Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XcodeAnalyzeV2Builder) WithTitle(title string) *XcodeAnalyzeV2Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XcodeAnalyzeV2Builder) WithTimeout(seconds int) *XcodeAnalyzeV2Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XcodeAnalyzeV2Builder) WithNoOutputTimeout(seconds int) *XcodeAnalyzeV2Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XcodeAnalyzeV2Builder) WithExecutionContainer(containerID string) *XcodeAnalyzeV2Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XcodeAnalyzeV2Builder) WithServiceContainers(containerIDs ...string) *XcodeAnalyzeV2Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // xcodeAnalyzeV2Outputs holds the names of environment variables published
 // by the xcode-analyze step (v2) at run time.
 type xcodeAnalyzeV2Outputs struct {

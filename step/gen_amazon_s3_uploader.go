@@ -85,6 +85,54 @@ func (b *AmazonS3UploaderBuilder) WithFileAccessLevel(value AmazonS3UploaderFile
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AmazonS3UploaderBuilder) WithRunIf(expr string) *AmazonS3UploaderBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AmazonS3UploaderBuilder) WithIsAlwaysRun(v bool) *AmazonS3UploaderBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AmazonS3UploaderBuilder) WithIsSkippable(v bool) *AmazonS3UploaderBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AmazonS3UploaderBuilder) WithTitle(title string) *AmazonS3UploaderBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AmazonS3UploaderBuilder) WithTimeout(seconds int) *AmazonS3UploaderBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AmazonS3UploaderBuilder) WithNoOutputTimeout(seconds int) *AmazonS3UploaderBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AmazonS3UploaderBuilder) WithExecutionContainer(containerID string) *AmazonS3UploaderBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AmazonS3UploaderBuilder) WithServiceContainers(containerIDs ...string) *AmazonS3UploaderBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // amazonS3UploaderOutputs holds the names of environment variables published
 // by the amazon-s3-uploader step (v1) at run time.
 type amazonS3UploaderOutputs struct {

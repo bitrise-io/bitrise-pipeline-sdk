@@ -31,6 +31,54 @@ func (b *GenerateTextFileBuilder) WithFileContent(value string) *GenerateTextFil
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *GenerateTextFileBuilder) WithRunIf(expr string) *GenerateTextFileBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *GenerateTextFileBuilder) WithIsAlwaysRun(v bool) *GenerateTextFileBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *GenerateTextFileBuilder) WithIsSkippable(v bool) *GenerateTextFileBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *GenerateTextFileBuilder) WithTitle(title string) *GenerateTextFileBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *GenerateTextFileBuilder) WithTimeout(seconds int) *GenerateTextFileBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *GenerateTextFileBuilder) WithNoOutputTimeout(seconds int) *GenerateTextFileBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *GenerateTextFileBuilder) WithExecutionContainer(containerID string) *GenerateTextFileBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *GenerateTextFileBuilder) WithServiceContainers(containerIDs ...string) *GenerateTextFileBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // generateTextFileOutputs holds the names of environment variables published
 // by the generate-text-file step (v0) at run time.
 type generateTextFileOutputs struct {

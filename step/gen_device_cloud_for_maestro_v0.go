@@ -289,6 +289,54 @@ func (b *DeviceCloudForMaestroV0Builder) WithArtifactsPath(value string) *Device
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *DeviceCloudForMaestroV0Builder) WithRunIf(expr string) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *DeviceCloudForMaestroV0Builder) WithIsAlwaysRun(v bool) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *DeviceCloudForMaestroV0Builder) WithIsSkippable(v bool) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *DeviceCloudForMaestroV0Builder) WithTitle(title string) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *DeviceCloudForMaestroV0Builder) WithTimeout(seconds int) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *DeviceCloudForMaestroV0Builder) WithNoOutputTimeout(seconds int) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *DeviceCloudForMaestroV0Builder) WithExecutionContainer(containerID string) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *DeviceCloudForMaestroV0Builder) WithServiceContainers(containerIDs ...string) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // deviceCloudForMaestroV0Outputs holds the names of environment variables published
 // by the device-cloud-for-maestro step (v0) at run time.
 type deviceCloudForMaestroV0Outputs struct {

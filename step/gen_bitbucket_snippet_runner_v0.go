@@ -50,3 +50,51 @@ func (b *BitbucketSnippetRunnerV0Builder) WithIsDebug(value BitbucketSnippetRunn
 	b.Builder.WithInput("is_debug", string(value))
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *BitbucketSnippetRunnerV0Builder) WithRunIf(expr string) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *BitbucketSnippetRunnerV0Builder) WithIsAlwaysRun(v bool) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *BitbucketSnippetRunnerV0Builder) WithIsSkippable(v bool) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *BitbucketSnippetRunnerV0Builder) WithTitle(title string) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *BitbucketSnippetRunnerV0Builder) WithTimeout(seconds int) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *BitbucketSnippetRunnerV0Builder) WithNoOutputTimeout(seconds int) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *BitbucketSnippetRunnerV0Builder) WithExecutionContainer(containerID string) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *BitbucketSnippetRunnerV0Builder) WithServiceContainers(containerIDs ...string) *BitbucketSnippetRunnerV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

@@ -89,6 +89,54 @@ func (b *AppliveryAndroidV0Builder) WithVersionName(value string) *AppliveryAndr
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *AppliveryAndroidV0Builder) WithRunIf(expr string) *AppliveryAndroidV0Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *AppliveryAndroidV0Builder) WithIsAlwaysRun(v bool) *AppliveryAndroidV0Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *AppliveryAndroidV0Builder) WithIsSkippable(v bool) *AppliveryAndroidV0Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *AppliveryAndroidV0Builder) WithTitle(title string) *AppliveryAndroidV0Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *AppliveryAndroidV0Builder) WithTimeout(seconds int) *AppliveryAndroidV0Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *AppliveryAndroidV0Builder) WithNoOutputTimeout(seconds int) *AppliveryAndroidV0Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *AppliveryAndroidV0Builder) WithExecutionContainer(containerID string) *AppliveryAndroidV0Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *AppliveryAndroidV0Builder) WithServiceContainers(containerIDs ...string) *AppliveryAndroidV0Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // appliveryAndroidV0Outputs holds the names of environment variables published
 // by the applivery-android step (v0) at run time.
 type appliveryAndroidV0Outputs struct {

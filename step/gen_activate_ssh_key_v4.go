@@ -59,6 +59,54 @@ func (b *ActivateSshKeyV4Builder) WithVerbose(value ActivateSshKeyV4Verbose) *Ac
 	return b
 }
 
+// WithRunIf overrides the run_if expression for this step.
+func (b *ActivateSshKeyV4Builder) WithRunIf(expr string) *ActivateSshKeyV4Builder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *ActivateSshKeyV4Builder) WithIsAlwaysRun(v bool) *ActivateSshKeyV4Builder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *ActivateSshKeyV4Builder) WithIsSkippable(v bool) *ActivateSshKeyV4Builder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *ActivateSshKeyV4Builder) WithTitle(title string) *ActivateSshKeyV4Builder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *ActivateSshKeyV4Builder) WithTimeout(seconds int) *ActivateSshKeyV4Builder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *ActivateSshKeyV4Builder) WithNoOutputTimeout(seconds int) *ActivateSshKeyV4Builder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *ActivateSshKeyV4Builder) WithExecutionContainer(containerID string) *ActivateSshKeyV4Builder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *ActivateSshKeyV4Builder) WithServiceContainers(containerIDs ...string) *ActivateSshKeyV4Builder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
+
 // activateSshKeyV4Outputs holds the names of environment variables published
 // by the activate-ssh-key step (v4) at run time.
 type activateSshKeyV4Outputs struct {

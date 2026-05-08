@@ -51,3 +51,51 @@ func (b *RunEasBuildBuilder) WithEasOptions(value string) *RunEasBuildBuilder {
 	b.Builder.WithInput("eas_options", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *RunEasBuildBuilder) WithRunIf(expr string) *RunEasBuildBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *RunEasBuildBuilder) WithIsAlwaysRun(v bool) *RunEasBuildBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *RunEasBuildBuilder) WithIsSkippable(v bool) *RunEasBuildBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *RunEasBuildBuilder) WithTitle(title string) *RunEasBuildBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *RunEasBuildBuilder) WithTimeout(seconds int) *RunEasBuildBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *RunEasBuildBuilder) WithNoOutputTimeout(seconds int) *RunEasBuildBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *RunEasBuildBuilder) WithExecutionContainer(containerID string) *RunEasBuildBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *RunEasBuildBuilder) WithServiceContainers(containerIDs ...string) *RunEasBuildBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}

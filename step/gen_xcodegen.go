@@ -30,3 +30,51 @@ func (b *XcodegenBuilder) WithProjectPath(value string) *XcodegenBuilder {
 	b.Builder.WithInput("project_path", value)
 	return b
 }
+
+// WithRunIf overrides the run_if expression for this step.
+func (b *XcodegenBuilder) WithRunIf(expr string) *XcodegenBuilder {
+	b.Builder.WithRunIf(expr)
+	return b
+}
+
+// WithIsAlwaysRun configures whether this step runs even when a previous step failed.
+func (b *XcodegenBuilder) WithIsAlwaysRun(v bool) *XcodegenBuilder {
+	b.Builder.WithIsAlwaysRun(v)
+	return b
+}
+
+// WithIsSkippable marks this step as skippable so a failure does not fail the build.
+func (b *XcodegenBuilder) WithIsSkippable(v bool) *XcodegenBuilder {
+	b.Builder.WithIsSkippable(v)
+	return b
+}
+
+// WithTitle overrides the step title shown in the build log.
+func (b *XcodegenBuilder) WithTitle(title string) *XcodegenBuilder {
+	b.Builder.WithTitle(title)
+	return b
+}
+
+// WithTimeout sets the maximum execution time in seconds. 0 disables the timeout.
+func (b *XcodegenBuilder) WithTimeout(seconds int) *XcodegenBuilder {
+	b.Builder.WithTimeout(seconds)
+	return b
+}
+
+// WithNoOutputTimeout sets the maximum time the step may run without producing output.
+func (b *XcodegenBuilder) WithNoOutputTimeout(seconds int) *XcodegenBuilder {
+	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithExecutionContainer pins this step to run inside the named container.
+func (b *XcodegenBuilder) WithExecutionContainer(containerID string) *XcodegenBuilder {
+	b.Builder.WithExecutionContainer(containerID)
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to this step.
+func (b *XcodegenBuilder) WithServiceContainers(containerIDs ...string) *XcodegenBuilder {
+	b.Builder.WithServiceContainers(containerIDs...)
+	return b
+}
