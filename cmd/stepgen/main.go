@@ -137,17 +137,20 @@ func main() {
 
 	tmpl := template.Must(template.New("builder").Parse(builderTmpl))
 
-	ok, fail := 0, 0
+	ok, skip, fail := 0, 0, 0
 	var deprecated []deprecationInfo
 	for _, id := range stepIDs {
 		if handcraftedSteps[id] {
 			fmt.Printf("skip %-40s (hand-crafted builder exists)\n", id)
+			skip++
 			continue
 		}
-		dep, err := generateStep(id, *outputDir, tmpl, src)
+		dep, skipped, err := generateStep(id, *outputDir, tmpl, src)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "ERROR %-40s %v\n", id, err)
 			fail++
+		} else if skipped {
+			skip++
 		} else {
 			ok++
 			if dep != nil {
@@ -156,7 +159,7 @@ func main() {
 			}
 		}
 	}
-	fmt.Printf("\ndone: %d generated, %d errors\n", ok, fail)
+	fmt.Printf("\ndone: %d generated, %d skipped, %d errors\n", ok, skip, fail)
 
 	if len(deprecated) > 0 {
 		fmt.Fprintf(os.Stderr, "\n⚠️  WARNING: %d deprecated step(s) were generated:\n", len(deprecated))
@@ -227,17 +230,17 @@ func (githubSource) readStepInfo(stepID string) ([]byte, error) {
 
 // ---- per-step generation ---------------------------------------------------
 
-func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource) (*deprecationInfo, error) {
+func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSource) (*deprecationInfo, bool, error) {
 	fmt.Printf("gen  %-40s", stepID)
 
 	versions, err := src.listVersions(stepID)
 	if err != nil {
 		fmt.Println()
-		return nil, fmt.Errorf("list versions: %w", err)
+		return nil, false, fmt.Errorf("list versions: %w", err)
 	}
 	if len(versions) == 0 {
-		fmt.Println()
-		return nil, fmt.Errorf("no versions found")
+		fmt.Println("skipped (no versions found — step likely removed from steplib)")
+		return nil, true, nil
 	}
 
 	latest := latestVersion(versions)
@@ -246,25 +249,25 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	ymlData, err := src.readStepYML(stepID, latest)
 	if err != nil {
 		fmt.Println()
-		return nil, fmt.Errorf("read step.yml: %w", err)
+		return nil, false, fmt.Errorf("read step.yml: %w", err)
 	}
 
 	def, err := parseStepYML(stepID, latest, ymlData)
 	if err != nil {
 		fmt.Println()
-		return nil, fmt.Errorf("parse step.yml: %w", err)
+		return nil, false, fmt.Errorf("parse step.yml: %w", err)
 	}
 
 	var buf bytes.Buffer
 	if err := tmpl.Execute(&buf, def); err != nil {
 		fmt.Println()
-		return nil, fmt.Errorf("render template: %w", err)
+		return nil, false, fmt.Errorf("render template: %w", err)
 	}
 
 	out, err := format.Source(buf.Bytes())
 	if err != nil {
 		fmt.Println()
-		return nil, fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
+		return nil, false, fmt.Errorf("gofmt: %w\n---\n%s", err, buf.String())
 	}
 
 	// Files ending in "_test.go" are treated as test files by the Go build
@@ -278,7 +281,7 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	outPath := filepath.Join(outputDir, base+".go")
 	if err := os.WriteFile(outPath, out, 0644); err != nil {
 		fmt.Println()
-		return nil, fmt.Errorf("write %s: %w", outPath, err)
+		return nil, false, fmt.Errorf("write %s: %w", outPath, err)
 	}
 
 	// Check for deprecation after writing — a deprecated step is still
@@ -286,19 +289,19 @@ func generateStep(stepID, outputDir string, tmpl *template.Template, src stepSou
 	infoData, err := src.readStepInfo(stepID)
 	if err != nil {
 		fmt.Printf("wrote %s (deprecation check failed: %v)\n", outPath, err)
-		return nil, nil
+		return nil, false, nil
 	}
 	dep, err := parseStepInfo(infoData)
 	if err != nil {
 		fmt.Printf("wrote %s (deprecation check failed: %v)\n", outPath, err)
-		return nil, nil
+		return nil, false, nil
 	}
 	if dep != nil {
 		fmt.Printf("wrote %s ⚠️  DEPRECATED\n", outPath)
 	} else {
 		fmt.Printf("wrote %s\n", outPath)
 	}
-	return dep, nil
+	return dep, false, nil
 }
 
 // ---- GitHub fetching -------------------------------------------------------
