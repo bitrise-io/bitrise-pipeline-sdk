@@ -55,6 +55,7 @@ var handcraftedSteps = map[string]bool{}
 
 type genConfig struct {
 	Steps []string `json:"steps"`
+	Skip  []string `json:"skip,omitempty"`
 }
 
 func loadConfig(path string) (genConfig, error) {
@@ -127,8 +128,10 @@ func main() {
 	// whether it has a file to rewrite.
 	stepIDs := flag.Args()
 	usingConfig := len(stepIDs) == 0
+	var cfg genConfig
 	if usingConfig {
-		cfg, err := loadConfig(*configFile)
+		var err error
+		cfg, err = loadConfig(*configFile)
 		if err != nil {
 			fatalf("reading %s: %v", *configFile, err)
 		}
@@ -136,6 +139,12 @@ func main() {
 	}
 	if len(stepIDs) == 0 {
 		fatalf("no step IDs — pass them as arguments or add them to %s", *configFile)
+	}
+
+	// Build a set from the skip list so lookups are O(1).
+	skipSet := make(map[string]bool, len(cfg.Skip))
+	for _, id := range cfg.Skip {
+		skipSet[id] = true
 	}
 
 	var src stepSource
@@ -148,7 +157,7 @@ func main() {
 	tmpl := template.Must(template.New("builder").Parse(builderTmpl))
 
 	ok, skip, fail := 0, 0, 0
-	var skippedIDs []string
+	var removedIDs []string
 	var deprecated []deprecationInfo
 	for _, id := range stepIDs {
 		if handcraftedSteps[id] {
@@ -156,13 +165,18 @@ func main() {
 			skip++
 			continue
 		}
-		dep, skipped, err := generateStep(id, *outputDir, tmpl, src)
+		if skipSet[id] {
+			fmt.Printf("skip %-40s (in skip list)\n", id)
+			skip++
+			continue
+		}
+		dep, removed, err := generateStep(id, *outputDir, tmpl, src)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "ERROR %-40s %v\n", id, err)
 			fail++
-		} else if skipped {
+		} else if removed {
 			skip++
-			skippedIDs = append(skippedIDs, id)
+			removedIDs = append(removedIDs, id)
 		} else {
 			ok++
 			if dep != nil {
@@ -191,8 +205,10 @@ func main() {
 		if !usingConfig {
 			fmt.Fprintln(os.Stderr, "\nwarning: --prune has no effect when step IDs are passed as arguments (no config file to rewrite)")
 		} else {
-			pruneIDs := append(skippedIDs, deprecatedIDs(deprecated)...)
-			if err := pruneConfig(*configFile, pruneIDs); err != nil {
+			// Removed steps (no versions in steplib) move into the skip list so
+			// they are intentionally excluded on future runs without being lost.
+			// Deprecated steps are removed from steps entirely.
+			if err := pruneConfig(*configFile, removedIDs, deprecatedIDs(deprecated)); err != nil {
 				fatalf("pruning config: %v", err)
 			}
 		}
@@ -214,10 +230,13 @@ func deprecatedIDs(deps []deprecationInfo) []string {
 	return ids
 }
 
-// pruneConfig rewrites the config file at path with the given step IDs removed.
-func pruneConfig(path string, removeIDs []string) error {
-	if len(removeIDs) == 0 {
-		fmt.Println("\nnothing to prune")
+// pruneConfig rewrites the config file at path:
+//   - removedIDs (no versions in steplib) are moved from steps into the skip list
+//   - deprecatedIDs are removed from steps entirely (their // Deprecated: godoc
+//     already warns users; keeping them in skip would be noise)
+func pruneConfig(path string, removedIDs, deprecatedIDs []string) error {
+	if len(removedIDs) == 0 && len(deprecatedIDs) == 0 {
+		fmt.Fprintln(os.Stderr, "\nnothing to prune")
 		return nil
 	}
 
@@ -226,18 +245,37 @@ func pruneConfig(path string, removeIDs []string) error {
 		return err
 	}
 
-	remove := make(map[string]bool, len(removeIDs))
-	for _, id := range removeIDs {
-		remove[id] = true
+	// Build removal sets.
+	moveToSkip := make(map[string]bool, len(removedIDs))
+	for _, id := range removedIDs {
+		moveToSkip[id] = true
+	}
+	dropEntirely := make(map[string]bool, len(deprecatedIDs))
+	for _, id := range deprecatedIDs {
+		dropEntirely[id] = true
 	}
 
+	// Filter steps: keep anything not being pruned.
 	kept := cfg.Steps[:0]
 	for _, id := range cfg.Steps {
-		if !remove[id] {
+		if !moveToSkip[id] && !dropEntirely[id] {
 			kept = append(kept, id)
 		}
 	}
 	cfg.Steps = kept
+
+	// Merge removed IDs into the skip list, avoiding duplicates.
+	existing := make(map[string]bool, len(cfg.Skip))
+	for _, id := range cfg.Skip {
+		existing[id] = true
+	}
+	for _, id := range removedIDs {
+		if !existing[id] {
+			cfg.Skip = append(cfg.Skip, id)
+			existing[id] = true
+		}
+	}
+	sort.Strings(cfg.Skip)
 
 	data, err := json.MarshalIndent(cfg, "", "  ")
 	if err != nil {
@@ -248,9 +286,17 @@ func pruneConfig(path string, removeIDs []string) error {
 		return fmt.Errorf("write config: %w", err)
 	}
 
-	fmt.Fprintf(os.Stderr, "\n🧹 pruned %d step(s) from %s:\n", len(removeIDs), path)
-	for _, id := range removeIDs {
-		fmt.Fprintf(os.Stderr, "  - %s\n", id)
+	if len(removedIDs) > 0 {
+		fmt.Fprintf(os.Stderr, "\n🧹 moved %d removed step(s) to skip list in %s:\n", len(removedIDs), path)
+		for _, id := range removedIDs {
+			fmt.Fprintf(os.Stderr, "  - %s\n", id)
+		}
+	}
+	if len(deprecatedIDs) > 0 {
+		fmt.Fprintf(os.Stderr, "\n🧹 removed %d deprecated step(s) from %s:\n", len(deprecatedIDs), path)
+		for _, id := range deprecatedIDs {
+			fmt.Fprintf(os.Stderr, "  - %s\n", id)
+		}
 	}
 	return nil
 }

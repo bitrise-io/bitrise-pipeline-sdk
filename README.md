@@ -190,14 +190,17 @@ go run ./cmd/stepgen --steplib-dir=/tmp/bitrise-steplib --config=stepgen.json --
 To also pick up brand-new steps that have been added to the steplib since the last run, update `stepgen.json` first:
 
 ```sh
-# List all step IDs in the cloned steplib and write them to stepgen.json
+# Rebuild the steps list from the cloned steplib, preserving any existing skip list
 python3 -c "
 import json, os
-steps = sorted(os.listdir('/tmp/bitrise-steplib/steps'))
-print(json.dumps({'steps': steps}, indent=2))
+existing = json.load(open('stepgen.json')) if os.path.exists('stepgen.json') else {}
+skip = set(existing.get('skip', []))
+steps = sorted(s for s in os.listdir('/tmp/bitrise-steplib/steps') if s not in skip)
+existing['steps'] = steps
+print(json.dumps(existing, indent=2))
 " > stepgen.json
 
-# Then regenerate (hand-crafted builders are automatically skipped)
+# Then regenerate
 go run ./cmd/stepgen --steplib-dir=/tmp/bitrise-steplib --config=stepgen.json --output=step
 ```
 
