@@ -204,10 +204,27 @@ func TestBuildTable(t *testing.T) {
 		{stepID: "script", funcName: "Script"},
 	}
 	table := string(buildTable(entries))
+
+	// Collapsible wrapper with live count.
+	assert.Contains(t, table, "<details>")
+	assert.Contains(t, table, "Show all 2 step builders")
+	assert.Contains(t, table, "</details>")
+
+	// Table content.
 	assert.Contains(t, table, "| Function | Step |")
 	assert.Contains(t, table, "|---|---|")
 	assert.Contains(t, table, "| `step.GitClone()` | `git-clone` |")
 	assert.Contains(t, table, "| `step.Script()` | `script` |")
+}
+
+func TestBuildTable_CountInSummary(t *testing.T) {
+	// The summary line must reflect the actual number of entries.
+	entries := make([]builderEntry, 42)
+	for i := range entries {
+		entries[i] = builderEntry{stepID: "step", funcName: "Step"}
+	}
+	table := string(buildTable(entries))
+	assert.Contains(t, table, "Show all 42 step builders")
 }
 
 func TestBuildVersionsTable(t *testing.T) {
@@ -217,6 +234,13 @@ func TestBuildVersionsTable(t *testing.T) {
 		{stepID: "xcode-test", funcName: "XcodeTestV5", major: 5},
 	}
 	table := string(buildVersionsTable(entries))
+
+	// Collapsible wrapper with live count.
+	assert.Contains(t, table, "<details>")
+	assert.Contains(t, table, "Show all 3 versioned builders")
+	assert.Contains(t, table, "</details>")
+
+	// Table content.
 	assert.Contains(t, table, "| Function | Step | Major |")
 	assert.Contains(t, table, "| `step.GitCloneV7()` | `git-clone` | v7.x |")
 	assert.Contains(t, table, "| `step.GitCloneV8()` | `git-clone` | v8.x |")

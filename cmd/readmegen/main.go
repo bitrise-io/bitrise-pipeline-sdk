@@ -346,29 +346,35 @@ func updateReadme(path string, entries []builderEntry, vEntries []versionedBuild
 	return os.WriteFile(path, updated, 0644)
 }
 
-// buildTable renders the Markdown table for the main builders.
+// buildTable renders the main builders table wrapped in a <details> block so
+// it is collapsed by default in GitHub Markdown. The summary line includes the
+// live entry count so it stays accurate on every regeneration.
 func buildTable(entries []builderEntry) []byte {
 	var b bytes.Buffer
+	fmt.Fprintf(&b, "<details>\n<summary>Show all %d step builders</summary>\n\n", len(entries))
 	fmt.Fprintln(&b, "| Function | Step |")
 	fmt.Fprintln(&b, "|---|---|")
 	for _, e := range entries {
 		fmt.Fprintf(&b, "| `step.%s()` | `%s` |\n", e.funcName, e.stepID)
 	}
+	fmt.Fprint(&b, "\n</details>")
 	return b.Bytes()
 }
 
-// buildVersionsTable renders the Markdown table for versioned builders.
-// Each row represents one major version of one multi-major step.
+// buildVersionsTable renders the versioned builders table wrapped in a
+// <details> block. Returns nil when there are no entries.
 func buildVersionsTable(entries []versionedBuilderEntry) []byte {
 	if len(entries) == 0 {
 		return nil
 	}
 	var b bytes.Buffer
+	fmt.Fprintf(&b, "<details>\n<summary>Show all %d versioned builders</summary>\n\n", len(entries))
 	fmt.Fprintln(&b, "| Function | Step | Major |")
 	fmt.Fprintln(&b, "|---|---|---|")
 	for _, e := range entries {
 		fmt.Fprintf(&b, "| `step.%s()` | `%s` | v%d.x |\n", e.funcName, e.stepID, e.major)
 	}
+	fmt.Fprint(&b, "\n</details>")
 	return b.Bytes()
 }
 
