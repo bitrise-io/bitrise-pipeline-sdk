@@ -111,6 +111,8 @@ const (
 )
 
 // XcodeTestV2Builder builds a xcode-test step with typed input methods.
+//
+// v1→v2: added `cache_level`, `collect_simulator_diagnostics`, `disable_index_while_building`, `headless_mode`, `test_plan`; removed `wait_for_simulator_boot`, `workdir`
 type XcodeTestV2Builder struct{ *Builder }
 
 // XcodeTestV2 creates a xcode-test step builder (v2 by default).
@@ -118,6 +120,8 @@ type XcodeTestV2Builder struct{ *Builder }
 //
 //	step.XcodeTestV2("2")  // explicit default
 //	step.XcodeTestV2("1")                  // older major
+//
+// v1→v2: added `cache_level`, `collect_simulator_diagnostics`, `disable_index_while_building`, `headless_mode`, `test_plan`; removed `wait_for_simulator_boot`, `workdir`
 func XcodeTestV2(version ...string) *XcodeTestV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -89,6 +89,8 @@ const (
 )
 
 // XcodeArchiveV4Builder builds a xcode-archive step with typed input methods.
+//
+// v3→v4: added `api_key_id`, `api_key_issuer_id`, `api_key_path`, `automatic_code_signing`, `certificate_url_list`, `distribution_method`, `export_development_team`, `export_options_plist_content`, `fallback_provisioning_profile_url_list`, `keychain_password`, `keychain_path`, `log_formatter`, `min_profile_validity`, `passphrase_list`, `perform_clean_action`, `register_test_devices`, `test_device_list_path`, `xcconfig_content`; removed `custom_export_options_plist_content`, `disable_index_while_building`, `export_method`, `force_code_sign_identity`, `force_provisioning_profile`, `force_provisioning_profile_specifier`, `force_team_id`, `is_clean_build`, `output_tool`, `team_id`, `workdir`
 type XcodeArchiveV4Builder struct{ *Builder }
 
 // XcodeArchiveV4 creates a xcode-archive step builder (v4 by default).
@@ -96,6 +98,8 @@ type XcodeArchiveV4Builder struct{ *Builder }
 //
 //	step.XcodeArchiveV4("4")  // explicit default
 //	step.XcodeArchiveV4("1")                  // older major
+//
+// v3→v4: added `api_key_id`, `api_key_issuer_id`, `api_key_path`, `automatic_code_signing`, `certificate_url_list`, `distribution_method`, `export_development_team`, `export_options_plist_content`, `fallback_provisioning_profile_url_list`, `keychain_password`, `keychain_path`, `log_formatter`, `min_profile_validity`, `passphrase_list`, `perform_clean_action`, `register_test_devices`, `test_device_list_path`, `xcconfig_content`; removed `custom_export_options_plist_content`, `disable_index_while_building`, `export_method`, `force_code_sign_identity`, `force_provisioning_profile`, `force_provisioning_profile_specifier`, `force_team_id`, `is_clean_build`, `output_tool`, `team_id`, `workdir`
 func XcodeArchiveV4(version ...string) *XcodeArchiveV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

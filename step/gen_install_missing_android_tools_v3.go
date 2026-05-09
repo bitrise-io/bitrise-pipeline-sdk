@@ -14,6 +14,8 @@ const (
 )
 
 // InstallMissingAndroidToolsV3Builder builds a install-missing-android-tools step with typed input methods.
+//
+// v2→v3: added `enable_repo_mirror`, `gradlew_dependencies_options`, `ndk_version`; removed `ndk_revision`
 type InstallMissingAndroidToolsV3Builder struct{ *Builder }
 
 // InstallMissingAndroidToolsV3 creates a install-missing-android-tools step builder (v3 by default).
@@ -21,6 +23,8 @@ type InstallMissingAndroidToolsV3Builder struct{ *Builder }
 //
 //	step.InstallMissingAndroidToolsV3("3")  // explicit default
 //	step.InstallMissingAndroidToolsV3("1")                  // older major
+//
+// v2→v3: added `enable_repo_mirror`, `gradlew_dependencies_options`, `ndk_version`; removed `ndk_revision`
 func InstallMissingAndroidToolsV3(version ...string) *InstallMissingAndroidToolsV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

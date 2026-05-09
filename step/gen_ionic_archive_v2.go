@@ -47,6 +47,8 @@ const (
 )
 
 // IonicArchiveV2Builder builds a ionic-archive step with typed input methods.
+//
+// v1→v2: added `android_app_type`, `cache_local_deps`, `run_ionic_prepare`; removed `cordova_android_version`, `cordova_ios_version`, `readd_platform`
 type IonicArchiveV2Builder struct{ *Builder }
 
 // IonicArchiveV2 creates a ionic-archive step builder (v2 by default).
@@ -54,6 +56,8 @@ type IonicArchiveV2Builder struct{ *Builder }
 //
 //	step.IonicArchiveV2("2")  // explicit default
 //	step.IonicArchiveV2("1")                  // older major
+//
+// v1→v2: added `android_app_type`, `cache_local_deps`, `run_ionic_prepare`; removed `cordova_android_version`, `cordova_ios_version`, `readd_platform`
 func IonicArchiveV2(version ...string) *IonicArchiveV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

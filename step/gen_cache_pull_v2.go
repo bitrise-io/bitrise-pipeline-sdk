@@ -39,6 +39,8 @@ const (
 
 // CachePullV2Builder builds a cache-pull step with typed input methods.
 //
+// v1→v2: added `allow_fallback`, `extract_to_relative_path`, `ignore_stack_difference`
+//
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
 type CachePullV2Builder struct{ *Builder }
 
@@ -47,6 +49,8 @@ type CachePullV2Builder struct{ *Builder }
 //
 //	step.CachePullV2("2")  // explicit default
 //	step.CachePullV2("1")                  // older major
+//
+// v1→v2: added `allow_fallback`, `extract_to_relative_path`, `ignore_stack_difference`
 //
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
 func CachePullV2(version ...string) *CachePullV2Builder {

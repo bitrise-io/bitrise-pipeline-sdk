@@ -22,6 +22,8 @@ const (
 )
 
 // NunitRunnerV1Builder builds a nunit-runner step with typed input methods.
+//
+// v0→v1: added `build_before_test`, `build_tool`
 type NunitRunnerV1Builder struct{ *Builder }
 
 // NunitRunnerV1 creates a nunit-runner step builder (v1 by default).
@@ -29,6 +31,8 @@ type NunitRunnerV1Builder struct{ *Builder }
 //
 //	step.NunitRunnerV1("1")  // explicit default
 //	step.NunitRunnerV1("1")                  // older major
+//
+// v0→v1: added `build_before_test`, `build_tool`
 func NunitRunnerV1(version ...string) *NunitRunnerV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

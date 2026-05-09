@@ -29,6 +29,8 @@ const (
 
 // CreateAndroidEmulatorV1Builder builds a create-android-emulator step with typed input methods.
 //
+// v0→v1: added `custom_hardware_profile_content`, `options`, `tag`
+//
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 type CreateAndroidEmulatorV1Builder struct{ *Builder }
 
@@ -37,6 +39,8 @@ type CreateAndroidEmulatorV1Builder struct{ *Builder }
 //
 //	step.CreateAndroidEmulatorV1("1")  // explicit default
 //	step.CreateAndroidEmulatorV1("1")                  // older major
+//
+// v0→v1: added `custom_hardware_profile_content`, `options`, `tag`
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 func CreateAndroidEmulatorV1(version ...string) *CreateAndroidEmulatorV1Builder {

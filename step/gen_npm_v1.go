@@ -14,6 +14,8 @@ const (
 )
 
 // NpmV1Builder builds a npm step with typed input methods.
+//
+// v0→v1: added `cache_local_deps`, `npm_version`
 type NpmV1Builder struct{ *Builder }
 
 // NpmV1 creates a npm step builder (v1 by default).
@@ -21,6 +23,8 @@ type NpmV1Builder struct{ *Builder }
 //
 //	step.NpmV1("1")  // explicit default
 //	step.NpmV1("1")                  // older major
+//
+// v0→v1: added `cache_local_deps`, `npm_version`
 func NpmV1(version ...string) *NpmV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

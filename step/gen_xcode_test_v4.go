@@ -82,6 +82,8 @@ const (
 )
 
 // XcodeTestV4Builder builds a xcode-test step with typed input methods.
+//
+// v3→v4: added `destination`, `log_formatter`, `perform_clean_action`, `verbose_log`, `xcbeautify_options`, `xcconfig_content`, `xcodebuild_options`, `xcpretty_options`; removed `disable_index_while_building`, `export_uitest_artifacts`, `generate_code_coverage_files`, `is_clean_build`, `output_tool`, `should_build_before_test`, `simulator_device`, `simulator_os_version`, `simulator_platform`, `single_build`, `verbose`, `xcodebuild_test_options`, `xcpretty_test_options`
 type XcodeTestV4Builder struct{ *Builder }
 
 // XcodeTestV4 creates a xcode-test step builder (v4 by default).
@@ -89,6 +91,8 @@ type XcodeTestV4Builder struct{ *Builder }
 //
 //	step.XcodeTestV4("4")  // explicit default
 //	step.XcodeTestV4("1")                  // older major
+//
+// v3→v4: added `destination`, `log_formatter`, `perform_clean_action`, `verbose_log`, `xcbeautify_options`, `xcconfig_content`, `xcodebuild_options`, `xcpretty_options`; removed `disable_index_while_building`, `export_uitest_artifacts`, `generate_code_coverage_files`, `is_clean_build`, `output_tool`, `should_build_before_test`, `simulator_device`, `simulator_os_version`, `simulator_platform`, `single_build`, `verbose`, `xcodebuild_test_options`, `xcpretty_test_options`
 func XcodeTestV4(version ...string) *XcodeTestV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

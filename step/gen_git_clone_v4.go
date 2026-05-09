@@ -46,6 +46,8 @@ const (
 )
 
 // GitCloneV4Builder builds a git-clone step with typed input methods.
+//
+// v3→v4: added `limit_submodule_update_depth`, `merge_pr`, `pull_request_head_branch`
 type GitCloneV4Builder struct{ *Builder }
 
 // GitCloneV4 creates a git-clone step builder (v4 by default).
@@ -53,6 +55,8 @@ type GitCloneV4Builder struct{ *Builder }
 //
 //	step.GitCloneV4("4")  // explicit default
 //	step.GitCloneV4("1")                  // older major
+//
+// v3→v4: added `limit_submodule_update_depth`, `merge_pr`, `pull_request_head_branch`
 func GitCloneV4(version ...string) *GitCloneV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

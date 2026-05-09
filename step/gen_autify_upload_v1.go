@@ -6,6 +6,8 @@ package step
 import "time"
 
 // AutifyUploadV1Builder builds a autify-upload step with typed input methods.
+//
+// v0→v1: added `access_token`, `autify_cli_installer_url`, `autify_path`, `build_path`, `workspace_id`; removed `app_dir_path`, `project_id`, `upload_token`
 type AutifyUploadV1Builder struct{ *Builder }
 
 // AutifyUploadV1 creates a autify-upload step builder (v1 by default).
@@ -13,6 +15,8 @@ type AutifyUploadV1Builder struct{ *Builder }
 //
 //	step.AutifyUploadV1("1")  // explicit default
 //	step.AutifyUploadV1("1")                  // older major
+//
+// v0→v1: added `access_token`, `autify_cli_installer_url`, `autify_path`, `build_path`, `workspace_id`; removed `app_dir_path`, `project_id`, `upload_token`
 func AutifyUploadV1(version ...string) *AutifyUploadV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

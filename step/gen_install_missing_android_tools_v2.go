@@ -6,6 +6,8 @@ package step
 import "time"
 
 // InstallMissingAndroidToolsV2Builder builds a install-missing-android-tools step with typed input methods.
+//
+// v1→v2: added `ndk_revision`; removed `root_build_gradle_file`, `update_support_library_and_play_services`
 type InstallMissingAndroidToolsV2Builder struct{ *Builder }
 
 // InstallMissingAndroidToolsV2 creates a install-missing-android-tools step builder (v2 by default).
@@ -13,6 +15,8 @@ type InstallMissingAndroidToolsV2Builder struct{ *Builder }
 //
 //	step.InstallMissingAndroidToolsV2("2")  // explicit default
 //	step.InstallMissingAndroidToolsV2("1")                  // older major
+//
+// v1→v2: added `ndk_revision`; removed `root_build_gradle_file`, `update_support_library_and_play_services`
 func InstallMissingAndroidToolsV2(version ...string) *InstallMissingAndroidToolsV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

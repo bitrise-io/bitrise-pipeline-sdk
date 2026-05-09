@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreCocoapodsCacheV2Builder builds a restore-cocoapods-cache step with typed input methods.
+//
+// v1→v2: added `retries`
 type RestoreCocoapodsCacheV2Builder struct{ *Builder }
 
 // RestoreCocoapodsCacheV2 creates a restore-cocoapods-cache step builder (v2 by default).
@@ -21,6 +23,8 @@ type RestoreCocoapodsCacheV2Builder struct{ *Builder }
 //
 //	step.RestoreCocoapodsCacheV2("2")  // explicit default
 //	step.RestoreCocoapodsCacheV2("1")                  // older major
+//
+// v1→v2: added `retries`
 func RestoreCocoapodsCacheV2(version ...string) *RestoreCocoapodsCacheV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

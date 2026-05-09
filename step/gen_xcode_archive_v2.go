@@ -89,6 +89,8 @@ const (
 )
 
 // XcodeArchiveV2Builder builds a xcode-archive step with typed input methods.
+//
+// v1→v2: added `artifact_name`, `cache_level`, `disable_index_while_building`, `icloud_container_environment`, `verbose_log`; removed `is_export_xcarchive_zip`
 type XcodeArchiveV2Builder struct{ *Builder }
 
 // XcodeArchiveV2 creates a xcode-archive step builder (v2 by default).
@@ -96,6 +98,8 @@ type XcodeArchiveV2Builder struct{ *Builder }
 //
 //	step.XcodeArchiveV2("2")  // explicit default
 //	step.XcodeArchiveV2("1")                  // older major
+//
+// v1→v2: added `artifact_name`, `cache_level`, `disable_index_while_building`, `icloud_container_environment`, `verbose_log`; removed `is_export_xcarchive_zip`
 func XcodeArchiveV2(version ...string) *XcodeArchiveV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -47,6 +47,8 @@ const (
 )
 
 // KobitonExecuteTestV2Builder builds a kobiton-execute-test step with typed input methods.
+//
+// v1→v2: added `app_input`, `device_bundle`, `scriptless_automation`, `scriptless_timeout`; removed `app_id_input`
 type KobitonExecuteTestV2Builder struct{ *Builder }
 
 // KobitonExecuteTestV2 creates a kobiton-execute-test step builder (v2 by default).
@@ -54,6 +56,8 @@ type KobitonExecuteTestV2Builder struct{ *Builder }
 //
 //	step.KobitonExecuteTestV2("2")  // explicit default
 //	step.KobitonExecuteTestV2("1")                  // older major
+//
+// v1→v2: added `app_input`, `device_bundle`, `scriptless_automation`, `scriptless_timeout`; removed `app_id_input`
 func KobitonExecuteTestV2(version ...string) *KobitonExecuteTestV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

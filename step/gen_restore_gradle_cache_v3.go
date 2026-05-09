@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreGradleCacheV3Builder builds a restore-gradle-cache step with typed input methods.
+//
+// v2→v3: added `timeout`
 type RestoreGradleCacheV3Builder struct{ *Builder }
 
 // RestoreGradleCacheV3 creates a restore-gradle-cache step builder (v3 by default).
@@ -21,6 +23,8 @@ type RestoreGradleCacheV3Builder struct{ *Builder }
 //
 //	step.RestoreGradleCacheV3("3")  // explicit default
 //	step.RestoreGradleCacheV3("1")                  // older major
+//
+// v2→v3: added `timeout`
 func RestoreGradleCacheV3(version ...string) *RestoreGradleCacheV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

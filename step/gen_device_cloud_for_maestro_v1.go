@@ -110,6 +110,8 @@ const (
 )
 
 // DeviceCloudForMaestroV1Builder builds a device-cloud-for-maestro step with typed input methods.
+//
+// v0→v1: added `allure_path`, `android_no_snapshot`, `app_url`, `disable_animations`, `dry_run`, `html_path`, `json_file_name`, `junit_path`, `maestro_chrome_onboarding`, `metadata`, `quiet`, `show_crosshairs`, `use_beta`; removed `additional_app_binary_ids`, `additional_app_files`, `skip_chrome_onboarding`, `x86_arch`
 type DeviceCloudForMaestroV1Builder struct{ *Builder }
 
 // DeviceCloudForMaestroV1 creates a device-cloud-for-maestro step builder (v1 by default).
@@ -117,6 +119,8 @@ type DeviceCloudForMaestroV1Builder struct{ *Builder }
 //
 //	step.DeviceCloudForMaestroV1("1")  // explicit default
 //	step.DeviceCloudForMaestroV1("1")                  // older major
+//
+// v0→v1: added `allure_path`, `android_no_snapshot`, `app_url`, `disable_animations`, `dry_run`, `html_path`, `json_file_name`, `junit_path`, `maestro_chrome_onboarding`, `metadata`, `quiet`, `show_crosshairs`, `use_beta`; removed `additional_app_binary_ids`, `additional_app_files`, `skip_chrome_onboarding`, `x86_arch`
 func DeviceCloudForMaestroV1(version ...string) *DeviceCloudForMaestroV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -22,6 +22,8 @@ const (
 )
 
 // ProjectScannerV3Builder builds a project-scanner step with typed input methods.
+//
+// v1→v3: added `app_slug`, `branch`, `enable_repo_clone`, `git_http_password`, `git_http_username`, `icon_candidates_url`, `repository_url`, `ssh_rsa_private_key`, `verbose_log`; removed `output_dir`
 type ProjectScannerV3Builder struct{ *Builder }
 
 // ProjectScannerV3 creates a project-scanner step builder (v3 by default).
@@ -29,6 +31,8 @@ type ProjectScannerV3Builder struct{ *Builder }
 //
 //	step.ProjectScannerV3("3")  // explicit default
 //	step.ProjectScannerV3("1")                  // older major
+//
+// v1→v3: added `app_slug`, `branch`, `enable_repo_clone`, `git_http_password`, `git_http_username`, `icon_candidates_url`, `repository_url`, `ssh_rsa_private_key`, `verbose_log`; removed `output_dir`
 func ProjectScannerV3(version ...string) *ProjectScannerV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

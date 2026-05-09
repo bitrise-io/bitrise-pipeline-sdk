@@ -14,6 +14,8 @@ const (
 )
 
 // UpdateGitopsRepositoryV1Builder builds a update-gitops-repository step with typed input methods.
+//
+// v0→v1: added `deploy_user`
 type UpdateGitopsRepositoryV1Builder struct{ *Builder }
 
 // UpdateGitopsRepositoryV1 creates a update-gitops-repository step builder (v1 by default).
@@ -21,6 +23,8 @@ type UpdateGitopsRepositoryV1Builder struct{ *Builder }
 //
 //	step.UpdateGitopsRepositoryV1("1")  // explicit default
 //	step.UpdateGitopsRepositoryV1("1")                  // older major
+//
+// v0→v1: added `deploy_user`
 func UpdateGitopsRepositoryV1(version ...string) *UpdateGitopsRepositoryV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

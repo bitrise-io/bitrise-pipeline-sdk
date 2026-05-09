@@ -57,6 +57,8 @@ const (
 )
 
 // ExportXcarchiveV2Builder builds a export-xcarchive step with typed input methods.
+//
+// v1→v2: added `product`; removed `legacy_export_provisioning_profile_name`
 type ExportXcarchiveV2Builder struct{ *Builder }
 
 // ExportXcarchiveV2 creates a export-xcarchive step builder (v2 by default).
@@ -64,6 +66,8 @@ type ExportXcarchiveV2Builder struct{ *Builder }
 //
 //	step.ExportXcarchiveV2("2")  // explicit default
 //	step.ExportXcarchiveV2("1")                  // older major
+//
+// v1→v2: added `product`; removed `legacy_export_provisioning_profile_name`
 func ExportXcarchiveV2(version ...string) *ExportXcarchiveV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

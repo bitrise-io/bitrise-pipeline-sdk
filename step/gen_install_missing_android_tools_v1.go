@@ -14,6 +14,8 @@ const (
 )
 
 // InstallMissingAndroidToolsV1Builder builds a install-missing-android-tools step with typed input methods.
+//
+// v0→v1: added `gradlew_path`
 type InstallMissingAndroidToolsV1Builder struct{ *Builder }
 
 // InstallMissingAndroidToolsV1 creates a install-missing-android-tools step builder (v1 by default).
@@ -21,6 +23,8 @@ type InstallMissingAndroidToolsV1Builder struct{ *Builder }
 //
 //	step.InstallMissingAndroidToolsV1("1")  // explicit default
 //	step.InstallMissingAndroidToolsV1("1")                  // older major
+//
+// v0→v1: added `gradlew_path`
 func InstallMissingAndroidToolsV1(version ...string) *InstallMissingAndroidToolsV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -14,6 +14,8 @@ const (
 )
 
 // BitbucketSnippetRunnerV1Builder builds a bitbucket-snippet-runner step with typed input methods.
+//
+// v0→v1: added `script_args`, `working_dir`
 type BitbucketSnippetRunnerV1Builder struct{ *Builder }
 
 // BitbucketSnippetRunnerV1 creates a bitbucket-snippet-runner step builder (v1 by default).
@@ -21,6 +23,8 @@ type BitbucketSnippetRunnerV1Builder struct{ *Builder }
 //
 //	step.BitbucketSnippetRunnerV1("1")  // explicit default
 //	step.BitbucketSnippetRunnerV1("1")                  // older major
+//
+// v0→v1: added `script_args`, `working_dir`
 func BitbucketSnippetRunnerV1(version ...string) *BitbucketSnippetRunnerV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

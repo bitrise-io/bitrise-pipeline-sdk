@@ -6,6 +6,8 @@ package step
 import "time"
 
 // GithubStatusV1Builder builds a github-status step with typed input methods.
+//
+// v0→v1: added `set_specific_status`, `status_identifier`
 type GithubStatusV1Builder struct{ *Builder }
 
 // GithubStatusV1 creates a github-status step builder (v1 by default).
@@ -13,6 +15,8 @@ type GithubStatusV1Builder struct{ *Builder }
 //
 //	step.GithubStatusV1("1")  // explicit default
 //	step.GithubStatusV1("1")                  // older major
+//
+// v0→v1: added `set_specific_status`, `status_identifier`
 func GithubStatusV1(version ...string) *GithubStatusV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

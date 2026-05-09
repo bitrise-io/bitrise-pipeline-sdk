@@ -30,6 +30,8 @@ const (
 )
 
 // CocoapodsInstallV2Builder builds a cocoapods-install step with typed input methods.
+//
+// v1→v2: added `command`; removed `install_cocoapods_version`, `is_update_cocoapods`
 type CocoapodsInstallV2Builder struct{ *Builder }
 
 // CocoapodsInstallV2 creates a cocoapods-install step builder (v2 by default).
@@ -37,6 +39,8 @@ type CocoapodsInstallV2Builder struct{ *Builder }
 //
 //	step.CocoapodsInstallV2("2")  // explicit default
 //	step.CocoapodsInstallV2("1")                  // older major
+//
+// v1→v2: added `command`; removed `install_cocoapods_version`, `is_update_cocoapods`
 func CocoapodsInstallV2(version ...string) *CocoapodsInstallV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

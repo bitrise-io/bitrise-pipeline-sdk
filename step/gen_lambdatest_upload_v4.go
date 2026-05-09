@@ -14,6 +14,8 @@ const (
 )
 
 // LambdatestUploadV4Builder builds a lambdatest-upload step with typed input methods.
+//
+// v3→v4: added `app_visibility`, `show_debug_logs`
 type LambdatestUploadV4Builder struct{ *Builder }
 
 // LambdatestUploadV4 creates a lambdatest-upload step builder (v4 by default).
@@ -21,6 +23,8 @@ type LambdatestUploadV4Builder struct{ *Builder }
 //
 //	step.LambdatestUploadV4("4")  // explicit default
 //	step.LambdatestUploadV4("1")                  // older major
+//
+// v3→v4: added `app_visibility`, `show_debug_logs`
 func LambdatestUploadV4(version ...string) *LambdatestUploadV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

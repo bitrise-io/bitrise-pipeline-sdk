@@ -47,6 +47,8 @@ const (
 )
 
 // XcodeBuildForSimulatorV1Builder builds a xcode-build-for-simulator step with typed input methods.
+//
+// v0→v1: added `destination`, `log_formatter`, `perform_clean_action`, `xcconfig_content`; removed `code_signing_allowed`, `disable_index_while_building`, `is_clean_build`, `output_tool`, `simulator_device`, `simulator_os_version`, `simulator_platform`, `workdir`
 type XcodeBuildForSimulatorV1Builder struct{ *Builder }
 
 // XcodeBuildForSimulatorV1 creates a xcode-build-for-simulator step builder (v1 by default).
@@ -54,6 +56,8 @@ type XcodeBuildForSimulatorV1Builder struct{ *Builder }
 //
 //	step.XcodeBuildForSimulatorV1("1")  // explicit default
 //	step.XcodeBuildForSimulatorV1("1")                  // older major
+//
+// v0→v1: added `destination`, `log_formatter`, `perform_clean_action`, `xcconfig_content`; removed `code_signing_allowed`, `disable_index_while_building`, `is_clean_build`, `output_tool`, `simulator_device`, `simulator_os_version`, `simulator_platform`, `workdir`
 func XcodeBuildForSimulatorV1(version ...string) *XcodeBuildForSimulatorV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

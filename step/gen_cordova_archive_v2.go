@@ -55,6 +55,8 @@ const (
 )
 
 // CordovaArchiveV2Builder builds a cordova-archive step with typed input methods.
+//
+// v1→v2: added `android_app_type`, `cache_local_deps`, `run_cordova_prepare`; removed `add_platform`, `readd_platform`
 type CordovaArchiveV2Builder struct{ *Builder }
 
 // CordovaArchiveV2 creates a cordova-archive step builder (v2 by default).
@@ -62,6 +64,8 @@ type CordovaArchiveV2Builder struct{ *Builder }
 //
 //	step.CordovaArchiveV2("2")  // explicit default
 //	step.CordovaArchiveV2("1")                  // older major
+//
+// v1→v2: added `android_app_type`, `cache_local_deps`, `run_cordova_prepare`; removed `add_platform`, `readd_platform`
 func CordovaArchiveV2(version ...string) *CordovaArchiveV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

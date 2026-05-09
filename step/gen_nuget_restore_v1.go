@@ -17,6 +17,8 @@ const (
 
 // NugetRestoreV1Builder builds a nuget-restore step with typed input methods.
 //
+// v0→v1: added `cache_level`
+//
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 type NugetRestoreV1Builder struct{ *Builder }
 
@@ -25,6 +27,8 @@ type NugetRestoreV1Builder struct{ *Builder }
 //
 //	step.NugetRestoreV1("1")  // explicit default
 //	step.NugetRestoreV1("1")                  // older major
+//
+// v0→v1: added `cache_level`
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 func NugetRestoreV1(version ...string) *NugetRestoreV1Builder {

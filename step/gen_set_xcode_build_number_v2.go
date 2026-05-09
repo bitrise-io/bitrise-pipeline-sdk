@@ -14,6 +14,8 @@ const (
 )
 
 // SetXcodeBuildNumberV2Builder builds a set-xcode-build-number step with typed input methods.
+//
+// v1→v2: added `configuration`, `project_path`, `scheme`, `target`, `verbose`; removed `plist_path`
 type SetXcodeBuildNumberV2Builder struct{ *Builder }
 
 // SetXcodeBuildNumberV2 creates a set-xcode-build-number step builder (v2 by default).
@@ -21,6 +23,8 @@ type SetXcodeBuildNumberV2Builder struct{ *Builder }
 //
 //	step.SetXcodeBuildNumberV2("2")  // explicit default
 //	step.SetXcodeBuildNumberV2("1")                  // older major
+//
+// v1→v2: added `configuration`, `project_path`, `scheme`, `target`, `verbose`; removed `plist_path`
 func SetXcodeBuildNumberV2(version ...string) *SetXcodeBuildNumberV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

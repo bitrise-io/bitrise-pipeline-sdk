@@ -39,6 +39,8 @@ const (
 )
 
 // IonicArchiveV1Builder builds a ionic-archive step with typed input methods.
+//
+// v0→v1: added `cordova_android_version`, `cordova_ios_version`, `readd_platform`
 type IonicArchiveV1Builder struct{ *Builder }
 
 // IonicArchiveV1 creates a ionic-archive step builder (v1 by default).
@@ -46,6 +48,8 @@ type IonicArchiveV1Builder struct{ *Builder }
 //
 //	step.IonicArchiveV1("1")  // explicit default
 //	step.IonicArchiveV1("1")                  // older major
+//
+// v0→v1: added `cordova_android_version`, `cordova_ios_version`, `readd_platform`
 func IonicArchiveV1(version ...string) *IonicArchiveV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

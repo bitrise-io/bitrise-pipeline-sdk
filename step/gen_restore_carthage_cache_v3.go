@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreCarthageCacheV3Builder builds a restore-carthage-cache step with typed input methods.
+//
+// v2→v3: added `timeout`
 type RestoreCarthageCacheV3Builder struct{ *Builder }
 
 // RestoreCarthageCacheV3 creates a restore-carthage-cache step builder (v3 by default).
@@ -21,6 +23,8 @@ type RestoreCarthageCacheV3Builder struct{ *Builder }
 //
 //	step.RestoreCarthageCacheV3("3")  // explicit default
 //	step.RestoreCarthageCacheV3("1")                  // older major
+//
+// v2→v3: added `timeout`
 func RestoreCarthageCacheV3(version ...string) *RestoreCarthageCacheV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

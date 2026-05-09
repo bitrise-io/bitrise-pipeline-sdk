@@ -1062,6 +1062,99 @@ func TestDeleteDeprecatedFiles_MissingFileIsNotAnError(t *testing.T) {
 	assert.NoError(t, err)
 }
 
+// ---- changelog helpers -------------------------------------------------------
+
+func TestInputKeySet(t *testing.T) {
+	inputs := []inputDef{
+		{Key: "branch"},
+		{Key: "clone_depth"},
+		{Key: "pull_request_id"},
+	}
+	got := inputKeySet(inputs)
+	assert.True(t, got["branch"])
+	assert.True(t, got["clone_depth"])
+	assert.True(t, got["pull_request_id"])
+	assert.False(t, got["missing"])
+	assert.Len(t, got, 3)
+}
+
+func TestBuildChangelogNote_Added(t *testing.T) {
+	prev := map[string]bool{"branch": true, "depth": true}
+	cur := map[string]bool{"branch": true, "depth": true, "token": true}
+	note := buildChangelogNote(4, 5, prev, cur)
+	assert.Equal(t, "v4→v5: added `token`", note)
+}
+
+func TestBuildChangelogNote_Removed(t *testing.T) {
+	prev := map[string]bool{"branch": true, "output_tool": true}
+	cur := map[string]bool{"branch": true}
+	note := buildChangelogNote(5, 6, prev, cur)
+	assert.Equal(t, "v5→v6: removed `output_tool`", note)
+}
+
+func TestBuildChangelogNote_Mixed(t *testing.T) {
+	prev := map[string]bool{"branch": true, "output_tool": true}
+	cur := map[string]bool{"branch": true, "destination": true, "token": true}
+	note := buildChangelogNote(5, 6, prev, cur)
+	// added: destination, token (sorted); removed: output_tool
+	assert.Equal(t, "v5→v6: added `destination`, `token`; removed `output_tool`", note)
+}
+
+func TestBuildChangelogNote_NoChange(t *testing.T) {
+	same := map[string]bool{"branch": true, "depth": true}
+	note := buildChangelogNote(5, 6, same, same)
+	assert.Empty(t, note)
+}
+
+func TestBuildChangelogNote_EmptyPrev(t *testing.T) {
+	cur := map[string]bool{"branch": true}
+	note := buildChangelogNote(0, 1, map[string]bool{}, cur)
+	assert.Equal(t, "v0→v1: added `branch`", note)
+}
+
+func TestGenerateStep_MultiMajor_WritesChangelogNote(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{
+			"my-step": {"1.0.0", "2.0.0"},
+		},
+		stepYML: map[string][]byte{
+			"my-step/1.0.0": []byte("title: My Step\ninputs:\n  - branch: main\n    opts:\n      title: Branch\n"),
+			"my-step/2.0.0": []byte("title: My Step\ninputs:\n  - branch: main\n    opts:\n      title: Branch\n  - token: \"\"\n    opts:\n      title: Token\n"),
+		},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	// v2 file should carry the changelog note in its type/constructor comments.
+	v2Data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_v2.go"))
+	content := string(v2Data)
+	assert.Contains(t, content, "v1→v2: added `token`",
+		"versioned builder godoc should include the changelog note")
+}
+
+func TestGenerateStep_MultiMajor_NoNoteForFirstMajor(t *testing.T) {
+	outputDir := t.TempDir()
+	src := fakeSource{
+		versions: map[string][]string{
+			"my-step": {"1.0.0", "2.0.0"},
+		},
+		stepYML: map[string][]byte{
+			"my-step/1.0.0": []byte("title: My Step\ninputs:\n  - branch: main\n    opts:\n      title: Branch\n"),
+			"my-step/2.0.0": []byte("title: My Step\ninputs:\n  - branch: main\n    opts:\n      title: Branch\n"),
+		},
+	}
+
+	_, err := generateStep("my-step", outputDir, newTmpls(t), src, &sync.Mutex{}, false)
+	require.NoError(t, err)
+
+	// v1 file (first major) has no predecessor, so no changelog note.
+	v1Data, _ := os.ReadFile(filepath.Join(outputDir, "gen_my_step_v1.go"))
+	assert.NotContains(t, string(v1Data), "v0→v1")
+	assert.NotContains(t, string(v1Data), "v1→v")
+}
+
 // ---- test helpers ----------------------------------------------------------
 
 // writeTempFile writes content to a new temp file and returns its path.

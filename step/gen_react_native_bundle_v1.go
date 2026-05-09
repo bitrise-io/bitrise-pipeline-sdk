@@ -22,6 +22,8 @@ const (
 )
 
 // ReactNativeBundleV1Builder builds a react-native-bundle step with typed input methods.
+//
+// v0→v1: added `binary_path`
 type ReactNativeBundleV1Builder struct{ *Builder }
 
 // ReactNativeBundleV1 creates a react-native-bundle step builder (v1 by default).
@@ -29,6 +31,8 @@ type ReactNativeBundleV1Builder struct{ *Builder }
 //
 //	step.ReactNativeBundleV1("1")  // explicit default
 //	step.ReactNativeBundleV1("1")                  // older major
+//
+// v0→v1: added `binary_path`
 func ReactNativeBundleV1(version ...string) *ReactNativeBundleV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

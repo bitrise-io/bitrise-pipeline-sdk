@@ -54,6 +54,8 @@ const (
 )
 
 // GitCloneV5Builder builds a git-clone step with typed input methods.
+//
+// v4→v5: added `fetch_tags`, `sparse_directories`
 type GitCloneV5Builder struct{ *Builder }
 
 // GitCloneV5 creates a git-clone step builder (v5 by default).
@@ -61,6 +63,8 @@ type GitCloneV5Builder struct{ *Builder }
 //
 //	step.GitCloneV5("5")  // explicit default
 //	step.GitCloneV5("1")                  // older major
+//
+// v4→v5: added `fetch_tags`, `sparse_directories`
 func GitCloneV5(version ...string) *GitCloneV5Builder {
 	v := "5"
 	if len(version) > 0 && version[0] != "" {

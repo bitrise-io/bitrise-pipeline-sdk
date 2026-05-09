@@ -32,6 +32,8 @@ const (
 
 // XamarinTestCloudForAndroidV2Builder builds a xamarin-test-cloud-for-android step with typed input methods.
 //
+// v1→v2: added `build_tool`
+//
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 type XamarinTestCloudForAndroidV2Builder struct{ *Builder }
 
@@ -40,6 +42,8 @@ type XamarinTestCloudForAndroidV2Builder struct{ *Builder }
 //
 //	step.XamarinTestCloudForAndroidV2("2")  // explicit default
 //	step.XamarinTestCloudForAndroidV2("1")                  // older major
+//
+// v1→v2: added `build_tool`
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 func XamarinTestCloudForAndroidV2(version ...string) *XamarinTestCloudForAndroidV2Builder {

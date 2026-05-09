@@ -31,6 +31,8 @@ const (
 
 // CachePushV2Builder builds a cache-push step with typed input methods.
 //
+// v1→v2: removed `compare_cache_info_path`
+//
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
 type CachePushV2Builder struct{ *Builder }
 
@@ -39,6 +41,8 @@ type CachePushV2Builder struct{ *Builder }
 //
 //	step.CachePushV2("2")  // explicit default
 //	step.CachePushV2("1")                  // older major
+//
+// v1→v2: removed `compare_cache_info_path`
 //
 // Deprecated: The branch-based caching steps are deprecated and being replaced by key-based caching.  Check out our migration guide: [Migrating from branch-based caching to key-based caching](https://devcenter.bitrise.io/en/dependencies-and-caching/branch-based-caching/migrating-from-branch-based-caching-to-key-based-caching.html).
 func CachePushV2(version ...string) *CachePushV2Builder {

@@ -47,6 +47,8 @@ const (
 )
 
 // VirtualDeviceTestingForAndroidV1Builder builds a virtual-device-testing-for-android step with typed input methods.
+//
+// v0→v1: added `app_path`, `auto_google_login`, `num_flaky_test_attempts`, `obb_files_list`, `quarantined_tests`, `robo_scenario_file`, `use_verbose_log`
 type VirtualDeviceTestingForAndroidV1Builder struct{ *Builder }
 
 // VirtualDeviceTestingForAndroidV1 creates a virtual-device-testing-for-android step builder (v1 by default).
@@ -54,6 +56,8 @@ type VirtualDeviceTestingForAndroidV1Builder struct{ *Builder }
 //
 //	step.VirtualDeviceTestingForAndroidV1("1")  // explicit default
 //	step.VirtualDeviceTestingForAndroidV1("1")                  // older major
+//
+// v0→v1: added `app_path`, `auto_google_login`, `num_flaky_test_attempts`, `obb_files_list`, `quarantined_tests`, `robo_scenario_file`, `use_verbose_log`
 func VirtualDeviceTestingForAndroidV1(version ...string) *VirtualDeviceTestingForAndroidV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

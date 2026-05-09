@@ -22,6 +22,8 @@ const (
 )
 
 // UpdateGitopsRepositoryV3Builder builds a update-gitops-repository step with typed input methods.
+//
+// v2→v3: added `deployments`; removed `deploy_path`, `files`, `values`
 type UpdateGitopsRepositoryV3Builder struct{ *Builder }
 
 // UpdateGitopsRepositoryV3 creates a update-gitops-repository step builder (v3 by default).
@@ -29,6 +31,8 @@ type UpdateGitopsRepositoryV3Builder struct{ *Builder }
 //
 //	step.UpdateGitopsRepositoryV3("3")  // explicit default
 //	step.UpdateGitopsRepositoryV3("1")                  // older major
+//
+// v2→v3: added `deployments`; removed `deploy_path`, `files`, `values`
 func UpdateGitopsRepositoryV3(version ...string) *UpdateGitopsRepositoryV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

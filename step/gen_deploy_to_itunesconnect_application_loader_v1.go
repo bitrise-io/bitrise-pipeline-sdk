@@ -26,6 +26,8 @@ const (
 )
 
 // DeployToItunesconnectApplicationLoaderV1Builder builds a deploy-to-itunesconnect-application-loader step with typed input methods.
+//
+// v0→v1: added `connection`, `platform`, `retries`
 type DeployToItunesconnectApplicationLoaderV1Builder struct{ *Builder }
 
 // DeployToItunesconnectApplicationLoaderV1 creates a deploy-to-itunesconnect-application-loader step builder (v1 by default).
@@ -33,6 +35,8 @@ type DeployToItunesconnectApplicationLoaderV1Builder struct{ *Builder }
 //
 //	step.DeployToItunesconnectApplicationLoaderV1("1")  // explicit default
 //	step.DeployToItunesconnectApplicationLoaderV1("1")                  // older major
+//
+// v0→v1: added `connection`, `platform`, `retries`
 func DeployToItunesconnectApplicationLoaderV1(version ...string) *DeployToItunesconnectApplicationLoaderV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

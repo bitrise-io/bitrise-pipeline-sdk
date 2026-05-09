@@ -22,6 +22,8 @@ const (
 )
 
 // AppliveryAndroidV1Builder builds a applivery-android step with typed input methods.
+//
+// v0→v1: added `filter`
 type AppliveryAndroidV1Builder struct{ *Builder }
 
 // AppliveryAndroidV1 creates a applivery-android step builder (v1 by default).
@@ -29,6 +31,8 @@ type AppliveryAndroidV1Builder struct{ *Builder }
 //
 //	step.AppliveryAndroidV1("1")  // explicit default
 //	step.AppliveryAndroidV1("1")                  // older major
+//
+// v0→v1: added `filter`
 func AppliveryAndroidV1(version ...string) *AppliveryAndroidV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

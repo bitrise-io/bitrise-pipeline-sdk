@@ -38,6 +38,8 @@ const (
 )
 
 // BrewInstallV1Builder builds a brew-install step with typed input methods.
+//
+// v0→v1: added `upgrade_dependents`; removed `cache_enabled`
 type BrewInstallV1Builder struct{ *Builder }
 
 // BrewInstallV1 creates a brew-install step builder (v1 by default).
@@ -45,6 +47,8 @@ type BrewInstallV1Builder struct{ *Builder }
 //
 //	step.BrewInstallV1("1")  // explicit default
 //	step.BrewInstallV1("1")                  // older major
+//
+// v0→v1: added `upgrade_dependents`; removed `cache_enabled`
 func BrewInstallV1(version ...string) *BrewInstallV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

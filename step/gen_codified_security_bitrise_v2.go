@@ -14,6 +14,8 @@ const (
 )
 
 // CodifiedSecurityBitriseV2Builder builds a codified-security-bitrise step with typed input methods.
+//
+// v1→v2: added `app_path`, `is_xamarin_ios`, `xamarin_ios_project_folder`; removed `apk_path`, `ipa_path`
 type CodifiedSecurityBitriseV2Builder struct{ *Builder }
 
 // CodifiedSecurityBitriseV2 creates a codified-security-bitrise step builder (v2 by default).
@@ -21,6 +23,8 @@ type CodifiedSecurityBitriseV2Builder struct{ *Builder }
 //
 //	step.CodifiedSecurityBitriseV2("2")  // explicit default
 //	step.CodifiedSecurityBitriseV2("1")                  // older major
+//
+// v1→v2: added `app_path`, `is_xamarin_ios`, `xamarin_ios_project_folder`; removed `apk_path`, `ipa_path`
 func CodifiedSecurityBitriseV2(version ...string) *CodifiedSecurityBitriseV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

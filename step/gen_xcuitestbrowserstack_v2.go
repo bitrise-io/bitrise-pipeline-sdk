@@ -14,6 +14,8 @@ const (
 )
 
 // XcuitestbrowserstackV2Builder builds a xcuitestbrowserstack step with typed input methods.
+//
+// v1→v2: added `browserstack_env_var_name`, `browserstack_env_var_value`; removed `browserstack_env_value`, `browserstack_env_var`
 type XcuitestbrowserstackV2Builder struct{ *Builder }
 
 // XcuitestbrowserstackV2 creates a xcuitestbrowserstack step builder (v2 by default).
@@ -21,6 +23,8 @@ type XcuitestbrowserstackV2Builder struct{ *Builder }
 //
 //	step.XcuitestbrowserstackV2("2")  // explicit default
 //	step.XcuitestbrowserstackV2("1")                  // older major
+//
+// v1→v2: added `browserstack_env_var_name`, `browserstack_env_var_value`; removed `browserstack_env_value`, `browserstack_env_var`
 func XcuitestbrowserstackV2(version ...string) *XcuitestbrowserstackV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

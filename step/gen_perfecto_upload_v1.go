@@ -6,6 +6,8 @@ package step
 import "time"
 
 // PerfectoUploadV1Builder builds a perfecto-upload step with typed input methods.
+//
+// v0→v1: added `perfecto_locator`, `perfecto_securityToken`; removed `perfecto_accesskey`, `perfecto_filepath`
 type PerfectoUploadV1Builder struct{ *Builder }
 
 // PerfectoUploadV1 creates a perfecto-upload step builder (v1 by default).
@@ -13,6 +15,8 @@ type PerfectoUploadV1Builder struct{ *Builder }
 //
 //	step.PerfectoUploadV1("1")  // explicit default
 //	step.PerfectoUploadV1("1")                  // older major
+//
+// v0→v1: added `perfecto_locator`, `perfecto_securityToken`; removed `perfecto_accesskey`, `perfecto_filepath`
 func PerfectoUploadV1(version ...string) *PerfectoUploadV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

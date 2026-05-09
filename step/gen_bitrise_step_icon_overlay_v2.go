@@ -6,6 +6,8 @@ package step
 import "time"
 
 // BitriseStepIconOverlayV2Builder builds a bitrise-step-icon-overlay step with typed input methods.
+//
+// v1→v2: added `font`
 type BitriseStepIconOverlayV2Builder struct{ *Builder }
 
 // BitriseStepIconOverlayV2 creates a bitrise-step-icon-overlay step builder (v2 by default).
@@ -13,6 +15,8 @@ type BitriseStepIconOverlayV2Builder struct{ *Builder }
 //
 //	step.BitriseStepIconOverlayV2("2")  // explicit default
 //	step.BitriseStepIconOverlayV2("1")                  // older major
+//
+// v1→v2: added `font`
 func BitriseStepIconOverlayV2(version ...string) *BitriseStepIconOverlayV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

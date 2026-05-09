@@ -6,6 +6,8 @@ package step
 import "time"
 
 // NvmV1Builder builds a nvm step with typed input methods.
+//
+// v0→v1: added `working_dir`
 type NvmV1Builder struct{ *Builder }
 
 // NvmV1 creates a nvm step builder (v1 by default).
@@ -13,6 +15,8 @@ type NvmV1Builder struct{ *Builder }
 //
 //	step.NvmV1("1")  // explicit default
 //	step.NvmV1("1")                  // older major
+//
+// v0→v1: added `working_dir`
 func NvmV1(version ...string) *NvmV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

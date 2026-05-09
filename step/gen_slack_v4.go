@@ -46,6 +46,8 @@ const (
 )
 
 // SlackV4Builder builds a slack step with typed input methods.
+//
+// v3→v4: added `blocks`, `build_status`, `footer_icon_on_error`, `footer_on_error`, `pipeline_build_status`, `ts`, `ts_on_error`, `workspace_slack__integration_id_on_error`, `workspace_slack_integration_id`
 type SlackV4Builder struct{ *Builder }
 
 // SlackV4 creates a slack step builder (v4 by default).
@@ -53,6 +55,8 @@ type SlackV4Builder struct{ *Builder }
 //
 //	step.SlackV4("4")  // explicit default
 //	step.SlackV4("1")                  // older major
+//
+// v3→v4: added `blocks`, `build_status`, `footer_icon_on_error`, `footer_on_error`, `pipeline_build_status`, `ts`, `ts_on_error`, `workspace_slack__integration_id_on_error`, `workspace_slack_integration_id`
 func SlackV4(version ...string) *SlackV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

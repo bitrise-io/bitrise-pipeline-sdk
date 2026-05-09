@@ -6,6 +6,8 @@ package step
 import "time"
 
 // NpmV2Builder builds a npm step with typed input methods.
+//
+// v1→v2: removed `cache_local_deps`
 type NpmV2Builder struct{ *Builder }
 
 // NpmV2 creates a npm step builder (v2 by default).
@@ -13,6 +15,8 @@ type NpmV2Builder struct{ *Builder }
 //
 //	step.NpmV2("2")  // explicit default
 //	step.NpmV2("1")                  // older major
+//
+// v1→v2: removed `cache_local_deps`
 func NpmV2(version ...string) *NpmV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

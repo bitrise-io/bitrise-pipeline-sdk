@@ -6,6 +6,8 @@ package step
 import "time"
 
 // CalabashIosUitestV1Builder builds a calabash-ios-uitest step with typed input methods.
+//
+// v0→v1: added `additional_options`, `app_path`, `calabash_cucumber_version`, `gem_file_path`, `work_dir`
 type CalabashIosUitestV1Builder struct{ *Builder }
 
 // CalabashIosUitestV1 creates a calabash-ios-uitest step builder (v1 by default).
@@ -13,6 +15,8 @@ type CalabashIosUitestV1Builder struct{ *Builder }
 //
 //	step.CalabashIosUitestV1("1")  // explicit default
 //	step.CalabashIosUitestV1("1")                  // older major
+//
+// v0→v1: added `additional_options`, `app_path`, `calabash_cucumber_version`, `gem_file_path`, `work_dir`
 func CalabashIosUitestV1(version ...string) *CalabashIosUitestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

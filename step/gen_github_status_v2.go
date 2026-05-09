@@ -25,6 +25,8 @@ const (
 )
 
 // GithubStatusV2Builder builds a github-status step with typed input methods.
+//
+// v1→v2: added `description`, `verbose`
 type GithubStatusV2Builder struct{ *Builder }
 
 // GithubStatusV2 creates a github-status step builder (v2 by default).
@@ -32,6 +34,8 @@ type GithubStatusV2Builder struct{ *Builder }
 //
 //	step.GithubStatusV2("2")  // explicit default
 //	step.GithubStatusV2("1")                  // older major
+//
+// v1→v2: added `description`, `verbose`
 func GithubStatusV2(version ...string) *GithubStatusV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

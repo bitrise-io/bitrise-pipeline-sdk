@@ -46,6 +46,8 @@ const (
 )
 
 // GitCloneV6Builder builds a git-clone step with typed input methods.
+//
+// v5→v6: added `submodule_update_depth`; removed `limit_submodule_update_depth`
 type GitCloneV6Builder struct{ *Builder }
 
 // GitCloneV6 creates a git-clone step builder (v6 by default).
@@ -53,6 +55,8 @@ type GitCloneV6Builder struct{ *Builder }
 //
 //	step.GitCloneV6("6")  // explicit default
 //	step.GitCloneV6("1")                  // older major
+//
+// v5→v6: added `submodule_update_depth`; removed `limit_submodule_update_depth`
 func GitCloneV6(version ...string) *GitCloneV6Builder {
 	v := "6"
 	if len(version) > 0 && version[0] != "" {

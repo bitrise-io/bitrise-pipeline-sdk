@@ -6,6 +6,8 @@ package step
 import "time"
 
 // ScanWithAppsweepV2Builder builds a scan-with-appsweep step with typed input methods.
+//
+// v1→v2: added `ios_archive_path`, `ios_dsyms_dir_path`
 type ScanWithAppsweepV2Builder struct{ *Builder }
 
 // ScanWithAppsweepV2 creates a scan-with-appsweep step builder (v2 by default).
@@ -13,6 +15,8 @@ type ScanWithAppsweepV2Builder struct{ *Builder }
 //
 //	step.ScanWithAppsweepV2("2")  // explicit default
 //	step.ScanWithAppsweepV2("1")                  // older major
+//
+// v1→v2: added `ios_archive_path`, `ios_dsyms_dir_path`
 func ScanWithAppsweepV2(version ...string) *ScanWithAppsweepV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

@@ -6,6 +6,8 @@ package step
 import "time"
 
 // ChangeAndroidVersioncodeAndVersionnameV1Builder builds a change-android-versioncode-and-versionname step with typed input methods.
+//
+// v0→v1: added `version_code_offset`
 type ChangeAndroidVersioncodeAndVersionnameV1Builder struct{ *Builder }
 
 // ChangeAndroidVersioncodeAndVersionnameV1 creates a change-android-versioncode-and-versionname step builder (v1 by default).
@@ -13,6 +15,8 @@ type ChangeAndroidVersioncodeAndVersionnameV1Builder struct{ *Builder }
 //
 //	step.ChangeAndroidVersioncodeAndVersionnameV1("1")  // explicit default
 //	step.ChangeAndroidVersioncodeAndVersionnameV1("1")                  // older major
+//
+// v0→v1: added `version_code_offset`
 func ChangeAndroidVersioncodeAndVersionnameV1(version ...string) *ChangeAndroidVersioncodeAndVersionnameV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -50,6 +50,8 @@ const (
 )
 
 // SignApkV2Builder builds a sign-apk step with typed input methods.
+//
+// v1→v2: added `signer_tool`; removed `use_apk_signer`
 type SignApkV2Builder struct{ *Builder }
 
 // SignApkV2 creates a sign-apk step builder (v2 by default).
@@ -57,6 +59,8 @@ type SignApkV2Builder struct{ *Builder }
 //
 //	step.SignApkV2("2")  // explicit default
 //	step.SignApkV2("1")                  // older major
+//
+// v1→v2: added `signer_tool`; removed `use_apk_signer`
 func SignApkV2(version ...string) *SignApkV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

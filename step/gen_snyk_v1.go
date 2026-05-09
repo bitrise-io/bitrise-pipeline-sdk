@@ -40,6 +40,8 @@ const (
 )
 
 // SnykV1Builder builds a snyk step with typed input methods.
+//
+// v0→v1: added `create_report`
 type SnykV1Builder struct{ *Builder }
 
 // SnykV1 creates a snyk step builder (v1 by default).
@@ -47,6 +49,8 @@ type SnykV1Builder struct{ *Builder }
 //
 //	step.SnykV1("1")  // explicit default
 //	step.SnykV1("1")                  // older major
+//
+// v0→v1: added `create_report`
 func SnykV1(version ...string) *SnykV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

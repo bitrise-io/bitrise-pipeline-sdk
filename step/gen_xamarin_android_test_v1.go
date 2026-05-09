@@ -15,6 +15,8 @@ const (
 
 // XamarinAndroidTestV1Builder builds a xamarin-android-test step with typed input methods.
 //
+// v0→v1: added `build_tool`, `test_to_run`; removed `is_clean_build`, `xamarin_test_project`
+//
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 type XamarinAndroidTestV1Builder struct{ *Builder }
 
@@ -23,6 +25,8 @@ type XamarinAndroidTestV1Builder struct{ *Builder }
 //
 //	step.XamarinAndroidTestV1("1")  // explicit default
 //	step.XamarinAndroidTestV1("1")                  // older major
+//
+// v0→v1: added `build_tool`, `test_to_run`; removed `is_clean_build`, `xamarin_test_project`
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 func XamarinAndroidTestV1(version ...string) *XamarinAndroidTestV1Builder {

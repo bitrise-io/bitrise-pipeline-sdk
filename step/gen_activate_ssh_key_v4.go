@@ -22,6 +22,8 @@ const (
 )
 
 // ActivateSshKeyV4Builder builds a activate-ssh-key step with typed input methods.
+//
+// v3→v4: added `verbose`
 type ActivateSshKeyV4Builder struct{ *Builder }
 
 // ActivateSshKeyV4 creates a activate-ssh-key step builder (v4 by default).
@@ -29,6 +31,8 @@ type ActivateSshKeyV4Builder struct{ *Builder }
 //
 //	step.ActivateSshKeyV4("4")  // explicit default
 //	step.ActivateSshKeyV4("1")                  // older major
+//
+// v3→v4: added `verbose`
 func ActivateSshKeyV4(version ...string) *ActivateSshKeyV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

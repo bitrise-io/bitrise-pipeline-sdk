@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreCarthageCacheV2Builder builds a restore-carthage-cache step with typed input methods.
+//
+// v1→v2: added `retries`
 type RestoreCarthageCacheV2Builder struct{ *Builder }
 
 // RestoreCarthageCacheV2 creates a restore-carthage-cache step builder (v2 by default).
@@ -21,6 +23,8 @@ type RestoreCarthageCacheV2Builder struct{ *Builder }
 //
 //	step.RestoreCarthageCacheV2("2")  // explicit default
 //	step.RestoreCarthageCacheV2("1")                  // older major
+//
+// v1→v2: added `retries`
 func RestoreCarthageCacheV2(version ...string) *RestoreCarthageCacheV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

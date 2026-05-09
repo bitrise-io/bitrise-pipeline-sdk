@@ -6,6 +6,8 @@ package step
 import "time"
 
 // DataTheoremMobileSecureV1Builder builds a data-theorem-mobile-secure step with typed input methods.
+//
+// v0→v1: added `dt_upload_api_key`, `sourcemap`; removed `dt_api_upload_key`
 type DataTheoremMobileSecureV1Builder struct{ *Builder }
 
 // DataTheoremMobileSecureV1 creates a data-theorem-mobile-secure step builder (v1 by default).
@@ -13,6 +15,8 @@ type DataTheoremMobileSecureV1Builder struct{ *Builder }
 //
 //	step.DataTheoremMobileSecureV1("1")  // explicit default
 //	step.DataTheoremMobileSecureV1("1")                  // older major
+//
+// v0→v1: added `dt_upload_api_key`, `sourcemap`; removed `dt_api_upload_key`
 func DataTheoremMobileSecureV1(version ...string) *DataTheoremMobileSecureV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

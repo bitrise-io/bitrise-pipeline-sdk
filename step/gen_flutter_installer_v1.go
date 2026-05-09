@@ -14,6 +14,8 @@ const (
 )
 
 // FlutterInstallerV1Builder builds a flutter-installer step with typed input methods.
+//
+// v0→v1: removed `installation_bundle_url`, `is_update`
 type FlutterInstallerV1Builder struct{ *Builder }
 
 // FlutterInstallerV1 creates a flutter-installer step builder (v1 by default).
@@ -21,6 +23,8 @@ type FlutterInstallerV1Builder struct{ *Builder }
 //
 //	step.FlutterInstallerV1("1")  // explicit default
 //	step.FlutterInstallerV1("1")                  // older major
+//
+// v0→v1: removed `installation_bundle_url`, `is_update`
 func FlutterInstallerV1(version ...string) *FlutterInstallerV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

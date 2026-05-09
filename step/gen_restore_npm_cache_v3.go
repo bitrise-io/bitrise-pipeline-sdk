@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreNpmCacheV3Builder builds a restore-npm-cache step with typed input methods.
+//
+// v2→v3: added `timeout`
 type RestoreNpmCacheV3Builder struct{ *Builder }
 
 // RestoreNpmCacheV3 creates a restore-npm-cache step builder (v3 by default).
@@ -21,6 +23,8 @@ type RestoreNpmCacheV3Builder struct{ *Builder }
 //
 //	step.RestoreNpmCacheV3("3")  // explicit default
 //	step.RestoreNpmCacheV3("1")                  // older major
+//
+// v2→v3: added `timeout`
 func RestoreNpmCacheV3(version ...string) *RestoreNpmCacheV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

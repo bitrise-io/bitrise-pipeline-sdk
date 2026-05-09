@@ -14,6 +14,8 @@ const (
 )
 
 // YarnV1Builder builds a yarn step with typed input methods.
+//
+// v0→v1: removed `cache_local_deps`
 type YarnV1Builder struct{ *Builder }
 
 // YarnV1 creates a yarn step builder (v1 by default).
@@ -21,6 +23,8 @@ type YarnV1Builder struct{ *Builder }
 //
 //	step.YarnV1("1")  // explicit default
 //	step.YarnV1("1")                  // older major
+//
+// v0→v1: removed `cache_local_deps`
 func YarnV1(version ...string) *YarnV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -47,6 +47,8 @@ const (
 )
 
 // XcodeBuildForTestV2Builder builds a xcode-build-for-test step with typed input methods.
+//
+// v1→v2: added `api_key_id`, `api_key_issuer_id`, `api_key_path`, `test_device_list_path`, `test_plan`
 type XcodeBuildForTestV2Builder struct{ *Builder }
 
 // XcodeBuildForTestV2 creates a xcode-build-for-test step builder (v2 by default).
@@ -54,6 +56,8 @@ type XcodeBuildForTestV2Builder struct{ *Builder }
 //
 //	step.XcodeBuildForTestV2("2")  // explicit default
 //	step.XcodeBuildForTestV2("1")                  // older major
+//
+// v1→v2: added `api_key_id`, `api_key_issuer_id`, `api_key_path`, `test_device_list_path`, `test_plan`
 func XcodeBuildForTestV2(version ...string) *XcodeBuildForTestV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

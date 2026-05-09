@@ -23,6 +23,8 @@ const (
 )
 
 // CordovaPrepareV1Builder builds a cordova-prepare step with typed input methods.
+//
+// v0→v1: added `cache_local_deps`; removed `readd_platform`
 type CordovaPrepareV1Builder struct{ *Builder }
 
 // CordovaPrepareV1 creates a cordova-prepare step builder (v1 by default).
@@ -30,6 +32,8 @@ type CordovaPrepareV1Builder struct{ *Builder }
 //
 //	step.CordovaPrepareV1("1")  // explicit default
 //	step.CordovaPrepareV1("1")                  // older major
+//
+// v0→v1: added `cache_local_deps`; removed `readd_platform`
 func CordovaPrepareV1(version ...string) *CordovaPrepareV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

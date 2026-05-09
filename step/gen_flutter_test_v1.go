@@ -14,6 +14,8 @@ const (
 )
 
 // FlutterTestV1Builder builds a flutter-test step with typed input methods.
+//
+// v0→v1: added `tests_path_pattern`
 type FlutterTestV1Builder struct{ *Builder }
 
 // FlutterTestV1 creates a flutter-test step builder (v1 by default).
@@ -21,6 +23,8 @@ type FlutterTestV1Builder struct{ *Builder }
 //
 //	step.FlutterTestV1("1")  // explicit default
 //	step.FlutterTestV1("1")                  // older major
+//
+// v0→v1: added `tests_path_pattern`
 func FlutterTestV1(version ...string) *FlutterTestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

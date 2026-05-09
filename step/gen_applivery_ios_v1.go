@@ -30,6 +30,8 @@ const (
 )
 
 // AppliveryIosV1Builder builds a applivery-ios step with typed input methods.
+//
+// v0→v1: added `filter`
 type AppliveryIosV1Builder struct{ *Builder }
 
 // AppliveryIosV1 creates a applivery-ios step builder (v1 by default).
@@ -37,6 +39,8 @@ type AppliveryIosV1Builder struct{ *Builder }
 //
 //	step.AppliveryIosV1("1")  // explicit default
 //	step.AppliveryIosV1("1")                  // older major
+//
+// v0→v1: added `filter`
 func AppliveryIosV1(version ...string) *AppliveryIosV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

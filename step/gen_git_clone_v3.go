@@ -30,6 +30,8 @@ const (
 )
 
 // GitCloneV3Builder builds a git-clone step with typed input methods.
+//
+// v2→v3: added `branch_dest`, `build_api_token`, `build_url`, `clone_depth`, `manual_merge`, `pull_request_merge_branch`, `pull_request_repository_url`, `reset_repository`, `update_submodules`; removed `auth_ssh_private_key`
 type GitCloneV3Builder struct{ *Builder }
 
 // GitCloneV3 creates a git-clone step builder (v3 by default).
@@ -37,6 +39,8 @@ type GitCloneV3Builder struct{ *Builder }
 //
 //	step.GitCloneV3("3")  // explicit default
 //	step.GitCloneV3("1")                  // older major
+//
+// v2→v3: added `branch_dest`, `build_api_token`, `build_url`, `clone_depth`, `manual_merge`, `pull_request_merge_branch`, `pull_request_repository_url`, `reset_repository`, `update_submodules`; removed `auth_ssh_private_key`
 func GitCloneV3(version ...string) *GitCloneV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreNpmCacheV2Builder builds a restore-npm-cache step with typed input methods.
+//
+// v1→v2: added `retries`
 type RestoreNpmCacheV2Builder struct{ *Builder }
 
 // RestoreNpmCacheV2 creates a restore-npm-cache step builder (v2 by default).
@@ -21,6 +23,8 @@ type RestoreNpmCacheV2Builder struct{ *Builder }
 //
 //	step.RestoreNpmCacheV2("2")  // explicit default
 //	step.RestoreNpmCacheV2("1")                  // older major
+//
+// v1→v2: added `retries`
 func RestoreNpmCacheV2(version ...string) *RestoreNpmCacheV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

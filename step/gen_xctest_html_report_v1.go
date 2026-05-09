@@ -31,6 +31,8 @@ const (
 
 // XctestHtmlReportV1Builder builds a xctest-html-report step with typed input methods.
 //
+// v0→v1: added `github_access_token`, `version`; removed `install_branch`
+//
 // Deprecated: This step is no longer maintained. To generate HTML reports from xcresult files use the new official Bitrise step: "Generate Xcode test report html" (https://devcenter.bitrise.io/en/testing/testing-ios-apps/viewing-xcode-test-results-in-rich-html-format.html).
 type XctestHtmlReportV1Builder struct{ *Builder }
 
@@ -39,6 +41,8 @@ type XctestHtmlReportV1Builder struct{ *Builder }
 //
 //	step.XctestHtmlReportV1("1")  // explicit default
 //	step.XctestHtmlReportV1("1")                  // older major
+//
+// v0→v1: added `github_access_token`, `version`; removed `install_branch`
 //
 // Deprecated: This step is no longer maintained. To generate HTML reports from xcresult files use the new official Bitrise step: "Generate Xcode test report html" (https://devcenter.bitrise.io/en/testing/testing-ios-apps/viewing-xcode-test-results-in-rich-html-format.html).
 func XctestHtmlReportV1(version ...string) *XctestHtmlReportV1Builder {

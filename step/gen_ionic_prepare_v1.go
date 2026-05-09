@@ -23,6 +23,8 @@ const (
 )
 
 // IonicPrepareV1Builder builds a ionic-prepare step with typed input methods.
+//
+// v0→v1: added `cache_local_deps`, `ionic_password`, `ionic_username`; removed `cordova_android_version`, `cordova_ios_version`, `readd_platform`
 type IonicPrepareV1Builder struct{ *Builder }
 
 // IonicPrepareV1 creates a ionic-prepare step builder (v1 by default).
@@ -30,6 +32,8 @@ type IonicPrepareV1Builder struct{ *Builder }
 //
 //	step.IonicPrepareV1("1")  // explicit default
 //	step.IonicPrepareV1("1")                  // older major
+//
+// v0→v1: added `cache_local_deps`, `ionic_password`, `ionic_username`; removed `cordova_android_version`, `cordova_ios_version`, `readd_platform`
 func IonicPrepareV1(version ...string) *IonicPrepareV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

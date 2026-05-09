@@ -74,6 +74,8 @@ const (
 )
 
 // XcodeTestV6Builder builds a xcode-test step with typed input methods.
+//
+// v5→v6: added `quarantined_tests`; removed `should_retry_test_on_fail`
 type XcodeTestV6Builder struct{ *Builder }
 
 // XcodeTestV6 creates a xcode-test step builder (v6 by default).
@@ -81,6 +83,8 @@ type XcodeTestV6Builder struct{ *Builder }
 //
 //	step.XcodeTestV6("6")  // explicit default
 //	step.XcodeTestV6("1")                  // older major
+//
+// v5→v6: added `quarantined_tests`; removed `should_retry_test_on_fail`
 func XcodeTestV6(version ...string) *XcodeTestV6Builder {
 	v := "6"
 	if len(version) > 0 && version[0] != "" {

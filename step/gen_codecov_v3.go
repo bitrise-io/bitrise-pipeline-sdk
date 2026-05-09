@@ -6,6 +6,8 @@ package step
 import "time"
 
 // CodecovV3Builder builds a codecov step with typed input methods.
+//
+// v2→v3: added `ENABLE_SWIFT_CONVERSION`, `OS`, `SWIFT_PROJECT`, `VERSION`, `XCODE_ARCHIVE_PATH`
 type CodecovV3Builder struct{ *Builder }
 
 // CodecovV3 creates a codecov step builder (v3 by default).
@@ -13,6 +15,8 @@ type CodecovV3Builder struct{ *Builder }
 //
 //	step.CodecovV3("3")  // explicit default
 //	step.CodecovV3("1")                  // older major
+//
+// v2→v3: added `ENABLE_SWIFT_CONVERSION`, `OS`, `SWIFT_PROJECT`, `VERSION`, `XCODE_ARCHIVE_PATH`
 func CodecovV3(version ...string) *CodecovV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

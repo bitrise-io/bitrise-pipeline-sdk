@@ -117,6 +117,8 @@ const (
 )
 
 // XcodeArchiveV5Builder builds a xcode-archive step with typed input methods.
+//
+// v4→v5: added `api_key_enterprise_account`, `platform`, `testflight_internal_testing_only`
 type XcodeArchiveV5Builder struct{ *Builder }
 
 // XcodeArchiveV5 creates a xcode-archive step builder (v5 by default).
@@ -124,6 +126,8 @@ type XcodeArchiveV5Builder struct{ *Builder }
 //
 //	step.XcodeArchiveV5("5")  // explicit default
 //	step.XcodeArchiveV5("1")                  // older major
+//
+// v4→v5: added `api_key_enterprise_account`, `platform`, `testflight_internal_testing_only`
 func XcodeArchiveV5(version ...string) *XcodeArchiveV5Builder {
 	v := "5"
 	if len(version) > 0 && version[0] != "" {

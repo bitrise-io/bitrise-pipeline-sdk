@@ -81,6 +81,8 @@ const (
 )
 
 // XcodeArchiveV3Builder builds a xcode-archive step with typed input methods.
+//
+// v2→v3: removed `use_deprecated_export`
 type XcodeArchiveV3Builder struct{ *Builder }
 
 // XcodeArchiveV3 creates a xcode-archive step builder (v3 by default).
@@ -88,6 +90,8 @@ type XcodeArchiveV3Builder struct{ *Builder }
 //
 //	step.XcodeArchiveV3("3")  // explicit default
 //	step.XcodeArchiveV3("1")                  // older major
+//
+// v2→v3: removed `use_deprecated_export`
 func XcodeArchiveV3(version ...string) *XcodeArchiveV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

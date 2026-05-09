@@ -129,6 +129,8 @@ const (
 )
 
 // XcodeTestV3Builder builds a xcode-test step with typed input methods.
+//
+// v2→v3: added `maximum_test_repetitions`, `relaunch_tests_for_each_repetition`, `test_repetition_mode`
 type XcodeTestV3Builder struct{ *Builder }
 
 // XcodeTestV3 creates a xcode-test step builder (v3 by default).
@@ -136,6 +138,8 @@ type XcodeTestV3Builder struct{ *Builder }
 //
 //	step.XcodeTestV3("3")  // explicit default
 //	step.XcodeTestV3("1")                  // older major
+//
+// v2→v3: added `maximum_test_repetitions`, `relaunch_tests_for_each_repetition`, `test_repetition_mode`
 func XcodeTestV3(version ...string) *XcodeTestV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

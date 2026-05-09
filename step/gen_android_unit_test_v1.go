@@ -14,6 +14,8 @@ const (
 )
 
 // AndroidUnitTestV1Builder builds a android-unit-test step with typed input methods.
+//
+// v0→v1: added `quarantined_tests`; removed `cache_level`
 type AndroidUnitTestV1Builder struct{ *Builder }
 
 // AndroidUnitTestV1 creates a android-unit-test step builder (v1 by default).
@@ -21,6 +23,8 @@ type AndroidUnitTestV1Builder struct{ *Builder }
 //
 //	step.AndroidUnitTestV1("1")  // explicit default
 //	step.AndroidUnitTestV1("1")                  // older major
+//
+// v0→v1: added `quarantined_tests`; removed `cache_level`
 func AndroidUnitTestV1(version ...string) *AndroidUnitTestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

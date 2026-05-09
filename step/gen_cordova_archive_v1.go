@@ -47,6 +47,8 @@ const (
 )
 
 // CordovaArchiveV1Builder builds a cordova-archive step with typed input methods.
+//
+// v0→v1: added `add_platform`, `readd_platform`
 type CordovaArchiveV1Builder struct{ *Builder }
 
 // CordovaArchiveV1 creates a cordova-archive step builder (v1 by default).
@@ -54,6 +56,8 @@ type CordovaArchiveV1Builder struct{ *Builder }
 //
 //	step.CordovaArchiveV1("1")  // explicit default
 //	step.CordovaArchiveV1("1")                  // older major
+//
+// v0→v1: added `add_platform`, `readd_platform`
 func CordovaArchiveV1(version ...string) *CordovaArchiveV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

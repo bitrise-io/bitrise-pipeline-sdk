@@ -46,6 +46,8 @@ const (
 )
 
 // SlackV3Builder builds a slack step with typed input methods.
+//
+// v2→v3: added `api_token`, `output_thread_ts`, `reply_broadcast`, `reply_broadcast_on_error`, `thread_ts`, `thread_ts_on_error`, `webhook_url_on_error`
 type SlackV3Builder struct{ *Builder }
 
 // SlackV3 creates a slack step builder (v3 by default).
@@ -53,6 +55,8 @@ type SlackV3Builder struct{ *Builder }
 //
 //	step.SlackV3("3")  // explicit default
 //	step.SlackV3("1")                  // older major
+//
+// v2→v3: added `api_token`, `output_thread_ts`, `reply_broadcast`, `reply_broadcast_on_error`, `thread_ts`, `thread_ts_on_error`, `webhook_url_on_error`
 func SlackV3(version ...string) *SlackV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

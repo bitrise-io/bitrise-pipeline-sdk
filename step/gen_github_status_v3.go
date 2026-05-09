@@ -25,6 +25,8 @@ const (
 )
 
 // GithubStatusV3Builder builds a github-status step with typed input methods.
+//
+// v2→v3: added `build_status`, `pipeline_build_status`, `pipeline_build_url`
 type GithubStatusV3Builder struct{ *Builder }
 
 // GithubStatusV3 creates a github-status step builder (v3 by default).
@@ -32,6 +34,8 @@ type GithubStatusV3Builder struct{ *Builder }
 //
 //	step.GithubStatusV3("3")  // explicit default
 //	step.GithubStatusV3("1")                  // older major
+//
+// v2→v3: added `build_status`, `pipeline_build_status`, `pipeline_build_url`
 func GithubStatusV3(version ...string) *GithubStatusV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

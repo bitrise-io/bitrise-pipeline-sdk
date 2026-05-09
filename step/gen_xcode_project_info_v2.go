@@ -6,6 +6,8 @@ package step
 import "time"
 
 // XcodeProjectInfoV2Builder builds a xcode-project-info step with typed input methods.
+//
+// v1→v2: added `target`, `xcodeproj_path`
 type XcodeProjectInfoV2Builder struct{ *Builder }
 
 // XcodeProjectInfoV2 creates a xcode-project-info step builder (v2 by default).
@@ -13,6 +15,8 @@ type XcodeProjectInfoV2Builder struct{ *Builder }
 //
 //	step.XcodeProjectInfoV2("2")  // explicit default
 //	step.XcodeProjectInfoV2("1")                  // older major
+//
+// v1→v2: added `target`, `xcodeproj_path`
 func XcodeProjectInfoV2(version ...string) *XcodeProjectInfoV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

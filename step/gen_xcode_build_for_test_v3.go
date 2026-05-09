@@ -55,6 +55,8 @@ const (
 )
 
 // XcodeBuildForTestV3Builder builds a xcode-build-for-test step with typed input methods.
+//
+// v2→v3: added `api_key_enterprise_account`, `compression_level`, `fallback_provisioning_profile_url_list`
 type XcodeBuildForTestV3Builder struct{ *Builder }
 
 // XcodeBuildForTestV3 creates a xcode-build-for-test step builder (v3 by default).
@@ -62,6 +64,8 @@ type XcodeBuildForTestV3Builder struct{ *Builder }
 //
 //	step.XcodeBuildForTestV3("3")  // explicit default
 //	step.XcodeBuildForTestV3("1")                  // older major
+//
+// v2→v3: added `api_key_enterprise_account`, `compression_level`, `fallback_provisioning_profile_url_list`
 func XcodeBuildForTestV3(version ...string) *XcodeBuildForTestV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

@@ -15,6 +15,8 @@ const (
 )
 
 // GradleUnitTestV1Builder builds a gradle-unit-test step with typed input methods.
+//
+// v0→v1: added `cache_level`, `gradle_file`; removed `workdir`
 type GradleUnitTestV1Builder struct{ *Builder }
 
 // GradleUnitTestV1 creates a gradle-unit-test step builder (v1 by default).
@@ -22,6 +24,8 @@ type GradleUnitTestV1Builder struct{ *Builder }
 //
 //	step.GradleUnitTestV1("1")  // explicit default
 //	step.GradleUnitTestV1("1")                  // older major
+//
+// v0→v1: added `cache_level`, `gradle_file`; removed `workdir`
 func GradleUnitTestV1(version ...string) *GradleUnitTestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

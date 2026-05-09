@@ -6,6 +6,8 @@ package step
 import "time"
 
 // GradleUnitTestV2Builder builds a gradle-unit-test step with typed input methods.
+//
+// v1→v2: added `gradle_build_script_path`, `gradlew_command_flags`, `project_root_dir`, `test_task`; removed `cache_level`, `gradle_file`, `gradlew_file_path`, `unit_test_flags`, `unit_test_task`
 type GradleUnitTestV2Builder struct{ *Builder }
 
 // GradleUnitTestV2 creates a gradle-unit-test step builder (v2 by default).
@@ -13,6 +15,8 @@ type GradleUnitTestV2Builder struct{ *Builder }
 //
 //	step.GradleUnitTestV2("2")  // explicit default
 //	step.GradleUnitTestV2("1")                  // older major
+//
+// v1→v2: added `gradle_build_script_path`, `gradlew_command_flags`, `project_root_dir`, `test_task`; removed `cache_level`, `gradle_file`, `gradlew_file_path`, `unit_test_flags`, `unit_test_task`
 func GradleUnitTestV2(version ...string) *GradleUnitTestV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

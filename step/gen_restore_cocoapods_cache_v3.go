@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreCocoapodsCacheV3Builder builds a restore-cocoapods-cache step with typed input methods.
+//
+// v2→v3: added `timeout`
 type RestoreCocoapodsCacheV3Builder struct{ *Builder }
 
 // RestoreCocoapodsCacheV3 creates a restore-cocoapods-cache step builder (v3 by default).
@@ -21,6 +23,8 @@ type RestoreCocoapodsCacheV3Builder struct{ *Builder }
 //
 //	step.RestoreCocoapodsCacheV3("3")  // explicit default
 //	step.RestoreCocoapodsCacheV3("1")                  // older major
+//
+// v2→v3: added `timeout`
 func RestoreCocoapodsCacheV3(version ...string) *RestoreCocoapodsCacheV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

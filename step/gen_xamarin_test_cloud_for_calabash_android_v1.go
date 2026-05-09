@@ -15,6 +15,8 @@ const (
 
 // XamarinTestCloudForCalabashAndroidV1Builder builds a xamarin-test-cloud-for-calabash-android step with typed input methods.
 //
+// v0→v1: added `android_home`, `gem_file_path`, `work_dir`
+//
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 type XamarinTestCloudForCalabashAndroidV1Builder struct{ *Builder }
 
@@ -23,6 +25,8 @@ type XamarinTestCloudForCalabashAndroidV1Builder struct{ *Builder }
 //
 //	step.XamarinTestCloudForCalabashAndroidV1("1")  // explicit default
 //	step.XamarinTestCloudForCalabashAndroidV1("1")                  // older major
+//
+// v0→v1: added `android_home`, `gem_file_path`, `work_dir`
 //
 // Deprecated: This step is deprecated, please use [App Center upload and schedule tests](https://github.com/bitrise-steplib/steps-appcenter-test) Step instead.
 func XamarinTestCloudForCalabashAndroidV1(version ...string) *XamarinTestCloudForCalabashAndroidV1Builder {

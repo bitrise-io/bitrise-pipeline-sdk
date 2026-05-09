@@ -59,6 +59,8 @@ const (
 )
 
 // AvdManagerV2Builder builds a avd-manager step with typed input methods.
+//
+// v1→v2: added `disable_animations`
 type AvdManagerV2Builder struct{ *Builder }
 
 // AvdManagerV2 creates a avd-manager step builder (v2 by default).
@@ -66,6 +68,8 @@ type AvdManagerV2Builder struct{ *Builder }
 //
 //	step.AvdManagerV2("2")  // explicit default
 //	step.AvdManagerV2("1")                  // older major
+//
+// v1→v2: added `disable_animations`
 func AvdManagerV2(version ...string) *AvdManagerV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

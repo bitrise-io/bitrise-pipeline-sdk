@@ -50,6 +50,8 @@ const (
 )
 
 // AppdomeBuild2secureAndroidV2Builder builds a appdome-build-2secure-android step with typed input methods.
+//
+// v1→v2: added `build_to_test`, `fingerprint`, `google_fingerprint`, `secondary_output`
 type AppdomeBuild2secureAndroidV2Builder struct{ *Builder }
 
 // AppdomeBuild2secureAndroidV2 creates a appdome-build-2secure-android step builder (v2 by default).
@@ -57,6 +59,8 @@ type AppdomeBuild2secureAndroidV2Builder struct{ *Builder }
 //
 //	step.AppdomeBuild2secureAndroidV2("2")  // explicit default
 //	step.AppdomeBuild2secureAndroidV2("1")                  // older major
+//
+// v1→v2: added `build_to_test`, `fingerprint`, `google_fingerprint`, `secondary_output`
 func AppdomeBuild2secureAndroidV2(version ...string) *AppdomeBuild2secureAndroidV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

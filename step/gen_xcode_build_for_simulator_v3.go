@@ -39,6 +39,8 @@ const (
 )
 
 // XcodeBuildForSimulatorV3Builder builds a xcode-build-for-simulator step with typed input methods.
+//
+// v2→v3: removed `cache_level`
 type XcodeBuildForSimulatorV3Builder struct{ *Builder }
 
 // XcodeBuildForSimulatorV3 creates a xcode-build-for-simulator step builder (v3 by default).
@@ -46,6 +48,8 @@ type XcodeBuildForSimulatorV3Builder struct{ *Builder }
 //
 //	step.XcodeBuildForSimulatorV3("3")  // explicit default
 //	step.XcodeBuildForSimulatorV3("1")                  // older major
+//
+// v2→v3: removed `cache_level`
 func XcodeBuildForSimulatorV3(version ...string) *XcodeBuildForSimulatorV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

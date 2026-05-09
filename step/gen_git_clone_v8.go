@@ -54,6 +54,8 @@ const (
 )
 
 // GitCloneV8Builder builds a git-clone step with typed input methods.
+//
+// v7→v8: added `git_http_password`, `git_http_username`, `ignore_branch_for_commit_fetch`, `performance_monitoring`, `pull_request_unverified_merge_branch`; removed `manual_merge`, `pull_request_id`
 type GitCloneV8Builder struct{ *Builder }
 
 // GitCloneV8 creates a git-clone step builder (v8 by default).
@@ -61,6 +63,8 @@ type GitCloneV8Builder struct{ *Builder }
 //
 //	step.GitCloneV8("8")  // explicit default
 //	step.GitCloneV8("1")                  // older major
+//
+// v7→v8: added `git_http_password`, `git_http_username`, `ignore_branch_for_commit_fetch`, `performance_monitoring`, `pull_request_unverified_merge_branch`; removed `manual_merge`, `pull_request_id`
 func GitCloneV8(version ...string) *GitCloneV8Builder {
 	v := "8"
 	if len(version) > 0 && version[0] != "" {

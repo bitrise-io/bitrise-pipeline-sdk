@@ -49,6 +49,8 @@ const (
 )
 
 // ExportXcarchiveV3Builder builds a export-xcarchive step with typed input methods.
+//
+// v2→v3: removed `use_legacy_export`
 type ExportXcarchiveV3Builder struct{ *Builder }
 
 // ExportXcarchiveV3 creates a export-xcarchive step builder (v3 by default).
@@ -56,6 +58,8 @@ type ExportXcarchiveV3Builder struct{ *Builder }
 //
 //	step.ExportXcarchiveV3("3")  // explicit default
 //	step.ExportXcarchiveV3("1")                  // older major
+//
+// v2→v3: removed `use_legacy_export`
 func ExportXcarchiveV3(version ...string) *ExportXcarchiveV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

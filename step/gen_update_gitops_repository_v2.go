@@ -22,6 +22,8 @@ const (
 )
 
 // UpdateGitopsRepositoryV2Builder builds a update-gitops-repository step with typed input methods.
+//
+// v1→v2: added `delimiter`, `files`, `replacer_mode`
 type UpdateGitopsRepositoryV2Builder struct{ *Builder }
 
 // UpdateGitopsRepositoryV2 creates a update-gitops-repository step builder (v2 by default).
@@ -29,6 +31,8 @@ type UpdateGitopsRepositoryV2Builder struct{ *Builder }
 //
 //	step.UpdateGitopsRepositoryV2("2")  // explicit default
 //	step.UpdateGitopsRepositoryV2("1")                  // older major
+//
+// v1→v2: added `delimiter`, `files`, `replacer_mode`
 func UpdateGitopsRepositoryV2(version ...string) *UpdateGitopsRepositoryV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

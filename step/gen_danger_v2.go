@@ -6,6 +6,8 @@ package step
 import "time"
 
 // DangerV2Builder builds a danger step with typed input methods.
+//
+// v1→v2: added `additional_options`
 type DangerV2Builder struct{ *Builder }
 
 // DangerV2 creates a danger step builder (v2 by default).
@@ -13,6 +15,8 @@ type DangerV2Builder struct{ *Builder }
 //
 //	step.DangerV2("2")  // explicit default
 //	step.DangerV2("1")                  // older major
+//
+// v1→v2: added `additional_options`
 func DangerV2(version ...string) *DangerV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

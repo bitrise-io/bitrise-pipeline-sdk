@@ -151,6 +151,7 @@ type stepDef struct {
 	Outputs           []outputDef
 	ForwardingMethods []forwardingMethodDef // generic *Builder methods that don't clash with typed inputs
 	NeedsTimeImport   bool                 // true when any forwarding method uses time.Duration
+	ChangelogNote     string               // e.g. "v5→v6: added `dest`; removed `output_tool`" — empty for first major
 }
 
 // enumTypePair holds an unversioned type alias name alongside its versioned
@@ -197,7 +198,9 @@ const (
 {{- end}}
 )
 {{end}}{{end}}
-// {{.TypeName}}Builder builds a {{.StepID}} step with typed input methods.{{if .DeprecateNotes}}
+// {{.TypeName}}Builder builds a {{.StepID}} step with typed input methods.{{if .ChangelogNote}}
+//
+// {{.ChangelogNote}}{{end}}{{if .DeprecateNotes}}
 //
 // Deprecated: {{.DeprecateNotes}}{{end}}
 type {{.TypeName}}Builder struct{ *Builder }
@@ -206,7 +209,9 @@ type {{.TypeName}}Builder struct{ *Builder }
 // Pass an explicit major version to override the default:
 //
 //	step.{{.TypeName}}("{{.MajorVersion}}")  // explicit default
-//	step.{{.TypeName}}("1")                  // older major{{if .DeprecateNotes}}
+//	step.{{.TypeName}}("1")                  // older major{{if .ChangelogNote}}
+//
+// {{.ChangelogNote}}{{end}}{{if .DeprecateNotes}}
 //
 // Deprecated: {{.DeprecateNotes}}{{end}}
 func {{.TypeName}}(version ...string) *{{.TypeName}}Builder {
@@ -791,18 +796,23 @@ func generateMultiMajorStep(
 	var latestOutputCount int
 	var latestEnumTypes []enumTypePair
 
+	// prevInputKeys and prevMajorNum track the previous major's input key set so
+	// we can compute the per-major changelog note for the current major.
+	var prevInputKeys map[string]bool
+	var prevMajorNum int
+
 	// Generate one versioned builder file per major version.
 	for _, major := range majorNums {
 		latestForMajor := latestOfMajor(versions, major)
 		vPath := versionedOutPath(outputDir, stepID, major)
 		upToDate := !force && readCachedVersion(vPath) == latestForMajor
 
-		// Always parse the latest major so we have correct data for the alias
-		// file (latestOutputCount, latestEnumTypes).  Non-latest majors can be
-		// skipped entirely when their cached file is current.
-		if upToDate && major != latestMajor {
-			continue
-		}
+		// We always parse every major's step.yml, even when the generated file is
+		// already up-to-date, for two reasons:
+		//  1. The latest major must be parsed to capture alias data.
+		//  2. Every major's input set is needed to compute the changelog note for
+		//     the following major; skipping parsing would leave the note empty.
+		// We still skip *writing* the file when up-to-date.
 
 		ymlData, err := src.readStepYML(stepID, latestForMajor)
 		if err != nil {
@@ -841,6 +851,15 @@ func generateMultiMajorStep(
 		if dep != nil {
 			def.DeprecateNotes = dep.Notes
 		}
+
+		// Compute the changelog note by diffing this major's inputs against the
+		// previous major's input key set (empty for the first major).
+		curInputKeys := inputKeySet(def.Inputs)
+		if prevInputKeys != nil {
+			def.ChangelogNote = buildChangelogNote(prevMajorNum, major, prevInputKeys, curInputKeys)
+		}
+		prevInputKeys = curInputKeys
+		prevMajorNum = major
 
 		// Capture alias data from the latest major before we decide whether to
 		// skip writing its versioned file.
@@ -1450,4 +1469,56 @@ func sanitizeComment(s string) string {
 func fatalf(format string, args ...interface{}) {
 	fmt.Fprintf(os.Stderr, "stepgen: "+format+"\n", args...)
 	os.Exit(1)
+}
+
+// ---- changelog helpers -------------------------------------------------------
+
+// inputKeySet builds a set of raw step.yml input keys from parsed inputs.
+func inputKeySet(inputs []inputDef) map[string]bool {
+	s := make(map[string]bool, len(inputs))
+	for _, inp := range inputs {
+		s[inp.Key] = true
+	}
+	return s
+}
+
+// buildChangelogNote returns a one-line godoc-friendly summary of input
+// additions and removals between consecutive major versions, or an empty
+// string when there are no differences.
+//
+// Example output: "v5→v6: added `destination`; removed `output_tool`"
+func buildChangelogNote(prevMajor, curMajor int, prev, cur map[string]bool) string {
+	var added, removed []string
+	for key := range cur {
+		if !prev[key] {
+			added = append(added, key)
+		}
+	}
+	for key := range prev {
+		if !cur[key] {
+			removed = append(removed, key)
+		}
+	}
+	if len(added) == 0 && len(removed) == 0 {
+		return ""
+	}
+	sort.Strings(added)
+	sort.Strings(removed)
+
+	var parts []string
+	if len(added) > 0 {
+		quoted := make([]string, len(added))
+		for i, k := range added {
+			quoted[i] = "`" + k + "`"
+		}
+		parts = append(parts, "added "+strings.Join(quoted, ", "))
+	}
+	if len(removed) > 0 {
+		quoted := make([]string, len(removed))
+		for i, k := range removed {
+			quoted[i] = "`" + k + "`"
+		}
+		parts = append(parts, "removed "+strings.Join(quoted, ", "))
+	}
+	return fmt.Sprintf("v%d→v%d: %s", prevMajor, curMajor, strings.Join(parts, "; "))
 }

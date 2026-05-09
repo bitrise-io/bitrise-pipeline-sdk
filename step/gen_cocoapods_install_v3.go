@@ -22,6 +22,8 @@ const (
 )
 
 // CocoapodsInstallV3Builder builds a cocoapods-install step with typed input methods.
+//
+// v2→v3: removed `is_cache_disabled`
 type CocoapodsInstallV3Builder struct{ *Builder }
 
 // CocoapodsInstallV3 creates a cocoapods-install step builder (v3 by default).
@@ -29,6 +31,8 @@ type CocoapodsInstallV3Builder struct{ *Builder }
 //
 //	step.CocoapodsInstallV3("3")  // explicit default
 //	step.CocoapodsInstallV3("1")                  // older major
+//
+// v2→v3: removed `is_cache_disabled`
 func CocoapodsInstallV3(version ...string) *CocoapodsInstallV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

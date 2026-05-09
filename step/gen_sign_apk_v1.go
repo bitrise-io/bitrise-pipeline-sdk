@@ -49,6 +49,8 @@ const (
 )
 
 // SignApkV1Builder builds a sign-apk step with typed input methods.
+//
+// v0→v1: added `android_app`, `debuggable_permitted`, `output_name`, `page_align`, `signer_scheme`, `use_apk_signer`, `verbose_log`; removed `jarsigner_options`
 type SignApkV1Builder struct{ *Builder }
 
 // SignApkV1 creates a sign-apk step builder (v1 by default).
@@ -56,6 +58,8 @@ type SignApkV1Builder struct{ *Builder }
 //
 //	step.SignApkV1("1")  // explicit default
 //	step.SignApkV1("1")                  // older major
+//
+// v0→v1: added `android_app`, `debuggable_permitted`, `output_name`, `page_align`, `signer_scheme`, `use_apk_signer`, `verbose_log`; removed `jarsigner_options`
 func SignApkV1(version ...string) *SignApkV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

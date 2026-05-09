@@ -34,6 +34,8 @@ const (
 )
 
 // AppdomeBuild2secureIosV2Builder builds a appdome-build-2secure-ios step with typed input methods.
+//
+// v1→v2: added `build_to_test`, `certificate_file`, `provisioning_profiles`
 type AppdomeBuild2secureIosV2Builder struct{ *Builder }
 
 // AppdomeBuild2secureIosV2 creates a appdome-build-2secure-ios step builder (v2 by default).
@@ -41,6 +43,8 @@ type AppdomeBuild2secureIosV2Builder struct{ *Builder }
 //
 //	step.AppdomeBuild2secureIosV2("2")  // explicit default
 //	step.AppdomeBuild2secureIosV2("1")                  // older major
+//
+// v1→v2: added `build_to_test`, `certificate_file`, `provisioning_profiles`
 func AppdomeBuild2secureIosV2(version ...string) *AppdomeBuild2secureIosV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

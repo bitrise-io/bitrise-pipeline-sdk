@@ -47,6 +47,8 @@ const (
 )
 
 // XcodeBuildForTestV1Builder builds a xcode-build-for-test step with typed input methods.
+//
+// v0→v1: added `apple_team_id`, `automatic_code_signing`, `certificate_url_list`, `keychain_password`, `keychain_path`, `log_formatter`, `min_profile_validity`, `passphrase_list`, `register_test_devices`, `xcconfig_content`; removed `disable_index_while_building`, `output_tool`
 type XcodeBuildForTestV1Builder struct{ *Builder }
 
 // XcodeBuildForTestV1 creates a xcode-build-for-test step builder (v1 by default).
@@ -54,6 +56,8 @@ type XcodeBuildForTestV1Builder struct{ *Builder }
 //
 //	step.XcodeBuildForTestV1("1")  // explicit default
 //	step.XcodeBuildForTestV1("1")                  // older major
+//
+// v0→v1: added `apple_team_id`, `automatic_code_signing`, `certificate_url_list`, `keychain_password`, `keychain_path`, `log_formatter`, `min_profile_validity`, `passphrase_list`, `register_test_devices`, `xcconfig_content`; removed `disable_index_while_building`, `output_tool`
 func XcodeBuildForTestV1(version ...string) *XcodeBuildForTestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

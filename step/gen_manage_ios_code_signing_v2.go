@@ -56,6 +56,8 @@ const (
 )
 
 // ManageIosCodeSigningV2Builder builds a manage-ios-code-signing step with typed input methods.
+//
+// v1→v2: added `api_key_enterprise_account`, `fallback_provisioning_profile_url_list`
 type ManageIosCodeSigningV2Builder struct{ *Builder }
 
 // ManageIosCodeSigningV2 creates a manage-ios-code-signing step builder (v2 by default).
@@ -63,6 +65,8 @@ type ManageIosCodeSigningV2Builder struct{ *Builder }
 //
 //	step.ManageIosCodeSigningV2("2")  // explicit default
 //	step.ManageIosCodeSigningV2("1")                  // older major
+//
+// v1→v2: added `api_key_enterprise_account`, `fallback_provisioning_profile_url_list`
 func ManageIosCodeSigningV2(version ...string) *ManageIosCodeSigningV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

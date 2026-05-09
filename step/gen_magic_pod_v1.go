@@ -15,6 +15,8 @@ const (
 )
 
 // MagicPodV1Builder builds a magic-pod step with typed input methods.
+//
+// v0→v1: added `branch_name`, `magicpod_api_token`; removed `magic_pod_api_token`
 type MagicPodV1Builder struct{ *Builder }
 
 // MagicPodV1 creates a magic-pod step builder (v1 by default).
@@ -22,6 +24,8 @@ type MagicPodV1Builder struct{ *Builder }
 //
 //	step.MagicPodV1("1")  // explicit default
 //	step.MagicPodV1("1")                  // older major
+//
+// v0→v1: added `branch_name`, `magicpod_api_token`; removed `magic_pod_api_token`
 func MagicPodV1(version ...string) *MagicPodV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

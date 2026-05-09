@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreDartCacheV3Builder builds a restore-dart-cache step with typed input methods.
+//
+// v2→v3: added `timeout`
 type RestoreDartCacheV3Builder struct{ *Builder }
 
 // RestoreDartCacheV3 creates a restore-dart-cache step builder (v3 by default).
@@ -21,6 +23,8 @@ type RestoreDartCacheV3Builder struct{ *Builder }
 //
 //	step.RestoreDartCacheV3("3")  // explicit default
 //	step.RestoreDartCacheV3("1")                  // older major
+//
+// v2→v3: added `timeout`
 func RestoreDartCacheV3(version ...string) *RestoreDartCacheV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

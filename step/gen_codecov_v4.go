@@ -70,6 +70,8 @@ const (
 )
 
 // CodecovV4Builder builds a codecov step with typed input methods.
+//
+// v3→v4: added `CC_BINARY`, `CC_BRANCH`, `CC_BUILD`, `CC_BUILD_URL`, `CC_CODE`, `CC_DIR`, `CC_DISABLE_FILE_FIXES`, `CC_DISABLE_SEARCH`, `CC_DRY_RUN`, `CC_ENTERPRISE_URL`, `CC_ENV`, `CC_EXCLUDES`, `CC_FAIL_ON_ERROR`, `CC_FILES`, `CC_FLAGS`, `CC_GCOV_ARGS`, `CC_GCOV_EXECUTABLE`, `CC_GCOV_IGNORE`, `CC_GCOV_INCLUDE`, `CC_GIT_SERVICE`, `CC_HANDLE_NO_REPORTS_FOUND`, `CC_JOB_CODE`, `CC_LEGACY`, `CC_NAME`, `CC_NETWORK_FILTER`, `CC_NETWORK_PREFIX`, `CC_NETWORK_ROOT_FOLDER`, `CC_PARENT_SHA`, `CC_PLUGINS`, `CC_PR`, `CC_REPORT_TYPE`, `CC_SHA`, `CC_SKIP_VALIDATION`, `CC_SLUG`, `CC_SWIFT_PROJECT`, `CC_TOKEN`, `CC_VERBOSE`, `CC_VERSION`; removed `CODECOV_TOKEN`, `ENABLE_SWIFT_CONVERSION`, `OS`, `SWIFT_PROJECT`, `VERSION`, `XCODE_ARCHIVE_PATH`, `other_options`
 type CodecovV4Builder struct{ *Builder }
 
 // CodecovV4 creates a codecov step builder (v4 by default).
@@ -77,6 +79,8 @@ type CodecovV4Builder struct{ *Builder }
 //
 //	step.CodecovV4("4")  // explicit default
 //	step.CodecovV4("1")                  // older major
+//
+// v3→v4: added `CC_BINARY`, `CC_BRANCH`, `CC_BUILD`, `CC_BUILD_URL`, `CC_CODE`, `CC_DIR`, `CC_DISABLE_FILE_FIXES`, `CC_DISABLE_SEARCH`, `CC_DRY_RUN`, `CC_ENTERPRISE_URL`, `CC_ENV`, `CC_EXCLUDES`, `CC_FAIL_ON_ERROR`, `CC_FILES`, `CC_FLAGS`, `CC_GCOV_ARGS`, `CC_GCOV_EXECUTABLE`, `CC_GCOV_IGNORE`, `CC_GCOV_INCLUDE`, `CC_GIT_SERVICE`, `CC_HANDLE_NO_REPORTS_FOUND`, `CC_JOB_CODE`, `CC_LEGACY`, `CC_NAME`, `CC_NETWORK_FILTER`, `CC_NETWORK_PREFIX`, `CC_NETWORK_ROOT_FOLDER`, `CC_PARENT_SHA`, `CC_PLUGINS`, `CC_PR`, `CC_REPORT_TYPE`, `CC_SHA`, `CC_SKIP_VALIDATION`, `CC_SLUG`, `CC_SWIFT_PROJECT`, `CC_TOKEN`, `CC_VERBOSE`, `CC_VERSION`; removed `CODECOV_TOKEN`, `ENABLE_SWIFT_CONVERSION`, `OS`, `SWIFT_PROJECT`, `VERSION`, `XCODE_ARCHIVE_PATH`, `other_options`
 func CodecovV4(version ...string) *CodecovV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

@@ -49,6 +49,8 @@ const (
 )
 
 // AvdManagerV1Builder builds a avd-manager step with typed input methods.
+//
+// v0→v1: added `abi`, `api_level`, `create_command_flags`, `emulator_build_number`, `emulator_channel`, `headless_mode`, `start_command_flags`; removed `custom_command_flags`, `custom_hw_config`, `density`, `emulator_abi`, `orientation`, `overwrite`, `resolution`, `verbose_mode`, `version`
 type AvdManagerV1Builder struct{ *Builder }
 
 // AvdManagerV1 creates a avd-manager step builder (v1 by default).
@@ -56,6 +58,8 @@ type AvdManagerV1Builder struct{ *Builder }
 //
 //	step.AvdManagerV1("1")  // explicit default
 //	step.AvdManagerV1("1")                  // older major
+//
+// v0→v1: added `abi`, `api_level`, `create_command_flags`, `emulator_build_number`, `emulator_channel`, `headless_mode`, `start_command_flags`; removed `custom_command_flags`, `custom_hw_config`, `density`, `emulator_abi`, `orientation`, `overwrite`, `resolution`, `verbose_mode`, `version`
 func AvdManagerV1(version ...string) *AvdManagerV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

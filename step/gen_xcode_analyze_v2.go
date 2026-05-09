@@ -54,6 +54,8 @@ const (
 )
 
 // XcodeAnalyzeV2Builder builds a xcode-analyze step with typed input methods.
+//
+// v1→v2: added `cache_level`, `disable_index_while_building`, `output_dir`, `verbose_log`, `xcodebuild_options`
 type XcodeAnalyzeV2Builder struct{ *Builder }
 
 // XcodeAnalyzeV2 creates a xcode-analyze step builder (v2 by default).
@@ -61,6 +63,8 @@ type XcodeAnalyzeV2Builder struct{ *Builder }
 //
 //	step.XcodeAnalyzeV2("2")  // explicit default
 //	step.XcodeAnalyzeV2("1")                  // older major
+//
+// v1→v2: added `cache_level`, `disable_index_while_building`, `output_dir`, `verbose_log`, `xcodebuild_options`
 func XcodeAnalyzeV2(version ...string) *XcodeAnalyzeV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

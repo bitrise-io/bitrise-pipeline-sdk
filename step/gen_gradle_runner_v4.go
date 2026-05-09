@@ -15,6 +15,8 @@ const (
 )
 
 // GradleRunnerV4Builder builds a gradle-runner step with typed input methods.
+//
+// v3→v4: added `build_root_directory`; removed `gradle_file`
 type GradleRunnerV4Builder struct{ *Builder }
 
 // GradleRunnerV4 creates a gradle-runner step builder (v4 by default).
@@ -22,6 +24,8 @@ type GradleRunnerV4Builder struct{ *Builder }
 //
 //	step.GradleRunnerV4("4")  // explicit default
 //	step.GradleRunnerV4("1")                  // older major
+//
+// v3→v4: added `build_root_directory`; removed `gradle_file`
 func GradleRunnerV4(version ...string) *GradleRunnerV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

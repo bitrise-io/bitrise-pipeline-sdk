@@ -15,6 +15,8 @@ const (
 
 // XamarinArchiveV1Builder builds a xamarin-archive step with typed input methods.
 //
+// v0→v1: added `build_tool`; removed `force_mdtool`
+//
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 type XamarinArchiveV1Builder struct{ *Builder }
 
@@ -23,6 +25,8 @@ type XamarinArchiveV1Builder struct{ *Builder }
 //
 //	step.XamarinArchiveV1("1")  // explicit default
 //	step.XamarinArchiveV1("1")                  // older major
+//
+// v0→v1: added `build_tool`; removed `force_mdtool`
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 func XamarinArchiveV1(version ...string) *XamarinArchiveV1Builder {

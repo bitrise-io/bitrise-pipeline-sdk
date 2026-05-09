@@ -64,6 +64,8 @@ const (
 )
 
 // AppdomeBuild2secureAndroidV3Builder builds a appdome-build-2secure-android step with typed input methods.
+//
+// v2→v3: added `android_keystore_url_env`, `crashlytics_app_id`, `datadog_api_key`, `download_deobfuscation`, `multiple_trusted_signing_certs_path`, `output_filename`, `workflow_output_logs`
 type AppdomeBuild2secureAndroidV3Builder struct{ *Builder }
 
 // AppdomeBuild2secureAndroidV3 creates a appdome-build-2secure-android step builder (v3 by default).
@@ -71,6 +73,8 @@ type AppdomeBuild2secureAndroidV3Builder struct{ *Builder }
 //
 //	step.AppdomeBuild2secureAndroidV3("3")  // explicit default
 //	step.AppdomeBuild2secureAndroidV3("1")                  // older major
+//
+// v2→v3: added `android_keystore_url_env`, `crashlytics_app_id`, `datadog_api_key`, `download_deobfuscation`, `multiple_trusted_signing_certs_path`, `output_filename`, `workflow_output_logs`
 func AppdomeBuild2secureAndroidV3(version ...string) *AppdomeBuild2secureAndroidV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

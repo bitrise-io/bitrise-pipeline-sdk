@@ -15,6 +15,8 @@ const (
 
 // XamarinIosTestV2Builder builds a xamarin-ios-test step with typed input methods.
 //
+// v1→v2: added `build_tool`
+//
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 type XamarinIosTestV2Builder struct{ *Builder }
 
@@ -23,6 +25,8 @@ type XamarinIosTestV2Builder struct{ *Builder }
 //
 //	step.XamarinIosTestV2("2")  // explicit default
 //	step.XamarinIosTestV2("1")                  // older major
+//
+// v1→v2: added `build_tool`
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 func XamarinIosTestV2(version ...string) *XamarinIosTestV2Builder {

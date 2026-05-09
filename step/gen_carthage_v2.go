@@ -51,6 +51,8 @@ const (
 )
 
 // CarthageV2Builder builds a carthage step with typed input methods.
+//
+// v1→v2: added `github_access_token`
 type CarthageV2Builder struct{ *Builder }
 
 // CarthageV2 creates a carthage step builder (v2 by default).
@@ -58,6 +60,8 @@ type CarthageV2Builder struct{ *Builder }
 //
 //	step.CarthageV2("2")  // explicit default
 //	step.CarthageV2("1")                  // older major
+//
+// v1→v2: added `github_access_token`
 func CarthageV2(version ...string) *CarthageV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

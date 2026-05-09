@@ -15,6 +15,8 @@ const (
 )
 
 // GradleRunnerV3Builder builds a gradle-runner step with typed input methods.
+//
+// v2→v3: removed `apk_file_exclude_filter`, `apk_file_include_filter`
 type GradleRunnerV3Builder struct{ *Builder }
 
 // GradleRunnerV3 creates a gradle-runner step builder (v3 by default).
@@ -22,6 +24,8 @@ type GradleRunnerV3Builder struct{ *Builder }
 //
 //	step.GradleRunnerV3("3")  // explicit default
 //	step.GradleRunnerV3("1")                  // older major
+//
+// v2→v3: removed `apk_file_exclude_filter`, `apk_file_include_filter`
 func GradleRunnerV3(version ...string) *GradleRunnerV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

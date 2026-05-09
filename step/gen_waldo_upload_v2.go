@@ -14,6 +14,8 @@ const (
 )
 
 // WaldoUploadV2Builder builds a waldo-upload step with typed input methods.
+//
+// v1→v2: added `git_branch`, `git_commit`, `is_debug_mode`; removed `find_symbols`, `symbols_path`
 type WaldoUploadV2Builder struct{ *Builder }
 
 // WaldoUploadV2 creates a waldo-upload step builder (v2 by default).
@@ -21,6 +23,8 @@ type WaldoUploadV2Builder struct{ *Builder }
 //
 //	step.WaldoUploadV2("2")  // explicit default
 //	step.WaldoUploadV2("1")                  // older major
+//
+// v1→v2: added `git_branch`, `git_commit`, `is_debug_mode`; removed `find_symbols`, `symbols_path`
 func WaldoUploadV2(version ...string) *WaldoUploadV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

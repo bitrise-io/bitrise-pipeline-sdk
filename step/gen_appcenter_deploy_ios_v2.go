@@ -39,6 +39,8 @@ const (
 
 // AppcenterDeployIosV2Builder builds a appcenter-deploy-ios step with typed input methods.
 //
+// v1→v2: added `all_distribution_groups`
+//
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 type AppcenterDeployIosV2Builder struct{ *Builder }
 
@@ -47,6 +49,8 @@ type AppcenterDeployIosV2Builder struct{ *Builder }
 //
 //	step.AppcenterDeployIosV2("2")  // explicit default
 //	step.AppcenterDeployIosV2("1")                  // older major
+//
+// v1→v2: added `all_distribution_groups`
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 func AppcenterDeployIosV2(version ...string) *AppcenterDeployIosV2Builder {

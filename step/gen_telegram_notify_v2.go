@@ -14,6 +14,8 @@ const (
 )
 
 // TelegramNotifyV2Builder builds a telegram-notify step with typed input methods.
+//
+// v1→v2: added `link_previews_enabled`
 type TelegramNotifyV2Builder struct{ *Builder }
 
 // TelegramNotifyV2 creates a telegram-notify step builder (v2 by default).
@@ -21,6 +23,8 @@ type TelegramNotifyV2Builder struct{ *Builder }
 //
 //	step.TelegramNotifyV2("2")  // explicit default
 //	step.TelegramNotifyV2("1")                  // older major
+//
+// v1→v2: added `link_previews_enabled`
 func TelegramNotifyV2(version ...string) *TelegramNotifyV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

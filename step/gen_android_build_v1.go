@@ -14,6 +14,8 @@ const (
 )
 
 // AndroidBuildV1Builder builds a android-build step with typed input methods.
+//
+// v0→v1: removed `apk_path_pattern`, `cache_level`
 type AndroidBuildV1Builder struct{ *Builder }
 
 // AndroidBuildV1 creates a android-build step builder (v1 by default).
@@ -21,6 +23,8 @@ type AndroidBuildV1Builder struct{ *Builder }
 //
 //	step.AndroidBuildV1("1")  // explicit default
 //	step.AndroidBuildV1("1")                  // older major
+//
+// v0→v1: removed `apk_path_pattern`, `cache_level`
 func AndroidBuildV1(version ...string) *AndroidBuildV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

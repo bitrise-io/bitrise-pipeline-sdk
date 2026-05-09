@@ -6,6 +6,8 @@ package step
 import "time"
 
 // LambdatestUploadV2Builder builds a lambdatest-upload step with typed input methods.
+//
+// v1→v2: added `app_name`
 type LambdatestUploadV2Builder struct{ *Builder }
 
 // LambdatestUploadV2 creates a lambdatest-upload step builder (v2 by default).
@@ -13,6 +15,8 @@ type LambdatestUploadV2Builder struct{ *Builder }
 //
 //	step.LambdatestUploadV2("2")  // explicit default
 //	step.LambdatestUploadV2("1")                  // older major
+//
+// v1→v2: added `app_name`
 func LambdatestUploadV2(version ...string) *LambdatestUploadV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

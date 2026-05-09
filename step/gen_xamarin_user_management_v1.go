@@ -7,6 +7,8 @@ import "time"
 
 // XamarinUserManagementV1Builder builds a xamarin-user-management step with typed input methods.
 //
+// v0→v1: added `build_slug`; removed `bitrise_repository`, `xamarin_action`, `xamarin_android_license`, `xamarin_ios_license`
+//
 // Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
 type XamarinUserManagementV1Builder struct{ *Builder }
 
@@ -15,6 +17,8 @@ type XamarinUserManagementV1Builder struct{ *Builder }
 //
 //	step.XamarinUserManagementV1("1")  // explicit default
 //	step.XamarinUserManagementV1("1")                  // older major
+//
+// v0→v1: added `build_slug`; removed `bitrise_repository`, `xamarin_action`, `xamarin_android_license`, `xamarin_ios_license`
 //
 // Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
 func XamarinUserManagementV1(version ...string) *XamarinUserManagementV1Builder {

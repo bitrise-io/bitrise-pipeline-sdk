@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreGradleCacheV2Builder builds a restore-gradle-cache step with typed input methods.
+//
+// v1→v2: added `retries`
 type RestoreGradleCacheV2Builder struct{ *Builder }
 
 // RestoreGradleCacheV2 creates a restore-gradle-cache step builder (v2 by default).
@@ -21,6 +23,8 @@ type RestoreGradleCacheV2Builder struct{ *Builder }
 //
 //	step.RestoreGradleCacheV2("2")  // explicit default
 //	step.RestoreGradleCacheV2("1")                  // older major
+//
+// v1→v2: added `retries`
 func RestoreGradleCacheV2(version ...string) *RestoreGradleCacheV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

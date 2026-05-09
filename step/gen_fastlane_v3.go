@@ -40,6 +40,8 @@ const (
 )
 
 // FastlaneV3Builder builds a fastlane step with typed input methods.
+//
+// v2→v3: added `api_issuer`, `api_key_path`, `app_password`, `apple_id`, `connection`, `password`
 type FastlaneV3Builder struct{ *Builder }
 
 // FastlaneV3 creates a fastlane step builder (v3 by default).
@@ -47,6 +49,8 @@ type FastlaneV3Builder struct{ *Builder }
 //
 //	step.FastlaneV3("3")  // explicit default
 //	step.FastlaneV3("1")                  // older major
+//
+// v2→v3: added `api_issuer`, `api_key_path`, `app_password`, `apple_id`, `connection`, `password`
 func FastlaneV3(version ...string) *FastlaneV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

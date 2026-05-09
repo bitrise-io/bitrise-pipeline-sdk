@@ -38,6 +38,8 @@ const (
 )
 
 // MicrosoftTeamsIntegrationV2Builder builds a microsoft-teams-integration step with typed input methods.
+//
+// v1→v2: added `actions`, `enable_default_actions`, `section_image`, `section_image_description`, `timezone`
 type MicrosoftTeamsIntegrationV2Builder struct{ *Builder }
 
 // MicrosoftTeamsIntegrationV2 creates a microsoft-teams-integration step builder (v2 by default).
@@ -45,6 +47,8 @@ type MicrosoftTeamsIntegrationV2Builder struct{ *Builder }
 //
 //	step.MicrosoftTeamsIntegrationV2("2")  // explicit default
 //	step.MicrosoftTeamsIntegrationV2("1")                  // older major
+//
+// v1→v2: added `actions`, `enable_default_actions`, `section_image`, `section_image_description`, `timezone`
 func MicrosoftTeamsIntegrationV2(version ...string) *MicrosoftTeamsIntegrationV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

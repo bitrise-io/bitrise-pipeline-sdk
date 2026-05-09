@@ -38,6 +38,8 @@ const (
 )
 
 // GooglePlayDeployV3Builder builds a google-play-deploy step with typed input methods.
+//
+// v2→v3: added `ack_bundle_installation_warning`, `dry_run`, `release_name`, `retry_without_sending_to_review`, `status`, `update_priority`, `verbose_log`; removed `apk_path`, `untrack_blocking_versions`
 type GooglePlayDeployV3Builder struct{ *Builder }
 
 // GooglePlayDeployV3 creates a google-play-deploy step builder (v3 by default).
@@ -45,6 +47,8 @@ type GooglePlayDeployV3Builder struct{ *Builder }
 //
 //	step.GooglePlayDeployV3("3")  // explicit default
 //	step.GooglePlayDeployV3("1")                  // older major
+//
+// v2→v3: added `ack_bundle_installation_warning`, `dry_run`, `release_name`, `retry_without_sending_to_review`, `status`, `update_priority`, `verbose_log`; removed `apk_path`, `untrack_blocking_versions`
 func GooglePlayDeployV3(version ...string) *GooglePlayDeployV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

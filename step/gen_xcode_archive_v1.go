@@ -73,6 +73,8 @@ const (
 )
 
 // XcodeArchiveV1Builder builds a xcode-archive step with typed input methods.
+//
+// v0→v1: added `compile_bitcode`, `configuration`, `custom_export_options_plist_content`, `export_all_dsyms`, `export_method`, `force_code_sign_identity`, `force_provisioning_profile`, `force_provisioning_profile_specifier`, `force_team_id`, `is_clean_build`, `is_export_xcarchive_zip`, `output_tool`, `team_id`, `upload_bitcode`, `use_deprecated_export`, `xcodebuild_options`
 type XcodeArchiveV1Builder struct{ *Builder }
 
 // XcodeArchiveV1 creates a xcode-archive step builder (v1 by default).
@@ -80,6 +82,8 @@ type XcodeArchiveV1Builder struct{ *Builder }
 //
 //	step.XcodeArchiveV1("1")  // explicit default
 //	step.XcodeArchiveV1("1")                  // older major
+//
+// v0→v1: added `compile_bitcode`, `configuration`, `custom_export_options_plist_content`, `export_all_dsyms`, `export_method`, `force_code_sign_identity`, `force_provisioning_profile`, `force_provisioning_profile_specifier`, `force_team_id`, `is_clean_build`, `is_export_xcarchive_zip`, `output_tool`, `team_id`, `upload_bitcode`, `use_deprecated_export`, `xcodebuild_options`
 func XcodeArchiveV1(version ...string) *XcodeArchiveV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -40,6 +40,8 @@ const (
 )
 
 // AppdomeBuild2secureIosV3Builder builds a appdome-build-2secure-ios step with typed input methods.
+//
+// v2→v3: added `output_filename`, `workflow_output_logs`
 type AppdomeBuild2secureIosV3Builder struct{ *Builder }
 
 // AppdomeBuild2secureIosV3 creates a appdome-build-2secure-ios step builder (v3 by default).
@@ -47,6 +49,8 @@ type AppdomeBuild2secureIosV3Builder struct{ *Builder }
 //
 //	step.AppdomeBuild2secureIosV3("3")  // explicit default
 //	step.AppdomeBuild2secureIosV3("1")                  // older major
+//
+// v2→v3: added `output_filename`, `workflow_output_logs`
 func AppdomeBuild2secureIosV3(version ...string) *AppdomeBuild2secureIosV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

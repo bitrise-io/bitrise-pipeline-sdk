@@ -6,6 +6,8 @@ package step
 import "time"
 
 // CalabashAndroidUitestV1Builder builds a calabash-android-uitest step with typed input methods.
+//
+// v0→v1: added `additional_options`, `android_home`, `calabash_android_version`, `gem_file_path`, `work_dir`
 type CalabashAndroidUitestV1Builder struct{ *Builder }
 
 // CalabashAndroidUitestV1 creates a calabash-android-uitest step builder (v1 by default).
@@ -13,6 +15,8 @@ type CalabashAndroidUitestV1Builder struct{ *Builder }
 //
 //	step.CalabashAndroidUitestV1("1")  // explicit default
 //	step.CalabashAndroidUitestV1("1")                  // older major
+//
+// v0→v1: added `additional_options`, `android_home`, `calabash_android_version`, `gem_file_path`, `work_dir`
 func CalabashAndroidUitestV1(version ...string) *CalabashAndroidUitestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

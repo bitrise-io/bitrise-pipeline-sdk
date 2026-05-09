@@ -38,6 +38,8 @@ const (
 )
 
 // RunTestsUsingMarathonCloudV1Builder builds a run-tests-using-marathon-cloud step with typed input methods.
+//
+// v0→v1: added `device`, `filter_file`, `ignore_test_failures`, `isolated`, `output`, `system_image`, `xcode_version`, `xctestplan_filter_file`, `xctestplan_target_name`
 type RunTestsUsingMarathonCloudV1Builder struct{ *Builder }
 
 // RunTestsUsingMarathonCloudV1 creates a run-tests-using-marathon-cloud step builder (v1 by default).
@@ -45,6 +47,8 @@ type RunTestsUsingMarathonCloudV1Builder struct{ *Builder }
 //
 //	step.RunTestsUsingMarathonCloudV1("1")  // explicit default
 //	step.RunTestsUsingMarathonCloudV1("1")                  // older major
+//
+// v0→v1: added `device`, `filter_file`, `ignore_test_failures`, `isolated`, `output`, `system_image`, `xcode_version`, `xctestplan_filter_file`, `xctestplan_target_name`
 func RunTestsUsingMarathonCloudV1(version ...string) *RunTestsUsingMarathonCloudV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

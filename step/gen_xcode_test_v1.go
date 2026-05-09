@@ -86,6 +86,8 @@ const (
 )
 
 // XcodeTestV1Builder builds a xcode-test step with typed input methods.
+//
+// v0→v1: added `export_uitest_artifacts`, `generate_code_coverage_files`, `output_tool`, `should_build_before_test`, `should_retry_test_on_fail`, `simulator_platform`, `single_build`, `verbose`, `wait_for_simulator_boot`, `xcodebuild_test_options`, `xcpretty_test_options`
 type XcodeTestV1Builder struct{ *Builder }
 
 // XcodeTestV1 creates a xcode-test step builder (v1 by default).
@@ -93,6 +95,8 @@ type XcodeTestV1Builder struct{ *Builder }
 //
 //	step.XcodeTestV1("1")  // explicit default
 //	step.XcodeTestV1("1")                  // older major
+//
+// v0→v1: added `export_uitest_artifacts`, `generate_code_coverage_files`, `output_tool`, `should_build_before_test`, `should_retry_test_on_fail`, `simulator_platform`, `single_build`, `verbose`, `wait_for_simulator_boot`, `xcodebuild_test_options`, `xcpretty_test_options`
 func XcodeTestV1(version ...string) *XcodeTestV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -15,6 +15,8 @@ const (
 )
 
 // GradleRunnerV2Builder builds a gradle-runner step with typed input methods.
+//
+// v1→v2: removed `retry_on_failure`
 type GradleRunnerV2Builder struct{ *Builder }
 
 // GradleRunnerV2 creates a gradle-runner step builder (v2 by default).
@@ -22,6 +24,8 @@ type GradleRunnerV2Builder struct{ *Builder }
 //
 //	step.GradleRunnerV2("2")  // explicit default
 //	step.GradleRunnerV2("1")                  // older major
+//
+// v1→v2: removed `retry_on_failure`
 func GradleRunnerV2(version ...string) *GradleRunnerV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

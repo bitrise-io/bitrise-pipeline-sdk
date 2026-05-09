@@ -14,6 +14,8 @@ const (
 )
 
 // VirtualDeviceTestingForIosV1Builder builds a virtual-device-testing-for-ios step with typed input methods.
+//
+// v0→v1: added `num_flaky_test_attempts`, `quarantined_tests`
 type VirtualDeviceTestingForIosV1Builder struct{ *Builder }
 
 // VirtualDeviceTestingForIosV1 creates a virtual-device-testing-for-ios step builder (v1 by default).
@@ -21,6 +23,8 @@ type VirtualDeviceTestingForIosV1Builder struct{ *Builder }
 //
 //	step.VirtualDeviceTestingForIosV1("1")  // explicit default
 //	step.VirtualDeviceTestingForIosV1("1")                  // older major
+//
+// v0→v1: added `num_flaky_test_attempts`, `quarantined_tests`
 func VirtualDeviceTestingForIosV1(version ...string) *VirtualDeviceTestingForIosV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

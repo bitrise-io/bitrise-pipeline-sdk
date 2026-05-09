@@ -6,6 +6,8 @@ package step
 import "time"
 
 // FileDownloaderV1Builder builds a file-downloader step with typed input methods.
+//
+// v0→v1: added `file_permission`
 type FileDownloaderV1Builder struct{ *Builder }
 
 // FileDownloaderV1 creates a file-downloader step builder (v1 by default).
@@ -13,6 +15,8 @@ type FileDownloaderV1Builder struct{ *Builder }
 //
 //	step.FileDownloaderV1("1")  // explicit default
 //	step.FileDownloaderV1("1")                  // older major
+//
+// v0→v1: added `file_permission`
 func FileDownloaderV1(version ...string) *FileDownloaderV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

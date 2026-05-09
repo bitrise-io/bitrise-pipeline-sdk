@@ -7,6 +7,8 @@ import "time"
 
 // XamarinIosTestV1Builder builds a xamarin-ios-test step with typed input methods.
 //
+// v0→v1: added `test_to_run`; removed `is_clean_build`, `xamarin_builder`, `xamarin_test_project`
+//
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 type XamarinIosTestV1Builder struct{ *Builder }
 
@@ -15,6 +17,8 @@ type XamarinIosTestV1Builder struct{ *Builder }
 //
 //	step.XamarinIosTestV1("1")  // explicit default
 //	step.XamarinIosTestV1("1")                  // older major
+//
+// v0→v1: added `test_to_run`; removed `is_clean_build`, `xamarin_builder`, `xamarin_test_project`
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
 func XamarinIosTestV1(version ...string) *XamarinIosTestV1Builder {

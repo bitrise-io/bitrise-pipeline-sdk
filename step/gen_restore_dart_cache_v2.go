@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreDartCacheV2Builder builds a restore-dart-cache step with typed input methods.
+//
+// v1→v2: added `retries`
 type RestoreDartCacheV2Builder struct{ *Builder }
 
 // RestoreDartCacheV2 creates a restore-dart-cache step builder (v2 by default).
@@ -21,6 +23,8 @@ type RestoreDartCacheV2Builder struct{ *Builder }
 //
 //	step.RestoreDartCacheV2("2")  // explicit default
 //	step.RestoreDartCacheV2("1")                  // older major
+//
+// v1→v2: added `retries`
 func RestoreDartCacheV2(version ...string) *RestoreDartCacheV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

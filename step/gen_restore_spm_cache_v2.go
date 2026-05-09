@@ -14,6 +14,8 @@ const (
 )
 
 // RestoreSpmCacheV2Builder builds a restore-spm-cache step with typed input methods.
+//
+// v1→v2: added `retries`
 type RestoreSpmCacheV2Builder struct{ *Builder }
 
 // RestoreSpmCacheV2 creates a restore-spm-cache step builder (v2 by default).
@@ -21,6 +23,8 @@ type RestoreSpmCacheV2Builder struct{ *Builder }
 //
 //	step.RestoreSpmCacheV2("2")  // explicit default
 //	step.RestoreSpmCacheV2("1")                  // older major
+//
+// v1→v2: added `retries`
 func RestoreSpmCacheV2(version ...string) *RestoreSpmCacheV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

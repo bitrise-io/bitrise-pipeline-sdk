@@ -6,6 +6,8 @@ package step
 import "time"
 
 // AwsSecretsManagerV2Builder builds a aws-secrets-manager step with typed input methods.
+//
+// v1→v2: added `aws_default_region`, `aws_profile`; removed `aws_region`
 type AwsSecretsManagerV2Builder struct{ *Builder }
 
 // AwsSecretsManagerV2 creates a aws-secrets-manager step builder (v2 by default).
@@ -13,6 +15,8 @@ type AwsSecretsManagerV2Builder struct{ *Builder }
 //
 //	step.AwsSecretsManagerV2("2")  // explicit default
 //	step.AwsSecretsManagerV2("1")                  // older major
+//
+// v1→v2: added `aws_default_region`, `aws_profile`; removed `aws_region`
 func AwsSecretsManagerV2(version ...string) *AwsSecretsManagerV2Builder {
 	v := "2"
 	if len(version) > 0 && version[0] != "" {

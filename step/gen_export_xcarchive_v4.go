@@ -81,6 +81,8 @@ const (
 )
 
 // ExportXcarchiveV4Builder builds a export-xcarchive step with typed input methods.
+//
+// v3→v4: added `api_key_enterprise_account`, `api_key_id`, `api_key_issuer_id`, `api_key_path`, `automatic_code_signing`, `certificate_url_list`, `distribution_method`, `export_development_team`, `export_options_plist_content`, `fallback_provisioning_profile_url_list`, `keychain_password`, `keychain_path`, `manage_version_and_build_number`, `min_profile_validity`, `passphrase_list`, `register_test_devices`, `test_device_list_path`; removed `custom_export_options_plist_content`, `export_method`, `team_id`
 type ExportXcarchiveV4Builder struct{ *Builder }
 
 // ExportXcarchiveV4 creates a export-xcarchive step builder (v4 by default).
@@ -88,6 +90,8 @@ type ExportXcarchiveV4Builder struct{ *Builder }
 //
 //	step.ExportXcarchiveV4("4")  // explicit default
 //	step.ExportXcarchiveV4("1")                  // older major
+//
+// v3→v4: added `api_key_enterprise_account`, `api_key_id`, `api_key_issuer_id`, `api_key_path`, `automatic_code_signing`, `certificate_url_list`, `distribution_method`, `export_development_team`, `export_options_plist_content`, `fallback_provisioning_profile_url_list`, `keychain_password`, `keychain_path`, `manage_version_and_build_number`, `min_profile_validity`, `passphrase_list`, `register_test_devices`, `test_device_list_path`; removed `custom_export_options_plist_content`, `export_method`, `team_id`
 func ExportXcarchiveV4(version ...string) *ExportXcarchiveV4Builder {
 	v := "4"
 	if len(version) > 0 && version[0] != "" {

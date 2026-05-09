@@ -6,6 +6,8 @@ package step
 import "time"
 
 // PostJiraCommentWithBuildDetailsV1Builder builds a post-jira-comment-with-build-details step with typed input methods.
+//
+// v0→v1: added `api_token`, `base_url`, `build_message`, `issue_keys`, `user_name`; removed `git_branch`, `jira_build_message`, `jira_issue_key`, `jira_password`, `jira_project`, `jira_url`, `jira_user`
 type PostJiraCommentWithBuildDetailsV1Builder struct{ *Builder }
 
 // PostJiraCommentWithBuildDetailsV1 creates a post-jira-comment-with-build-details step builder (v1 by default).
@@ -13,6 +15,8 @@ type PostJiraCommentWithBuildDetailsV1Builder struct{ *Builder }
 //
 //	step.PostJiraCommentWithBuildDetailsV1("1")  // explicit default
 //	step.PostJiraCommentWithBuildDetailsV1("1")                  // older major
+//
+// v0→v1: added `api_token`, `base_url`, `build_message`, `issue_keys`, `user_name`; removed `git_branch`, `jira_build_message`, `jira_issue_key`, `jira_password`, `jira_project`, `jira_url`, `jira_user`
 func PostJiraCommentWithBuildDetailsV1(version ...string) *PostJiraCommentWithBuildDetailsV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

@@ -15,6 +15,8 @@ const (
 
 // StartAndroidEmulatorV1Builder builds a start-android-emulator step with typed input methods.
 //
+// v0→v1: added `boot_timeout`, `emulator_options`, `other_options`, `skin`, `wait_for_boot`
+//
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 type StartAndroidEmulatorV1Builder struct{ *Builder }
 
@@ -23,6 +25,8 @@ type StartAndroidEmulatorV1Builder struct{ *Builder }
 //
 //	step.StartAndroidEmulatorV1("1")  // explicit default
 //	step.StartAndroidEmulatorV1("1")                  // older major
+//
+// v0→v1: added `boot_timeout`, `emulator_options`, `other_options`, `skin`, `wait_for_boot`
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
 func StartAndroidEmulatorV1(version ...string) *StartAndroidEmulatorV1Builder {

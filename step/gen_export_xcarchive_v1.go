@@ -49,6 +49,8 @@ const (
 )
 
 // ExportXcarchiveV1Builder builds a export-xcarchive step with typed input methods.
+//
+// v0→v1: added `verbose_log`
 type ExportXcarchiveV1Builder struct{ *Builder }
 
 // ExportXcarchiveV1 creates a export-xcarchive step builder (v1 by default).
@@ -56,6 +58,8 @@ type ExportXcarchiveV1Builder struct{ *Builder }
 //
 //	step.ExportXcarchiveV1("1")  // explicit default
 //	step.ExportXcarchiveV1("1")                  // older major
+//
+// v0→v1: added `verbose_log`
 func ExportXcarchiveV1(version ...string) *ExportXcarchiveV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

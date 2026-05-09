@@ -63,6 +63,8 @@ const (
 )
 
 // CordovaArchiveV3Builder builds a cordova-archive step with typed input methods.
+//
+// v2→v3: added `build_system`
 type CordovaArchiveV3Builder struct{ *Builder }
 
 // CordovaArchiveV3 creates a cordova-archive step builder (v3 by default).
@@ -70,6 +72,8 @@ type CordovaArchiveV3Builder struct{ *Builder }
 //
 //	step.CordovaArchiveV3("3")  // explicit default
 //	step.CordovaArchiveV3("1")                  // older major
+//
+// v2→v3: added `build_system`
 func CordovaArchiveV3(version ...string) *CordovaArchiveV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

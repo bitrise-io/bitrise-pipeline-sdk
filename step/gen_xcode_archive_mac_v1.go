@@ -64,6 +64,8 @@ const (
 )
 
 // XcodeArchiveMacV1Builder builds a xcode-archive-mac step with typed input methods.
+//
+// v0→v1: added `artifact_name`, `custom_export_options_plist_content`, `disable_index_while_building`, `export_method`, `force_code_sign_identity`, `force_provisioning_profile`, `force_provisioning_profile_specifier`, `force_team_id`, `is_export_all_dsyms`, `is_export_xcarchive_zip`, `verbose_log`, `xcodebuild_options`; removed `is_force_code_sign`
 type XcodeArchiveMacV1Builder struct{ *Builder }
 
 // XcodeArchiveMacV1 creates a xcode-archive-mac step builder (v1 by default).
@@ -71,6 +73,8 @@ type XcodeArchiveMacV1Builder struct{ *Builder }
 //
 //	step.XcodeArchiveMacV1("1")  // explicit default
 //	step.XcodeArchiveMacV1("1")                  // older major
+//
+// v0→v1: added `artifact_name`, `custom_export_options_plist_content`, `disable_index_while_building`, `export_method`, `force_code_sign_identity`, `force_provisioning_profile`, `force_provisioning_profile_specifier`, `force_team_id`, `is_export_all_dsyms`, `is_export_xcarchive_zip`, `verbose_log`, `xcodebuild_options`; removed `is_force_code_sign`
 func XcodeArchiveMacV1(version ...string) *XcodeArchiveMacV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

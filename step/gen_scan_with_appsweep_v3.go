@@ -6,6 +6,8 @@ package step
 import "time"
 
 // ScanWithAppsweepV3Builder builds a scan-with-appsweep step with typed input methods.
+//
+// v2→v3: added `android_app_path`, `android_mappingfile_path`, `android_project_location`, `commit_hash`; removed `build_variant`, `gradle_plugin_version`, `project_location`
 type ScanWithAppsweepV3Builder struct{ *Builder }
 
 // ScanWithAppsweepV3 creates a scan-with-appsweep step builder (v3 by default).
@@ -13,6 +15,8 @@ type ScanWithAppsweepV3Builder struct{ *Builder }
 //
 //	step.ScanWithAppsweepV3("3")  // explicit default
 //	step.ScanWithAppsweepV3("1")                  // older major
+//
+// v2→v3: added `android_app_path`, `android_mappingfile_path`, `android_project_location`, `commit_hash`; removed `build_variant`, `gradle_plugin_version`, `project_location`
 func ScanWithAppsweepV3(version ...string) *ScanWithAppsweepV3Builder {
 	v := "3"
 	if len(version) > 0 && version[0] != "" {

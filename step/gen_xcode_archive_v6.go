@@ -109,6 +109,8 @@ const (
 )
 
 // XcodeArchiveV6Builder builds a xcode-archive step with typed input methods.
+//
+// v5→v6: removed `cache_level`
 type XcodeArchiveV6Builder struct{ *Builder }
 
 // XcodeArchiveV6 creates a xcode-archive step builder (v6 by default).
@@ -116,6 +118,8 @@ type XcodeArchiveV6Builder struct{ *Builder }
 //
 //	step.XcodeArchiveV6("6")  // explicit default
 //	step.XcodeArchiveV6("1")                  // older major
+//
+// v5→v6: removed `cache_level`
 func XcodeArchiveV6(version ...string) *XcodeArchiveV6Builder {
 	v := "6"
 	if len(version) > 0 && version[0] != "" {

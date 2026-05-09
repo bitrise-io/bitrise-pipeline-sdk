@@ -39,6 +39,8 @@ const (
 
 // AppcenterDeployAndroidV2Builder builds a appcenter-deploy-android step with typed input methods.
 //
+// v1→v2: added `all_distribution_groups`
+//
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 type AppcenterDeployAndroidV2Builder struct{ *Builder }
 
@@ -47,6 +49,8 @@ type AppcenterDeployAndroidV2Builder struct{ *Builder }
 //
 //	step.AppcenterDeployAndroidV2("2")  // explicit default
 //	step.AppcenterDeployAndroidV2("1")                  // older major
+//
+// v1→v2: added `all_distribution_groups`
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
 func AppcenterDeployAndroidV2(version ...string) *AppcenterDeployAndroidV2Builder {

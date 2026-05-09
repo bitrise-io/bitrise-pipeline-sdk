@@ -33,6 +33,8 @@ const (
 
 // IosAutoProvisionV1Builder builds a ios-auto-provision step with typed input methods.
 //
+// v0→v1: added `generate_profiles`, `min_profile_days_valid`
+//
 // Deprecated: This Step has been deprecated in favour of the new automatic code signing options on Bitrise.  Option A) The latest versions of the [Xcode Archive & Export for iOS](https://github.com/bitrise-steplib/steps-xcode-archive), [Xcode Build for testing for iOS](https://github.com/bitrise-steplib/steps-xcode-build-for-test), and the [Export iOS and tvOS Xcode archive](https://github.com/bitrise-steplib/steps-export-xcarchive) Steps have built-in automatic code signing. We recommend removing this Step from your Workflow and using the automatic code signing feature in the Steps mentioned above.  Option B) If you are not using any of the mentioned Xcode steps, then you can replace this iOS Auto Provision Step with the [Manage iOS Code signing](https://www.bitrise.io/integrations/steps/manage-ios-code-signing) Step.  You can [read more](https://blog.bitrise.io/post/simplifying-automatic-code-signing-on-bitrise) about these changes in our blog post.
 type IosAutoProvisionV1Builder struct{ *Builder }
 
@@ -41,6 +43,8 @@ type IosAutoProvisionV1Builder struct{ *Builder }
 //
 //	step.IosAutoProvisionV1("1")  // explicit default
 //	step.IosAutoProvisionV1("1")                  // older major
+//
+// v0→v1: added `generate_profiles`, `min_profile_days_valid`
 //
 // Deprecated: This Step has been deprecated in favour of the new automatic code signing options on Bitrise.  Option A) The latest versions of the [Xcode Archive & Export for iOS](https://github.com/bitrise-steplib/steps-xcode-archive), [Xcode Build for testing for iOS](https://github.com/bitrise-steplib/steps-xcode-build-for-test), and the [Export iOS and tvOS Xcode archive](https://github.com/bitrise-steplib/steps-export-xcarchive) Steps have built-in automatic code signing. We recommend removing this Step from your Workflow and using the automatic code signing feature in the Steps mentioned above.  Option B) If you are not using any of the mentioned Xcode steps, then you can replace this iOS Auto Provision Step with the [Manage iOS Code signing](https://www.bitrise.io/integrations/steps/manage-ios-code-signing) Step.  You can [read more](https://blog.bitrise.io/post/simplifying-automatic-code-signing-on-bitrise) about these changes in our blog post.
 func IosAutoProvisionV1(version ...string) *IosAutoProvisionV1Builder {

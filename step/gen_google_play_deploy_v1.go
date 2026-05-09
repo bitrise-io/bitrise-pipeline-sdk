@@ -24,6 +24,8 @@ const (
 )
 
 // GooglePlayDeployV1Builder builds a google-play-deploy step with typed input methods.
+//
+// v0→v1: added `app_path`, `expansionfile_path`, `mapping_file`, `service_account_json_key_path`, `untrack_blocking_versions`, `user_fraction`, `whatsnews_dir`; removed `key_file_path`, `service_account_email`
 type GooglePlayDeployV1Builder struct{ *Builder }
 
 // GooglePlayDeployV1 creates a google-play-deploy step builder (v1 by default).
@@ -31,6 +33,8 @@ type GooglePlayDeployV1Builder struct{ *Builder }
 //
 //	step.GooglePlayDeployV1("1")  // explicit default
 //	step.GooglePlayDeployV1("1")                  // older major
+//
+// v0→v1: added `app_path`, `expansionfile_path`, `mapping_file`, `service_account_json_key_path`, `untrack_blocking_versions`, `user_fraction`, `whatsnews_dir`; removed `key_file_path`, `service_account_email`
 func GooglePlayDeployV1(version ...string) *GooglePlayDeployV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

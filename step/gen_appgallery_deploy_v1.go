@@ -30,6 +30,8 @@ const (
 )
 
 // AppgalleryDeployV1Builder builds a appgallery-deploy step with typed input methods.
+//
+// v0→v1: added `phase_release_description`, `phase_release_end_time`, `phase_release_percentage`, `phase_release_start_time`, `submit_for_review`; removed `lang`
 type AppgalleryDeployV1Builder struct{ *Builder }
 
 // AppgalleryDeployV1 creates a appgallery-deploy step builder (v1 by default).
@@ -37,6 +39,8 @@ type AppgalleryDeployV1Builder struct{ *Builder }
 //
 //	step.AppgalleryDeployV1("1")  // explicit default
 //	step.AppgalleryDeployV1("1")                  // older major
+//
+// v0→v1: added `phase_release_description`, `phase_release_end_time`, `phase_release_percentage`, `phase_release_start_time`, `submit_for_review`; removed `lang`
 func AppgalleryDeployV1(version ...string) *AppgalleryDeployV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

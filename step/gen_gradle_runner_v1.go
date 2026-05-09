@@ -23,6 +23,8 @@ const (
 )
 
 // GradleRunnerV1Builder builds a gradle-runner step with typed input methods.
+//
+// v0→v1: added `apk_file_exclude_filter`, `apk_file_include_filter`, `app_file_exclude_filter`, `app_file_include_filter`, `cache_level`, `gradle_options`, `gradlew_path`, `mapping_file_exclude_filter`, `mapping_file_include_filter`, `retry_on_failure`, `test_apk_file_exclude_filter`, `test_apk_file_include_filter`; removed `apk_file_filter`, `workdir`
 type GradleRunnerV1Builder struct{ *Builder }
 
 // GradleRunnerV1 creates a gradle-runner step builder (v1 by default).
@@ -30,6 +32,8 @@ type GradleRunnerV1Builder struct{ *Builder }
 //
 //	step.GradleRunnerV1("1")  // explicit default
 //	step.GradleRunnerV1("1")                  // older major
+//
+// v0→v1: added `apk_file_exclude_filter`, `apk_file_include_filter`, `app_file_exclude_filter`, `app_file_include_filter`, `cache_level`, `gradle_options`, `gradlew_path`, `mapping_file_exclude_filter`, `mapping_file_include_filter`, `retry_on_failure`, `test_apk_file_exclude_filter`, `test_apk_file_include_filter`; removed `apk_file_filter`, `workdir`
 func GradleRunnerV1(version ...string) *GradleRunnerV1Builder {
 	v := "1"
 	if len(version) > 0 && version[0] != "" {

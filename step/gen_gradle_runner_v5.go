@@ -6,6 +6,8 @@ package step
 import "time"
 
 // GradleRunnerV5Builder builds a gradle-runner step with typed input methods.
+//
+// v4→v5: removed `cache_level`
 type GradleRunnerV5Builder struct{ *Builder }
 
 // GradleRunnerV5 creates a gradle-runner step builder (v5 by default).
@@ -13,6 +15,8 @@ type GradleRunnerV5Builder struct{ *Builder }
 //
 //	step.GradleRunnerV5("5")  // explicit default
 //	step.GradleRunnerV5("1")                  // older major
+//
+// v4→v5: removed `cache_level`
 func GradleRunnerV5(version ...string) *GradleRunnerV5Builder {
 	v := "5"
 	if len(version) > 0 && version[0] != "" {
