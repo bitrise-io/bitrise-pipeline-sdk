@@ -7,11 +7,14 @@
 //
 //	// 1. Define the bundle in the pipeline:
 //	p.AddStepBundle("lint", stepbundle.New().
-//	    AddStep(step.Script("golangci-lint run ./...")).
-//	    AddStep(step.Script("go vet ./...")))
+//	    WithInput("flags", "--fix").
+//	    AddStep(step.Script().WithContent("golangci-lint run ./...")),
+//	    AddStep(step.Script().WithContent("go vet ./...")))
 //
-//	// 2. Reference it inside a workflow:
-//	wf.AddStepBundleRef("lint", stepbundle.Ref())
+//	// 2. Reference it inside a workflow, optionally overriding inputs:
+//	wf.AddStepBundleRef("lint", stepbundle.Ref().
+//	    WithRunIf(step.RunIfCI).
+//	    WithInput("flags", "--fix --timeout 5m"))
 package stepbundle
 
 import (
@@ -49,8 +52,13 @@ func (b *Builder) WithDescription(desc string) *Builder {
 	return b
 }
 
-// WithRunIf sets a conditional expression; the bundle is skipped when it evaluates to false.
-func (b *Builder) WithRunIf(expr string) *Builder {
+// WithRunIf sets a conditional expression evaluated before the bundle runs.
+// Use the step.RunIf* constants for the most common conditions:
+//
+//	bundle.WithRunIf(step.RunIfCI)
+//	bundle.WithRunIf(step.RunIfBuildFailed)
+//	bundle.WithRunIf(step.RunIfEnvEq("DEPLOY_ENV", "production"))
+func (b *Builder) WithRunIf(expr step.RunIfExpr) *Builder {
 	b.model.RunIf = expr
 	return b
 }
@@ -67,9 +75,44 @@ func (b *Builder) WithEnv(key, value string) *Builder {
 	return b
 }
 
-// AddStep appends a step to the bundle. Accepts *step.Builder or any typed step builder.
-func (b *Builder) AddStep(s step.BundleBuildable) *Builder {
-	item := bitriseModels.StepListItemStepOrBundleModel{s.Ref(): s.Build()[s.Ref()]}
+// WithExecutionContainer pins all steps in this bundle to run inside the named container.
+// The container must be defined in the pipeline config.
+func (b *Builder) WithExecutionContainer(containerID string) *Builder {
+	b.model.ExecutionContainer = containerID
+	return b
+}
+
+// WithServiceContainers attaches one or more named service containers to all steps
+// in this bundle. The containers must be defined in the pipeline config.
+func (b *Builder) WithServiceContainers(containerIDs ...string) *Builder {
+	for _, id := range containerIDs {
+		b.model.ServiceContainers = append(b.model.ServiceContainers, id)
+	}
+	return b
+}
+
+// AddStep appends one or more steps to the bundle.
+// Accepts *step.Builder or any typed step builder.
+//
+//	bundle.AddStep(
+//	    step.Script().WithContent("golangci-lint run ./..."),
+//	    step.Script().WithContent("go vet ./..."),
+//	)
+func (b *Builder) AddStep(steps ...step.BundleBuildable) *Builder {
+	for _, s := range steps {
+		item := bitriseModels.StepListItemStepOrBundleModel{s.Ref(): s.Build()[s.Ref()]}
+		b.model.Steps = append(b.model.Steps, item)
+	}
+	return b
+}
+
+// AddStepBundleRef appends a reference to another named step bundle inside this bundle's
+// step list, with optional call-site overrides. This enables bundle composition.
+//
+//	outer.AddStepBundleRef("inner-lint", stepbundle.Ref().WithInput("flags", "--fix"))
+func (b *Builder) AddStepBundleRef(bundleID string, ref *RefBuilder) *Builder {
+	key := bitriseModels.StepListItemStepBundleKeyPrefix + bundleID
+	item := bitriseModels.StepListItemStepOrBundleModel{key: ref.model}
 	b.model.Steps = append(b.model.Steps, item)
 	return b
 }
@@ -97,13 +140,29 @@ func (b *RefBuilder) WithTitle(title string) *RefBuilder {
 	return b
 }
 
+// WithSummary overrides the bundle summary at this call site.
+func (b *RefBuilder) WithSummary(summary string) *RefBuilder {
+	b.model.Summary = summary
+	return b
+}
+
+// WithDescription overrides the bundle description at this call site.
+func (b *RefBuilder) WithDescription(desc string) *RefBuilder {
+	b.model.Description = desc
+	return b
+}
+
 // WithRunIf overrides the run_if expression at this call site.
-func (b *RefBuilder) WithRunIf(expr string) *RefBuilder {
+// Use the step.RunIf* constants for the most common conditions:
+//
+//	ref.WithRunIf(step.RunIfCI)
+//	ref.WithRunIf(step.RunIfEnvEq("DEPLOY_ENV", "production"))
+func (b *RefBuilder) WithRunIf(expr step.RunIfExpr) *RefBuilder {
 	b.model.RunIf = &expr
 	return b
 }
 
-// WithInput overrides or provides a value for a declared bundle input.
+// WithInput overrides or provides a value for a declared bundle input at this call site.
 func (b *RefBuilder) WithInput(key, value string) *RefBuilder {
 	b.model.Inputs = append(b.model.Inputs, envmanModels.EnvironmentItemModel{key: value})
 	return b
@@ -112,6 +171,20 @@ func (b *RefBuilder) WithInput(key, value string) *RefBuilder {
 // WithEnv adds an environment variable at this call site.
 func (b *RefBuilder) WithEnv(key, value string) *RefBuilder {
 	b.model.Environments = append(b.model.Environments, envmanModels.EnvironmentItemModel{key: value})
+	return b
+}
+
+// WithExecutionContainer overrides the execution container at this call site.
+func (b *RefBuilder) WithExecutionContainer(containerID string) *RefBuilder {
+	b.model.ExecutionContainer = containerID
+	return b
+}
+
+// WithServiceContainers overrides the service containers at this call site.
+func (b *RefBuilder) WithServiceContainers(containerIDs ...string) *RefBuilder {
+	for _, id := range containerIDs {
+		b.model.ServiceContainers = append(b.model.ServiceContainers, id)
+	}
 	return b
 }
 
