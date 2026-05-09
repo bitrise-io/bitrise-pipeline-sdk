@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FastlaneV2UpdateFastlane enumerates the valid values for the update_fastlane input.
 type FastlaneV2UpdateFastlane string
 
@@ -106,6 +108,18 @@ func (b *FastlaneV2Builder) WithTimeout(seconds int) *FastlaneV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FastlaneV2Builder) WithNoOutputTimeout(seconds int) *FastlaneV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FastlaneV2Builder) WithTimeoutDuration(d time.Duration) *FastlaneV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FastlaneV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *FastlaneV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

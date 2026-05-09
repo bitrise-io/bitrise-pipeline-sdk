@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepVersionPreReleaseInfoBuilder builds a bitrise-step-version-pre-release-info step with typed input methods.
 type BitriseStepVersionPreReleaseInfoBuilder struct{ *Builder }
 
@@ -100,6 +102,18 @@ func (b *BitriseStepVersionPreReleaseInfoBuilder) WithTimeout(seconds int) *Bitr
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepVersionPreReleaseInfoBuilder) WithNoOutputTimeout(seconds int) *BitriseStepVersionPreReleaseInfoBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepVersionPreReleaseInfoBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepVersionPreReleaseInfoBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepVersionPreReleaseInfoBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepVersionPreReleaseInfoBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

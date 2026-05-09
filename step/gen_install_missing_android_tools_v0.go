@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstallMissingAndroidToolsV0UpdateSupportLibraryAndPlayServices enumerates the valid values for the update_support_library_and_play_services input.
 type InstallMissingAndroidToolsV0UpdateSupportLibraryAndPlayServices string
 
@@ -72,6 +74,18 @@ func (b *InstallMissingAndroidToolsV0Builder) WithTimeout(seconds int) *InstallM
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstallMissingAndroidToolsV0Builder) WithNoOutputTimeout(seconds int) *InstallMissingAndroidToolsV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstallMissingAndroidToolsV0Builder) WithTimeoutDuration(d time.Duration) *InstallMissingAndroidToolsV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstallMissingAndroidToolsV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *InstallMissingAndroidToolsV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

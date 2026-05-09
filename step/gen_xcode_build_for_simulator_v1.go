@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeBuildForSimulatorV1Destination enumerates the valid values for the destination input.
 type XcodeBuildForSimulatorV1Destination string
 
@@ -159,6 +161,18 @@ func (b *XcodeBuildForSimulatorV1Builder) WithTimeout(seconds int) *XcodeBuildFo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeBuildForSimulatorV1Builder) WithNoOutputTimeout(seconds int) *XcodeBuildForSimulatorV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeBuildForSimulatorV1Builder) WithTimeoutDuration(d time.Duration) *XcodeBuildForSimulatorV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeBuildForSimulatorV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeBuildForSimulatorV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

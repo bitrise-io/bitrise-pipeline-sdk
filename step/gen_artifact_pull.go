@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ArtifactPullVerbose enumerates the valid values for the verbose input.
 type ArtifactPullVerbose string
 
@@ -100,6 +102,18 @@ func (b *ArtifactPullBuilder) WithTimeout(seconds int) *ArtifactPullBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ArtifactPullBuilder) WithNoOutputTimeout(seconds int) *ArtifactPullBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ArtifactPullBuilder) WithTimeoutDuration(d time.Duration) *ArtifactPullBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ArtifactPullBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ArtifactPullBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

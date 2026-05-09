@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenerateImageDifferenceBuilder builds a generate-image-difference step with typed input methods.
 type GenerateImageDifferenceBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *GenerateImageDifferenceBuilder) WithTimeout(seconds int) *GenerateImage
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenerateImageDifferenceBuilder) WithNoOutputTimeout(seconds int) *GenerateImageDifferenceBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenerateImageDifferenceBuilder) WithTimeoutDuration(d time.Duration) *GenerateImageDifferenceBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenerateImageDifferenceBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenerateImageDifferenceBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AmazonS3UploadAclControl enumerates the valid values for the acl_control input.
 type AmazonS3UploadAclControl string
 
@@ -114,6 +116,18 @@ func (b *AmazonS3UploadBuilder) WithTimeout(seconds int) *AmazonS3UploadBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AmazonS3UploadBuilder) WithNoOutputTimeout(seconds int) *AmazonS3UploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AmazonS3UploadBuilder) WithTimeoutDuration(d time.Duration) *AmazonS3UploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AmazonS3UploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AmazonS3UploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

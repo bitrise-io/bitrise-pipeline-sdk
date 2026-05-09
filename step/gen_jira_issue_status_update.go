@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // JiraIssueStatusUpdateBuilder builds a jira-issue-status-update step with typed input methods.
 type JiraIssueStatusUpdateBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *JiraIssueStatusUpdateBuilder) WithTimeout(seconds int) *JiraIssueStatus
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *JiraIssueStatusUpdateBuilder) WithNoOutputTimeout(seconds int) *JiraIssueStatusUpdateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *JiraIssueStatusUpdateBuilder) WithTimeoutDuration(d time.Duration) *JiraIssueStatusUpdateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *JiraIssueStatusUpdateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *JiraIssueStatusUpdateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

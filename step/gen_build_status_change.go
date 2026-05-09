@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BuildStatusChangeVerbose enumerates the valid values for the verbose input.
 type BuildStatusChangeVerbose string
 
@@ -72,6 +74,18 @@ func (b *BuildStatusChangeBuilder) WithTimeout(seconds int) *BuildStatusChangeBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BuildStatusChangeBuilder) WithNoOutputTimeout(seconds int) *BuildStatusChangeBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BuildStatusChangeBuilder) WithTimeoutDuration(d time.Duration) *BuildStatusChangeBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BuildStatusChangeBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BuildStatusChangeBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

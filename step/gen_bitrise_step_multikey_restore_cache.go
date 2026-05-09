@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepMultikeyRestoreCacheVerbose enumerates the valid values for the verbose input.
 type BitriseStepMultikeyRestoreCacheVerbose string
 
@@ -78,6 +80,18 @@ func (b *BitriseStepMultikeyRestoreCacheBuilder) WithTimeout(seconds int) *Bitri
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepMultikeyRestoreCacheBuilder) WithNoOutputTimeout(seconds int) *BitriseStepMultikeyRestoreCacheBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepMultikeyRestoreCacheBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepMultikeyRestoreCacheBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepMultikeyRestoreCacheBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepMultikeyRestoreCacheBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

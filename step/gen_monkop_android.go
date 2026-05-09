@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MonkopAndroidBuilder builds a monkop-android step with typed input methods.
 type MonkopAndroidBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *MonkopAndroidBuilder) WithTimeout(seconds int) *MonkopAndroidBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MonkopAndroidBuilder) WithNoOutputTimeout(seconds int) *MonkopAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MonkopAndroidBuilder) WithTimeoutDuration(d time.Duration) *MonkopAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MonkopAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MonkopAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

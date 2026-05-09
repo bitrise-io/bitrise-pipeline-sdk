@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitTagPush enumerates the valid values for the push input.
 type GitTagPush string
 
@@ -78,6 +80,18 @@ func (b *GitTagBuilder) WithTimeout(seconds int) *GitTagBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitTagBuilder) WithNoOutputTimeout(seconds int) *GitTagBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitTagBuilder) WithTimeoutDuration(d time.Duration) *GitTagBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitTagBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GitTagBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

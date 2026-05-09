@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RustupInstallAutoUpdateToolchain enumerates the valid values for the auto_update_toolchain input.
 type RustupInstallAutoUpdateToolchain string
 
@@ -100,6 +102,18 @@ func (b *RustupInstallBuilder) WithTimeout(seconds int) *RustupInstallBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RustupInstallBuilder) WithNoOutputTimeout(seconds int) *RustupInstallBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RustupInstallBuilder) WithTimeoutDuration(d time.Duration) *RustupInstallBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RustupInstallBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RustupInstallBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

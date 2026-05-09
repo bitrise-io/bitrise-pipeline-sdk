@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ResourceArchiveBuilder builds a resource-archive step with typed input methods.
 type ResourceArchiveBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *ResourceArchiveBuilder) WithTimeout(seconds int) *ResourceArchiveBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ResourceArchiveBuilder) WithNoOutputTimeout(seconds int) *ResourceArchiveBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ResourceArchiveBuilder) WithTimeoutDuration(d time.Duration) *ResourceArchiveBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ResourceArchiveBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ResourceArchiveBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

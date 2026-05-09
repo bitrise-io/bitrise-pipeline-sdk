@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NpmV3Builder builds a npm step with typed input methods.
 type NpmV3Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *NpmV3Builder) WithTimeout(seconds int) *NpmV3Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NpmV3Builder) WithNoOutputTimeout(seconds int) *NpmV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NpmV3Builder) WithTimeoutDuration(d time.Duration) *NpmV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NpmV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *NpmV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

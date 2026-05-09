@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodebuildBuilder builds a xcodebuild step with typed input methods.
 type XcodebuildBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *XcodebuildBuilder) WithTimeout(seconds int) *XcodebuildBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodebuildBuilder) WithNoOutputTimeout(seconds int) *XcodebuildBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodebuildBuilder) WithTimeoutDuration(d time.Duration) *XcodebuildBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodebuildBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodebuildBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

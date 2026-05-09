@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterAppReleaseMandatoryUpdate enumerates the valid values for the mandatory_update input.
 type AppcenterAppReleaseMandatoryUpdate string
 
@@ -120,6 +122,18 @@ func (b *AppcenterAppReleaseBuilder) WithTimeout(seconds int) *AppcenterAppRelea
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterAppReleaseBuilder) WithNoOutputTimeout(seconds int) *AppcenterAppReleaseBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterAppReleaseBuilder) WithTimeoutDuration(d time.Duration) *AppcenterAppReleaseBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterAppReleaseBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterAppReleaseBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

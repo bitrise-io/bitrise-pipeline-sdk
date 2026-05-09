@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SaveGradleCacheVerbose enumerates the valid values for the verbose input.
 type SaveGradleCacheVerbose string
 
@@ -86,6 +88,18 @@ func (b *SaveGradleCacheBuilder) WithTimeout(seconds int) *SaveGradleCacheBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SaveGradleCacheBuilder) WithNoOutputTimeout(seconds int) *SaveGradleCacheBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SaveGradleCacheBuilder) WithTimeoutDuration(d time.Duration) *SaveGradleCacheBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SaveGradleCacheBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SaveGradleCacheBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

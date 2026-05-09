@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CustomTestResultsExportV0VerboseLog enumerates the valid values for the verbose_log input.
 type CustomTestResultsExportV0VerboseLog string
 
@@ -90,6 +92,18 @@ func (b *CustomTestResultsExportV0Builder) WithTimeout(seconds int) *CustomTestR
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CustomTestResultsExportV0Builder) WithNoOutputTimeout(seconds int) *CustomTestResultsExportV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CustomTestResultsExportV0Builder) WithTimeoutDuration(d time.Duration) *CustomTestResultsExportV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CustomTestResultsExportV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *CustomTestResultsExportV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

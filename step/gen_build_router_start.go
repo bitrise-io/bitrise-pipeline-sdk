@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BuildRouterStartWaitForBuilds enumerates the valid values for the wait_for_builds input.
 type BuildRouterStartWaitForBuilds string
 
@@ -118,6 +120,18 @@ func (b *BuildRouterStartBuilder) WithTimeout(seconds int) *BuildRouterStartBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BuildRouterStartBuilder) WithNoOutputTimeout(seconds int) *BuildRouterStartBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BuildRouterStartBuilder) WithTimeoutDuration(d time.Duration) *BuildRouterStartBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BuildRouterStartBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BuildRouterStartBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

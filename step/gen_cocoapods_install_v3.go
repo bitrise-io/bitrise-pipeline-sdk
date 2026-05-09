@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CocoapodsInstallV3Command enumerates the valid values for the command input.
 type CocoapodsInstallV3Command string
 
@@ -92,6 +94,18 @@ func (b *CocoapodsInstallV3Builder) WithTimeout(seconds int) *CocoapodsInstallV3
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CocoapodsInstallV3Builder) WithNoOutputTimeout(seconds int) *CocoapodsInstallV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CocoapodsInstallV3Builder) WithTimeoutDuration(d time.Duration) *CocoapodsInstallV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CocoapodsInstallV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *CocoapodsInstallV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

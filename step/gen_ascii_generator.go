@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AsciiGeneratorBuilder builds a ascii-generator step with typed input methods.
 type AsciiGeneratorBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *AsciiGeneratorBuilder) WithTimeout(seconds int) *AsciiGeneratorBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AsciiGeneratorBuilder) WithNoOutputTimeout(seconds int) *AsciiGeneratorBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AsciiGeneratorBuilder) WithTimeoutDuration(d time.Duration) *AsciiGeneratorBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AsciiGeneratorBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AsciiGeneratorBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

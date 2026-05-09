@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MaestroIosTestRunExportTestReport enumerates the valid values for the export_test_report input.
 type MaestroIosTestRunExportTestReport string
 
@@ -90,6 +92,18 @@ func (b *MaestroIosTestRunBuilder) WithTimeout(seconds int) *MaestroIosTestRunBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MaestroIosTestRunBuilder) WithNoOutputTimeout(seconds int) *MaestroIosTestRunBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MaestroIosTestRunBuilder) WithTimeoutDuration(d time.Duration) *MaestroIosTestRunBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MaestroIosTestRunBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MaestroIosTestRunBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

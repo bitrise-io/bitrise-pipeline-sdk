@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AuthenticateWithBitbucketOauthBuilder builds a authenticate-with-bitbucket-oauth step with typed input methods.
 type AuthenticateWithBitbucketOauthBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *AuthenticateWithBitbucketOauthBuilder) WithTimeout(seconds int) *Authen
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AuthenticateWithBitbucketOauthBuilder) WithNoOutputTimeout(seconds int) *AuthenticateWithBitbucketOauthBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AuthenticateWithBitbucketOauthBuilder) WithTimeoutDuration(d time.Duration) *AuthenticateWithBitbucketOauthBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AuthenticateWithBitbucketOauthBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AuthenticateWithBitbucketOauthBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AuthenticateWithAwsDockerLogin enumerates the valid values for the docker_login input.
 type AuthenticateWithAwsDockerLogin string
 
@@ -116,6 +118,18 @@ func (b *AuthenticateWithAwsBuilder) WithTimeout(seconds int) *AuthenticateWithA
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AuthenticateWithAwsBuilder) WithNoOutputTimeout(seconds int) *AuthenticateWithAwsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AuthenticateWithAwsBuilder) WithTimeoutDuration(d time.Duration) *AuthenticateWithAwsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AuthenticateWithAwsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AuthenticateWithAwsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

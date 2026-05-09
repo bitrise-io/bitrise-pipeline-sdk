@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenerateTextFileBuilder builds a generate-text-file step with typed input methods.
 type GenerateTextFileBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *GenerateTextFileBuilder) WithTimeout(seconds int) *GenerateTextFileBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenerateTextFileBuilder) WithNoOutputTimeout(seconds int) *GenerateTextFileBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenerateTextFileBuilder) WithTimeoutDuration(d time.Duration) *GenerateTextFileBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenerateTextFileBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenerateTextFileBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // StampAppiconWithVersionNumberBuilder builds a stamp-appicon-with-version-number step with typed input methods.
 //
 // Deprecated: This step is a duplicate of "bitrise-step-stamp-appicon-with-version-number". Please use that step ID instead.
@@ -86,6 +88,18 @@ func (b *StampAppiconWithVersionNumberBuilder) WithTimeout(seconds int) *StampAp
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *StampAppiconWithVersionNumberBuilder) WithNoOutputTimeout(seconds int) *StampAppiconWithVersionNumberBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *StampAppiconWithVersionNumberBuilder) WithTimeoutDuration(d time.Duration) *StampAppiconWithVersionNumberBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *StampAppiconWithVersionNumberBuilder) WithNoOutputTimeoutDuration(d time.Duration) *StampAppiconWithVersionNumberBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

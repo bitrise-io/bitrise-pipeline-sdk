@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidUnitTestV1IsDebug enumerates the valid values for the is_debug input.
 type AndroidUnitTestV1IsDebug string
 
@@ -108,6 +110,18 @@ func (b *AndroidUnitTestV1Builder) WithTimeout(seconds int) *AndroidUnitTestV1Bu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidUnitTestV1Builder) WithNoOutputTimeout(seconds int) *AndroidUnitTestV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidUnitTestV1Builder) WithTimeoutDuration(d time.Duration) *AndroidUnitTestV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidUnitTestV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidUnitTestV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppaloosaBuilder builds a appaloosa step with typed input methods.
 type AppaloosaBuilder struct{ *Builder }
 
@@ -118,6 +120,18 @@ func (b *AppaloosaBuilder) WithTimeout(seconds int) *AppaloosaBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppaloosaBuilder) WithNoOutputTimeout(seconds int) *AppaloosaBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppaloosaBuilder) WithTimeoutDuration(d time.Duration) *AppaloosaBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppaloosaBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppaloosaBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

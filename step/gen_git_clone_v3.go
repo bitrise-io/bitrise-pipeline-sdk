@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitCloneV3ResetRepository enumerates the valid values for the reset_repository input.
 type GitCloneV3ResetRepository string
 
@@ -166,6 +168,18 @@ func (b *GitCloneV3Builder) WithTimeout(seconds int) *GitCloneV3Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitCloneV3Builder) WithNoOutputTimeout(seconds int) *GitCloneV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitCloneV3Builder) WithTimeoutDuration(d time.Duration) *GitCloneV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitCloneV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *GitCloneV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

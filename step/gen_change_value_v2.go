@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ChangeValueV2ShowFile enumerates the valid values for the show_file input.
 type ChangeValueV2ShowFile string
 
@@ -98,6 +100,18 @@ func (b *ChangeValueV2Builder) WithTimeout(seconds int) *ChangeValueV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ChangeValueV2Builder) WithNoOutputTimeout(seconds int) *ChangeValueV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ChangeValueV2Builder) WithTimeoutDuration(d time.Duration) *ChangeValueV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ChangeValueV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *ChangeValueV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

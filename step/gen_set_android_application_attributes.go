@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetAndroidApplicationAttributesBuilder builds a set-android-application-attributes step with typed input methods.
 type SetAndroidApplicationAttributesBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *SetAndroidApplicationAttributesBuilder) WithTimeout(seconds int) *SetAn
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetAndroidApplicationAttributesBuilder) WithNoOutputTimeout(seconds int) *SetAndroidApplicationAttributesBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetAndroidApplicationAttributesBuilder) WithTimeoutDuration(d time.Duration) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetAndroidApplicationAttributesBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetAndroidApplicationAttributesBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

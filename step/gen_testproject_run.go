@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TestprojectRunBuilder builds a testproject-run step with typed input methods.
 type TestprojectRunBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *TestprojectRunBuilder) WithTimeout(seconds int) *TestprojectRunBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TestprojectRunBuilder) WithNoOutputTimeout(seconds int) *TestprojectRunBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TestprojectRunBuilder) WithTimeoutDuration(d time.Duration) *TestprojectRunBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TestprojectRunBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TestprojectRunBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

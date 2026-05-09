@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitTagProjectVersionAndBuildNumberUseLightweightTag enumerates the valid values for the use_lightweight_tag input.
 type GitTagProjectVersionAndBuildNumberUseLightweightTag string
 
@@ -98,6 +100,18 @@ func (b *GitTagProjectVersionAndBuildNumberBuilder) WithTimeout(seconds int) *Gi
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitTagProjectVersionAndBuildNumberBuilder) WithNoOutputTimeout(seconds int) *GitTagProjectVersionAndBuildNumberBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitTagProjectVersionAndBuildNumberBuilder) WithTimeoutDuration(d time.Duration) *GitTagProjectVersionAndBuildNumberBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitTagProjectVersionAndBuildNumberBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GitTagProjectVersionAndBuildNumberBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

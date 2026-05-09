@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // LambdatestXcuitestAppAutomateLambdatestTunnel enumerates the valid values for the lambdatest_tunnel input.
 type LambdatestXcuitestAppAutomateLambdatestTunnel string
 
@@ -162,6 +164,18 @@ func (b *LambdatestXcuitestAppAutomateBuilder) WithTimeout(seconds int) *Lambdat
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *LambdatestXcuitestAppAutomateBuilder) WithNoOutputTimeout(seconds int) *LambdatestXcuitestAppAutomateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithTimeoutDuration(d time.Duration) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *LambdatestXcuitestAppAutomateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *LambdatestXcuitestAppAutomateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

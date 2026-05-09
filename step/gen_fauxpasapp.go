@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FauxpasappFauxpasLicenseType enumerates the valid values for the fauxpas_license_type input.
 type FauxpasappFauxpasLicenseType string
 
@@ -124,6 +126,18 @@ func (b *FauxpasappBuilder) WithTimeout(seconds int) *FauxpasappBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FauxpasappBuilder) WithNoOutputTimeout(seconds int) *FauxpasappBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FauxpasappBuilder) WithTimeoutDuration(d time.Duration) *FauxpasappBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FauxpasappBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FauxpasappBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

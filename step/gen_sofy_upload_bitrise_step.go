@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SofyUploadBitriseStepBuilder builds a sofy-upload-bitrise-step step with typed input methods.
 type SofyUploadBitriseStepBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *SofyUploadBitriseStepBuilder) WithTimeout(seconds int) *SofyUploadBitri
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SofyUploadBitriseStepBuilder) WithNoOutputTimeout(seconds int) *SofyUploadBitriseStepBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SofyUploadBitriseStepBuilder) WithTimeoutDuration(d time.Duration) *SofyUploadBitriseStepBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SofyUploadBitriseStepBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SofyUploadBitriseStepBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepNowsecureAutoAnalysisBuilder builds a bitrise-step-nowsecure-auto-analysis step with typed input methods.
 type BitriseStepNowsecureAutoAnalysisBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *BitriseStepNowsecureAutoAnalysisBuilder) WithTimeout(seconds int) *Bitr
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepNowsecureAutoAnalysisBuilder) WithNoOutputTimeout(seconds int) *BitriseStepNowsecureAutoAnalysisBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepNowsecureAutoAnalysisBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepNowsecureAutoAnalysisBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepNowsecureAutoAnalysisBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepNowsecureAutoAnalysisBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

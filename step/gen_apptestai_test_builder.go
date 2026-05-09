@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ApptestaiTestBuilder builds a apptestai-test step with typed input methods.
 type ApptestaiTestBuilder struct{ *Builder }
 
@@ -106,6 +108,18 @@ func (b *ApptestaiTestBuilder) WithTimeout(seconds int) *ApptestaiTestBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ApptestaiTestBuilder) WithNoOutputTimeout(seconds int) *ApptestaiTestBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ApptestaiTestBuilder) WithTimeoutDuration(d time.Duration) *ApptestaiTestBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ApptestaiTestBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ApptestaiTestBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

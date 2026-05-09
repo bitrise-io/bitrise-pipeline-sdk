@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MonitoringAppsLogsCheckAndroid enumerates the valid values for the check_android input.
 type MonitoringAppsLogsCheckAndroid string
 
@@ -78,6 +80,18 @@ func (b *MonitoringAppsLogsBuilder) WithTimeout(seconds int) *MonitoringAppsLogs
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MonitoringAppsLogsBuilder) WithNoOutputTimeout(seconds int) *MonitoringAppsLogsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MonitoringAppsLogsBuilder) WithTimeoutDuration(d time.Duration) *MonitoringAppsLogsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MonitoringAppsLogsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MonitoringAppsLogsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

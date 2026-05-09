@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinComponentsRestoreBuilder builds a xamarin-components-restore step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -62,6 +64,18 @@ func (b *XamarinComponentsRestoreBuilder) WithTimeout(seconds int) *XamarinCompo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinComponentsRestoreBuilder) WithNoOutputTimeout(seconds int) *XamarinComponentsRestoreBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinComponentsRestoreBuilder) WithTimeoutDuration(d time.Duration) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinComponentsRestoreBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinComponentsRestoreBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

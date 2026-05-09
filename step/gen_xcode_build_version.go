@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeBuildVersionBuilder builds a xcode-build-version step with typed input methods.
 type XcodeBuildVersionBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *XcodeBuildVersionBuilder) WithTimeout(seconds int) *XcodeBuildVersionBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeBuildVersionBuilder) WithNoOutputTimeout(seconds int) *XcodeBuildVersionBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeBuildVersionBuilder) WithTimeoutDuration(d time.Duration) *XcodeBuildVersionBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeBuildVersionBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeBuildVersionBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

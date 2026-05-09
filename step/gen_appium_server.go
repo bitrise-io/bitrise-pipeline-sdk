@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppiumServerBuilder builds a appium-server step with typed input methods.
 type AppiumServerBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *AppiumServerBuilder) WithTimeout(seconds int) *AppiumServerBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppiumServerBuilder) WithNoOutputTimeout(seconds int) *AppiumServerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppiumServerBuilder) WithTimeoutDuration(d time.Duration) *AppiumServerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppiumServerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppiumServerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

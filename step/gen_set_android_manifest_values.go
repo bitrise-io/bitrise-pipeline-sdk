@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetAndroidManifestValuesBuilder builds a set-android-manifest-values step with typed input methods.
 type SetAndroidManifestValuesBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *SetAndroidManifestValuesBuilder) WithTimeout(seconds int) *SetAndroidMa
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetAndroidManifestValuesBuilder) WithNoOutputTimeout(seconds int) *SetAndroidManifestValuesBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetAndroidManifestValuesBuilder) WithTimeoutDuration(d time.Duration) *SetAndroidManifestValuesBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetAndroidManifestValuesBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetAndroidManifestValuesBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

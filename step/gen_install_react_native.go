@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstallReactNativeBuilder builds a install-react-native step with typed input methods.
 type InstallReactNativeBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *InstallReactNativeBuilder) WithTimeout(seconds int) *InstallReactNative
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstallReactNativeBuilder) WithNoOutputTimeout(seconds int) *InstallReactNativeBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstallReactNativeBuilder) WithTimeoutDuration(d time.Duration) *InstallReactNativeBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstallReactNativeBuilder) WithNoOutputTimeoutDuration(d time.Duration) *InstallReactNativeBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

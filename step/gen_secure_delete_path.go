@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SecureDeletePathWithSudo enumerates the valid values for the with_sudo input.
 type SecureDeletePathWithSudo string
 
@@ -72,6 +74,18 @@ func (b *SecureDeletePathBuilder) WithTimeout(seconds int) *SecureDeletePathBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SecureDeletePathBuilder) WithNoOutputTimeout(seconds int) *SecureDeletePathBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SecureDeletePathBuilder) WithTimeoutDuration(d time.Duration) *SecureDeletePathBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SecureDeletePathBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SecureDeletePathBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

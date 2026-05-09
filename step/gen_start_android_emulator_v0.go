@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // StartAndroidEmulatorV0Builder builds a start-android-emulator step with typed input methods.
 //
 // Deprecated: This step is deprecated, use [AVD Manager](https://github.com/bitrise-steplib/steps-avd-manager) Step instead.
@@ -68,6 +70,18 @@ func (b *StartAndroidEmulatorV0Builder) WithTimeout(seconds int) *StartAndroidEm
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *StartAndroidEmulatorV0Builder) WithNoOutputTimeout(seconds int) *StartAndroidEmulatorV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *StartAndroidEmulatorV0Builder) WithTimeoutDuration(d time.Duration) *StartAndroidEmulatorV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *StartAndroidEmulatorV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *StartAndroidEmulatorV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

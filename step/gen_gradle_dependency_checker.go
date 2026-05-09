@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GradleDependencyCheckerBuilder builds a gradle-dependency-checker step with typed input methods.
 type GradleDependencyCheckerBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *GradleDependencyCheckerBuilder) WithTimeout(seconds int) *GradleDepende
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GradleDependencyCheckerBuilder) WithNoOutputTimeout(seconds int) *GradleDependencyCheckerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GradleDependencyCheckerBuilder) WithTimeoutDuration(d time.Duration) *GradleDependencyCheckerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GradleDependencyCheckerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GradleDependencyCheckerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitCloneV4UpdateSubmodules enumerates the valid values for the update_submodules input.
 type GitCloneV4UpdateSubmodules string
 
@@ -200,6 +202,18 @@ func (b *GitCloneV4Builder) WithTimeout(seconds int) *GitCloneV4Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitCloneV4Builder) WithNoOutputTimeout(seconds int) *GitCloneV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitCloneV4Builder) WithTimeoutDuration(d time.Duration) *GitCloneV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitCloneV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *GitCloneV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

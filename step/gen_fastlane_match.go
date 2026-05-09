@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FastlaneMatchType enumerates the valid values for the type input.
 type FastlaneMatchType string
 
@@ -116,6 +118,18 @@ func (b *FastlaneMatchBuilder) WithTimeout(seconds int) *FastlaneMatchBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FastlaneMatchBuilder) WithNoOutputTimeout(seconds int) *FastlaneMatchBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FastlaneMatchBuilder) WithTimeoutDuration(d time.Duration) *FastlaneMatchBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FastlaneMatchBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FastlaneMatchBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

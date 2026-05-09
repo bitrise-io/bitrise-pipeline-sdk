@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenericFileStorageEnableDebug enumerates the valid values for the enable_debug input.
 type GenericFileStorageEnableDebug string
 
@@ -66,6 +68,18 @@ func (b *GenericFileStorageBuilder) WithTimeout(seconds int) *GenericFileStorage
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenericFileStorageBuilder) WithNoOutputTimeout(seconds int) *GenericFileStorageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenericFileStorageBuilder) WithTimeoutDuration(d time.Duration) *GenericFileStorageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenericFileStorageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenericFileStorageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

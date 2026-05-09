@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepEscheckerBuilder builds a bitrise-step-eschecker step with typed input methods.
 type BitriseStepEscheckerBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *BitriseStepEscheckerBuilder) WithTimeout(seconds int) *BitriseStepEsche
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepEscheckerBuilder) WithNoOutputTimeout(seconds int) *BitriseStepEscheckerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepEscheckerBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepEscheckerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepEscheckerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepEscheckerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

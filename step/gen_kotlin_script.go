@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // KotlinScriptBuilder builds a kotlin-script step with typed input methods.
 type KotlinScriptBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *KotlinScriptBuilder) WithTimeout(seconds int) *KotlinScriptBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *KotlinScriptBuilder) WithNoOutputTimeout(seconds int) *KotlinScriptBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *KotlinScriptBuilder) WithTimeoutDuration(d time.Duration) *KotlinScriptBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *KotlinScriptBuilder) WithNoOutputTimeoutDuration(d time.Duration) *KotlinScriptBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

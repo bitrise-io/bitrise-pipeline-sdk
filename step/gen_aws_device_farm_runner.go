@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AwsDeviceFarmRunnerBillingMethod enumerates the valid values for the billing_method input.
 type AwsDeviceFarmRunnerBillingMethod string
 
@@ -257,6 +259,18 @@ func (b *AwsDeviceFarmRunnerBuilder) WithTimeout(seconds int) *AwsDeviceFarmRunn
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AwsDeviceFarmRunnerBuilder) WithNoOutputTimeout(seconds int) *AwsDeviceFarmRunnerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AwsDeviceFarmRunnerBuilder) WithTimeoutDuration(d time.Duration) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AwsDeviceFarmRunnerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AwsDeviceFarmRunnerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

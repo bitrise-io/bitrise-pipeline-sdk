@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // EmailWithMailgunApiEndpoint enumerates the valid values for the api_endpoint input.
 type EmailWithMailgunApiEndpoint string
 
@@ -128,6 +130,18 @@ func (b *EmailWithMailgunBuilder) WithTimeout(seconds int) *EmailWithMailgunBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *EmailWithMailgunBuilder) WithNoOutputTimeout(seconds int) *EmailWithMailgunBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *EmailWithMailgunBuilder) WithTimeoutDuration(d time.Duration) *EmailWithMailgunBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *EmailWithMailgunBuilder) WithNoOutputTimeoutDuration(d time.Duration) *EmailWithMailgunBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

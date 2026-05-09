@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepAppdomeBuild2secureIosSignMethod enumerates the valid values for the sign_method input.
 type BitriseStepAppdomeBuild2secureIosSignMethod string
 
@@ -95,6 +97,18 @@ func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithTimeout(seconds int) *Bit
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithNoOutputTimeout(seconds int) *BitriseStepAppdomeBuild2secureIosBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepAppdomeBuild2secureIosBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepAppdomeBuild2secureIosBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepAppdomeBuild2secureIosBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

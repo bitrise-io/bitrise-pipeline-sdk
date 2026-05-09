@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterDeployAndroidV2NotifyTesters enumerates the valid values for the notify_testers input.
 type AppcenterDeployAndroidV2NotifyTesters string
 
@@ -166,6 +168,18 @@ func (b *AppcenterDeployAndroidV2Builder) WithTimeout(seconds int) *AppcenterDep
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterDeployAndroidV2Builder) WithNoOutputTimeout(seconds int) *AppcenterDeployAndroidV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterDeployAndroidV2Builder) WithTimeoutDuration(d time.Duration) *AppcenterDeployAndroidV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterDeployAndroidV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterDeployAndroidV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

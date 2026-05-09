@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BadgetizrCiStatus enumerates the valid values for the ci_status input.
 type BadgetizrCiStatus string
 
@@ -137,6 +139,18 @@ func (b *BadgetizrBuilder) WithTimeout(seconds int) *BadgetizrBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BadgetizrBuilder) WithNoOutputTimeout(seconds int) *BadgetizrBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BadgetizrBuilder) WithTimeoutDuration(d time.Duration) *BadgetizrBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BadgetizrBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BadgetizrBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

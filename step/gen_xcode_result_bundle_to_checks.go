@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeResultBundleToChecksShowPassedTests enumerates the valid values for the show_passed_tests input.
 type XcodeResultBundleToChecksShowPassedTests string
 
@@ -104,6 +106,18 @@ func (b *XcodeResultBundleToChecksBuilder) WithTimeout(seconds int) *XcodeResult
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeResultBundleToChecksBuilder) WithNoOutputTimeout(seconds int) *XcodeResultBundleToChecksBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeResultBundleToChecksBuilder) WithTimeoutDuration(d time.Duration) *XcodeResultBundleToChecksBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeResultBundleToChecksBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeResultBundleToChecksBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

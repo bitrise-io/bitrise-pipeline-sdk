@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FirebaseAppDistributionUpgradeFirebaseTools enumerates the valid values for the upgrade_firebase_tools input.
 type FirebaseAppDistributionUpgradeFirebaseTools string
 
@@ -140,6 +142,18 @@ func (b *FirebaseAppDistributionBuilder) WithTimeout(seconds int) *FirebaseAppDi
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FirebaseAppDistributionBuilder) WithNoOutputTimeout(seconds int) *FirebaseAppDistributionBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FirebaseAppDistributionBuilder) WithTimeoutDuration(d time.Duration) *FirebaseAppDistributionBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FirebaseAppDistributionBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FirebaseAppDistributionBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

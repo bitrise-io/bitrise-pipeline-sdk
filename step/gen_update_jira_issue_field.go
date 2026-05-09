@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UpdateJiraIssueFieldBuilder builds a update-jira-issue-field step with typed input methods.
 type UpdateJiraIssueFieldBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *UpdateJiraIssueFieldBuilder) WithTimeout(seconds int) *UpdateJiraIssueF
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UpdateJiraIssueFieldBuilder) WithNoOutputTimeout(seconds int) *UpdateJiraIssueFieldBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UpdateJiraIssueFieldBuilder) WithTimeoutDuration(d time.Duration) *UpdateJiraIssueFieldBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UpdateJiraIssueFieldBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UpdateJiraIssueFieldBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

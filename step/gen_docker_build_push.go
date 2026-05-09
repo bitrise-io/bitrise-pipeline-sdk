@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DockerBuildPushPush enumerates the valid values for the push input.
 type DockerBuildPushPush string
 
@@ -150,6 +152,18 @@ func (b *DockerBuildPushBuilder) WithTimeout(seconds int) *DockerBuildPushBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DockerBuildPushBuilder) WithNoOutputTimeout(seconds int) *DockerBuildPushBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DockerBuildPushBuilder) WithTimeoutDuration(d time.Duration) *DockerBuildPushBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DockerBuildPushBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DockerBuildPushBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

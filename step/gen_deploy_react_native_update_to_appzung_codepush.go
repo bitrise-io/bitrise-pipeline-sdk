@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeployReactNativeUpdateToAppzungCodepushMandatory enumerates the valid values for the mandatory input.
 type DeployReactNativeUpdateToAppzungCodepushMandatory string
 
@@ -116,6 +118,18 @@ func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithTimeout(seconds in
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithNoOutputTimeout(seconds int) *DeployReactNativeUpdateToAppzungCodepushBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithTimeoutDuration(d time.Duration) *DeployReactNativeUpdateToAppzungCodepushBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeployReactNativeUpdateToAppzungCodepushBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DeployReactNativeUpdateToAppzungCodepushBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

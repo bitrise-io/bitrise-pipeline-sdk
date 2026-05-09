@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftEnvironmentVariableInjectorVerbose enumerates the valid values for the verbose input.
 type SwiftEnvironmentVariableInjectorVerbose string
 
@@ -84,6 +86,18 @@ func (b *SwiftEnvironmentVariableInjectorBuilder) WithTimeout(seconds int) *Swif
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftEnvironmentVariableInjectorBuilder) WithNoOutputTimeout(seconds int) *SwiftEnvironmentVariableInjectorBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftEnvironmentVariableInjectorBuilder) WithTimeoutDuration(d time.Duration) *SwiftEnvironmentVariableInjectorBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftEnvironmentVariableInjectorBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftEnvironmentVariableInjectorBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

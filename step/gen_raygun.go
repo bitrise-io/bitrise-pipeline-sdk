@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RaygunBuilder builds a raygun step with typed input methods.
 type RaygunBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *RaygunBuilder) WithTimeout(seconds int) *RaygunBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RaygunBuilder) WithNoOutputTimeout(seconds int) *RaygunBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RaygunBuilder) WithTimeoutDuration(d time.Duration) *RaygunBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RaygunBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RaygunBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

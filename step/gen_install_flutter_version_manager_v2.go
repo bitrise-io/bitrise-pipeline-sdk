@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstallFlutterVersionManagerV2Builder builds a install-flutter-version-manager step with typed input methods.
 type InstallFlutterVersionManagerV2Builder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *InstallFlutterVersionManagerV2Builder) WithTimeout(seconds int) *Instal
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstallFlutterVersionManagerV2Builder) WithNoOutputTimeout(seconds int) *InstallFlutterVersionManagerV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstallFlutterVersionManagerV2Builder) WithTimeoutDuration(d time.Duration) *InstallFlutterVersionManagerV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstallFlutterVersionManagerV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *InstallFlutterVersionManagerV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

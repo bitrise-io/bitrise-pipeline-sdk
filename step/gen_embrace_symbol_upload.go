@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // EmbraceSymbolUploadBuilder builds a embrace-symbol-upload step with typed input methods.
 type EmbraceSymbolUploadBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *EmbraceSymbolUploadBuilder) WithTimeout(seconds int) *EmbraceSymbolUplo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *EmbraceSymbolUploadBuilder) WithNoOutputTimeout(seconds int) *EmbraceSymbolUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *EmbraceSymbolUploadBuilder) WithTimeoutDuration(d time.Duration) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *EmbraceSymbolUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *EmbraceSymbolUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

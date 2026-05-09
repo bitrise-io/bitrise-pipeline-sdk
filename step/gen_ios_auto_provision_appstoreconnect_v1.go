@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // IosAutoProvisionAppstoreconnectV1Connection enumerates the valid values for the connection input.
 type IosAutoProvisionAppstoreconnectV1Connection string
 
@@ -187,6 +189,18 @@ func (b *IosAutoProvisionAppstoreconnectV1Builder) WithTimeout(seconds int) *Ios
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *IosAutoProvisionAppstoreconnectV1Builder) WithNoOutputTimeout(seconds int) *IosAutoProvisionAppstoreconnectV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *IosAutoProvisionAppstoreconnectV1Builder) WithTimeoutDuration(d time.Duration) *IosAutoProvisionAppstoreconnectV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *IosAutoProvisionAppstoreconnectV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *IosAutoProvisionAppstoreconnectV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

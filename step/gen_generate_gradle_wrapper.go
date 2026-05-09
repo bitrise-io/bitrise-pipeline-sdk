@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenerateGradleWrapperBuilder builds a generate-gradle-wrapper step with typed input methods.
 type GenerateGradleWrapperBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *GenerateGradleWrapperBuilder) WithTimeout(seconds int) *GenerateGradleW
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenerateGradleWrapperBuilder) WithNoOutputTimeout(seconds int) *GenerateGradleWrapperBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenerateGradleWrapperBuilder) WithTimeoutDuration(d time.Duration) *GenerateGradleWrapperBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenerateGradleWrapperBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenerateGradleWrapperBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

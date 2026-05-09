@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinAndroidTestV0IsCleanBuild enumerates the valid values for the is_clean_build input.
 type XamarinAndroidTestV0IsCleanBuild string
 
@@ -100,6 +102,18 @@ func (b *XamarinAndroidTestV0Builder) WithTimeout(seconds int) *XamarinAndroidTe
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinAndroidTestV0Builder) WithNoOutputTimeout(seconds int) *XamarinAndroidTestV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinAndroidTestV0Builder) WithTimeoutDuration(d time.Duration) *XamarinAndroidTestV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinAndroidTestV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinAndroidTestV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

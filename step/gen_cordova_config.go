@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CordovaConfigBuilder builds a cordova-config step with typed input methods.
 type CordovaConfigBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *CordovaConfigBuilder) WithTimeout(seconds int) *CordovaConfigBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CordovaConfigBuilder) WithNoOutputTimeout(seconds int) *CordovaConfigBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CordovaConfigBuilder) WithTimeoutDuration(d time.Duration) *CordovaConfigBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CordovaConfigBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CordovaConfigBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

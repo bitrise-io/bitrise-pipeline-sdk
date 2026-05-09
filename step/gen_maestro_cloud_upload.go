@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MaestroCloudUploadExportTestReport enumerates the valid values for the export_test_report input.
 type MaestroCloudUploadExportTestReport string
 
@@ -198,6 +200,18 @@ func (b *MaestroCloudUploadBuilder) WithTitle(title string) *MaestroCloudUploadB
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MaestroCloudUploadBuilder) WithNoOutputTimeout(seconds int) *MaestroCloudUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MaestroCloudUploadBuilder) WithTimeoutDuration(d time.Duration) *MaestroCloudUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MaestroCloudUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MaestroCloudUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

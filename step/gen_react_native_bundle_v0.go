@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ReactNativeBundleV0Platform enumerates the valid values for the platform input.
 type ReactNativeBundleV0Platform string
 
@@ -116,6 +118,18 @@ func (b *ReactNativeBundleV0Builder) WithTimeout(seconds int) *ReactNativeBundle
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ReactNativeBundleV0Builder) WithNoOutputTimeout(seconds int) *ReactNativeBundleV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ReactNativeBundleV0Builder) WithTimeoutDuration(d time.Duration) *ReactNativeBundleV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ReactNativeBundleV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *ReactNativeBundleV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

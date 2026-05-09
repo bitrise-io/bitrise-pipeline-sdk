@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AzureDevopsStatusDevopsCommitState enumerates the valid values for the devops_commit_state input.
 type AzureDevopsStatusDevopsCommitState string
 
@@ -125,6 +127,18 @@ func (b *AzureDevopsStatusBuilder) WithTimeout(seconds int) *AzureDevopsStatusBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AzureDevopsStatusBuilder) WithNoOutputTimeout(seconds int) *AzureDevopsStatusBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AzureDevopsStatusBuilder) WithTimeoutDuration(d time.Duration) *AzureDevopsStatusBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AzureDevopsStatusBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AzureDevopsStatusBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

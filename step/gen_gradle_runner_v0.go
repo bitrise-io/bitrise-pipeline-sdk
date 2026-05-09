@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GradleRunnerV0Builder builds a gradle-runner step with typed input methods.
 type GradleRunnerV0Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *GradleRunnerV0Builder) WithTimeout(seconds int) *GradleRunnerV0Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GradleRunnerV0Builder) WithNoOutputTimeout(seconds int) *GradleRunnerV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GradleRunnerV0Builder) WithTimeoutDuration(d time.Duration) *GradleRunnerV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GradleRunnerV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *GradleRunnerV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

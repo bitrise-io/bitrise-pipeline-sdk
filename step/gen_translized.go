@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TranslizedBuilder builds a translized step with typed input methods.
 type TranslizedBuilder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *TranslizedBuilder) WithTimeout(seconds int) *TranslizedBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TranslizedBuilder) WithNoOutputTimeout(seconds int) *TranslizedBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TranslizedBuilder) WithTimeoutDuration(d time.Duration) *TranslizedBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TranslizedBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TranslizedBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

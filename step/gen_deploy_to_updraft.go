@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeployToUpdraftBuilder builds a deploy-to-updraft step with typed input methods.
 type DeployToUpdraftBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *DeployToUpdraftBuilder) WithTimeout(seconds int) *DeployToUpdraftBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeployToUpdraftBuilder) WithNoOutputTimeout(seconds int) *DeployToUpdraftBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeployToUpdraftBuilder) WithTimeoutDuration(d time.Duration) *DeployToUpdraftBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeployToUpdraftBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DeployToUpdraftBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

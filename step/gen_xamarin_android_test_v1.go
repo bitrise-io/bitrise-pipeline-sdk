@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinAndroidTestV1BuildTool enumerates the valid values for the build_tool input.
 type XamarinAndroidTestV1BuildTool string
 
@@ -100,6 +102,18 @@ func (b *XamarinAndroidTestV1Builder) WithTimeout(seconds int) *XamarinAndroidTe
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinAndroidTestV1Builder) WithNoOutputTimeout(seconds int) *XamarinAndroidTestV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinAndroidTestV1Builder) WithTimeoutDuration(d time.Duration) *XamarinAndroidTestV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinAndroidTestV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinAndroidTestV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

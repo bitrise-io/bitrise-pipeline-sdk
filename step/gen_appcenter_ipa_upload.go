@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterIpaUploadBuilder builds a appcenter-ipa-upload step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -80,6 +82,18 @@ func (b *AppcenterIpaUploadBuilder) WithTimeout(seconds int) *AppcenterIpaUpload
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterIpaUploadBuilder) WithNoOutputTimeout(seconds int) *AppcenterIpaUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterIpaUploadBuilder) WithTimeoutDuration(d time.Duration) *AppcenterIpaUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterIpaUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterIpaUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

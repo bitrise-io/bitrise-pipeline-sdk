@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinUserManagementV1Builder builds a xamarin-user-management step with typed input methods.
 //
 // Deprecated: This step is deprecated, [The Component Store](https://docs.microsoft.com/en-us/xamarin/cross-platform/troubleshooting/component-nuget?tabs=vswin) has been discontinued as of May 15, 2018.
@@ -62,6 +64,18 @@ func (b *XamarinUserManagementV1Builder) WithTimeout(seconds int) *XamarinUserMa
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinUserManagementV1Builder) WithNoOutputTimeout(seconds int) *XamarinUserManagementV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinUserManagementV1Builder) WithTimeoutDuration(d time.Duration) *XamarinUserManagementV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinUserManagementV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinUserManagementV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

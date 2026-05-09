@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterDeployIosV2NotifyTesters enumerates the valid values for the notify_testers input.
 type AppcenterDeployIosV2NotifyTesters string
 
@@ -166,6 +168,18 @@ func (b *AppcenterDeployIosV2Builder) WithTimeout(seconds int) *AppcenterDeployI
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterDeployIosV2Builder) WithNoOutputTimeout(seconds int) *AppcenterDeployIosV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterDeployIosV2Builder) WithTimeoutDuration(d time.Duration) *AppcenterDeployIosV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterDeployIosV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterDeployIosV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

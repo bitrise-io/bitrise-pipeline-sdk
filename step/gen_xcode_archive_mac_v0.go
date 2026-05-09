@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeArchiveMacV0IsForceCodeSign enumerates the valid values for the is_force_code_sign input.
 type XcodeArchiveMacV0IsForceCodeSign string
 
@@ -124,6 +126,18 @@ func (b *XcodeArchiveMacV0Builder) WithTimeout(seconds int) *XcodeArchiveMacV0Bu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeArchiveMacV0Builder) WithNoOutputTimeout(seconds int) *XcodeArchiveMacV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeArchiveMacV0Builder) WithTimeoutDuration(d time.Duration) *XcodeArchiveMacV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeArchiveMacV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeArchiveMacV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

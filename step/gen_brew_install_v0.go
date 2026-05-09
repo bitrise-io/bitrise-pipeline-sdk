@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BrewInstallV0Upgrade enumerates the valid values for the upgrade input.
 type BrewInstallV0Upgrade string
 
@@ -126,6 +128,18 @@ func (b *BrewInstallV0Builder) WithTimeout(seconds int) *BrewInstallV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BrewInstallV0Builder) WithNoOutputTimeout(seconds int) *BrewInstallV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BrewInstallV0Builder) WithTimeoutDuration(d time.Duration) *BrewInstallV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BrewInstallV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *BrewInstallV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

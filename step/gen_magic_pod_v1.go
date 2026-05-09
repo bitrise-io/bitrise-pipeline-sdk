@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MagicPodV1DeleteAppAfterTest enumerates the valid values for the delete_app_after_test input.
 type MagicPodV1DeleteAppAfterTest string
 
@@ -127,6 +129,18 @@ func (b *MagicPodV1Builder) WithTimeout(seconds int) *MagicPodV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MagicPodV1Builder) WithNoOutputTimeout(seconds int) *MagicPodV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MagicPodV1Builder) WithTimeoutDuration(d time.Duration) *MagicPodV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MagicPodV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *MagicPodV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstallBundlerBuilder builds a install-bundler step with typed input methods.
 type InstallBundlerBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *InstallBundlerBuilder) WithTimeout(seconds int) *InstallBundlerBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstallBundlerBuilder) WithNoOutputTimeout(seconds int) *InstallBundlerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstallBundlerBuilder) WithTimeoutDuration(d time.Duration) *InstallBundlerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstallBundlerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *InstallBundlerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

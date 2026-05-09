@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CocoapodsDependencyCheckBuilder builds a cocoapods-dependency-check step with typed input methods.
 type CocoapodsDependencyCheckBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *CocoapodsDependencyCheckBuilder) WithTimeout(seconds int) *CocoapodsDep
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CocoapodsDependencyCheckBuilder) WithNoOutputTimeout(seconds int) *CocoapodsDependencyCheckBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CocoapodsDependencyCheckBuilder) WithTimeoutDuration(d time.Duration) *CocoapodsDependencyCheckBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CocoapodsDependencyCheckBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CocoapodsDependencyCheckBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

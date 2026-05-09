@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // OversecuredBuilder builds a oversecured step with typed input methods.
 type OversecuredBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *OversecuredBuilder) WithTimeout(seconds int) *OversecuredBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *OversecuredBuilder) WithNoOutputTimeout(seconds int) *OversecuredBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *OversecuredBuilder) WithTimeoutDuration(d time.Duration) *OversecuredBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *OversecuredBuilder) WithNoOutputTimeoutDuration(d time.Duration) *OversecuredBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

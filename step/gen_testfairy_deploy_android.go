@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TestfairyDeployAndroidNotify enumerates the valid values for the notify input.
 type TestfairyDeployAndroidNotify string
 
@@ -139,6 +141,18 @@ func (b *TestfairyDeployAndroidBuilder) WithTimeout(seconds int) *TestfairyDeplo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TestfairyDeployAndroidBuilder) WithNoOutputTimeout(seconds int) *TestfairyDeployAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TestfairyDeployAndroidBuilder) WithTimeoutDuration(d time.Duration) *TestfairyDeployAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TestfairyDeployAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TestfairyDeployAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

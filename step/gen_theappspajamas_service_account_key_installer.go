@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TheappspajamasServiceAccountKeyInstallerBuilder builds a theappspajamas-service-account-key-installer step with typed input methods.
 type TheappspajamasServiceAccountKeyInstallerBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithTimeout(seconds in
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithNoOutputTimeout(seconds int) *TheappspajamasServiceAccountKeyInstallerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithTimeoutDuration(d time.Duration) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

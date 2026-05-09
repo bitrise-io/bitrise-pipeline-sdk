@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppgalleryDeployV1ReleaseType enumerates the valid values for the release_type input.
 type AppgalleryDeployV1ReleaseType string
 
@@ -148,6 +150,18 @@ func (b *AppgalleryDeployV1Builder) WithTimeout(seconds int) *AppgalleryDeployV1
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppgalleryDeployV1Builder) WithNoOutputTimeout(seconds int) *AppgalleryDeployV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppgalleryDeployV1Builder) WithTimeoutDuration(d time.Duration) *AppgalleryDeployV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppgalleryDeployV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppgalleryDeployV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

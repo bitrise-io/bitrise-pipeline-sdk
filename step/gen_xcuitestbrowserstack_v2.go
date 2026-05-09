@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcuitestbrowserstackV2BrowserstackLocal enumerates the valid values for the browserstack_local input.
 type XcuitestbrowserstackV2BrowserstackLocal string
 
@@ -120,6 +122,18 @@ func (b *XcuitestbrowserstackV2Builder) WithTimeout(seconds int) *Xcuitestbrowse
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcuitestbrowserstackV2Builder) WithNoOutputTimeout(seconds int) *XcuitestbrowserstackV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcuitestbrowserstackV2Builder) WithTimeoutDuration(d time.Duration) *XcuitestbrowserstackV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcuitestbrowserstackV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcuitestbrowserstackV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

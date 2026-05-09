@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BrowserstackBitriseXcuiStepInstrumentationLogs enumerates the valid values for the instrumentation_logs input.
 type BrowserstackBitriseXcuiStepInstrumentationLogs string
 
@@ -224,6 +226,18 @@ func (b *BrowserstackBitriseXcuiStepBuilder) WithTimeout(seconds int) *Browserst
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BrowserstackBitriseXcuiStepBuilder) WithNoOutputTimeout(seconds int) *BrowserstackBitriseXcuiStepBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithTimeoutDuration(d time.Duration) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BrowserstackBitriseXcuiStepBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BrowserstackBitriseXcuiStepBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GeckoboardDashboardBuildResultBuilder builds a geckoboard-dashboard-build-result step with typed input methods.
 type GeckoboardDashboardBuildResultBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *GeckoboardDashboardBuildResultBuilder) WithTimeout(seconds int) *Geckob
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GeckoboardDashboardBuildResultBuilder) WithNoOutputTimeout(seconds int) *GeckoboardDashboardBuildResultBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GeckoboardDashboardBuildResultBuilder) WithTimeoutDuration(d time.Duration) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GeckoboardDashboardBuildResultBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GeckoboardDashboardBuildResultBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

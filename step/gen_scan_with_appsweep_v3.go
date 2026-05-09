@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ScanWithAppsweepV3Builder builds a scan-with-appsweep step with typed input methods.
 type ScanWithAppsweepV3Builder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *ScanWithAppsweepV3Builder) WithTimeout(seconds int) *ScanWithAppsweepV3
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ScanWithAppsweepV3Builder) WithNoOutputTimeout(seconds int) *ScanWithAppsweepV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ScanWithAppsweepV3Builder) WithTimeoutDuration(d time.Duration) *ScanWithAppsweepV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ScanWithAppsweepV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *ScanWithAppsweepV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlankBuilder builds a flank step with typed input methods.
 type FlankBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *FlankBuilder) WithTimeout(seconds int) *FlankBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlankBuilder) WithNoOutputTimeout(seconds int) *FlankBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlankBuilder) WithTimeoutDuration(d time.Duration) *FlankBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlankBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FlankBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

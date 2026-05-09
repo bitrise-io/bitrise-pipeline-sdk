@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenerateXcodeHtmlReportVerbose enumerates the valid values for the verbose input.
 type GenerateXcodeHtmlReportVerbose string
 
@@ -78,6 +80,18 @@ func (b *GenerateXcodeHtmlReportBuilder) WithTimeout(seconds int) *GenerateXcode
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenerateXcodeHtmlReportBuilder) WithNoOutputTimeout(seconds int) *GenerateXcodeHtmlReportBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenerateXcodeHtmlReportBuilder) WithTimeoutDuration(d time.Duration) *GenerateXcodeHtmlReportBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenerateXcodeHtmlReportBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenerateXcodeHtmlReportBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

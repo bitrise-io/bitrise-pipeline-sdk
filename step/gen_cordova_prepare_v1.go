@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CordovaPrepareV1Platform enumerates the valid values for the platform input.
 type CordovaPrepareV1Platform string
 
@@ -93,6 +95,18 @@ func (b *CordovaPrepareV1Builder) WithTimeout(seconds int) *CordovaPrepareV1Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CordovaPrepareV1Builder) WithNoOutputTimeout(seconds int) *CordovaPrepareV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CordovaPrepareV1Builder) WithTimeoutDuration(d time.Duration) *CordovaPrepareV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CordovaPrepareV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *CordovaPrepareV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

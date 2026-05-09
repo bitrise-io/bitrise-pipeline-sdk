@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeTestV1SimulatorPlatform enumerates the valid values for the simulator_platform input.
 type XcodeTestV1SimulatorPlatform string
 
@@ -234,6 +236,18 @@ func (b *XcodeTestV1Builder) WithTimeout(seconds int) *XcodeTestV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeTestV1Builder) WithNoOutputTimeout(seconds int) *XcodeTestV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeTestV1Builder) WithTimeoutDuration(d time.Duration) *XcodeTestV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeTestV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeTestV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

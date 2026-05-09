@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateANewReleaseInJiraVersionReleased enumerates the valid values for the version_released input.
 type CreateANewReleaseInJiraVersionReleased string
 
@@ -102,6 +104,18 @@ func (b *CreateANewReleaseInJiraBuilder) WithTimeout(seconds int) *CreateANewRel
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateANewReleaseInJiraBuilder) WithNoOutputTimeout(seconds int) *CreateANewReleaseInJiraBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateANewReleaseInJiraBuilder) WithTimeoutDuration(d time.Duration) *CreateANewReleaseInJiraBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateANewReleaseInJiraBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CreateANewReleaseInJiraBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepIconOverlayV1Builder builds a bitrise-step-icon-overlay step with typed input methods.
 type BitriseStepIconOverlayV1Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *BitriseStepIconOverlayV1Builder) WithTimeout(seconds int) *BitriseStepI
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepIconOverlayV1Builder) WithNoOutputTimeout(seconds int) *BitriseStepIconOverlayV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepIconOverlayV1Builder) WithTimeoutDuration(d time.Duration) *BitriseStepIconOverlayV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepIconOverlayV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepIconOverlayV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

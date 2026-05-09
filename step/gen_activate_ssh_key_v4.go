@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ActivateSshKeyV4IsRemoveOtherIdentities enumerates the valid values for the is_remove_other_identities input.
 type ActivateSshKeyV4IsRemoveOtherIdentities string
 
@@ -92,6 +94,18 @@ func (b *ActivateSshKeyV4Builder) WithTimeout(seconds int) *ActivateSshKeyV4Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ActivateSshKeyV4Builder) WithNoOutputTimeout(seconds int) *ActivateSshKeyV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ActivateSshKeyV4Builder) WithTimeoutDuration(d time.Duration) *ActivateSshKeyV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ActivateSshKeyV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *ActivateSshKeyV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

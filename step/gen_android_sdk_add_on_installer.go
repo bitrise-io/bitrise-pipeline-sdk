@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidSdkAddOnInstallerVerboseLog enumerates the valid values for the verbose_log input.
 type AndroidSdkAddOnInstallerVerboseLog string
 
@@ -92,6 +94,18 @@ func (b *AndroidSdkAddOnInstallerBuilder) WithTimeout(seconds int) *AndroidSdkAd
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidSdkAddOnInstallerBuilder) WithNoOutputTimeout(seconds int) *AndroidSdkAddOnInstallerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidSdkAddOnInstallerBuilder) WithTimeoutDuration(d time.Duration) *AndroidSdkAddOnInstallerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidSdkAddOnInstallerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidSdkAddOnInstallerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

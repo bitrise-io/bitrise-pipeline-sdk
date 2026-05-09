@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenymotionSaasInstallGmsaasCliBuilder builds a genymotion-saas-install-gmsaas-cli step with typed input methods.
 type GenymotionSaasInstallGmsaasCliBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *GenymotionSaasInstallGmsaasCliBuilder) WithTimeout(seconds int) *Genymo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenymotionSaasInstallGmsaasCliBuilder) WithNoOutputTimeout(seconds int) *GenymotionSaasInstallGmsaasCliBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenymotionSaasInstallGmsaasCliBuilder) WithTimeoutDuration(d time.Duration) *GenymotionSaasInstallGmsaasCliBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenymotionSaasInstallGmsaasCliBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenymotionSaasInstallGmsaasCliBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlutterBuilder builds a flutter step with typed input methods.
 type FlutterBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *FlutterBuilder) WithTimeout(seconds int) *FlutterBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlutterBuilder) WithNoOutputTimeout(seconds int) *FlutterBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlutterBuilder) WithTimeoutDuration(d time.Duration) *FlutterBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlutterBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FlutterBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

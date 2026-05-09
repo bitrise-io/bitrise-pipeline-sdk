@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RevopushCommandLineInterfaceBuilder builds a revopush-command-line-interface step with typed input methods.
 type RevopushCommandLineInterfaceBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *RevopushCommandLineInterfaceBuilder) WithTimeout(seconds int) *Revopush
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RevopushCommandLineInterfaceBuilder) WithNoOutputTimeout(seconds int) *RevopushCommandLineInterfaceBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RevopushCommandLineInterfaceBuilder) WithTimeoutDuration(d time.Duration) *RevopushCommandLineInterfaceBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RevopushCommandLineInterfaceBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RevopushCommandLineInterfaceBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

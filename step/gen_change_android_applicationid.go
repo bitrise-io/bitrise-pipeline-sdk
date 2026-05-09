@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ChangeAndroidApplicationidBuilder builds a change-android-applicationid step with typed input methods.
 type ChangeAndroidApplicationidBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *ChangeAndroidApplicationidBuilder) WithTimeout(seconds int) *ChangeAndr
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ChangeAndroidApplicationidBuilder) WithNoOutputTimeout(seconds int) *ChangeAndroidApplicationidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ChangeAndroidApplicationidBuilder) WithTimeoutDuration(d time.Duration) *ChangeAndroidApplicationidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ChangeAndroidApplicationidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ChangeAndroidApplicationidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

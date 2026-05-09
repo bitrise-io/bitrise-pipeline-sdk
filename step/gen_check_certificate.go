@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CheckCertificateBuilder builds a check-certificate step with typed input methods.
 type CheckCertificateBuilder struct{ *Builder }
 
@@ -106,6 +108,18 @@ func (b *CheckCertificateBuilder) WithTimeout(seconds int) *CheckCertificateBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CheckCertificateBuilder) WithNoOutputTimeout(seconds int) *CheckCertificateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CheckCertificateBuilder) WithTimeoutDuration(d time.Duration) *CheckCertificateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CheckCertificateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CheckCertificateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

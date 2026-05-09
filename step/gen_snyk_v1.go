@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SnykV1SeverityThreshold enumerates the valid values for the severity_threshold input.
 type SnykV1SeverityThreshold string
 
@@ -140,6 +142,18 @@ func (b *SnykV1Builder) WithTimeout(seconds int) *SnykV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SnykV1Builder) WithNoOutputTimeout(seconds int) *SnykV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SnykV1Builder) WithTimeoutDuration(d time.Duration) *SnykV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SnykV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *SnykV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateNewAppStoreReleaseAutomaticTestflightUpload enumerates the valid values for the automatic_testflight_upload input.
 type CreateNewAppStoreReleaseAutomaticTestflightUpload string
 
@@ -144,6 +146,18 @@ func (b *CreateNewAppStoreReleaseBuilder) WithTimeout(seconds int) *CreateNewApp
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateNewAppStoreReleaseBuilder) WithNoOutputTimeout(seconds int) *CreateNewAppStoreReleaseBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateNewAppStoreReleaseBuilder) WithTimeoutDuration(d time.Duration) *CreateNewAppStoreReleaseBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateNewAppStoreReleaseBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CreateNewAppStoreReleaseBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

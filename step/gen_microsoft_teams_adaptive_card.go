@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MicrosoftTeamsAdaptiveCardIsDebugMode enumerates the valid values for the is_debug_mode input.
 type MicrosoftTeamsAdaptiveCardIsDebugMode string
 
@@ -168,6 +170,18 @@ func (b *MicrosoftTeamsAdaptiveCardBuilder) WithTimeout(seconds int) *MicrosoftT
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MicrosoftTeamsAdaptiveCardBuilder) WithNoOutputTimeout(seconds int) *MicrosoftTeamsAdaptiveCardBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MicrosoftTeamsAdaptiveCardBuilder) WithTimeoutDuration(d time.Duration) *MicrosoftTeamsAdaptiveCardBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MicrosoftTeamsAdaptiveCardBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MicrosoftTeamsAdaptiveCardBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

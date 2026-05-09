@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RunTestsUsingMarathonCloudV1Platform enumerates the valid values for the platform input.
 type RunTestsUsingMarathonCloudV1Platform string
 
@@ -186,6 +188,18 @@ func (b *RunTestsUsingMarathonCloudV1Builder) WithTimeout(seconds int) *RunTests
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RunTestsUsingMarathonCloudV1Builder) WithNoOutputTimeout(seconds int) *RunTestsUsingMarathonCloudV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RunTestsUsingMarathonCloudV1Builder) WithTimeoutDuration(d time.Duration) *RunTestsUsingMarathonCloudV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RunTestsUsingMarathonCloudV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *RunTestsUsingMarathonCloudV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

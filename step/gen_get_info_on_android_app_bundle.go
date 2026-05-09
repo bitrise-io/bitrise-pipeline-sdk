@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GetInfoOnAndroidAppBundleBuilder builds a get-info-on-android-app-bundle step with typed input methods.
 type GetInfoOnAndroidAppBundleBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *GetInfoOnAndroidAppBundleBuilder) WithTimeout(seconds int) *GetInfoOnAn
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GetInfoOnAndroidAppBundleBuilder) WithNoOutputTimeout(seconds int) *GetInfoOnAndroidAppBundleBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GetInfoOnAndroidAppBundleBuilder) WithTimeoutDuration(d time.Duration) *GetInfoOnAndroidAppBundleBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GetInfoOnAndroidAppBundleBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GetInfoOnAndroidAppBundleBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

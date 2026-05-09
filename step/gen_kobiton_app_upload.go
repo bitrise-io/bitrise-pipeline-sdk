@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // KobitonAppUploadKobitonAppType enumerates the valid values for the kobiton_app_type input.
 type KobitonAppUploadKobitonAppType string
 
@@ -110,6 +112,18 @@ func (b *KobitonAppUploadBuilder) WithTimeout(seconds int) *KobitonAppUploadBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *KobitonAppUploadBuilder) WithNoOutputTimeout(seconds int) *KobitonAppUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *KobitonAppUploadBuilder) WithTimeoutDuration(d time.Duration) *KobitonAppUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *KobitonAppUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *KobitonAppUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

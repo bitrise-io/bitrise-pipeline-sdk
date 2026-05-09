@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlutterInstallerV1IsDebug enumerates the valid values for the is_debug input.
 type FlutterInstallerV1IsDebug string
 
@@ -72,6 +74,18 @@ func (b *FlutterInstallerV1Builder) WithTimeout(seconds int) *FlutterInstallerV1
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlutterInstallerV1Builder) WithNoOutputTimeout(seconds int) *FlutterInstallerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlutterInstallerV1Builder) WithTimeoutDuration(d time.Duration) *FlutterInstallerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlutterInstallerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *FlutterInstallerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

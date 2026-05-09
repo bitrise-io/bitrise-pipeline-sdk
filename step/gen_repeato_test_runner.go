@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RepeatoTestRunnerLogLevel enumerates the valid values for the log_level input.
 type RepeatoTestRunnerLogLevel string
 
@@ -91,6 +93,18 @@ func (b *RepeatoTestRunnerBuilder) WithTimeout(seconds int) *RepeatoTestRunnerBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RepeatoTestRunnerBuilder) WithNoOutputTimeout(seconds int) *RepeatoTestRunnerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RepeatoTestRunnerBuilder) WithTimeoutDuration(d time.Duration) *RepeatoTestRunnerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RepeatoTestRunnerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RepeatoTestRunnerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

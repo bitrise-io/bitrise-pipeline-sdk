@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GooglePlayRolloutUpdateBuilder builds a google-play-rollout-update step with typed input methods.
 type GooglePlayRolloutUpdateBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *GooglePlayRolloutUpdateBuilder) WithTimeout(seconds int) *GooglePlayRol
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GooglePlayRolloutUpdateBuilder) WithNoOutputTimeout(seconds int) *GooglePlayRolloutUpdateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GooglePlayRolloutUpdateBuilder) WithTimeoutDuration(d time.Duration) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GooglePlayRolloutUpdateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GooglePlayRolloutUpdateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

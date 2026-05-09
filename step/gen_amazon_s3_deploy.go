@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AmazonS3DeployFileAccessLevel enumerates the valid values for the file_access_level input.
 type AmazonS3DeployFileAccessLevel string
 
@@ -124,6 +126,18 @@ func (b *AmazonS3DeployBuilder) WithTimeout(seconds int) *AmazonS3DeployBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AmazonS3DeployBuilder) WithNoOutputTimeout(seconds int) *AmazonS3DeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AmazonS3DeployBuilder) WithTimeoutDuration(d time.Duration) *AmazonS3DeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AmazonS3DeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AmazonS3DeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

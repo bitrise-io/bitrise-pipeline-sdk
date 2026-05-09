@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeArchiveV4DistributionMethod enumerates the valid values for the distribution_method input.
 type XcodeArchiveV4DistributionMethod string
 
@@ -315,6 +317,18 @@ func (b *XcodeArchiveV4Builder) WithTimeout(seconds int) *XcodeArchiveV4Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeArchiveV4Builder) WithNoOutputTimeout(seconds int) *XcodeArchiveV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeArchiveV4Builder) WithTimeoutDuration(d time.Duration) *XcodeArchiveV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeArchiveV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeArchiveV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

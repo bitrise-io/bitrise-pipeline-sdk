@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppCenterLaunchTestAndroidBuilder builds a app-center-launch-test-android step with typed input methods.
 type AppCenterLaunchTestAndroidBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *AppCenterLaunchTestAndroidBuilder) WithTimeout(seconds int) *AppCenterL
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppCenterLaunchTestAndroidBuilder) WithNoOutputTimeout(seconds int) *AppCenterLaunchTestAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppCenterLaunchTestAndroidBuilder) WithTimeoutDuration(d time.Duration) *AppCenterLaunchTestAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppCenterLaunchTestAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppCenterLaunchTestAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

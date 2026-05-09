@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PerfectoUploadV0Builder builds a perfecto-upload step with typed input methods.
 type PerfectoUploadV0Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *PerfectoUploadV0Builder) WithTimeout(seconds int) *PerfectoUploadV0Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PerfectoUploadV0Builder) WithNoOutputTimeout(seconds int) *PerfectoUploadV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PerfectoUploadV0Builder) WithTimeoutDuration(d time.Duration) *PerfectoUploadV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PerfectoUploadV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *PerfectoUploadV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

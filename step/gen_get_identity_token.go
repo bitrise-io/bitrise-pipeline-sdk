@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GetIdentityTokenVerbose enumerates the valid values for the verbose input.
 type GetIdentityTokenVerbose string
 
@@ -84,6 +86,18 @@ func (b *GetIdentityTokenBuilder) WithTimeout(seconds int) *GetIdentityTokenBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GetIdentityTokenBuilder) WithNoOutputTimeout(seconds int) *GetIdentityTokenBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GetIdentityTokenBuilder) WithTimeoutDuration(d time.Duration) *GetIdentityTokenBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GetIdentityTokenBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GetIdentityTokenBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

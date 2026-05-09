@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftPackageManagerTestForMacIsSkipBuild enumerates the valid values for the is_skip_build input.
 type SwiftPackageManagerTestForMacIsSkipBuild string
 
@@ -86,6 +88,18 @@ func (b *SwiftPackageManagerTestForMacBuilder) WithTimeout(seconds int) *SwiftPa
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftPackageManagerTestForMacBuilder) WithNoOutputTimeout(seconds int) *SwiftPackageManagerTestForMacBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftPackageManagerTestForMacBuilder) WithTimeoutDuration(d time.Duration) *SwiftPackageManagerTestForMacBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftPackageManagerTestForMacBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftPackageManagerTestForMacBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

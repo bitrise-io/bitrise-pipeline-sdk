@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AutifyTestRunWait enumerates the valid values for the wait input.
 type AutifyTestRunWait string
 
@@ -102,6 +104,18 @@ func (b *AutifyTestRunBuilder) WithTitle(title string) *AutifyTestRunBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AutifyTestRunBuilder) WithNoOutputTimeout(seconds int) *AutifyTestRunBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AutifyTestRunBuilder) WithTimeoutDuration(d time.Duration) *AutifyTestRunBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AutifyTestRunBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AutifyTestRunBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

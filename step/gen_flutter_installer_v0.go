@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlutterInstallerV0IsUpdate enumerates the valid values for the is_update input.
 type FlutterInstallerV0IsUpdate string
 
@@ -92,6 +94,18 @@ func (b *FlutterInstallerV0Builder) WithTimeout(seconds int) *FlutterInstallerV0
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlutterInstallerV0Builder) WithNoOutputTimeout(seconds int) *FlutterInstallerV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlutterInstallerV0Builder) WithTimeoutDuration(d time.Duration) *FlutterInstallerV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlutterInstallerV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *FlutterInstallerV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

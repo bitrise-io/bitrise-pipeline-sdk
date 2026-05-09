@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NitroIosDisableVersionNameFromPackageJson enumerates the valid values for the disable_version_name_from_package_json input.
 type NitroIosDisableVersionNameFromPackageJson string
 
@@ -306,6 +308,18 @@ func (b *NitroIosBuilder) WithTimeout(seconds int) *NitroIosBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NitroIosBuilder) WithNoOutputTimeout(seconds int) *NitroIosBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NitroIosBuilder) WithTimeoutDuration(d time.Duration) *NitroIosBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NitroIosBuilder) WithNoOutputTimeoutDuration(d time.Duration) *NitroIosBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

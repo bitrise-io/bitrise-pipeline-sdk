@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftlintLintRange enumerates the valid values for the lint_range input.
 type SwiftlintLintRange string
 
@@ -128,6 +130,18 @@ func (b *SwiftlintBuilder) WithTimeout(seconds int) *SwiftlintBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftlintBuilder) WithNoOutputTimeout(seconds int) *SwiftlintBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftlintBuilder) WithTimeoutDuration(d time.Duration) *SwiftlintBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftlintBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftlintBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

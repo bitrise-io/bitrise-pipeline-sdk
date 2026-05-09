@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetGemHomeBuilder builds a set-gem-home step with typed input methods.
 type SetGemHomeBuilder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *SetGemHomeBuilder) WithTimeout(seconds int) *SetGemHomeBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetGemHomeBuilder) WithNoOutputTimeout(seconds int) *SetGemHomeBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetGemHomeBuilder) WithTimeoutDuration(d time.Duration) *SetGemHomeBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetGemHomeBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetGemHomeBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

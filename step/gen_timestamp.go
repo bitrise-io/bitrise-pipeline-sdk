@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TimestampBuilder builds a timestamp step with typed input methods.
 type TimestampBuilder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *TimestampBuilder) WithTimeout(seconds int) *TimestampBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TimestampBuilder) WithNoOutputTimeout(seconds int) *TimestampBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TimestampBuilder) WithTimeoutDuration(d time.Duration) *TimestampBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TimestampBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TimestampBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

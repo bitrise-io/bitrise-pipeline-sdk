@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // JandiMessageIsDebugMode enumerates the valid values for the is_debug_mode input.
 type JandiMessageIsDebugMode string
 
@@ -132,6 +134,18 @@ func (b *JandiMessageBuilder) WithTimeout(seconds int) *JandiMessageBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *JandiMessageBuilder) WithNoOutputTimeout(seconds int) *JandiMessageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *JandiMessageBuilder) WithTimeoutDuration(d time.Duration) *JandiMessageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *JandiMessageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *JandiMessageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

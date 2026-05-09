@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppdomeBuild2secureAndroidV2SignMethod enumerates the valid values for the sign_method input.
 type AppdomeBuild2secureAndroidV2SignMethod string
 
@@ -156,6 +158,18 @@ func (b *AppdomeBuild2secureAndroidV2Builder) WithTimeout(seconds int) *AppdomeB
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppdomeBuild2secureAndroidV2Builder) WithNoOutputTimeout(seconds int) *AppdomeBuild2secureAndroidV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithTimeoutDuration(d time.Duration) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppdomeBuild2secureAndroidV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppdomeBuild2secureAndroidV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

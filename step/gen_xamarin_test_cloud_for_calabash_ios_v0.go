@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinTestCloudForCalabashIosV0TestCloudIsAsync enumerates the valid values for the test_cloud_is_async input.
 type XamarinTestCloudForCalabashIosV0TestCloudIsAsync string
 
@@ -112,6 +114,18 @@ func (b *XamarinTestCloudForCalabashIosV0Builder) WithTimeout(seconds int) *Xama
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinTestCloudForCalabashIosV0Builder) WithNoOutputTimeout(seconds int) *XamarinTestCloudForCalabashIosV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithTimeoutDuration(d time.Duration) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinTestCloudForCalabashIosV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinTestCloudForCalabashIosV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

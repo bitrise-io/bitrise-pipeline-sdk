@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AuthenticateHostWithNetrcBuilder builds a authenticate-host-with-netrc step with typed input methods.
 type AuthenticateHostWithNetrcBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *AuthenticateHostWithNetrcBuilder) WithTimeout(seconds int) *Authenticat
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AuthenticateHostWithNetrcBuilder) WithNoOutputTimeout(seconds int) *AuthenticateHostWithNetrcBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AuthenticateHostWithNetrcBuilder) WithTimeoutDuration(d time.Duration) *AuthenticateHostWithNetrcBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AuthenticateHostWithNetrcBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AuthenticateHostWithNetrcBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

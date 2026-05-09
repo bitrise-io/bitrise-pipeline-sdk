@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug enumerates the valid values for the enable_debug input.
 type BitriseStepQyrusMobilityTestRunnerAndroidEnableDebug string
 
@@ -140,6 +142,18 @@ func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithTimeout(seconds i
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithNoOutputTimeout(seconds int) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepQyrusMobilityTestRunnerAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepQyrusMobilityTestRunnerAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

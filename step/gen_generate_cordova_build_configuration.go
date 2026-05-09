@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenerateCordovaBuildConfigurationConfiguration enumerates the valid values for the configuration input.
 type GenerateCordovaBuildConfigurationConfiguration string
 
@@ -139,6 +141,18 @@ func (b *GenerateCordovaBuildConfigurationBuilder) WithTimeout(seconds int) *Gen
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenerateCordovaBuildConfigurationBuilder) WithNoOutputTimeout(seconds int) *GenerateCordovaBuildConfigurationBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenerateCordovaBuildConfigurationBuilder) WithTimeoutDuration(d time.Duration) *GenerateCordovaBuildConfigurationBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenerateCordovaBuildConfigurationBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenerateCordovaBuildConfigurationBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CarthageV1CarthageCommand enumerates the valid values for the carthage_command input.
 type CarthageV1CarthageCommand string
 
@@ -138,6 +140,18 @@ func (b *CarthageV1Builder) WithTimeout(seconds int) *CarthageV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CarthageV1Builder) WithNoOutputTimeout(seconds int) *CarthageV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CarthageV1Builder) WithTimeoutDuration(d time.Duration) *CarthageV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CarthageV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *CarthageV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

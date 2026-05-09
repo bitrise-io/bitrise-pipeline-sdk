@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcparseExtractAttachments enumerates the valid values for the extract_attachments input.
 type XcparseExtractAttachments string
 
@@ -340,6 +342,18 @@ func (b *XcparseBuilder) WithTimeout(seconds int) *XcparseBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcparseBuilder) WithNoOutputTimeout(seconds int) *XcparseBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcparseBuilder) WithTimeoutDuration(d time.Duration) *XcparseBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcparseBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcparseBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

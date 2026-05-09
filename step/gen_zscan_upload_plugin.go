@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ZscanUploadPluginWaitForReport enumerates the valid values for the wait_for_report input.
 type ZscanUploadPluginWaitForReport string
 
@@ -110,6 +112,18 @@ func (b *ZscanUploadPluginBuilder) WithTimeout(seconds int) *ZscanUploadPluginBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ZscanUploadPluginBuilder) WithNoOutputTimeout(seconds int) *ZscanUploadPluginBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ZscanUploadPluginBuilder) WithTimeoutDuration(d time.Duration) *ZscanUploadPluginBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ZscanUploadPluginBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ZscanUploadPluginBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

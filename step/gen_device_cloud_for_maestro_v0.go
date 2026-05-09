@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeviceCloudForMaestroV0Async enumerates the valid values for the async input.
 type DeviceCloudForMaestroV0Async string
 
@@ -322,6 +324,18 @@ func (b *DeviceCloudForMaestroV0Builder) WithTimeout(seconds int) *DeviceCloudFo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeviceCloudForMaestroV0Builder) WithNoOutputTimeout(seconds int) *DeviceCloudForMaestroV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeviceCloudForMaestroV0Builder) WithTimeoutDuration(d time.Duration) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeviceCloudForMaestroV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *DeviceCloudForMaestroV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

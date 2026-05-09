@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstabugAndroidMappingFileUploadBuilder builds a instabug-android-mapping-file-upload step with typed input methods.
 type InstabugAndroidMappingFileUploadBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *InstabugAndroidMappingFileUploadBuilder) WithTimeout(seconds int) *Inst
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstabugAndroidMappingFileUploadBuilder) WithNoOutputTimeout(seconds int) *InstabugAndroidMappingFileUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstabugAndroidMappingFileUploadBuilder) WithTimeoutDuration(d time.Duration) *InstabugAndroidMappingFileUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstabugAndroidMappingFileUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *InstabugAndroidMappingFileUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TwitterMessageV1TwDebugMode enumerates the valid values for the tw_debug_mode input.
 type TwitterMessageV1TwDebugMode string
 
@@ -102,6 +104,18 @@ func (b *TwitterMessageV1Builder) WithTimeout(seconds int) *TwitterMessageV1Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TwitterMessageV1Builder) WithNoOutputTimeout(seconds int) *TwitterMessageV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TwitterMessageV1Builder) WithTimeoutDuration(d time.Duration) *TwitterMessageV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TwitterMessageV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *TwitterMessageV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

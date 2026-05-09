@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GradleUnitTestV2Builder builds a gradle-unit-test step with typed input methods.
 type GradleUnitTestV2Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *GradleUnitTestV2Builder) WithTimeout(seconds int) *GradleUnitTestV2Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GradleUnitTestV2Builder) WithNoOutputTimeout(seconds int) *GradleUnitTestV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GradleUnitTestV2Builder) WithTimeoutDuration(d time.Duration) *GradleUnitTestV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GradleUnitTestV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *GradleUnitTestV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

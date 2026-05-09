@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DangerV0Builder builds a danger step with typed input methods.
 type DangerV0Builder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *DangerV0Builder) WithTimeout(seconds int) *DangerV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DangerV0Builder) WithNoOutputTimeout(seconds int) *DangerV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DangerV0Builder) WithTimeoutDuration(d time.Duration) *DangerV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DangerV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *DangerV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

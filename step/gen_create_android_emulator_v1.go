@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateAndroidEmulatorV1Abi enumerates the valid values for the abi input.
 type CreateAndroidEmulatorV1Abi string
 
@@ -114,6 +116,18 @@ func (b *CreateAndroidEmulatorV1Builder) WithTimeout(seconds int) *CreateAndroid
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateAndroidEmulatorV1Builder) WithNoOutputTimeout(seconds int) *CreateAndroidEmulatorV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateAndroidEmulatorV1Builder) WithTimeoutDuration(d time.Duration) *CreateAndroidEmulatorV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateAndroidEmulatorV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *CreateAndroidEmulatorV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

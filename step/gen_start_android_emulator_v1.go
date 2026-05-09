@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // StartAndroidEmulatorV1WaitForBoot enumerates the valid values for the wait_for_boot input.
 type StartAndroidEmulatorV1WaitForBoot string
 
@@ -106,6 +108,18 @@ func (b *StartAndroidEmulatorV1Builder) WithTimeout(seconds int) *StartAndroidEm
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *StartAndroidEmulatorV1Builder) WithNoOutputTimeout(seconds int) *StartAndroidEmulatorV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *StartAndroidEmulatorV1Builder) WithTimeoutDuration(d time.Duration) *StartAndroidEmulatorV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *StartAndroidEmulatorV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *StartAndroidEmulatorV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

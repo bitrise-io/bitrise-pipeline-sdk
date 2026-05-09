@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GulpIsDebug enumerates the valid values for the is_debug input.
 type GulpIsDebug string
 
@@ -84,6 +86,18 @@ func (b *GulpBuilder) WithTimeout(seconds int) *GulpBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GulpBuilder) WithNoOutputTimeout(seconds int) *GulpBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GulpBuilder) WithTimeoutDuration(d time.Duration) *GulpBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GulpBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GulpBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

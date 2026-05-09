@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // IosAutoProvisionV1DistributionType enumerates the valid values for the distribution_type input.
 type IosAutoProvisionV1DistributionType string
 
@@ -166,6 +168,18 @@ func (b *IosAutoProvisionV1Builder) WithTimeout(seconds int) *IosAutoProvisionV1
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *IosAutoProvisionV1Builder) WithNoOutputTimeout(seconds int) *IosAutoProvisionV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *IosAutoProvisionV1Builder) WithTimeoutDuration(d time.Duration) *IosAutoProvisionV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *IosAutoProvisionV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *IosAutoProvisionV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

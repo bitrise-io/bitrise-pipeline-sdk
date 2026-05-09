@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitbucketServerPostBuildStatusPresetStatus enumerates the valid values for the preset_status input.
 type BitbucketServerPostBuildStatusPresetStatus string
 
@@ -116,6 +118,18 @@ func (b *BitbucketServerPostBuildStatusBuilder) WithTimeout(seconds int) *Bitbuc
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitbucketServerPostBuildStatusBuilder) WithNoOutputTimeout(seconds int) *BitbucketServerPostBuildStatusBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitbucketServerPostBuildStatusBuilder) WithTimeoutDuration(d time.Duration) *BitbucketServerPostBuildStatusBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitbucketServerPostBuildStatusBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitbucketServerPostBuildStatusBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

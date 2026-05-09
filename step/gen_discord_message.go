@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DiscordMessagePresetStatus enumerates the valid values for the preset_status input.
 type DiscordMessagePresetStatus string
 
@@ -95,6 +97,18 @@ func (b *DiscordMessageBuilder) WithTimeout(seconds int) *DiscordMessageBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DiscordMessageBuilder) WithNoOutputTimeout(seconds int) *DiscordMessageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DiscordMessageBuilder) WithTimeoutDuration(d time.Duration) *DiscordMessageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DiscordMessageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DiscordMessageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // WaldoUploadV2IsDebugMode enumerates the valid values for the is_debug_mode input.
 type WaldoUploadV2IsDebugMode string
 
@@ -96,6 +98,18 @@ func (b *WaldoUploadV2Builder) WithTimeout(seconds int) *WaldoUploadV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *WaldoUploadV2Builder) WithNoOutputTimeout(seconds int) *WaldoUploadV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *WaldoUploadV2Builder) WithTimeoutDuration(d time.Duration) *WaldoUploadV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *WaldoUploadV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *WaldoUploadV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

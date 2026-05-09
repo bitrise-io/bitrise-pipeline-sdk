@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // StepsAppGalleryReportsDownloadInstallationExportType enumerates the valid values for the download_installation_export_type input.
 type StepsAppGalleryReportsDownloadInstallationExportType string
 
@@ -223,6 +225,18 @@ func (b *StepsAppGalleryReportsBuilder) WithTimeout(seconds int) *StepsAppGaller
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *StepsAppGalleryReportsBuilder) WithNoOutputTimeout(seconds int) *StepsAppGalleryReportsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *StepsAppGalleryReportsBuilder) WithTimeoutDuration(d time.Duration) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *StepsAppGalleryReportsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *StepsAppGalleryReportsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

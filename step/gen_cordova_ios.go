@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CordovaIosCordovaCommand enumerates the valid values for the cordova_command input.
 type CordovaIosCordovaCommand string
 
@@ -98,6 +100,18 @@ func (b *CordovaIosBuilder) WithTimeout(seconds int) *CordovaIosBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CordovaIosBuilder) WithNoOutputTimeout(seconds int) *CordovaIosBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CordovaIosBuilder) WithTimeoutDuration(d time.Duration) *CordovaIosBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CordovaIosBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CordovaIosBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

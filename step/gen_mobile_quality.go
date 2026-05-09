@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MobileQualityCheckAndroid enumerates the valid values for the check_android input.
 type MobileQualityCheckAndroid string
 
@@ -154,6 +156,18 @@ func (b *MobileQualityBuilder) WithTimeout(seconds int) *MobileQualityBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MobileQualityBuilder) WithNoOutputTimeout(seconds int) *MobileQualityBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MobileQualityBuilder) WithTimeoutDuration(d time.Duration) *MobileQualityBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MobileQualityBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MobileQualityBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

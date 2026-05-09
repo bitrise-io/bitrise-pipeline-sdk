@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BluepillBuildTestForIosBluepillVersion enumerates the valid values for the bluepill_version input.
 type BluepillBuildTestForIosBluepillVersion string
 
@@ -189,6 +191,18 @@ func (b *BluepillBuildTestForIosBuilder) WithTimeout(seconds int) *BluepillBuild
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BluepillBuildTestForIosBuilder) WithNoOutputTimeout(seconds int) *BluepillBuildTestForIosBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BluepillBuildTestForIosBuilder) WithTimeoutDuration(d time.Duration) *BluepillBuildTestForIosBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BluepillBuildTestForIosBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BluepillBuildTestForIosBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

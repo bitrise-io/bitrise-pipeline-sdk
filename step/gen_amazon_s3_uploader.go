@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AmazonS3UploaderFileAccessLevel enumerates the valid values for the file_access_level input.
 type AmazonS3UploaderFileAccessLevel string
 
@@ -118,6 +120,18 @@ func (b *AmazonS3UploaderBuilder) WithTimeout(seconds int) *AmazonS3UploaderBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AmazonS3UploaderBuilder) WithNoOutputTimeout(seconds int) *AmazonS3UploaderBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AmazonS3UploaderBuilder) WithTimeoutDuration(d time.Duration) *AmazonS3UploaderBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AmazonS3UploaderBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AmazonS3UploaderBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

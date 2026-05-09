@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ChuckNorrisBuilder builds a chuck-norris step with typed input methods.
 type ChuckNorrisBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *ChuckNorrisBuilder) WithTimeout(seconds int) *ChuckNorrisBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ChuckNorrisBuilder) WithNoOutputTimeout(seconds int) *ChuckNorrisBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ChuckNorrisBuilder) WithTimeoutDuration(d time.Duration) *ChuckNorrisBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ChuckNorrisBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ChuckNorrisBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

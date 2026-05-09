@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CordovaArchiveV2Platform enumerates the valid values for the platform input.
 type CordovaArchiveV2Platform string
 
@@ -161,6 +163,18 @@ func (b *CordovaArchiveV2Builder) WithTimeout(seconds int) *CordovaArchiveV2Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CordovaArchiveV2Builder) WithNoOutputTimeout(seconds int) *CordovaArchiveV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CordovaArchiveV2Builder) WithTimeoutDuration(d time.Duration) *CordovaArchiveV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CordovaArchiveV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *CordovaArchiveV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

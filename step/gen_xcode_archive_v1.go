@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeArchiveV1ExportMethod enumerates the valid values for the export_method input.
 type XcodeArchiveV1ExportMethod string
 
@@ -239,6 +241,18 @@ func (b *XcodeArchiveV1Builder) WithTimeout(seconds int) *XcodeArchiveV1Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeArchiveV1Builder) WithNoOutputTimeout(seconds int) *XcodeArchiveV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeArchiveV1Builder) WithTimeoutDuration(d time.Duration) *XcodeArchiveV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeArchiveV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeArchiveV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

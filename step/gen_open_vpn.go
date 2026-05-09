@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // OpenVpnProto enumerates the valid values for the proto input.
 type OpenVpnProto string
 
@@ -96,6 +98,18 @@ func (b *OpenVpnBuilder) WithTimeout(seconds int) *OpenVpnBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *OpenVpnBuilder) WithNoOutputTimeout(seconds int) *OpenVpnBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *OpenVpnBuilder) WithTimeoutDuration(d time.Duration) *OpenVpnBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *OpenVpnBuilder) WithNoOutputTimeoutDuration(d time.Duration) *OpenVpnBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // S3CachePullCacheAwsRegion enumerates the valid values for the cache_aws_region input.
 type S3CachePullCacheAwsRegion string
 
@@ -121,6 +123,18 @@ func (b *S3CachePullBuilder) WithTimeout(seconds int) *S3CachePullBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *S3CachePullBuilder) WithNoOutputTimeout(seconds int) *S3CachePullBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *S3CachePullBuilder) WithTimeoutDuration(d time.Duration) *S3CachePullBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *S3CachePullBuilder) WithNoOutputTimeoutDuration(d time.Duration) *S3CachePullBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

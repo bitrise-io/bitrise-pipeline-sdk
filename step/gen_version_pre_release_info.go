@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // VersionPreReleaseInfoBuilder builds a version-pre-release-info step with typed input methods.
 //
 // Deprecated: This step is a duplicate of "bitrise-step-version-pre-release-info". Please use that step ID instead.
@@ -92,6 +94,18 @@ func (b *VersionPreReleaseInfoBuilder) WithTimeout(seconds int) *VersionPreRelea
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *VersionPreReleaseInfoBuilder) WithNoOutputTimeout(seconds int) *VersionPreReleaseInfoBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *VersionPreReleaseInfoBuilder) WithTimeoutDuration(d time.Duration) *VersionPreReleaseInfoBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *VersionPreReleaseInfoBuilder) WithNoOutputTimeoutDuration(d time.Duration) *VersionPreReleaseInfoBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

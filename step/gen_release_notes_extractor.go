@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ReleaseNotesExtractorTrimMarkdownOutput enumerates the valid values for the trim_markdown_output input.
 type ReleaseNotesExtractorTrimMarkdownOutput string
 
@@ -72,6 +74,18 @@ func (b *ReleaseNotesExtractorBuilder) WithTimeout(seconds int) *ReleaseNotesExt
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ReleaseNotesExtractorBuilder) WithNoOutputTimeout(seconds int) *ReleaseNotesExtractorBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ReleaseNotesExtractorBuilder) WithTimeoutDuration(d time.Duration) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ReleaseNotesExtractorBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

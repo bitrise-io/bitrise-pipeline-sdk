@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetIosInfoPlistUnifiedBuilder builds a set-ios-info-plist-unified step with typed input methods.
 type SetIosInfoPlistUnifiedBuilder struct{ *Builder }
 
@@ -106,6 +108,18 @@ func (b *SetIosInfoPlistUnifiedBuilder) WithTimeout(seconds int) *SetIosInfoPlis
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetIosInfoPlistUnifiedBuilder) WithNoOutputTimeout(seconds int) *SetIosInfoPlistUnifiedBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetIosInfoPlistUnifiedBuilder) WithTimeoutDuration(d time.Duration) *SetIosInfoPlistUnifiedBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetIosInfoPlistUnifiedBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetIosInfoPlistUnifiedBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

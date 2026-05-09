@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeCreateDevicePairDeleteBlockingPairs enumerates the valid values for the delete_blocking_pairs input.
 type XcodeCreateDevicePairDeleteBlockingPairs string
 
@@ -90,6 +92,18 @@ func (b *XcodeCreateDevicePairBuilder) WithTimeout(seconds int) *XcodeCreateDevi
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeCreateDevicePairBuilder) WithNoOutputTimeout(seconds int) *XcodeCreateDevicePairBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeCreateDevicePairBuilder) WithTimeoutDuration(d time.Duration) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeCreateDevicePairBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeCreateDevicePairBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

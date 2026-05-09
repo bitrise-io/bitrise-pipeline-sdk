@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ProjectScannerV4VerboseLog enumerates the valid values for the verbose_log input.
 type ProjectScannerV4VerboseLog string
 
@@ -140,6 +142,18 @@ func (b *ProjectScannerV4Builder) WithTimeout(seconds int) *ProjectScannerV4Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ProjectScannerV4Builder) WithNoOutputTimeout(seconds int) *ProjectScannerV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ProjectScannerV4Builder) WithTimeoutDuration(d time.Duration) *ProjectScannerV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ProjectScannerV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *ProjectScannerV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

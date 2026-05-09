@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeTestShardCalculationVerbose enumerates the valid values for the verbose input.
 type XcodeTestShardCalculationVerbose string
 
@@ -96,6 +98,18 @@ func (b *XcodeTestShardCalculationBuilder) WithTimeout(seconds int) *XcodeTestSh
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeTestShardCalculationBuilder) WithNoOutputTimeout(seconds int) *XcodeTestShardCalculationBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeTestShardCalculationBuilder) WithTimeoutDuration(d time.Duration) *XcodeTestShardCalculationBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeTestShardCalculationBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeTestShardCalculationBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

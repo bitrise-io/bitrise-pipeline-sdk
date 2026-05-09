@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // KobitonExecuteTestV2UseCustomDeviceInput enumerates the valid values for the use_custom_device_input input.
 type KobitonExecuteTestV2UseCustomDeviceInput string
 
@@ -213,6 +215,18 @@ func (b *KobitonExecuteTestV2Builder) WithTimeout(seconds int) *KobitonExecuteTe
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *KobitonExecuteTestV2Builder) WithNoOutputTimeout(seconds int) *KobitonExecuteTestV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *KobitonExecuteTestV2Builder) WithTimeoutDuration(d time.Duration) *KobitonExecuteTestV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *KobitonExecuteTestV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *KobitonExecuteTestV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

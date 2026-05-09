@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlutterTestV0GenerateCodeCoverageFiles enumerates the valid values for the generate_code_coverage_files input.
 type FlutterTestV0GenerateCodeCoverageFiles string
 
@@ -84,6 +86,18 @@ func (b *FlutterTestV0Builder) WithTimeout(seconds int) *FlutterTestV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlutterTestV0Builder) WithNoOutputTimeout(seconds int) *FlutterTestV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlutterTestV0Builder) WithTimeoutDuration(d time.Duration) *FlutterTestV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlutterTestV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *FlutterTestV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

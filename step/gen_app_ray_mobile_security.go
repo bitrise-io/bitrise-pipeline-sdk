@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppRayMobileSecurityBuilder builds a app-ray-mobile-security step with typed input methods.
 type AppRayMobileSecurityBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *AppRayMobileSecurityBuilder) WithTimeout(seconds int) *AppRayMobileSecu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppRayMobileSecurityBuilder) WithNoOutputTimeout(seconds int) *AppRayMobileSecurityBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppRayMobileSecurityBuilder) WithTimeoutDuration(d time.Duration) *AppRayMobileSecurityBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppRayMobileSecurityBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppRayMobileSecurityBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

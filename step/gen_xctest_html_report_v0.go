@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XctestHtmlReportV0GenerateJunit enumerates the valid values for the generate_junit input.
 type XctestHtmlReportV0GenerateJunit string
 
@@ -110,6 +112,18 @@ func (b *XctestHtmlReportV0Builder) WithTimeout(seconds int) *XctestHtmlReportV0
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XctestHtmlReportV0Builder) WithNoOutputTimeout(seconds int) *XctestHtmlReportV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XctestHtmlReportV0Builder) WithTimeoutDuration(d time.Duration) *XctestHtmlReportV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XctestHtmlReportV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XctestHtmlReportV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

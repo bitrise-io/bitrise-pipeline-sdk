@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TryoutappsShamanBuilder builds a tryoutapps-shaman step with typed input methods.
 type TryoutappsShamanBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *TryoutappsShamanBuilder) WithTimeout(seconds int) *TryoutappsShamanBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TryoutappsShamanBuilder) WithNoOutputTimeout(seconds int) *TryoutappsShamanBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TryoutappsShamanBuilder) WithTimeoutDuration(d time.Duration) *TryoutappsShamanBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TryoutappsShamanBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TryoutappsShamanBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UpdateGitopsRepositoryV3PullRequest enumerates the valid values for the pull_request input.
 type UpdateGitopsRepositoryV3PullRequest string
 
@@ -140,6 +142,18 @@ func (b *UpdateGitopsRepositoryV3Builder) WithTimeout(seconds int) *UpdateGitops
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UpdateGitopsRepositoryV3Builder) WithNoOutputTimeout(seconds int) *UpdateGitopsRepositoryV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UpdateGitopsRepositoryV3Builder) WithTimeoutDuration(d time.Duration) *UpdateGitopsRepositoryV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UpdateGitopsRepositoryV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *UpdateGitopsRepositoryV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

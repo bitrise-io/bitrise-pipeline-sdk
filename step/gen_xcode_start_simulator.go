@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeStartSimulatorVerboseLog enumerates the valid values for the verbose_log input.
 type XcodeStartSimulatorVerboseLog string
 
@@ -92,6 +94,18 @@ func (b *XcodeStartSimulatorBuilder) WithTimeout(seconds int) *XcodeStartSimulat
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeStartSimulatorBuilder) WithNoOutputTimeout(seconds int) *XcodeStartSimulatorBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeStartSimulatorBuilder) WithTimeoutDuration(d time.Duration) *XcodeStartSimulatorBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeStartSimulatorBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeStartSimulatorBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ExportXcarchiveV4Product enumerates the valid values for the product input.
 type ExportXcarchiveV4Product string
 
@@ -259,6 +261,18 @@ func (b *ExportXcarchiveV4Builder) WithTimeout(seconds int) *ExportXcarchiveV4Bu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ExportXcarchiveV4Builder) WithNoOutputTimeout(seconds int) *ExportXcarchiveV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ExportXcarchiveV4Builder) WithTimeoutDuration(d time.Duration) *ExportXcarchiveV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ExportXcarchiveV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *ExportXcarchiveV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

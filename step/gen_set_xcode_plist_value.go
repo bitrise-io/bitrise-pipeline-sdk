@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetXcodePlistValueBuilder builds a set-xcode-plist-value step with typed input methods.
 type SetXcodePlistValueBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *SetXcodePlistValueBuilder) WithTimeout(seconds int) *SetXcodePlistValue
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetXcodePlistValueBuilder) WithNoOutputTimeout(seconds int) *SetXcodePlistValueBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetXcodePlistValueBuilder) WithTimeoutDuration(d time.Duration) *SetXcodePlistValueBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetXcodePlistValueBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetXcodePlistValueBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

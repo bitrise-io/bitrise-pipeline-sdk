@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ActivateGradleMirrorsVerbose enumerates the valid values for the verbose input.
 type ActivateGradleMirrorsVerbose string
 
@@ -66,6 +68,18 @@ func (b *ActivateGradleMirrorsBuilder) WithTimeout(seconds int) *ActivateGradleM
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ActivateGradleMirrorsBuilder) WithNoOutputTimeout(seconds int) *ActivateGradleMirrorsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ActivateGradleMirrorsBuilder) WithTimeoutDuration(d time.Duration) *ActivateGradleMirrorsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ActivateGradleMirrorsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ActivateGradleMirrorsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

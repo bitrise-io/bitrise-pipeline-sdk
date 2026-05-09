@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FirebaseDsymUploadV1FduLogging enumerates the valid values for the fdu_logging input.
 type FirebaseDsymUploadV1FduLogging string
 
@@ -84,6 +86,18 @@ func (b *FirebaseDsymUploadV1Builder) WithTimeout(seconds int) *FirebaseDsymUplo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FirebaseDsymUploadV1Builder) WithNoOutputTimeout(seconds int) *FirebaseDsymUploadV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FirebaseDsymUploadV1Builder) WithTimeoutDuration(d time.Duration) *FirebaseDsymUploadV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FirebaseDsymUploadV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *FirebaseDsymUploadV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

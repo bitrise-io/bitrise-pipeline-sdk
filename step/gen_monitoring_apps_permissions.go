@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MonitoringAppsPermissionsCheckAndroid enumerates the valid values for the check_android input.
 type MonitoringAppsPermissionsCheckAndroid string
 
@@ -104,6 +106,18 @@ func (b *MonitoringAppsPermissionsBuilder) WithTimeout(seconds int) *MonitoringA
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MonitoringAppsPermissionsBuilder) WithNoOutputTimeout(seconds int) *MonitoringAppsPermissionsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MonitoringAppsPermissionsBuilder) WithTimeoutDuration(d time.Duration) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MonitoringAppsPermissionsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MonitoringAppsPermissionsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

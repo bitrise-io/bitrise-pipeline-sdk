@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeBuildForTestV0DisableIndexWhileBuilding enumerates the valid values for the disable_index_while_building input.
 type XcodeBuildForTestV0DisableIndexWhileBuilding string
 
@@ -144,6 +146,18 @@ func (b *XcodeBuildForTestV0Builder) WithTimeout(seconds int) *XcodeBuildForTest
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeBuildForTestV0Builder) WithNoOutputTimeout(seconds int) *XcodeBuildForTestV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeBuildForTestV0Builder) WithTimeoutDuration(d time.Duration) *XcodeBuildForTestV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeBuildForTestV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeBuildForTestV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FirebaseChangeFileByEnvPlatform enumerates the valid values for the platform input.
 type FirebaseChangeFileByEnvPlatform string
 
@@ -121,6 +123,18 @@ func (b *FirebaseChangeFileByEnvBuilder) WithTimeout(seconds int) *FirebaseChang
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FirebaseChangeFileByEnvBuilder) WithNoOutputTimeout(seconds int) *FirebaseChangeFileByEnvBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FirebaseChangeFileByEnvBuilder) WithTimeoutDuration(d time.Duration) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FirebaseChangeFileByEnvBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FirebaseChangeFileByEnvBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

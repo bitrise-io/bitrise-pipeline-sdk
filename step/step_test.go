@@ -2,6 +2,7 @@ package step_test
 
 import (
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -217,4 +218,84 @@ func TestEnumConstants_BuilderAcceptsStringLiteral(t *testing.T) {
 		WithDistributionMethod("app-store").
 		Build()
 	require.Contains(t, item, "xcode-archive@6")
+}
+
+// --- RunIfExpr constants & helpers ------------------------------------------
+
+func TestRunIfConstants_Values(t *testing.T) {
+	assert.Equal(t, "", step.RunIfAlways)
+	assert.Equal(t, "false", step.RunIfNever)
+	assert.Equal(t, ".IsCI", step.RunIfCI)
+	assert.Equal(t, "not .IsCI", step.RunIfNotCI)
+	assert.Equal(t, ".IsBuildFailed", step.RunIfBuildFailed)
+	assert.Equal(t, "not .IsBuildFailed", step.RunIfBuildSucceeded)
+	assert.Equal(t, ".IsPR", step.RunIfPR)
+	assert.Equal(t, "not .IsPR", step.RunIfNotPR)
+}
+
+func TestRunIfEnvEq(t *testing.T) {
+	assert.Equal(t, `enveq "DEPLOY_ENV" "production"`, step.RunIfEnvEq("DEPLOY_ENV", "production"))
+	assert.Equal(t, `enveq "MY_VAR" "1"`, step.RunIfEnvEq("MY_VAR", "1"))
+}
+
+func TestRunIfExpr_IsAssignableToString(t *testing.T) {
+	// RunIfExpr is a type alias for string — existing string callers are unaffected.
+	var _ string = step.RunIfCI
+	var _ step.RunIfExpr = ".IsCI"
+}
+
+func TestWithRunIf_UsesConstant(t *testing.T) {
+	item := step.Script().WithRunIf(step.RunIfCI).Build()
+	require.Contains(t, item, "script@1")
+}
+
+func TestWithRunIf_UsesEnvEqHelper(t *testing.T) {
+	item := step.Script().WithRunIf(step.RunIfEnvEq("DEPLOY_ENV", "prod")).Build()
+	require.Contains(t, item, "script@1")
+}
+
+func TestWithRunIf_TypedBuilderChain(t *testing.T) {
+	// WithRunIf must return the concrete typed builder so the chain continues.
+	item := step.XcodeTest().
+		WithRunIf(step.RunIfCI).
+		WithScheme("MyApp"). // typed method — only available on *XcodeTestV6Builder
+		Build()
+	assert.Contains(t, item, "xcode-test@6")
+}
+
+func TestWithRunIf_TypedBuilderReturnsConcreteType(t *testing.T) {
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithRunIf(step.RunIfCI)
+}
+
+// --- Duration timeout variants -----------------------------------------------
+
+func TestWithTimeoutDuration(t *testing.T) {
+	item := step.Script().WithTimeoutDuration(10 * time.Minute).Build()
+	require.Contains(t, item, "script@1")
+}
+
+func TestWithNoOutputTimeoutDuration(t *testing.T) {
+	item := step.Script().WithNoOutputTimeoutDuration(30 * time.Second).Build()
+	require.Contains(t, item, "script@1")
+}
+
+func TestWithTimeoutDuration_SubSecondTruncated(t *testing.T) {
+	// 90.9 seconds truncates to 90 — same result as WithTimeout(90).
+	a := step.Script().WithTimeoutDuration(90*time.Second + 900*time.Millisecond).Build()
+	b := step.Script().WithTimeout(90).Build()
+	assert.Equal(t, a, b)
+}
+
+func TestWithTimeoutDuration_TypedBuilderChain(t *testing.T) {
+	// WithTimeoutDuration on a typed builder must return the concrete type.
+	item := step.XcodeTest().
+		WithTimeoutDuration(20 * time.Minute).
+		WithScheme("MyApp"). // typed — verifies the chain wasn't broken
+		Build()
+	assert.Contains(t, item, "xcode-test@6")
+}
+
+func TestWithTimeoutDuration_TypedBuilderReturnsConcreteType(t *testing.T) {
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithTimeoutDuration(5 * time.Minute)
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithNoOutputTimeoutDuration(30 * time.Second)
 }

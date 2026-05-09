@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CodifiedSecurityBitriseV2IsXamarinIos enumerates the valid values for the is_xamarin_ios input.
 type CodifiedSecurityBitriseV2IsXamarinIos string
 
@@ -84,6 +86,18 @@ func (b *CodifiedSecurityBitriseV2Builder) WithTimeout(seconds int) *CodifiedSec
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CodifiedSecurityBitriseV2Builder) WithNoOutputTimeout(seconds int) *CodifiedSecurityBitriseV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CodifiedSecurityBitriseV2Builder) WithTimeoutDuration(d time.Duration) *CodifiedSecurityBitriseV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CodifiedSecurityBitriseV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *CodifiedSecurityBitriseV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // VeracodeSecurityAutoScan enumerates the valid values for the auto_scan input.
 type VeracodeSecurityAutoScan string
 
@@ -90,6 +92,18 @@ func (b *VeracodeSecurityBuilder) WithTimeout(seconds int) *VeracodeSecurityBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *VeracodeSecurityBuilder) WithNoOutputTimeout(seconds int) *VeracodeSecurityBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *VeracodeSecurityBuilder) WithTimeoutDuration(d time.Duration) *VeracodeSecurityBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *VeracodeSecurityBuilder) WithNoOutputTimeoutDuration(d time.Duration) *VeracodeSecurityBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

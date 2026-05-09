@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CordovaAndroidBuilder builds a cordova-android step with typed input methods.
 type CordovaAndroidBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *CordovaAndroidBuilder) WithTimeout(seconds int) *CordovaAndroidBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CordovaAndroidBuilder) WithNoOutputTimeout(seconds int) *CordovaAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CordovaAndroidBuilder) WithTimeoutDuration(d time.Duration) *CordovaAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CordovaAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CordovaAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

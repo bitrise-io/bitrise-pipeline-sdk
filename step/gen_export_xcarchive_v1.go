@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ExportXcarchiveV1ExportMethod enumerates the valid values for the export_method input.
 type ExportXcarchiveV1ExportMethod string
 
@@ -149,6 +151,18 @@ func (b *ExportXcarchiveV1Builder) WithTimeout(seconds int) *ExportXcarchiveV1Bu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ExportXcarchiveV1Builder) WithNoOutputTimeout(seconds int) *ExportXcarchiveV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ExportXcarchiveV1Builder) WithTimeoutDuration(d time.Duration) *ExportXcarchiveV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ExportXcarchiveV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *ExportXcarchiveV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

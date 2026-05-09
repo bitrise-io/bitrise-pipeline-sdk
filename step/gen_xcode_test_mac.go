@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeTestMacIsCleanBuild enumerates the valid values for the is_clean_build input.
 type XcodeTestMacIsCleanBuild string
 
@@ -138,6 +140,18 @@ func (b *XcodeTestMacBuilder) WithTimeout(seconds int) *XcodeTestMacBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeTestMacBuilder) WithNoOutputTimeout(seconds int) *XcodeTestMacBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeTestMacBuilder) WithTimeoutDuration(d time.Duration) *XcodeTestMacBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeTestMacBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeTestMacBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

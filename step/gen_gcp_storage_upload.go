@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GcpStorageUploadVerbose enumerates the valid values for the verbose input.
 type GcpStorageUploadVerbose string
 
@@ -90,6 +92,18 @@ func (b *GcpStorageUploadBuilder) WithTimeout(seconds int) *GcpStorageUploadBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GcpStorageUploadBuilder) WithNoOutputTimeout(seconds int) *GcpStorageUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GcpStorageUploadBuilder) WithTimeoutDuration(d time.Duration) *GcpStorageUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GcpStorageUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GcpStorageUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

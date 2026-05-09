@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GetAppBuilder builds a get-app step with typed input methods.
 type GetAppBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *GetAppBuilder) WithTimeout(seconds int) *GetAppBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GetAppBuilder) WithNoOutputTimeout(seconds int) *GetAppBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GetAppBuilder) WithTimeoutDuration(d time.Duration) *GetAppBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GetAppBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GetAppBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

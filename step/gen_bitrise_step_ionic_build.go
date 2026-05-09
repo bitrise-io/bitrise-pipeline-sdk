@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepIonicBuildProductionMode enumerates the valid values for the production_mode input.
 type BitriseStepIonicBuildProductionMode string
 
@@ -72,6 +74,18 @@ func (b *BitriseStepIonicBuildBuilder) WithTimeout(seconds int) *BitriseStepIoni
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepIonicBuildBuilder) WithNoOutputTimeout(seconds int) *BitriseStepIonicBuildBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepIonicBuildBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepIonicBuildBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepIonicBuildBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepIonicBuildBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

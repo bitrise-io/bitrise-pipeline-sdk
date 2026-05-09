@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeployToItunesconnectShenzhenBuilder builds a deploy-to-itunesconnect-shenzhen step with typed input methods.
 //
 // Deprecated: This step is deprecated, use [Deploy to App Store Connect - Application Loader](https://github.com/bitrise-steplib/steps-deploy-to-itunesconnect-application-loader) step instead.
@@ -80,6 +82,18 @@ func (b *DeployToItunesconnectShenzhenBuilder) WithTimeout(seconds int) *DeployT
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeployToItunesconnectShenzhenBuilder) WithNoOutputTimeout(seconds int) *DeployToItunesconnectShenzhenBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeployToItunesconnectShenzhenBuilder) WithTimeoutDuration(d time.Duration) *DeployToItunesconnectShenzhenBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeployToItunesconnectShenzhenBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DeployToItunesconnectShenzhenBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

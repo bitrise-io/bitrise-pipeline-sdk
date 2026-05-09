@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ErrcheckBuilder builds a errcheck step with typed input methods.
 type ErrcheckBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *ErrcheckBuilder) WithTimeout(seconds int) *ErrcheckBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ErrcheckBuilder) WithNoOutputTimeout(seconds int) *ErrcheckBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ErrcheckBuilder) WithTimeoutDuration(d time.Duration) *ErrcheckBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ErrcheckBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ErrcheckBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

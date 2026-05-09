@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BrowserstackAppLiveUploadBuilder builds a browserstack-app-live-upload step with typed input methods.
 type BrowserstackAppLiveUploadBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *BrowserstackAppLiveUploadBuilder) WithTimeout(seconds int) *Browserstac
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BrowserstackAppLiveUploadBuilder) WithNoOutputTimeout(seconds int) *BrowserstackAppLiveUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BrowserstackAppLiveUploadBuilder) WithTimeoutDuration(d time.Duration) *BrowserstackAppLiveUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BrowserstackAppLiveUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BrowserstackAppLiveUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

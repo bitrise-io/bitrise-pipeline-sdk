@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MobsfscanOutputFormat enumerates the valid values for the output_format input.
 type MobsfscanOutputFormat string
 
@@ -145,6 +147,18 @@ func (b *MobsfscanBuilder) WithTimeout(seconds int) *MobsfscanBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MobsfscanBuilder) WithNoOutputTimeout(seconds int) *MobsfscanBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MobsfscanBuilder) WithTimeoutDuration(d time.Duration) *MobsfscanBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MobsfscanBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MobsfscanBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

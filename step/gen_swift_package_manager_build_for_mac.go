@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftPackageManagerBuildForMacConfiguration enumerates the valid values for the configuration input.
 type SwiftPackageManagerBuildForMacConfiguration string
 
@@ -100,6 +102,18 @@ func (b *SwiftPackageManagerBuildForMacBuilder) WithTimeout(seconds int) *SwiftP
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftPackageManagerBuildForMacBuilder) WithNoOutputTimeout(seconds int) *SwiftPackageManagerBuildForMacBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftPackageManagerBuildForMacBuilder) WithTimeoutDuration(d time.Duration) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftPackageManagerBuildForMacBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

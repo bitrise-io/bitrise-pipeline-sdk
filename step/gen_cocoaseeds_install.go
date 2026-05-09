@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CocoaseedsInstallBuilder builds a cocoaseeds-install step with typed input methods.
 type CocoaseedsInstallBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *CocoaseedsInstallBuilder) WithTimeout(seconds int) *CocoaseedsInstallBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CocoaseedsInstallBuilder) WithNoOutputTimeout(seconds int) *CocoaseedsInstallBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CocoaseedsInstallBuilder) WithTimeoutDuration(d time.Duration) *CocoaseedsInstallBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CocoaseedsInstallBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CocoaseedsInstallBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

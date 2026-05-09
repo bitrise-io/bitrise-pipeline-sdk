@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitCommitChangelogBuilder builds a git-commit-changelog step with typed input methods.
 type GitCommitChangelogBuilder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *GitCommitChangelogBuilder) WithTimeout(seconds int) *GitCommitChangelog
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitCommitChangelogBuilder) WithNoOutputTimeout(seconds int) *GitCommitChangelogBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitCommitChangelogBuilder) WithTimeoutDuration(d time.Duration) *GitCommitChangelogBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitCommitChangelogBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GitCommitChangelogBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

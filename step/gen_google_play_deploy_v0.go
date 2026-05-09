@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GooglePlayDeployV0Track enumerates the valid values for the track input.
 type GooglePlayDeployV0Track string
 
@@ -92,6 +94,18 @@ func (b *GooglePlayDeployV0Builder) WithTimeout(seconds int) *GooglePlayDeployV0
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GooglePlayDeployV0Builder) WithNoOutputTimeout(seconds int) *GooglePlayDeployV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GooglePlayDeployV0Builder) WithTimeoutDuration(d time.Duration) *GooglePlayDeployV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GooglePlayDeployV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *GooglePlayDeployV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

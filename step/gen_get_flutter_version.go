@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GetFlutterVersionBuilder builds a get-flutter-version step with typed input methods.
 type GetFlutterVersionBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *GetFlutterVersionBuilder) WithTimeout(seconds int) *GetFlutterVersionBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GetFlutterVersionBuilder) WithNoOutputTimeout(seconds int) *GetFlutterVersionBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GetFlutterVersionBuilder) WithTimeoutDuration(d time.Duration) *GetFlutterVersionBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GetFlutterVersionBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GetFlutterVersionBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

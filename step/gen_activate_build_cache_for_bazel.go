@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ActivateBuildCacheForBazelEnableRbe enumerates the valid values for the enable_rbe input.
 type ActivateBuildCacheForBazelEnableRbe string
 
@@ -94,6 +96,18 @@ func (b *ActivateBuildCacheForBazelBuilder) WithTimeout(seconds int) *ActivateBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ActivateBuildCacheForBazelBuilder) WithNoOutputTimeout(seconds int) *ActivateBuildCacheForBazelBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ActivateBuildCacheForBazelBuilder) WithTimeoutDuration(d time.Duration) *ActivateBuildCacheForBazelBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ActivateBuildCacheForBazelBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ActivateBuildCacheForBazelBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

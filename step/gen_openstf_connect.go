@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // OpenstfConnectBuilder builds a openstf-connect step with typed input methods.
 type OpenstfConnectBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *OpenstfConnectBuilder) WithTimeout(seconds int) *OpenstfConnectBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *OpenstfConnectBuilder) WithNoOutputTimeout(seconds int) *OpenstfConnectBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *OpenstfConnectBuilder) WithTimeoutDuration(d time.Duration) *OpenstfConnectBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *OpenstfConnectBuilder) WithNoOutputTimeoutDuration(d time.Duration) *OpenstfConnectBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

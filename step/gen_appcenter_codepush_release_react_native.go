@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterCodepushReleaseReactNativeBuilder builds a appcenter-codepush-release-react-native step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -92,6 +94,18 @@ func (b *AppcenterCodepushReleaseReactNativeBuilder) WithTimeout(seconds int) *A
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterCodepushReleaseReactNativeBuilder) WithNoOutputTimeout(seconds int) *AppcenterCodepushReleaseReactNativeBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterCodepushReleaseReactNativeBuilder) WithTimeoutDuration(d time.Duration) *AppcenterCodepushReleaseReactNativeBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterCodepushReleaseReactNativeBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterCodepushReleaseReactNativeBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

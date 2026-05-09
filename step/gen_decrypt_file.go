@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DecryptFileBuilder builds a decrypt-file step with typed input methods.
 type DecryptFileBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *DecryptFileBuilder) WithTimeout(seconds int) *DecryptFileBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DecryptFileBuilder) WithNoOutputTimeout(seconds int) *DecryptFileBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DecryptFileBuilder) WithTimeoutDuration(d time.Duration) *DecryptFileBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DecryptFileBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DecryptFileBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

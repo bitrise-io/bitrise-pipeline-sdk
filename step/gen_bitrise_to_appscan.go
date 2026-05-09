@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseToAppscanBuilder builds a bitrise-to-appscan step with typed input methods.
 type BitriseToAppscanBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *BitriseToAppscanBuilder) WithTimeout(seconds int) *BitriseToAppscanBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseToAppscanBuilder) WithNoOutputTimeout(seconds int) *BitriseToAppscanBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseToAppscanBuilder) WithTimeoutDuration(d time.Duration) *BitriseToAppscanBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseToAppscanBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseToAppscanBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

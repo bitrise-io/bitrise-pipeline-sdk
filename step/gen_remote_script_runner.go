@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RemoteScriptRunnerBuilder builds a remote-script-runner step with typed input methods.
 type RemoteScriptRunnerBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *RemoteScriptRunnerBuilder) WithTimeout(seconds int) *RemoteScriptRunner
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RemoteScriptRunnerBuilder) WithNoOutputTimeout(seconds int) *RemoteScriptRunnerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RemoteScriptRunnerBuilder) WithTimeoutDuration(d time.Duration) *RemoteScriptRunnerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RemoteScriptRunnerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RemoteScriptRunnerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

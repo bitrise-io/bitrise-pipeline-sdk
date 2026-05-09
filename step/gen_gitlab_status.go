@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitlabStatusPresetStatus enumerates the valid values for the preset_status input.
 type GitlabStatusPresetStatus string
 
@@ -124,6 +126,18 @@ func (b *GitlabStatusBuilder) WithTimeout(seconds int) *GitlabStatusBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitlabStatusBuilder) WithNoOutputTimeout(seconds int) *GitlabStatusBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitlabStatusBuilder) WithTimeoutDuration(d time.Duration) *GitlabStatusBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitlabStatusBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GitlabStatusBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

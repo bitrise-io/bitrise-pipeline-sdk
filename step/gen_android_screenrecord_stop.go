@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidScreenrecordStopRemoveFrames enumerates the valid values for the remove_frames input.
 type AndroidScreenrecordStopRemoveFrames string
 
@@ -82,6 +84,18 @@ func (b *AndroidScreenrecordStopBuilder) WithTimeout(seconds int) *AndroidScreen
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidScreenrecordStopBuilder) WithNoOutputTimeout(seconds int) *AndroidScreenrecordStopBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidScreenrecordStopBuilder) WithTimeoutDuration(d time.Duration) *AndroidScreenrecordStopBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidScreenrecordStopBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidScreenrecordStopBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

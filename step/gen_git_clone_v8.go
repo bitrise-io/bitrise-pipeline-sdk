@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitCloneV8MergePr enumerates the valid values for the merge_pr input.
 type GitCloneV8MergePr string
 
@@ -238,6 +240,18 @@ func (b *GitCloneV8Builder) WithTimeout(seconds int) *GitCloneV8Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitCloneV8Builder) WithNoOutputTimeout(seconds int) *GitCloneV8Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitCloneV8Builder) WithTimeoutDuration(d time.Duration) *GitCloneV8Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitCloneV8Builder) WithNoOutputTimeoutDuration(d time.Duration) *GitCloneV8Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

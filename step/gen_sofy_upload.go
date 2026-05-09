@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SofyUploadBuilder builds a sofy-upload step with typed input methods.
 type SofyUploadBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SofyUploadBuilder) WithTimeout(seconds int) *SofyUploadBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SofyUploadBuilder) WithNoOutputTimeout(seconds int) *SofyUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SofyUploadBuilder) WithTimeoutDuration(d time.Duration) *SofyUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SofyUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SofyUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

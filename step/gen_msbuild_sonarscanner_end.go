@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MsbuildSonarscannerEndIsDebug enumerates the valid values for the is_debug input.
 type MsbuildSonarscannerEndIsDebug string
 
@@ -78,6 +80,18 @@ func (b *MsbuildSonarscannerEndBuilder) WithTimeout(seconds int) *MsbuildSonarsc
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MsbuildSonarscannerEndBuilder) WithNoOutputTimeout(seconds int) *MsbuildSonarscannerEndBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MsbuildSonarscannerEndBuilder) WithTimeoutDuration(d time.Duration) *MsbuildSonarscannerEndBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MsbuildSonarscannerEndBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MsbuildSonarscannerEndBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

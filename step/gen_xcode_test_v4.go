@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeTestV4TestRepetitionMode enumerates the valid values for the test_repetition_mode input.
 type XcodeTestV4TestRepetitionMode string
 
@@ -236,6 +238,18 @@ func (b *XcodeTestV4Builder) WithTimeout(seconds int) *XcodeTestV4Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeTestV4Builder) WithNoOutputTimeout(seconds int) *XcodeTestV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeTestV4Builder) WithTimeoutDuration(d time.Duration) *XcodeTestV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeTestV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeTestV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

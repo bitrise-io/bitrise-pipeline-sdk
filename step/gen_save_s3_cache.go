@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SaveS3CacheVerbose enumerates the valid values for the verbose input.
 type SaveS3CacheVerbose string
 
@@ -141,6 +143,18 @@ func (b *SaveS3CacheBuilder) WithTimeout(seconds int) *SaveS3CacheBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SaveS3CacheBuilder) WithNoOutputTimeout(seconds int) *SaveS3CacheBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SaveS3CacheBuilder) WithTimeoutDuration(d time.Duration) *SaveS3CacheBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SaveS3CacheBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SaveS3CacheBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

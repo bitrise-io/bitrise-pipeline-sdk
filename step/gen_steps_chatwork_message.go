@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // StepsChatworkMessageBuilder builds a steps-chatwork-message step with typed input methods.
 type StepsChatworkMessageBuilder struct{ *Builder }
 
@@ -106,6 +108,18 @@ func (b *StepsChatworkMessageBuilder) WithTimeout(seconds int) *StepsChatworkMes
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *StepsChatworkMessageBuilder) WithNoOutputTimeout(seconds int) *StepsChatworkMessageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *StepsChatworkMessageBuilder) WithTimeoutDuration(d time.Duration) *StepsChatworkMessageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *StepsChatworkMessageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *StepsChatworkMessageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

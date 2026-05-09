@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidSdkUpdateTools enumerates the valid values for the tools input.
 type AndroidSdkUpdateTools string
 
@@ -100,6 +102,18 @@ func (b *AndroidSdkUpdateBuilder) WithTimeout(seconds int) *AndroidSdkUpdateBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidSdkUpdateBuilder) WithNoOutputTimeout(seconds int) *AndroidSdkUpdateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidSdkUpdateBuilder) WithTimeoutDuration(d time.Duration) *AndroidSdkUpdateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidSdkUpdateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidSdkUpdateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

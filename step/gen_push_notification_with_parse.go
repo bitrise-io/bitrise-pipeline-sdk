@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PushNotificationWithParseBuilder builds a push-notification-with-parse step with typed input methods.
 //
 // Deprecated: This step is deprecated, Push Notifications are no longer supported by Parse server.
@@ -74,6 +76,18 @@ func (b *PushNotificationWithParseBuilder) WithTimeout(seconds int) *PushNotific
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PushNotificationWithParseBuilder) WithNoOutputTimeout(seconds int) *PushNotificationWithParseBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PushNotificationWithParseBuilder) WithTimeoutDuration(d time.Duration) *PushNotificationWithParseBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PushNotificationWithParseBuilder) WithNoOutputTimeoutDuration(d time.Duration) *PushNotificationWithParseBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

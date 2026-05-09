@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SlackV2IsDebugMode enumerates the valid values for the is_debug_mode input.
 type SlackV2IsDebugMode string
 
@@ -262,6 +264,18 @@ func (b *SlackV2Builder) WithTimeout(seconds int) *SlackV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SlackV2Builder) WithNoOutputTimeout(seconds int) *SlackV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SlackV2Builder) WithTimeoutDuration(d time.Duration) *SlackV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SlackV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *SlackV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

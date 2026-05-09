@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GithubReleaseGenerateReleaseNotes enumerates the valid values for the generate_release_notes input.
 type GithubReleaseGenerateReleaseNotes string
 
@@ -154,6 +156,18 @@ func (b *GithubReleaseBuilder) WithTimeout(seconds int) *GithubReleaseBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GithubReleaseBuilder) WithNoOutputTimeout(seconds int) *GithubReleaseBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GithubReleaseBuilder) WithTimeoutDuration(d time.Duration) *GithubReleaseBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GithubReleaseBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GithubReleaseBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

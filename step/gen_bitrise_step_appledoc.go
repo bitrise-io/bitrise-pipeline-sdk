@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepAppledocBuilder builds a bitrise-step-appledoc step with typed input methods.
 type BitriseStepAppledocBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *BitriseStepAppledocBuilder) WithTimeout(seconds int) *BitriseStepAppled
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepAppledocBuilder) WithNoOutputTimeout(seconds int) *BitriseStepAppledocBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepAppledocBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepAppledocBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepAppledocBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepAppledocBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

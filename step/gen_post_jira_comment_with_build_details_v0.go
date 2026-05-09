@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PostJiraCommentWithBuildDetailsV0Builder builds a post-jira-comment-with-build-details step with typed input methods.
 type PostJiraCommentWithBuildDetailsV0Builder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *PostJiraCommentWithBuildDetailsV0Builder) WithTimeout(seconds int) *Pos
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PostJiraCommentWithBuildDetailsV0Builder) WithNoOutputTimeout(seconds int) *PostJiraCommentWithBuildDetailsV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PostJiraCommentWithBuildDetailsV0Builder) WithTimeoutDuration(d time.Duration) *PostJiraCommentWithBuildDetailsV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PostJiraCommentWithBuildDetailsV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *PostJiraCommentWithBuildDetailsV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

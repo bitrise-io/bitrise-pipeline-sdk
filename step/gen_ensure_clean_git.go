@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // EnsureCleanGitBuilder builds a ensure-clean-git step with typed input methods.
 type EnsureCleanGitBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *EnsureCleanGitBuilder) WithTimeout(seconds int) *EnsureCleanGitBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *EnsureCleanGitBuilder) WithNoOutputTimeout(seconds int) *EnsureCleanGitBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *EnsureCleanGitBuilder) WithTimeoutDuration(d time.Duration) *EnsureCleanGitBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *EnsureCleanGitBuilder) WithNoOutputTimeoutDuration(d time.Duration) *EnsureCleanGitBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

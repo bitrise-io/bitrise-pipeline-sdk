@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetAndroidManifestVersionsBuilder builds a set-android-manifest-versions step with typed input methods.
 type SetAndroidManifestVersionsBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *SetAndroidManifestVersionsBuilder) WithTimeout(seconds int) *SetAndroid
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetAndroidManifestVersionsBuilder) WithNoOutputTimeout(seconds int) *SetAndroidManifestVersionsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetAndroidManifestVersionsBuilder) WithTimeoutDuration(d time.Duration) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetAndroidManifestVersionsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetAndroidManifestVersionsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // LocalazyBuilder builds a localazy step with typed input methods.
 type LocalazyBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *LocalazyBuilder) WithTimeout(seconds int) *LocalazyBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *LocalazyBuilder) WithNoOutputTimeout(seconds int) *LocalazyBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *LocalazyBuilder) WithTimeoutDuration(d time.Duration) *LocalazyBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *LocalazyBuilder) WithNoOutputTimeoutDuration(d time.Duration) *LocalazyBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

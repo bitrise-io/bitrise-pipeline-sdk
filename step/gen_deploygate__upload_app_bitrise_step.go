@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeploygateUploadAppBitriseStepDisableNotify enumerates the valid values for the disable_notify input.
 type DeploygateUploadAppBitriseStepDisableNotify string
 
@@ -108,6 +110,18 @@ func (b *DeploygateUploadAppBitriseStepBuilder) WithTimeout(seconds int) *Deploy
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeploygateUploadAppBitriseStepBuilder) WithNoOutputTimeout(seconds int) *DeploygateUploadAppBitriseStepBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeploygateUploadAppBitriseStepBuilder) WithTimeoutDuration(d time.Duration) *DeploygateUploadAppBitriseStepBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeploygateUploadAppBitriseStepBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DeploygateUploadAppBitriseStepBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

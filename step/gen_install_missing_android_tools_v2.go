@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstallMissingAndroidToolsV2Builder builds a install-missing-android-tools step with typed input methods.
 type InstallMissingAndroidToolsV2Builder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *InstallMissingAndroidToolsV2Builder) WithTimeout(seconds int) *InstallM
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstallMissingAndroidToolsV2Builder) WithNoOutputTimeout(seconds int) *InstallMissingAndroidToolsV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstallMissingAndroidToolsV2Builder) WithTimeoutDuration(d time.Duration) *InstallMissingAndroidToolsV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstallMissingAndroidToolsV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *InstallMissingAndroidToolsV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AvdManagerV0Profile enumerates the valid values for the profile input.
 type AvdManagerV0Profile string
 
@@ -211,6 +213,18 @@ func (b *AvdManagerV0Builder) WithTimeout(seconds int) *AvdManagerV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AvdManagerV0Builder) WithNoOutputTimeout(seconds int) *AvdManagerV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AvdManagerV0Builder) WithTimeoutDuration(d time.Duration) *AvdManagerV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AvdManagerV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *AvdManagerV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

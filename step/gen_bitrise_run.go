@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseRunBuilder builds a bitrise-run step with typed input methods.
 type BitriseRunBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *BitriseRunBuilder) WithTimeout(seconds int) *BitriseRunBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseRunBuilder) WithNoOutputTimeout(seconds int) *BitriseRunBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseRunBuilder) WithTimeoutDuration(d time.Duration) *BitriseRunBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseRunBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseRunBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

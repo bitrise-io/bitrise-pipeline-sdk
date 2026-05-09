@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UnzipBuilder builds a unzip step with typed input methods.
 type UnzipBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *UnzipBuilder) WithTimeout(seconds int) *UnzipBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UnzipBuilder) WithNoOutputTimeout(seconds int) *UnzipBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UnzipBuilder) WithTimeoutDuration(d time.Duration) *UnzipBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UnzipBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UnzipBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

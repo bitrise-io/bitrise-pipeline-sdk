@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenerateChangelogBuilder builds a generate-changelog step with typed input methods.
 type GenerateChangelogBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *GenerateChangelogBuilder) WithTimeout(seconds int) *GenerateChangelogBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenerateChangelogBuilder) WithNoOutputTimeout(seconds int) *GenerateChangelogBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenerateChangelogBuilder) WithTimeoutDuration(d time.Duration) *GenerateChangelogBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenerateChangelogBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenerateChangelogBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

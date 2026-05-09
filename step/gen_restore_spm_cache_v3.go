@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RestoreSpmCacheV3Verbose enumerates the valid values for the verbose input.
 type RestoreSpmCacheV3Verbose string
 
@@ -72,6 +74,18 @@ func (b *RestoreSpmCacheV3Builder) WithTitle(title string) *RestoreSpmCacheV3Bui
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RestoreSpmCacheV3Builder) WithNoOutputTimeout(seconds int) *RestoreSpmCacheV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RestoreSpmCacheV3Builder) WithTimeoutDuration(d time.Duration) *RestoreSpmCacheV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RestoreSpmCacheV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *RestoreSpmCacheV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SmartQaBuilder builds a smart-qa step with typed input methods.
 type SmartQaBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SmartQaBuilder) WithTimeout(seconds int) *SmartQaBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SmartQaBuilder) WithNoOutputTimeout(seconds int) *SmartQaBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SmartQaBuilder) WithTimeoutDuration(d time.Duration) *SmartQaBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SmartQaBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SmartQaBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

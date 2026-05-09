@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // JiraIssueFieldAddOrUpdateJiraIssueFieldType enumerates the valid values for the jira_issue_field_type input.
 type JiraIssueFieldAddOrUpdateJiraIssueFieldType string
 
@@ -116,6 +118,18 @@ func (b *JiraIssueFieldAddOrUpdateBuilder) WithTimeout(seconds int) *JiraIssueFi
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *JiraIssueFieldAddOrUpdateBuilder) WithNoOutputTimeout(seconds int) *JiraIssueFieldAddOrUpdateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *JiraIssueFieldAddOrUpdateBuilder) WithTimeoutDuration(d time.Duration) *JiraIssueFieldAddOrUpdateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *JiraIssueFieldAddOrUpdateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *JiraIssueFieldAddOrUpdateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

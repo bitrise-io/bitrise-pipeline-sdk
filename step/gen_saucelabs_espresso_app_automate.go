@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SaucelabsEspressoAppAutomateSaucelabsDataCenter enumerates the valid values for the saucelabs_data_center input.
 type SaucelabsEspressoAppAutomateSaucelabsDataCenter string
 
@@ -96,6 +98,18 @@ func (b *SaucelabsEspressoAppAutomateBuilder) WithTimeout(seconds int) *Saucelab
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SaucelabsEspressoAppAutomateBuilder) WithNoOutputTimeout(seconds int) *SaucelabsEspressoAppAutomateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithTimeoutDuration(d time.Duration) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SaucelabsEspressoAppAutomateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SaucelabsEspressoAppAutomateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

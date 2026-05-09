@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeTestBundleBuilderOutputTool enumerates the valid values for the output_tool input.
 type XcodeTestBundleBuilderOutputTool string
 
@@ -96,6 +98,18 @@ func (b *XcodeTestBundleBuilderBuilder) WithTimeout(seconds int) *XcodeTestBundl
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeTestBundleBuilderBuilder) WithNoOutputTimeout(seconds int) *XcodeTestBundleBuilderBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeTestBundleBuilderBuilder) WithTimeoutDuration(d time.Duration) *XcodeTestBundleBuilderBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeTestBundleBuilderBuilder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeTestBundleBuilderBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

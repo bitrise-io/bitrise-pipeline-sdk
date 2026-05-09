@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ProjectScannerV1Builder builds a project-scanner step with typed input methods.
 type ProjectScannerV1Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *ProjectScannerV1Builder) WithTimeout(seconds int) *ProjectScannerV1Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ProjectScannerV1Builder) WithNoOutputTimeout(seconds int) *ProjectScannerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ProjectScannerV1Builder) WithTimeoutDuration(d time.Duration) *ProjectScannerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ProjectScannerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *ProjectScannerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

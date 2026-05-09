@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GiphyBuilder builds a giphy step with typed input methods.
 type GiphyBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *GiphyBuilder) WithTimeout(seconds int) *GiphyBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GiphyBuilder) WithNoOutputTimeout(seconds int) *GiphyBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GiphyBuilder) WithTimeoutDuration(d time.Duration) *GiphyBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GiphyBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GiphyBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

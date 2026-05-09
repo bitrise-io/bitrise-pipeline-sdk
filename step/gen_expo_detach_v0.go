@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ExpoDetachV0RunPublish enumerates the valid values for the run_publish input.
 type ExpoDetachV0RunPublish string
 
@@ -96,6 +98,18 @@ func (b *ExpoDetachV0Builder) WithTimeout(seconds int) *ExpoDetachV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ExpoDetachV0Builder) WithNoOutputTimeout(seconds int) *ExpoDetachV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ExpoDetachV0Builder) WithTimeoutDuration(d time.Duration) *ExpoDetachV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ExpoDetachV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *ExpoDetachV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

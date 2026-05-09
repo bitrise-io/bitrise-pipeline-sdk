@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetNugetPrivateSourceBuilder builds a set-nuget-private-source step with typed input methods.
 type SetNugetPrivateSourceBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *SetNugetPrivateSourceBuilder) WithTimeout(seconds int) *SetNugetPrivate
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetNugetPrivateSourceBuilder) WithNoOutputTimeout(seconds int) *SetNugetPrivateSourceBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetNugetPrivateSourceBuilder) WithTimeoutDuration(d time.Duration) *SetNugetPrivateSourceBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetNugetPrivateSourceBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetNugetPrivateSourceBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

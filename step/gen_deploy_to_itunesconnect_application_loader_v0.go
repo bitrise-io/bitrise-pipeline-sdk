@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeployToItunesconnectApplicationLoaderV0Builder builds a deploy-to-itunesconnect-application-loader step with typed input methods.
 type DeployToItunesconnectApplicationLoaderV0Builder struct{ *Builder }
 
@@ -100,6 +102,18 @@ func (b *DeployToItunesconnectApplicationLoaderV0Builder) WithTimeout(seconds in
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeployToItunesconnectApplicationLoaderV0Builder) WithNoOutputTimeout(seconds int) *DeployToItunesconnectApplicationLoaderV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeployToItunesconnectApplicationLoaderV0Builder) WithTimeoutDuration(d time.Duration) *DeployToItunesconnectApplicationLoaderV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeployToItunesconnectApplicationLoaderV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *DeployToItunesconnectApplicationLoaderV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

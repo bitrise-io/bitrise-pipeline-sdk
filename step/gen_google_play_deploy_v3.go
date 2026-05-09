@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GooglePlayDeployV3RetryWithoutSendingToReview enumerates the valid values for the retry_without_sending_to_review input.
 type GooglePlayDeployV3RetryWithoutSendingToReview string
 
@@ -174,6 +176,18 @@ func (b *GooglePlayDeployV3Builder) WithTimeout(seconds int) *GooglePlayDeployV3
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GooglePlayDeployV3Builder) WithNoOutputTimeout(seconds int) *GooglePlayDeployV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GooglePlayDeployV3Builder) WithTimeoutDuration(d time.Duration) *GooglePlayDeployV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GooglePlayDeployV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *GooglePlayDeployV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CloseJiraTasksBuilder builds a close-jira-tasks step with typed input methods.
 type CloseJiraTasksBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *CloseJiraTasksBuilder) WithTimeout(seconds int) *CloseJiraTasksBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CloseJiraTasksBuilder) WithNoOutputTimeout(seconds int) *CloseJiraTasksBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CloseJiraTasksBuilder) WithTimeoutDuration(d time.Duration) *CloseJiraTasksBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CloseJiraTasksBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CloseJiraTasksBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // VirtualDeviceTestingForIosV1DownloadTestResults enumerates the valid values for the download_test_results input.
 type VirtualDeviceTestingForIosV1DownloadTestResults string
 
@@ -108,6 +110,18 @@ func (b *VirtualDeviceTestingForIosV1Builder) WithTimeout(seconds int) *VirtualD
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *VirtualDeviceTestingForIosV1Builder) WithNoOutputTimeout(seconds int) *VirtualDeviceTestingForIosV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *VirtualDeviceTestingForIosV1Builder) WithTimeoutDuration(d time.Duration) *VirtualDeviceTestingForIosV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *VirtualDeviceTestingForIosV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *VirtualDeviceTestingForIosV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

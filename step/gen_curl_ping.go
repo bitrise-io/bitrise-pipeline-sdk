@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CurlPingBuilder builds a curl-ping step with typed input methods.
 type CurlPingBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *CurlPingBuilder) WithTimeout(seconds int) *CurlPingBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CurlPingBuilder) WithNoOutputTimeout(seconds int) *CurlPingBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CurlPingBuilder) WithTimeoutDuration(d time.Duration) *CurlPingBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CurlPingBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CurlPingBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

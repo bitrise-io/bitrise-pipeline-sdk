@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TslintBuilder builds a tslint step with typed input methods.
 type TslintBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *TslintBuilder) WithTimeout(seconds int) *TslintBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TslintBuilder) WithNoOutputTimeout(seconds int) *TslintBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TslintBuilder) WithTimeoutDuration(d time.Duration) *TslintBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TslintBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TslintBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

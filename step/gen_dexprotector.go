@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DexprotectorAppPlatform enumerates the valid values for the app_platform input.
 type DexprotectorAppPlatform string
 
@@ -153,6 +155,18 @@ func (b *DexprotectorBuilder) WithTimeout(seconds int) *DexprotectorBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DexprotectorBuilder) WithNoOutputTimeout(seconds int) *DexprotectorBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DexprotectorBuilder) WithTimeoutDuration(d time.Duration) *DexprotectorBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DexprotectorBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DexprotectorBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

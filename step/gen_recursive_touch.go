@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RecursiveTouchBuilder builds a recursive-touch step with typed input methods.
 //
 // Deprecated: This step is deprecated as it is not reliable in daily development.
@@ -68,6 +70,18 @@ func (b *RecursiveTouchBuilder) WithTimeout(seconds int) *RecursiveTouchBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RecursiveTouchBuilder) WithNoOutputTimeout(seconds int) *RecursiveTouchBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RecursiveTouchBuilder) WithTimeoutDuration(d time.Duration) *RecursiveTouchBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RecursiveTouchBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RecursiveTouchBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

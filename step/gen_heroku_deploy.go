@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // HerokuDeployForcePush enumerates the valid values for the force_push input.
 type HerokuDeployForcePush string
 
@@ -78,6 +80,18 @@ func (b *HerokuDeployBuilder) WithTimeout(seconds int) *HerokuDeployBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *HerokuDeployBuilder) WithNoOutputTimeout(seconds int) *HerokuDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *HerokuDeployBuilder) WithTimeoutDuration(d time.Duration) *HerokuDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *HerokuDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *HerokuDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

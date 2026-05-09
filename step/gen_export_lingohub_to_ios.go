@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ExportLingohubToIosBuilder builds a export-lingohub-to-ios step with typed input methods.
 type ExportLingohubToIosBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *ExportLingohubToIosBuilder) WithTimeout(seconds int) *ExportLingohubToI
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ExportLingohubToIosBuilder) WithNoOutputTimeout(seconds int) *ExportLingohubToIosBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ExportLingohubToIosBuilder) WithTimeoutDuration(d time.Duration) *ExportLingohubToIosBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ExportLingohubToIosBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ExportLingohubToIosBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

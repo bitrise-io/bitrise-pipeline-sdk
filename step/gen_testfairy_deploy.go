@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TestfairyDeployNotify enumerates the valid values for the notify input.
 type TestfairyDeployNotify string
 
@@ -137,6 +139,18 @@ func (b *TestfairyDeployBuilder) WithTimeout(seconds int) *TestfairyDeployBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TestfairyDeployBuilder) WithNoOutputTimeout(seconds int) *TestfairyDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TestfairyDeployBuilder) WithTimeoutDuration(d time.Duration) *TestfairyDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TestfairyDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TestfairyDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

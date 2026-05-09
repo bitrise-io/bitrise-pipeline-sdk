@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PebbleBuildSdkWithoutEmulator enumerates the valid values for the sdk_without_emulator input.
 type PebbleBuildSdkWithoutEmulator string
 
@@ -120,6 +122,18 @@ func (b *PebbleBuildBuilder) WithTimeout(seconds int) *PebbleBuildBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PebbleBuildBuilder) WithNoOutputTimeout(seconds int) *PebbleBuildBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PebbleBuildBuilder) WithTimeoutDuration(d time.Duration) *PebbleBuildBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PebbleBuildBuilder) WithNoOutputTimeoutDuration(d time.Duration) *PebbleBuildBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

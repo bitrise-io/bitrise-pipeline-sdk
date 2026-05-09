@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GooglePlayDeployV2UntrackBlockingVersions enumerates the valid values for the untrack_blocking_versions input.
 type GooglePlayDeployV2UntrackBlockingVersions string
 
@@ -120,6 +122,18 @@ func (b *GooglePlayDeployV2Builder) WithTimeout(seconds int) *GooglePlayDeployV2
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GooglePlayDeployV2Builder) WithNoOutputTimeout(seconds int) *GooglePlayDeployV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GooglePlayDeployV2Builder) WithTimeoutDuration(d time.Duration) *GooglePlayDeployV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GooglePlayDeployV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *GooglePlayDeployV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

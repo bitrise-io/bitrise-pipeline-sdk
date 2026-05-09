@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidUnitTestV0CacheLevel enumerates the valid values for the cache_level input.
 type AndroidUnitTestV0CacheLevel string
 
@@ -117,6 +119,18 @@ func (b *AndroidUnitTestV0Builder) WithTimeout(seconds int) *AndroidUnitTestV0Bu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidUnitTestV0Builder) WithNoOutputTimeout(seconds int) *AndroidUnitTestV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidUnitTestV0Builder) WithTimeoutDuration(d time.Duration) *AndroidUnitTestV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidUnitTestV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidUnitTestV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SonarqubeMsbuildScannerIsDebug enumerates the valid values for the is_debug input.
 type SonarqubeMsbuildScannerIsDebug string
 
@@ -108,6 +110,18 @@ func (b *SonarqubeMsbuildScannerBuilder) WithTimeout(seconds int) *SonarqubeMsbu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SonarqubeMsbuildScannerBuilder) WithNoOutputTimeout(seconds int) *SonarqubeMsbuildScannerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SonarqubeMsbuildScannerBuilder) WithTimeoutDuration(d time.Duration) *SonarqubeMsbuildScannerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SonarqubeMsbuildScannerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SonarqubeMsbuildScannerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // VersionExtractorAndroidBuilder builds a version-extractor-android step with typed input methods.
 //
 // Deprecated: This step is no longer maintained by its author.
@@ -74,6 +76,18 @@ func (b *VersionExtractorAndroidBuilder) WithTimeout(seconds int) *VersionExtrac
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *VersionExtractorAndroidBuilder) WithNoOutputTimeout(seconds int) *VersionExtractorAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *VersionExtractorAndroidBuilder) WithTimeoutDuration(d time.Duration) *VersionExtractorAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *VersionExtractorAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *VersionExtractorAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

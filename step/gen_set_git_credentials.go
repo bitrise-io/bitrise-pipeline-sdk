@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetGitCredentialsBuilder builds a set-git-credentials step with typed input methods.
 type SetGitCredentialsBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SetGitCredentialsBuilder) WithTimeout(seconds int) *SetGitCredentialsBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetGitCredentialsBuilder) WithNoOutputTimeout(seconds int) *SetGitCredentialsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetGitCredentialsBuilder) WithTimeoutDuration(d time.Duration) *SetGitCredentialsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetGitCredentialsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetGitCredentialsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

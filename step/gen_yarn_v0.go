@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // YarnV0CacheLocalDeps enumerates the valid values for the cache_local_deps input.
 type YarnV0CacheLocalDeps string
 
@@ -98,6 +100,18 @@ func (b *YarnV0Builder) WithTimeout(seconds int) *YarnV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *YarnV0Builder) WithNoOutputTimeout(seconds int) *YarnV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *YarnV0Builder) WithTimeoutDuration(d time.Duration) *YarnV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *YarnV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *YarnV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

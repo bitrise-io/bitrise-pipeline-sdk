@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetAndroidManifestPackageNameBuilder builds a set-android-manifest-package-name step with typed input methods.
 type SetAndroidManifestPackageNameBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SetAndroidManifestPackageNameBuilder) WithTimeout(seconds int) *SetAndr
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetAndroidManifestPackageNameBuilder) WithNoOutputTimeout(seconds int) *SetAndroidManifestPackageNameBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetAndroidManifestPackageNameBuilder) WithTimeoutDuration(d time.Duration) *SetAndroidManifestPackageNameBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetAndroidManifestPackageNameBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetAndroidManifestPackageNameBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

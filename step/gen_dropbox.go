@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DropboxDropboxDebugMode enumerates the valid values for the dropbox_debug_mode input.
 type DropboxDropboxDebugMode string
 
@@ -84,6 +86,18 @@ func (b *DropboxBuilder) WithTimeout(seconds int) *DropboxBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DropboxBuilder) WithNoOutputTimeout(seconds int) *DropboxBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DropboxBuilder) WithTimeoutDuration(d time.Duration) *DropboxBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DropboxBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DropboxBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

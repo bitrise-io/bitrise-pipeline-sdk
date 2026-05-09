@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FileDownloaderV0Builder builds a file-downloader step with typed input methods.
 type FileDownloaderV0Builder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *FileDownloaderV0Builder) WithTimeout(seconds int) *FileDownloaderV0Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FileDownloaderV0Builder) WithNoOutputTimeout(seconds int) *FileDownloaderV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FileDownloaderV0Builder) WithTimeoutDuration(d time.Duration) *FileDownloaderV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FileDownloaderV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *FileDownloaderV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

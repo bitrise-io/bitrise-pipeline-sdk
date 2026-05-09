@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinUserManagementV0XamarinAction enumerates the valid values for the xamarin_action input.
 type XamarinUserManagementV0XamarinAction string
 
@@ -104,6 +106,18 @@ func (b *XamarinUserManagementV0Builder) WithTimeout(seconds int) *XamarinUserMa
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinUserManagementV0Builder) WithNoOutputTimeout(seconds int) *XamarinUserManagementV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinUserManagementV0Builder) WithTimeoutDuration(d time.Duration) *XamarinUserManagementV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinUserManagementV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinUserManagementV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

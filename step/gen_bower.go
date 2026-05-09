@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BowerIsDebug enumerates the valid values for the is_debug input.
 type BowerIsDebug string
 
@@ -84,6 +86,18 @@ func (b *BowerBuilder) WithTimeout(seconds int) *BowerBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BowerBuilder) WithNoOutputTimeout(seconds int) *BowerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BowerBuilder) WithTimeoutDuration(d time.Duration) *BowerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BowerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BowerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

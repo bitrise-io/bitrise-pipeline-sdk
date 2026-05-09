@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ChangeWorkdirIsCreatePath enumerates the valid values for the is_create_path input.
 type ChangeWorkdirIsCreatePath string
 
@@ -72,6 +74,18 @@ func (b *ChangeWorkdirBuilder) WithTimeout(seconds int) *ChangeWorkdirBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ChangeWorkdirBuilder) WithNoOutputTimeout(seconds int) *ChangeWorkdirBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ChangeWorkdirBuilder) WithTimeoutDuration(d time.Duration) *ChangeWorkdirBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ChangeWorkdirBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ChangeWorkdirBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

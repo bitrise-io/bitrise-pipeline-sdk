@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // WaitForAndroidEmulatorV0Builder builds a wait-for-android-emulator step with typed input methods.
 type WaitForAndroidEmulatorV0Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *WaitForAndroidEmulatorV0Builder) WithTimeout(seconds int) *WaitForAndro
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *WaitForAndroidEmulatorV0Builder) WithNoOutputTimeout(seconds int) *WaitForAndroidEmulatorV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *WaitForAndroidEmulatorV0Builder) WithTimeoutDuration(d time.Duration) *WaitForAndroidEmulatorV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *WaitForAndroidEmulatorV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *WaitForAndroidEmulatorV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

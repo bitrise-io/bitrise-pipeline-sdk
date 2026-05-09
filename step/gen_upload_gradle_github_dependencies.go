@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UploadGradleGithubDependenciesBuilder builds a upload-gradle-github-dependencies step with typed input methods.
 type UploadGradleGithubDependenciesBuilder struct{ *Builder }
 
@@ -154,6 +156,18 @@ func (b *UploadGradleGithubDependenciesBuilder) WithTimeout(seconds int) *Upload
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UploadGradleGithubDependenciesBuilder) WithNoOutputTimeout(seconds int) *UploadGradleGithubDependenciesBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UploadGradleGithubDependenciesBuilder) WithTimeoutDuration(d time.Duration) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UploadGradleGithubDependenciesBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UploadGradleGithubDependenciesBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

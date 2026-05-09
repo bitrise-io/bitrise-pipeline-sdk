@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // WetransferWtuLanguage enumerates the valid values for the wtu_language input.
 type WetransferWtuLanguage string
 
@@ -108,6 +110,18 @@ func (b *WetransferBuilder) WithTimeout(seconds int) *WetransferBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *WetransferBuilder) WithNoOutputTimeout(seconds int) *WetransferBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *WetransferBuilder) WithTimeoutDuration(d time.Duration) *WetransferBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *WetransferBuilder) WithNoOutputTimeoutDuration(d time.Duration) *WetransferBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

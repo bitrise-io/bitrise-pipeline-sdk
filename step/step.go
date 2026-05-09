@@ -3,11 +3,58 @@ package step
 
 import (
 	"fmt"
+	"time"
 
 	bitriseModels "github.com/bitrise-io/bitrise/v2/models"
 	envmanModels "github.com/bitrise-io/envman/v2/models"
 	stepmanModels "github.com/bitrise-io/stepman/models"
 )
+
+// RunIfExpr is a Bitrise template expression that controls whether a step
+// runs.  It is evaluated as a Go template against the build environment.
+//
+// Use the predefined Run* constants for the most common conditions, or
+// pass any valid Bitrise template expression string directly.
+//
+// Reference: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/enabling-or-disabling-a-step-conditionally.html
+type RunIfExpr = string
+
+const (
+	// RunIfAlways makes the step always run.  This is the default when
+	// run_if is not set.
+	RunIfAlways RunIfExpr = ""
+
+	// RunIfNever prevents the step from running.
+	RunIfNever RunIfExpr = "false"
+
+	// RunIfCI makes the step run only on CI (BITRISE_IO is set).
+	RunIfCI RunIfExpr = ".IsCI"
+
+	// RunIfNotCI makes the step run only outside of CI.
+	RunIfNotCI RunIfExpr = "not .IsCI"
+
+	// RunIfBuildFailed makes the step run only when a previous step failed.
+	// Typically combined with WithIsAlwaysRun(true) so the step is not
+	// skipped when the build is already in a failed state.
+	RunIfBuildFailed RunIfExpr = ".IsBuildFailed"
+
+	// RunIfBuildSucceeded makes the step run only when all previous steps succeeded.
+	RunIfBuildSucceeded RunIfExpr = "not .IsBuildFailed"
+
+	// RunIfPR makes the step run only when the build was triggered by a pull request.
+	RunIfPR RunIfExpr = ".IsPR"
+
+	// RunIfNotPR makes the step run only on non-pull-request builds.
+	RunIfNotPR RunIfExpr = "not .IsPR"
+)
+
+// RunIfEnvEq returns a run_if expression that evaluates to true when the
+// named environment variable equals value (case-sensitive).
+//
+//	step.Script().WithRunIf(step.RunIfEnvEq("DEPLOY_ENV", "production"))
+func RunIfEnvEq(key, value string) RunIfExpr {
+	return fmt.Sprintf(`enveq "%s" "%s"`, key, value)
+}
 
 // Buildable is implemented by Builder and all typed step builders.
 // Pass any of them to workflow.Builder.AddStep.
@@ -84,6 +131,22 @@ func (b *Builder) WithTimeout(seconds int) *Builder {
 func (b *Builder) WithNoOutputTimeout(seconds int) *Builder {
 	b.model.NoOutputTimeout = &seconds
 	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+// Sub-second precision is truncated. 0 disables the timeout.
+//
+//	step.Script().WithTimeoutDuration(10 * time.Minute)
+func (b *Builder) WithTimeoutDuration(d time.Duration) *Builder {
+	return b.WithTimeout(int(d.Seconds()))
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+// Sub-second precision is truncated. 0 disables the timeout.
+//
+//	step.Script().WithNoOutputTimeoutDuration(30 * time.Second)
+func (b *Builder) WithNoOutputTimeoutDuration(d time.Duration) *Builder {
+	return b.WithNoOutputTimeout(int(d.Seconds()))
 }
 
 // WithExecutionContainer pins this step to run inside the named container.

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinInsightsV0Builder builds a xamarin-insights step with typed input methods.
 //
 // Deprecated: This step is deprecated, the Xamarin Insights service will be shutted down on March 31, 2018.
@@ -68,6 +70,18 @@ func (b *XamarinInsightsV0Builder) WithTimeout(seconds int) *XamarinInsightsV0Bu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinInsightsV0Builder) WithNoOutputTimeout(seconds int) *XamarinInsightsV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinInsightsV0Builder) WithTimeoutDuration(d time.Duration) *XamarinInsightsV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinInsightsV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinInsightsV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

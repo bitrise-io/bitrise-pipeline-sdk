@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GradleRunnerV1CacheLevel enumerates the valid values for the cache_level input.
 type GradleRunnerV1CacheLevel string
 
@@ -153,6 +155,18 @@ func (b *GradleRunnerV1Builder) WithTimeout(seconds int) *GradleRunnerV1Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GradleRunnerV1Builder) WithNoOutputTimeout(seconds int) *GradleRunnerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GradleRunnerV1Builder) WithTimeoutDuration(d time.Duration) *GradleRunnerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GradleRunnerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *GradleRunnerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

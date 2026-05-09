@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RandomQuoteBuilder builds a random-quote step with typed input methods.
 type RandomQuoteBuilder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *RandomQuoteBuilder) WithTimeout(seconds int) *RandomQuoteBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RandomQuoteBuilder) WithNoOutputTimeout(seconds int) *RandomQuoteBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RandomQuoteBuilder) WithTimeoutDuration(d time.Duration) *RandomQuoteBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RandomQuoteBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RandomQuoteBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

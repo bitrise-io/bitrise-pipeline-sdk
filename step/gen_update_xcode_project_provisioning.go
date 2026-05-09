@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UpdateXcodeProjectProvisioningCodeSignStyle enumerates the valid values for the code_sign_style input.
 type UpdateXcodeProjectProvisioningCodeSignStyle string
 
@@ -110,6 +112,18 @@ func (b *UpdateXcodeProjectProvisioningBuilder) WithTimeout(seconds int) *Update
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UpdateXcodeProjectProvisioningBuilder) WithNoOutputTimeout(seconds int) *UpdateXcodeProjectProvisioningBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UpdateXcodeProjectProvisioningBuilder) WithTimeoutDuration(d time.Duration) *UpdateXcodeProjectProvisioningBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UpdateXcodeProjectProvisioningBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UpdateXcodeProjectProvisioningBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

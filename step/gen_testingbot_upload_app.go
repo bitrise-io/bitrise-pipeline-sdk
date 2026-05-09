@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TestingbotUploadAppBuilder builds a testingbot-upload-app step with typed input methods.
 type TestingbotUploadAppBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *TestingbotUploadAppBuilder) WithTimeout(seconds int) *TestingbotUploadA
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TestingbotUploadAppBuilder) WithNoOutputTimeout(seconds int) *TestingbotUploadAppBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TestingbotUploadAppBuilder) WithTimeoutDuration(d time.Duration) *TestingbotUploadAppBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TestingbotUploadAppBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TestingbotUploadAppBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

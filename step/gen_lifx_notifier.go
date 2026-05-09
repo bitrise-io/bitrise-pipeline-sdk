@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // LifxNotifierSelectorType enumerates the valid values for the selector_type input.
 type LifxNotifierSelectorType string
 
@@ -155,6 +157,18 @@ func (b *LifxNotifierBuilder) WithTimeout(seconds int) *LifxNotifierBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *LifxNotifierBuilder) WithNoOutputTimeout(seconds int) *LifxNotifierBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *LifxNotifierBuilder) WithTimeoutDuration(d time.Duration) *LifxNotifierBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *LifxNotifierBuilder) WithNoOutputTimeoutDuration(d time.Duration) *LifxNotifierBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftformatBuilder builds a swiftformat step with typed input methods.
 type SwiftformatBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SwiftformatBuilder) WithTimeout(seconds int) *SwiftformatBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftformatBuilder) WithNoOutputTimeout(seconds int) *SwiftformatBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftformatBuilder) WithTimeoutDuration(d time.Duration) *SwiftformatBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftformatBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftformatBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

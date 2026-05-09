@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ConnectToFortigateSslvpnBuilder builds a connect-to-fortigate-sslvpn step with typed input methods.
 type ConnectToFortigateSslvpnBuilder struct{ *Builder }
 
@@ -100,6 +102,18 @@ func (b *ConnectToFortigateSslvpnBuilder) WithTimeout(seconds int) *ConnectToFor
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ConnectToFortigateSslvpnBuilder) WithNoOutputTimeout(seconds int) *ConnectToFortigateSslvpnBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ConnectToFortigateSslvpnBuilder) WithTimeoutDuration(d time.Duration) *ConnectToFortigateSslvpnBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ConnectToFortigateSslvpnBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ConnectToFortigateSslvpnBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

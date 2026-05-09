@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // HockeyappDeployAndroidV1NotesType enumerates the valid values for the notes_type input.
 type HockeyappDeployAndroidV1NotesType string
 
@@ -163,6 +165,18 @@ func (b *HockeyappDeployAndroidV1Builder) WithTimeout(seconds int) *HockeyappDep
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *HockeyappDeployAndroidV1Builder) WithNoOutputTimeout(seconds int) *HockeyappDeployAndroidV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *HockeyappDeployAndroidV1Builder) WithTimeoutDuration(d time.Duration) *HockeyappDeployAndroidV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *HockeyappDeployAndroidV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *HockeyappDeployAndroidV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

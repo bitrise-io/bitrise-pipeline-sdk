@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GolintBuilder builds a golint step with typed input methods.
 type GolintBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *GolintBuilder) WithTimeout(seconds int) *GolintBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GolintBuilder) WithNoOutputTimeout(seconds int) *GolintBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GolintBuilder) WithTimeoutDuration(d time.Duration) *GolintBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GolintBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GolintBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

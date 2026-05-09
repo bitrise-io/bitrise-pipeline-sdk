@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FastlaneV3Connection enumerates the valid values for the connection input.
 type FastlaneV3Connection string
 
@@ -152,6 +154,18 @@ func (b *FastlaneV3Builder) WithTimeout(seconds int) *FastlaneV3Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FastlaneV3Builder) WithNoOutputTimeout(seconds int) *FastlaneV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FastlaneV3Builder) WithTimeoutDuration(d time.Duration) *FastlaneV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FastlaneV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *FastlaneV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GithubScriptRunnerRunScript enumerates the valid values for the run_script input.
 type GithubScriptRunnerRunScript string
 
@@ -78,6 +80,18 @@ func (b *GithubScriptRunnerBuilder) WithTimeout(seconds int) *GithubScriptRunner
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GithubScriptRunnerBuilder) WithNoOutputTimeout(seconds int) *GithubScriptRunnerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GithubScriptRunnerBuilder) WithTimeoutDuration(d time.Duration) *GithubScriptRunnerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GithubScriptRunnerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GithubScriptRunnerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

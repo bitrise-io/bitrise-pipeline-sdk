@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BuildNumberAdjustBuilder builds a build-number-adjust step with typed input methods.
 //
 // Deprecated: This community step is no longer available as a GitHub repo.
@@ -74,6 +76,18 @@ func (b *BuildNumberAdjustBuilder) WithTimeout(seconds int) *BuildNumberAdjustBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BuildNumberAdjustBuilder) WithNoOutputTimeout(seconds int) *BuildNumberAdjustBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BuildNumberAdjustBuilder) WithTimeoutDuration(d time.Duration) *BuildNumberAdjustBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BuildNumberAdjustBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BuildNumberAdjustBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

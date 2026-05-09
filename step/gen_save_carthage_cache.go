@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SaveCarthageCacheVerbose enumerates the valid values for the verbose input.
 type SaveCarthageCacheVerbose string
 
@@ -72,6 +74,18 @@ func (b *SaveCarthageCacheBuilder) WithTimeout(seconds int) *SaveCarthageCacheBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SaveCarthageCacheBuilder) WithNoOutputTimeout(seconds int) *SaveCarthageCacheBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SaveCarthageCacheBuilder) WithTimeoutDuration(d time.Duration) *SaveCarthageCacheBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SaveCarthageCacheBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SaveCarthageCacheBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

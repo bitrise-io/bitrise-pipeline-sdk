@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ActivateBuildCacheForGradleV2Push enumerates the valid values for the push input.
 type ActivateBuildCacheForGradleV2Push string
 
@@ -109,6 +111,18 @@ func (b *ActivateBuildCacheForGradleV2Builder) WithTimeout(seconds int) *Activat
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ActivateBuildCacheForGradleV2Builder) WithNoOutputTimeout(seconds int) *ActivateBuildCacheForGradleV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ActivateBuildCacheForGradleV2Builder) WithTimeoutDuration(d time.Duration) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ActivateBuildCacheForGradleV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *ActivateBuildCacheForGradleV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

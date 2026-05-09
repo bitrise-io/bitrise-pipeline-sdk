@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidScreenrecordStartBuilder builds a android-screenrecord-start step with typed input methods.
 //
 // Deprecated: This step is deprecated, android emulators no longer support screen recording
@@ -68,6 +70,18 @@ func (b *AndroidScreenrecordStartBuilder) WithTimeout(seconds int) *AndroidScree
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidScreenrecordStartBuilder) WithNoOutputTimeout(seconds int) *AndroidScreenrecordStartBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidScreenrecordStartBuilder) WithTimeoutDuration(d time.Duration) *AndroidScreenrecordStartBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidScreenrecordStartBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidScreenrecordStartBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

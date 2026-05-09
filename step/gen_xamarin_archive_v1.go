@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinArchiveV1BuildTool enumerates the valid values for the build_tool input.
 type XamarinArchiveV1BuildTool string
 
@@ -118,6 +120,18 @@ func (b *XamarinArchiveV1Builder) WithTimeout(seconds int) *XamarinArchiveV1Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinArchiveV1Builder) WithNoOutputTimeout(seconds int) *XamarinArchiveV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinArchiveV1Builder) WithTimeoutDuration(d time.Duration) *XamarinArchiveV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinArchiveV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinArchiveV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

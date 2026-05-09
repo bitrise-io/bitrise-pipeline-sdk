@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinTestCloudForAndroidV1TestCloudIsAsync enumerates the valid values for the test_cloud_is_async input.
 type XamarinTestCloudForAndroidV1TestCloudIsAsync string
 
@@ -139,6 +141,18 @@ func (b *XamarinTestCloudForAndroidV1Builder) WithTimeout(seconds int) *XamarinT
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinTestCloudForAndroidV1Builder) WithNoOutputTimeout(seconds int) *XamarinTestCloudForAndroidV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinTestCloudForAndroidV1Builder) WithTimeoutDuration(d time.Duration) *XamarinTestCloudForAndroidV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinTestCloudForAndroidV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinTestCloudForAndroidV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

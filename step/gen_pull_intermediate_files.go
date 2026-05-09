@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PullIntermediateFilesVerbose enumerates the valid values for the verbose input.
 type PullIntermediateFilesVerbose string
 
@@ -102,6 +104,18 @@ func (b *PullIntermediateFilesBuilder) WithTimeout(seconds int) *PullIntermediat
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PullIntermediateFilesBuilder) WithNoOutputTimeout(seconds int) *PullIntermediateFilesBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PullIntermediateFilesBuilder) WithTimeoutDuration(d time.Duration) *PullIntermediateFilesBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PullIntermediateFilesBuilder) WithNoOutputTimeoutDuration(d time.Duration) *PullIntermediateFilesBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

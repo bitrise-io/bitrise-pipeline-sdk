@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TestlioUploadBuilder builds a testlio-upload step with typed input methods.
 type TestlioUploadBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *TestlioUploadBuilder) WithTimeout(seconds int) *TestlioUploadBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TestlioUploadBuilder) WithNoOutputTimeout(seconds int) *TestlioUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TestlioUploadBuilder) WithTimeoutDuration(d time.Duration) *TestlioUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TestlioUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TestlioUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

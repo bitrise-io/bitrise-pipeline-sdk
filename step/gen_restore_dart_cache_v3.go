@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RestoreDartCacheV3Verbose enumerates the valid values for the verbose input.
 type RestoreDartCacheV3Verbose string
 
@@ -72,6 +74,18 @@ func (b *RestoreDartCacheV3Builder) WithTitle(title string) *RestoreDartCacheV3B
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RestoreDartCacheV3Builder) WithNoOutputTimeout(seconds int) *RestoreDartCacheV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RestoreDartCacheV3Builder) WithTimeoutDuration(d time.Duration) *RestoreDartCacheV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RestoreDartCacheV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *RestoreDartCacheV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

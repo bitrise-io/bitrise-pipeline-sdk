@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeArchiveV0Builder builds a xcode-archive step with typed input methods.
 type XcodeArchiveV0Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *XcodeArchiveV0Builder) WithTimeout(seconds int) *XcodeArchiveV0Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeArchiveV0Builder) WithNoOutputTimeout(seconds int) *XcodeArchiveV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeArchiveV0Builder) WithTimeoutDuration(d time.Duration) *XcodeArchiveV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeArchiveV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeArchiveV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

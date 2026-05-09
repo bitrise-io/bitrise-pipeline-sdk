@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // WaldoUploadV1FindSymbols enumerates the valid values for the find_symbols input.
 type WaldoUploadV1FindSymbols string
 
@@ -90,6 +92,18 @@ func (b *WaldoUploadV1Builder) WithTimeout(seconds int) *WaldoUploadV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *WaldoUploadV1Builder) WithNoOutputTimeout(seconds int) *WaldoUploadV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *WaldoUploadV1Builder) WithTimeoutDuration(d time.Duration) *WaldoUploadV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *WaldoUploadV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *WaldoUploadV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

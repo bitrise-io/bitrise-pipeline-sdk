@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeProjectInfoV2Builder builds a xcode-project-info step with typed input methods.
 type XcodeProjectInfoV2Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *XcodeProjectInfoV2Builder) WithTimeout(seconds int) *XcodeProjectInfoV2
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeProjectInfoV2Builder) WithNoOutputTimeout(seconds int) *XcodeProjectInfoV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeProjectInfoV2Builder) WithTimeoutDuration(d time.Duration) *XcodeProjectInfoV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeProjectInfoV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeProjectInfoV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

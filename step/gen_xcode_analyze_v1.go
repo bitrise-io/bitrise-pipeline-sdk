@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeAnalyzeV1IsCleanBuild enumerates the valid values for the is_clean_build input.
 type XcodeAnalyzeV1IsCleanBuild string
 
@@ -124,6 +126,18 @@ func (b *XcodeAnalyzeV1Builder) WithTimeout(seconds int) *XcodeAnalyzeV1Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeAnalyzeV1Builder) WithNoOutputTimeout(seconds int) *XcodeAnalyzeV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeAnalyzeV1Builder) WithTimeoutDuration(d time.Duration) *XcodeAnalyzeV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeAnalyzeV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeAnalyzeV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

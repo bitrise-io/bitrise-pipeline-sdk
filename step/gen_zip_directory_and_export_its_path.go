@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ZipDirectoryAndExportItsPathIncludeDirectory enumerates the valid values for the include_directory input.
 type ZipDirectoryAndExportItsPathIncludeDirectory string
 
@@ -72,6 +74,18 @@ func (b *ZipDirectoryAndExportItsPathBuilder) WithTimeout(seconds int) *ZipDirec
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ZipDirectoryAndExportItsPathBuilder) WithNoOutputTimeout(seconds int) *ZipDirectoryAndExportItsPathBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ZipDirectoryAndExportItsPathBuilder) WithTimeoutDuration(d time.Duration) *ZipDirectoryAndExportItsPathBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ZipDirectoryAndExportItsPathBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ZipDirectoryAndExportItsPathBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

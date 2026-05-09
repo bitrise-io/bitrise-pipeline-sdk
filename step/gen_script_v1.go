@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ScriptV1IsDebug enumerates the valid values for the is_debug input.
 type ScriptV1IsDebug string
 
@@ -90,6 +92,18 @@ func (b *ScriptV1Builder) WithTimeout(seconds int) *ScriptV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ScriptV1Builder) WithNoOutputTimeout(seconds int) *ScriptV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ScriptV1Builder) WithTimeoutDuration(d time.Duration) *ScriptV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ScriptV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *ScriptV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AuthenticateWithGithubOauthBuilder builds a authenticate-with-github-oauth step with typed input methods.
 type AuthenticateWithGithubOauthBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *AuthenticateWithGithubOauthBuilder) WithTimeout(seconds int) *Authentic
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AuthenticateWithGithubOauthBuilder) WithNoOutputTimeout(seconds int) *AuthenticateWithGithubOauthBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AuthenticateWithGithubOauthBuilder) WithTimeoutDuration(d time.Duration) *AuthenticateWithGithubOauthBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AuthenticateWithGithubOauthBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AuthenticateWithGithubOauthBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GenymotionCloudSaasStopBuilder builds a genymotion-cloud-saas-stop step with typed input methods.
 type GenymotionCloudSaasStopBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *GenymotionCloudSaasStopBuilder) WithTimeout(seconds int) *GenymotionClo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GenymotionCloudSaasStopBuilder) WithNoOutputTimeout(seconds int) *GenymotionCloudSaasStopBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GenymotionCloudSaasStopBuilder) WithTimeoutDuration(d time.Duration) *GenymotionCloudSaasStopBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GenymotionCloudSaasStopBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GenymotionCloudSaasStopBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

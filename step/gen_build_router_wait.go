@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BuildRouterWaitAbortOnFail enumerates the valid values for the abort_on_fail input.
 type BuildRouterWaitAbortOnFail string
 
@@ -98,6 +100,18 @@ func (b *BuildRouterWaitBuilder) WithTimeout(seconds int) *BuildRouterWaitBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BuildRouterWaitBuilder) WithNoOutputTimeout(seconds int) *BuildRouterWaitBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BuildRouterWaitBuilder) WithTimeoutDuration(d time.Duration) *BuildRouterWaitBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BuildRouterWaitBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BuildRouterWaitBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

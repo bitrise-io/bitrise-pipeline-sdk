@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppdomeBuild2secureIosV3SignMethod enumerates the valid values for the sign_method input.
 type AppdomeBuild2secureIosV3SignMethod string
 
@@ -152,6 +154,18 @@ func (b *AppdomeBuild2secureIosV3Builder) WithTimeout(seconds int) *AppdomeBuild
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppdomeBuild2secureIosV3Builder) WithNoOutputTimeout(seconds int) *AppdomeBuild2secureIosV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppdomeBuild2secureIosV3Builder) WithTimeoutDuration(d time.Duration) *AppdomeBuild2secureIosV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppdomeBuild2secureIosV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppdomeBuild2secureIosV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

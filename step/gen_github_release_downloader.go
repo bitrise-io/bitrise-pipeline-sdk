@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GithubReleaseDownloaderBuilder builds a github-release-downloader step with typed input methods.
 type GithubReleaseDownloaderBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *GithubReleaseDownloaderBuilder) WithTimeout(seconds int) *GithubRelease
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GithubReleaseDownloaderBuilder) WithNoOutputTimeout(seconds int) *GithubReleaseDownloaderBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GithubReleaseDownloaderBuilder) WithTimeoutDuration(d time.Duration) *GithubReleaseDownloaderBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GithubReleaseDownloaderBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GithubReleaseDownloaderBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

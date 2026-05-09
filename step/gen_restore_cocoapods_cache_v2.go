@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RestoreCocoapodsCacheV2Verbose enumerates the valid values for the verbose input.
 type RestoreCocoapodsCacheV2Verbose string
 
@@ -72,6 +74,18 @@ func (b *RestoreCocoapodsCacheV2Builder) WithTimeout(seconds int) *RestoreCocoap
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RestoreCocoapodsCacheV2Builder) WithNoOutputTimeout(seconds int) *RestoreCocoapodsCacheV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RestoreCocoapodsCacheV2Builder) WithTimeoutDuration(d time.Duration) *RestoreCocoapodsCacheV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RestoreCocoapodsCacheV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *RestoreCocoapodsCacheV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

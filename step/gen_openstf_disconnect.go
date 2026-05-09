@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // OpenstfDisconnectBuilder builds a openstf-disconnect step with typed input methods.
 type OpenstfDisconnectBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *OpenstfDisconnectBuilder) WithTimeout(seconds int) *OpenstfDisconnectBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *OpenstfDisconnectBuilder) WithNoOutputTimeout(seconds int) *OpenstfDisconnectBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *OpenstfDisconnectBuilder) WithTimeoutDuration(d time.Duration) *OpenstfDisconnectBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *OpenstfDisconnectBuilder) WithNoOutputTimeoutDuration(d time.Duration) *OpenstfDisconnectBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

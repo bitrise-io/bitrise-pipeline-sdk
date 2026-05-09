@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinIosTestV1Builder builds a xamarin-ios-test step with typed input methods.
 //
 // Deprecated: The Xamarin development platform is not officially supported. [More info](https://blog.bitrise.io/post/xamarin-support-ends-in-2022-on-bitrise)
@@ -92,6 +94,18 @@ func (b *XamarinIosTestV1Builder) WithTimeout(seconds int) *XamarinIosTestV1Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinIosTestV1Builder) WithNoOutputTimeout(seconds int) *XamarinIosTestV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinIosTestV1Builder) WithTimeoutDuration(d time.Duration) *XamarinIosTestV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinIosTestV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinIosTestV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

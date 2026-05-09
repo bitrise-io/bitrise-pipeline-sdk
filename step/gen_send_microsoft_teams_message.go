@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SendMicrosoftTeamsMessageIsDebugMode enumerates the valid values for the is_debug_mode input.
 type SendMicrosoftTeamsMessageIsDebugMode string
 
@@ -132,6 +134,18 @@ func (b *SendMicrosoftTeamsMessageBuilder) WithTimeout(seconds int) *SendMicroso
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SendMicrosoftTeamsMessageBuilder) WithNoOutputTimeout(seconds int) *SendMicrosoftTeamsMessageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SendMicrosoftTeamsMessageBuilder) WithTimeoutDuration(d time.Duration) *SendMicrosoftTeamsMessageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SendMicrosoftTeamsMessageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SendMicrosoftTeamsMessageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetEnvVarBuilder builds a set-env-var step with typed input methods.
 type SetEnvVarBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SetEnvVarBuilder) WithTimeout(seconds int) *SetEnvVarBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetEnvVarBuilder) WithNoOutputTimeout(seconds int) *SetEnvVarBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetEnvVarBuilder) WithTimeoutDuration(d time.Duration) *SetEnvVarBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetEnvVarBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetEnvVarBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

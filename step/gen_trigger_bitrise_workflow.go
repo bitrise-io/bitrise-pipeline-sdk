@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TriggerBitriseWorkflowBuilder builds a trigger-bitrise-workflow step with typed input methods.
 type TriggerBitriseWorkflowBuilder struct{ *Builder }
 
@@ -142,6 +144,18 @@ func (b *TriggerBitriseWorkflowBuilder) WithTimeout(seconds int) *TriggerBitrise
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TriggerBitriseWorkflowBuilder) WithNoOutputTimeout(seconds int) *TriggerBitriseWorkflowBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TriggerBitriseWorkflowBuilder) WithTimeoutDuration(d time.Duration) *TriggerBitriseWorkflowBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TriggerBitriseWorkflowBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TriggerBitriseWorkflowBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

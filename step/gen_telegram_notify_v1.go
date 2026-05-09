@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TelegramNotifyV1Builder builds a telegram-notify step with typed input methods.
 type TelegramNotifyV1Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *TelegramNotifyV1Builder) WithTimeout(seconds int) *TelegramNotifyV1Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TelegramNotifyV1Builder) WithNoOutputTimeout(seconds int) *TelegramNotifyV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TelegramNotifyV1Builder) WithTimeoutDuration(d time.Duration) *TelegramNotifyV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TelegramNotifyV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *TelegramNotifyV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

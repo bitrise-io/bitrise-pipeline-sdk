@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeBuildForTestV2LogFormatter enumerates the valid values for the log_formatter input.
 type XcodeBuildForTestV2LogFormatter string
 
@@ -231,6 +233,18 @@ func (b *XcodeBuildForTestV2Builder) WithTimeout(seconds int) *XcodeBuildForTest
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeBuildForTestV2Builder) WithNoOutputTimeout(seconds int) *XcodeBuildForTestV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeBuildForTestV2Builder) WithTimeoutDuration(d time.Duration) *XcodeBuildForTestV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeBuildForTestV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeBuildForTestV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

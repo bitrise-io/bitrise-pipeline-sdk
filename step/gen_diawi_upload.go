@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DiawiUploadBuilder builds a diawi-upload step with typed input methods.
 type DiawiUploadBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *DiawiUploadBuilder) WithTimeout(seconds int) *DiawiUploadBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DiawiUploadBuilder) WithNoOutputTimeout(seconds int) *DiawiUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DiawiUploadBuilder) WithTimeoutDuration(d time.Duration) *DiawiUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DiawiUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DiawiUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

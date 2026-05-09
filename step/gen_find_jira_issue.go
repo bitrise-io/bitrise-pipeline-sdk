@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FindJiraIssueBuilder builds a find-jira-issue step with typed input methods.
 type FindJiraIssueBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *FindJiraIssueBuilder) WithTimeout(seconds int) *FindJiraIssueBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FindJiraIssueBuilder) WithNoOutputTimeout(seconds int) *FindJiraIssueBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FindJiraIssueBuilder) WithTimeoutDuration(d time.Duration) *FindJiraIssueBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FindJiraIssueBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FindJiraIssueBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

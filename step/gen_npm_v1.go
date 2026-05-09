@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NpmV1CacheLocalDeps enumerates the valid values for the cache_local_deps input.
 type NpmV1CacheLocalDeps string
 
@@ -84,6 +86,18 @@ func (b *NpmV1Builder) WithTimeout(seconds int) *NpmV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NpmV1Builder) WithNoOutputTimeout(seconds int) *NpmV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NpmV1Builder) WithTimeoutDuration(d time.Duration) *NpmV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NpmV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *NpmV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

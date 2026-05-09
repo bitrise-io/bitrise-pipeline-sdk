@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RunEasBuildPlatform enumerates the valid values for the platform input.
 type RunEasBuildPlatform string
 
@@ -85,6 +87,18 @@ func (b *RunEasBuildBuilder) WithTimeout(seconds int) *RunEasBuildBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RunEasBuildBuilder) WithNoOutputTimeout(seconds int) *RunEasBuildBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RunEasBuildBuilder) WithTimeoutDuration(d time.Duration) *RunEasBuildBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RunEasBuildBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RunEasBuildBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

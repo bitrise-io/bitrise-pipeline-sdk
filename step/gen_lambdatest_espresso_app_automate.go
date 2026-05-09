@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // LambdatestEspressoAppAutomateLambdatestTunnel enumerates the valid values for the lambdatest_tunnel input.
 type LambdatestEspressoAppAutomateLambdatestTunnel string
 
@@ -162,6 +164,18 @@ func (b *LambdatestEspressoAppAutomateBuilder) WithTimeout(seconds int) *Lambdat
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *LambdatestEspressoAppAutomateBuilder) WithNoOutputTimeout(seconds int) *LambdatestEspressoAppAutomateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *LambdatestEspressoAppAutomateBuilder) WithTimeoutDuration(d time.Duration) *LambdatestEspressoAppAutomateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *LambdatestEspressoAppAutomateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *LambdatestEspressoAppAutomateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // IonicArchiveV0Platform enumerates the valid values for the platform input.
 type IonicArchiveV0Platform string
 
@@ -137,6 +139,18 @@ func (b *IonicArchiveV0Builder) WithTimeout(seconds int) *IonicArchiveV0Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *IonicArchiveV0Builder) WithNoOutputTimeout(seconds int) *IonicArchiveV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *IonicArchiveV0Builder) WithTimeoutDuration(d time.Duration) *IonicArchiveV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *IonicArchiveV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *IonicArchiveV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

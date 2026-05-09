@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RecreateUserSchemesV1Builder builds a recreate-user-schemes step with typed input methods.
 type RecreateUserSchemesV1Builder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *RecreateUserSchemesV1Builder) WithTimeout(seconds int) *RecreateUserSch
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RecreateUserSchemesV1Builder) WithNoOutputTimeout(seconds int) *RecreateUserSchemesV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RecreateUserSchemesV1Builder) WithTimeoutDuration(d time.Duration) *RecreateUserSchemesV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RecreateUserSchemesV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *RecreateUserSchemesV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

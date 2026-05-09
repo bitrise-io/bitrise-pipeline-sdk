@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ApkInfoBuilder builds a apk-info step with typed input methods.
 type ApkInfoBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *ApkInfoBuilder) WithTimeout(seconds int) *ApkInfoBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ApkInfoBuilder) WithNoOutputTimeout(seconds int) *ApkInfoBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ApkInfoBuilder) WithTimeoutDuration(d time.Duration) *ApkInfoBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ApkInfoBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ApkInfoBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

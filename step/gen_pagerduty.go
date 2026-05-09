@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PagerdutyApiVersion enumerates the valid values for the api_version input.
 type PagerdutyApiVersion string
 
@@ -94,6 +96,18 @@ func (b *PagerdutyBuilder) WithTimeout(seconds int) *PagerdutyBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PagerdutyBuilder) WithNoOutputTimeout(seconds int) *PagerdutyBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PagerdutyBuilder) WithTimeoutDuration(d time.Duration) *PagerdutyBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PagerdutyBuilder) WithNoOutputTimeoutDuration(d time.Duration) *PagerdutyBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

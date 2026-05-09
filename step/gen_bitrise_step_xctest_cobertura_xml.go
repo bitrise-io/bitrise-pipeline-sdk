@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepXctestCoberturaXmlBuilder builds a bitrise-step-xctest-cobertura-xml step with typed input methods.
 type BitriseStepXctestCoberturaXmlBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *BitriseStepXctestCoberturaXmlBuilder) WithTimeout(seconds int) *Bitrise
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepXctestCoberturaXmlBuilder) WithNoOutputTimeout(seconds int) *BitriseStepXctestCoberturaXmlBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepXctestCoberturaXmlBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepXctestCoberturaXmlBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

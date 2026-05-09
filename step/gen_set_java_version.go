@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetJavaVersionSetJavaVersion enumerates the valid values for the set_java_version input.
 type SetJavaVersionSetJavaVersion string
 
@@ -68,6 +70,18 @@ func (b *SetJavaVersionBuilder) WithTimeout(seconds int) *SetJavaVersionBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetJavaVersionBuilder) WithNoOutputTimeout(seconds int) *SetJavaVersionBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetJavaVersionBuilder) WithTimeoutDuration(d time.Duration) *SetJavaVersionBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetJavaVersionBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetJavaVersionBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

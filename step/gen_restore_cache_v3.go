@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RestoreCacheV3Verbose enumerates the valid values for the verbose input.
 type RestoreCacheV3Verbose string
 
@@ -78,6 +80,18 @@ func (b *RestoreCacheV3Builder) WithTitle(title string) *RestoreCacheV3Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RestoreCacheV3Builder) WithNoOutputTimeout(seconds int) *RestoreCacheV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RestoreCacheV3Builder) WithTimeoutDuration(d time.Duration) *RestoreCacheV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RestoreCacheV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *RestoreCacheV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

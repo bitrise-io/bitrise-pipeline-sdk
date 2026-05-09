@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CommentOnGithubPullRequestBuilder builds a comment-on-github-pull-request step with typed input methods.
 type CommentOnGithubPullRequestBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *CommentOnGithubPullRequestBuilder) WithTimeout(seconds int) *CommentOnG
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CommentOnGithubPullRequestBuilder) WithNoOutputTimeout(seconds int) *CommentOnGithubPullRequestBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CommentOnGithubPullRequestBuilder) WithTimeoutDuration(d time.Duration) *CommentOnGithubPullRequestBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CommentOnGithubPullRequestBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CommentOnGithubPullRequestBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

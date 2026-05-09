@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ZipalignApkBuilder builds a zipalign-apk step with typed input methods.
 type ZipalignApkBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *ZipalignApkBuilder) WithTimeout(seconds int) *ZipalignApkBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ZipalignApkBuilder) WithNoOutputTimeout(seconds int) *ZipalignApkBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ZipalignApkBuilder) WithTimeoutDuration(d time.Duration) *ZipalignApkBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ZipalignApkBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ZipalignApkBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

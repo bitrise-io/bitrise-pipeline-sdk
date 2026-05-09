@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CachePullV2IsDebugMode enumerates the valid values for the is_debug_mode input.
 type CachePullV2IsDebugMode string
 
@@ -124,6 +126,18 @@ func (b *CachePullV2Builder) WithTimeout(seconds int) *CachePullV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CachePullV2Builder) WithNoOutputTimeout(seconds int) *CachePullV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CachePullV2Builder) WithTimeoutDuration(d time.Duration) *CachePullV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CachePullV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *CachePullV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

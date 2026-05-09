@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SendGoogleChatMessageNotifyOnSuccess enumerates the valid values for the notify_on_success input.
 type SendGoogleChatMessageNotifyOnSuccess string
 
@@ -125,6 +127,18 @@ func (b *SendGoogleChatMessageBuilder) WithTimeout(seconds int) *SendGoogleChatM
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SendGoogleChatMessageBuilder) WithNoOutputTimeout(seconds int) *SendGoogleChatMessageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SendGoogleChatMessageBuilder) WithTimeoutDuration(d time.Duration) *SendGoogleChatMessageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SendGoogleChatMessageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SendGoogleChatMessageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

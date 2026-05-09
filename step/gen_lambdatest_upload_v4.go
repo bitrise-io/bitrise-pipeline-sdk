@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // LambdatestUploadV4ShowDebugLogs enumerates the valid values for the show_debug_logs input.
 type LambdatestUploadV4ShowDebugLogs string
 
@@ -102,6 +104,18 @@ func (b *LambdatestUploadV4Builder) WithTimeout(seconds int) *LambdatestUploadV4
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *LambdatestUploadV4Builder) WithNoOutputTimeout(seconds int) *LambdatestUploadV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *LambdatestUploadV4Builder) WithTimeoutDuration(d time.Duration) *LambdatestUploadV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *LambdatestUploadV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *LambdatestUploadV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

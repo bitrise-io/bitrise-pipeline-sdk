@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // YarnV2VerboseLog enumerates the valid values for the verbose_log input.
 type YarnV2VerboseLog string
 
@@ -84,6 +86,18 @@ func (b *YarnV2Builder) WithTimeout(seconds int) *YarnV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *YarnV2Builder) WithNoOutputTimeout(seconds int) *YarnV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *YarnV2Builder) WithTimeoutDuration(d time.Duration) *YarnV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *YarnV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *YarnV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

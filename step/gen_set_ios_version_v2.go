@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetIosVersionV2AppendVersion enumerates the valid values for the append_version input.
 type SetIosVersionV2AppendVersion string
 
@@ -90,6 +92,18 @@ func (b *SetIosVersionV2Builder) WithTimeout(seconds int) *SetIosVersionV2Builde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetIosVersionV2Builder) WithNoOutputTimeout(seconds int) *SetIosVersionV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetIosVersionV2Builder) WithTimeoutDuration(d time.Duration) *SetIosVersionV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetIosVersionV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *SetIosVersionV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

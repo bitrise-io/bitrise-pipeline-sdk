@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UpdateJiraReleaseStatusReleaseStatus enumerates the valid values for the release_status input.
 type UpdateJiraReleaseStatusReleaseStatus string
 
@@ -96,6 +98,18 @@ func (b *UpdateJiraReleaseStatusBuilder) WithTimeout(seconds int) *UpdateJiraRel
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UpdateJiraReleaseStatusBuilder) WithNoOutputTimeout(seconds int) *UpdateJiraReleaseStatusBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UpdateJiraReleaseStatusBuilder) WithTimeoutDuration(d time.Duration) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UpdateJiraReleaseStatusBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

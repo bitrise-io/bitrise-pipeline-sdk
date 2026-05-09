@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // JiraCommentsBuilder builds a jira-comments step with typed input methods.
 type JiraCommentsBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *JiraCommentsBuilder) WithTimeout(seconds int) *JiraCommentsBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *JiraCommentsBuilder) WithNoOutputTimeout(seconds int) *JiraCommentsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *JiraCommentsBuilder) WithTimeoutDuration(d time.Duration) *JiraCommentsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *JiraCommentsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *JiraCommentsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

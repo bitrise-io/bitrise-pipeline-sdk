@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SaveNpmCacheVerbose enumerates the valid values for the verbose input.
 type SaveNpmCacheVerbose string
 
@@ -72,6 +74,18 @@ func (b *SaveNpmCacheBuilder) WithTimeout(seconds int) *SaveNpmCacheBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SaveNpmCacheBuilder) WithNoOutputTimeout(seconds int) *SaveNpmCacheBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SaveNpmCacheBuilder) WithTimeoutDuration(d time.Duration) *SaveNpmCacheBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SaveNpmCacheBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SaveNpmCacheBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UrlsScannerSslLabsScan enumerates the valid values for the ssl_labs_scan input.
 type UrlsScannerSslLabsScan string
 
@@ -72,6 +74,18 @@ func (b *UrlsScannerBuilder) WithTimeout(seconds int) *UrlsScannerBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UrlsScannerBuilder) WithNoOutputTimeout(seconds int) *UrlsScannerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UrlsScannerBuilder) WithTimeoutDuration(d time.Duration) *UrlsScannerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UrlsScannerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UrlsScannerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BundleUniversalApkBuilder builds a bundle-universal-apk step with typed input methods.
 type BundleUniversalApkBuilder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *BundleUniversalApkBuilder) WithTimeout(seconds int) *BundleUniversalApk
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BundleUniversalApkBuilder) WithNoOutputTimeout(seconds int) *BundleUniversalApkBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BundleUniversalApkBuilder) WithTimeoutDuration(d time.Duration) *BundleUniversalApkBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BundleUniversalApkBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BundleUniversalApkBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

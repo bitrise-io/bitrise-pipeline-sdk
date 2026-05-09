@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BeatAndroidCodeStatsBuilder builds a beat-android-code-stats step with typed input methods.
 type BeatAndroidCodeStatsBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *BeatAndroidCodeStatsBuilder) WithTimeout(seconds int) *BeatAndroidCodeS
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BeatAndroidCodeStatsBuilder) WithNoOutputTimeout(seconds int) *BeatAndroidCodeStatsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BeatAndroidCodeStatsBuilder) WithTimeoutDuration(d time.Duration) *BeatAndroidCodeStatsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BeatAndroidCodeStatsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BeatAndroidCodeStatsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

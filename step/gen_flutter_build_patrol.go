@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlutterBuildPatrolPlatform enumerates the valid values for the platform input.
 type FlutterBuildPatrolPlatform string
 
@@ -119,6 +121,18 @@ func (b *FlutterBuildPatrolBuilder) WithTimeout(seconds int) *FlutterBuildPatrol
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlutterBuildPatrolBuilder) WithNoOutputTimeout(seconds int) *FlutterBuildPatrolBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlutterBuildPatrolBuilder) WithTimeoutDuration(d time.Duration) *FlutterBuildPatrolBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlutterBuildPatrolBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FlutterBuildPatrolBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

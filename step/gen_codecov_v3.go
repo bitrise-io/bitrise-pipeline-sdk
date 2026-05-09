@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CodecovV3Builder builds a codecov step with typed input methods.
 type CodecovV3Builder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *CodecovV3Builder) WithTimeout(seconds int) *CodecovV3Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CodecovV3Builder) WithNoOutputTimeout(seconds int) *CodecovV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CodecovV3Builder) WithTimeoutDuration(d time.Duration) *CodecovV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CodecovV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *CodecovV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

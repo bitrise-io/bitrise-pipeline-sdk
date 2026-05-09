@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // WebTranslateItBuilder builds a web-translate-it step with typed input methods.
 type WebTranslateItBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *WebTranslateItBuilder) WithTimeout(seconds int) *WebTranslateItBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *WebTranslateItBuilder) WithNoOutputTimeout(seconds int) *WebTranslateItBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *WebTranslateItBuilder) WithTimeoutDuration(d time.Duration) *WebTranslateItBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *WebTranslateItBuilder) WithNoOutputTimeoutDuration(d time.Duration) *WebTranslateItBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

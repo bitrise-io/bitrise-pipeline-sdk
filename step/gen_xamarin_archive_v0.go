@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XamarinArchiveV0ForceMdtool enumerates the valid values for the force_mdtool input.
 type XamarinArchiveV0ForceMdtool string
 
@@ -118,6 +120,18 @@ func (b *XamarinArchiveV0Builder) WithTimeout(seconds int) *XamarinArchiveV0Buil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XamarinArchiveV0Builder) WithNoOutputTimeout(seconds int) *XamarinArchiveV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XamarinArchiveV0Builder) WithTimeoutDuration(d time.Duration) *XamarinArchiveV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XamarinArchiveV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *XamarinArchiveV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

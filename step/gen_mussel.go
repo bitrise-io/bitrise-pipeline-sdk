@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MusselBuilder builds a mussel step with typed input methods.
 type MusselBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *MusselBuilder) WithTimeout(seconds int) *MusselBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MusselBuilder) WithNoOutputTimeout(seconds int) *MusselBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MusselBuilder) WithTimeoutDuration(d time.Duration) *MusselBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MusselBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MusselBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppetizeDeployVerbose enumerates the valid values for the verbose input.
 type AppetizeDeployVerbose string
 
@@ -96,6 +98,18 @@ func (b *AppetizeDeployBuilder) WithTimeout(seconds int) *AppetizeDeployBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppetizeDeployBuilder) WithNoOutputTimeout(seconds int) *AppetizeDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppetizeDeployBuilder) WithTimeoutDuration(d time.Duration) *AppetizeDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppetizeDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppetizeDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

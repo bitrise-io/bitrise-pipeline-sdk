@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CachePushV0FingerprintMethod enumerates the valid values for the fingerprint_method input.
 type CachePushV0FingerprintMethod string
 
@@ -140,6 +142,18 @@ func (b *CachePushV0Builder) WithTimeout(seconds int) *CachePushV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CachePushV0Builder) WithNoOutputTimeout(seconds int) *CachePushV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CachePushV0Builder) WithTimeoutDuration(d time.Duration) *CachePushV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CachePushV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *CachePushV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

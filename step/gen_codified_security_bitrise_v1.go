@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CodifiedSecurityBitriseV1Builder builds a codified-security-bitrise step with typed input methods.
 type CodifiedSecurityBitriseV1Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *CodifiedSecurityBitriseV1Builder) WithTimeout(seconds int) *CodifiedSec
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CodifiedSecurityBitriseV1Builder) WithNoOutputTimeout(seconds int) *CodifiedSecurityBitriseV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CodifiedSecurityBitriseV1Builder) WithTimeoutDuration(d time.Duration) *CodifiedSecurityBitriseV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CodifiedSecurityBitriseV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *CodifiedSecurityBitriseV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

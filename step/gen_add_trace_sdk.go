@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AddTraceSdkBuilder builds a add-trace-sdk step with typed input methods.
 //
 // Deprecated: This step is deprecated as it is not supported anymore.
@@ -74,6 +76,18 @@ func (b *AddTraceSdkBuilder) WithTimeout(seconds int) *AddTraceSdkBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AddTraceSdkBuilder) WithNoOutputTimeout(seconds int) *AddTraceSdkBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AddTraceSdkBuilder) WithTimeoutDuration(d time.Duration) *AddTraceSdkBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AddTraceSdkBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AddTraceSdkBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FortifyOnDemandMobileAssessmentDatacenter enumerates the valid values for the datacenter input.
 type FortifyOnDemandMobileAssessmentDatacenter string
 
@@ -133,6 +135,18 @@ func (b *FortifyOnDemandMobileAssessmentBuilder) WithTimeout(seconds int) *Forti
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FortifyOnDemandMobileAssessmentBuilder) WithNoOutputTimeout(seconds int) *FortifyOnDemandMobileAssessmentBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FortifyOnDemandMobileAssessmentBuilder) WithTimeoutDuration(d time.Duration) *FortifyOnDemandMobileAssessmentBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FortifyOnDemandMobileAssessmentBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FortifyOnDemandMobileAssessmentBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

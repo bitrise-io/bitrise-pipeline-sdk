@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetMacosTimezoneBuilder builds a set-macos-timezone step with typed input methods.
 type SetMacosTimezoneBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *SetMacosTimezoneBuilder) WithTimeout(seconds int) *SetMacosTimezoneBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetMacosTimezoneBuilder) WithNoOutputTimeout(seconds int) *SetMacosTimezoneBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetMacosTimezoneBuilder) WithTimeoutDuration(d time.Duration) *SetMacosTimezoneBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetMacosTimezoneBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetMacosTimezoneBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

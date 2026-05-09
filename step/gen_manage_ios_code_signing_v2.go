@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ManageIosCodeSigningV2AppleServiceConnection enumerates the valid values for the apple_service_connection input.
 type ManageIosCodeSigningV2AppleServiceConnection string
 
@@ -228,6 +230,18 @@ func (b *ManageIosCodeSigningV2Builder) WithTimeout(seconds int) *ManageIosCodeS
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ManageIosCodeSigningV2Builder) WithNoOutputTimeout(seconds int) *ManageIosCodeSigningV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ManageIosCodeSigningV2Builder) WithTimeoutDuration(d time.Duration) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ManageIosCodeSigningV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *ManageIosCodeSigningV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

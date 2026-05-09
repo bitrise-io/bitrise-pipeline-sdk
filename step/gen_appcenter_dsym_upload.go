@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterDsymUploadBuilder builds a appcenter-dsym-upload step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -74,6 +76,18 @@ func (b *AppcenterDsymUploadBuilder) WithTimeout(seconds int) *AppcenterDsymUplo
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterDsymUploadBuilder) WithNoOutputTimeout(seconds int) *AppcenterDsymUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterDsymUploadBuilder) WithTimeoutDuration(d time.Duration) *AppcenterDsymUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterDsymUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterDsymUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

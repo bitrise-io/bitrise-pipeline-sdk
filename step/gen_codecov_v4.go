@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CodecovV4CCDISABLEFILEFIXES enumerates the valid values for the CC_DISABLE_FILE_FIXES input.
 type CodecovV4CCDISABLEFILEFIXES string
 
@@ -344,6 +346,18 @@ func (b *CodecovV4Builder) WithTimeout(seconds int) *CodecovV4Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CodecovV4Builder) WithNoOutputTimeout(seconds int) *CodecovV4Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CodecovV4Builder) WithTimeoutDuration(d time.Duration) *CodecovV4Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CodecovV4Builder) WithNoOutputTimeoutDuration(d time.Duration) *CodecovV4Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

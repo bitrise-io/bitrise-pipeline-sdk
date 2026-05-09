@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GradleCoverallsBuilder builds a gradle-coveralls step with typed input methods.
 type GradleCoverallsBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *GradleCoverallsBuilder) WithTimeout(seconds int) *GradleCoverallsBuilde
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GradleCoverallsBuilder) WithNoOutputTimeout(seconds int) *GradleCoverallsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GradleCoverallsBuilder) WithTimeoutDuration(d time.Duration) *GradleCoverallsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GradleCoverallsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GradleCoverallsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

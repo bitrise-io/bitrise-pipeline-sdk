@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // OnesignalCreatePushBuilder builds a onesignal-create-push step with typed input methods.
 type OnesignalCreatePushBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *OnesignalCreatePushBuilder) WithTimeout(seconds int) *OnesignalCreatePu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *OnesignalCreatePushBuilder) WithNoOutputTimeout(seconds int) *OnesignalCreatePushBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *OnesignalCreatePushBuilder) WithTimeoutDuration(d time.Duration) *OnesignalCreatePushBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *OnesignalCreatePushBuilder) WithNoOutputTimeoutDuration(d time.Duration) *OnesignalCreatePushBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

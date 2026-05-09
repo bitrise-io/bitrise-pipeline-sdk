@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // UploadToSauceLabsBuilder builds a upload-to-sauce-labs step with typed input methods.
 type UploadToSauceLabsBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *UploadToSauceLabsBuilder) WithTimeout(seconds int) *UploadToSauceLabsBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *UploadToSauceLabsBuilder) WithNoOutputTimeout(seconds int) *UploadToSauceLabsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *UploadToSauceLabsBuilder) WithTimeoutDuration(d time.Duration) *UploadToSauceLabsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *UploadToSauceLabsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *UploadToSauceLabsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

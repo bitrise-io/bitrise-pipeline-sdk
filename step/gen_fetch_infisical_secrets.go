@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FetchInfisicalSecretsBuilder builds a fetch-infisical-secrets step with typed input methods.
 type FetchInfisicalSecretsBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *FetchInfisicalSecretsBuilder) WithTimeout(seconds int) *FetchInfisicalS
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FetchInfisicalSecretsBuilder) WithNoOutputTimeout(seconds int) *FetchInfisicalSecretsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FetchInfisicalSecretsBuilder) WithTimeoutDuration(d time.Duration) *FetchInfisicalSecretsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FetchInfisicalSecretsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FetchInfisicalSecretsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

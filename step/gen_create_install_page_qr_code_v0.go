@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateInstallPageQrCodeV0Builder builds a create-install-page-qr-code step with typed input methods.
 type CreateInstallPageQrCodeV0Builder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *CreateInstallPageQrCodeV0Builder) WithTimeout(seconds int) *CreateInsta
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateInstallPageQrCodeV0Builder) WithNoOutputTimeout(seconds int) *CreateInstallPageQrCodeV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateInstallPageQrCodeV0Builder) WithTimeoutDuration(d time.Duration) *CreateInstallPageQrCodeV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateInstallPageQrCodeV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *CreateInstallPageQrCodeV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

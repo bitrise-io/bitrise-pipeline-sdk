@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ConfigcatFeatureFlagSyncVerbose enumerates the valid values for the verbose input.
 type ConfigcatFeatureFlagSyncVerbose string
 
@@ -108,6 +110,18 @@ func (b *ConfigcatFeatureFlagSyncBuilder) WithTimeout(seconds int) *ConfigcatFea
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ConfigcatFeatureFlagSyncBuilder) WithNoOutputTimeout(seconds int) *ConfigcatFeatureFlagSyncBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ConfigcatFeatureFlagSyncBuilder) WithTimeoutDuration(d time.Duration) *ConfigcatFeatureFlagSyncBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ConfigcatFeatureFlagSyncBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ConfigcatFeatureFlagSyncBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

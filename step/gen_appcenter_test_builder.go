@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterTestBuilder builds a appcenter-test step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -116,6 +118,18 @@ func (b *AppcenterTestBuilder) WithTimeout(seconds int) *AppcenterTestBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterTestBuilder) WithNoOutputTimeout(seconds int) *AppcenterTestBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterTestBuilder) WithTimeoutDuration(d time.Duration) *AppcenterTestBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterTestBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterTestBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // VirtualDeviceTestingForAndroidV0TestType enumerates the valid values for the test_type input.
 type VirtualDeviceTestingForAndroidV0TestType string
 
@@ -203,6 +205,18 @@ func (b *VirtualDeviceTestingForAndroidV0Builder) WithTimeout(seconds int) *Virt
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *VirtualDeviceTestingForAndroidV0Builder) WithNoOutputTimeout(seconds int) *VirtualDeviceTestingForAndroidV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *VirtualDeviceTestingForAndroidV0Builder) WithTimeoutDuration(d time.Duration) *VirtualDeviceTestingForAndroidV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *VirtualDeviceTestingForAndroidV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *VirtualDeviceTestingForAndroidV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

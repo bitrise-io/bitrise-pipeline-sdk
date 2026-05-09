@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateZipBuilder builds a create-zip step with typed input methods.
 type CreateZipBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *CreateZipBuilder) WithTimeout(seconds int) *CreateZipBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateZipBuilder) WithNoOutputTimeout(seconds int) *CreateZipBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateZipBuilder) WithTimeoutDuration(d time.Duration) *CreateZipBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateZipBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CreateZipBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

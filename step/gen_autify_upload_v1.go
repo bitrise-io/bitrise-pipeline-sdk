@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AutifyUploadV1Builder builds a autify-upload step with typed input methods.
 type AutifyUploadV1Builder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *AutifyUploadV1Builder) WithTimeout(seconds int) *AutifyUploadV1Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AutifyUploadV1Builder) WithNoOutputTimeout(seconds int) *AutifyUploadV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AutifyUploadV1Builder) WithTimeoutDuration(d time.Duration) *AutifyUploadV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AutifyUploadV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *AutifyUploadV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

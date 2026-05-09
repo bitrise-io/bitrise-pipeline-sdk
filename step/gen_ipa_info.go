@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // IpaInfoBuilder builds a ipa-info step with typed input methods.
 type IpaInfoBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *IpaInfoBuilder) WithTimeout(seconds int) *IpaInfoBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *IpaInfoBuilder) WithNoOutputTimeout(seconds int) *IpaInfoBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *IpaInfoBuilder) WithTimeoutDuration(d time.Duration) *IpaInfoBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *IpaInfoBuilder) WithNoOutputTimeoutDuration(d time.Duration) *IpaInfoBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FabricCrashlyticsBetaDeployNotification enumerates the valid values for the notification input.
 type FabricCrashlyticsBetaDeployNotification string
 
@@ -114,6 +116,18 @@ func (b *FabricCrashlyticsBetaDeployBuilder) WithTimeout(seconds int) *FabricCra
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FabricCrashlyticsBetaDeployBuilder) WithNoOutputTimeout(seconds int) *FabricCrashlyticsBetaDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FabricCrashlyticsBetaDeployBuilder) WithTimeoutDuration(d time.Duration) *FabricCrashlyticsBetaDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FabricCrashlyticsBetaDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FabricCrashlyticsBetaDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

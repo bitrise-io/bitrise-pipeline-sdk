@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GetPubspecVersionAndBuildNumberBuilder builds a get-pubspec-version-and-build-number step with typed input methods.
 type GetPubspecVersionAndBuildNumberBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *GetPubspecVersionAndBuildNumberBuilder) WithTimeout(seconds int) *GetPu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GetPubspecVersionAndBuildNumberBuilder) WithNoOutputTimeout(seconds int) *GetPubspecVersionAndBuildNumberBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GetPubspecVersionAndBuildNumberBuilder) WithTimeoutDuration(d time.Duration) *GetPubspecVersionAndBuildNumberBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GetPubspecVersionAndBuildNumberBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GetPubspecVersionAndBuildNumberBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

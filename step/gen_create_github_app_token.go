@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateGithubAppTokenBuilder builds a create-github-app-token step with typed input methods.
 type CreateGithubAppTokenBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *CreateGithubAppTokenBuilder) WithTimeout(seconds int) *CreateGithubAppT
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateGithubAppTokenBuilder) WithNoOutputTimeout(seconds int) *CreateGithubAppTokenBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateGithubAppTokenBuilder) WithTimeoutDuration(d time.Duration) *CreateGithubAppTokenBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateGithubAppTokenBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CreateGithubAppTokenBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppliveryIosV0NotifyCollaborators enumerates the valid values for the notifyCollaborators input.
 type AppliveryIosV0NotifyCollaborators string
 
@@ -130,6 +132,18 @@ func (b *AppliveryIosV0Builder) WithTimeout(seconds int) *AppliveryIosV0Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppliveryIosV0Builder) WithNoOutputTimeout(seconds int) *AppliveryIosV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppliveryIosV0Builder) WithTimeoutDuration(d time.Duration) *AppliveryIosV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppliveryIosV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppliveryIosV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

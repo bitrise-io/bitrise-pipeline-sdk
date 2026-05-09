@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SignApkV0Builder builds a sign-apk step with typed input methods.
 type SignApkV0Builder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *SignApkV0Builder) WithTimeout(seconds int) *SignApkV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SignApkV0Builder) WithNoOutputTimeout(seconds int) *SignApkV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SignApkV0Builder) WithTimeoutDuration(d time.Duration) *SignApkV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SignApkV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *SignApkV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

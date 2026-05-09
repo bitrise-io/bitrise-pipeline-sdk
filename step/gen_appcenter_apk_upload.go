@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppcenterApkUploadBuilder builds a appcenter-apk-upload step with typed input methods.
 //
 // Deprecated: App Center is deprecated.  We recommend to use [Bitrise Release Management](https://docs.bitrise.io/en/release-management.html) and [Bitrise CodePush](https://docs.bitrise.io/en/release-management/codepush/about-codepush.html).
@@ -74,6 +76,18 @@ func (b *AppcenterApkUploadBuilder) WithTimeout(seconds int) *AppcenterApkUpload
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppcenterApkUploadBuilder) WithNoOutputTimeout(seconds int) *AppcenterApkUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppcenterApkUploadBuilder) WithTimeoutDuration(d time.Duration) *AppcenterApkUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppcenterApkUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppcenterApkUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

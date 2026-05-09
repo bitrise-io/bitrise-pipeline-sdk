@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NunitRunnerV0Builder builds a nunit-runner step with typed input methods.
 type NunitRunnerV0Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *NunitRunnerV0Builder) WithTimeout(seconds int) *NunitRunnerV0Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NunitRunnerV0Builder) WithNoOutputTimeout(seconds int) *NunitRunnerV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NunitRunnerV0Builder) WithTimeoutDuration(d time.Duration) *NunitRunnerV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NunitRunnerV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *NunitRunnerV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

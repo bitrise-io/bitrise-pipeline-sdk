@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NvmV1Builder builds a nvm step with typed input methods.
 type NvmV1Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *NvmV1Builder) WithTimeout(seconds int) *NvmV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NvmV1Builder) WithNoOutputTimeout(seconds int) *NvmV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NvmV1Builder) WithTimeoutDuration(d time.Duration) *NvmV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NvmV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *NvmV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

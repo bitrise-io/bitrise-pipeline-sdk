@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CarthageV3VerboseLog enumerates the valid values for the verbose_log input.
 type CarthageV3VerboseLog string
 
@@ -90,6 +92,18 @@ func (b *CarthageV3Builder) WithTimeout(seconds int) *CarthageV3Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CarthageV3Builder) WithNoOutputTimeout(seconds int) *CarthageV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CarthageV3Builder) WithTimeoutDuration(d time.Duration) *CarthageV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CarthageV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *CarthageV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

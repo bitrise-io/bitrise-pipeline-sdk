@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ScanWithAppsweepV1BuildVariant enumerates the valid values for the build_variant input.
 type ScanWithAppsweepV1BuildVariant string
 
@@ -84,6 +86,18 @@ func (b *ScanWithAppsweepV1Builder) WithTimeout(seconds int) *ScanWithAppsweepV1
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ScanWithAppsweepV1Builder) WithNoOutputTimeout(seconds int) *ScanWithAppsweepV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ScanWithAppsweepV1Builder) WithTimeoutDuration(d time.Duration) *ScanWithAppsweepV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ScanWithAppsweepV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *ScanWithAppsweepV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

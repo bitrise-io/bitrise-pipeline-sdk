@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateAppleDocumentationLanguage enumerates the valid values for the language input.
 type CreateAppleDocumentationLanguage string
 
@@ -164,6 +166,18 @@ func (b *CreateAppleDocumentationBuilder) WithTimeout(seconds int) *CreateAppleD
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateAppleDocumentationBuilder) WithNoOutputTimeout(seconds int) *CreateAppleDocumentationBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateAppleDocumentationBuilder) WithTimeoutDuration(d time.Duration) *CreateAppleDocumentationBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateAppleDocumentationBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CreateAppleDocumentationBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

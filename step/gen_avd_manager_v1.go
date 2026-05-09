@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AvdManagerV1Tag enumerates the valid values for the tag input.
 type AvdManagerV1Tag string
 
@@ -155,6 +157,18 @@ func (b *AvdManagerV1Builder) WithTimeout(seconds int) *AvdManagerV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AvdManagerV1Builder) WithNoOutputTimeout(seconds int) *AvdManagerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AvdManagerV1Builder) WithTimeoutDuration(d time.Duration) *AvdManagerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AvdManagerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *AvdManagerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

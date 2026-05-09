@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // TestprojectUploadBuilder builds a testproject-upload step with typed input methods.
 type TestprojectUploadBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *TestprojectUploadBuilder) WithTimeout(seconds int) *TestprojectUploadBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *TestprojectUploadBuilder) WithNoOutputTimeout(seconds int) *TestprojectUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *TestprojectUploadBuilder) WithTimeoutDuration(d time.Duration) *TestprojectUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *TestprojectUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *TestprojectUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

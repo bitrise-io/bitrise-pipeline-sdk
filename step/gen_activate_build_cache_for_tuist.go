@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ActivateBuildCacheForTuistBuilder builds a activate-build-cache-for-tuist step with typed input methods.
 //
 // Deprecated: This step is deprecated. For more information please see: https://bitrise.io/blog/post/tuist-bitrise-build-cache-update
@@ -56,6 +58,18 @@ func (b *ActivateBuildCacheForTuistBuilder) WithTimeout(seconds int) *ActivateBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ActivateBuildCacheForTuistBuilder) WithNoOutputTimeout(seconds int) *ActivateBuildCacheForTuistBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ActivateBuildCacheForTuistBuilder) WithTimeoutDuration(d time.Duration) *ActivateBuildCacheForTuistBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ActivateBuildCacheForTuistBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ActivateBuildCacheForTuistBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

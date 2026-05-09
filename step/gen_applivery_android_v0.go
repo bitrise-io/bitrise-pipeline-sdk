@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppliveryAndroidV0NotifyCollaborators enumerates the valid values for the notifyCollaborators input.
 type AppliveryAndroidV0NotifyCollaborators string
 
@@ -122,6 +124,18 @@ func (b *AppliveryAndroidV0Builder) WithTimeout(seconds int) *AppliveryAndroidV0
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppliveryAndroidV0Builder) WithNoOutputTimeout(seconds int) *AppliveryAndroidV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppliveryAndroidV0Builder) WithTimeoutDuration(d time.Duration) *AppliveryAndroidV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppliveryAndroidV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *AppliveryAndroidV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

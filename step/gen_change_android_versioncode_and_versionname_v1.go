@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ChangeAndroidVersioncodeAndVersionnameV1Builder builds a change-android-versioncode-and-versionname step with typed input methods.
 type ChangeAndroidVersioncodeAndVersionnameV1Builder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *ChangeAndroidVersioncodeAndVersionnameV1Builder) WithTimeout(seconds in
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ChangeAndroidVersioncodeAndVersionnameV1Builder) WithNoOutputTimeout(seconds int) *ChangeAndroidVersioncodeAndVersionnameV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ChangeAndroidVersioncodeAndVersionnameV1Builder) WithTimeoutDuration(d time.Duration) *ChangeAndroidVersioncodeAndVersionnameV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ChangeAndroidVersioncodeAndVersionnameV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *ChangeAndroidVersioncodeAndVersionnameV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

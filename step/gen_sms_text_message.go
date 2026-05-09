@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SmsTextMessageBuilder builds a sms-text-message step with typed input methods.
 type SmsTextMessageBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *SmsTextMessageBuilder) WithTimeout(seconds int) *SmsTextMessageBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SmsTextMessageBuilder) WithNoOutputTimeout(seconds int) *SmsTextMessageBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SmsTextMessageBuilder) WithTimeoutDuration(d time.Duration) *SmsTextMessageBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SmsTextMessageBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SmsTextMessageBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

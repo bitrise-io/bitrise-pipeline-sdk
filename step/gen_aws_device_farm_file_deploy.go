@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AwsDeviceFarmFileDeployBuilder builds a aws-device-farm-file-deploy step with typed input methods.
 type AwsDeviceFarmFileDeployBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *AwsDeviceFarmFileDeployBuilder) WithTimeout(seconds int) *AwsDeviceFarm
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AwsDeviceFarmFileDeployBuilder) WithNoOutputTimeout(seconds int) *AwsDeviceFarmFileDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AwsDeviceFarmFileDeployBuilder) WithTimeoutDuration(d time.Duration) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AwsDeviceFarmFileDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AwsDeviceFarmFileDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

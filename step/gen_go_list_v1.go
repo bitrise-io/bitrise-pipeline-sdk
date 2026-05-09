@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GoListV1Builder builds a go-list step with typed input methods.
 type GoListV1Builder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *GoListV1Builder) WithTimeout(seconds int) *GoListV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GoListV1Builder) WithNoOutputTimeout(seconds int) *GoListV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GoListV1Builder) WithTimeoutDuration(d time.Duration) *GoListV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GoListV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *GoListV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

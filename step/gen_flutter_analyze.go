@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlutterAnalyzeFailSeverity enumerates the valid values for the fail_severity input.
 type FlutterAnalyzeFailSeverity string
 
@@ -79,6 +81,18 @@ func (b *FlutterAnalyzeBuilder) WithTimeout(seconds int) *FlutterAnalyzeBuilder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlutterAnalyzeBuilder) WithNoOutputTimeout(seconds int) *FlutterAnalyzeBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlutterAnalyzeBuilder) WithTimeoutDuration(d time.Duration) *FlutterAnalyzeBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlutterAnalyzeBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FlutterAnalyzeBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

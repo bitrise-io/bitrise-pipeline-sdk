@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitbucketSnippetRunnerV1IsDebug enumerates the valid values for the is_debug input.
 type BitbucketSnippetRunnerV1IsDebug string
 
@@ -96,6 +98,18 @@ func (b *BitbucketSnippetRunnerV1Builder) WithTimeout(seconds int) *BitbucketSni
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitbucketSnippetRunnerV1Builder) WithNoOutputTimeout(seconds int) *BitbucketSnippetRunnerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitbucketSnippetRunnerV1Builder) WithTimeoutDuration(d time.Duration) *BitbucketSnippetRunnerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitbucketSnippetRunnerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *BitbucketSnippetRunnerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

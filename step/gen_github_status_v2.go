@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GithubStatusV2SetSpecificStatus enumerates the valid values for the set_specific_status input.
 type GithubStatusV2SetSpecificStatus string
 
@@ -125,6 +127,18 @@ func (b *GithubStatusV2Builder) WithTimeout(seconds int) *GithubStatusV2Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GithubStatusV2Builder) WithNoOutputTimeout(seconds int) *GithubStatusV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GithubStatusV2Builder) WithTimeoutDuration(d time.Duration) *GithubStatusV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GithubStatusV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *GithubStatusV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SignApkV2PageAlign enumerates the valid values for the page_align input.
 type SignApkV2PageAlign string
 
@@ -168,6 +170,18 @@ func (b *SignApkV2Builder) WithTimeout(seconds int) *SignApkV2Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SignApkV2Builder) WithNoOutputTimeout(seconds int) *SignApkV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SignApkV2Builder) WithTimeoutDuration(d time.Duration) *SignApkV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SignApkV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *SignApkV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

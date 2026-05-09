@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetPubspecApplicationVersionV0Builder builds a set-pubspec-application-version step with typed input methods.
 type SetPubspecApplicationVersionV0Builder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *SetPubspecApplicationVersionV0Builder) WithTimeout(seconds int) *SetPub
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetPubspecApplicationVersionV0Builder) WithNoOutputTimeout(seconds int) *SetPubspecApplicationVersionV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetPubspecApplicationVersionV0Builder) WithTimeoutDuration(d time.Duration) *SetPubspecApplicationVersionV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetPubspecApplicationVersionV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *SetPubspecApplicationVersionV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

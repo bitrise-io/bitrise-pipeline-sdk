@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidBuildV1BuildType enumerates the valid values for the build_type input.
 type AndroidBuildV1BuildType string
 
@@ -96,6 +98,18 @@ func (b *AndroidBuildV1Builder) WithTimeout(seconds int) *AndroidBuildV1Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidBuildV1Builder) WithNoOutputTimeout(seconds int) *AndroidBuildV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidBuildV1Builder) WithTimeoutDuration(d time.Duration) *AndroidBuildV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidBuildV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidBuildV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

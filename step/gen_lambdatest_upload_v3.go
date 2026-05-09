@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // LambdatestUploadV3Builder builds a lambdatest-upload step with typed input methods.
 type LambdatestUploadV3Builder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *LambdatestUploadV3Builder) WithTimeout(seconds int) *LambdatestUploadV3
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *LambdatestUploadV3Builder) WithNoOutputTimeout(seconds int) *LambdatestUploadV3Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *LambdatestUploadV3Builder) WithTimeoutDuration(d time.Duration) *LambdatestUploadV3Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *LambdatestUploadV3Builder) WithNoOutputTimeoutDuration(d time.Duration) *LambdatestUploadV3Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DependencyInstallerVerbose enumerates the valid values for the verbose input.
 type DependencyInstallerVerbose string
 
@@ -78,6 +80,18 @@ func (b *DependencyInstallerBuilder) WithTimeout(seconds int) *DependencyInstall
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DependencyInstallerBuilder) WithNoOutputTimeout(seconds int) *DependencyInstallerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DependencyInstallerBuilder) WithTimeoutDuration(d time.Duration) *DependencyInstallerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DependencyInstallerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DependencyInstallerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

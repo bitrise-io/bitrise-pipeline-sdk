@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftlintExtendedReporter enumerates the valid values for the reporter input.
 type SwiftlintExtendedReporter string
 
@@ -106,6 +108,18 @@ func (b *SwiftlintExtendedBuilder) WithTimeout(seconds int) *SwiftlintExtendedBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftlintExtendedBuilder) WithNoOutputTimeout(seconds int) *SwiftlintExtendedBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftlintExtendedBuilder) WithTimeoutDuration(d time.Duration) *SwiftlintExtendedBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftlintExtendedBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftlintExtendedBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

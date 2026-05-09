@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // GitLastCommitDateBuilder builds a git-last-commit-date step with typed input methods.
 type GitLastCommitDateBuilder struct{ *Builder }
 
@@ -52,6 +54,18 @@ func (b *GitLastCommitDateBuilder) WithTimeout(seconds int) *GitLastCommitDateBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *GitLastCommitDateBuilder) WithNoOutputTimeout(seconds int) *GitLastCommitDateBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *GitLastCommitDateBuilder) WithTimeoutDuration(d time.Duration) *GitLastCommitDateBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *GitLastCommitDateBuilder) WithNoOutputTimeoutDuration(d time.Duration) *GitLastCommitDateBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

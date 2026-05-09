@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CocoapodsInstallV1IsUpdateCocoapods enumerates the valid values for the is_update_cocoapods input.
 type CocoapodsInstallV1IsUpdateCocoapods string
 
@@ -112,6 +114,18 @@ func (b *CocoapodsInstallV1Builder) WithTimeout(seconds int) *CocoapodsInstallV1
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CocoapodsInstallV1Builder) WithNoOutputTimeout(seconds int) *CocoapodsInstallV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CocoapodsInstallV1Builder) WithTimeoutDuration(d time.Duration) *CocoapodsInstallV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CocoapodsInstallV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *CocoapodsInstallV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DsymUploadToCrashlyticsNoCocoapodsBuilder builds a dsym-upload-to-crashlytics--no-cocoapods step with typed input methods.
 type DsymUploadToCrashlyticsNoCocoapodsBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithTimeout(seconds int) *Ds
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithNoOutputTimeout(seconds int) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithTimeoutDuration(d time.Duration) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

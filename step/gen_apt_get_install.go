@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AptGetInstallUpgrade enumerates the valid values for the upgrade input.
 type AptGetInstallUpgrade string
 
@@ -92,6 +94,18 @@ func (b *AptGetInstallBuilder) WithTimeout(seconds int) *AptGetInstallBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AptGetInstallBuilder) WithNoOutputTimeout(seconds int) *AptGetInstallBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AptGetInstallBuilder) WithTimeoutDuration(d time.Duration) *AptGetInstallBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AptGetInstallBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AptGetInstallBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

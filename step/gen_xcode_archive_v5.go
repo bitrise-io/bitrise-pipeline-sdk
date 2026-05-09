@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // XcodeArchiveV5Platform enumerates the valid values for the platform input.
 type XcodeArchiveV5Platform string
 
@@ -361,6 +363,18 @@ func (b *XcodeArchiveV5Builder) WithTimeout(seconds int) *XcodeArchiveV5Builder 
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *XcodeArchiveV5Builder) WithNoOutputTimeout(seconds int) *XcodeArchiveV5Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *XcodeArchiveV5Builder) WithTimeoutDuration(d time.Duration) *XcodeArchiveV5Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *XcodeArchiveV5Builder) WithNoOutputTimeoutDuration(d time.Duration) *XcodeArchiveV5Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

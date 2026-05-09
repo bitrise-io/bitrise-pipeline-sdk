@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AppGalleryDeployShowDebugLogs enumerates the valid values for the show_debug_logs input.
 type AppGalleryDeployShowDebugLogs string
 
@@ -102,6 +104,18 @@ func (b *AppGalleryDeployBuilder) WithTimeout(seconds int) *AppGalleryDeployBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AppGalleryDeployBuilder) WithNoOutputTimeout(seconds int) *AppGalleryDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AppGalleryDeployBuilder) WithTimeoutDuration(d time.Duration) *AppGalleryDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AppGalleryDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AppGalleryDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

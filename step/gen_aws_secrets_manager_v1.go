@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AwsSecretsManagerV1Builder builds a aws-secrets-manager step with typed input methods.
 type AwsSecretsManagerV1Builder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *AwsSecretsManagerV1Builder) WithTimeout(seconds int) *AwsSecretsManager
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AwsSecretsManagerV1Builder) WithNoOutputTimeout(seconds int) *AwsSecretsManagerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AwsSecretsManagerV1Builder) WithTimeoutDuration(d time.Duration) *AwsSecretsManagerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AwsSecretsManagerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *AwsSecretsManagerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NitroAndroidDisableVersionNameFromPackageJson enumerates the valid values for the disable_version_name_from_package_json input.
 type NitroAndroidDisableVersionNameFromPackageJson string
 
@@ -266,6 +268,18 @@ func (b *NitroAndroidBuilder) WithTimeout(seconds int) *NitroAndroidBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NitroAndroidBuilder) WithNoOutputTimeout(seconds int) *NitroAndroidBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NitroAndroidBuilder) WithTimeoutDuration(d time.Duration) *NitroAndroidBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NitroAndroidBuilder) WithNoOutputTimeoutDuration(d time.Duration) *NitroAndroidBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

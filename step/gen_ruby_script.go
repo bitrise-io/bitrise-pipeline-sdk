@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RubyScriptBuilder builds a ruby-script step with typed input methods.
 type RubyScriptBuilder struct{ *Builder }
 
@@ -70,6 +72,18 @@ func (b *RubyScriptBuilder) WithTimeout(seconds int) *RubyScriptBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RubyScriptBuilder) WithNoOutputTimeout(seconds int) *RubyScriptBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RubyScriptBuilder) WithTimeoutDuration(d time.Duration) *RubyScriptBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RubyScriptBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RubyScriptBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // DeployToItunesconnectApplicationLoaderV2Connection enumerates the valid values for the connection input.
 type DeployToItunesconnectApplicationLoaderV2Connection string
 
@@ -176,6 +178,18 @@ func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithTimeout(seconds in
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithNoOutputTimeout(seconds int) *DeployToItunesconnectApplicationLoaderV2Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithTimeoutDuration(d time.Duration) *DeployToItunesconnectApplicationLoaderV2Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *DeployToItunesconnectApplicationLoaderV2Builder) WithNoOutputTimeoutDuration(d time.Duration) *DeployToItunesconnectApplicationLoaderV2Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

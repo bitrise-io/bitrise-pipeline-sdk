@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CalabashAndroidUitestV0Builder builds a calabash-android-uitest step with typed input methods.
 type CalabashAndroidUitestV0Builder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *CalabashAndroidUitestV0Builder) WithTimeout(seconds int) *CalabashAndro
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CalabashAndroidUitestV0Builder) WithNoOutputTimeout(seconds int) *CalabashAndroidUitestV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CalabashAndroidUitestV0Builder) WithTimeoutDuration(d time.Duration) *CalabashAndroidUitestV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CalabashAndroidUitestV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *CalabashAndroidUitestV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

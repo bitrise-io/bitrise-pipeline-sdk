@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ParseComposerResultsBuilder builds a parse-composer-results step with typed input methods.
 type ParseComposerResultsBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *ParseComposerResultsBuilder) WithTimeout(seconds int) *ParseComposerRes
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ParseComposerResultsBuilder) WithNoOutputTimeout(seconds int) *ParseComposerResultsBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ParseComposerResultsBuilder) WithTimeoutDuration(d time.Duration) *ParseComposerResultsBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ParseComposerResultsBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ParseComposerResultsBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

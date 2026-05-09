@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CreateGithubPullRequestBuilder builds a create-github-pull-request step with typed input methods.
 type CreateGithubPullRequestBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *CreateGithubPullRequestBuilder) WithTimeout(seconds int) *CreateGithubP
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CreateGithubPullRequestBuilder) WithNoOutputTimeout(seconds int) *CreateGithubPullRequestBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CreateGithubPullRequestBuilder) WithTimeoutDuration(d time.Duration) *CreateGithubPullRequestBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CreateGithubPullRequestBuilder) WithNoOutputTimeoutDuration(d time.Duration) *CreateGithubPullRequestBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

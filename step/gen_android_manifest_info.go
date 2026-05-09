@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AndroidManifestInfoBuilder builds a android-manifest-info step with typed input methods.
 type AndroidManifestInfoBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *AndroidManifestInfoBuilder) WithTimeout(seconds int) *AndroidManifestIn
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AndroidManifestInfoBuilder) WithNoOutputTimeout(seconds int) *AndroidManifestInfoBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AndroidManifestInfoBuilder) WithTimeoutDuration(d time.Duration) *AndroidManifestInfoBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AndroidManifestInfoBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AndroidManifestInfoBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

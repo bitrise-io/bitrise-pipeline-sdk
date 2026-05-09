@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ActivateBuildCacheForXcodeVerbose enumerates the valid values for the verbose input.
 type ActivateBuildCacheForXcodeVerbose string
 
@@ -136,6 +138,18 @@ func (b *ActivateBuildCacheForXcodeBuilder) WithTimeout(seconds int) *ActivateBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ActivateBuildCacheForXcodeBuilder) WithNoOutputTimeout(seconds int) *ActivateBuildCacheForXcodeBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ActivateBuildCacheForXcodeBuilder) WithTimeoutDuration(d time.Duration) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ActivateBuildCacheForXcodeBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ActivateBuildCacheForXcodeBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

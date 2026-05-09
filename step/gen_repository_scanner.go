@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RepositoryScannerBuilder builds a repository-scanner step with typed input methods.
 //
 // Deprecated: This step is deprecated, use [Project scanner](https://github.com/bitrise-steplib/steps-project-scanner) instead.
@@ -74,6 +76,18 @@ func (b *RepositoryScannerBuilder) WithTimeout(seconds int) *RepositoryScannerBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RepositoryScannerBuilder) WithNoOutputTimeout(seconds int) *RepositoryScannerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RepositoryScannerBuilder) WithTimeoutDuration(d time.Duration) *RepositoryScannerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RepositoryScannerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *RepositoryScannerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

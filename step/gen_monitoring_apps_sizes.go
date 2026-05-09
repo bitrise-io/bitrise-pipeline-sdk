@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // MonitoringAppsSizesCheckAndroid enumerates the valid values for the check_android input.
 type MonitoringAppsSizesCheckAndroid string
 
@@ -114,6 +116,18 @@ func (b *MonitoringAppsSizesBuilder) WithTimeout(seconds int) *MonitoringAppsSiz
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *MonitoringAppsSizesBuilder) WithNoOutputTimeout(seconds int) *MonitoringAppsSizesBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *MonitoringAppsSizesBuilder) WithTimeoutDuration(d time.Duration) *MonitoringAppsSizesBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *MonitoringAppsSizesBuilder) WithNoOutputTimeoutDuration(d time.Duration) *MonitoringAppsSizesBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

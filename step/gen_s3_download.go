@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // S3DownloadBuilder builds a s3-download step with typed input methods.
 type S3DownloadBuilder struct{ *Builder }
 
@@ -82,6 +84,18 @@ func (b *S3DownloadBuilder) WithTimeout(seconds int) *S3DownloadBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *S3DownloadBuilder) WithNoOutputTimeout(seconds int) *S3DownloadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *S3DownloadBuilder) WithTimeoutDuration(d time.Duration) *S3DownloadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *S3DownloadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *S3DownloadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

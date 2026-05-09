@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // AuthenticateWithGcpDockerLogin enumerates the valid values for the docker_login input.
 type AuthenticateWithGcpDockerLogin string
 
@@ -116,6 +118,18 @@ func (b *AuthenticateWithGcpBuilder) WithTimeout(seconds int) *AuthenticateWithG
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *AuthenticateWithGcpBuilder) WithNoOutputTimeout(seconds int) *AuthenticateWithGcpBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *AuthenticateWithGcpBuilder) WithTimeoutDuration(d time.Duration) *AuthenticateWithGcpBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *AuthenticateWithGcpBuilder) WithNoOutputTimeoutDuration(d time.Duration) *AuthenticateWithGcpBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

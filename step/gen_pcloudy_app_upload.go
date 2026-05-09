@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // PcloudyAppUploadBuilder builds a pcloudy-app-upload step with typed input methods.
 type PcloudyAppUploadBuilder struct{ *Builder }
 
@@ -76,6 +78,18 @@ func (b *PcloudyAppUploadBuilder) WithTimeout(seconds int) *PcloudyAppUploadBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *PcloudyAppUploadBuilder) WithNoOutputTimeout(seconds int) *PcloudyAppUploadBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *PcloudyAppUploadBuilder) WithTimeoutDuration(d time.Duration) *PcloudyAppUploadBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *PcloudyAppUploadBuilder) WithNoOutputTimeoutDuration(d time.Duration) *PcloudyAppUploadBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

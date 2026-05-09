@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // InstallDotnetcoreBuilder builds a install-dotnetcore step with typed input methods.
 //
 // Deprecated: This step is deprecated as it is no longer maintained.
@@ -68,6 +70,18 @@ func (b *InstallDotnetcoreBuilder) WithTimeout(seconds int) *InstallDotnetcoreBu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *InstallDotnetcoreBuilder) WithNoOutputTimeout(seconds int) *InstallDotnetcoreBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *InstallDotnetcoreBuilder) WithTimeoutDuration(d time.Duration) *InstallDotnetcoreBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *InstallDotnetcoreBuilder) WithNoOutputTimeoutDuration(d time.Duration) *InstallDotnetcoreBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

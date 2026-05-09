@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // FlowdockBuilder builds a flowdock step with typed input methods.
 type FlowdockBuilder struct{ *Builder }
 
@@ -58,6 +60,18 @@ func (b *FlowdockBuilder) WithTimeout(seconds int) *FlowdockBuilder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *FlowdockBuilder) WithNoOutputTimeout(seconds int) *FlowdockBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *FlowdockBuilder) WithTimeoutDuration(d time.Duration) *FlowdockBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *FlowdockBuilder) WithNoOutputTimeoutDuration(d time.Duration) *FlowdockBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

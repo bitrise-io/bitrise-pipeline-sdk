@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // NunitRunnerV1BuildBeforeTest enumerates the valid values for the build_before_test input.
 type NunitRunnerV1BuildBeforeTest string
 
@@ -104,6 +106,18 @@ func (b *NunitRunnerV1Builder) WithTimeout(seconds int) *NunitRunnerV1Builder {
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *NunitRunnerV1Builder) WithNoOutputTimeout(seconds int) *NunitRunnerV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *NunitRunnerV1Builder) WithTimeoutDuration(d time.Duration) *NunitRunnerV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *NunitRunnerV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *NunitRunnerV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

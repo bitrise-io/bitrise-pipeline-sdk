@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // VersionboxDeployVbMarkLive enumerates the valid values for the vb_mark_live input.
 type VersionboxDeployVbMarkLive string
 
@@ -124,6 +126,18 @@ func (b *VersionboxDeployBuilder) WithTimeout(seconds int) *VersionboxDeployBuil
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *VersionboxDeployBuilder) WithNoOutputTimeout(seconds int) *VersionboxDeployBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *VersionboxDeployBuilder) WithTimeoutDuration(d time.Duration) *VersionboxDeployBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *VersionboxDeployBuilder) WithNoOutputTimeoutDuration(d time.Duration) *VersionboxDeployBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

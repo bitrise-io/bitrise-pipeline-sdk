@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SetIosBundleIdentifierBuilder builds a set-ios-bundle-identifier step with typed input methods.
 type SetIosBundleIdentifierBuilder struct{ *Builder }
 
@@ -64,6 +66,18 @@ func (b *SetIosBundleIdentifierBuilder) WithTimeout(seconds int) *SetIosBundleId
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SetIosBundleIdentifierBuilder) WithNoOutputTimeout(seconds int) *SetIosBundleIdentifierBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SetIosBundleIdentifierBuilder) WithTimeoutDuration(d time.Duration) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SetIosBundleIdentifierBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

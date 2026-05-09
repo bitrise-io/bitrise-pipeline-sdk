@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // BitriseStepExportUniversalApkBuilder builds a bitrise-step-export-universal-apk step with typed input methods.
 type BitriseStepExportUniversalApkBuilder struct{ *Builder }
 
@@ -88,6 +90,18 @@ func (b *BitriseStepExportUniversalApkBuilder) WithTimeout(seconds int) *Bitrise
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *BitriseStepExportUniversalApkBuilder) WithNoOutputTimeout(seconds int) *BitriseStepExportUniversalApkBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *BitriseStepExportUniversalApkBuilder) WithTimeoutDuration(d time.Duration) *BitriseStepExportUniversalApkBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *BitriseStepExportUniversalApkBuilder) WithNoOutputTimeoutDuration(d time.Duration) *BitriseStepExportUniversalApkBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

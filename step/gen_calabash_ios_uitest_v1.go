@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // CalabashIosUitestV1Builder builds a calabash-ios-uitest step with typed input methods.
 type CalabashIosUitestV1Builder struct{ *Builder }
 
@@ -94,6 +96,18 @@ func (b *CalabashIosUitestV1Builder) WithTimeout(seconds int) *CalabashIosUitest
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *CalabashIosUitestV1Builder) WithNoOutputTimeout(seconds int) *CalabashIosUitestV1Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *CalabashIosUitestV1Builder) WithTimeoutDuration(d time.Duration) *CalabashIosUitestV1Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *CalabashIosUitestV1Builder) WithNoOutputTimeoutDuration(d time.Duration) *CalabashIosUitestV1Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

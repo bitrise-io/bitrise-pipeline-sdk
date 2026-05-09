@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // SwiftPackageManagerXcodeprojForMacEnableCodeCoverage enumerates the valid values for the enable_code_coverage input.
 type SwiftPackageManagerXcodeprojForMacEnableCodeCoverage string
 
@@ -78,6 +80,18 @@ func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithTimeout(seconds int) *Sw
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithNoOutputTimeout(seconds int) *SwiftPackageManagerXcodeprojForMacBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithTimeoutDuration(d time.Duration) *SwiftPackageManagerXcodeprojForMacBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithNoOutputTimeoutDuration(d time.Duration) *SwiftPackageManagerXcodeprojForMacBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

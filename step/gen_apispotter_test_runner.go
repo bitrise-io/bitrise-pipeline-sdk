@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // ApispotterTestRunnerAbortBuild enumerates the valid values for the abort_build input.
 type ApispotterTestRunnerAbortBuild string
 
@@ -78,6 +80,18 @@ func (b *ApispotterTestRunnerBuilder) WithTimeout(seconds int) *ApispotterTestRu
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *ApispotterTestRunnerBuilder) WithNoOutputTimeout(seconds int) *ApispotterTestRunnerBuilder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *ApispotterTestRunnerBuilder) WithTimeoutDuration(d time.Duration) *ApispotterTestRunnerBuilder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *ApispotterTestRunnerBuilder) WithNoOutputTimeoutDuration(d time.Duration) *ApispotterTestRunnerBuilder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 

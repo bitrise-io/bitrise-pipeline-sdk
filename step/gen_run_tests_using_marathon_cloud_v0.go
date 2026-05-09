@@ -3,6 +3,8 @@
 
 package step
 
+import "time"
+
 // RunTestsUsingMarathonCloudV0Builder builds a run-tests-using-marathon-cloud step with typed input methods.
 type RunTestsUsingMarathonCloudV0Builder struct{ *Builder }
 
@@ -100,6 +102,18 @@ func (b *RunTestsUsingMarathonCloudV0Builder) WithTimeout(seconds int) *RunTests
 // WithNoOutputTimeout sets the maximum time the step may run without producing output.
 func (b *RunTestsUsingMarathonCloudV0Builder) WithNoOutputTimeout(seconds int) *RunTestsUsingMarathonCloudV0Builder {
 	b.Builder.WithNoOutputTimeout(seconds)
+	return b
+}
+
+// WithTimeoutDuration sets the maximum execution time using a time.Duration.
+func (b *RunTestsUsingMarathonCloudV0Builder) WithTimeoutDuration(d time.Duration) *RunTestsUsingMarathonCloudV0Builder {
+	b.Builder.WithTimeoutDuration(d)
+	return b
+}
+
+// WithNoOutputTimeoutDuration sets the no-output timeout using a time.Duration.
+func (b *RunTestsUsingMarathonCloudV0Builder) WithNoOutputTimeoutDuration(d time.Duration) *RunTestsUsingMarathonCloudV0Builder {
+	b.Builder.WithNoOutputTimeoutDuration(d)
 	return b
 }
 
