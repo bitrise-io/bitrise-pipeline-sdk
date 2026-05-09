@@ -37,6 +37,18 @@ func (b *AddTraceSdkAndroidBuilder) WithGradleOptions(value string) *AddTraceSdk
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AddTraceSdkAndroidBuilder) WithVersion(version string) *AddTraceSdkAndroidBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AddTraceSdkAndroidBuilder) WithInput(key, value string) *AddTraceSdkAndroidBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AddTraceSdkAndroidBuilder) WithRunIf(expr string) *AddTraceSdkAndroidBuilder {
 	b.Builder.WithRunIf(expr)

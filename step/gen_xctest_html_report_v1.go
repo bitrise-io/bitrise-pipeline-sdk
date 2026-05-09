@@ -89,6 +89,12 @@ func (b *XctestHtmlReportV1Builder) WithVerbose(value XctestHtmlReportV1Verbose)
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *XctestHtmlReportV1Builder) WithInput(key, value string) *XctestHtmlReportV1Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *XctestHtmlReportV1Builder) WithRunIf(expr string) *XctestHtmlReportV1Builder {
 	b.Builder.WithRunIf(expr)

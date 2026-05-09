@@ -97,6 +97,18 @@ func (b *EmailWithMailgunBuilder) WithAttachments(value string) *EmailWithMailgu
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *EmailWithMailgunBuilder) WithVersion(version string) *EmailWithMailgunBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *EmailWithMailgunBuilder) WithInput(key, value string) *EmailWithMailgunBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *EmailWithMailgunBuilder) WithRunIf(expr string) *EmailWithMailgunBuilder {
 	b.Builder.WithRunIf(expr)

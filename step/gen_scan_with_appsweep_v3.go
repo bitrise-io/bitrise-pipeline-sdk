@@ -67,6 +67,18 @@ func (b *ScanWithAppsweepV3Builder) WithAndroidProjectLocation(value string) *Sc
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ScanWithAppsweepV3Builder) WithVersion(version string) *ScanWithAppsweepV3Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ScanWithAppsweepV3Builder) WithInput(key, value string) *ScanWithAppsweepV3Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ScanWithAppsweepV3Builder) WithRunIf(expr string) *ScanWithAppsweepV3Builder {
 	b.Builder.WithRunIf(expr)

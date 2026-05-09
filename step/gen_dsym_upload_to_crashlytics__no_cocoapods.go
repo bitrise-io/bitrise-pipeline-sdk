@@ -33,6 +33,18 @@ func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithDsymLocation(value strin
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithVersion(version string) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithInput(key, value string) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DsymUploadToCrashlyticsNoCocoapodsBuilder) WithRunIf(expr string) *DsymUploadToCrashlyticsNoCocoapodsBuilder {
 	b.Builder.WithRunIf(expr)

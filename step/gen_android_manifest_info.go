@@ -27,6 +27,18 @@ func (b *AndroidManifestInfoBuilder) WithManifestFile(value string) *AndroidMani
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AndroidManifestInfoBuilder) WithVersion(version string) *AndroidManifestInfoBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AndroidManifestInfoBuilder) WithInput(key, value string) *AndroidManifestInfoBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AndroidManifestInfoBuilder) WithRunIf(expr string) *AndroidManifestInfoBuilder {
 	b.Builder.WithRunIf(expr)

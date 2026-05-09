@@ -61,6 +61,18 @@ func (b *AptGetInstallBuilder) WithCacheLevel(value AptGetInstallCacheLevel) *Ap
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AptGetInstallBuilder) WithVersion(version string) *AptGetInstallBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AptGetInstallBuilder) WithInput(key, value string) *AptGetInstallBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AptGetInstallBuilder) WithRunIf(expr string) *AptGetInstallBuilder {
 	b.Builder.WithRunIf(expr)

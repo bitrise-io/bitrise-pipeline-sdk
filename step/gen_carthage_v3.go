@@ -63,6 +63,18 @@ func (b *CarthageV3Builder) WithVerboseLog(value CarthageV3VerboseLog) *Carthage
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *CarthageV3Builder) WithVersion(version string) *CarthageV3Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *CarthageV3Builder) WithInput(key, value string) *CarthageV3Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *CarthageV3Builder) WithRunIf(expr string) *CarthageV3Builder {
 	b.Builder.WithRunIf(expr)

@@ -60,6 +60,18 @@ func (b *RepeatoTestRunnerBuilder) WithLogLevel(value RepeatoTestRunnerLogLevel)
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *RepeatoTestRunnerBuilder) WithVersion(version string) *RepeatoTestRunnerBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *RepeatoTestRunnerBuilder) WithInput(key, value string) *RepeatoTestRunnerBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *RepeatoTestRunnerBuilder) WithRunIf(expr string) *RepeatoTestRunnerBuilder {
 	b.Builder.WithRunIf(expr)

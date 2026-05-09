@@ -93,6 +93,18 @@ func (b *ImageOverlayerBuilder) WithExportResults(value ImageOverlayerExportResu
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ImageOverlayerBuilder) WithVersion(version string) *ImageOverlayerBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ImageOverlayerBuilder) WithInput(key, value string) *ImageOverlayerBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ImageOverlayerBuilder) WithRunIf(expr string) *ImageOverlayerBuilder {
 	b.Builder.WithRunIf(expr)

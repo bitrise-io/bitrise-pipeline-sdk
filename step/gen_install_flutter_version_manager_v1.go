@@ -21,6 +21,18 @@ func InstallFlutterVersionManagerV1(version ...string) *InstallFlutterVersionMan
 	return &InstallFlutterVersionManagerV1Builder{Builder: From("install-flutter-version-manager", v)}
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *InstallFlutterVersionManagerV1Builder) WithVersion(version string) *InstallFlutterVersionManagerV1Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *InstallFlutterVersionManagerV1Builder) WithInput(key, value string) *InstallFlutterVersionManagerV1Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *InstallFlutterVersionManagerV1Builder) WithRunIf(expr string) *InstallFlutterVersionManagerV1Builder {
 	b.Builder.WithRunIf(expr)

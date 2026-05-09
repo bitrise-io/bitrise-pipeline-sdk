@@ -27,6 +27,18 @@ func (b *GenymotionCloudSaasStopBuilder) WithInstanceUuid(value string) *Genymot
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GenymotionCloudSaasStopBuilder) WithVersion(version string) *GenymotionCloudSaasStopBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GenymotionCloudSaasStopBuilder) WithInput(key, value string) *GenymotionCloudSaasStopBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GenymotionCloudSaasStopBuilder) WithRunIf(expr string) *GenymotionCloudSaasStopBuilder {
 	b.Builder.WithRunIf(expr)

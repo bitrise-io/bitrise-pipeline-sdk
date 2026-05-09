@@ -41,6 +41,18 @@ func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithVerbose(value
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithVersion(version string) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithInput(key, value string) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DisableIphonesimulatorConnectHardwareKeyboardBuilder) WithRunIf(expr string) *DisableIphonesimulatorConnectHardwareKeyboardBuilder {
 	b.Builder.WithRunIf(expr)

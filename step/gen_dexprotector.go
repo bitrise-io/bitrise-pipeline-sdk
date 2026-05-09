@@ -122,6 +122,18 @@ func (b *DexprotectorBuilder) WithVerbose(value DexprotectorVerbose) *Dexprotect
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DexprotectorBuilder) WithVersion(version string) *DexprotectorBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DexprotectorBuilder) WithInput(key, value string) *DexprotectorBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DexprotectorBuilder) WithRunIf(expr string) *DexprotectorBuilder {
 	b.Builder.WithRunIf(expr)

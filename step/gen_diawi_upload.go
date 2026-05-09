@@ -39,6 +39,18 @@ func (b *DiawiUploadBuilder) WithPassword(value string) *DiawiUploadBuilder {
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DiawiUploadBuilder) WithVersion(version string) *DiawiUploadBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DiawiUploadBuilder) WithInput(key, value string) *DiawiUploadBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DiawiUploadBuilder) WithRunIf(expr string) *DiawiUploadBuilder {
 	b.Builder.WithRunIf(expr)

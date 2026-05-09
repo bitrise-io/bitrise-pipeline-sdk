@@ -51,6 +51,18 @@ func (b *GetAppBuilder) WithDirectoryName(value string) *GetAppBuilder {
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GetAppBuilder) WithVersion(version string) *GetAppBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GetAppBuilder) WithInput(key, value string) *GetAppBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GetAppBuilder) WithRunIf(expr string) *GetAppBuilder {
 	b.Builder.WithRunIf(expr)

@@ -39,6 +39,18 @@ func (b *AutifyUploadV0Builder) WithUploadToken(value string) *AutifyUploadV0Bui
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AutifyUploadV0Builder) WithVersion(version string) *AutifyUploadV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AutifyUploadV0Builder) WithInput(key, value string) *AutifyUploadV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AutifyUploadV0Builder) WithRunIf(expr string) *AutifyUploadV0Builder {
 	b.Builder.WithRunIf(expr)

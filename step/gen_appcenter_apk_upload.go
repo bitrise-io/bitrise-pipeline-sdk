@@ -43,6 +43,18 @@ func (b *AppcenterApkUploadBuilder) WithDistributionGroup(value string) *Appcent
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AppcenterApkUploadBuilder) WithVersion(version string) *AppcenterApkUploadBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AppcenterApkUploadBuilder) WithInput(key, value string) *AppcenterApkUploadBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AppcenterApkUploadBuilder) WithRunIf(expr string) *AppcenterApkUploadBuilder {
 	b.Builder.WithRunIf(expr)

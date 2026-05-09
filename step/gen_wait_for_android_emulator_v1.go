@@ -39,6 +39,18 @@ func (b *WaitForAndroidEmulatorV1Builder) WithAndroidHome(value string) *WaitFor
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *WaitForAndroidEmulatorV1Builder) WithVersion(version string) *WaitForAndroidEmulatorV1Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *WaitForAndroidEmulatorV1Builder) WithInput(key, value string) *WaitForAndroidEmulatorV1Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *WaitForAndroidEmulatorV1Builder) WithRunIf(expr string) *WaitForAndroidEmulatorV1Builder {
 	b.Builder.WithRunIf(expr)

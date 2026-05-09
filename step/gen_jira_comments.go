@@ -51,6 +51,18 @@ func (b *JiraCommentsBuilder) WithJiraComment(value string) *JiraCommentsBuilder
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *JiraCommentsBuilder) WithVersion(version string) *JiraCommentsBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *JiraCommentsBuilder) WithInput(key, value string) *JiraCommentsBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *JiraCommentsBuilder) WithRunIf(expr string) *JiraCommentsBuilder {
 	b.Builder.WithRunIf(expr)

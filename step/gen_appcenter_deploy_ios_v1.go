@@ -121,6 +121,18 @@ func (b *AppcenterDeployIosV1Builder) WithDebug(value AppcenterDeployIosV1Debug)
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AppcenterDeployIosV1Builder) WithVersion(version string) *AppcenterDeployIosV1Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AppcenterDeployIosV1Builder) WithInput(key, value string) *AppcenterDeployIosV1Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AppcenterDeployIosV1Builder) WithRunIf(expr string) *AppcenterDeployIosV1Builder {
 	b.Builder.WithRunIf(expr)

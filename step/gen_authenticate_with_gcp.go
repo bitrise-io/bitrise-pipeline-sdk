@@ -85,6 +85,18 @@ func (b *AuthenticateWithGcpBuilder) WithVerbose(value AuthenticateWithGcpVerbos
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AuthenticateWithGcpBuilder) WithVersion(version string) *AuthenticateWithGcpBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AuthenticateWithGcpBuilder) WithInput(key, value string) *AuthenticateWithGcpBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AuthenticateWithGcpBuilder) WithRunIf(expr string) *AuthenticateWithGcpBuilder {
 	b.Builder.WithRunIf(expr)

@@ -45,6 +45,18 @@ func (b *GithubReleaseDownloaderBuilder) WithRepositoryUrl(value string) *Github
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GithubReleaseDownloaderBuilder) WithVersion(version string) *GithubReleaseDownloaderBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GithubReleaseDownloaderBuilder) WithInput(key, value string) *GithubReleaseDownloaderBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GithubReleaseDownloaderBuilder) WithRunIf(expr string) *GithubReleaseDownloaderBuilder {
 	b.Builder.WithRunIf(expr)

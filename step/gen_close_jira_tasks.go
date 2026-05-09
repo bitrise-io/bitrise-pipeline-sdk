@@ -63,6 +63,12 @@ func (b *CloseJiraTasksBuilder) WithVersion(value string) *CloseJiraTasksBuilder
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *CloseJiraTasksBuilder) WithInput(key, value string) *CloseJiraTasksBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *CloseJiraTasksBuilder) WithRunIf(expr string) *CloseJiraTasksBuilder {
 	b.Builder.WithRunIf(expr)

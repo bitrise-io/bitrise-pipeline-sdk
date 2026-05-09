@@ -25,6 +25,18 @@ func ActivateBuildCacheForTuist(version ...string) *ActivateBuildCacheForTuistBu
 	return &ActivateBuildCacheForTuistBuilder{Builder: From("activate-build-cache-for-tuist", v)}
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ActivateBuildCacheForTuistBuilder) WithVersion(version string) *ActivateBuildCacheForTuistBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ActivateBuildCacheForTuistBuilder) WithInput(key, value string) *ActivateBuildCacheForTuistBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ActivateBuildCacheForTuistBuilder) WithRunIf(expr string) *ActivateBuildCacheForTuistBuilder {
 	b.Builder.WithRunIf(expr)

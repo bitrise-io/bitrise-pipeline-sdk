@@ -51,6 +51,18 @@ func (b *RestoreNpmCacheV3Builder) WithRetries(value string) *RestoreNpmCacheV3B
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *RestoreNpmCacheV3Builder) WithVersion(version string) *RestoreNpmCacheV3Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *RestoreNpmCacheV3Builder) WithInput(key, value string) *RestoreNpmCacheV3Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *RestoreNpmCacheV3Builder) WithRunIf(expr string) *RestoreNpmCacheV3Builder {
 	b.Builder.WithRunIf(expr)

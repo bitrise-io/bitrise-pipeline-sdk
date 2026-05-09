@@ -277,6 +277,12 @@ func (b *MagicpodUiTestBuilder) WithBaseUrl(value string) *MagicpodUiTestBuilder
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *MagicpodUiTestBuilder) WithInput(key, value string) *MagicpodUiTestBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *MagicpodUiTestBuilder) WithRunIf(expr string) *MagicpodUiTestBuilder {
 	b.Builder.WithRunIf(expr)

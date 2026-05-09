@@ -45,6 +45,18 @@ func (b *AndroidInstrumentedTestBuilder) WithAdditionalTestingOptions(value stri
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AndroidInstrumentedTestBuilder) WithVersion(version string) *AndroidInstrumentedTestBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AndroidInstrumentedTestBuilder) WithInput(key, value string) *AndroidInstrumentedTestBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AndroidInstrumentedTestBuilder) WithRunIf(expr string) *AndroidInstrumentedTestBuilder {
 	b.Builder.WithRunIf(expr)

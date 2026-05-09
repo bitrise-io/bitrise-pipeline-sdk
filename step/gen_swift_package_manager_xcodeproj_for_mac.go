@@ -47,6 +47,18 @@ func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithXcconfigOverrides(value 
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithVersion(version string) *SwiftPackageManagerXcodeprojForMacBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithInput(key, value string) *SwiftPackageManagerXcodeprojForMacBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SwiftPackageManagerXcodeprojForMacBuilder) WithRunIf(expr string) *SwiftPackageManagerXcodeprojForMacBuilder {
 	b.Builder.WithRunIf(expr)

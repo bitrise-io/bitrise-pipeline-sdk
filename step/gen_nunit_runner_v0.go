@@ -45,6 +45,18 @@ func (b *NunitRunnerV0Builder) WithNunitOptions(value string) *NunitRunnerV0Buil
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *NunitRunnerV0Builder) WithVersion(version string) *NunitRunnerV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *NunitRunnerV0Builder) WithInput(key, value string) *NunitRunnerV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *NunitRunnerV0Builder) WithRunIf(expr string) *NunitRunnerV0Builder {
 	b.Builder.WithRunIf(expr)

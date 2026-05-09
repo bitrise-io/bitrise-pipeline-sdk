@@ -33,6 +33,18 @@ func (b *SwiftformatBuilder) WithFormatConfigFile(value string) *SwiftformatBuil
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SwiftformatBuilder) WithVersion(version string) *SwiftformatBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SwiftformatBuilder) WithInput(key, value string) *SwiftformatBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SwiftformatBuilder) WithRunIf(expr string) *SwiftformatBuilder {
 	b.Builder.WithRunIf(expr)

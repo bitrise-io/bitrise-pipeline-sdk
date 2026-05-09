@@ -123,6 +123,8 @@ func TestTypedBuilder_GenericMethodChain(t *testing.T) {
 func TestTypedBuilder_GenericMethodsReturnConcreteType(t *testing.T) {
 	// Compile-time assertions: each generic method must return the concrete
 	// typed builder, not *Builder.
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithVersion("6.0.0")
+	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithInput("scheme", "MyApp")
 	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithTitle("t")
 	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithRunIf("true")
 	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithIsAlwaysRun(true)
@@ -131,6 +133,24 @@ func TestTypedBuilder_GenericMethodsReturnConcreteType(t *testing.T) {
 	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithNoOutputTimeout(60)
 	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithExecutionContainer("c")
 	var _ *step.XcodeTestV6Builder = step.XcodeTest().WithServiceContainers("db")
+}
+
+func TestTypedBuilder_WithVersion_Chain(t *testing.T) {
+	// WithVersion must preserve the typed chain so typed input methods remain callable.
+	item := step.XcodeTest().
+		WithVersion("6.0.1").
+		WithScheme("MyApp"). // typed — only on *XcodeTestV6Builder
+		Build()
+	assert.Contains(t, item, "xcode-test@6.0.1")
+}
+
+func TestTypedBuilder_WithInput_Chain(t *testing.T) {
+	// WithInput (escape hatch) must also preserve the typed chain.
+	item := step.XcodeTest().
+		WithInput("scheme", "MyApp").
+		WithDestination("platform=iOS Simulator,name=iPhone 15"). // typed
+		Build()
+	assert.Contains(t, item, "xcode-test@6")
 }
 
 // --- Version override -------------------------------------------------------

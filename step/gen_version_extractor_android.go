@@ -43,6 +43,18 @@ func (b *VersionExtractorAndroidBuilder) WithVariant(value string) *VersionExtra
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *VersionExtractorAndroidBuilder) WithVersion(version string) *VersionExtractorAndroidBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *VersionExtractorAndroidBuilder) WithInput(key, value string) *VersionExtractorAndroidBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *VersionExtractorAndroidBuilder) WithRunIf(expr string) *VersionExtractorAndroidBuilder {
 	b.Builder.WithRunIf(expr)

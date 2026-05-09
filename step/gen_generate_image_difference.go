@@ -33,6 +33,18 @@ func (b *GenerateImageDifferenceBuilder) WithAfterImages(value string) *Generate
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GenerateImageDifferenceBuilder) WithVersion(version string) *GenerateImageDifferenceBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GenerateImageDifferenceBuilder) WithInput(key, value string) *GenerateImageDifferenceBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GenerateImageDifferenceBuilder) WithRunIf(expr string) *GenerateImageDifferenceBuilder {
 	b.Builder.WithRunIf(expr)

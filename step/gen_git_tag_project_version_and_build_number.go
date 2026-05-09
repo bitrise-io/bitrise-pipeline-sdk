@@ -67,6 +67,18 @@ func (b *GitTagProjectVersionAndBuildNumberBuilder) WithUpdateTag(value GitTagPr
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GitTagProjectVersionAndBuildNumberBuilder) WithVersion(version string) *GitTagProjectVersionAndBuildNumberBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GitTagProjectVersionAndBuildNumberBuilder) WithInput(key, value string) *GitTagProjectVersionAndBuildNumberBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GitTagProjectVersionAndBuildNumberBuilder) WithRunIf(expr string) *GitTagProjectVersionAndBuildNumberBuilder {
 	b.Builder.WithRunIf(expr)

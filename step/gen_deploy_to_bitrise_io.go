@@ -167,6 +167,18 @@ func (b *DeployToBitriseIoBuilder) WithUseLegacyXcresultExtractionMethod(value D
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DeployToBitriseIoBuilder) WithVersion(version string) *DeployToBitriseIoBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DeployToBitriseIoBuilder) WithInput(key, value string) *DeployToBitriseIoBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DeployToBitriseIoBuilder) WithRunIf(expr string) *DeployToBitriseIoBuilder {
 	b.Builder.WithRunIf(expr)

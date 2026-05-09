@@ -118,6 +118,18 @@ func (b *ExportXcarchiveMacV0Builder) WithLegacyExportOutputFormat(value ExportX
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ExportXcarchiveMacV0Builder) WithVersion(version string) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ExportXcarchiveMacV0Builder) WithInput(key, value string) *ExportXcarchiveMacV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ExportXcarchiveMacV0Builder) WithRunIf(expr string) *ExportXcarchiveMacV0Builder {
 	b.Builder.WithRunIf(expr)

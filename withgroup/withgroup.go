@@ -5,7 +5,10 @@
 //
 //	wg := withgroup.New("my-docker-image").
 //	    WithServices("postgres", "redis").
-//	    AddStep(step.Script("go test ./..."))
+//	    AddStep(
+//	        step.Script().WithContent("go test ./..."),
+//	        step.Script().WithContent("go vet ./..."),
+//	    )
 //
 //	workflow.AddWithGroup(wg)
 package withgroup
@@ -35,9 +38,17 @@ func (b *Builder) WithServices(containerIDs ...string) *Builder {
 	return b
 }
 
-// AddStep appends a step to the with group. Accepts *step.Builder or any typed step builder.
-func (b *Builder) AddStep(s step.BundleBuildable) *Builder {
-	b.model.Steps = append(b.model.Steps, s.BuildForWithGroup())
+// AddStep appends one or more steps to the with group.
+// Accepts *step.Builder or any typed step builder.
+//
+//	wg.AddStep(
+//	    step.Script().WithContent("go build ./..."),
+//	    step.Script().WithContent("go test ./..."),
+//	)
+func (b *Builder) AddStep(steps ...step.BundleBuildable) *Builder {
+	for _, s := range steps {
+		b.model.Steps = append(b.model.Steps, s.BuildForWithGroup())
+	}
 	return b
 }
 

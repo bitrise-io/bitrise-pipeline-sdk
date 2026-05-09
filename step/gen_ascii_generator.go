@@ -33,6 +33,18 @@ func (b *AsciiGeneratorBuilder) WithAccessToken(value string) *AsciiGeneratorBui
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AsciiGeneratorBuilder) WithVersion(version string) *AsciiGeneratorBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AsciiGeneratorBuilder) WithInput(key, value string) *AsciiGeneratorBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AsciiGeneratorBuilder) WithRunIf(expr string) *AsciiGeneratorBuilder {
 	b.Builder.WithRunIf(expr)

@@ -45,6 +45,18 @@ func (b *DeployToUpdraftBuilder) WithReleaseNotes(value string) *DeployToUpdraft
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DeployToUpdraftBuilder) WithVersion(version string) *DeployToUpdraftBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DeployToUpdraftBuilder) WithInput(key, value string) *DeployToUpdraftBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DeployToUpdraftBuilder) WithRunIf(expr string) *DeployToUpdraftBuilder {
 	b.Builder.WithRunIf(expr)

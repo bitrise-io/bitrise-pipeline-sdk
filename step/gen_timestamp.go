@@ -21,6 +21,18 @@ func Timestamp(version ...string) *TimestampBuilder {
 	return &TimestampBuilder{Builder: From("timestamp", v)}
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *TimestampBuilder) WithVersion(version string) *TimestampBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *TimestampBuilder) WithInput(key, value string) *TimestampBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *TimestampBuilder) WithRunIf(expr string) *TimestampBuilder {
 	b.Builder.WithRunIf(expr)

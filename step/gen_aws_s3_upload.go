@@ -91,6 +91,18 @@ func (b *AwsS3UploadBuilder) WithVerbose(value AwsS3UploadVerbose) *AwsS3UploadB
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AwsS3UploadBuilder) WithVersion(version string) *AwsS3UploadBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AwsS3UploadBuilder) WithInput(key, value string) *AwsS3UploadBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AwsS3UploadBuilder) WithRunIf(expr string) *AwsS3UploadBuilder {
 	b.Builder.WithRunIf(expr)

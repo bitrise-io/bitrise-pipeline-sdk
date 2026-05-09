@@ -100,6 +100,18 @@ func (b *GradleRunnerV3Builder) WithGradleOptions(value string) *GradleRunnerV3B
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GradleRunnerV3Builder) WithVersion(version string) *GradleRunnerV3Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GradleRunnerV3Builder) WithInput(key, value string) *GradleRunnerV3Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GradleRunnerV3Builder) WithRunIf(expr string) *GradleRunnerV3Builder {
 	b.Builder.WithRunIf(expr)

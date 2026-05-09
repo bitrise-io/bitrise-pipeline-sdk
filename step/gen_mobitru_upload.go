@@ -65,6 +65,18 @@ func (b *MobitruUploadBuilder) WithArtifactAlias(value string) *MobitruUploadBui
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *MobitruUploadBuilder) WithVersion(version string) *MobitruUploadBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *MobitruUploadBuilder) WithInput(key, value string) *MobitruUploadBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *MobitruUploadBuilder) WithRunIf(expr string) *MobitruUploadBuilder {
 	b.Builder.WithRunIf(expr)

@@ -45,6 +45,18 @@ func (b *SharePipelineVariableBuilder) WithBuildApiToken(value string) *SharePip
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SharePipelineVariableBuilder) WithVersion(version string) *SharePipelineVariableBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SharePipelineVariableBuilder) WithInput(key, value string) *SharePipelineVariableBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SharePipelineVariableBuilder) WithRunIf(expr string) *SharePipelineVariableBuilder {
 	b.Builder.WithRunIf(expr)

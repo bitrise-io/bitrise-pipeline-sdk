@@ -180,6 +180,12 @@ func (b *AvdManagerV0Builder) WithEmulatorAbi(value AvdManagerV0EmulatorAbi) *Av
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AvdManagerV0Builder) WithInput(key, value string) *AvdManagerV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AvdManagerV0Builder) WithRunIf(expr string) *AvdManagerV0Builder {
 	b.Builder.WithRunIf(expr)

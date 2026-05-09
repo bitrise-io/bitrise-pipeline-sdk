@@ -39,6 +39,18 @@ func (b *CordovaAndroidBuilder) WithBuildOptions(value string) *CordovaAndroidBu
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *CordovaAndroidBuilder) WithVersion(version string) *CordovaAndroidBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *CordovaAndroidBuilder) WithInput(key, value string) *CordovaAndroidBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *CordovaAndroidBuilder) WithRunIf(expr string) *CordovaAndroidBuilder {
 	b.Builder.WithRunIf(expr)

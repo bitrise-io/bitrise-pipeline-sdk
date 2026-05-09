@@ -33,6 +33,12 @@ func (b *InstallReactNativeBuilder) WithNpmOptions(value string) *InstallReactNa
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *InstallReactNativeBuilder) WithInput(key, value string) *InstallReactNativeBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *InstallReactNativeBuilder) WithRunIf(expr string) *InstallReactNativeBuilder {
 	b.Builder.WithRunIf(expr)

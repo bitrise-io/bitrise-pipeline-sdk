@@ -45,6 +45,12 @@ func (b *FlankBuilder) WithCommandFlags(value string) *FlankBuilder {
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *FlankBuilder) WithInput(key, value string) *FlankBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *FlankBuilder) WithRunIf(expr string) *FlankBuilder {
 	b.Builder.WithRunIf(expr)

@@ -218,6 +218,18 @@ func (b *DeployToItunesconnectDeliverBuilder) WithVerboseLog(value DeployToItune
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DeployToItunesconnectDeliverBuilder) WithVersion(version string) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DeployToItunesconnectDeliverBuilder) WithInput(key, value string) *DeployToItunesconnectDeliverBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DeployToItunesconnectDeliverBuilder) WithRunIf(expr string) *DeployToItunesconnectDeliverBuilder {
 	b.Builder.WithRunIf(expr)

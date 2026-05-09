@@ -79,6 +79,18 @@ func (b *ZscanUploadPluginBuilder) WithTeamName(value string) *ZscanUploadPlugin
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ZscanUploadPluginBuilder) WithVersion(version string) *ZscanUploadPluginBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ZscanUploadPluginBuilder) WithInput(key, value string) *ZscanUploadPluginBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ZscanUploadPluginBuilder) WithRunIf(expr string) *ZscanUploadPluginBuilder {
 	b.Builder.WithRunIf(expr)

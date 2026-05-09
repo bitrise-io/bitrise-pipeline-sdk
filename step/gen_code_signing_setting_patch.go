@@ -109,6 +109,18 @@ func (b *CodeSigningSettingPatchBuilder) WithDryRun(value CodeSigningSettingPatc
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *CodeSigningSettingPatchBuilder) WithVersion(version string) *CodeSigningSettingPatchBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *CodeSigningSettingPatchBuilder) WithInput(key, value string) *CodeSigningSettingPatchBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *CodeSigningSettingPatchBuilder) WithRunIf(expr string) *CodeSigningSettingPatchBuilder {
 	b.Builder.WithRunIf(expr)

@@ -69,6 +69,18 @@ func (b *SwiftPackageManagerBuildForMacBuilder) WithDisableSandbox(value SwiftPa
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SwiftPackageManagerBuildForMacBuilder) WithVersion(version string) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SwiftPackageManagerBuildForMacBuilder) WithInput(key, value string) *SwiftPackageManagerBuildForMacBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SwiftPackageManagerBuildForMacBuilder) WithRunIf(expr string) *SwiftPackageManagerBuildForMacBuilder {
 	b.Builder.WithRunIf(expr)

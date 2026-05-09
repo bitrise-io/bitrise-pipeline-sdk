@@ -83,6 +83,18 @@ func (b *MonitoringAppsSizesBuilder) WithAlertThreshold(value MonitoringAppsSize
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *MonitoringAppsSizesBuilder) WithVersion(version string) *MonitoringAppsSizesBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *MonitoringAppsSizesBuilder) WithInput(key, value string) *MonitoringAppsSizesBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *MonitoringAppsSizesBuilder) WithRunIf(expr string) *MonitoringAppsSizesBuilder {
 	b.Builder.WithRunIf(expr)

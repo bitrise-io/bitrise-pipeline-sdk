@@ -41,6 +41,18 @@ func (b *RestoreGradleConfigurationCacheBuilder) WithVerbose(value RestoreGradle
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *RestoreGradleConfigurationCacheBuilder) WithVersion(version string) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *RestoreGradleConfigurationCacheBuilder) WithInput(key, value string) *RestoreGradleConfigurationCacheBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *RestoreGradleConfigurationCacheBuilder) WithRunIf(expr string) *RestoreGradleConfigurationCacheBuilder {
 	b.Builder.WithRunIf(expr)

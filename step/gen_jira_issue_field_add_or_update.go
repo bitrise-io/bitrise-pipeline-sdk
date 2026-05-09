@@ -85,6 +85,18 @@ func (b *JiraIssueFieldAddOrUpdateBuilder) WithJiraShouldArrayAddOrSet(value Jir
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *JiraIssueFieldAddOrUpdateBuilder) WithVersion(version string) *JiraIssueFieldAddOrUpdateBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *JiraIssueFieldAddOrUpdateBuilder) WithInput(key, value string) *JiraIssueFieldAddOrUpdateBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *JiraIssueFieldAddOrUpdateBuilder) WithRunIf(expr string) *JiraIssueFieldAddOrUpdateBuilder {
 	b.Builder.WithRunIf(expr)

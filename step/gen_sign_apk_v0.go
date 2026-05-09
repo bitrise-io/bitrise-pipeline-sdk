@@ -57,6 +57,18 @@ func (b *SignApkV0Builder) WithJarsignerOptions(value string) *SignApkV0Builder 
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SignApkV0Builder) WithVersion(version string) *SignApkV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SignApkV0Builder) WithInput(key, value string) *SignApkV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SignApkV0Builder) WithRunIf(expr string) *SignApkV0Builder {
 	b.Builder.WithRunIf(expr)

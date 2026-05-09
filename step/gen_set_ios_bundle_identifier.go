@@ -33,6 +33,18 @@ func (b *SetIosBundleIdentifierBuilder) WithBundleIdentifier(value string) *SetI
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SetIosBundleIdentifierBuilder) WithVersion(version string) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SetIosBundleIdentifierBuilder) WithInput(key, value string) *SetIosBundleIdentifierBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SetIosBundleIdentifierBuilder) WithRunIf(expr string) *SetIosBundleIdentifierBuilder {
 	b.Builder.WithRunIf(expr)

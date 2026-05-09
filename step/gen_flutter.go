@@ -39,6 +39,12 @@ func (b *FlutterBuilder) WithCommands(value string) *FlutterBuilder {
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *FlutterBuilder) WithInput(key, value string) *FlutterBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *FlutterBuilder) WithRunIf(expr string) *FlutterBuilder {
 	b.Builder.WithRunIf(expr)

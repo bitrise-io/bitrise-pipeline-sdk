@@ -27,7 +27,7 @@ func TestWithServices(t *testing.T) {
 	assert.Equal(t, []string{"postgres", "redis"}, wm.ServiceIDs)
 }
 
-func TestAddStep(t *testing.T) {
+func TestAddStep_Single(t *testing.T) {
 	item := withgroup.New("runner").
 		AddStep(step.Script().WithContent("go test ./...")).
 		AddStep(step.Script().WithContent("go vet ./...")).
@@ -35,4 +35,32 @@ func TestAddStep(t *testing.T) {
 
 	wm := item[bitriseModels.StepListItemWithKey].(bitriseModels.WithModel)
 	assert.Len(t, wm.Steps, 2)
+}
+
+func TestAddStep_Variadic(t *testing.T) {
+	// Multiple steps can be passed in a single AddStep call.
+	item := withgroup.New("runner").
+		AddStep(
+			step.Script().WithContent("go build ./..."),
+			step.Script().WithContent("go test ./..."),
+			step.Script().WithContent("go vet ./..."),
+		).
+		Build()
+
+	wm := item[bitriseModels.StepListItemWithKey].(bitriseModels.WithModel)
+	assert.Len(t, wm.Steps, 3)
+}
+
+func TestAddStep_Mixed(t *testing.T) {
+	// Variadic and chained AddStep calls can be combined.
+	item := withgroup.New("runner").
+		AddStep(
+			step.Script().WithContent("step1"),
+			step.Script().WithContent("step2"),
+		).
+		AddStep(step.Script().WithContent("step3")).
+		Build()
+
+	wm := item[bitriseModels.StepListItemWithKey].(bitriseModels.WithModel)
+	assert.Len(t, wm.Steps, 3)
 }

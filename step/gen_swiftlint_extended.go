@@ -75,6 +75,18 @@ func (b *SwiftlintExtendedBuilder) WithReportFile(value string) *SwiftlintExtend
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *SwiftlintExtendedBuilder) WithVersion(version string) *SwiftlintExtendedBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *SwiftlintExtendedBuilder) WithInput(key, value string) *SwiftlintExtendedBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *SwiftlintExtendedBuilder) WithRunIf(expr string) *SwiftlintExtendedBuilder {
 	b.Builder.WithRunIf(expr)

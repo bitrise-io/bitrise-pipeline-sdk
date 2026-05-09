@@ -33,6 +33,18 @@ func (b *DataTheoremMobileSecureV0Builder) WithDtApiUploadKey(value string) *Dat
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *DataTheoremMobileSecureV0Builder) WithVersion(version string) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *DataTheoremMobileSecureV0Builder) WithInput(key, value string) *DataTheoremMobileSecureV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *DataTheoremMobileSecureV0Builder) WithRunIf(expr string) *DataTheoremMobileSecureV0Builder {
 	b.Builder.WithRunIf(expr)

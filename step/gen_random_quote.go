@@ -21,6 +21,18 @@ func RandomQuote(version ...string) *RandomQuoteBuilder {
 	return &RandomQuoteBuilder{Builder: From("random-quote", v)}
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *RandomQuoteBuilder) WithVersion(version string) *RandomQuoteBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *RandomQuoteBuilder) WithInput(key, value string) *RandomQuoteBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *RandomQuoteBuilder) WithRunIf(expr string) *RandomQuoteBuilder {
 	b.Builder.WithRunIf(expr)

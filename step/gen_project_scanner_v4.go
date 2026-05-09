@@ -109,6 +109,18 @@ func (b *ProjectScannerV4Builder) WithBranch(value string) *ProjectScannerV4Buil
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ProjectScannerV4Builder) WithVersion(version string) *ProjectScannerV4Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ProjectScannerV4Builder) WithInput(key, value string) *ProjectScannerV4Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ProjectScannerV4Builder) WithRunIf(expr string) *ProjectScannerV4Builder {
 	b.Builder.WithRunIf(expr)

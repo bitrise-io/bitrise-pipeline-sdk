@@ -33,6 +33,18 @@ func (b *JasmineRunnerBuilder) WithOptions(value string) *JasmineRunnerBuilder {
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *JasmineRunnerBuilder) WithVersion(version string) *JasmineRunnerBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *JasmineRunnerBuilder) WithInput(key, value string) *JasmineRunnerBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *JasmineRunnerBuilder) WithRunIf(expr string) *JasmineRunnerBuilder {
 	b.Builder.WithRunIf(expr)

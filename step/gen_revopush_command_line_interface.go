@@ -45,6 +45,12 @@ func (b *RevopushCommandLineInterfaceBuilder) WithAccessKey(value string) *Revop
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *RevopushCommandLineInterfaceBuilder) WithInput(key, value string) *RevopushCommandLineInterfaceBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *RevopushCommandLineInterfaceBuilder) WithRunIf(expr string) *RevopushCommandLineInterfaceBuilder {
 	b.Builder.WithRunIf(expr)

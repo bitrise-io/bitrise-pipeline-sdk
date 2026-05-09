@@ -51,6 +51,12 @@ func (b *TslintBuilder) WithArgs(value string) *TslintBuilder {
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *TslintBuilder) WithInput(key, value string) *TslintBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *TslintBuilder) WithRunIf(expr string) *TslintBuilder {
 	b.Builder.WithRunIf(expr)

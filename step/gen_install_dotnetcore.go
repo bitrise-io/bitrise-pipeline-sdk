@@ -37,6 +37,12 @@ func (b *InstallDotnetcoreBuilder) WithVersion(value string) *InstallDotnetcoreB
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *InstallDotnetcoreBuilder) WithInput(key, value string) *InstallDotnetcoreBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *InstallDotnetcoreBuilder) WithRunIf(expr string) *InstallDotnetcoreBuilder {
 	b.Builder.WithRunIf(expr)

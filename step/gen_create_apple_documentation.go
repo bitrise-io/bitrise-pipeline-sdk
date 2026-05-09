@@ -139,6 +139,12 @@ func (b *CreateAppleDocumentationBuilder) WithUmbrellaHeader(value string) *Crea
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *CreateAppleDocumentationBuilder) WithInput(key, value string) *CreateAppleDocumentationBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *CreateAppleDocumentationBuilder) WithRunIf(expr string) *CreateAppleDocumentationBuilder {
 	b.Builder.WithRunIf(expr)

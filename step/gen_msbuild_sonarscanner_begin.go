@@ -83,6 +83,18 @@ func (b *MsbuildSonarscannerBeginBuilder) WithIsDebug(value MsbuildSonarscannerB
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *MsbuildSonarscannerBeginBuilder) WithVersion(version string) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *MsbuildSonarscannerBeginBuilder) WithInput(key, value string) *MsbuildSonarscannerBeginBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *MsbuildSonarscannerBeginBuilder) WithRunIf(expr string) *MsbuildSonarscannerBeginBuilder {
 	b.Builder.WithRunIf(expr)

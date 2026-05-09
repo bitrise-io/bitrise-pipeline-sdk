@@ -37,6 +37,18 @@ func (b *StartAndroidEmulatorV0Builder) WithAndroidHome(value string) *StartAndr
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *StartAndroidEmulatorV0Builder) WithVersion(version string) *StartAndroidEmulatorV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *StartAndroidEmulatorV0Builder) WithInput(key, value string) *StartAndroidEmulatorV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *StartAndroidEmulatorV0Builder) WithRunIf(expr string) *StartAndroidEmulatorV0Builder {
 	b.Builder.WithRunIf(expr)

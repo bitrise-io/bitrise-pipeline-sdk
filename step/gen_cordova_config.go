@@ -63,6 +63,18 @@ func (b *CordovaConfigBuilder) WithConfigPath(value string) *CordovaConfigBuilde
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *CordovaConfigBuilder) WithVersion(version string) *CordovaConfigBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *CordovaConfigBuilder) WithInput(key, value string) *CordovaConfigBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *CordovaConfigBuilder) WithRunIf(expr string) *CordovaConfigBuilder {
 	b.Builder.WithRunIf(expr)

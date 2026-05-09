@@ -33,6 +33,18 @@ func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithBitriseSourceDir(v
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithVersion(version string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithInput(key, value string) *TheappspajamasServiceAccountKeyInstallerBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *TheappspajamasServiceAccountKeyInstallerBuilder) WithRunIf(expr string) *TheappspajamasServiceAccountKeyInstallerBuilder {
 	b.Builder.WithRunIf(expr)

@@ -33,6 +33,18 @@ func (b *GenerateChangelogBuilder) WithWorkingDir(value string) *GenerateChangel
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GenerateChangelogBuilder) WithVersion(version string) *GenerateChangelogBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GenerateChangelogBuilder) WithInput(key, value string) *GenerateChangelogBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GenerateChangelogBuilder) WithRunIf(expr string) *GenerateChangelogBuilder {
 	b.Builder.WithRunIf(expr)

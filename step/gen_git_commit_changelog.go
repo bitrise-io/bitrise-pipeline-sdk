@@ -21,6 +21,18 @@ func GitCommitChangelog(version ...string) *GitCommitChangelogBuilder {
 	return &GitCommitChangelogBuilder{Builder: From("git-commit-changelog", v)}
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *GitCommitChangelogBuilder) WithVersion(version string) *GitCommitChangelogBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *GitCommitChangelogBuilder) WithInput(key, value string) *GitCommitChangelogBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *GitCommitChangelogBuilder) WithRunIf(expr string) *GitCommitChangelogBuilder {
 	b.Builder.WithRunIf(expr)

@@ -111,6 +111,10 @@ type forwardingMethodDef struct {
 // genericBuilderMethods is the canonical list of *Builder methods that every
 // typed builder must forward so the typed chain is never broken.
 var genericBuilderMethods = []forwardingMethodDef{
+	{Name: "WithVersion", Params: "(version string)", Call: "b.Builder.WithVersion(version)",
+		Comment: "WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead."},
+	{Name: "WithInput", Params: "(key, value string)", Call: "b.Builder.WithInput(key, value)",
+		Comment: "WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods."},
 	{Name: "WithRunIf", Params: "(expr string)", Call: "b.Builder.WithRunIf(expr)",
 		Comment: "WithRunIf overrides the run_if expression for this step."},
 	{Name: "WithIsAlwaysRun", Params: "(v bool)", Call: "b.Builder.WithIsAlwaysRun(v)",

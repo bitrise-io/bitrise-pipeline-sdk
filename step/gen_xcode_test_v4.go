@@ -209,6 +209,18 @@ func (b *XcodeTestV4Builder) WithHeadlessMode(value XcodeTestV4HeadlessMode) *Xc
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *XcodeTestV4Builder) WithVersion(version string) *XcodeTestV4Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *XcodeTestV4Builder) WithInput(key, value string) *XcodeTestV4Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *XcodeTestV4Builder) WithRunIf(expr string) *XcodeTestV4Builder {
 	b.Builder.WithRunIf(expr)

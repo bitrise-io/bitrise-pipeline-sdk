@@ -33,6 +33,18 @@ func (b *ResourceArchiveBuilder) WithExtractToPath(value string) *ResourceArchiv
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ResourceArchiveBuilder) WithVersion(version string) *ResourceArchiveBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ResourceArchiveBuilder) WithInput(key, value string) *ResourceArchiveBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ResourceArchiveBuilder) WithRunIf(expr string) *ResourceArchiveBuilder {
 	b.Builder.WithRunIf(expr)

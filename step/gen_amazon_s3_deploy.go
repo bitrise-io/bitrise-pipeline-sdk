@@ -93,6 +93,18 @@ func (b *AmazonS3DeployBuilder) WithFileAccessLevel(value AmazonS3DeployFileAcce
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AmazonS3DeployBuilder) WithVersion(version string) *AmazonS3DeployBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AmazonS3DeployBuilder) WithInput(key, value string) *AmazonS3DeployBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AmazonS3DeployBuilder) WithRunIf(expr string) *AmazonS3DeployBuilder {
 	b.Builder.WithRunIf(expr)

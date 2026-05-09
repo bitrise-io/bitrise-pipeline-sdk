@@ -37,6 +37,18 @@ func (b *RecursiveTouchBuilder) WithTouchTime(value string) *RecursiveTouchBuild
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *RecursiveTouchBuilder) WithVersion(version string) *RecursiveTouchBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *RecursiveTouchBuilder) WithInput(key, value string) *RecursiveTouchBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *RecursiveTouchBuilder) WithRunIf(expr string) *RecursiveTouchBuilder {
 	b.Builder.WithRunIf(expr)

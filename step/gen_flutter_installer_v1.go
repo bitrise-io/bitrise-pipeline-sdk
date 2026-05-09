@@ -45,6 +45,12 @@ func (b *FlutterInstallerV1Builder) WithIsDebug(value FlutterInstallerV1IsDebug)
 	return b
 }
 
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *FlutterInstallerV1Builder) WithInput(key, value string) *FlutterInstallerV1Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *FlutterInstallerV1Builder) WithRunIf(expr string) *FlutterInstallerV1Builder {
 	b.Builder.WithRunIf(expr)

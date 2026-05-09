@@ -65,6 +65,18 @@ func (b *UpdateJiraReleaseStatusBuilder) WithReleaseDate(value string) *UpdateJi
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *UpdateJiraReleaseStatusBuilder) WithVersion(version string) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *UpdateJiraReleaseStatusBuilder) WithInput(key, value string) *UpdateJiraReleaseStatusBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *UpdateJiraReleaseStatusBuilder) WithRunIf(expr string) *UpdateJiraReleaseStatusBuilder {
 	b.Builder.WithRunIf(expr)

@@ -33,6 +33,18 @@ func (b *AuthenticateWithGithubOauthBuilder) WithAccessToken(value string) *Auth
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AuthenticateWithGithubOauthBuilder) WithVersion(version string) *AuthenticateWithGithubOauthBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AuthenticateWithGithubOauthBuilder) WithInput(key, value string) *AuthenticateWithGithubOauthBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AuthenticateWithGithubOauthBuilder) WithRunIf(expr string) *AuthenticateWithGithubOauthBuilder {
 	b.Builder.WithRunIf(expr)

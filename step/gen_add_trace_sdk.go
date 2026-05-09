@@ -43,6 +43,18 @@ func (b *AddTraceSdkBuilder) WithLibVersion(value string) *AddTraceSdkBuilder {
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AddTraceSdkBuilder) WithVersion(version string) *AddTraceSdkBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AddTraceSdkBuilder) WithInput(key, value string) *AddTraceSdkBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AddTraceSdkBuilder) WithRunIf(expr string) *AddTraceSdkBuilder {
 	b.Builder.WithRunIf(expr)

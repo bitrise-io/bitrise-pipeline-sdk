@@ -85,6 +85,18 @@ func (b *AuthenticateWithAwsBuilder) WithVerbose(value AuthenticateWithAwsVerbos
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *AuthenticateWithAwsBuilder) WithVersion(version string) *AuthenticateWithAwsBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *AuthenticateWithAwsBuilder) WithInput(key, value string) *AuthenticateWithAwsBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *AuthenticateWithAwsBuilder) WithRunIf(expr string) *AuthenticateWithAwsBuilder {
 	b.Builder.WithRunIf(expr)

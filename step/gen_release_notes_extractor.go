@@ -41,6 +41,18 @@ func (b *ReleaseNotesExtractorBuilder) WithTrimMarkdownOutput(value ReleaseNotes
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ReleaseNotesExtractorBuilder) WithVersion(version string) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ReleaseNotesExtractorBuilder) WithInput(key, value string) *ReleaseNotesExtractorBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ReleaseNotesExtractorBuilder) WithRunIf(expr string) *ReleaseNotesExtractorBuilder {
 	b.Builder.WithRunIf(expr)

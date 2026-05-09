@@ -21,6 +21,18 @@ func Translized(version ...string) *TranslizedBuilder {
 	return &TranslizedBuilder{Builder: From("translized", v)}
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *TranslizedBuilder) WithVersion(version string) *TranslizedBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *TranslizedBuilder) WithInput(key, value string) *TranslizedBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *TranslizedBuilder) WithRunIf(expr string) *TranslizedBuilder {
 	b.Builder.WithRunIf(expr)

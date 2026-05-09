@@ -85,6 +85,18 @@ func (b *ReactNativeBundleV0Builder) WithOptions(value string) *ReactNativeBundl
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ReactNativeBundleV0Builder) WithVersion(version string) *ReactNativeBundleV0Builder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ReactNativeBundleV0Builder) WithInput(key, value string) *ReactNativeBundleV0Builder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ReactNativeBundleV0Builder) WithRunIf(expr string) *ReactNativeBundleV0Builder {
 	b.Builder.WithRunIf(expr)

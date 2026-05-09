@@ -27,6 +27,18 @@ func (b *ParseComposerResultsBuilder) WithResultsDir(value string) *ParseCompose
 	return b
 }
 
+// WithVersion overrides the step version after construction. Prefer passing the version to the constructor instead.
+func (b *ParseComposerResultsBuilder) WithVersion(version string) *ParseComposerResultsBuilder {
+	b.Builder.WithVersion(version)
+	return b
+}
+
+// WithInput sets a step input by raw key/value. Use this as an escape hatch for inputs not yet exposed as typed methods.
+func (b *ParseComposerResultsBuilder) WithInput(key, value string) *ParseComposerResultsBuilder {
+	b.Builder.WithInput(key, value)
+	return b
+}
+
 // WithRunIf overrides the run_if expression for this step.
 func (b *ParseComposerResultsBuilder) WithRunIf(expr string) *ParseComposerResultsBuilder {
 	b.Builder.WithRunIf(expr)
